@@ -93,17 +93,7 @@
             min-height: 100vh;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 10, 18, 0.5);
-            z-index: -1;
-            pointer-events: none;
-        }
+        /* Removed conflicting body::before overlay that was blocking background image */
 
         /* Liquid scroll effect */
         .liquid-effect {
@@ -212,10 +202,7 @@
                 background-position: center top !important;
             }
 
-            /* Improve mobile background overlay */
-            body::before {
-                background: rgba(10, 10, 18, 0.7) !important;
-            }
+            /* Removed mobile background overlay - was blocking background image */
 
             /* Mobile button improvements */
             button, .button {
@@ -432,19 +419,24 @@
                 -webkit-overflow-scrolling: touch;
             }
 
-            /* Mobile-optimized background images */
+            /* Mobile-optimized background images - Clean implementation without overlays */
             body {
                 background: url('/magical-ai-kids.jpg') center center / cover scroll, #0a0a12 !important;
                 background-repeat: no-repeat !important;
                 background-color: #0a0a12 !important;
                 min-height: 100vh !important;
                 background-attachment: scroll !important;
+                /* Ensure no overlays block the background */
+                position: relative !important;
             }
 
-            /* Ensure background is visible on mobile with lighter overlay */
-            body::before {
-                background: rgba(10, 10, 18, 0.3) !important;
+            /* Ensure all content stays above background */
+            body > * {
+                position: relative;
+                z-index: 1;
             }
+
+            /* Removed second mobile background overlay - was blocking background image */
 
             /* Mobile background fallback */
             .mobile-optimized {
@@ -3518,11 +3510,35 @@
                     el.classList.add('mobile-no-transform');
                 });
 
-                // Fix mobile background
-                document.body.style.background = 'url("/magical-ai-kids.jpg") center center / cover scroll, #0a0a12';
+                // Fix mobile background with enhanced approach and diagnostics
+                console.log('🔧 Applying mobile background fix...');
+
+                // Clear any existing background and overlays
+                document.body.style.background = '';
+                document.body.style.backgroundImage = '';
+
+                // Apply clean background without overlays
+                document.body.style.backgroundImage = 'url("/magical-ai-kids.jpg")';
+                document.body.style.backgroundSize = 'cover';
+                document.body.style.backgroundPosition = 'center center';
                 document.body.style.backgroundAttachment = 'scroll';
                 document.body.style.backgroundRepeat = 'no-repeat';
                 document.body.style.backgroundColor = '#0a0a12';
+                document.body.style.minHeight = '100vh';
+
+                // Verify background is applied
+                console.log('📱 Mobile background applied:', {
+                    backgroundImage: document.body.style.backgroundImage,
+                    backgroundSize: document.body.style.backgroundSize,
+                    backgroundPosition: document.body.style.backgroundPosition,
+                    backgroundAttachment: document.body.style.backgroundAttachment
+                });
+
+                // Test image loading
+                const img = new Image();
+                img.onload = () => console.log('✅ Background image loaded successfully on mobile');
+                img.onerror = () => console.log('❌ Background image failed to load on mobile');
+                img.src = '/magical-ai-kids.jpg';
 
                 // Add mobile-optimized class to body
                 document.body.classList.add('mobile-optimized');
