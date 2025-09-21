@@ -1,0 +1,2751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Club — Give Your Child the AI Advantage</title>
+    <meta name="description" content="AI Club helps kids master tomorrow's essential tools today with structured AI learning programs in a safe, fun, and guided environment.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="./calendar-widget-standalone.js"></script>
+
+    <style>
+        /* Glowing cursor effect */
+        * {
+            cursor: none !important;
+        }
+
+        .cursor-glow {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            background: radial-gradient(circle at center,
+                rgba(6, 182, 212, 0.3) 0%,
+                rgba(251, 146, 60, 0.25) 30%,
+                rgba(236, 72, 153, 0.15) 60%,
+                transparent 80%);
+            filter: blur(20px);
+            z-index: 9999;
+            transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform: translate(-50%, -50%);
+            animation: cursor-pulse 2s ease-in-out infinite;
+        }
+
+        .cursor-trail {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            background: radial-gradient(circle at center,
+                rgba(6, 182, 212, 0.2) 0%,
+                rgba(251, 146, 60, 0.15) 40%,
+                transparent 70%);
+            filter: blur(15px);
+            z-index: 9998;
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            background: rgba(6, 182, 212, 0.9);
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.8), 0 0 30px rgba(251, 146, 60, 0.4);
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        @keyframes cursor-pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        @keyframes sparkle-burst {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(3);
+                opacity: 0;
+            }
+        }
+
+        /* Fixed magical background for entire page */
+        body {
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;
+            background-color: #0a0a12;
+            background-image: url('./magical-ai-kids.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 18, 0.5);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Liquid scroll effect */
+        .liquid-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .liquid-effect::before {
+            display: none;
+        }
+
+        @keyframes liquid-scroll {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(100px) scale(1.1); opacity: 0; }
+        }
+
+        .hero-bg-image {
+            transition: transform 0.3s ease-out, filter 0.3s ease-out;
+        }
+
+        .hero-bg-image.scrolling {
+            animation: liquid-scroll 0.6s ease-out forwards;
+            filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="antialiased text-zinc-100" style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial; background: url('./magical-ai-kids.jpg') center center / cover fixed, #0a0a12;">
+    <!-- Custom cursor elements -->
+    <div class="cursor-glow"></div>
+    <div class="cursor-trail"></div>
+    <div class="cursor-dot"></div>
+    <!-- Enhanced Background glow effects -->
+    <div class="pointer-events-none fixed inset-0 overflow-hidden" style="z-index: 1;">
+        <!-- Primary orange glow - more visible -->
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[1400px] h-[1400px] rounded-full blur-3xl opacity-60"
+             style="background: radial-gradient(circle at center, rgba(251, 146, 60, 0.7), rgba(251, 146, 60, 0.3) 40%, transparent 70%);"></div>
+
+        <!-- Secondary pink glow - more visible -->
+        <div class="absolute bottom-0 right-0 w-[900px] h-[900px] translate-x-1/4 translate-y-1/4 rounded-full blur-3xl opacity-50"
+             style="background: radial-gradient(circle at center, rgba(236, 72, 153, 0.6), rgba(236, 72, 153, 0.2) 40%, transparent 70%);"></div>
+
+        <!-- Additional purple accent glow -->
+        <div class="absolute top-1/2 left-0 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl opacity-40"
+             style="background: radial-gradient(circle at center, rgba(139, 92, 246, 0.5), transparent 60%);"></div>
+    </div>
+
+    <!-- Animated background particles -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none" style="z-index: 2;">
+        <div class="particle-1 absolute w-2 h-2 bg-orange-400 rounded-full opacity-30" style="animation: float 20s infinite ease-in-out;"></div>
+        <div class="particle-2 absolute w-1 h-1 bg-pink-400 rounded-full opacity-40" style="animation: float 15s infinite ease-in-out; animation-delay: 2s;"></div>
+        <div class="particle-3 absolute w-3 h-3 bg-purple-400 rounded-full opacity-20" style="animation: float 25s infinite ease-in-out; animation-delay: 4s;"></div>
+    </div>
+
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20vh) translateX(10vw); }
+            50% { transform: translateY(-10vh) translateX(-10vw); }
+            75% { transform: translateY(-30vh) translateX(5vw); }
+        }
+
+        .particle-1 { top: 60%; left: 10%; }
+        .particle-2 { top: 20%; left: 80%; }
+        .particle-3 { top: 80%; left: 60%; }
+    </style>
+
+    <!-- Nav -->
+    <header class="relative z-50 sticky top-0 backdrop-blur-xl bg-[#0a0a12]/80 border-b border-white/5">
+        <div class="max-w-7xl sm:px-6 lg:px-8 border-slate-50/5 mr-auto ml-auto pr-4 pl-4">
+            <div class="flex h-16 items-center justify-between">
+                <a href="#" class="flex items-center gap-3">
+                    <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-orange-400 to-pink-500 shadow-[0_0_0_2px_rgba(255,255,255,0.06)_inset]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="brain" class="lucide lucide-brain w-4 h-4 text-white" style="stroke-width: 1.5;"><path d="M12 18V5"></path><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"></path><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"></path><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path><path d="M18 18a4 4 0 0 0 2-7.464"></path><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"></path><path d="M6 18a4 4 0 0 1-2-7.464"></path><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path></svg>
+                    </span>
+                    <span class="text-lg font-semibold tracking-tight">AI Club</span>
+                </a>
+
+                <nav class="hidden md:flex gap-1 border-slate-50/5 border rounded-full px-4 items-center">
+                    <a href="#programs" class="hover:text-white text-sm font-medium text-zinc-300 pt-2 pr-3 pb-2 pl-3">Programs</a>
+                    <a href="#instructor" class="px-3 py-2 text-sm font-medium text-zinc-300 hover:text-white">Instructors</a>
+                    <a href="#gallery" class="px-3 py-2 text-sm font-medium text-zinc-300 hover:text-white">Gallery</a>
+                    <a href="#register" class="hover:text-white text-sm font-medium text-zinc-300 pt-2 pr-3 pb-2 pl-3">Register</a>
+                </nav>
+
+                <div class="flex gap-2 items-center">
+                    <button type="button" class="group relative inline-flex shadow-[0_8px_16px_-4px_rgba(251,146,60,0.2)] hover:shadow-[0_12px_20px_-6px_rgba(251,146,60,0.28)] transition duration-300 ease-out select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400/60 transform-gpu hover:-translate-y-0.5 text-white rounded-md pt-[1px] pr-[1px] pb-[1px] pl-[1px] items-center justify-center" style="background-image: linear-gradient(144deg,#FB923C, #EC4899 50%, #8B5CF6);">
+                        <span class="flex items-center justify-center gap-2 text-[14px] leading-none min-w-[80px] w-full h-full transition-colors duration-300 group-hover:bg-transparent font-medium bg-[#0b0f17] rounded-md pt-2 pr-4 pb-2 pl-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="graduation-cap" class="lucide lucide-graduation-cap w-4 h-4" style="stroke-width: 1.5;"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
+                            <span class="">Reserve Your Spot</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative z-10 liquid-effect hero-section">
+        <!-- Magical floating elements container -->
+        <div class="absolute inset-0" style="z-index: 1;">
+            <!-- Magical floating elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <!-- Enhanced floating sparkles with content focus -->
+                <div class="absolute top-20 left-20 w-2 h-2 bg-orange-300 rounded-full opacity-60" style="animation: sparkle 3s infinite ease-in-out;"></div>
+                <div class="absolute top-40 right-32 w-1 h-1 bg-pink-300 rounded-full opacity-70" style="animation: sparkle 2s infinite ease-in-out; animation-delay: 1s;"></div>
+                <div class="absolute bottom-40 left-40 w-3 h-3 bg-purple-300 rounded-full opacity-50" style="animation: sparkle 4s infinite ease-in-out; animation-delay: 2s;"></div>
+                <div class="absolute top-60 left-60 w-1.5 h-1.5 bg-orange-200 rounded-full opacity-80" style="animation: sparkle 2.5s infinite ease-in-out; animation-delay: 0.5s;"></div>
+                <div class="absolute bottom-60 right-20 w-2 h-2 bg-pink-200 rounded-full opacity-60" style="animation: sparkle 3.5s infinite ease-in-out; animation-delay: 1.5s;"></div>
+                <!-- Additional content-focused sparkles -->
+                <div class="absolute top-1/3 left-1/4 w-1 h-1 bg-cyan-300 rounded-full opacity-40" style="animation: sparkle 3.2s infinite ease-in-out; animation-delay: 2.2s;"></div>
+                <div class="absolute bottom-1/3 right-1/4 w-1.5 h-1.5 bg-orange-300 rounded-full opacity-50" style="animation: sparkle 2.8s infinite ease-in-out; animation-delay: 1.8s;"></div>
+
+                <!-- Interactive magical AI elements -->
+                <div id="brain-icon" class="floating-element absolute top-32 right-40 text-cyan-300/50 text-lg transition-transform duration-500 ease-out" style="animation: float-slow 15s infinite ease-in-out; animation-delay: 2s;">🧠</div>
+                <div id="code-icon" class="floating-element absolute bottom-32 left-32 text-orange-300/60 text-sm font-mono transition-transform duration-500 ease-out" style="animation: float-slow 12s infinite ease-in-out; animation-delay: 4s;">&lt;/&gt;</div>
+                <div id="sparkle-icon" class="floating-element absolute top-1/2 left-16 text-cyan-400/40 text-xl transition-transform duration-500 ease-out" style="animation: float-slow 18s infinite ease-in-out; animation-delay: 1s;">✨</div>
+                <div id="chart-icon" class="floating-element absolute bottom-1/4 right-16 text-pink-300/50 text-lg transition-transform duration-500 ease-out" style="animation: float-slow 14s infinite ease-in-out; animation-delay: 3s;">📊</div>
+                <div id="ai-text" class="floating-element absolute top-20 left-1/3 text-cyan-300/40 text-sm transition-transform duration-500 ease-out" style="animation: float-slow 20s infinite ease-in-out; animation-delay: 5s;">AI</div>
+                <div id="bracket-icon" class="floating-element absolute bottom-20 right-1/3 text-orange-300/50 text-xs font-mono transition-transform duration-500 ease-out" style="animation: float-slow 16s infinite ease-in-out; animation-delay: 7s;">{ }</div>
+            </div>
+
+            <!-- Clean background - removed weird AI CLUB overlay text -->
+        </div>
+
+        <div class="max-w-6xl sm:px-6 lg:px-8 sm:pt-16 bg-center relative mt-0 mr-auto mb-0 ml-auto pt-0 pr-0 pl-0" style="z-index: 5;">
+            <!-- Background Animation -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <!-- Animated background text effect -->
+                <div class="absolute w-full h-full top-0 left-0 flex items-center justify-center">
+                </div>
+
+                <!-- Enhanced magical floating orbs matching image colors -->
+                <div class="absolute top-20 left-10 w-24 h-24 bg-gradient-to-r from-cyan-400/20 to-orange-400/15 rounded-full blur-xl"
+                     style="animation: float-slow 18s infinite ease-in-out;"></div>
+                <div class="absolute bottom-20 right-10 w-36 h-36 bg-gradient-to-r from-orange-400/15 to-pink-400/12 rounded-full blur-xl"
+                     style="animation: float-slow 22s infinite ease-in-out; animation-delay: 6s;"></div>
+                <div class="absolute top-1/2 right-20 w-16 h-16 bg-gradient-to-r from-cyan-400/25 to-orange-400/20 rounded-full blur-lg"
+                     style="animation: float-slow 25s infinite ease-in-out; animation-delay: 3s;"></div>
+                <div class="absolute bottom-1/3 left-20 w-20 h-20 bg-gradient-to-r from-orange-300/20 to-cyan-300/18 rounded-full blur-lg"
+                     style="animation: float-slow 20s infinite ease-in-out; animation-delay: 8s;"></div>
+                <div class="absolute top-2/3 left-1/4 w-12 h-12 bg-gradient-to-r from-cyan-400/30 to-transparent rounded-full blur-md"
+                     style="animation: float-slow 14s infinite ease-in-out; animation-delay: 10s;"></div>
+            </div>
+
+            <style>
+                @keyframes pulse {
+                    0%, 100% { transform: scale(1); opacity: 0.05; }
+                    50% { transform: scale(1.05); opacity: 0.1; }
+                }
+
+                @keyframes glow {
+                    0% { opacity: 0.1; transform: scale(1); }
+                    100% { opacity: 0.2; transform: scale(1.02); }
+                }
+
+                @keyframes float-slow {
+                    0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+                    25% { transform: translateY(-10px) translateX(5px) rotate(90deg); }
+                    50% { transform: translateY(-5px) translateX(-5px) rotate(180deg); }
+                    75% { transform: translateY(-15px) translateX(3px) rotate(270deg); }
+                }
+
+                @keyframes sparkle {
+                    0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+                    50% { transform: scale(1) rotate(180deg); opacity: 1; }
+                }
+
+                @keyframes magical-glow {
+                    0%, 100% {
+                        transform: scale(1) rotate(0deg);
+                        opacity: 0.25;
+                        filter: blur(2px) hue-rotate(0deg);
+                    }
+                    33% {
+                        transform: scale(1.02) rotate(0.5deg);
+                        opacity: 0.35;
+                        filter: blur(1px) hue-rotate(10deg);
+                    }
+                    66% {
+                        transform: scale(0.98) rotate(-0.5deg);
+                        opacity: 0.3;
+                        filter: blur(2px) hue-rotate(-10deg);
+                    }
+                }
+            </style>
+
+            <div class="flex flex-col relative z-10 text-center mr-auto mb-60 ml-auto space-y-6 items-center">
+                <!-- Gradient overlays restored for visual depth -->
+                <div class="relative max-w-4xl mx-auto">
+                    <div class="absolute inset-0 rounded-3xl pointer-events-none" style="background: radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.22) 60%, rgba(0,0,0,0.45) 100%);"></div>
+                    <div class="absolute inset-0 rounded-3xl pointer-events-none bg-gradient-to-b from-black/5 via-black/30 to-black/12"></div>
+                    <div class="absolute inset-0 rounded-3xl pointer-events-none opacity-55 bg-gradient-to-br from-purple-500/22 via-orange-400/18 to-pink-500/24 mix-blend-overlay"></div>
+                    <!-- Content area with relative positioning -->
+                    <div class="relative z-10 p-12">
+                    <!-- Integrated badge within main container -->
+                    <div class="mb-8">
+                        <span class="inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/20 px-6 py-3 text-base font-semibold text-white backdrop-blur-sm shadow-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="brain" class="lucide lucide-brain w-5 h-5 text-orange-300" style="stroke-width: 1.5;"><path d="M12 18V5"></path><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"></path><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"></path><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path><path d="M18 18a4 4 0 0 0 2-7.464"></path><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"></path><path d="M6 18a4 4 0 0 1-2-7.464"></path><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path></svg>
+                            New: Structured AI Programs for Kids
+                        </span>
+                    </div>
+
+                    <h1 class="sm:text-6xl md:text-7xl text-4xl font-extrabold text-white tracking-tight mb-6" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+                        Give Your Child the AI <span class="font-serif italic bg-gradient-to-r from-orange-300 via-pink-300 to-orange-400 bg-clip-text text-transparent">Advantage</span>
+                    </h1>
+                    <p class="max-w-2xl sm:text-xl text-lg text-white/90 mt-0 mx-auto leading-relaxed">
+                        Join AI Club - Where Kids Master Tomorrow's Essential Tools Today. Safe, fun, and guided learning in small groups.
+                    </p>
+
+
+                    <!-- Additional content integrated within the hero container -->
+                    <div class="mt-8 space-y-6">
+                        <p class="text-lg sm:text-xl text-white/90 leading-relaxed">
+                            In a world where AI is reshaping every industry, the question isn't whether your child should learn AI – it's how soon they can start.
+                        </p>
+                        <p class="text-base sm:text-lg text-white/80 leading-relaxed">
+                            AI Club is the first structured program in our area designed specifically for kids to learn and create with artificial intelligence tools in a safe, fun, and guided environment.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col gap-6 mt-10 items-center justify-center">
+                        <a href="#register" class="inline-flex items-center gap-3 transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_-6px_rgba(251,146,60,0.4)] hover:scale-105 active:scale-95 active:duration-75 text-lg font-bold text-white bg-gradient-to-br from-orange-400 to-pink-500 rounded-full py-4 px-8 shadow-[0_4px_20px_rgba(255,107,107,0.3)] min-w-[200px] h-14">
+                            Reserve Your Spot
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right w-5 h-5" style="stroke-width: 1.5;"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        </a>
+                        <!-- Enhanced secondary CTA -->
+                        <a href="#programs" class="inline-flex items-center gap-2 hover:bg-white/15 text-lg font-semibold text-white border-white/40 border-2 rounded-full py-4 px-8 backdrop-blur-lg transition-all duration-300 min-w-[280px] h-12 justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down w-5 h-5" style="stroke-width: 1.5;"><path d="m6 9 6 6 6-6"></path></svg>
+                            Learn More About Our Programs
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- What Your Child Will Learn -->
+    <section class="relative z-10">
+        <!-- Simplified container -->
+        <div class="relative max-w-6xl mx-auto mt-20">
+            <!-- Content area with relative positioning -->
+            <div class="relative z-10 p-12">
+                <div class="text-center mb-16">
+                    <h2 class="sm:text-5xl text-4xl font-extrabold text-white tracking-tight mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">What Your Child Will Learn</h2>
+                    <p class="mt-4 text-lg text-white/90 max-w-3xl mx-auto leading-relaxed">From AI fundamentals to real-world applications, every session builds essential skills for tomorrow's digital world.</p>
+                </div>
+
+                <!-- Card container within glassmorphism -->
+                <div class="rounded-2xl p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                        <!-- Master ChatGPT -->
+                        <div class="relative h-full flex flex-col rounded-2xl p-1 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                            <!-- Animated gradient border -->
+                            <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400 via-orange-400 to-pink-400 opacity-60 animate-pulse"></div>
+                            <!-- Soft mesh gradient background -->
+                            <div class="absolute inset-0 rounded-2xl opacity-80 bg-gradient-to-br from-cyan-400/15 via-teal-400/10 to-orange-300/8 mix-blend-overlay"></div>
+                            <!-- White inner frame -->
+                            <div class="relative z-10 bg-white/95 backdrop-blur-sm rounded-xl p-6 h-full flex flex-col border-4 border-white shadow-inner space-y-4">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <!-- Icon on white circle overlay -->
+                                    <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-circle" class="lucide lucide-message-circle w-4 h-4 text-teal-600" style="stroke-width: 1.5;"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+                                    </div>
+                                    <span class="text-sm font-medium text-gray-600">AI Assistant</span>
+                                </div>
+                                <h3 class="text-2xl font-bold tracking-tight text-gray-800 mb-4">Master ChatGPT</h3>
+                                <p class="text-base leading-relaxed text-gray-700 mb-4">
+                                    Your child will learn to use AI as their personal learning assistant - from homework help to creative writing, from coding to problem-solving.
+                                </p>
+
+                                <!-- ChatGPT Features -->
+                                <div class="space-y-3 mb-6">
+                                    <div class="flex items-start gap-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle" class="lucide lucide-check-circle w-5 h-5 text-teal-600 mt-0.5 flex-shrink-0" style="stroke-width: 1.5;"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+                                        <div class="text-sm text-gray-700">
+                                            <span class="font-semibold text-gray-800">Homework Helper:</span> Learn to ask the right questions for math, science, and language arts
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle" class="lucide lucide-check-circle w-5 h-5 text-teal-600 mt-0.5 flex-shrink-0" style="stroke-width: 1.5;"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+                                        <div class="text-sm text-gray-700">
+                                            <span class="font-semibold text-gray-800">Creative Writing:</span> Generate stories, poems, and creative content with AI collaboration
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle" class="lucide lucide-check-circle w-5 h-5 text-teal-600 mt-0.5 flex-shrink-0" style="stroke-width: 1.5;"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+                                        <div class="text-sm text-gray-700">
+                                            <span class="font-semibold text-gray-800">Research Skills:</span> Learn to fact-check and use AI for educational research safely
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="inline-flex items-center gap-1.5 text-xs text-teal-700 bg-teal-100 rounded-md py-2 px-3 font-medium">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="zap" class="lucide lucide-zap w-3 h-3" style="stroke-width: 1.5;"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+                                        Instant Help
+                                    </span>
+                                    <span class="inline-flex items-center gap-1.5 text-xs text-green-700 bg-green-100 rounded-md py-2 px-3 font-medium">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield" class="lucide lucide-shield w-3 h-3" style="stroke-width: 1.5;"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>
+                                        Safe Learning
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Create with AI Art Tools -->
+                        <div class="relative h-full flex flex-col rounded-2xl p-1 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                            <!-- Animated gradient border -->
+                            <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-pink-400 via-orange-400 to-purple-400 opacity-60 animate-pulse"></div>
+                            <!-- Soft mesh gradient background -->
+                            <div class="absolute inset-0 rounded-2xl opacity-80 bg-gradient-to-br from-pink-400/15 via-orange-400/12 to-purple-300/8 mix-blend-overlay"></div>
+                            <!-- White inner frame -->
+                            <div class="relative z-10 bg-white/95 backdrop-blur-sm rounded-xl p-6 h-full flex flex-col border-4 border-white shadow-inner space-y-4">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <!-- Icon on white circle overlay -->
+                                    <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="palette" class="lucide lucide-palette w-4 h-4 text-pink-600" style="stroke-width: 1.5;"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"></path><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle></svg>
+                                    </div>
+                                    <span class="text-sm font-medium text-gray-600">Creative AI</span>
+                                </div>
+                                <h3 class="text-2xl font-bold tracking-tight text-gray-800 mb-4">Create with AI Art Tools</h3>
+                                <p class="text-base leading-relaxed text-gray-700 mb-4">
+                                    Unlock creativity by generating stunning images, designing characters, and bringing imagination to life with AI image generation.
+                                </p>
+
+                        <!-- AI Art Examples -->
+                        <div class="grid grid-cols-2 gap-2 mb-4">
+                            <div class="aspect-square flex bg-gradient-to-br from-pink-200 to-orange-200 rounded-lg items-center justify-center overflow-hidden" style="background-image: url('./Cinematic3D.png'); background-size: cover; background-position: center;">
+                            </div>
+                            <div class="aspect-square flex bg-gradient-to-br from-blue-200 to-purple-200 rounded-lg items-center justify-center overflow-hidden" style="background-image: url('./Children\'s Book Illustrations.png'); background-size: cover; background-position: center;">
+                            </div>
+                            <div class="aspect-square flex bg-gradient-to-br from-green-200 to-emerald-200 rounded-lg items-center justify-center overflow-hidden" style="background-image: url('./Colorful Modern Fusion.png'); background-size: cover; background-position: center;">
+                            </div>
+                            <div class="aspect-square flex bg-gradient-to-br from-yellow-200 to-amber-200 bg-[url(https://images.unsplash.com/photo-1596548438137-d51ea5c83ca4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80)] bg-cover rounded-lg items-center justify-center">
+                                <span class="inline-flex h-9 w-9 items-center justify-center shadow-[inset_0_0_0_2px_rgba(255,255,255,0.06)] text-white bg-gray-50/50 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="wand-2" class="lucide lucide-wand-2 w-[18px] h-[18px] text-slate-950" style="width: 18px; height: 18px;"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"></path><path d="m14 7 3 3"></path><path d="M5 6v4"></path><path d="M19 14v4"></path><path d="M10 2v2"></path><path d="M7 8H3"></path><path d="M21 16h-4"></path><path d="M11 3H9"></path></svg>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                        <!-- Code with AI Assistance -->
+                        <div class="relative h-full flex flex-col rounded-2xl p-1 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                            <!-- Animated gradient border -->
+                            <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 opacity-60 animate-pulse"></div>
+                            <!-- Soft mesh gradient background -->
+                            <div class="absolute inset-0 rounded-2xl opacity-80 bg-gradient-to-br from-blue-400/15 via-purple-400/12 to-cyan-300/8 mix-blend-overlay"></div>
+                            <!-- White inner frame -->
+                            <div class="relative z-10 bg-white/95 backdrop-blur-sm rounded-xl p-6 h-full flex flex-col border-4 border-white shadow-inner space-y-4">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <!-- Icon on white circle overlay -->
+                                    <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="code" class="lucide lucide-code w-4 h-4 text-blue-600" style="stroke-width: 1.5;"><polyline points="16,18 22,12 16,6"></polyline><polyline points="8,6 2,12 8,18"></polyline></svg>
+                                    </div>
+                                    <span class="text-sm font-medium text-gray-600">Coding</span>
+                                </div>
+
+                                <h3 class="text-2xl font-bold tracking-tight text-gray-800 mb-4">
+                                    Code with AI Assistance
+                                </h3>
+
+                                <p class="text-base leading-relaxed text-gray-700 mb-4">
+                                    Learn programming fundamentals while using AI to write, debug, and understand code - making coding accessible and fun.
+                                </p>
+
+                                <div class="space-y-3 mb-6">
+                                    <div class="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="gamepad-2" class="lucide lucide-gamepad-2 w-5 h-5 text-blue-600" style="stroke-width: 1.5;"><line x1="6" x2="10" y1="11" y2="11"></line><line x1="8" x2="8" y1="9" y2="13"></line><line x1="15" x2="15.01" y1="12" y2="12"></line><line x1="18" x2="18.01" y1="10" y2="10"></line><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"></path></svg>
+                                        <div class="flex-1">
+                                            <p class="text-sm text-gray-800 font-semibold">Simple Games</p>
+                                            <p class="text-xs text-gray-600">Create interactive games</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="smartphone" class="lucide lucide-smartphone w-5 h-5 text-blue-600" style="stroke-width: 1.5;"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg>
+                                        <div class="flex-1">
+                                            <p class="text-sm text-gray-800 font-semibold">Mobile Apps</p>
+                                            <p class="text-xs text-gray-600">Build simple applications</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="robot" class="lucide lucide-robot w-5 h-5 text-blue-600" style="stroke-width: 1.5;"><rect width="18" height="10" x="3" y="11" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" x2="8" y1="16" y2="16"></line><line x1="16" x2="16" y1="16" y2="16"></line></svg>
+                                        <div class="flex-1">
+                                            <p class="text-sm text-gray-800 font-semibold">AI Chatbots</p>
+                                            <p class="text-xs text-gray-600">Create smart assistants</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Registration Interface -->
+    <section class="relative z-10">
+        <div class="max-w-6xl sm:px-6 lg:px-8 mr-auto ml-auto pt-20 pr-4 pb-20 pl-4">
+            <!-- Program Registration Interface -->
+            <div class="relative sm:mt-16 mt-12 z-10">
+                <div class="absolute inset-0 -top-8 mx-auto h-56 max-w-5xl rounded-[28px] bg-gradient-to-r from-orange-400/30 via-pink-500/20 to-purple-500/30 blur-2xl"></div>
+
+                <section id="programs" class="relative overflow-hidden rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.15)]">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <!-- Left: Program Registration -->
+                        <div class="relative p-8 lg:p-10 rounded-l-2xl lg:rounded-r-none rounded-r-2xl">
+                            <div class="absolute inset-0 rounded-l-2xl lg:rounded-r-none rounded-r-2xl pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(0,0,0,0) 32%, rgba(0,0,0,0.6) 82%, rgba(0,0,0,0.75) 100%);"></div>
+                            <div class="absolute inset-0 rounded-l-2xl lg:rounded-r-none rounded-r-2xl pointer-events-none bg-gradient-to-b from-black/40 via-black/60 to-black/50"></div>
+                            <div class="absolute inset-0 rounded-l-2xl lg:rounded-r-none rounded-r-2xl pointer-events-none" style="border: 1px solid rgba(255,255,255,0.05); border-radius: inherit;"></div>
+                            <!-- Content with relative positioning -->
+                            <div class="relative z-10">
+                            <div class="space-y-6">
+                                <div class="flex items-center justify-between">
+                                    <h2 class="sm:text-2xl text-xl font-bold text-white tracking-tight">Choose Your Program</h2>
+                                    <div class="flex gap-2 text-white/80 items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="brain" class="lucide lucide-brain w-4 h-4 text-orange-500" style="stroke-width: 1.5;"><path d="M12 18V5"></path><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"></path><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"></path><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path><path d="M18 18a4 4 0 0 0 2-7.464"></path><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"></path><path d="M6 18a4 4 0 0 1-2-7.464"></path><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path></svg>
+                                        <span class="sm:text-sm text-xs font-medium">AI Powered Learning</span>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-4">
+                                    <!-- Child Information -->
+                                    <div class="space-y-3">
+                                        <label class="text-sm font-semibold text-white/90">Child's Name</label>
+                                        <div class="relative">
+                                            <input type="text" placeholder="e.g., Sarah Johnson" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent shadow-sm h-12">
+                                            <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-orange-100 hover:bg-orange-200 transition-colors">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user" class="lucide lucide-user w-4 h-4 text-orange-600" style="stroke-width: 1.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Program Group Selection -->
+                                    <div class="space-y-3">
+                                        <label class="text-sm font-medium text-slate-300">Select Age Group</label>
+                                        <div class="grid grid-cols-1 gap-2" id="age-group-buttons">
+                                            <button type="button" onclick="selectAgeGroup('young', 1200, event)" data-age-group="young" data-price="1200" class="age-group-btn flex items-center gap-3 p-4 rounded-xl bg-orange-400/10 border border-orange-400/20 text-orange-300 text-sm font-medium transition-all">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkles" class="lucide lucide-sparkles w-5 h-5" style="stroke-width: 1.5;"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
+                                                <div class="text-left">
+                                                    <div class="font-semibold">Young Innovators (Ages 8-10)</div>
+                                                    <div class="text-xs text-orange-200">Sundays, 16:00-17:00 • ₪1,200</div>
+                                                </div>
+                                            </button>
+                                            <button type="button" onclick="selectAgeGroup('tech', 1500, event)" data-age-group="tech" data-price="1500" class="age-group-btn flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 text-sm font-medium transition-all">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="telescope" class="lucide lucide-telescope w-5 h-5" style="stroke-width: 1.5;"><path d="M6 21a1 1 0 0 0 1-1v-1a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H6a1 1 0 0 0-1 1v2H3"></path><path d="M12 12a4 4 0 0 0 8 0 4 4 0 0 0-8 0"></path><path d="M12 12a1 1 0 0 1-1-1 3 3 0 0 1 6 0 1 1 0 0 1-1 1"></path></svg>
+                                                <div class="text-left">
+                                                    <div class="font-semibold">Tech Explorers (Ages 11-13)</div>
+                                                    <div class="text-xs text-slate-400">Sundays, 17:30-18:45 • ₪1,500</div>
+                                                </div>
+                                            </button>
+                                            <button type="button" onclick="selectAgeGroup('future', 1800, event)" data-age-group="future" data-price="1800" class="age-group-btn flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 text-sm font-medium transition-all">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="crown" class="lucide lucide-crown w-5 h-5" style="stroke-width: 1.5;"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path><path d="M5 21h14"></path></svg>
+                                                <div class="text-left">
+                                                    <div class="font-semibold">Future Leaders (Ages 14-18)</div>
+                                                    <div class="text-xs text-slate-400">Sundays, 19:00-20:30 • ₪1,800</div>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Additional Children Container -->
+                                    <div id="additionalChildrenContainer" class="space-y-4 mt-4">
+                                        <!-- Add Another Child Button -->
+                                        <div class="mt-4" id="addChildButtonContainer">
+                                            <button type="button" id="mainAddChildBtn" onclick="addChildToMainForm()" class="text-sm text-orange-300 hover:text-orange-200 transition-colors cursor-pointer relative z-20 bg-transparent border-0 p-2 rounded">
+                                                + Add another child (10% off 2nd child, 15% off 3rd+)
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Total Price Display for Main Form -->
+                                    <div id="mainFormPriceDisplay" class="hidden bg-gradient-to-br from-orange-400/10 to-pink-400/10 border border-orange-400/20 rounded-lg p-4 mt-4">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-white font-medium">Total Amount:</span>
+                                            <span id="mainFormTotalPrice" class="text-2xl font-bold text-orange-300">₪0</span>
+                                        </div>
+                                        <div id="mainFormPriceBreakdown" class="text-xs text-white/60 mt-2"></div>
+                                    </div>
+
+
+                                    <!-- Contact Information -->
+                                    <div class="space-y-3">
+                                        <label class="text-sm font-medium text-slate-300">Parent Contact</label>
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <input type="email" placeholder="parent@email.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-400/50 focus:border-transparent">
+                                            <input type="tel" placeholder="+972 50-123-4567" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-400/50 focus:border-transparent">
+                                        </div>
+                                    </div>
+
+                                    <!-- Hidden field for selected time slot -->
+                                    <input type="hidden" id="selected-time-slot" name="timeSlot" value="">
+
+                                    <!-- Selected Time Slot Display -->
+                                    <div id="selected-slot-display" class="hidden bg-gradient-to-br from-orange-400/10 to-pink-500/10 border border-orange-400/20 rounded-xl p-3 mb-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-6 h-6 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full flex items-center justify-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                                    <path d="M20 6 9 17l-5-5"/>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <div class="text-xs font-medium text-white" id="selected-slot-text">No time slot selected</div>
+                                                <div class="text-xs text-orange-200" id="selected-slot-details"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Register Button -->
+                                    <button class="w-full inline-flex items-center justify-center gap-2 shadow-orange-900/25 text-sm font-semibold text-white bg-gradient-to-br from-orange-400 to-pink-500 rounded-xl pt-3 pr-4 pb-3 pl-4 shadow-lg transform-gpu transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-6px_rgba(251,146,60,0.4)] hover:scale-[1.02] active:scale-[0.98] active:duration-75 mt-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="graduation-cap" class="lucide lucide-graduation-cap w-4 h-4" style="stroke-width: 1.5;"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
+                                        Register Now
+                                    </button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Available Time Slots -->
+                            <div class="relative lg:border-t-0 border-t">
+                                <div class="absolute inset-0 lg:rounded-r-2xl rounded-l-2xl lg:rounded-l-none pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(0,0,0,0) 32%, rgba(0,0,0,0.6) 82%, rgba(0,0,0,0.75) 100%);"></div>
+                                <div class="absolute inset-0 lg:rounded-r-2xl rounded-l-2xl lg:rounded-l-none pointer-events-none bg-gradient-to-b from-black/40 via-black/60 to-black/50"></div>
+                                <div class="absolute inset-0 lg:rounded-r-2xl rounded-l-2xl lg:rounded-l-none pointer-events-none" style="border: 1px solid rgba(255,255,255,0.05); border-radius: inherit;"></div>
+                                <div class="relative z-10 sm:p-8 lg:p-10 pt-5 pr-5 pb-5 pl-5 space-y-6">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-xl tracking-tight font-semibold text-white">Available Time Slots</h3>
+                                    <div class="flex gap-2 text-slate-300 items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" class="lucide lucide-calendar w-4 h-4" style="stroke-width: 1.5;"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                                        <span class="sm:text-sm text-xs font-medium">Select Time</span>
+                                    </div>
+                                </div>
+
+                                <!-- Calendar Widget Container -->
+                                <div id="ai-kids-calendar" class="relative z-20">
+                                    <!-- Calendar will be injected here by JavaScript -->
+                                    <div class="loading-placeholder text-center py-8 text-white/50">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 animate-pulse">
+                                            <path d="M8 2v4"/>
+                                            <path d="M16 2v4"/>
+                                            <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                            <path d="M3 10h18"/>
+                                        </svg>
+                                        <p class="text-sm">Loading calendar...</p>
+                                    </div>
+                                </div>
+
+                                <!-- Capacity badge legend removed for cleaner layout -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Your Child Could Create -->
+    <section id="projects" class="relative z-10">
+        <div class="max-w-6xl sm:px-6 lg:px-8 mr-auto ml-auto pt-20 pr-4 pb-20 pl-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="sm:text-5xl text-4xl font-extrabold text-white tracking-tight mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">What Your Child Could Create</h2>
+                <p class="mt-4 text-lg text-white/90 max-w-3xl mx-auto leading-relaxed">From homework help to potential startups — see what's possible in just 12 weeks</p>
+
+                <!-- Success Metrics -->
+                <div class="mt-8 flex flex-wrap justify-center gap-6 text-sm">
+                    <div class="flex items-center gap-2 text-green-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        87% of students launch working projects
+                    </div>
+                    <div class="flex items-center gap-2 text-orange-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/></svg>
+                        College application ready portfolio
+                    </div>
+                    <div class="flex items-center gap-2 text-blue-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+                        Skill certificates included
+                    </div>
+                </div>
+            </div>
+
+            <!-- Split-screen layout: Younger kids left, Teens right -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+
+                <!-- YOUNG INNOVATORS (Ages 8–13) -->
+                <div class="relative">
+                    <div class="relative z-10 p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Young Innovators</h3>
+                                <p class="text-green-200 text-sm">Ages 8–13</p>
+                            </div>
+                        </div>
+
+                        <p class="text-white/90 mb-6">Fun, guided projects that spark creativity and make learning exciting:</p>
+
+                        <!-- Project List -->
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+                                <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">AI Homework Helper</h4>
+                                    <p class="text-sm text-white/70">Kids train a chatbot to explain math or science homework in simple steps.</p>
+                                    <span class="inline-block mt-2 text-xs bg-blue-500/20 text-blue-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+                                <div class="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">Story & Comic Maker</h4>
+                                    <p class="text-sm text-white/70">Create personalized stories or comic books with AI-generated illustrations.</p>
+                                    <span class="inline-block mt-2 text-xs bg-purple-500/20 text-purple-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+                                <div class="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">AI Art Gallery</h4>
+                                    <p class="text-sm text-white/70">Generate and curate their own digital artwork collection.</p>
+                                    <span class="inline-block mt-2 text-xs bg-pink-500/20 text-pink-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+                                <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">Language Buddy</h4>
+                                    <p class="text-sm text-white/70">Build an AI friend that helps practice English, Hebrew, or another language.</p>
+                                    <span class="inline-block mt-2 text-xs bg-green-500/20 text-green-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+                                <div class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">Adventure Quiz Game</h4>
+                                    <p class="text-sm text-white/70">Design fun quizzes where the AI adapts questions based on answers.</p>
+                                    <span class="inline-block mt-2 text-xs bg-orange-500/20 text-orange-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEEN ENTREPRENEURS (Ages 14–18) -->
+                <div class="relative">
+                    <div class="relative z-10 p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Teen Entrepreneurs</h3>
+                                <p class="text-orange-200 text-sm">Ages 14–18</p>
+                            </div>
+                        </div>
+
+                        <p class="text-white/90 mb-6">Advanced, practical projects that build a portfolio and show initiative:</p>
+
+                        <!-- Project List -->
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+                                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">AI Business Assistant</h4>
+                                    <p class="text-sm text-white/70">Automate scheduling, reminders, or customer chat for a real small business.</p>
+                                    <div class="flex gap-2 mt-2">
+                                        <span class="text-xs bg-blue-600/20 text-blue-200 px-2 py-1 rounded-full">Portfolio Ready</span>
+                                        <span class="text-xs bg-green-600/20 text-green-200 px-2 py-1 rounded-full">Partner with local businesses</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+                                <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">E-commerce Helper</h4>
+                                    <p class="text-sm text-white/70">Build a chatbot that recommends products or answers FAQs for online shops.</p>
+                                    <div class="flex gap-2 mt-2">
+                                        <span class="text-xs bg-purple-600/20 text-purple-200 px-2 py-1 rounded-full">Real Impact</span>
+                                        <span class="text-xs bg-green-600/20 text-green-200 px-2 py-1 rounded-full">Commercial Ready</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+                                <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">Social Impact Project</h4>
+                                    <p class="text-sm text-white/70">Use AI to analyze local issues (traffic, recycling, mental health) and propose solutions.</p>
+                                    <div class="flex gap-2 mt-2">
+                                        <span class="text-xs bg-green-600/20 text-green-200 px-2 py-1 rounded-full">Community Impact</span>
+                                        <span class="text-xs bg-blue-600/20 text-blue-200 px-2 py-1 rounded-full">College Essays</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+                                <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">AI Coding Partner</h4>
+                                    <p class="text-sm text-white/70">Develop small apps (games, tools, websites) with AI as a coding collaborator.</p>
+                                    <div class="flex gap-2 mt-2">
+                                        <span class="text-xs bg-indigo-600/20 text-indigo-200 px-2 py-1 rounded-full">Technical Skills</span>
+                                        <span class="text-xs bg-purple-600/20 text-purple-200 px-2 py-1 rounded-full">GitHub Portfolio</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+                                <div class="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">Start-up Concept Prototype</h4>
+                                    <p class="text-sm text-white/70">Turn an idea (AI tutor, AI translator, AI designer) into a working demo they can pitch.</p>
+                                    <div class="flex gap-2 mt-2">
+                                        <span class="text-xs bg-red-600/20 text-red-200 px-2 py-1 rounded-full">Entrepreneurship</span>
+                                        <span class="text-xs bg-yellow-600/20 text-yellow-200 px-2 py-1 rounded-full">Demo Day</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section id="register" class="relative z-10 mt-20">
+        <div class="max-w-5xl sm:px-6 lg:px-8 mr-auto ml-auto pr-4 pb-20 pl-4">
+            <div class="relative rounded-2xl overflow-hidden border border-white/5 bg-black/30 p-8 backdrop-blur-xl text-center">
+                <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(0,0,0,0) 35%, rgba(0,0,0,0.65) 85%, rgba(0,0,0,0.8) 100%);"></div>
+                <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/5 via-black/50 to-black/60"></div>
+                <div class="absolute inset-0 pointer-events-none" style="border: 1px solid rgba(255,255,255,0.04); border-radius: inherit;"></div>
+
+                <div class="relative z-10">
+                <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-white">Ready to Give Your Child the AI <span class="font-serif italic bg-gradient-to-r from-orange-300 via-pink-300 to-orange-400 bg-clip-text text-transparent">Advantage</span>?</h2>
+                <p class="mt-4 text-zinc-300 max-w-2xl mx-auto">Join forward-thinking parents who are preparing their children for tomorrow's world. Limited spots available in each age group.</p>
+
+                <!-- Availability Status -->
+                <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                    <div class="p-4 rounded-xl bg-green-400/10 border border-green-400/20">
+                        <div class="text-sm font-medium text-green-300">Young Innovators (8-10)</div>
+                        <div class="text-xs text-green-200">10 spots available</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-green-400/10 border border-green-400/20">
+                        <div class="text-sm font-medium text-green-300">Tech Explorers (11-13)</div>
+                        <div class="text-xs text-green-200">8 spots available</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-yellow-400/10 border border-yellow-400/20">
+                        <div class="text-sm font-medium text-yellow-300">Future Leaders (14-18)</div>
+                        <div class="text-xs text-yellow-200">3 spots left</div>
+                    </div>
+                </div>
+
+                <!-- Enhanced Pricing Information -->
+                <div class="mt-8 max-w-4xl mx-auto">
+                    <div class="text-xl font-bold text-white mb-6 text-center">Early Bird Special Pricing <span class="bg-orange-500 text-white text-sm px-3 py-1 rounded-full ml-2">20% OFF</span></div>
+                    <div class="text-sm text-white/70 text-center mb-4">ending October 17th</div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Young Innovators Pricing -->
+                        <div class="p-6 rounded-2xl bg-white/10 border border-green-400/30 backdrop-blur-sm">
+                            <div class="text-center">
+                                <div class="text-sm font-medium text-green-300 mb-2">Young Innovators</div>
+                                <div class="text-xs text-green-200 mb-4">Ages 8-10</div>
+                                <div class="flex items-center justify-center gap-3 mb-3">
+                                    <span class="text-3xl font-black text-green-300" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">₪1,200</span>
+                                    <span class="text-sm text-zinc-400 line-through">₪1,500</span>
+                                </div>
+                                <div class="text-xs text-white/80">Foundational concepts • Shorter sessions</div>
+                            </div>
+                        </div>
+
+                        <!-- Tech Explorers Pricing -->
+                        <div class="p-6 rounded-2xl bg-white/10 border border-orange-400/30 backdrop-blur-sm">
+                            <div class="text-center">
+                                <div class="text-sm font-medium text-orange-300 mb-2">Tech Explorers</div>
+                                <div class="text-xs text-orange-200 mb-4">Ages 11-13</div>
+                                <div class="flex items-center justify-center gap-3 mb-3">
+                                    <span class="text-3xl font-black text-orange-300" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">₪1,500</span>
+                                    <span class="text-sm text-zinc-400 line-through">₪1,800</span>
+                                </div>
+                                <div class="text-xs text-white/80">Intermediate complexity • Longer sessions</div>
+                            </div>
+                        </div>
+
+                        <!-- Future Leaders Pricing -->
+                        <div class="p-6 rounded-2xl bg-white/10 border border-purple-400/30 backdrop-blur-sm">
+                            <div class="text-center">
+                                <div class="text-sm font-medium text-purple-300 mb-2">Future Leaders</div>
+                                <div class="text-xs text-purple-200 mb-4">Ages 14-18</div>
+                                <div class="flex items-center justify-center gap-3 mb-3">
+                                    <span class="text-3xl font-black text-purple-300" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">₪1,800</span>
+                                    <span class="text-sm text-zinc-400 line-through">₪2,200</span>
+                                </div>
+                                <div class="text-xs text-white/80">Advanced applications • Portfolio building</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-6">
+                        <div class="text-sm text-white/90">All programs include: 12 sessions • All materials • Certificate • Portfolio projects</div>
+                    </div>
+                </div>
+
+                <!-- Register Now Button -->
+                <div class="mt-8 text-center">
+                    <button onclick="openRegistrationModal()" class="inline-flex items-center justify-center gap-3 text-lg font-bold text-white bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl py-4 px-8 shadow-lg transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_-6px_rgba(251,146,60,0.4)] hover:scale-105 active:scale-95">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/></svg>
+                        Register Now
+                    </button>
+                </div>
+
+                <!-- Registration Modal -->
+                <div id="registrationModal" class="fixed inset-0 z-[99999] hidden" style="background-color: rgba(0,0,0,0.75); pointer-events: none;">
+                    <!-- Backdrop -->
+                    <div class="fixed inset-0 bg-black/60 backdrop-blur-md" style="pointer-events: auto;" onclick="closeRegistrationModal()"></div>
+
+                    <!-- Modal Content -->
+                    <div class="flex min-h-screen items-center justify-center p-4" style="pointer-events: none;">
+                        <div class="relative bg-gradient-to-br from-gray-900 to-black border border-white/20 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto" style="pointer-events: auto;">
+                            <!-- Close Button -->
+                            <button onclick="closeRegistrationModal()" class="absolute top-4 right-4 text-white/60 hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                            </button>
+
+                            <!-- Modal Header -->
+                            <div class="p-6 border-b border-white/10">
+                                <h2 class="text-2xl font-bold text-white">Register for AI Club</h2>
+                                <p class="text-sm text-white/70 mt-1">Secure your child's spot in tomorrow's tech education</p>
+                            </div>
+
+                            <!-- Modal Body -->
+                            <div class="p-6 space-y-6" id="registrationFormContainer">
+                                <!-- Child 1 Form -->
+                                <div class="child-form" data-child-number="1">
+                                    <h3 class="text-lg font-semibold text-white mb-4">Child 1 Information</h3>
+
+                                    <div class="space-y-4">
+                                        <div>
+                                            <label class="text-sm font-medium text-white/90">Child's Name</label>
+                                            <input type="text" class="w-full mt-1 bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-400/50" placeholder="Enter child's name">
+                                        </div>
+
+                                        <div>
+                                            <label class="text-sm font-medium text-white/90">Select Age Group</label>
+                                            <div class="grid grid-cols-1 gap-2 mt-2">
+                                                <button type="button" onclick="selectModalAgeGroup(this, 'young', 1200, 1, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                                    <div class="font-medium text-white">Young Innovators (8-10)</div>
+                                                    <div class="text-xs text-white/60">₪1,200 • Sundays 16:00-17:00</div>
+                                                </button>
+                                                <button type="button" onclick="selectModalAgeGroup(this, 'tech', 1500, 1, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                                    <div class="font-medium text-white">Tech Explorers (11-13)</div>
+                                                    <div class="text-xs text-white/60">₪1,500 • Sundays 17:30-18:45</div>
+                                                </button>
+                                                <button type="button" onclick="selectModalAgeGroup(this, 'future', 1800, 1, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                                    <div class="font-medium text-white">Future Leaders (14-18)</div>
+                                                    <div class="text-xs text-white/60">₪1,800 • Sundays 19:00-20:30</div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Add Another Child Button -->
+                                <button type="button" onclick="addChildToModal()" class="text-orange-300 hover:text-orange-200 text-sm transition-colors">
+                                    + Add another child (10% off 2nd child, 15% off 3rd+)
+                                </button>
+
+
+                                <!-- Parent Contact Info -->
+                                <div class="pt-4 border-t border-white/10">
+                                    <h3 class="text-lg font-semibold text-white mb-4">Parent Contact Information</h3>
+                                    <div class="space-y-4">
+                                        <div>
+                                            <label class="text-sm font-medium text-white/90">Parent Name</label>
+                                            <input type="text" class="w-full mt-1 bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-400/50" placeholder="Enter parent's name">
+                                        </div>
+                                        <div>
+                                            <label class="text-sm font-medium text-white/90">Email</label>
+                                            <input type="email" class="w-full mt-1 bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-400/50" placeholder="parent@email.com">
+                                        </div>
+                                        <div>
+                                            <label class="text-sm font-medium text-white/90">Phone</label>
+                                            <input type="tel" class="w-full mt-1 bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-400/50" placeholder="+972 50-123-4567">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Total Price Display -->
+                                <div class="bg-gradient-to-br from-orange-400/10 to-pink-400/10 border border-orange-400/20 rounded-lg p-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-white font-medium">Total Amount:</span>
+                                        <span id="totalPriceDisplay" class="text-2xl font-bold text-orange-300">₪0</span>
+                                    </div>
+                                    <div id="priceBreakdown" class="text-xs text-white/60 mt-2"></div>
+                                </div>
+                            </div>
+
+                            <!-- Modal Footer -->
+                            <div class="p-6 border-t border-white/10">
+                                <button onclick="submitRegistration()" class="w-full bg-gradient-to-br from-orange-500 to-pink-500 text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all">
+                                    Complete Registration
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enhanced Contact Section -->
+                <div class="mt-8 bg-white/10 border border-white/20 rounded-2xl p-6 backdrop-blur-sm max-w-lg mx-auto">
+                    <div class="text-center mb-4">
+                        <h3 class="text-lg font-bold text-white mb-2">Have Questions?</h3>
+                        <p class="text-sm text-white/80">Feel free to reach out if you have any questions!</p>
+                    </div>
+
+                    <div class="flex flex-col gap-3">
+                        <!-- Primary WhatsApp CTA -->
+                        <a href="https://wa.me/972543159025?text=Hi! I'm interested in enrolling my child in AI Club. Can you tell me more about the programs?" class="inline-flex items-center justify-center gap-3 text-lg font-bold text-white bg-gradient-to-br from-green-500 to-green-600 rounded-xl py-4 px-6 shadow-lg transform-gpu transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_-6px_rgba(34,197,94,0.4)] hover:scale-105 active:scale-95">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-circle" class="lucide lucide-message-circle w-5 h-5" style="stroke-width: 1.5;"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+                            WhatsApp Us Now
+                        </a>
+
+                        <!-- Secondary Phone CTA -->
+                        <a href="tel:+972543159025" class="inline-flex items-center justify-center gap-2 text-base font-semibold text-white bg-white/20 border border-white/30 rounded-xl py-3 px-6 hover:bg-white/30 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" class="lucide lucide-phone w-4 h-4" style="stroke-width: 1.5;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            Or Call: +972 54-315-9025
+                        </a>
+                    </div>
+
+                    <p class="mt-4 text-sm text-white/70 text-center">Available for questions anytime</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="instructor" class="relative z-10 border-t border-white/10">
+        <!-- Footer readability overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a12]/85 via-[#0a0a12]/90 to-[#0a0a12]/95"></div>
+        <div class="relative z-10 max-w-7xl sm:px-6 lg:px-8 mr-auto ml-auto pt-10 pr-4 pb-10 pl-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <!-- About AI Club -->
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-orange-400 to-pink-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="brain" class="lucide lucide-brain w-4 h-4 text-white" style="stroke-width: 1.5;"><path d="M12 18V5"></path><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"></path><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"></path><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path><path d="M18 18a4 4 0 0 0 2-7.464"></path><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"></path><path d="M6 18a4 4 0 0 1-2-7.464"></path><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path></svg>
+                        </span>
+                        <span class="text-lg font-semibold text-zinc-300">AI Club</span>
+                    </div>
+                    <p class="text-sm text-zinc-400 mb-4">Empowering the next generation with essential AI skills in a safe, supervised, and fun learning environment.</p>
+                    <div class="flex items-center gap-4 text-sm text-zinc-400">
+                        <span>📍 In-person classes</span>
+                        <span>🌐 Hybrid options</span>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Contact Us</h3>
+                    <div class="space-y-3 text-sm text-zinc-400">
+                        <div class="flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-circle" class="lucide lucide-message-circle w-4 h-4" style="stroke-width: 1.5;"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+                            <a href="https://wa.me/972543159025" class="hover:text-white">WhatsApp: +972 54-315-9025</a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" class="lucide lucide-phone w-4 h-4" style="stroke-width: 1.5;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <a href="tel:+972543159025" class="hover:text-white">Call: +972 54-315-9025</a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="clock" class="lucide lucide-clock w-4 h-4" style="stroke-width: 1.5;"><circle cx="12" cy="12" r="10"></circle><polyline points="12,6 12,12 16,14"></polyline></svg>
+                            <span>Sunday Classes: 4PM - 8:30PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program Information -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Programs</h3>
+                    <div class="space-y-3 text-sm text-zinc-400">
+                        <div>
+                            <div class="font-medium text-white">Young Innovators (8-10)</div>
+                            <div class="text-xs">Sundays 4:00-5:00 PM</div>
+                        </div>
+                        <div>
+                            <div class="font-medium text-white">Tech Explorers (11-13)</div>
+                            <div class="text-xs">Sundays 5:30-6:45 PM</div>
+                        </div>
+                        <div>
+                            <div class="font-medium text-white">Future Leaders (14-18)</div>
+                            <div class="text-xs">Sundays 7:00-8:30 PM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="text-sm text-zinc-400">
+                    © 2025 AI Club. Where Future Leaders Learn Today.
+                </div>
+                <div class="flex items-center gap-4 text-sm text-zinc-400">
+                    <a href="#" class="hover:text-zinc-200">Privacy Policy</a>
+                    <a href="#" class="hover:text-zinc-200">Terms of Service</a>
+                    <a href="#" class="hover:text-zinc-200">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+
+            // Debug: Check if button exists and add alternative event listener
+            console.log('DOM Content Loaded - checking button...');
+
+            // Add debugging timeout to check elements after page is fully loaded
+            setTimeout(() => {
+                if (typeof checkElements === 'function') {
+                    checkElements();
+                } else {
+                    console.log('checkElements function not available yet');
+                }
+
+                // Add alternative event listener for the main "Add another child" button
+                const mainAddButton = document.querySelector('button[onclick*="addAnotherChild"]');
+                if (mainAddButton) {
+                    console.log('Found main Add Another Child button, adding backup event listener');
+                    mainAddButton.addEventListener('click', function(e) {
+                        console.log('Backup event listener triggered');
+                        if (typeof addAnotherChild === 'function') {
+                            addAnotherChild();
+                        } else {
+                            console.error('addAnotherChild function not available');
+                        }
+                    });
+                } else {
+                    console.error('Main Add Another Child button not found in DOM!');
+                }
+            }, 1000);
+
+            // Magical cursor effect with trail
+            const cursorGlow = document.querySelector('.cursor-glow');
+            const cursorTrail = document.querySelector('.cursor-trail');
+            const cursorDot = document.querySelector('.cursor-dot');
+
+            let mouseX = 0, mouseY = 0;
+            let trailX = 0, trailY = 0;
+            let glowX = 0, glowY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+
+                // Instant dot follow
+                cursorDot.style.left = mouseX + 'px';
+                cursorDot.style.top = mouseY + 'px';
+            });
+
+            // Smooth trail animation
+            function animateCursor() {
+                // Glow follows with slight delay
+                glowX += (mouseX - glowX) * 0.15;
+                glowY += (mouseY - glowY) * 0.15;
+
+                // Trail follows with more delay
+                trailX += (mouseX - trailX) * 0.08;
+                trailY += (mouseY - trailY) * 0.08;
+
+                cursorGlow.style.left = glowX + 'px';
+                cursorGlow.style.top = glowY + 'px';
+                cursorTrail.style.left = trailX + 'px';
+                cursorTrail.style.top = trailY + 'px';
+
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            // Handle cursor visibility
+            document.addEventListener('mouseleave', () => {
+                cursorGlow.style.opacity = '0';
+                cursorTrail.style.opacity = '0';
+                cursorDot.style.opacity = '0';
+            });
+
+            document.addEventListener('mouseenter', () => {
+                cursorGlow.style.opacity = '1';
+                cursorTrail.style.opacity = '1';
+                cursorDot.style.opacity = '1';
+            });
+
+            // Add magical sparkle effect on click
+            document.addEventListener('click', (e) => {
+                const sparkle = document.createElement('div');
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.width = '20px';
+                sparkle.style.height = '20px';
+                sparkle.style.background = 'radial-gradient(circle, rgba(6, 182, 212, 0.8), transparent)';
+                sparkle.style.borderRadius = '50%';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '10001';
+                sparkle.style.animation = 'sparkle-burst 0.6s ease-out forwards';
+                document.body.appendChild(sparkle);
+
+                setTimeout(() => sparkle.remove(), 600);
+            });
+
+            // Enhanced particle animations
+            const particles = document.querySelectorAll('[class^="particle-"]');
+            particles.forEach((particle, index) => {
+                particle.style.animationDelay = `${index * 2}s`;
+                particle.style.opacity = Math.random() * 0.6 + 0.2;
+            });
+
+            // Interactive floating AI elements
+            const floatingElements = document.querySelectorAll('.floating-element');
+            let mouseXPos = 0, mouseYPos = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseXPos = e.clientX;
+                mouseYPos = e.clientY;
+            });
+
+            function animateFloatingElements() {
+                floatingElements.forEach((element, index) => {
+                    const rect = element.getBoundingClientRect();
+                    const elementX = rect.left + rect.width / 2;
+                    const elementY = rect.top + rect.height / 2;
+
+                    // Calculate distance from cursor
+                    const deltaX = mouseXPos - elementX;
+                    const deltaY = mouseYPos - elementY;
+                    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+                    // Magnetic attraction effect (stronger when closer)
+                    const maxDistance = 200;
+                    const influence = Math.max(0, 1 - distance / maxDistance);
+
+                    // Move toward cursor with varying strength per element
+                    const moveStrength = 0.1 + (index * 0.02); // Different elements move with different intensity
+                    const moveX = deltaX * influence * moveStrength;
+                    const moveY = deltaY * influence * moveStrength;
+
+                    // Apply smooth magnetic movement
+                    element.style.transform = `translate(${moveX}px, ${moveY}px) scale(${1 + influence * 0.1})`;
+
+                    // Add glow effect when cursor is near
+                    if (influence > 0.3) {
+                        element.style.filter = `drop-shadow(0 0 ${influence * 20}px currentColor)`;
+                    } else {
+                        element.style.filter = 'none';
+                    }
+                });
+
+                requestAnimationFrame(animateFloatingElements);
+            }
+            animateFloatingElements();
+
+            // Calendar iframe communication
+            window.addEventListener('message', function(event) {
+                // Only accept messages from the calendar widget
+                if (event.origin !== 'http://localhost:3002') return;
+
+                if (event.data.type === 'CALENDAR_SLOT_SELECTED') {
+                    const { slot, date } = event.data.data;
+
+                    // Update hidden form field
+                    const hiddenInput = document.getElementById('selected-time-slot');
+                    if (hiddenInput) {
+                        hiddenInput.value = JSON.stringify({ slot, date });
+                    }
+
+                    // Show selected slot display
+                    const slotDisplay = document.getElementById('selected-slot-display');
+                    const slotText = document.getElementById('selected-slot-text');
+                    const slotDetails = document.getElementById('selected-slot-details');
+
+                    if (slotDisplay && slotText && slotDetails) {
+                        slotDisplay.classList.remove('hidden');
+                        slotText.textContent = `Selected: ${slot.time}`;
+                        slotDetails.textContent = `${slot.ageGroup} • ${new Date(date).toLocaleDateString()}`;
+                    }
+
+                    console.log('Time slot selected:', slot, date);
+                }
+            });
+        });
+
+        // Initialize the calendar widget
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof initAIKidsCalendarWidget !== 'undefined') {
+                initAIKidsCalendarWidget('ai-kids-calendar');
+                console.log('Calendar widget initialized');
+            } else {
+                console.error('Calendar widget script not loaded');
+            }
+        });
+
+        // Registration Form Functionality
+        let childCount = 1;
+        let mainFormChildCount = 1;
+        let selectedPrograms = {};
+        let mainFormPrograms = {};
+
+        // Debug function to check if elements exist
+        function checkElements() {
+            const modal = document.getElementById('registrationModal');
+            const container = document.getElementById('registrationFormContainer');
+            const mainAddButton = document.querySelector('button[onclick*="addAnotherChild"]');
+
+            console.log('Modal element exists:', !!modal);
+            console.log('Container element exists:', !!container);
+            console.log('Main Add Another Child button exists:', !!mainAddButton);
+
+            if (container) {
+                const modalAddButton = container.querySelector('button[onclick*="addChildToModal"]');
+                console.log('Add button exists in modal:', !!modalAddButton);
+            }
+
+            return { modal: !!modal, container: !!container, mainButton: !!mainAddButton };
+        }
+
+        // Test function to verify button click
+        function testMainButton() {
+            console.log('Testing main Add Another Child button...');
+            addAnotherChild();
+        }
+
+        // Age group selection for main form
+        function selectAgeGroup(group, price, event) {
+            // Prevent event bubbling and default behavior
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            // Remove selected state from all buttons
+            document.querySelectorAll('.age-group-btn').forEach(btn => {
+                btn.classList.remove('bg-orange-400/10', 'border-orange-400/20', 'text-orange-300');
+                btn.classList.add('bg-white/5', 'border-white/10', 'text-slate-300');
+            });
+
+            // Add selected state to clicked button
+            const selectedBtn = document.querySelector(`[data-age-group="${group}"]`);
+            if (selectedBtn) {
+                selectedBtn.classList.remove('bg-white/5', 'border-white/10', 'text-slate-300');
+                selectedBtn.classList.add('bg-orange-400/10', 'border-orange-400/20', 'text-orange-300');
+            }
+
+            // Ensure body scroll is not affected
+            document.body.style.removeProperty('overflow');
+
+            // Update main form price calculation
+            calculateMainFormTotalPrice();
+        }
+
+        // Modal functions for Modal 1
+        function openRegistrationModal1() {
+            const modal = document.getElementById('registrationModal1');
+            if (modal) {
+                modal.classList.remove('hidden');
+
+                // Add escape key listener
+                document.addEventListener('keydown', handleModalEscape1);
+
+                console.log('Registration modal 1 opened');
+            }
+        }
+
+        function closeRegistrationModal1() {
+            const modal = document.getElementById('registrationModal1');
+            if (modal) {
+                modal.classList.add('hidden');
+
+                // Remove escape key listener
+                document.removeEventListener('keydown', handleModalEscape1);
+
+                console.log('Registration modal 1 closed');
+            }
+        }
+
+        // Modal functions for Modal 2
+        function openRegistrationModal2() {
+            const modal = document.getElementById('registrationModal2');
+            if (modal) {
+                modal.classList.remove('hidden');
+
+                // Add escape key listener
+                document.addEventListener('keydown', handleModalEscape2);
+
+                console.log('Registration modal 2 opened');
+            }
+        }
+
+        function closeRegistrationModal2() {
+            const modal = document.getElementById('registrationModal2');
+            if (modal) {
+                modal.classList.add('hidden');
+
+                // Remove escape key listener
+                document.removeEventListener('keydown', handleModalEscape2);
+
+                console.log('Registration modal 2 closed');
+            }
+        }
+
+        // Original modal functions (keeping for compatibility)
+        function openRegistrationModal() {
+            const modal = document.getElementById('registrationModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                console.log('Registration modal opened');
+            }
+        }
+
+        function closeRegistrationModal() {
+            const modal = document.getElementById('registrationModal');
+            if (modal) {
+                modal.classList.add('hidden');
+                console.log('Registration modal closed');
+            }
+        }
+
+        // Main Form Functions - Inline Child Addition
+        function addChildToMainForm() {
+            try {
+                mainFormChildCount++;
+                const container = document.getElementById('additionalChildrenContainer');
+
+                if (!container) {
+                    console.error('Additional children container not found');
+                    mainFormChildCount--;
+                    return false;
+                }
+
+                const childForm = `
+                    <div class="child-form-main border border-white/10 rounded-xl p-4 bg-white/5 backdrop-blur-sm" data-child-number="${mainFormChildCount}" id="mainChild${mainFormChildCount}">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-white">Child ${mainFormChildCount} Information</h3>
+                            <button type="button" onclick="removeChildFromMainForm(${mainFormChildCount}, event)" class="text-red-400 hover:text-red-300 text-sm transition-colors">Remove</button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-sm font-medium text-white/90">Child's Name</label>
+                                <input type="text" class="w-full mt-1 bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-400/50" placeholder="Enter child's name">
+                            </div>
+
+                            <div>
+                                <label class="text-sm font-medium text-white/90">Select Age Group</label>
+                                <div class="grid grid-cols-1 gap-2 mt-2">
+                                    <button type="button" onclick="selectMainFormAgeGroup(this, 'young', 1200, ${mainFormChildCount}, event)" class="main-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                        <div class="font-medium text-white">Young Innovators (8-10)</div>
+                                        <div class="text-xs text-white/60">₪1,200 • Sundays 16:00-17:00</div>
+                                    </button>
+                                    <button type="button" onclick="selectMainFormAgeGroup(this, 'tech', 1500, ${mainFormChildCount}, event)" class="main-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                        <div class="font-medium text-white">Tech Explorers (11-13)</div>
+                                        <div class="text-xs text-white/60">₪1,500 • Sundays 17:30-18:45</div>
+                                    </button>
+                                    <button type="button" onclick="selectMainFormAgeGroup(this, 'future', 1800, ${mainFormChildCount}, event)" class="main-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                        <div class="font-medium text-white">Future Leaders (14-18)</div>
+                                        <div class="text-xs text-white/60">₪1,800 • Sundays 19:00-20:30</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Insert before the button container so button gets pushed down
+                const buttonContainer = document.getElementById('addChildButtonContainer');
+                if (buttonContainer) {
+                    buttonContainer.insertAdjacentHTML('beforebegin', childForm);
+                } else {
+                    container.insertAdjacentHTML('beforeend', childForm);
+                }
+
+                // Show price display if it's hidden
+                const priceDisplay = document.getElementById('mainFormPriceDisplay');
+                if (priceDisplay) {
+                    priceDisplay.classList.remove('hidden');
+                }
+
+                calculateMainFormTotalPrice();
+                console.log(`Added child ${mainFormChildCount} to main form`);
+                return true;
+
+            } catch (error) {
+                console.error('Error adding child to main form:', error);
+                mainFormChildCount--;
+                return false;
+            }
+        }
+
+        function removeChildFromMainForm(childNumber, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            const childForm = document.getElementById(`mainChild${childNumber}`);
+            if (childForm) {
+                childForm.remove();
+                delete mainFormPrograms[childNumber];
+                calculateMainFormTotalPrice();
+                console.log(`Removed child ${childNumber} from main form`);
+            }
+        }
+
+        function selectMainFormAgeGroup(btn, group, price, childNum, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            // Remove selected state from all buttons in this child's section
+            const childForm = btn.closest('.child-form-main');
+            childForm.querySelectorAll('.main-age-btn').forEach(b => {
+                b.classList.remove('bg-orange-400/10', 'border-orange-400/20');
+                b.classList.add('bg-white/5', 'border-white/10');
+            });
+
+            // Add selected state to clicked button
+            btn.classList.remove('bg-white/5', 'border-white/10');
+            btn.classList.add('bg-orange-400/10', 'border-orange-400/20');
+
+            // Store selection
+            mainFormPrograms[childNum] = { group, price };
+            calculateMainFormTotalPrice();
+        }
+
+        function calculateMainFormTotalPrice() {
+            let total = 0;
+            let breakdown = [];
+
+            // Include first child if age group is selected
+            const firstChildAgeGroup = document.querySelector('.age-group-btn.bg-orange-400\\/10');
+            if (firstChildAgeGroup) {
+                const firstChildPrice = parseInt(firstChildAgeGroup.getAttribute('data-price'));
+                total += firstChildPrice;
+                breakdown.push(`Child 1: ₪${firstChildPrice.toLocaleString()}`);
+            }
+
+            // Include additional children
+            const childNumbers = Object.keys(mainFormPrograms).map(Number).sort((a, b) => a - b);
+
+            childNumbers.forEach((childNum, index) => {
+                const program = mainFormPrograms[childNum];
+                let price = program.price;
+
+                // Apply discounts: 10% off 2nd child, 15% off 3rd+
+                const totalChildren = 1 + childNumbers.length; // 1 for first child + additional children
+                if (totalChildren >= 2) {
+                    if (index === 0) { // Second child overall (first additional child)
+                        price = Math.round(price * 0.9);
+                        breakdown.push(`Child ${childNum}: ₪${price.toLocaleString()} (10% off)`);
+                    } else { // Third child and beyond
+                        price = Math.round(price * 0.85);
+                        breakdown.push(`Child ${childNum}: ₪${price.toLocaleString()} (15% off)`);
+                    }
+                } else {
+                    breakdown.push(`Child ${childNum}: ₪${price.toLocaleString()}`);
+                }
+
+                total += price;
+            });
+
+            // Update display
+            const totalDisplay = document.getElementById('mainFormTotalPrice');
+            const breakdownDisplay = document.getElementById('mainFormPriceBreakdown');
+
+            if (totalDisplay) {
+                totalDisplay.textContent = `₪${total.toLocaleString()}`;
+            }
+
+            if (breakdownDisplay) {
+                breakdownDisplay.textContent = breakdown.join(' • ');
+            }
+
+            // Show/hide price display based on whether there are any selections
+            const priceDisplay = document.getElementById('mainFormPriceDisplay');
+            if (priceDisplay) {
+                if (total > 0) {
+                    priceDisplay.classList.remove('hidden');
+                } else {
+                    priceDisplay.classList.add('hidden');
+                }
+            }
+        }
+
+        // Handle escape key for modals
+        function handleModalEscape1(event) {
+            if (event.key === 'Escape') {
+                closeRegistrationModal1();
+            }
+        }
+
+        function handleModalEscape2(event) {
+            if (event.key === 'Escape') {
+                closeRegistrationModal2();
+            }
+        }
+
+        function handleModalEscape(event) {
+            if (event.key === 'Escape') {
+                closeRegistrationModal();
+            }
+        }
+
+        // Age group selection in modal 1
+        function selectModalAgeGroup1(btn, group, price, childNum, event) {
+            // Prevent event bubbling
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            // Remove selected state from all buttons in this child's section
+            const childForm = btn.closest('.child-form');
+            childForm.querySelectorAll('.modal-age-btn').forEach(b => {
+                b.classList.remove('bg-orange-400/10', 'border-orange-400/20');
+                b.classList.add('bg-white/5', 'border-white/10');
+            });
+
+            // Add selected state to clicked button
+            btn.classList.remove('bg-white/5', 'border-white/10');
+            btn.classList.add('bg-orange-400/10', 'border-orange-400/20');
+
+            // Store selection
+            selectedPrograms[childNum] = { group, price };
+            calculateTotalPrice1();
+        }
+
+        // Age group selection in modal 2
+        function selectModalAgeGroup2(btn, group, price, childNum, event) {
+            // Prevent event bubbling
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            // Remove selected state from all buttons in this child's section
+            const childForm = btn.closest('.child-form');
+            childForm.querySelectorAll('.modal-age-btn').forEach(b => {
+                b.classList.remove('bg-orange-400/10', 'border-orange-400/20');
+                b.classList.add('bg-white/5', 'border-white/10');
+            });
+
+            // Add selected state to clicked button
+            btn.classList.remove('bg-white/5', 'border-white/10');
+            btn.classList.add('bg-orange-400/10', 'border-orange-400/20');
+
+            // Store selection
+            selectedPrograms[childNum] = { group, price };
+            calculateTotalPrice2();
+        }
+
+        // Age group selection in modal (original)
+        function selectModalAgeGroup(btn, group, price, childNum, event) {
+            // Prevent event bubbling
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            // Remove selected state from all buttons in this child's section
+            const childForm = btn.closest('.child-form');
+            childForm.querySelectorAll('.modal-age-btn').forEach(b => {
+                b.classList.remove('bg-orange-400/10', 'border-orange-400/20');
+                b.classList.add('bg-white/5', 'border-white/10');
+            });
+
+            // Add selected state to clicked button
+            btn.classList.remove('bg-white/5', 'border-white/10');
+            btn.classList.add('bg-orange-400/10', 'border-orange-400/20');
+
+            // Store selection
+            selectedPrograms[childNum] = { group, price };
+            calculateTotalPrice();
+        }
+
+        // Add another child to modal 1
+        function addChildToModal1() {
+            try {
+                childCount++;
+                const container = document.getElementById('registrationFormContainer1');
+
+                if (!container) {
+                    console.error('Registration form container 1 not found');
+                    childCount--; // Revert the count increment
+                    return false;
+                }
+
+                const addButton = container.querySelector('button[onclick*="addChildToModal1"]');
+                if (!addButton) {
+                    console.error('Add child button not found in modal 1');
+                    childCount--; // Revert the count increment
+                    return false;
+                }
+
+                console.log(`Adding child ${childCount} to modal 1`);
+
+                const newChildForm = `
+                    <div class="child-form border-t border-white/10 pt-6 mt-6" data-child-number="${childCount}">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-white">Child ${childCount} Information</h3>
+                            <button type="button" onclick="removeChild1(${childCount}, event)" class="text-red-400 hover:text-red-300 text-sm transition-colors">Remove</button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-sm font-medium text-white/90">Child's Name</label>
+                                <input type="text" class="w-full mt-1 bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-400/50" placeholder="Enter child's name">
+                            </div>
+
+                            <div>
+                                <label class="text-sm font-medium text-white/90">Select Age Group</label>
+                                <div class="grid grid-cols-1 gap-2 mt-2">
+                                    <button type="button" onclick="selectModalAgeGroup1(this, 'young', 1200, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                        <div class="font-medium text-white">Young Innovators (8-10)</div>
+                                        <div class="text-xs text-white/60">₪1,200 • Sundays 16:00-17:00</div>
+                                    </button>
+                                    <button type="button" onclick="selectModalAgeGroup1(this, 'tech', 1500, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                        <div class="font-medium text-white">Tech Explorers (11-13)</div>
+                                        <div class="text-xs text-white/60">₪1,500 • Sundays 17:30-18:45</div>
+                                    </button>
+                                    <button type="button" onclick="selectModalAgeGroup1(this, 'future', 1800, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                        <div class="font-medium text-white">Future Leaders (14-18)</div>
+                                        <div class="text-xs text-white/60">₪1,800 • Sundays 19:00-20:30</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Insert new child form before the add button
+                addButton.insertAdjacentHTML('beforebegin', newChildForm);
+
+                // Update total price display
+                calculateTotalPrice1();
+
+                console.log(`Child ${childCount} successfully added to modal 1`);
+                return true;
+
+            } catch (error) {
+                console.error('Error adding child to modal 1:', error);
+                childCount--; // Revert the count increment on error
+                return false;
+            }
+        }
+
+        // Add another child to modal 2
+        function addChildToModal2() {
+            try {
+                childCount++;
+                const container = document.getElementById('registrationFormContainer2');
+
+                if (!container) {
+                    console.error('Registration form container 2 not found');
+                    childCount--; // Revert the count increment
+                    return false;
+                }
+
+                const addButton = container.querySelector('button[onclick*="addChildToModal2"]');
+                if (!addButton) {
+                    console.error('Add child button not found in modal 2');
+                    childCount--; // Revert the count increment
+                    return false;
+                }
+
+                console.log(`Adding child ${childCount} to modal 2`);
+
+                const newChildForm = `
+                    <div class="child-form border-t border-white/10 pt-6 mt-6" data-child-number="${childCount}">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-white">Child ${childCount} Information</h3>
+                            <button type="button" onclick="removeChild2(${childCount}, event)" class="text-red-400 hover:text-red-300 text-sm transition-colors">Remove</button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-sm font-medium text-white/90">Child's Name</label>
+                                <input type="text" class="w-full mt-1 bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-400/50" placeholder="Enter child's name">
+                            </div>
+
+                            <div>
+                                <label class="text-sm font-medium text-white/90">Select Age Group</label>
+                                <div class="grid grid-cols-1 gap-2 mt-2">
+                                    <button type="button" onclick="selectModalAgeGroup2(this, 'young', 1200, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                        <div class="font-medium text-white">Young Innovators (8-10)</div>
+                                        <div class="text-xs text-white/60">₪1,200 • Sundays 16:00-17:00</div>
+                                    </button>
+                                    <button type="button" onclick="selectModalAgeGroup2(this, 'tech', 1500, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                        <div class="font-medium text-white">Tech Explorers (11-13)</div>
+                                        <div class="text-xs text-white/60">₪1,500 • Sundays 17:30-18:45</div>
+                                    </button>
+                                    <button type="button" onclick="selectModalAgeGroup2(this, 'future', 1800, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                        <div class="font-medium text-white">Future Leaders (14-18)</div>
+                                        <div class="text-xs text-white/60">₪1,800 • Sundays 19:00-20:30</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Insert new child form before the add button
+                addButton.insertAdjacentHTML('beforebegin', newChildForm);
+
+                // Update total price display
+                calculateTotalPrice2();
+
+                console.log(`Child ${childCount} successfully added to modal 2`);
+                return true;
+
+            } catch (error) {
+                console.error('Error adding child to modal 2:', error);
+                childCount--; // Revert the count increment on error
+                return false;
+            }
+        }
+
+        // Add another child to modal (original - keeping for compatibility)
+        function addChildToModal() {
+            try {
+                childCount++;
+                const container = document.getElementById('registrationFormContainer');
+
+                if (!container) {
+                    console.error('Registration form container not found');
+                    childCount--; // Revert the count increment
+                    return false;
+                }
+
+                const addButton = container.querySelector('button[onclick*="addChildToModal"]');
+                if (!addButton) {
+                    console.error('Add child button not found in modal');
+                    childCount--; // Revert the count increment
+                    return false;
+                }
+
+                console.log(`Adding child ${childCount} to modal`);
+
+            const newChildForm = `
+                <div class="child-form border-t border-white/10 pt-6 mt-6" data-child-number="${childCount}">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold text-white">Child ${childCount} Information</h3>
+                        <button type="button" onclick="removeChild(${childCount}, event)" class="text-red-400 hover:text-red-300 text-sm transition-colors">Remove</button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-sm font-medium text-white/90">Child's Name</label>
+                            <input type="text" class="w-full mt-1 bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-400/50" placeholder="Enter child's name">
+                        </div>
+
+                        <div>
+                            <label class="text-sm font-medium text-white/90">Select Age Group</label>
+                            <div class="grid grid-cols-1 gap-2 mt-2">
+                                <button type="button" onclick="selectModalAgeGroup(this, 'young', 1200, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                    <div class="font-medium text-white">Young Innovators (8-10)</div>
+                                    <div class="text-xs text-white/60">₪1,200 • Sundays 16:00-17:00</div>
+                                </button>
+                                <button type="button" onclick="selectModalAgeGroup(this, 'tech', 1500, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                    <div class="font-medium text-white">Tech Explorers (11-13)</div>
+                                    <div class="text-xs text-white/60">₪1,500 • Sundays 17:30-18:45</div>
+                                </button>
+                                <button type="button" onclick="selectModalAgeGroup(this, 'future', 1800, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                                    <div class="font-medium text-white">Future Leaders (14-18)</div>
+                                    <div class="text-xs text-white/60">₪1,800 • Sundays 19:00-20:30</div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+                // Insert new child form before the add button
+                addButton.insertAdjacentHTML('beforebegin', newChildForm);
+
+                // Update total price display
+                calculateTotalPrice();
+
+                console.log(`Child ${childCount} successfully added to modal`);
+                return true;
+
+            } catch (error) {
+                console.error('Error adding child to modal:', error);
+                childCount--; // Revert the count increment on error
+                return false;
+            }
+        }
+
+        // Add another child to main form - opens the registration modal
+        function addAnotherChild() {
+            console.log('addAnotherChild() function called');
+
+            try {
+                // Test if elements exist first
+                checkElements();
+
+                // Open the registration modal
+                const result = openRegistrationModal();
+                console.log('Modal opening result:', result);
+
+                // Optional: Pre-fill child name if provided in main form
+                setTimeout(() => {
+                    const mainFormChildName = document.querySelector('input[placeholder="e.g., Sarah Johnson"]');
+                    if (mainFormChildName && mainFormChildName.value) {
+                        const modalChildNameInput = document.querySelector('#registrationFormContainer input[placeholder="Enter child\'s name"]');
+                        if (modalChildNameInput) {
+                            modalChildNameInput.value = mainFormChildName.value;
+                        }
+                    }
+
+                    // Optional: Pre-select the age group if one was selected in the main form
+                    const selectedAgeGroup = document.querySelector('.age-group-btn[class*="bg-orange-400"]');
+                    if (selectedAgeGroup) {
+                        const ageGroup = selectedAgeGroup.dataset.ageGroup;
+
+                        // Find and click the corresponding button in the modal for the first child
+                        const modalButtons = document.querySelectorAll('#registrationFormContainer [data-child-number="1"] .modal-age-btn');
+                        modalButtons.forEach(btn => {
+                            if (btn.onclick && btn.onclick.toString().includes(ageGroup)) {
+                                btn.click();
+                            }
+                        });
+                    }
+                }, 200);
+            } catch (error) {
+                console.error('Error opening registration modal:', error);
+            }
+        }
+
+        // Remove a child from modal
+        function removeChild(childNum, event) {
+            // Prevent event bubbling
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            const childForm = document.querySelector(`[data-child-number="${childNum}"]`);
+            if (childForm) {
+                childForm.remove();
+                delete selectedPrograms[childNum];
+                calculateTotalPrice();
+            }
+        }
+
+        // Calculate total price with discounts for Modal 1
+        function calculateTotalPrice1() {
+            const breakdown = document.getElementById('priceBreakdown1');
+            const totalDisplay = document.getElementById('totalPriceDisplay1');
+
+            let total = 0;
+            let breakdownText = '';
+            const programsArray = Object.entries(selectedPrograms).sort((a, b) => b[1].price - a[1].price);
+
+            programsArray.forEach(([childNum, program], index) => {
+                let price = program.price;
+                let discount = 0;
+
+                // Apply discounts for 2nd and 3rd+ children
+                if (index === 1) {
+                    discount = price * 0.1; // 10% off for 2nd child
+                    price -= discount;
+                    breakdownText += `Child ${childNum}: ₪${program.price} - 10% = ₪${price}<br>`;
+                } else if (index >= 2) {
+                    discount = price * 0.15; // 15% off for 3rd+ children
+                    price -= discount;
+                    breakdownText += `Child ${childNum}: ₪${program.price} - 15% = ₪${price}<br>`;
+                } else {
+                    breakdownText += `Child ${childNum}: ₪${price}<br>`;
+                }
+
+                total += price;
+            });
+
+            if (breakdown) breakdown.innerHTML = breakdownText;
+            if (totalDisplay) totalDisplay.textContent = `₪${total.toFixed(0)}`;
+        }
+
+        // Calculate total price with discounts for Modal 2
+        function calculateTotalPrice2() {
+            const breakdown = document.getElementById('priceBreakdown2');
+            const totalDisplay = document.getElementById('totalPriceDisplay2');
+
+            let total = 0;
+            let breakdownText = '';
+            const programsArray = Object.entries(selectedPrograms).sort((a, b) => b[1].price - a[1].price);
+
+            programsArray.forEach(([childNum, program], index) => {
+                let price = program.price;
+                let discount = 0;
+
+                // Apply discounts for 2nd and 3rd+ children
+                if (index === 1) {
+                    discount = price * 0.1; // 10% off for 2nd child
+                    price -= discount;
+                    breakdownText += `Child ${childNum}: ₪${program.price} - 10% = ₪${price}<br>`;
+                } else if (index >= 2) {
+                    discount = price * 0.15; // 15% off for 3rd+ children
+                    price -= discount;
+                    breakdownText += `Child ${childNum}: ₪${program.price} - 15% = ₪${price}<br>`;
+                } else {
+                    breakdownText += `Child ${childNum}: ₪${price}<br>`;
+                }
+
+                total += price;
+            });
+
+            if (breakdown) breakdown.innerHTML = breakdownText;
+            if (totalDisplay) totalDisplay.textContent = `₪${total.toFixed(0)}`;
+        }
+
+        // Calculate total price with discounts (original)
+        function calculateTotalPrice() {
+            const breakdown = document.getElementById('priceBreakdown');
+            const totalDisplay = document.getElementById('totalPriceDisplay');
+
+            let total = 0;
+            let breakdownText = '';
+            const programsArray = Object.entries(selectedPrograms).sort((a, b) => b[1].price - a[1].price);
+
+            programsArray.forEach(([childNum, program], index) => {
+                let price = program.price;
+                let discount = 0;
+
+                // Apply discounts for 2nd and 3rd+ children
+                if (index === 1) {
+                    discount = price * 0.1; // 10% off for 2nd child
+                    price -= discount;
+                    breakdownText += `Child ${childNum}: ₪${program.price} - 10% = ₪${price}<br>`;
+                } else if (index >= 2) {
+                    discount = price * 0.15; // 15% off for 3rd+ children
+                    price -= discount;
+                    breakdownText += `Child ${childNum}: ₪${program.price} - 15% = ₪${price}<br>`;
+                } else {
+                    breakdownText += `Child ${childNum}: ₪${price}<br>`;
+                }
+
+                total += price;
+            });
+
+            if (breakdown) breakdown.innerHTML = breakdownText;
+            if (totalDisplay) totalDisplay.textContent = `₪${total.toFixed(0)}`;
+        }
+
+        // Remove child functions for each modal
+        function removeChild1(childNum, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            const childForm = document.querySelector(`#registrationFormContainer1 [data-child-number="${childNum}"]`);
+            if (childForm) {
+                childForm.remove();
+                delete selectedPrograms[childNum];
+                calculateTotalPrice1();
+            }
+        }
+
+        function removeChild2(childNum, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            const childForm = document.querySelector(`#registrationFormContainer2 [data-child-number="${childNum}"]`);
+            if (childForm) {
+                childForm.remove();
+                delete selectedPrograms[childNum];
+                calculateTotalPrice2();
+            }
+        }
+
+        // Submit registration functions for each modal
+        function submitRegistration1() {
+            console.log('Submitting registration from modal 1');
+            // Implementation would be the same as original submitRegistration but for modal 1
+        }
+
+        function submitRegistration2() {
+            console.log('Submitting registration from modal 2');
+            // Implementation would be the same as original submitRegistration but for modal 2
+        }
+
+        // Configuration for Google Sheets integration
+        const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/a/macros/aikidz.club/s/AKfycbxejhZMSqJ6qOaQqu57MU9pnXVmFh5x142fV5X-xP_Beg4gIh9-VMy-XkG9a7OpXhTcyQ/exec'; // Your deployed Web App URL
+
+        // Make it available globally for calendar widget
+        window.GOOGLE_SHEETS_WEB_APP_URL = GOOGLE_SHEETS_WEB_APP_URL;
+
+        // Submit registration
+        async function submitRegistration() {
+            // Collect all form data
+            const formData = {
+                children: [],
+                parent: {},
+                totalPrice: 0
+            };
+
+            // Collect children data
+            document.querySelectorAll('.child-form').forEach((form, index) => {
+                const childName = form.querySelector('input[type="text"]').value;
+                const childNum = form.dataset.childNumber;
+                const program = selectedPrograms[childNum];
+
+                if (childName && program) {
+                    formData.children.push({
+                        name: childName,
+                        program: program.group,
+                        price: program.price
+                    });
+                }
+            });
+
+            // Collect parent data
+            const parentSection = document.querySelector('#registrationFormContainer .pt-4');
+            if (parentSection) {
+                const inputs = parentSection.querySelectorAll('input');
+                formData.parent = {
+                    name: inputs[0].value,
+                    email: inputs[1].value,
+                    phone: inputs[2].value
+                };
+            }
+
+            // Get total price
+            const totalPriceElement = document.getElementById('totalPriceDisplay');
+            if (totalPriceElement) {
+                formData.totalPrice = totalPriceElement.textContent.replace('₪', '').replace(',', '');
+            }
+
+            // Validate form
+            if (formData.children.length === 0) {
+                alert('Please select at least one program');
+                return;
+            }
+
+            if (!formData.parent.name || !formData.parent.email || !formData.parent.phone) {
+                alert('Please fill in all parent contact information');
+                return;
+            }
+
+            // Show loading state
+            const submitButton = document.querySelector('button[onclick="submitRegistration()"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Processing...';
+            submitButton.disabled = true;
+
+            try {
+                // Primary: Submit to Google Sheets
+                const response = await submitToGoogleSheets(formData);
+
+                if (response.success) {
+                    // Success! Show confirmation and close modal
+                    showRegistrationSuccess(formData);
+                    closeRegistrationModal();
+                } else {
+                    throw new Error('Google Sheets submission failed');
+                }
+
+            } catch (error) {
+                console.error('Google Sheets submission error:', error);
+
+                // Fallback: Send to WhatsApp (original method)
+                submitToWhatsApp(formData);
+
+                // Show fallback message
+                alert('Registration sent via WhatsApp! We\'ll confirm your booking shortly.');
+                closeRegistrationModal();
+            } finally {
+                // Reset button
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
+        }
+
+        // Submit to Google Sheets
+        async function submitToGoogleSheets(formData) {
+            if (GOOGLE_SHEETS_WEB_APP_URL === 'YOUR_WEB_APP_URL_HERE') {
+                throw new Error('Google Sheets not configured');
+            }
+
+            const response = await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            // Note: no-cors mode means we can't read the response
+            // We'll assume success if no error is thrown
+            return { success: true };
+        }
+
+        // Fallback: Submit to WhatsApp (original method)
+        function submitToWhatsApp(formData) {
+            const message = `Hi! I'd like to register for AI Club:\n\n` +
+                `Parent: ${formData.parent.name}\n` +
+                `Email: ${formData.parent.email}\n` +
+                `Phone: ${formData.parent.phone}\n\n` +
+                `Children:\n` +
+                formData.children.map(child => `- ${child.name} (${child.program})`).join('\n') +
+                `\n\nTotal: ₪${formData.totalPrice}`;
+
+            window.open(`https://wa.me/972543159025?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Show success message
+        function showRegistrationSuccess(formData) {
+            const successMessage = `
+                <div class="fixed inset-0 z-[100000] flex items-center justify-center p-4" style="background-color: rgba(0,0,0,0.8);">
+                    <div class="bg-gradient-to-br from-green-600 to-green-700 border border-green-400/20 rounded-2xl shadow-2xl max-w-md w-full p-6 text-center">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                <path d="M20 6 9 17l-5-5"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white mb-2">Registration Successful!</h2>
+                        <p class="text-green-100 mb-4">
+                            Thank you ${formData.parent.name}! Your registration has been processed.
+                        </p>
+                        <div class="text-sm text-green-200 mb-6">
+                            <p>✅ Confirmation email sent to ${formData.parent.email}</p>
+                            <p>✅ Calendar invite will follow shortly</p>
+                            <p>✅ You'll be added to the WhatsApp group</p>
+                        </div>
+                        <button onclick="closeSuccessMessage()" class="bg-white text-green-600 font-bold py-2 px-6 rounded-lg hover:bg-green-50 transition-all">
+                            Got it!
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            document.body.insertAdjacentHTML('beforeend', successMessage);
+        }
+
+        // Close success message
+        function closeSuccessMessage() {
+            const successMessage = document.querySelector('.fixed.inset-0.z-\\[100000\\]');
+            if (successMessage) {
+                successMessage.remove();
+            }
+        }
+
+        // Real-time capacity management
+        let groupCapacityData = {};
+
+        // Fetch current group capacity from Google Sheets
+        async function fetchGroupCapacity() {
+            if (GOOGLE_SHEETS_WEB_APP_URL === 'YOUR_WEB_APP_URL_HERE') {
+                return null; // Not configured yet
+            }
+
+            try {
+                const response = await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
+                    method: 'GET'
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    groupCapacityData = data.groups;
+                    updateCapacityDisplay();
+                    return data;
+                }
+            } catch (error) {
+                console.log('Failed to fetch capacity data:', error);
+            }
+
+            return null;
+        }
+
+        // Update capacity display in the UI
+        function updateCapacityDisplay() {
+            // Update availability status in pricing cards
+            updateAvailabilityCards();
+
+            // Update age group buttons with capacity info
+            updateAgeGroupButtons();
+
+            // Update calendar display if needed
+            updateCalendarCapacity();
+        }
+
+        // Update availability cards in pricing section
+        function updateAvailabilityCards() {
+            const availabilityCards = document.querySelectorAll('.p-4.rounded-xl.bg-green-400\\/10, .p-4.rounded-xl.bg-yellow-400\\/10, .p-4.rounded-xl.bg-red-400\\/10');
+
+            availabilityCards.forEach(card => {
+                const cardText = card.querySelector('.text-sm');
+                if (!cardText) return;
+
+                // Determine which age group this card represents
+                let ageGroup = '';
+                if (cardText.textContent.includes('8-10')) ageGroup = '8-10';
+                else if (cardText.textContent.includes('11-13')) ageGroup = '11-13';
+                else if (cardText.textContent.includes('14-18')) ageGroup = '14-18';
+
+                if (ageGroup && groupCapacityData.length > 0) {
+                    const groupData = groupCapacityData.find(g => g.ageRange === ageGroup && g.day === 'Sunday');
+
+                    if (groupData) {
+                        const availableSpots = groupData.maxCapacity - groupData.currentCount;
+                        const spotsText = card.querySelector('.text-xs');
+
+                        if (spotsText) {
+                            spotsText.textContent = `${availableSpots} spots available`;
+                        }
+
+                        // Update card styling based on availability
+                        card.className = card.className.replace(/bg-(green|yellow|red)-400\/10/g, '');
+                        card.className = card.className.replace(/border-(green|yellow|red)-400\/20/g, '');
+
+                        if (groupData.status === 'Full') {
+                            card.classList.add('bg-red-400/10', 'border-red-400/20');
+                            spotsText.textContent = 'FULL - Join Waitlist';
+                        } else if (groupData.status === 'Filling Fast') {
+                            card.classList.add('bg-yellow-400/10', 'border-yellow-400/20');
+                        } else {
+                            card.classList.add('bg-green-400/10', 'border-green-400/20');
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update age group buttons with real-time capacity
+        function updateAgeGroupButtons() {
+            const ageGroupButtons = document.querySelectorAll('.age-group-btn');
+
+            ageGroupButtons.forEach(button => {
+                const ageGroup = button.getAttribute('data-age-group');
+                let ageRange = '';
+
+                switch(ageGroup) {
+                    case 'young': ageRange = '8-10'; break;
+                    case 'tech': ageRange = '11-13'; break;
+                    case 'future': ageRange = '14-18'; break;
+                }
+
+                if (ageRange && groupCapacityData.length > 0) {
+                    const groupData = groupCapacityData.find(g => g.ageRange === ageRange && g.day === 'Sunday');
+
+                    if (groupData) {
+                        const availableSpots = groupData.maxCapacity - groupData.currentCount;
+                        const detailsDiv = button.querySelector('.text-xs');
+
+                        if (detailsDiv) {
+                            let originalText = detailsDiv.textContent.split(' • ')[0]; // Keep time
+                            detailsDiv.textContent = `${originalText} • ${availableSpots} spots left`;
+
+                            // Add status badge
+                            if (groupData.status === 'Filling Fast') {
+                                detailsDiv.textContent += ' • 🔥 Filling Fast';
+                            } else if (groupData.status === 'Full') {
+                                detailsDiv.textContent += ' • 🚫 FULL';
+                                button.disabled = true;
+                                button.classList.add('opacity-50', 'cursor-not-allowed');
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update calendar capacity (placeholder for future calendar integration)
+        function updateCalendarCapacity() {
+            // This will be implemented when we replace the calendar widget
+            console.log('Calendar capacity updated');
+        }
+
+        // Auto-refresh capacity data every 30 seconds
+        function startCapacityAutoRefresh() {
+            // Fetch immediately
+            fetchGroupCapacity();
+
+            // Then refresh every 30 seconds
+            setInterval(fetchGroupCapacity, 30000);
+        }
+
+        // Initialize capacity monitoring when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start auto-refresh after a short delay to let the page load
+            setTimeout(startCapacityAutoRefresh, 2000);
+        });
+    </script>
+
+    <!--
+    ========================================
+    GOOGLE SHEETS AUTOMATION SETUP GUIDE
+    ========================================
+
+    1. CREATE GOOGLE SHEETS:
+
+    Go to sheets.google.com and create a new sheet called "AI Club Database"
+
+    Create these tabs:
+
+    TAB 1: "Registrations"
+    Headers: Timestamp | Parent Name | Email | Phone | Child Name | Age Group | Program Price | Group ID | Status | Payment Status | Total Price
+
+    TAB 2: "Groups"
+    Headers: Group ID | Day | Time | Age Range | Start Date | End Date | Current Count | Max Capacity | Status | Cohort Number
+    Sample Data:
+    SUN-YOUNG-1 | Sunday | 16:00-17:00 | 8-10 | 2025-01-05 | 2025-03-23 | 0 | 10 | Open | 1
+    SUN-TECH-1 | Sunday | 17:30-18:45 | 11-13 | 2025-01-05 | 2025-03-23 | 0 | 10 | Open | 1
+    SUN-FUTURE-1 | Sunday | 19:00-20:30 | 14-18 | 2025-01-05 | 2025-03-23 | 0 | 10 | Open | 1
+
+    TAB 3: "Cohorts"
+    Headers: Cohort ID | Start Date | End Date | Status | Total Students | Revenue
+    Sample Data:
+    COHORT-1 | 2025-01-05 | 2025-03-23 | Active | 0 | 0
+
+    2. GOOGLE APPS SCRIPT CODE:
+
+    Go to Extensions → Apps Script in your Google Sheet and paste this code:
+
+    =====================================
+    function doPost(e) {
+      try {
+        const sheet = SpreadsheetApp.getActiveSpreadsheet();
+        const registrations = sheet.getSheetByName('Registrations');
+        const groups = sheet.getSheetByName('Groups');
+
+        const data = JSON.parse(e.postData.contents);
+
+        // Process each child registration
+        data.children.forEach(child => {
+          const group = assignToGroup(child.program, groups);
+
+          // Add registration
+          registrations.appendRow([
+            new Date(),
+            data.parent.name,
+            data.parent.email,
+            data.parent.phone,
+            child.name,
+            child.program,
+            child.price,
+            group.groupId,
+            'Confirmed',
+            'Pending',
+            data.totalPrice
+          ]);
+
+          // Update group capacity
+          updateGroupCapacity(group.groupId, groups);
+        });
+
+        // Check if we need to open new groups
+        checkAndOpenNewGroups(groups);
+
+        // Update calendar
+        updateCalendar(data);
+
+        // Send confirmation email
+        sendConfirmation(data.parent.email, data);
+
+        return ContentService
+          .createTextOutput(JSON.stringify({success: true, message: 'Registration processed'}))
+          .setMimeType(ContentService.MimeType.JSON);
+
+      } catch (error) {
+        return ContentService
+          .createTextOutput(JSON.stringify({success: false, error: error.toString()}))
+          .setMimeType(ContentService.MimeType.JSON);
+      }
+    }
+
+    function assignToGroup(ageGroup, groupsSheet) {
+      const groups = groupsSheet.getDataRange().getValues();
+
+      // Find available group for this age range
+      for (let i = 1; i < groups.length; i++) {
+        const [groupId, day, time, ageRange, startDate, endDate, currentCount, maxCapacity, status] = groups[i];
+
+        if (ageRange === getAgeRange(ageGroup) && currentCount < maxCapacity && status === 'Open') {
+          return {
+            groupId: groupId,
+            day: day,
+            time: time,
+            row: i + 1
+          };
+        }
+      }
+
+      // If no group available, create new one
+      return createNewGroup(ageGroup, groupsSheet);
+    }
+
+    function getAgeRange(program) {
+      switch(program) {
+        case 'young': return '8-10';
+        case 'tech': return '11-13';
+        case 'future': return '14-18';
+        default: return '8-10';
+      }
+    }
+
+    function updateGroupCapacity(groupId, groupsSheet) {
+      const groups = groupsSheet.getDataRange().getValues();
+
+      for (let i = 1; i < groups.length; i++) {
+        if (groups[i][0] === groupId) {
+          const currentCount = groups[i][6] + 1;
+          groupsSheet.getRange(i + 1, 7).setValue(currentCount);
+
+          // Mark as filling fast if 80% full
+          if (currentCount >= groups[i][7] * 0.8) {
+            groupsSheet.getRange(i + 1, 9).setValue('Filling Fast');
+          }
+
+          // Mark as full if at capacity
+          if (currentCount >= groups[i][7]) {
+            groupsSheet.getRange(i + 1, 9).setValue('Full');
+          }
+
+          break;
+        }
+      }
+    }
+
+    function checkAndOpenNewGroups(groupsSheet) {
+      const groups = groupsSheet.getDataRange().getValues();
+
+      // Check if Sunday groups are 80% full
+      const sundayGroups = groups.filter(g => g[1] === 'Sunday' && g[8] === 'Open');
+      const sundayFilling = sundayGroups.filter(g => g[6] >= g[7] * 0.8).length;
+
+      if (sundayFilling >= 2) {
+        createNewDayGroups('Monday', groupsSheet);
+      }
+    }
+
+    function createNewDayGroups(day, groupsSheet) {
+      const timeSlots = {
+        'Monday': ['16:00-17:00', '17:30-18:45', '19:00-20:30'],
+        'Tuesday': ['16:00-17:00', '17:30-18:45', '19:00-20:30']
+      };
+
+      const ageGroups = ['8-10', '11-13', '14-18'];
+      const cohortNumber = getCurrentCohortNumber();
+
+      timeSlots[day].forEach((time, index) => {
+        const groupId = `${day.substring(0,3).toUpperCase()}-${ageGroups[index].replace('-','')}-${cohortNumber}`;
+
+        groupsSheet.appendRow([
+          groupId,
+          day,
+          time,
+          ageGroups[index],
+          new Date('2025-01-05'), // Start date
+          new Date('2025-03-23'), // End date
+          0, // Current count
+          10, // Max capacity
+          'Open', // Status
+          cohortNumber
+        ]);
+      });
+    }
+
+    function getCurrentCohortNumber() {
+      return 1; // You can make this dynamic later
+    }
+
+    function updateCalendar(data) {
+      // Create calendar events for each group
+      // This requires setting up a Google Calendar and getting its ID
+      const calendarId = 'YOUR_CALENDAR_ID_HERE'; // Replace with your calendar ID
+
+      try {
+        const calendar = CalendarApp.getCalendarById(calendarId);
+
+        data.children.forEach(child => {
+          // Create recurring event for this child's group
+          const eventTitle = `AI Club - ${child.program} - ${child.name}`;
+
+          // This is a simplified version - you'd want to create proper recurring events
+          calendar.createEvent(
+            eventTitle,
+            new Date('2025-01-05 16:00:00'), // Adjust based on group time
+            new Date('2025-01-05 17:00:00'),
+            {description: `Student: ${child.name}\nParent: ${data.parent.name}\nEmail: ${data.parent.email}`}
+          );
+        });
+
+      } catch (error) {
+        console.log('Calendar update failed:', error);
+      }
+    }
+
+    function sendConfirmation(email, data) {
+      const subject = 'AI Club Registration Confirmed!';
+      const body = `
+        Hi ${data.parent.name},
+
+        Thank you for registering for AI Club! Here are your registration details:
+
+        Children registered:
+        ${data.children.map(child => `- ${child.name} (${child.program})`).join('\n')}
+
+        Total: ₪${data.totalPrice}
+
+        Next steps:
+        1. You'll receive a calendar invite with class schedules
+        2. Payment instructions will follow shortly
+        3. We'll add you to the WhatsApp group before classes start
+
+        Questions? Reply to this email or WhatsApp us at +972-54-315-9025
+
+        Welcome to AI Club!
+        The AI Club Team
+      `;
+
+      try {
+        MailApp.sendEmail(email, subject, body);
+      } catch (error) {
+        console.log('Email send failed:', error);
+      }
+    }
+
+    // Function to get current group data (called from website)
+    function doGet(e) {
+      const sheet = SpreadsheetApp.getActiveSpreadsheet();
+      const groups = sheet.getSheetByName('Groups');
+      const data = groups.getDataRange().getValues();
+
+      // Remove header row and format for website
+      const groupData = data.slice(1).map(row => ({
+        groupId: row[0],
+        day: row[1],
+        time: row[2],
+        ageRange: row[3],
+        currentCount: row[6],
+        maxCapacity: row[7],
+        status: row[8]
+      }));
+
+      return ContentService
+        .createTextOutput(JSON.stringify({groups: groupData}))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    =====================================
+
+    3. DEPLOY THE SCRIPT:
+
+    - In Apps Script, click "Deploy" → "New Deployment"
+    - Choose "Web app"
+    - Execute as: "Me"
+    - Who has access: "Anyone"
+    - Click "Deploy"
+    - Copy the Web App URL - you'll need this for the website
+
+    4. CALENDAR SETUP:
+
+    - Go to calendar.google.com
+    - Create a new calendar called "AI Club Schedule"
+    - In calendar settings:
+      * Get the Calendar ID (looks like: abc123@group.calendar.google.com)
+      * Make calendar public: Settings → Access permissions → "Make available to public"
+      * Set public visibility to "See all event details"
+
+    - Replace "YOUR_CALENDAR_ID_HERE" in TWO places:
+      1. In the Google Apps Script (updateCalendar function)
+      2. In the calendar iframe src URL in the HTML
+
+    - The calendar will automatically show events created by the Apps Script
+
+    5. UPDATE WEBSITE:
+
+    Replace these placeholders with your actual values:
+    - "YOUR_WEB_APP_URL_HERE" → Your Google Apps Script web app URL
+    - "YOUR_CALENDAR_ID_HERE" → Your Google Calendar ID
+
+    6. HOW IT WORKS:
+
+    BEFORE SETUP (Current State):
+    ✅ Form collects data and sends to WhatsApp (backup system works)
+    ✅ Shows fallback calendar with static schedule
+    ✅ No real-time capacity tracking
+
+    AFTER SETUP (Automated System):
+    ✅ Form submits to Google Sheets automatically
+    ✅ Parents receive instant email confirmations
+    ✅ Calendar events created automatically for each registration
+    ✅ Real-time capacity tracking and "Filling Fast" badges
+    ✅ Auto-opens Monday groups when Sunday is 80% full
+    ✅ WhatsApp backup still works if Google Sheets fails
+    ✅ Live Google Calendar shows all classes and events
+
+    7. TESTING:
+
+    1. Fill out the registration form
+    2. Check that data appears in Google Sheets
+    3. Verify email confirmation is sent
+    4. Confirm calendar event is created
+    5. Check that capacity numbers update in real-time
+    6. Test WhatsApp fallback by temporarily breaking the Google Sheets URL
+    -->
+
+    </script>
+
+</body>
+</html>
