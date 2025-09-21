@@ -2,11 +2,15 @@
 (function() {
   'use strict';
 
+  // Mobile detection
+  const isMobile = window.innerWidth <= 768;
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
   // Calendar Component HTML Template
   const calendarHTML = `
-    <div id="calendar-widget" class="space-y-6">
+    <div id="calendar-widget" class="space-y-6 ${isMobile ? 'mobile-calendar' : ''}">
       <!-- Calendar -->
-      <div class="bg-gradient-to-br from-black/20 to-black/40 rounded-2xl p-6 border border-white/10 shadow-xl backdrop-blur-sm">
+      <div class="bg-gradient-to-br from-black/20 to-black/40 rounded-2xl p-6 border border-white/10 shadow-xl backdrop-blur-sm ${isMobile ? 'mobile-calendar-container' : ''}">
         <div id="calendar-container" class="rounded-xl"></div>
       </div>
 
