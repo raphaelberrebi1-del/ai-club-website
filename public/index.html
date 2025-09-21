@@ -90,6 +90,7 @@
             background-position: center center;
             background-attachment: fixed;
             background-repeat: no-repeat;
+            min-height: 100vh;
         }
 
         body::before {
@@ -436,16 +437,31 @@
                 background: url('/magical-ai-kids.jpg') center center / cover scroll, #0a0a12 !important;
                 background-repeat: no-repeat !important;
                 background-color: #0a0a12 !important;
+                min-height: 100vh !important;
+                background-attachment: scroll !important;
             }
 
-            /* Ensure background is visible on mobile */
+            /* Ensure background is visible on mobile with lighter overlay */
             body::before {
-                background: rgba(10, 10, 18, 0.4) !important;
+                background: rgba(10, 10, 18, 0.3) !important;
             }
 
             /* Mobile background fallback */
             .mobile-optimized {
                 background: url('/magical-ai-kids.jpg') center center / cover scroll, #0a0a12 !important;
+                background-attachment: scroll !important;
+            }
+
+            /* Force background visibility on mobile */
+            html {
+                background: #0a0a12 !important;
+                min-height: 100vh !important;
+            }
+
+            /* Additional mobile background fixes */
+            body, html {
+                height: auto !important;
+                min-height: 100vh !important;
             }
         }
 
@@ -675,81 +691,109 @@
                 padding: 12px !important;
             }
 
-            /* Mobile Stacked Card Layout */
+            /* Mobile 2-Column Card Layout (Zoomed Out View) */
             #programs .grid {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 0 !important;
-                overflow-y: auto !important;
-                max-height: 80vh !important;
-                scroll-snap-type: y mandatory !important;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 12px !important;
+                overflow-x: auto !important;
+                overflow-y: visible !important;
+                scroll-snap-type: x mandatory !important;
                 -webkit-overflow-scrolling: touch !important;
-                padding: 20px 0 !important;
+                padding: 10px 0 !important;
+                grid-auto-flow: column !important;
+                grid-auto-columns: 85% !important;
             }
 
             #programs .grid > div {
                 scroll-snap-align: start !important;
-                margin-bottom: -60px !important;
-                flex-shrink: 0 !important;
-                transform: scale(0.95) !important;
-                transition: transform 0.3s ease, z-index 0.3s ease !important;
-                position: relative !important;
-            }
-
-            #programs .grid > div:nth-child(1) {
-                z-index: 30 !important;
-            }
-
-            #programs .grid > div:nth-child(2) {
-                z-index: 20 !important;
                 transform: scale(0.9) !important;
+                transition: transform 0.3s ease !important;
+                position: relative !important;
+                min-height: 400px !important;
+                flex-shrink: 0 !important;
+            }
+
+            #programs .grid > div:nth-child(1),
+            #programs .grid > div:nth-child(2) {
+                grid-column: span 1 !important;
             }
 
             #programs .grid > div:nth-child(3) {
-                z-index: 10 !important;
-                transform: scale(0.85) !important;
+                grid-column: span 2 !important;
+                margin-left: 6px !important;
             }
 
             #programs .grid > div:hover,
             #programs .grid > div:focus {
-                transform: scale(1) !important;
-                z-index: 40 !important;
+                transform: scale(0.95) !important;
+                z-index: 10 !important;
             }
 
-            /* Add scroll indicators */
-            #programs .rounded-2xl:first-child::after {
-                content: '';
+            /* Horizontal scroll indicators */
+            #programs .rounded-2xl::after {
+                content: '→';
                 position: absolute;
-                bottom: -40px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 40px;
-                height: 4px;
-                background: rgba(255, 255, 255, 0.3);
-                border-radius: 2px;
-                animation: scroll-hint 2s infinite;
+                bottom: 10px;
+                right: 10px;
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 16px;
+                animation: scroll-hint-horizontal 2s infinite;
+                pointer-events: none;
             }
 
-            @keyframes scroll-hint {
-                0%, 100% { opacity: 0.3; }
-                50% { opacity: 0.8; }
+            @keyframes scroll-hint-horizontal {
+                0%, 100% { opacity: 0.3; transform: translateX(0); }
+                50% { opacity: 0.8; transform: translateX(5px); }
             }
 
-            /* Mobile card content adjustments */
+            /* Mobile card content adjustments for 2-column layout */
             #programs .space-y-4 {
-                gap: 12px !important;
-            }
-
-            #programs .space-y-3 {
                 gap: 8px !important;
             }
 
+            #programs .space-y-3 {
+                gap: 6px !important;
+            }
+
             #programs .mb-6 {
-                margin-bottom: 16px !important;
+                margin-bottom: 12px !important;
             }
 
             #programs .mb-4 {
-                margin-bottom: 12px !important;
+                margin-bottom: 8px !important;
+            }
+
+            #programs .p-6 {
+                padding: 16px !important;
+            }
+
+            #programs h3 {
+                font-size: 1.25rem !important;
+                line-height: 1.3 !important;
+            }
+
+            #programs .text-base {
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+            }
+
+            #programs .text-sm {
+                font-size: 12px !important;
+                line-height: 1.3 !important;
+            }
+
+            /* Make images more clickable and prominent */
+            #programs .ai-gallery-mobile > div,
+            #programs .hidden.md\\:grid > div {
+                cursor: pointer !important;
+                transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+            }
+
+            #programs .ai-gallery-mobile > div:hover,
+            #programs .hidden.md\\:grid > div:hover {
+                transform: scale(1.05) !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
             }
 
             /* Mobile AI Gallery Optimization */
@@ -834,6 +878,82 @@
 
             .ai-gallery-mobile > div:active::before {
                 opacity: 1;
+            }
+
+            /* Mobile Project Gallery (Two Rows Design) */
+            #projects .grid.lg\\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+                gap: 40px !important;
+            }
+
+            #projects .relative > .relative.z-10 {
+                background: rgba(255, 255, 255, 0.05) !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                border-radius: 16px !important;
+                backdrop-filter: blur(10px) !important;
+                margin-bottom: 20px !important;
+            }
+
+            /* Mobile project cards horizontal scroll */
+            .mobile-project-gallery {
+                display: flex !important;
+                gap: 16px !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                -webkit-overflow-scrolling: touch !important;
+                padding: 16px 0 !important;
+                margin: 0 -20px !important;
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+
+            .mobile-project-gallery > div {
+                flex-shrink: 0 !important;
+                width: 280px !important;
+                scroll-snap-align: start !important;
+                background: rgba(255, 255, 255, 0.08) !important;
+                border: 1px solid rgba(255, 255, 255, 0.15) !important;
+                border-radius: 12px !important;
+                padding: 16px !important;
+                transition: transform 0.3s ease !important;
+            }
+
+            .mobile-project-gallery > div:hover {
+                transform: scale(1.02) !important;
+            }
+
+            /* Project gallery titles */
+            #projects h3.text-2xl {
+                text-align: center !important;
+                margin-bottom: 20px !important;
+                font-size: 1.5rem !important;
+                border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
+                padding-bottom: 12px !important;
+            }
+
+            /* Mobile project section spacing */
+            #projects .max-w-6xl {
+                padding-top: 40px !important;
+                padding-bottom: 40px !important;
+            }
+
+            #projects .text-center.mb-16 {
+                margin-bottom: 32px !important;
+            }
+
+            /* Hide grid on mobile, show custom layout */
+            #projects .space-y-6 {
+                display: none !important;
+            }
+
+            /* Hide calendar on mobile */
+            #ai-kids-calendar {
+                display: none !important;
+            }
+
+            /* Hide calendar related sections on mobile */
+            .loading-placeholder {
+                display: none !important;
             }
         }
     </style>
@@ -1462,8 +1582,47 @@
 
                         <p class="text-white/90 mb-6">Fun, guided projects that spark creativity and make learning exciting:</p>
 
-                        <!-- Project List -->
-                        <div class="space-y-4">
+                        <!-- Desktop Project List -->
+                        <div class="hidden md:block space-y-4">
+                            <div class="flex items-start gap-3 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+                                <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white">AI Homework Helper</h4>
+                                    <p class="text-sm text-white/70">Kids train a chatbot to explain math or science homework in simple steps.</p>
+                                    <span class="inline-block mt-2 text-xs bg-blue-500/20 text-blue-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Project Gallery -->
+                        <div class="md:hidden mobile-project-gallery">
+                            <div>
+                                <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                                </div>
+                                <h4 class="font-semibold text-white mb-2">AI Homework Helper</h4>
+                                <p class="text-sm text-white/70 mb-3">Kids train a chatbot to explain math or science homework in simple steps.</p>
+                                <span class="text-xs bg-blue-500/20 text-blue-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                            </div>
+                            <div>
+                                <div class="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg>
+                                </div>
+                                <h4 class="font-semibold text-white mb-2">Story Generator</h4>
+                                <p class="text-sm text-white/70 mb-3">Create personalized adventure stories with AI that adapt to their choices.</p>
+                                <span class="text-xs bg-purple-500/20 text-purple-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                            </div>
+                            <div>
+                                <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                                </div>
+                                <h4 class="font-semibold text-white mb-2">Language Buddy</h4>
+                                <p class="text-sm text-white/70 mb-3">Build an AI friend that helps practice English, Hebrew, or another language.</p>
+                                <span class="text-xs bg-green-500/20 text-green-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                            </div>
+                        </div>
                             <div class="flex items-start gap-3 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
                                 <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
@@ -1625,23 +1784,7 @@
 
                 <div class="relative z-10">
                 <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-white">Ready to Give Your Child the AI <span class="font-serif italic bg-gradient-to-r from-orange-300 via-pink-300 to-orange-400 bg-clip-text text-transparent">Advantage</span>?</h2>
-                <p class="mt-4 text-zinc-300 max-w-2xl mx-auto">Join forward-thinking parents who are preparing their children for tomorrow's world. Limited spots available in each age group.</p>
-
-                <!-- Availability Status -->
-                <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
-                    <div class="p-4 rounded-xl bg-green-400/10 border border-green-400/20">
-                        <div class="text-sm font-medium text-green-300">Young Innovators (8-10)</div>
-                        <div class="text-xs text-green-200">10 spots available</div>
-                    </div>
-                    <div class="p-4 rounded-xl bg-green-400/10 border border-green-400/20">
-                        <div class="text-sm font-medium text-green-300">Tech Explorers (11-13)</div>
-                        <div class="text-xs text-green-200">8 spots available</div>
-                    </div>
-                    <div class="p-4 rounded-xl bg-yellow-400/10 border border-yellow-400/20">
-                        <div class="text-sm font-medium text-yellow-300">Future Leaders (14-18)</div>
-                        <div class="text-xs text-yellow-200">3 spots left</div>
-                    </div>
-                </div>
+                <p class="mt-6 text-lg text-white/90 max-w-3xl mx-auto">Join hundreds of parents preparing their kids for tomorrow's digital world with structured AI learning in a safe, fun, and guided environment.</p>
 
                 <!-- Enhanced Pricing Information -->
                 <div class="mt-8 max-w-4xl mx-auto">
@@ -1721,42 +1864,51 @@
                                 <p class="text-sm text-white/70 mt-1">Secure your child's spot in tomorrow's tech education</p>
                             </div>
 
-                            <!-- Modal Body -->
-                            <div class="p-6 space-y-6" id="registrationFormContainer">
-                                <!-- Child 1 Form -->
-                                <div class="child-form" data-child-number="1">
-                                    <h3 class="text-lg font-semibold text-white mb-4">Child 1 Information</h3>
-
-                                    <div class="space-y-4">
-                                        <div>
-                                            <label class="text-sm font-medium text-white/90">Child's Name</label>
-                                            <input type="text" class="w-full mt-1 bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-400/50" placeholder="Enter child's name">
-                                        </div>
-
-                                        <div>
-                                            <label class="text-sm font-medium text-white/90">Select Age Group</label>
-                                            <div class="grid grid-cols-1 gap-2 mt-2">
-                                                <button type="button" onclick="selectModalAgeGroup(this, 'young', 1200, 1, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                                    <div class="font-medium text-white">Young Innovators (8-10)</div>
-                                                    <div class="text-xs text-white/60">₪1,200 • Sundays 16:00-17:00</div>
-                                                </button>
-                                                <button type="button" onclick="selectModalAgeGroup(this, 'tech', 1500, 1, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                                    <div class="font-medium text-white">Tech Explorers (11-13)</div>
-                                                    <div class="text-xs text-white/60">₪1,500 • Sundays 17:30-18:45</div>
-                                                </button>
-                                                <button type="button" onclick="selectModalAgeGroup(this, 'future', 1800, 1, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                                    <div class="font-medium text-white">Future Leaders (14-18)</div>
-                                                    <div class="text-xs text-white/60">₪1,800 • Sundays 19:00-20:30</div>
-                                                </button>
-                                            </div>
-                                        </div>
+                            <!-- Simplified Mobile Form -->
+                            <div class="p-6" id="registrationFormContainer">
+                                <form class="space-y-4">
+                                    <!-- Child's Name -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-white/90 mb-2">Child's Name</label>
+                                        <input type="text" id="childName" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-400/50" placeholder="Enter child's name" required>
                                     </div>
-                                </div>
 
-                                <!-- Add Another Child Button -->
-                                <button type="button" onclick="addChildToModal()" class="text-orange-300 hover:text-orange-200 text-sm transition-colors">
-                                    + Add another child (10% off 2nd child, 15% off 3rd+)
-                                </button>
+                                    <!-- Age Group Dropdown -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-white/90 mb-2">Age Group</label>
+                                        <select id="ageGroup" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange-400/50" required>
+                                            <option value="" style="color: #000;">Select Age Group</option>
+                                            <option value="young" style="color: #000;">Young Innovators (8-10) - ₪1,200</option>
+                                            <option value="tech" style="color: #000;">Tech Explorers (11-13) - ₪1,500</option>
+                                            <option value="future" style="color: #000;">Future Leaders (14-18) - ₪1,800</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Add Another Child -->
+                                    <div id="additionalChildren"></div>
+                                    <button type="button" id="addChildBtn" class="w-full py-2 px-4 bg-white/10 border border-white/20 rounded-lg text-white/80 hover:bg-white/20 transition-colors text-sm">
+                                        + Add another child (10% off 2nd child, 15% off 3rd+)
+                                    </button>
+
+                                    <!-- Parent Email -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-white/90 mb-2">Parent Email</label>
+                                        <input type="email" id="parentEmail" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-400/50" placeholder="Enter your email" required>
+                                    </div>
+
+                                    <!-- Phone Number -->
+                                    <div>
+                                        <label class="block text-sm font-medium text-white/90 mb-2">Phone Number</label>
+                                        <input type="tel" id="phoneNumber" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-orange-400/50" placeholder="Enter your phone number" required>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <button type="submit" class="w-full mt-6 bg-gradient-to-br from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02]">
+                                        Complete Registration
+                                    </button>
+                                </form>
+                            </div>
+
 
 
                                 <!-- Parent Contact Info -->
