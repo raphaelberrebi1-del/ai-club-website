@@ -453,6 +453,20 @@
                 height: auto !important;
                 min-height: 100vh !important;
             }
+
+            /* MOBILE: Remove ALL dark overlays that block background image */
+            .absolute.inset-0[style*="background: radial-gradient"],
+            .absolute.inset-0[style*="bg-gradient-to-b"],
+            .absolute.inset-0[style*="rgba(0,0,0"],
+            .absolute.inset-0.pointer-events-none[style*="background"],
+            div[style*="background: radial-gradient(ellipse at center, rgba(0,0,0"] {
+                display: none !important;
+            }
+
+            /* Make background more visible on mobile */
+            body {
+                background-opacity: 1 !important;
+            }
         }
 
         /* Image loading optimizations */
@@ -3508,11 +3522,36 @@
                     el.classList.add('mobile-no-transform');
                 });
 
-                // Fix mobile background
+                // Fix mobile background with aggressive overlay removal
+                console.log('🔧 Removing all overlays and applying mobile background...');
+
+                // Remove ALL overlay elements that might block background
+                const overlaySelectors = [
+                    '.absolute.inset-0[style*="background"]',
+                    '.absolute.inset-0[style*="rgba(0,0,0"]',
+                    '.pointer-events-none[style*="background"]',
+                    'div[style*="radial-gradient"]',
+                    '.absolute[style*="background: radial-gradient"]'
+                ];
+
+                overlaySelectors.forEach(selector => {
+                    const elements = document.querySelectorAll(selector);
+                    elements.forEach(el => {
+                        if (el.style.background && el.style.background.includes('rgba(0,0,0')) {
+                            el.style.display = 'none';
+                            console.log('🗑️ Removed overlay:', el);
+                        }
+                    });
+                });
+
+                // Apply clean background
                 document.body.style.background = 'url("/magical-ai-kids.jpg") center center / cover scroll, #0a0a12';
                 document.body.style.backgroundAttachment = 'scroll';
                 document.body.style.backgroundRepeat = 'no-repeat';
                 document.body.style.backgroundColor = '#0a0a12';
+                document.body.style.backgroundSize = 'cover';
+
+                console.log('✅ Mobile background applied and overlays removed');
 
                 // Add mobile-optimized class to body
                 document.body.classList.add('mobile-optimized');
