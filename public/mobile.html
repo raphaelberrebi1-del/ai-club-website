@@ -14,10 +14,10 @@
 
 
     <!-- Fixed Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/95 backdrop-blur-xl border-b border-white/10">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/95 backdrop-blur-xl border-b border-amber-200/20">
         <div class="flex items-center justify-between px-4 h-16">
             <!-- Hamburger Menu -->
-            <button id="mobile-menu-btn" class="flex items-center justify-center w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200 hover:scale-105">
+            <button id="mobile-menu-btn" class="flex items-center justify-center w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-amber-200/30 hover:bg-white/20 transition-all duration-200 hover:scale-105">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white">
                     <line x1="3" y1="6" x2="21" y2="6"></line>
                     <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -28,13 +28,13 @@
             <!-- AI Club Branding -->
             <div class="flex items-center">
                 <h1 class="text-xl font-bold text-white tracking-tight">
-                    <span class="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">AI</span>
+                    <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">AI</span>
                     <span class="text-white">Club</span>
                 </h1>
             </div>
 
             <!-- Reserve Spot Button -->
-            <button onclick="document.querySelector('#choose-program').scrollIntoView({behavior: 'smooth'})" class="bg-gradient-to-r from-orange-500 to-orange-400 text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-200 transform hover:scale-105">
+            <button onclick="document.querySelector('#choose-program').scrollIntoView({behavior: 'smooth'})" class="bg-gradient-to-r from-amber-500 to-yellow-400 text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:shadow-lg hover:shadow-amber-500/25 transition-all duration-200 transform hover:scale-105">
                 Reserve Spot
             </button>
         </div>
@@ -44,7 +44,7 @@
     <div id="mobile-menu" class="fixed inset-0 z-40 hidden bg-black/80 backdrop-blur-sm">
         <div class="flex flex-col h-full">
             <!-- Menu Header -->
-            <div class="flex items-center justify-between p-6 border-b border-white/10">
+            <div class="flex items-center justify-between p-6 border-b border-amber-200/20">
                 <h2 class="text-xl font-bold text-white">Menu</h2>
                 <button id="close-menu-btn" class="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 transition-colors">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
@@ -59,7 +59,7 @@
                 <ul class="space-y-4">
                     <li>
                         <a href="#what-child-will-learn" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-400">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-400">
                                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                             </svg>
@@ -68,7 +68,7 @@
                     </li>
                     <li>
                         <a href="#what-child-could-create" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-400">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-teal-400">
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                             </svg>
                             <span class="text-lg">What You Could Create</span>
@@ -87,7 +87,7 @@
                     </li>
                     <li>
                         <a href="#have-questions" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-400">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-cyan-400">
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                             </svg>
                             <span class="text-lg">Contact Us</span>
@@ -107,8 +107,8 @@
             <div class="absolute inset-0 z-[2]" style="background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 100%); pointer-events: none;"></div>
             <div class="max-w-md mx-auto text-center space-y-8 relative z-10">
                 <!-- New Badge -->
-                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 animate-pulse-subtle">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-400">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-amber-200/30 animate-pulse-subtle">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-400">
                         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
                     </svg>
                     <span class="text-sm font-medium text-white/90">New: Structured AI Programs for Kids</span>
@@ -118,7 +118,7 @@
                 <div class="space-y-6">
                     <h1 class="text-5xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">
                         Give Your Child the
-                        <span class="font-serif italic bg-gradient-to-r from-orange-300 via-pink-300 to-orange-400 bg-clip-text text-transparent pr-2">
+                        <span class="font-serif italic bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-400 bg-clip-text text-transparent pr-2">
                             Advantage
                         </span>
                     </h1>
@@ -136,13 +136,13 @@
 
                     <p class="text-lg sm:text-xl leading-relaxed font-semibold" style="text-shadow: 0 1px 3px rgba(0,0,0,0.2);">
                         In a world where AI is reshaping every industry, the question isn't whether your child should learn AI – it's
-                        <span class="text-orange-300 font-bold">how soon they can start.</span>
+                        <span class="text-amber-300 font-bold">how soon they can start.</span>
                     </p>
                 </div>
 
                 <!-- CTA Button -->
                 <div class="pt-4">
-                    <button onclick="document.querySelector('#what-child-could-create').scrollIntoView({behavior: 'smooth'})" class="w-full bg-gradient-to-r from-orange-500 to-orange-400 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 text-lg transform hover:scale-105">
+                    <button onclick="document.querySelector('#what-child-could-create').scrollIntoView({behavior: 'smooth'})" class="w-full bg-gradient-to-r from-amber-500 to-yellow-400 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-amber-500/25 transition-all duration-300 text-lg transform hover:scale-105">
                         Learn More About Our Programs
                     </button>
                 </div>
@@ -163,7 +163,7 @@
                 <!-- Section Header -->
                 <div class="text-center mb-12 fade-in-left" data-scroll>
                     <h2 class="text-4xl font-extrabold text-white tracking-tight mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
-                        What Your Child Will <span class="font-serif italic bg-gradient-to-r from-orange-300 via-pink-300 to-orange-400 bg-clip-text text-transparent pr-2">Learn</span>
+                        What Your Child Will <span class="font-serif italic bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-400 bg-clip-text text-transparent pr-2">Learn</span>
                     </h2>
                     <p class="text-lg text-white/90 leading-relaxed" style="text-shadow: 0 1px 3px rgba(0,0,0,0.2);">
                         From AI fundamentals to real-world applications, every session builds essential skills for tomorrow's digital world.
@@ -171,33 +171,33 @@
                 </div>
 
                 <!-- Single Comprehensive Learning Card -->
-                <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-white/20">
+                <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-amber-200/30">
                     <div class="space-y-6">
 
                         <!-- Master ChatGPT Section -->
-                        <div class="pb-6 border-b border-white/20 fade-in-left delay-1" data-scroll>
+                        <div class="pb-6 border-b border-amber-200/30 fade-in-left delay-1" data-scroll>
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-teal-600">
                                         <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
                                     </svg>
                                 </div>
-                                <span class="text-sm font-medium text-gray-300">AI Assistant</span>
+                                <span class="text-sm font-medium text-amber-200">AI Assistant</span>
                             </div>
                             <h3 class="text-xl font-bold text-white mb-4">Master ChatGPT</h3>
-                            <p class="text-gray-200 mb-4 leading-relaxed">
+                            <p class="text-amber-100 mb-4 leading-relaxed">
                                 Use AI as their personal learning assistant - from homework help to creative writing and problem-solving.
                             </p>
                             <div class="space-y-2">
-                                <div class="flex items-center gap-2 text-sm text-gray-200">
+                                <div class="flex items-center gap-2 text-sm text-amber-100">
                                     <div class="w-2 h-2 bg-teal-400 rounded-full"></div>
                                     <span><strong>Homework Helper:</strong> Learn to ask the right questions for math, science, and language arts</span>
                                 </div>
-                                <div class="flex items-center gap-2 text-sm text-gray-200">
+                                <div class="flex items-center gap-2 text-sm text-amber-100">
                                     <div class="w-2 h-2 bg-teal-400 rounded-full"></div>
                                     <span><strong>Creative Writing:</strong> Generate stories, poems, and creative content with AI collaboration</span>
                                 </div>
-                                <div class="flex items-center gap-2 text-sm text-gray-200">
+                                <div class="flex items-center gap-2 text-sm text-amber-100">
                                     <div class="w-2 h-2 bg-teal-400 rounded-full"></div>
                                     <span><strong>Research Skills:</strong> Learn to fact-check and use AI for educational research safely</span>
                                 </div>
@@ -205,27 +205,27 @@
                         </div>
 
                         <!-- AI Art Section -->
-                        <div class="pb-6 border-b border-white/20 fade-in-left delay-2" data-scroll>
+                        <div class="pb-6 border-b border-amber-200/30 fade-in-left delay-2" data-scroll>
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-purple-600">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-teal-600">
                                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                                         <circle cx="9" cy="9" r="2"></circle>
                                         <path d="M21 15l-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
                                     </svg>
                                 </div>
-                                <span class="text-sm font-medium text-gray-300">Creative AI</span>
+                                <span class="text-sm font-medium text-amber-200">Creative AI</span>
                             </div>
                             <h3 class="text-xl font-bold text-white mb-4">Create with AI Art</h3>
-                            <p class="text-gray-200 mb-4 leading-relaxed">
+                            <p class="text-amber-100 mb-4 leading-relaxed">
                                 Generate stunning images, design characters, and bring imagination to life with AI image generation tools.
                             </p>
                             <!-- AI Art Examples -->
                             <div class="grid grid-cols-3 gap-2">
-                                <div class="aspect-square bg-gradient-to-br from-pink-200 to-orange-200 rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200" onclick="openImageModal('/colorful-modern-fusion.png', 'Colorful Modern Fusion Art')">
+                                <div class="aspect-square bg-gradient-to-br from-yellow-200 to-amber-200 rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200" onclick="openImageModal('/colorful-modern-fusion.png', 'Colorful Modern Fusion Art')">
                                     <img src="/colorful-modern-fusion.png" alt="Colorful Modern Fusion Art" class="w-full h-full object-cover">
                                 </div>
-                                <div class="aspect-square bg-gradient-to-br from-blue-200 to-purple-200 rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200" onclick="openImageModal('/cinematic-3d.png', 'Cinematic 3D Art')">
+                                <div class="aspect-square bg-gradient-to-br from-cyan-200 to-teal-200 rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200" onclick="openImageModal('/cinematic-3d.png', 'Cinematic 3D Art')">
                                     <img src="/cinematic-3d.png" alt="Cinematic 3D Art" class="w-full h-full object-cover">
                                 </div>
                                 <div class="aspect-square bg-gradient-to-br from-green-200 to-emerald-200 rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200" onclick="openImageModal('/childrens-book-illustrations.png', 'Children\'s Book Illustrations')">
@@ -238,37 +238,37 @@
                         <div class="fade-in-left delay-3" data-scroll>
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-blue-600">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-cyan-600">
                                         <polyline points="16 18 22 12 16 6"></polyline>
                                         <polyline points="8 6 2 12 8 18"></polyline>
                                     </svg>
                                 </div>
-                                <span class="text-sm font-medium text-gray-300">Programming</span>
+                                <span class="text-sm font-medium text-amber-200">Programming</span>
                             </div>
                             <h3 class="text-xl font-bold text-white mb-4">Code with AI Assistance</h3>
-                            <p class="text-gray-200 mb-4 leading-relaxed">
+                            <p class="text-amber-100 mb-4 leading-relaxed">
                                 Learn programming fundamentals while using AI to write, debug, and understand code.
                             </p>
                             <div class="space-y-3">
-                                <div class="flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 px-4 py-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-blue-400" style="stroke-width: 1.5;"><line x1="6" x2="10" y1="11" y2="11"></line><line x1="8" x2="8" y1="9" y2="13"></line><line x1="15" x2="15.01" y1="12" y2="12"></line><line x1="18" x2="18.01" y1="10" y2="10"></line><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"></path></svg>
+                                <div class="flex items-center gap-3 rounded-xl border border-amber-200/30 bg-white/10 px-4 py-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-cyan-400" style="stroke-width: 1.5;"><line x1="6" x2="10" y1="11" y2="11"></line><line x1="8" x2="8" y1="9" y2="13"></line><line x1="15" x2="15.01" y1="12" y2="12"></line><line x1="18" x2="18.01" y1="10" y2="10"></line><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"></path></svg>
                                     <div class="flex-1">
                                         <p class="text-sm text-white font-semibold">Simple Games</p>
-                                        <p class="text-xs text-gray-300">Create interactive games</p>
+                                        <p class="text-xs text-amber-200">Create interactive games</p>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 px-4 py-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-blue-400" style="stroke-width: 1.5;"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg>
+                                <div class="flex items-center gap-3 rounded-xl border border-amber-200/30 bg-white/10 px-4 py-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-cyan-400" style="stroke-width: 1.5;"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg>
                                     <div class="flex-1">
                                         <p class="text-sm text-white font-semibold">Mobile Apps</p>
-                                        <p class="text-xs text-gray-300">Build simple applications</p>
+                                        <p class="text-xs text-amber-200">Build simple applications</p>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 px-4 py-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-blue-400" style="stroke-width: 1.5;"><rect width="18" height="10" x="3" y="11" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" x2="8" y1="16" y2="16"></line><line x1="16" x2="16" y1="16" y2="16"></line></svg>
+                                <div class="flex items-center gap-3 rounded-xl border border-amber-200/30 bg-white/10 px-4 py-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-cyan-400" style="stroke-width: 1.5;"><rect width="18" height="10" x="3" y="11" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" x2="8" y1="16" y2="16"></line><line x1="16" x2="16" y1="16" y2="16"></line></svg>
                                     <div class="flex-1">
                                         <p class="text-sm text-white font-semibold">AI Chatbots</p>
-                                        <p class="text-xs text-gray-300">Create smart assistants</p>
+                                        <p class="text-xs text-amber-200">Create smart assistants</p>
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +288,7 @@
                 <!-- Section Header -->
                 <div class="text-center mb-12 fade-in-left delay-4" data-scroll>
                     <h2 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
-                        What Your Child Could <span class="font-serif italic bg-gradient-to-r from-orange-300 via-pink-300 to-orange-400 bg-clip-text text-transparent pr-2">Create</span>
+                        What Your Child Could <span class="font-serif italic bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-400 bg-clip-text text-transparent pr-2">Create</span>
                     </h2>
                     <p class="text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
                         From homework help to potential startups — see what's possible in just 12 weeks
@@ -297,9 +297,9 @@
 
                 <!-- Young Innovators Section -->
                 <div class="mb-8 fade-in-left delay-5" data-scroll>
-                    <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-white/20">
+                    <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-amber-200/30">
                         <div class="flex items-center gap-3 mb-6">
-                            <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+                            <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-cyan-500 rounded-full flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
                             </div>
                             <div>
@@ -307,53 +307,53 @@
                                 <p class="text-green-400 text-sm font-medium">Ages 8–13</p>
                             </div>
                         </div>
-                        <p class="text-gray-200 mb-6">Fun, guided projects that spark creativity and make learning exciting:</p>
+                        <p class="text-amber-100 mb-6">Fun, guided projects that spark creativity and make learning exciting:</p>
 
                         <!-- Horizontal Scrolling Project Cards -->
                         <div class="overflow-x-auto -mx-2">
                             <div class="flex gap-4 pb-4 px-2" style="width: max-content;">
-                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-white/20">
-                                    <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
                                     </div>
                                     <h4 class="font-semibold text-white mb-2">AI Homework Helper</h4>
-                                    <p class="text-sm text-gray-200 mb-3">Kids train a chatbot to explain math or science homework in simple steps.</p>
+                                    <p class="text-sm text-amber-100 mb-3">Kids train a chatbot to explain math or science homework in simple steps.</p>
                                     <span class="text-xs bg-green-500/20 text-green-600 px-2 py-1 rounded-full font-medium">Build this in 12 weeks</span>
                                 </div>
 
-                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-white/20">
-                                    <div class="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
                                     </div>
                                     <h4 class="font-semibold text-white mb-2">Story & Comic Maker</h4>
-                                    <p class="text-sm text-gray-200 mb-3">Create personalized stories or comic books with AI-generated illustrations.</p>
+                                    <p class="text-sm text-amber-100 mb-3">Create personalized stories or comic books with AI-generated illustrations.</p>
                                     <span class="text-xs bg-green-500/20 text-green-600 px-2 py-1 rounded-full font-medium">Build this in 12 weeks</span>
                                 </div>
 
-                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-white/20">
-                                    <div class="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v5m16 0v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5m16 0H3m9 0v6"/></svg>
                                     </div>
                                     <h4 class="font-semibold text-white mb-2">AI Art Gallery</h4>
-                                    <p class="text-sm text-gray-200 mb-3">Generate and curate their own digital artwork collection.</p>
+                                    <p class="text-sm text-amber-100 mb-3">Generate and curate their own digital artwork collection.</p>
                                     <span class="text-xs bg-green-500/20 text-green-600 px-2 py-1 rounded-full font-medium">Build this in 12 weeks</span>
                                 </div>
 
-                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-white/20">
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
                                     <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                                     </div>
                                     <h4 class="font-semibold text-white mb-2">Language Buddy</h4>
-                                    <p class="text-sm text-gray-200 mb-3">Build an AI friend that helps practice English, Hebrew, or another language.</p>
+                                    <p class="text-sm text-amber-100 mb-3">Build an AI friend that helps practice English, Hebrew, or another language.</p>
                                     <span class="text-xs bg-green-500/20 text-green-600 px-2 py-1 rounded-full font-medium">Build this in 12 weeks</span>
                                 </div>
 
-                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-white/20">
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
                                     <div class="w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 1 0 10 10"/></svg>
                                     </div>
                                     <h4 class="font-semibold text-white mb-2">Adventure Quiz Game</h4>
-                                    <p class="text-sm text-gray-200 mb-3">Design fun quizzes where the AI adapts questions based on answers.</p>
+                                    <p class="text-sm text-amber-100 mb-3">Design fun quizzes where the AI adapts questions based on answers.</p>
                                     <span class="text-xs bg-green-500/20 text-green-600 px-2 py-1 rounded-full font-medium">Build this in 12 weeks</span>
                                 </div>
                             </div>
@@ -367,77 +367,77 @@
 
                 <!-- Teen Entrepreneurs Section -->
                 <div class="fade-in-left delay-6" data-scroll>
-                    <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-white/20">
+                    <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-amber-200/30">
                         <div class="flex items-center gap-3 mb-6">
-                            <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center">
+                            <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-full flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
                             </div>
                             <div>
                                 <h3 class="text-2xl font-bold text-white">Teen Entrepreneurs</h3>
-                                <p class="text-orange-400 text-sm font-medium">Ages 14–18</p>
+                                <p class="text-amber-400 text-sm font-medium">Ages 14–18</p>
                             </div>
                         </div>
-                        <p class="text-gray-200 mb-6">Advanced, practical projects that build a portfolio and show initiative:</p>
+                        <p class="text-amber-100 mb-6">Advanced, practical projects that build a portfolio and show initiative:</p>
 
                         <!-- Horizontal Scrolling Project Cards -->
                         <div class="overflow-x-auto -mx-2">
                             <div class="flex gap-4 pb-4 px-2" style="width: max-content;">
-                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-white/20">
-                                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/></svg>
                                     </div>
                                     <h4 class="font-semibold text-white mb-2">AI Business Assistant</h4>
-                                    <p class="text-sm text-gray-200 mb-3">Automate scheduling, reminders, or customer chat for a real small business.</p>
+                                    <p class="text-sm text-amber-100 mb-3">Automate scheduling, reminders, or customer chat for a real small business.</p>
                                     <div class="space-y-1">
-                                        <span class="block text-xs bg-orange-500/20 text-orange-600 px-2 py-1 rounded-full font-medium">Portfolio Ready</span>
-                                        <span class="block text-xs bg-blue-500/20 text-blue-600 px-2 py-1 rounded-full font-medium">Partner with local businesses</span>
+                                        <span class="block text-xs bg-amber-500/20 text-amber-600 px-2 py-1 rounded-full font-medium">Portfolio Ready</span>
+                                        <span class="block text-xs bg-cyan-500/20 text-cyan-600 px-2 py-1 rounded-full font-medium">Partner with local businesses</span>
                                     </div>
                                 </div>
 
-                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-white/20">
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
                                     <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M3 6h18l-2 13H5L3 6z"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                                     </div>
                                     <h4 class="font-semibold text-white mb-2">E-commerce Helper</h4>
-                                    <p class="text-sm text-gray-200 mb-3">Build a chatbot that recommends products or answers FAQs for online shops.</p>
+                                    <p class="text-sm text-amber-100 mb-3">Build a chatbot that recommends products or answers FAQs for online shops.</p>
                                     <div class="space-y-1">
                                         <span class="block text-xs bg-green-500/20 text-green-600 px-2 py-1 rounded-full font-medium">Real Impact</span>
-                                        <span class="block text-xs bg-purple-500/20 text-purple-600 px-2 py-1 rounded-full font-medium">Commercial Ready</span>
+                                        <span class="block text-xs bg-teal-500/20 text-teal-600 px-2 py-1 rounded-full font-medium">Commercial Ready</span>
                                     </div>
                                 </div>
 
-                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-white/20">
-                                    <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-teal-600 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27,6.96 12,12.01 20.73,6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
                                     </div>
                                     <h4 class="font-semibold text-white mb-2">Social Impact Project</h4>
-                                    <p class="text-sm text-gray-200 mb-3">Use AI to analyze local issues (traffic, recycling, mental health) and propose solutions.</p>
+                                    <p class="text-sm text-amber-100 mb-3">Use AI to analyze local issues (traffic, recycling, mental health) and propose solutions.</p>
                                     <div class="space-y-1">
                                         <span class="block text-xs bg-teal-500/20 text-teal-600 px-2 py-1 rounded-full font-medium">Community Impact</span>
                                         <span class="block text-xs bg-indigo-500/20 text-indigo-600 px-2 py-1 rounded-full font-medium">College Essays</span>
                                     </div>
                                 </div>
 
-                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-white/20">
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
                                     <div class="w-8 h-8 bg-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                                     </div>
                                     <h4 class="font-semibold text-white mb-2">AI Coding Partner</h4>
-                                    <p class="text-sm text-gray-200 mb-3">Develop small apps (games, tools, websites) with AI as a coding collaborator.</p>
+                                    <p class="text-sm text-amber-100 mb-3">Develop small apps (games, tools, websites) with AI as a coding collaborator.</p>
                                     <div class="space-y-1">
                                         <span class="block text-xs bg-cyan-500/20 text-cyan-600 px-2 py-1 rounded-full font-medium">Technical Skills</span>
-                                        <span class="block text-xs bg-gray-500/20 text-gray-200 px-2 py-1 rounded-full font-medium">GitHub Portfolio</span>
+                                        <span class="block text-xs bg-gray-500/20 text-amber-100 px-2 py-1 rounded-full font-medium">GitHub Portfolio</span>
                                     </div>
                                 </div>
 
-                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-white/20">
-                                    <div class="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-amber-600 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                                     </div>
                                     <h4 class="font-semibold text-white mb-2">Start-up Concept Prototype</h4>
-                                    <p class="text-sm text-gray-200 mb-3">Turn an idea (AI tutor, AI translator, AI designer) into a working demo they can pitch.</p>
+                                    <p class="text-sm text-amber-100 mb-3">Turn an idea (AI tutor, AI translator, AI designer) into a working demo they can pitch.</p>
                                     <div class="space-y-1">
-                                        <span class="block text-xs bg-red-500/20 text-red-600 px-2 py-1 rounded-full font-medium">Entrepreneurship</span>
+                                        <span class="block text-xs bg-amber-500/20 text-amber-600 px-2 py-1 rounded-full font-medium">Entrepreneurship</span>
                                         <span class="block text-xs bg-yellow-500/20 text-yellow-600 px-2 py-1 rounded-full font-medium">Demo Day</span>
                                     </div>
                                 </div>
@@ -463,7 +463,7 @@
                 <div class="space-y-6">
                     <h2 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">
                         Ready to Give Your Child the
-                        <span class="font-serif italic bg-gradient-to-r from-orange-300 via-pink-300 to-orange-400 bg-clip-text text-transparent px-2 inline-block">
+                        <span class="font-serif italic bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-400 bg-clip-text text-transparent px-2 inline-block">
                             AI Advantage?
                         </span>
                     </h2>
@@ -474,12 +474,12 @@
                 </div>
 
                 <!-- Early Bird Special -->
-                <div class="bg-gradient-to-r from-orange-500/20 to-pink-500/20 backdrop-blur-sm rounded-2xl p-6 border-2 border-orange-400/30">
+                <div class="bg-gradient-to-r from-amber-500/20 to-yellow-500/20 backdrop-blur-sm rounded-2xl p-6 border-2 border-amber-400/30">
                     <div class="flex items-center justify-center gap-2 mb-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-orange-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400">
                             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
                         </svg>
-                        <span class="text-lg font-bold text-orange-300">Early Bird Special Pricing</span>
+                        <span class="text-lg font-bold text-amber-300">Early Bird Special Pricing</span>
                     </div>
                     <div class="text-3xl font-extrabold text-white mb-2">20% OFF</div>
                     <p class="text-sm text-white/80">Limited time offer for early registrants<br><span class="text-xs text-white/60">ending October 17th</span></p>
@@ -495,12 +495,12 @@
             <div class="fixed inset-0 z-[2]" style="background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 100%); pointer-events: none;"></div>
 
             <div class="relative z-10 max-w-md mx-auto">
-                <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-white/20 fade-in-left delay-4" data-scroll>
+                <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-amber-200/30 fade-in-left delay-4" data-scroll>
                     <!-- Header -->
                     <div class="flex items-center justify-between mb-6">
                         <h2 class="text-2xl font-bold text-white tracking-tight">Choose Your Program</h2>
-                        <div class="flex gap-2 text-gray-200 items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-orange-500" style="stroke-width: 1.5;"><path d="M12 18V5"></path><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"></path><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"></path><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path><path d="M18 18a4 4 0 0 0 2-7.464"></path><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"></path><path d="M6 18a4 4 0 0 1-2-7.464"></path><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path></svg>
+                        <div class="flex gap-2 text-amber-100 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-500" style="stroke-width: 1.5;"><path d="M12 18V5"></path><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"></path><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"></path><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path><path d="M18 18a4 4 0 0 0 2-7.464"></path><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"></path><path d="M6 18a4 4 0 0 1-2-7.464"></path><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path></svg>
                             <span class="text-sm font-medium">AI Powered Learning</span>
                         </div>
                     </div>
@@ -509,19 +509,19 @@
                     <div class="space-y-4">
                         <!-- Child's Name -->
                         <div class="space-y-2">
-                            <label class="text-sm font-semibold text-gray-200">Child's Name</label>
+                            <label class="text-sm font-semibold text-amber-100">Child's Name</label>
                             <div class="relative">
-                                <input type="text" placeholder="e.g., Sarah Johnson" class="w-full bg-black/40 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent shadow-sm h-12">
-                                <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-orange-500/20 hover:bg-orange-500/30 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-orange-600" style="stroke-width: 1.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                <input type="text" placeholder="e.g., Sarah Johnson" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                                <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-600" style="stroke-width: 1.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Age Group Selection -->
                         <div class="space-y-2">
-                            <label class="text-sm font-semibold text-gray-200">Select Age Group</label>
-                            <select class="w-full bg-black/40 border border-white/20 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent shadow-sm h-12">
+                            <label class="text-sm font-semibold text-amber-100">Select Age Group</label>
+                            <select class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
                                 <option value="">Choose your child's age group</option>
                                 <option value="young">Young Innovators (Ages 8-10) - ₪1,200</option>
                                 <option value="tech">Tech Explorers (Ages 11-13) - ₪1,500</option>
@@ -530,12 +530,12 @@
                         </div>
 
                         <!-- Schedule Info -->
-                        <div class="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4">
+                        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4">
                             <div class="flex items-center gap-2 mb-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-orange-600"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                                <span class="text-sm font-medium text-orange-300">Class Schedule</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-600"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                <span class="text-sm font-medium text-amber-300">Class Schedule</span>
                             </div>
-                            <div class="text-xs text-orange-200 space-y-1">
+                            <div class="text-xs text-amber-200 space-y-1">
                                 <div>• Young Innovators: Sundays 16:00-17:00</div>
                                 <div>• Tech Explorers: Sundays 17:30-18:45</div>
                                 <div>• Future Leaders: Sundays 19:00-20:30</div>
@@ -546,43 +546,43 @@
                         <div id="additionalChildrenContainer"></div>
 
                         <!-- Add Another Child -->
-                        <button type="button" id="addChildBtn" onclick="addChildForm()" class="w-full py-3 px-4 bg-black/20 border-2 border-dashed border-white/30 rounded-xl text-gray-200 hover:border-orange-400 hover:text-orange-400 transition-colors text-sm font-medium">
+                        <button type="button" id="addChildBtn" onclick="addChildForm()" class="w-full py-3 px-4 bg-amber-950/20 border-2 border-dashed border-amber-200/40 rounded-xl text-amber-100 hover:border-amber-400 hover:text-amber-400 transition-colors text-sm font-medium">
                             + Add another child (10% off 2nd child, 15% off 3rd+)
                         </button>
 
                         <!-- Parent Contact Fields -->
-                        <div class="border-t border-white/20 pt-4 mt-4">
+                        <div class="border-t border-amber-200/30 pt-4 mt-4">
                             <h3 class="text-lg font-semibold text-white mb-4">Parent Contact</h3>
                             <div class="space-y-4">
                                 <!-- Parent Name -->
                                 <div class="space-y-2">
-                                    <label class="text-sm font-semibold text-gray-200">Parent Name</label>
+                                    <label class="text-sm font-semibold text-amber-100">Parent Name</label>
                                     <div class="relative">
-                                        <input type="text" placeholder="Enter parent's full name" class="w-full bg-black/40 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent shadow-sm h-12">
-                                        <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-orange-500/20 hover:bg-orange-500/30 transition-colors">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-orange-600" style="stroke-width: 1.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                        <input type="text" placeholder="Enter parent's full name" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                                        <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 transition-colors">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-600" style="stroke-width: 1.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                                         </button>
                                     </div>
                                 </div>
 
                                 <!-- Email -->
                                 <div class="space-y-2">
-                                    <label class="text-sm font-semibold text-gray-200">Email Address</label>
+                                    <label class="text-sm font-semibold text-amber-100">Email Address</label>
                                     <div class="relative">
-                                        <input type="email" placeholder="parent@example.com" class="w-full bg-black/40 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent shadow-sm h-12">
-                                        <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-orange-500/20 hover:bg-orange-500/30 transition-colors">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-orange-600" style="stroke-width: 1.5;"><path d="M3 7l9 6 9-6"></path><rect width="18" height="14" x="3" y="5" rx="2"></rect></svg>
+                                        <input type="email" placeholder="parent@example.com" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                                        <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 transition-colors">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-600" style="stroke-width: 1.5;"><path d="M3 7l9 6 9-6"></path><rect width="18" height="14" x="3" y="5" rx="2"></rect></svg>
                                         </button>
                                     </div>
                                 </div>
 
                                 <!-- Phone Number -->
                                 <div class="space-y-2">
-                                    <label class="text-sm font-semibold text-gray-200">Phone Number</label>
+                                    <label class="text-sm font-semibold text-amber-100">Phone Number</label>
                                     <div class="relative">
-                                        <input type="tel" placeholder="+972 50-123-4567" class="w-full bg-black/40 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent shadow-sm h-12">
-                                        <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-orange-500/20 hover:bg-orange-500/30 transition-colors">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-orange-600" style="stroke-width: 1.5;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                        <input type="tel" placeholder="+972 50-123-4567" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                                        <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 transition-colors">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-600" style="stroke-width: 1.5;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                                         </button>
                                     </div>
                                 </div>
@@ -590,9 +590,9 @@
                         </div>
 
                         <!-- Price Summary -->
-                        <div id="price-summary" class="bg-gradient-to-br from-orange-500/10 to-pink-500/10 border border-orange-500/30 rounded-xl p-6 mt-6" style="display: none;">
+                        <div id="price-summary" class="bg-gradient-to-br from-amber-500/10 to-yellow-500/10 border border-amber-500/30 rounded-xl p-6 mt-6" style="display: none;">
                             <div class="flex items-center gap-3 mb-4">
-                                <div class="w-8 h-8 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full flex items-center justify-center">
+                                <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-yellow-400 rounded-full flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
                                         <path d="M12 1v6m0 6v6m6-12v6m-12-6v6M7 8h10l-1 9H8L7 8Z"/>
                                     </svg>
@@ -600,22 +600,22 @@
                                 <h4 class="text-lg font-semibold text-white">Registration Summary</h4>
                             </div>
 
-                            <div id="price-breakdown" class="space-y-2 text-sm text-orange-100 mb-4">
+                            <div id="price-breakdown" class="space-y-2 text-sm text-amber-100 mb-4">
                                 <!-- Price breakdown will be inserted here -->
                             </div>
 
-                            <div class="border-t border-orange-500/30 pt-4">
+                            <div class="border-t border-amber-500/30 pt-4">
                                 <div class="flex justify-between items-center">
                                     <span class="text-lg font-semibold text-white">Total:</span>
-                                    <span id="total-price" class="text-2xl font-bold text-orange-300">₪0</span>
+                                    <span id="total-price" class="text-2xl font-bold text-amber-300">₪0</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Payment Method Selection -->
-                        <div id="payment-selection" class="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-xl p-6 mt-6">
+                        <div id="payment-selection" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-500/30 rounded-xl p-6 mt-6">
                             <div class="flex items-center gap-3 mb-4">
-                                <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                                <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
                                         <rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
                                     </svg>
@@ -625,55 +625,62 @@
 
                             <div class="space-y-3">
                                 <!-- Bit Payment Option -->
-                                <label class="flex items-center p-4 bg-black/20 rounded-xl border border-white/10 cursor-pointer hover:bg-black/30 transition-colors">
+                                <label class="flex items-center p-4 bg-amber-950/20 rounded-xl border border-amber-200/20 cursor-pointer hover:bg-amber-950/30 transition-colors">
                                     <input type="radio" name="payment-method" value="bit" class="sr-only" checked>
                                     <div class="w-5 h-5 border-2 border-green-400 rounded-full flex items-center justify-center mr-3">
                                         <div class="w-2 h-2 bg-green-400 rounded-full"></div>
                                     </div>
                                     <div class="flex items-center gap-3 flex-1">
-                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Bit_%28payment_system%29_logo.svg/240px-Bit_%28payment_system%29_logo.svg.png" alt="Bit" class="w-full h-full object-contain">
+                                        <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center p-1">
+                                            <svg viewBox="0 0 120 40" class="w-full h-full">
+                                                <rect width="120" height="40" rx="8" fill="#00D4AA"/>
+                                                <text x="60" y="28" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="18">bit</text>
+                                            </svg>
                                         </div>
                                         <div>
                                             <div class="text-white font-medium">Bit Payment</div>
-                                            <div class="text-gray-300 text-sm">Pay securely with Bit app</div>
+                                            <div class="text-amber-200 text-sm">Pay securely with Bit app</div>
                                         </div>
                                     </div>
                                     <div class="text-green-400 font-medium text-sm">Recommended</div>
                                 </label>
 
                                 <!-- PayBox Option -->
-                                <label class="flex items-center p-4 bg-black/20 rounded-xl border border-white/10 cursor-pointer hover:bg-black/30 transition-colors">
+                                <label class="flex items-center p-4 bg-amber-950/20 rounded-xl border border-amber-200/20 cursor-pointer hover:bg-amber-950/30 transition-colors">
                                     <input type="radio" name="payment-method" value="paybox" class="sr-only">
-                                    <div class="w-5 h-5 border-2 border-gray-400 rounded-full flex items-center justify-center mr-3">
+                                    <div class="w-5 h-5 border-2 border-amber-400 rounded-full flex items-center justify-center mr-3">
                                         <div class="w-2 h-2 bg-transparent rounded-full"></div>
                                     </div>
                                     <div class="flex items-center gap-3 flex-1">
-                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center">
-                                            <img src="https://www.payboxapp.com/assets/images/paybox-logo.png" alt="PayBox" class="w-full h-full object-contain">
+                                        <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center p-1">
+                                            <svg viewBox="0 0 120 40" class="w-full h-full">
+                                                <rect width="120" height="40" rx="8" fill="#14B8A6"/>
+                                                <text x="60" y="16" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="12">Pay</text>
+                                                <text x="60" y="30" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="12">Box</text>
+                                            </svg>
                                         </div>
                                         <div>
                                             <div class="text-white font-medium">PayBox</div>
-                                            <div class="text-gray-300 text-sm">Pay with PayBox wallet</div>
+                                            <div class="text-amber-200 text-sm">Pay with PayBox wallet</div>
                                         </div>
                                     </div>
                                 </label>
 
                                 <!-- Credit Card Option -->
-                                <label class="flex items-center p-4 bg-black/20 rounded-xl border border-white/10 cursor-pointer hover:bg-black/30 transition-colors">
+                                <label class="flex items-center p-4 bg-amber-950/20 rounded-xl border border-amber-200/20 cursor-pointer hover:bg-amber-950/30 transition-colors">
                                     <input type="radio" name="payment-method" value="credit" class="sr-only">
-                                    <div class="w-5 h-5 border-2 border-gray-400 rounded-full flex items-center justify-center mr-3">
+                                    <div class="w-5 h-5 border-2 border-amber-400 rounded-full flex items-center justify-center mr-3">
                                         <div class="w-2 h-2 bg-transparent rounded-full"></div>
                                     </div>
                                     <div class="flex items-center gap-3 flex-1">
-                                        <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                                        <div class="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
                                                 <rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
                                             </svg>
                                         </div>
                                         <div>
                                             <div class="text-white font-medium">Credit Card</div>
-                                            <div class="text-gray-300 text-sm">Pay with credit or debit card</div>
+                                            <div class="text-amber-200 text-sm">Pay with credit or debit card</div>
                                         </div>
                                     </div>
                                 </label>
@@ -681,7 +688,7 @@
                         </div>
 
                         <!-- Reserve Button -->
-                        <button type="button" onclick="proceedToPayment()" class="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 mt-6">
+                        <button type="button" onclick="proceedToPayment()" class="w-full bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-600 hover:to-yellow-500 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 mt-6">
                             Proceed to Payment
                         </button>
                     </div>
@@ -712,7 +719,7 @@
                             WhatsApp Now to Register
                         </a>
 
-                        <a href="tel:+972543159025" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-3 no-underline">
+                        <a href="tel:+972543159025" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-3 no-underline">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                             </svg>
@@ -731,7 +738,7 @@
         <div class="flex items-center justify-center min-h-screen p-4">
             <div class="relative max-w-4xl w-full">
                 <!-- Close button -->
-                <button onclick="closeImageModal()" class="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 hover:bg-white/30 transition-colors flex items-center justify-center z-10">
+                <button onclick="closeImageModal()" class="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-amber-200/30 hover:bg-white/30 transition-colors flex items-center justify-center z-10">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
                         <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -739,11 +746,11 @@
                 </button>
 
                 <!-- Image container -->
-                <div class="bg-black/80 backdrop-blur-sm border border-white/20 rounded-2xl shadow-2xl overflow-hidden">
+                <div class="bg-black/80 backdrop-blur-sm border border-amber-200/30 rounded-2xl shadow-2xl overflow-hidden">
                     <img id="modalImage" src="" alt="" class="w-full h-auto max-h-[80vh] object-contain">
                     <div class="p-4 bg-black/60">
                         <h3 id="modalTitle" class="text-xl font-bold text-white"></h3>
-                        <p class="text-gray-200 text-sm mt-1">AI-generated artwork created by kids in our program</p>
+                        <p class="text-amber-100 text-sm mt-1">AI-generated artwork created by kids in our program</p>
                     </div>
                 </div>
             </div>
@@ -855,7 +862,7 @@
             inset: 0;
             z-index: -10;
             pointer-events: none;
-            background-image: url('/magical-background.jpg?v=1');
+            background-image: url('/NEW-background.png');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -953,32 +960,32 @@
             const addButton = document.getElementById('addChildBtn');
 
             const childForm = document.createElement('div');
-            childForm.className = 'border-t border-white/20 pt-4 mt-4';
+            childForm.className = 'border-t border-amber-200/30 pt-4 mt-4';
             childForm.id = `child-${childCount}`;
 
             childForm.innerHTML = `
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="text-lg font-semibold text-white">Child ${childCount + 1}</h3>
-                    <button type="button" onclick="removeChildForm(${childCount})" class="text-red-500 hover:text-red-700 text-sm font-medium">
+                    <button type="button" onclick="removeChildForm(${childCount})" class="text-amber-500 hover:text-amber-700 text-sm font-medium">
                         Remove
                     </button>
                 </div>
                 <div class="space-y-4">
                     <!-- Child's Name -->
                     <div class="space-y-2">
-                        <label class="text-sm font-semibold text-gray-200">Child's Name</label>
+                        <label class="text-sm font-semibold text-amber-100">Child's Name</label>
                         <div class="relative">
-                            <input type="text" placeholder="e.g., Alex Johnson" class="w-full bg-black/40 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent shadow-sm h-12">
-                            <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-orange-500/20 hover:bg-orange-500/30 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-orange-600" style="stroke-width: 1.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            <input type="text" placeholder="e.g., Alex Johnson" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                            <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-600" style="stroke-width: 1.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                             </button>
                         </div>
                     </div>
 
                     <!-- Age Group Selection -->
                     <div class="space-y-2">
-                        <label class="text-sm font-semibold text-gray-200">Select Age Group</label>
-                        <select class="w-full bg-black/40 border border-white/20 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent shadow-sm h-12">
+                        <label class="text-sm font-semibold text-amber-100">Select Age Group</label>
+                        <select class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
                             <option value="">Choose your child's age group</option>
                             <option value="young">Young Innovators (Ages 8-10) - ₪1,200</option>
                             <option value="tech">Tech Explorers (Ages 11-13) - ₪1,500</option>
@@ -1427,9 +1434,9 @@
         function showLoadingModal() {
             const loadingModal = `
                 <div data-modal="loading" class="fixed inset-0 z-[100000] flex items-center justify-center p-4" style="background-color: rgba(0,0,0,0.8);">
-                    <div class="bg-gradient-to-br from-blue-600 to-purple-700 border border-blue-400/20 rounded-2xl shadow-2xl max-w-md w-full p-8 text-center">
+                    <div class="bg-gradient-to-br from-cyan-600 to-teal-700 border border-cyan-400/20 rounded-2xl shadow-2xl max-w-md w-full p-8 text-center">
                         <div class="w-16 h-16 mx-auto mb-6">
-                            <div class="w-16 h-16 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+                            <div class="w-16 h-16 border-4 border-amber-200/40 border-t-white rounded-full animate-spin"></div>
                         </div>
                         <h2 class="text-2xl font-bold text-white mb-2">Processing Registration</h2>
                         <p id="loading-status" class="text-blue-100 mb-4">
@@ -1495,13 +1502,13 @@
 
         // Show error modal
         function showErrorModal(message, isWhatsAppFallback = false) {
-            const iconColor = isWhatsAppFallback ? 'text-orange-500' : 'text-red-500';
-            const bgColor = isWhatsAppFallback ? 'from-orange-600 to-yellow-600' : 'from-red-600 to-pink-600';
+            const iconColor = isWhatsAppFallback ? 'text-amber-500' : 'text-amber-500';
+            const bgColor = isWhatsAppFallback ? 'from-amber-600 to-yellow-500' : 'from-amber-600 to-yellow-600';
             const title = isWhatsAppFallback ? '📱 Sent via WhatsApp!' : '⚠️ Oops!';
 
             const errorModal = `
                 <div data-modal="error" class="fixed inset-0 z-[100000] flex items-center justify-center p-4" style="background-color: rgba(0,0,0,0.8);">
-                    <div class="bg-gradient-to-br ${bgColor} border border-white/20 rounded-2xl shadow-2xl max-w-md w-full p-6 text-center transform animate-pulse">
+                    <div class="bg-gradient-to-br ${bgColor} border border-amber-200/30 rounded-2xl shadow-2xl max-w-md w-full p-6 text-center transform animate-pulse">
                         <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                             ${isWhatsAppFallback ?
                                 '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>' :
@@ -1761,24 +1768,36 @@
 
         // Payment processing function
         async function proceedToPayment() {
+            console.log('🚀 Starting payment process...');
+
             // Validate form before proceeding
             if (!validateMobileForm()) {
+                console.log('❌ Form validation failed');
                 alert('Please fill in all required fields before proceeding to payment.');
                 return;
             }
+            console.log('✅ Form validation passed');
 
             // Get selected payment method
             const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked')?.value || 'bit';
+            console.log('💳 Selected payment method:', selectedPaymentMethod);
 
             // Collect form data
             const formData = collectMobileFormData();
-            if (!formData) return;
+            if (!formData) {
+                console.log('❌ Failed to collect form data');
+                alert('Failed to collect form data. Please try again.');
+                return;
+            }
+            console.log('📋 Form data collected:', formData);
 
             // Calculate total amount
             const totalElement = document.getElementById('total-price');
             const totalAmount = totalElement ? parseInt(totalElement.textContent.replace('₪', '')) : 0;
+            console.log('💰 Total amount:', totalAmount);
 
             if (totalAmount <= 0) {
+                console.log('❌ Invalid amount:', totalAmount);
                 alert('Invalid payment amount. Please refresh and try again.');
                 return;
             }
@@ -1791,15 +1810,18 @@
 
             try {
                 if (selectedPaymentMethod === 'bit') {
+                    console.log('🟢 Processing Bit payment...');
                     await processBitPayment(formData, totalAmount);
                 } else if (selectedPaymentMethod === 'paybox') {
+                    console.log('🟣 Processing PayBox payment...');
                     await processPayBoxPayment(formData, totalAmount);
                 } else {
+                    console.log('🔵 Processing credit card payment...');
                     await processCreditCardPayment(formData, totalAmount);
                 }
             } catch (error) {
-                console.error('Payment processing error:', error);
-                alert('Payment processing failed. Please try again.');
+                console.error('❌ Payment processing error:', error);
+                alert('Payment processing failed: ' + error.message + '. Please try again.');
 
                 // Restore button state
                 paymentButton.innerHTML = originalButtonText;
@@ -1863,19 +1885,17 @@
 
         // Submit registration data to Google Apps Script
         async function submitRegistrationData(data) {
-            const response = await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            });
+            console.log('🔄 Submitting registration data with payment info...', data);
 
-            if (!response.ok) {
-                throw new Error('Failed to submit registration data');
+            try {
+                // Use the existing robust Google Sheets submission function
+                const result = await submitToGoogleSheets(data);
+                console.log('✅ Registration data submitted successfully:', result);
+                return result;
+            } catch (error) {
+                console.error('❌ Failed to submit registration data:', error);
+                throw new Error('Failed to submit registration data: ' + error.message);
             }
-
-            return await response.json();
         }
 
         // Show Bit payment instructions
@@ -1883,11 +1903,11 @@
             const container = document.querySelector('.min-h-screen');
             container.innerHTML = `
                 <div class="flex items-center justify-center min-h-screen p-4">
-                    <div class="bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-xl p-8 max-w-md text-center">
+                    <div class="bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border border-cyan-500/30 rounded-xl p-8 max-w-md text-center">
                         <div class="text-6xl mb-4">💳</div>
                         <h2 class="text-2xl font-bold text-white mb-4">Complete Payment with Bit</h2>
-                        <p class="text-gray-300 mb-6">A Bit payment window has opened. Please complete your payment to confirm your registration.</p>
-                        <p class="text-sm text-gray-400 mb-6">After payment, you will receive a confirmation email.</p>
+                        <p class="text-amber-200 mb-6">A Bit payment window has opened. Please complete your payment to confirm your registration.</p>
+                        <p class="text-sm text-amber-300 mb-6">After payment, you will receive a confirmation email.</p>
                         <button onclick="window.location.reload()" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
                             Register Another Child
                         </button>
@@ -1901,12 +1921,12 @@
             const container = document.querySelector('.min-h-screen');
             container.innerHTML = `
                 <div class="flex items-center justify-center min-h-screen p-4">
-                    <div class="bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-xl p-8 max-w-md text-center">
+                    <div class="bg-gradient-to-br from-teal-500/20 to-yellow-500/20 border border-teal-500/30 rounded-xl p-8 max-w-md text-center">
                         <div class="text-6xl mb-4">💰</div>
                         <h2 class="text-2xl font-bold text-white mb-4">Complete Payment with PayBox</h2>
-                        <p class="text-gray-300 mb-6">A PayBox payment window has opened. Please complete your payment to confirm your registration.</p>
-                        <p class="text-sm text-gray-400 mb-6">After payment, you will receive a confirmation email.</p>
-                        <button onclick="window.location.reload()" class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
+                        <p class="text-amber-200 mb-6">A PayBox payment window has opened. Please complete your payment to confirm your registration.</p>
+                        <p class="text-sm text-amber-300 mb-6">After payment, you will receive a confirmation email.</p>
+                        <button onclick="window.location.reload()" class="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
                             Register Another Child
                         </button>
                     </div>
@@ -1942,23 +1962,23 @@
                             radioButton.classList.remove('bg-transparent');
                             if (m.value === 'bit') {
                                 radioButton.classList.add('bg-green-400');
-                                border.classList.remove('border-gray-400');
+                                border.classList.remove('border-amber-400');
                                 border.classList.add('border-green-400');
                             } else if (m.value === 'paybox') {
-                                radioButton.classList.add('bg-purple-400');
-                                border.classList.remove('border-gray-400');
-                                border.classList.add('border-purple-400');
+                                radioButton.classList.add('bg-teal-400');
+                                border.classList.remove('border-amber-400');
+                                border.classList.add('border-teal-400');
                             } else {
-                                radioButton.classList.add('bg-blue-400');
-                                border.classList.remove('border-gray-400');
-                                border.classList.add('border-blue-400');
+                                radioButton.classList.add('bg-cyan-400');
+                                border.classList.remove('border-amber-400');
+                                border.classList.add('border-cyan-400');
                             }
                         } else {
                             // Unselected state
                             radioButton.classList.add('bg-transparent');
-                            radioButton.classList.remove('bg-green-400', 'bg-purple-400', 'bg-blue-400');
-                            border.classList.add('border-gray-400');
-                            border.classList.remove('border-green-400', 'border-purple-400', 'border-blue-400');
+                            radioButton.classList.remove('bg-green-400', 'bg-teal-400', 'bg-cyan-400');
+                            border.classList.add('border-amber-400');
+                            border.classList.remove('border-green-400', 'border-teal-400', 'border-cyan-400');
                         }
                     });
                 });
