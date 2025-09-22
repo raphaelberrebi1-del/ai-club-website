@@ -9,11 +9,11 @@
     <div class="site-background" aria-hidden="true"></div>
 
     <!-- Fixed Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/90 backdrop-blur-xl border-b border-white/10">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/95 backdrop-blur-xl border-b border-white/10">
         <div class="flex items-center justify-between px-4 h-16">
             <!-- Hamburger Menu -->
-            <button class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+            <button id="mobile-menu-btn" class="flex items-center justify-center w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200 hover:scale-105">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white">
                     <line x1="3" y1="6" x2="21" y2="6"></line>
                     <line x1="3" y1="12" x2="21" y2="12"></line>
                     <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -22,18 +22,66 @@
 
             <!-- AI Club Branding -->
             <div class="flex items-center">
-                <h1 class="text-xl font-semibold text-white">AI Club</h1>
+                <h1 class="text-xl font-bold text-white tracking-tight">
+                    <span class="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">AI</span>
+                    <span class="text-white">Club</span>
+                </h1>
             </div>
 
             <!-- Reserve Spot Button -->
-            <button class="bg-gradient-to-r from-cyan-500 to-orange-400 text-white text-sm font-medium px-4 py-2 rounded-lg hover:shadow-lg transition-all">
+            <button class="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105">
                 Reserve Spot
             </button>
         </div>
     </header>
 
-    <main class="content pt-16">
-        <!-- Mobile page rebuild pending -->
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex flex-col justify-center px-6 py-12 relative">
+            <div class="max-w-md mx-auto text-center space-y-8">
+                <!-- Main Headline -->
+                <div class="space-y-4">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+                        Give Your Child the
+                        <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+                            AI Advantage
+                        </span>
+                    </h1>
+
+                    <p class="text-xl text-white/90 leading-relaxed font-medium">
+                        Join the AI Club - Where Kids Master Tomorrow's Essential Tools Today. Safe, fun, and guided learning in small groups.
+                    </p>
+                </div>
+
+                <!-- Description -->
+                <div class="space-y-6 text-white/80">
+                    <p class="text-lg leading-relaxed">
+                        AI Club is the first structured program in our Raanana designed specifically for kids to learn and create with artificial intelligence tools in a safe, fun, and guided environment.
+                    </p>
+
+                    <p class="text-lg leading-relaxed font-medium">
+                        In a world where AI is reshaping every industry, the question isn't whether your child should learn AI – it's
+                        <span class="text-cyan-300 font-semibold">how soon they can start.</span>
+                    </p>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="pt-4">
+                    <button class="w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 text-lg transform hover:scale-105">
+                        Learn More About Our Programs
+                    </button>
+                </div>
+
+                <!-- Scroll Indicator -->
+                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white/60">
+                        <path d="M7 13l3 3 7-7"></path>
+                        <path d="M12 2v20"></path>
+                    </svg>
+                </div>
+            </div>
+        </section>
     </main>
 
     <style>
