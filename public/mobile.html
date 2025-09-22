@@ -612,9 +612,77 @@
                             </div>
                         </div>
 
+                        <!-- Payment Method Selection -->
+                        <div id="payment-selection" class="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-xl p-6 mt-6" style="display: none;">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                        <rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-semibold text-white">Choose Payment Method</h4>
+                            </div>
+
+                            <div class="space-y-3">
+                                <!-- Bit Payment Option -->
+                                <label class="flex items-center p-4 bg-black/20 rounded-xl border border-white/10 cursor-pointer hover:bg-black/30 transition-colors">
+                                    <input type="radio" name="payment-method" value="bit" class="sr-only" checked>
+                                    <div class="w-5 h-5 border-2 border-green-400 rounded-full flex items-center justify-center mr-3">
+                                        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                    </div>
+                                    <div class="flex items-center gap-3 flex-1">
+                                        <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+                                            <span class="text-white font-bold text-xs">bit</span>
+                                        </div>
+                                        <div>
+                                            <div class="text-white font-medium">Bit Payment</div>
+                                            <div class="text-gray-300 text-sm">Pay securely with Bit app</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-green-400 font-medium text-sm">Recommended</div>
+                                </label>
+
+                                <!-- PayBox Option -->
+                                <label class="flex items-center p-4 bg-black/20 rounded-xl border border-white/10 cursor-pointer hover:bg-black/30 transition-colors">
+                                    <input type="radio" name="payment-method" value="paybox" class="sr-only">
+                                    <div class="w-5 h-5 border-2 border-gray-400 rounded-full flex items-center justify-center mr-3">
+                                        <div class="w-2 h-2 bg-transparent rounded-full"></div>
+                                    </div>
+                                    <div class="flex items-center gap-3 flex-1">
+                                        <div class="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center">
+                                            <span class="text-white font-bold text-xs">PB</span>
+                                        </div>
+                                        <div>
+                                            <div class="text-white font-medium">PayBox</div>
+                                            <div class="text-gray-300 text-sm">Pay with PayBox wallet</div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Credit Card Option -->
+                                <label class="flex items-center p-4 bg-black/20 rounded-xl border border-white/10 cursor-pointer hover:bg-black/30 transition-colors">
+                                    <input type="radio" name="payment-method" value="credit" class="sr-only">
+                                    <div class="w-5 h-5 border-2 border-gray-400 rounded-full flex items-center justify-center mr-3">
+                                        <div class="w-2 h-2 bg-transparent rounded-full"></div>
+                                    </div>
+                                    <div class="flex items-center gap-3 flex-1">
+                                        <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                                <rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <div class="text-white font-medium">Credit Card</div>
+                                            <div class="text-gray-300 text-sm">Pay with credit or debit card</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
                         <!-- Reserve Button -->
-                        <button type="button" onclick="submitMobileRegistration()" class="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 mt-6">
-                            Reserve Your Spot
+                        <button type="button" onclick="proceedToPayment()" class="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 mt-6">
+                            Proceed to Payment
                         </button>
                     </div>
                 </div>
@@ -1573,6 +1641,277 @@
             priceBreakdown.innerHTML = breakdownHtml;
             totalPrice.textContent = `₪${Math.round(total)}`;
             priceSummary.style.display = 'block';
+        }
+
+        // Form validation function
+        function validateMobileForm() {
+            // Check parent name
+            const parentNameInput = document.querySelector('input[type="text"][placeholder*="parent"]');
+            if (!parentNameInput || !parentNameInput.value.trim()) {
+                return false;
+            }
+
+            // Check parent email
+            const emailInput = document.querySelector('input[type="email"]');
+            if (!emailInput || !emailInput.value.trim()) {
+                return false;
+            }
+
+            // Check parent phone
+            const phoneInput = document.querySelector('input[type="tel"]');
+            if (!phoneInput || !phoneInput.value.trim()) {
+                return false;
+            }
+
+            // Check main child name
+            const mainChildName = document.querySelector('input[type="text"]:not([placeholder*="parent"])');
+            if (!mainChildName || !mainChildName.value.trim()) {
+                return false;
+            }
+
+            // Check main child age group
+            const mainAgeGroup = document.querySelector('select');
+            if (!mainAgeGroup || !mainAgeGroup.value) {
+                return false;
+            }
+
+            // Check additional children if any
+            const additionalChildren = document.querySelectorAll('#additionalChildrenContainer .child-form');
+            for (let child of additionalChildren) {
+                const childNameInput = child.querySelector('input[type="text"]');
+                const childAgeSelect = child.querySelector('select');
+
+                if (!childNameInput || !childNameInput.value.trim()) {
+                    return false;
+                }
+                if (!childAgeSelect || !childAgeSelect.value) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Collect form data function
+        function collectMobileFormData() {
+            const parentNameInput = document.querySelector('input[type="text"][placeholder*="parent"]');
+            const emailInput = document.querySelector('input[type="email"]');
+            const phoneInput = document.querySelector('input[type="tel"]');
+
+            if (!parentNameInput || !emailInput || !phoneInput) {
+                return null;
+            }
+
+            const formData = {
+                parent: {
+                    name: parentNameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    phone: phoneInput.value.trim()
+                },
+                children: []
+            };
+
+            // Add main child
+            const mainChildName = document.querySelector('input[type="text"]:not([placeholder*="parent"])');
+            const mainAgeGroup = document.querySelector('select');
+
+            if (mainChildName && mainAgeGroup && mainChildName.value.trim() && mainAgeGroup.value) {
+                const ageGroupText = mainAgeGroup.options[mainAgeGroup.selectedIndex].text;
+                const price = getPriceForAgeGroup(mainAgeGroup.value);
+
+                formData.children.push({
+                    name: mainChildName.value.trim(),
+                    ageGroup: mainAgeGroup.value,
+                    program: ageGroupText,
+                    price: price
+                });
+            }
+
+            // Add additional children
+            const additionalChildren = document.querySelectorAll('#additionalChildrenContainer .child-form');
+            additionalChildren.forEach(child => {
+                const childNameInput = child.querySelector('input[type="text"]');
+                const childAgeSelect = child.querySelector('select');
+
+                if (childNameInput && childAgeSelect && childNameInput.value.trim() && childAgeSelect.value) {
+                    const ageGroupText = childAgeSelect.options[childAgeSelect.selectedIndex].text;
+                    const price = getPriceForAgeGroup(childAgeSelect.value);
+
+                    formData.children.push({
+                        name: childNameInput.value.trim(),
+                        ageGroup: childAgeSelect.value,
+                        program: ageGroupText,
+                        price: price
+                    });
+                }
+            });
+
+            return formData;
+        }
+
+        // Helper function to get price for age group
+        function getPriceForAgeGroup(ageGroup) {
+            const priceMap = {
+                '6-9': 399,
+                '10-13': 499,
+                '14-18': 599
+            };
+            return priceMap[ageGroup] || 399;
+        }
+
+        // Payment processing function
+        async function proceedToPayment() {
+            // Validate form before proceeding
+            if (!validateMobileForm()) {
+                alert('Please fill in all required fields before proceeding to payment.');
+                return;
+            }
+
+            // Get selected payment method
+            const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked')?.value || 'bit';
+
+            // Collect form data
+            const formData = collectMobileFormData();
+            if (!formData) return;
+
+            // Calculate total amount
+            const totalElement = document.getElementById('total-price');
+            const totalAmount = totalElement ? parseInt(totalElement.textContent.replace('₪', '')) : 0;
+
+            if (totalAmount <= 0) {
+                alert('Invalid payment amount. Please refresh and try again.');
+                return;
+            }
+
+            // Show loading state
+            const paymentButton = document.querySelector('button[onclick="proceedToPayment()"]');
+            const originalButtonText = paymentButton.innerHTML;
+            paymentButton.innerHTML = 'Processing...';
+            paymentButton.disabled = true;
+
+            try {
+                if (selectedPaymentMethod === 'bit') {
+                    await processBitPayment(formData, totalAmount);
+                } else if (selectedPaymentMethod === 'paybox') {
+                    await processPayBoxPayment(formData, totalAmount);
+                } else {
+                    await processCreditCardPayment(formData, totalAmount);
+                }
+            } catch (error) {
+                console.error('Payment processing error:', error);
+                alert('Payment processing failed. Please try again.');
+
+                // Restore button state
+                paymentButton.innerHTML = originalButtonText;
+                paymentButton.disabled = false;
+            }
+        }
+
+        // Bit payment processing
+        async function processBitPayment(formData, amount) {
+            // Submit registration data first with pending payment status
+            await submitRegistrationData({
+                ...formData,
+                paymentMethod: 'bit',
+                paymentStatus: 'pending',
+                amount: amount
+            });
+
+            // Generate Bit payment link
+            const description = `AI Kids Registration - ${formData.children.map(c => c.name).join(', ')}`;
+            const bitLink = `https://bit.ly/pay?amount=${amount}&description=${encodeURIComponent(description)}`;
+
+            // Redirect to Bit payment
+            window.open(bitLink, '_blank');
+
+            // Show instructions
+            showBitPaymentInstructions();
+        }
+
+        // PayBox payment processing
+        async function processPayBoxPayment(formData, amount) {
+            // Submit registration data first with pending payment status
+            await submitRegistrationData({
+                ...formData,
+                paymentMethod: 'paybox',
+                paymentStatus: 'pending',
+                amount: amount
+            });
+
+            // Generate PayBox payment link
+            const description = `AI Kids Registration - ${formData.children.map(c => c.name).join(', ')}`;
+            const payboxLink = `https://payboxapp.com/pay?amount=${amount}&currency=ILS&description=${encodeURIComponent(description)}`;
+
+            // Redirect to PayBox payment
+            window.open(payboxLink, '_blank');
+
+            // Show instructions
+            showPayBoxPaymentInstructions();
+        }
+
+        // Credit card payment processing
+        async function processCreditCardPayment(formData, amount) {
+            // Redirect to credit card payment form or integrate with payment gateway
+            alert('Credit card payment will be available soon. Please use Bit payment for now.');
+
+            // Restore button state
+            const paymentButton = document.querySelector('button[onclick="proceedToPayment()"]');
+            paymentButton.innerHTML = 'Proceed to Payment';
+            paymentButton.disabled = false;
+        }
+
+
+        // Submit registration data to Google Apps Script
+        async function submitRegistrationData(data) {
+            const response = await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to submit registration data');
+            }
+
+            return await response.json();
+        }
+
+        // Show Bit payment instructions
+        function showBitPaymentInstructions() {
+            const container = document.querySelector('.min-h-screen');
+            container.innerHTML = `
+                <div class="flex items-center justify-center min-h-screen p-4">
+                    <div class="bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-xl p-8 max-w-md text-center">
+                        <div class="text-6xl mb-4">💳</div>
+                        <h2 class="text-2xl font-bold text-white mb-4">Complete Payment with Bit</h2>
+                        <p class="text-gray-300 mb-6">A Bit payment window has opened. Please complete your payment to confirm your registration.</p>
+                        <p class="text-sm text-gray-400 mb-6">After payment, you will receive a confirmation email.</p>
+                        <button onclick="window.location.reload()" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
+                            Register Another Child
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Show PayBox payment instructions
+        function showPayBoxPaymentInstructions() {
+            const container = document.querySelector('.min-h-screen');
+            container.innerHTML = `
+                <div class="flex items-center justify-center min-h-screen p-4">
+                    <div class="bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-xl p-8 max-w-md text-center">
+                        <div class="text-6xl mb-4">💰</div>
+                        <h2 class="text-2xl font-bold text-white mb-4">Complete Payment with PayBox</h2>
+                        <p class="text-gray-300 mb-6">A PayBox payment window has opened. Please complete your payment to confirm your registration.</p>
+                        <p class="text-sm text-gray-400 mb-6">After payment, you will receive a confirmation email.</p>
+                        <button onclick="window.location.reload()" class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
+                            Register Another Child
+                        </button>
+                    </div>
+                </div>
+            `;
         }
 
         // Add event listeners to recalculate price when form changes
