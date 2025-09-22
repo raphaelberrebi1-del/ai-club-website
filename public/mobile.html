@@ -173,13 +173,13 @@
                             </p>
                             <!-- AI Art Examples -->
                             <div class="grid grid-cols-3 gap-2">
-                                <div class="aspect-square bg-gradient-to-br from-pink-200 to-orange-200 rounded-lg overflow-hidden">
+                                <div class="aspect-square bg-gradient-to-br from-pink-200 to-orange-200 rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200" onclick="openImageModal('/colorful-modern-fusion.png', 'Colorful Modern Fusion Art')">
                                     <img src="/colorful-modern-fusion.png" alt="Colorful Modern Fusion Art" class="w-full h-full object-cover">
                                 </div>
-                                <div class="aspect-square bg-gradient-to-br from-blue-200 to-purple-200 rounded-lg overflow-hidden">
+                                <div class="aspect-square bg-gradient-to-br from-blue-200 to-purple-200 rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200" onclick="openImageModal('/cinematic-3d.png', 'Cinematic 3D Art')">
                                     <img src="/cinematic-3d.png" alt="Cinematic 3D Art" class="w-full h-full object-cover">
                                 </div>
-                                <div class="aspect-square bg-gradient-to-br from-green-200 to-emerald-200 rounded-lg overflow-hidden">
+                                <div class="aspect-square bg-gradient-to-br from-green-200 to-emerald-200 rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200" onclick="openImageModal('/childrens-book-illustrations.png', 'Children\'s Book Illustrations')">
                                     <img src="/childrens-book-illustrations.png" alt="Children's Book Illustrations" class="w-full h-full object-cover">
                                 </div>
                             </div>
@@ -222,6 +222,30 @@
             </div>
         </section>
     </main>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/80 backdrop-blur-sm">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="relative max-w-4xl w-full">
+                <!-- Close button -->
+                <button onclick="closeImageModal()" class="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/20 hover:bg-white/30 transition-colors flex items-center justify-center z-10">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+
+                <!-- Image container -->
+                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                    <img id="modalImage" src="" alt="" class="w-full h-auto max-h-[80vh] object-contain">
+                    <div class="p-4 bg-white">
+                        <h3 id="modalTitle" class="text-xl font-bold text-gray-800"></h3>
+                        <p class="text-gray-600 text-sm mt-1">AI-generated artwork created by kids in our program</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <style>
         :root {
@@ -357,6 +381,40 @@
 
             // Trigger initial check
             handleScrollAnimation();
+        });
+
+        // Image Modal Functions
+        function openImageModal(imageSrc, imageTitle) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+
+            modalImage.src = imageSrc;
+            modalImage.alt = imageTitle;
+            modalTitle.textContent = imageTitle;
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal when clicking outside the image
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeImageModal();
+            }
+        });
+
+        // Close modal with escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
         });
     </script>
 </body>
