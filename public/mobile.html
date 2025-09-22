@@ -1132,6 +1132,9 @@
 
                 // Test: First check if Google Apps Script is reachable
                 console.log('🔍 Testing Google Apps Script connectivity...');
+                console.log('🔗 Test URL:', GOOGLE_SHEETS_WEB_APP_URL + '?test=connectivity');
+                console.log('💡 You can test this URL directly in your browser!');
+
                 try {
                     const testResponse = await fetch(GOOGLE_SHEETS_WEB_APP_URL + '?test=connectivity', {
                         method: 'GET'
@@ -1143,16 +1146,21 @@
                         console.log('📡 Test response body:', testResult);
 
                         // Check if this looks like a valid Apps Script response
-                        if (testResult.includes('html') || testResult.includes('error') || testResult.includes('success')) {
-                            console.log('✅ Apps Script appears to be responding');
+                        if (testResult.includes('Apps Script') || testResult.includes('working') || testResult.includes('success')) {
+                            console.log('✅ Apps Script is responding correctly');
+                        } else if (testResult.includes('html') || testResult.includes('error')) {
+                            console.log('⚠️ Apps Script responding but may have configuration issues');
                         } else {
-                            console.log('⚠️ Unexpected response format from Apps Script');
+                            console.log('❌ Apps Script not configured to handle web requests');
+                            console.log('💡 Apps Script needs doGet() and doPost() functions');
                         }
                     } else {
                         console.log('❌ Apps Script connectivity test failed');
+                        console.log('💡 Check if Apps Script is deployed as web app');
                     }
                 } catch (testError) {
                     console.log('⚠️ Test connectivity failed:', testError);
+                    console.log('💡 Possible CORS issue or Apps Script not deployed');
                 }
 
                 // Primary: Submit to Google Sheets
