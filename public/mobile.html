@@ -34,7 +34,7 @@
             </div>
 
             <!-- Reserve Spot Button -->
-            <button class="bg-gradient-to-r from-orange-500 to-orange-400 text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-200 transform hover:scale-105">
+            <button onclick="document.querySelector('#choose-program').scrollIntoView({behavior: 'smooth'})" class="bg-gradient-to-r from-orange-500 to-orange-400 text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-200 transform hover:scale-105">
                 Reserve Spot
             </button>
         </div>
@@ -73,7 +73,7 @@
                 <!-- Description -->
                 <div class="space-y-6 text-white/90">
                     <p class="text-lg sm:text-xl leading-relaxed" style="text-shadow: 0 1px 3px rgba(0,0,0,0.2);">
-                        AI Club is the first structured program in our Raanana designed specifically for kids to learn and create with artificial intelligence tools in a safe, fun, and guided environment.
+                        AI Club is the first structured program in Raanana designed specifically for kids to learn and create with artificial intelligence tools in a safe, fun, and guided environment.
                     </p>
 
                     <p class="text-lg sm:text-xl leading-relaxed font-semibold" style="text-shadow: 0 1px 3px rgba(0,0,0,0.2);">
@@ -84,7 +84,7 @@
 
                 <!-- CTA Button -->
                 <div class="pt-4">
-                    <button class="w-full bg-gradient-to-r from-orange-500 to-orange-400 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 text-lg transform hover:scale-105">
+                    <button onclick="document.querySelector('#choose-program').scrollIntoView({behavior: 'smooth'})" class="w-full bg-gradient-to-r from-orange-500 to-orange-400 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 text-lg transform hover:scale-105">
                         Learn More About Our Programs
                     </button>
                 </div>
@@ -405,7 +405,7 @@
                 <div class="space-y-6">
                     <h2 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">
                         Ready to Give Your Child the
-                        <span class="font-serif italic bg-gradient-to-r from-orange-300 via-pink-300 to-orange-400 bg-clip-text text-transparent px-1">
+                        <span class="font-serif italic bg-gradient-to-r from-orange-300 via-pink-300 to-orange-400 bg-clip-text text-transparent px-2 inline-block">
                             AI Advantage?
                         </span>
                     </h2>
@@ -424,14 +424,14 @@
                         <span class="text-lg font-bold text-orange-300">Early Bird Special Pricing</span>
                     </div>
                     <div class="text-3xl font-extrabold text-white mb-2">20% OFF</div>
-                    <p class="text-sm text-white/80">Limited time offer for early registrants</p>
+                    <p class="text-sm text-white/80">Limited time offer for early registrants<br><span class="text-xs text-white/60">ending October 17th</span></p>
                 </div>
 
             </div>
         </section>
 
         <!-- Choose Your Program Section -->
-        <section class="relative px-6 py-16">
+        <section id="choose-program" class="relative px-6 py-16">
             <!-- Background overlays -->
             <div class="fixed inset-0 z-[1]" style="background: radial-gradient(ellipse at center, transparent 70%, rgba(0,0,0,0.02) 85%, rgba(0,0,0,0.05) 100%); pointer-events: none;"></div>
             <div class="fixed inset-0 z-[2]" style="background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 100%); pointer-events: none;"></div>
