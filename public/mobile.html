@@ -554,6 +554,17 @@
                         <div class="border-t border-white/20 pt-4 mt-4">
                             <h3 class="text-lg font-semibold text-white mb-4">Parent Contact</h3>
                             <div class="space-y-4">
+                                <!-- Parent Name -->
+                                <div class="space-y-2">
+                                    <label class="text-sm font-semibold text-gray-200">Parent Name</label>
+                                    <div class="relative">
+                                        <input type="text" placeholder="Enter parent's full name" class="w-full bg-black/40 border border-white/20 rounded-xl px-4 py-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent shadow-sm h-12">
+                                        <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-orange-500/20 hover:bg-orange-500/30 transition-colors">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-orange-600" style="stroke-width: 1.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                        </button>
+                                    </div>
+                                </div>
+
                                 <!-- Email -->
                                 <div class="space-y-2">
                                     <label class="text-sm font-semibold text-gray-200">Email Address</label>
@@ -574,6 +585,29 @@
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-orange-600" style="stroke-width: 1.5;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                                         </button>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price Summary -->
+                        <div id="price-summary" class="bg-gradient-to-br from-orange-500/10 to-pink-500/10 border border-orange-500/30 rounded-xl p-6 mt-6" style="display: none;">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                        <path d="M12 1v6m0 6v6m6-12v6m-12-6v6M7 8h10l-1 9H8L7 8Z"/>
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-semibold text-white">Registration Summary</h4>
+                            </div>
+
+                            <div id="price-breakdown" class="space-y-2 text-sm text-orange-100 mb-4">
+                                <!-- Price breakdown will be inserted here -->
+                            </div>
+
+                            <div class="border-t border-orange-500/30 pt-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-lg font-semibold text-white">Total:</span>
+                                    <span id="total-price" class="text-2xl font-bold text-orange-300">₪0</span>
                                 </div>
                             </div>
                         </div>
@@ -1090,14 +1124,16 @@
                 });
 
                 // Collect parent data
+                const parentNameInput = document.querySelector('input[type="text"][placeholder*="parent"]');
                 const emailInput = document.querySelector('input[type="email"]');
                 const phoneInput = document.querySelector('input[type="tel"]');
 
+                console.log('Parent name input found:', !!parentNameInput);
                 console.log('Email input found:', !!emailInput);
                 console.log('Phone input found:', !!phoneInput);
 
                 formData.parent = {
-                    name: 'Mobile User', // We don't collect parent name on mobile
+                    name: parentNameInput?.value?.trim() || '',
                     email: emailInput?.value?.trim() || '',
                     phone: phoneInput?.value?.trim() || ''
                 };
@@ -1113,10 +1149,10 @@
                     return;
                 }
 
-                if (!formData.parent.email || !formData.parent.phone) {
+                if (!formData.parent.name || !formData.parent.email || !formData.parent.phone) {
                     console.error('❌ Missing parent contact info');
                     closeLoadingModal();
-                    showErrorModal('Please fill in your email and phone number');
+                    showErrorModal('Please fill in parent name, email, and phone number');
                     return;
                 }
 
@@ -1432,6 +1468,149 @@
                 successElement.remove();
             }
         }
+
+        // Calculate and display price with discounts
+        function calculateMobilePrice() {
+            const priceSummary = document.getElementById('price-summary');
+            const priceBreakdown = document.getElementById('price-breakdown');
+            const totalPrice = document.getElementById('total-price');
+
+            // Collect all children data for price calculation
+            const children = [];
+
+            // Main child
+            const childName = document.querySelector('input[type="text"]:not([placeholder*="parent"])').value.trim();
+            const ageGroup = document.querySelector('select').value;
+
+            if (childName && ageGroup) {
+                let program, price;
+                switch(ageGroup) {
+                    case 'young':
+                        program = 'Young Innovators (Ages 8-10)';
+                        price = 1200;
+                        break;
+                    case 'tech':
+                        program = 'Tech Explorers (Ages 11-13)';
+                        price = 1500;
+                        break;
+                    case 'future':
+                        program = 'Future Leaders (Ages 14-18)';
+                        price = 1800;
+                        break;
+                }
+
+                if (program) {
+                    children.push({ name: childName, program, price });
+                }
+            }
+
+            // Additional children
+            const additionalChildren = document.querySelectorAll('#additionalChildrenContainer > div');
+            additionalChildren.forEach(childDiv => {
+                const childInputs = childDiv.querySelectorAll('input, select');
+                const childName = childInputs[0]?.value?.trim();
+                const ageGroup = childInputs[1]?.value;
+
+                if (childName && ageGroup) {
+                    let program, price;
+                    switch(ageGroup) {
+                        case 'young':
+                            program = 'Young Innovators (Ages 8-10)';
+                            price = 1200;
+                            break;
+                        case 'tech':
+                            program = 'Tech Explorers (Ages 11-13)';
+                            price = 1500;
+                            break;
+                        case 'future':
+                            program = 'Future Leaders (Ages 14-18)';
+                            price = 1800;
+                            break;
+                    }
+
+                    if (program) {
+                        children.push({ name: childName, program, price });
+                    }
+                }
+            });
+
+            if (children.length === 0) {
+                priceSummary.style.display = 'none';
+                return;
+            }
+
+            // Calculate prices with discounts
+            let total = 0;
+            let breakdownHtml = '';
+
+            // Sort by price (highest first) to apply discounts correctly
+            children.sort((a, b) => b.price - a.price);
+
+            children.forEach((child, index) => {
+                let finalPrice = child.price;
+                let discountText = '';
+
+                if (index === 1) {
+                    // 10% off for 2nd child
+                    finalPrice = child.price * 0.9;
+                    discountText = ' <span class="text-green-300">(10% off)</span>';
+                } else if (index >= 2) {
+                    // 15% off for 3rd+ children
+                    finalPrice = child.price * 0.85;
+                    discountText = ' <span class="text-green-300">(15% off)</span>';
+                }
+
+                total += finalPrice;
+
+                breakdownHtml += `
+                    <div class="flex justify-between items-center">
+                        <span>${child.name} - ${child.program}</span>
+                        <span class="font-medium">₪${Math.round(finalPrice)}${discountText}</span>
+                    </div>
+                `;
+            });
+
+            priceBreakdown.innerHTML = breakdownHtml;
+            totalPrice.textContent = `₪${Math.round(total)}`;
+            priceSummary.style.display = 'block';
+        }
+
+        // Add event listeners to recalculate price when form changes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Main form inputs
+            const mainChildName = document.querySelector('input[type="text"]:not([placeholder*="parent"])');
+            const mainAgeGroup = document.querySelector('select');
+
+            if (mainChildName) {
+                mainChildName.addEventListener('input', calculateMobilePrice);
+            }
+            if (mainAgeGroup) {
+                mainAgeGroup.addEventListener('change', calculateMobilePrice);
+            }
+        });
+
+        // Update addChildForm to recalculate price
+        const originalAddChildForm = window.addChildForm;
+        window.addChildForm = function() {
+            originalAddChildForm();
+
+            // Add event listeners to new child inputs
+            setTimeout(() => {
+                const newInputs = document.querySelectorAll('#additionalChildrenContainer input, #additionalChildrenContainer select');
+                newInputs.forEach(input => {
+                    input.addEventListener('input', calculateMobilePrice);
+                    input.addEventListener('change', calculateMobilePrice);
+                });
+                calculateMobilePrice();
+            }, 100);
+        };
+
+        // Update removeChildForm to recalculate price
+        const originalRemoveChildForm = window.removeChildForm;
+        window.removeChildForm = function(id) {
+            originalRemoveChildForm(id);
+            calculateMobilePrice();
+        };
     </script>
 </body>
 </html>
