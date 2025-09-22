@@ -40,6 +40,64 @@
         </div>
     </header>
 
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 hidden bg-black/80 backdrop-blur-sm">
+        <div class="flex flex-col h-full">
+            <!-- Menu Header -->
+            <div class="flex items-center justify-between p-6 border-b border-white/10">
+                <h2 class="text-xl font-bold text-white">Menu</h2>
+                <button id="close-menu-btn" class="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 transition-colors">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Menu Items -->
+            <nav class="flex-1 p-6">
+                <ul class="space-y-4">
+                    <li>
+                        <a href="#what-child-will-learn" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-400">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                            <span class="text-lg">What You'll Learn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#what-child-could-create" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-400">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                            <span class="text-lg">What You Could Create</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#choose-program" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-400">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <span class="text-lg">Choose Program</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#have-questions" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-400">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <span class="text-lg">Contact Us</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <main class="pt-16 relative z-10">
         <!-- Hero Section -->
@@ -66,14 +124,14 @@
                     </h1>
 
                     <p class="text-xl sm:text-2xl text-white/95 leading-relaxed font-semibold" style="text-shadow: 0 1px 4px rgba(0,0,0,0.2);">
-                        Join the AI Club - Where Kids Master Tomorrow's Essential Tools Today. Safe, fun, and guided learning in small groups.
+                        Join the AI Club - Where Kids Master Tomorrow's Essential Tools. Safe, fun, and guided learning in small groups.
                     </p>
                 </div>
 
                 <!-- Description -->
                 <div class="space-y-6 text-white/90">
                     <p class="text-lg sm:text-xl leading-relaxed" style="text-shadow: 0 1px 3px rgba(0,0,0,0.2);">
-                        AI Club is the first structured program in Raanana designed specifically for kids to learn and create with artificial intelligence tools in a safe, fun, and guided environment.
+                        AI Club is the first structured program in Raanana designed specifically for kids and teens to learn and create with artificial intelligence tools in a safe, fun, and guided environment.
                     </p>
 
                     <p class="text-lg sm:text-xl leading-relaxed font-semibold" style="text-shadow: 0 1px 3px rgba(0,0,0,0.2);">
@@ -84,7 +142,7 @@
 
                 <!-- CTA Button -->
                 <div class="pt-4">
-                    <button onclick="document.querySelector('#choose-program').scrollIntoView({behavior: 'smooth'})" class="w-full bg-gradient-to-r from-orange-500 to-orange-400 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 text-lg transform hover:scale-105">
+                    <button onclick="document.querySelector('#what-child-could-create').scrollIntoView({behavior: 'smooth'})" class="w-full bg-gradient-to-r from-orange-500 to-orange-400 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 text-lg transform hover:scale-105">
                         Learn More About Our Programs
                     </button>
                 </div>
@@ -100,7 +158,7 @@
         </section>
 
         <!-- What Your Child Will Learn Section -->
-        <section class="py-16 px-4 relative z-10">
+        <section id="what-child-will-learn" class="py-16 px-4 relative z-10">
             <div class="max-w-sm mx-auto">
                 <!-- Section Header -->
                 <div class="text-center mb-12 fade-in-left" data-scroll>
@@ -221,7 +279,7 @@
         </section>
 
         <!-- What Your Child Could Create Section -->
-        <section class="relative px-6 py-16">
+        <section id="what-child-could-create" class="relative px-6 py-16">
             <!-- Background overlays -->
             <div class="fixed inset-0 z-[1]" style="background: radial-gradient(ellipse at center, transparent 70%, rgba(0,0,0,0.02) 85%, rgba(0,0,0,0.05) 100%); pointer-events: none;"></div>
             <div class="fixed inset-0 z-[2]" style="background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 100%); pointer-events: none;"></div>
@@ -530,7 +588,7 @@
         </section>
 
         <!-- Have Questions Section -->
-        <section class="relative px-6 py-16">
+        <section id="have-questions" class="relative px-6 py-16">
             <!-- Background overlays -->
             <div class="fixed inset-0 z-[1]" style="background: radial-gradient(ellipse at center, transparent 70%, rgba(0,0,0,0.02) 85%, rgba(0,0,0,0.05) 100%); pointer-events: none;"></div>
             <div class="fixed inset-0 z-[2]" style="background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 100%); pointer-events: none;"></div>
@@ -545,19 +603,19 @@
 
                     <!-- Contact Buttons -->
                     <div class="space-y-4">
-                        <button class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-3">
+                        <a href="https://wa.me/972543159025?text=Hi,%20I'm%20interested%20in%20the%20AI%20Club%20program" target="_blank" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-3 no-underline">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                             </svg>
-                            WhatsApp Us Now
-                        </button>
+                            WhatsApp Now to Register
+                        </a>
 
-                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-3">
+                        <a href="tel:+972543159025" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-3 no-underline">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                             </svg>
-                            Call: +972 54-315-9025
-                        </button>
+                            Call Now to Register: +972 54-315-9025
+                        </a>
                     </div>
 
                     <p class="text-sm text-white/70 text-center">Available for questions anytime</p>
@@ -880,6 +938,52 @@
                 }
             }
         }
+
+        // Mobile Menu Functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        // Open mobile menu
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close mobile menu
+        closeMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+
+        // Close menu when clicking outside
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Handle menu item clicks
+        menuItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Close menu first
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+
+                    // Then scroll to target
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({behavior: 'smooth'});
+                    }, 100);
+                }
+            });
+        });
     </script>
 </body>
 </html>
