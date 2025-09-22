@@ -994,48 +994,33 @@
 
         // Submit mobile registration
         async function submitMobileRegistration() {
-            // Collect form data
-            const formData = {
-                children: [],
-                parent: {},
-                totalPrice: 0
-            };
+            console.log('🚀 Starting mobile registration submission...');
 
-            // Collect main child data
-            const childName = document.querySelector('input[type="text"]').value;
-            const ageGroup = document.querySelector('select').value;
+            try {
+                // Show loading modal immediately
+                showLoadingModal();
 
-            if (childName && ageGroup) {
-                let program, price;
-                switch(ageGroup) {
-                    case 'young':
-                        program = 'Young Innovators (Ages 8-10)';
-                        price = 1200;
-                        break;
-                    case 'tech':
-                        program = 'Tech Explorers (Ages 11-13)';
-                        price = 1500;
-                        break;
-                    case 'future':
-                        program = 'Future Leaders (Ages 14-18)';
-                        price = 1800;
-                        break;
-                }
+                // Collect form data
+                const formData = {
+                    children: [],
+                    parent: {},
+                    totalPrice: 0
+                };
 
-                formData.children.push({
-                    name: childName,
-                    program: program,
-                    price: price
-                });
-                formData.totalPrice += price;
-            }
+                console.log('📝 Collecting form data...');
 
-            // Collect additional children data
-            const additionalChildren = document.querySelectorAll('#additionalChildrenContainer > div');
-            additionalChildren.forEach(childDiv => {
-                const childInputs = childDiv.querySelectorAll('input, select');
-                const childName = childInputs[0]?.value;
-                const ageGroup = childInputs[1]?.value;
+                // Collect main child data
+                const childNameInput = document.querySelector('input[type="text"]');
+                const ageGroupSelect = document.querySelector('select');
+
+                console.log('Child name input found:', !!childNameInput);
+                console.log('Age group select found:', !!ageGroupSelect);
+
+                const childName = childNameInput?.value?.trim() || '';
+                const ageGroup = ageGroupSelect?.value || '';
+
+                console.log('Child name:', childName);
+                console.log('Age group:', ageGroup);
 
                 if (childName && ageGroup) {
                     let program, price;
@@ -1052,6 +1037,11 @@
                             program = 'Future Leaders (Ages 14-18)';
                             price = 1800;
                             break;
+                        default:
+                            console.error('Invalid age group:', ageGroup);
+                            closeLoadingModal();
+                            showErrorModal('Please select a valid age group');
+                            return;
                     }
 
                     formData.children.push({
@@ -1060,57 +1050,123 @@
                         price: price
                     });
                     formData.totalPrice += price;
+                    console.log('✅ Main child added:', formData.children[0]);
                 }
-            });
 
-            // Collect parent data
-            const parentInputs = document.querySelectorAll('input[type="email"], input[type="tel"]');
-            formData.parent = {
-                name: 'Mobile User', // We don't collect parent name on mobile
-                email: parentInputs[0]?.value || '',
-                phone: parentInputs[1]?.value || ''
-            };
+                // Collect additional children data
+                const additionalChildren = document.querySelectorAll('#additionalChildrenContainer > div');
+                console.log('Additional children found:', additionalChildren.length);
 
-            // Validate form
-            if (formData.children.length === 0) {
-                alert('Please fill in child name and select age group');
-                return;
-            }
+                additionalChildren.forEach((childDiv, index) => {
+                    const childInputs = childDiv.querySelectorAll('input, select');
+                    const childName = childInputs[0]?.value?.trim() || '';
+                    const ageGroup = childInputs[1]?.value || '';
 
-            if (!formData.parent.email || !formData.parent.phone) {
-                alert('Please fill in your email and phone number');
-                return;
-            }
+                    if (childName && ageGroup) {
+                        let program, price;
+                        switch(ageGroup) {
+                            case 'young':
+                                program = 'Young Innovators (Ages 8-10)';
+                                price = 1200;
+                                break;
+                            case 'tech':
+                                program = 'Tech Explorers (Ages 11-13)';
+                                price = 1500;
+                                break;
+                            case 'future':
+                                program = 'Future Leaders (Ages 14-18)';
+                                price = 1800;
+                                break;
+                        }
 
-            // Show loading state
-            const submitButton = document.querySelector('button[onclick="submitMobileRegistration()"]');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Processing...';
-            submitButton.disabled = true;
+                        formData.children.push({
+                            name: childName,
+                            program: program,
+                            price: price
+                        });
+                        formData.totalPrice += price;
+                        console.log(`✅ Additional child ${index + 1} added:`, formData.children[formData.children.length - 1]);
+                    }
+                });
 
-            try {
+                // Collect parent data
+                const emailInput = document.querySelector('input[type="email"]');
+                const phoneInput = document.querySelector('input[type="tel"]');
+
+                console.log('Email input found:', !!emailInput);
+                console.log('Phone input found:', !!phoneInput);
+
+                formData.parent = {
+                    name: 'Mobile User', // We don't collect parent name on mobile
+                    email: emailInput?.value?.trim() || '',
+                    phone: phoneInput?.value?.trim() || ''
+                };
+
+                console.log('Parent data collected:', formData.parent);
+                console.log('Total form data:', formData);
+
+                // Validate form
+                if (formData.children.length === 0) {
+                    console.error('❌ No children data collected');
+                    closeLoadingModal();
+                    showErrorModal('Please fill in child name and select age group');
+                    return;
+                }
+
+                if (!formData.parent.email || !formData.parent.phone) {
+                    console.error('❌ Missing parent contact info');
+                    closeLoadingModal();
+                    showErrorModal('Please fill in your email and phone number');
+                    return;
+                }
+
+                // Disable submit button to prevent double submission
+                const submitButton = document.querySelector('button[onclick="submitMobileRegistration()"]');
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    console.log('🔒 Submit button disabled');
+                }
+
+                console.log('🔄 Starting Google Sheets submission...');
+                updateLoadingStatus('Submitting to database...');
+
                 // Primary: Submit to Google Sheets
                 const response = await submitToGoogleSheets(formData);
 
                 if (response.success) {
-                    // Success! Show confirmation
+                    console.log('✅ Google Sheets submission successful');
+                    updateLoadingStatus('Creating calendar invite...');
+
+                    // Simulate processing time for better UX
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+
+                    updateLoadingStatus('Sending confirmation email...');
+                    await new Promise(resolve => setTimeout(resolve, 800));
+
+                    closeLoadingModal();
                     showMobileRegistrationSuccess(formData);
                 } else {
                     throw new Error('Google Sheets submission failed');
                 }
 
             } catch (error) {
-                console.error('Google Sheets submission error:', error);
+                console.error('❌ Google Sheets submission error:', error);
+
+                updateLoadingStatus('Trying alternative method...');
+                await new Promise(resolve => setTimeout(resolve, 500));
 
                 // Fallback: Send to WhatsApp
                 submitToWhatsApp(formData);
 
-                // Show fallback message
-                alert('Registration sent via WhatsApp! We\'ll confirm your booking shortly.');
+                closeLoadingModal();
+                showErrorModal('Registration sent via WhatsApp! We\'ll confirm your booking shortly.', true);
             } finally {
-                // Reset button
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
+                // Re-enable submit button
+                const submitButton = document.querySelector('button[onclick="submitMobileRegistration()"]');
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    console.log('🔓 Submit button re-enabled');
+                }
             }
         }
 
@@ -1142,27 +1198,69 @@
             window.open(`https://wa.me/972543159025?text=${encodeURIComponent(message)}`, '_blank');
         }
 
+        // Show loading modal
+        function showLoadingModal() {
+            const loadingModal = `
+                <div data-modal="loading" class="fixed inset-0 z-[100000] flex items-center justify-center p-4" style="background-color: rgba(0,0,0,0.8);">
+                    <div class="bg-gradient-to-br from-blue-600 to-purple-700 border border-blue-400/20 rounded-2xl shadow-2xl max-w-md w-full p-8 text-center">
+                        <div class="w-16 h-16 mx-auto mb-6">
+                            <div class="w-16 h-16 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white mb-2">Processing Registration</h2>
+                        <p id="loading-status" class="text-blue-100 mb-4">
+                            Submitting to database...
+                        </p>
+                        <div class="flex justify-center">
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-white rounded-full animate-bounce"></div>
+                                <div class="w-2 h-2 bg-white rounded-full animate-bounce" style="animation-delay: 0.1s;"></div>
+                                <div class="w-2 h-2 bg-white rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', loadingModal);
+        }
+
+        // Update loading status
+        function updateLoadingStatus(message) {
+            const statusElement = document.getElementById('loading-status');
+            if (statusElement) {
+                statusElement.textContent = message;
+            }
+        }
+
+        // Close loading modal
+        function closeLoadingModal() {
+            const loadingElement = document.querySelector('[data-modal="loading"]');
+            if (loadingElement) {
+                loadingElement.remove();
+            }
+        }
+
         // Show success message
         function showMobileRegistrationSuccess(formData) {
             const successMessage = `
-                <div class="fixed inset-0 z-[100000] flex items-center justify-center p-4" style="background-color: rgba(0,0,0,0.8);">
-                    <div class="bg-gradient-to-br from-green-600 to-green-700 border border-green-400/20 rounded-2xl shadow-2xl max-w-md w-full p-6 text-center">
-                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div data-modal="success" class="fixed inset-0 z-[100000] flex items-center justify-center p-4" style="background-color: rgba(0,0,0,0.8);">
+                    <div class="bg-gradient-to-br from-green-600 to-green-700 border border-green-400/20 rounded-2xl shadow-2xl max-w-md w-full p-6 text-center transform animate-pulse">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
                                 <path d="M20 6 9 17l-5-5"/>
                             </svg>
                         </div>
-                        <h2 class="text-2xl font-bold text-white mb-2">Registration Successful!</h2>
+                        <h2 class="text-2xl font-bold text-white mb-2">🎉 Welcome to AI Club!</h2>
                         <p class="text-green-100 mb-4">
-                            Thank you! Your registration has been processed.
+                            Thank you! Your registration has been successfully processed.
                         </p>
-                        <div class="text-sm text-green-200 mb-6">
+                        <div class="text-sm text-green-200 mb-6 space-y-2">
                             <p>✅ Confirmation email sent to ${formData.parent.email}</p>
                             <p>✅ Calendar invite will follow shortly</p>
-                            <p>✅ You'll be added to the WhatsApp group</p>
+                            <p>✅ You'll be added to our WhatsApp group</p>
+                            <p>✅ You'll receive class details soon</p>
                         </div>
-                        <button onclick="closeMobileSuccessMessage()" class="bg-white text-green-600 font-bold py-2 px-6 rounded-lg hover:bg-green-50 transition-all">
-                            Got it!
+                        <button onclick="closeMobileSuccessMessage()" class="bg-white text-green-600 font-bold py-3 px-8 rounded-lg hover:bg-green-50 transition-all transform hover:scale-105">
+                            Awesome!
                         </button>
                     </div>
                 </div>
@@ -1170,9 +1268,45 @@
             document.body.insertAdjacentHTML('beforeend', successMessage);
         }
 
+        // Show error modal
+        function showErrorModal(message, isWhatsAppFallback = false) {
+            const iconColor = isWhatsAppFallback ? 'text-orange-500' : 'text-red-500';
+            const bgColor = isWhatsAppFallback ? 'from-orange-600 to-yellow-600' : 'from-red-600 to-pink-600';
+            const title = isWhatsAppFallback ? '📱 Sent via WhatsApp!' : '⚠️ Oops!';
+
+            const errorModal = `
+                <div data-modal="error" class="fixed inset-0 z-[100000] flex items-center justify-center p-4" style="background-color: rgba(0,0,0,0.8);">
+                    <div class="bg-gradient-to-br ${bgColor} border border-white/20 rounded-2xl shadow-2xl max-w-md w-full p-6 text-center transform animate-pulse">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            ${isWhatsAppFallback ?
+                                '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>' :
+                                '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>'
+                            }
+                        </div>
+                        <h2 class="text-2xl font-bold text-white mb-2">${title}</h2>
+                        <p class="text-white/90 mb-6">
+                            ${message}
+                        </p>
+                        <button onclick="closeMobileErrorMessage()" class="bg-white/20 text-white font-bold py-3 px-8 rounded-lg hover:bg-white/30 transition-all transform hover:scale-105">
+                            ${isWhatsAppFallback ? 'Got it!' : 'Try Again'}
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', errorModal);
+        }
+
+        // Close error message
+        function closeMobileErrorMessage() {
+            const errorElement = document.querySelector('[data-modal="error"]');
+            if (errorElement) {
+                errorElement.remove();
+            }
+        }
+
         // Close success message
         function closeMobileSuccessMessage() {
-            const successElement = document.querySelector('.fixed.inset-0.z-\\[100000\\]');
+            const successElement = document.querySelector('[data-modal="success"]');
             if (successElement) {
                 successElement.remove();
             }
