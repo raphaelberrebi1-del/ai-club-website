@@ -631,8 +631,8 @@
                                         <div class="w-2 h-2 bg-green-400 rounded-full"></div>
                                     </div>
                                     <div class="flex items-center gap-3 flex-1">
-                                        <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
-                                            <span class="text-white font-bold text-xs">bit</span>
+                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Bit_%28payment_system%29_logo.svg/240px-Bit_%28payment_system%29_logo.svg.png" alt="Bit" class="w-full h-full object-contain">
                                         </div>
                                         <div>
                                             <div class="text-white font-medium">Bit Payment</div>
@@ -649,8 +649,8 @@
                                         <div class="w-2 h-2 bg-transparent rounded-full"></div>
                                     </div>
                                     <div class="flex items-center gap-3 flex-1">
-                                        <div class="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center">
-                                            <span class="text-white font-bold text-xs">PB</span>
+                                        <div class="w-8 h-8 rounded-lg flex items-center justify-center">
+                                            <img src="https://www.payboxapp.com/assets/images/paybox-logo.png" alt="PayBox" class="w-full h-full object-contain">
                                         </div>
                                         <div>
                                             <div class="text-white font-medium">PayBox</div>
@@ -1926,6 +1926,43 @@
             if (mainAgeGroup) {
                 mainAgeGroup.addEventListener('change', calculateMobilePrice);
             }
+
+            // Payment method selection functionality
+            const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
+            paymentMethods.forEach(method => {
+                method.addEventListener('change', function() {
+                    // Update visual state for all payment options
+                    paymentMethods.forEach(m => {
+                        const label = m.closest('label');
+                        const radioButton = label.querySelector('.w-5.h-5 > div');
+                        const border = label.querySelector('.w-5.h-5');
+
+                        if (m.checked) {
+                            // Selected state
+                            radioButton.classList.remove('bg-transparent');
+                            if (m.value === 'bit') {
+                                radioButton.classList.add('bg-green-400');
+                                border.classList.remove('border-gray-400');
+                                border.classList.add('border-green-400');
+                            } else if (m.value === 'paybox') {
+                                radioButton.classList.add('bg-purple-400');
+                                border.classList.remove('border-gray-400');
+                                border.classList.add('border-purple-400');
+                            } else {
+                                radioButton.classList.add('bg-blue-400');
+                                border.classList.remove('border-gray-400');
+                                border.classList.add('border-blue-400');
+                            }
+                        } else {
+                            // Unselected state
+                            radioButton.classList.add('bg-transparent');
+                            radioButton.classList.remove('bg-green-400', 'bg-purple-400', 'bg-blue-400');
+                            border.classList.add('border-gray-400');
+                            border.classList.remove('border-green-400', 'border-purple-400', 'border-blue-400');
+                        }
+                    });
+                });
+            });
         });
 
         // Update addChildForm to recalculate price
