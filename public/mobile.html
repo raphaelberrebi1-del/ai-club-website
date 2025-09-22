@@ -12,10 +12,6 @@
 <body>
     <div class="site-background" aria-hidden="true"></div>
 
-    <!-- Dark Overlay System - Multiple layers for depth -->
-    <div class="fixed inset-0 z-[1]" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; background: radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.22) 60%, rgba(0,0,0,0.45) 100%); pointer-events: none;"></div>
-    <div class="fixed inset-0 z-[2] bg-gradient-to-b from-black/20 via-black/40 to-black/30" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4), rgba(0,0,0,0.3)); pointer-events: none;"></div>
-    <div class="fixed inset-0 z-[3] opacity-55 bg-gradient-to-br from-purple-500/22 via-orange-400/18 to-pink-500/24 mix-blend-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 3; opacity: 0.55; background: linear-gradient(to bottom right, rgba(168,85,247,0.22), rgba(251,146,60,0.18), rgba(236,72,153,0.24)); mix-blend-mode: overlay; pointer-events: none;"></div>
 
     <!-- Fixed Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/95 backdrop-blur-xl border-b border-white/10">
@@ -47,8 +43,10 @@
     <!-- Main Content -->
     <main class="pt-16 relative z-10">
         <!-- Hero Section -->
-        <section class="min-h-screen flex flex-col justify-center px-6 py-12 relative animate-fadeIn">
-            <div class="max-w-md mx-auto text-center space-y-8">
+        <section class="min-h-screen flex flex-col justify-center px-6 py-12 relative animate-fadeIn" style="background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 25%, #8b5cf6 50%, #f59e0b 75%, #ec4899 100%); background-size: 400% 400%; animation: gradientShift 8s ease-in-out infinite;">
+            <!-- Bright overlay for text readability -->
+            <div class="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+            <div class="max-w-md mx-auto text-center space-y-8 relative z-10">
                 <!-- New Badge -->
                 <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 animate-pulse-subtle">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-400">
@@ -59,40 +57,40 @@
 
                 <!-- Main Headline -->
                 <div class="space-y-6">
-                    <h1 class="text-5xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+                    <h1 class="text-5xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight" style="text-shadow: 0 4px 12px rgba(0,0,0,0.8), 0 2px 6px rgba(0,0,0,0.6);">
                         Give Your Child the
-                        <span class="font-serif italic bg-gradient-to-r from-orange-300 via-pink-300 to-orange-400 bg-clip-text text-transparent">
+                        <span class="font-serif italic bg-gradient-to-r from-yellow-200 via-orange-200 to-pink-200 bg-clip-text text-transparent" style="text-shadow: none; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));">
                             Advantage
                         </span>
                     </h1>
 
-                    <p class="text-xl sm:text-2xl text-white/95 leading-relaxed font-semibold" style="text-shadow: 0 1px 4px rgba(0,0,0,0.2);">
+                    <p class="text-xl sm:text-2xl text-white leading-relaxed font-semibold" style="text-shadow: 0 3px 8px rgba(0,0,0,0.8), 0 1px 4px rgba(0,0,0,0.6);">
                         Join the AI Club - Where Kids Master Tomorrow's Essential Tools Today. Safe, fun, and guided learning in small groups.
                     </p>
                 </div>
 
                 <!-- Description -->
-                <div class="space-y-6 text-white/90">
-                    <p class="text-lg sm:text-xl leading-relaxed" style="text-shadow: 0 1px 3px rgba(0,0,0,0.2);">
+                <div class="space-y-6 text-white">
+                    <p class="text-lg sm:text-xl leading-relaxed" style="text-shadow: 0 2px 6px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.6);">
                         AI Club is the first structured program in our Raanana designed specifically for kids to learn and create with artificial intelligence tools in a safe, fun, and guided environment.
                     </p>
 
-                    <p class="text-lg sm:text-xl leading-relaxed font-semibold" style="text-shadow: 0 1px 3px rgba(0,0,0,0.2);">
+                    <p class="text-lg sm:text-xl leading-relaxed font-semibold" style="text-shadow: 0 2px 6px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.6);">
                         In a world where AI is reshaping every industry, the question isn't whether your child should learn AI – it's
-                        <span class="text-orange-300 font-bold">how soon they can start.</span>
+                        <span class="text-yellow-200 font-bold" style="text-shadow: 0 2px 4px rgba(0,0,0,0.8);">how soon they can start.</span>
                     </p>
                 </div>
 
                 <!-- CTA Button -->
                 <div class="pt-4">
-                    <button class="w-full bg-gradient-to-r from-orange-500 to-orange-400 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 text-lg transform hover:scale-105">
+                    <button class="w-full bg-white/90 backdrop-blur-sm text-gray-800 font-bold py-4 px-8 rounded-xl hover:bg-white hover:shadow-2xl hover:shadow-white/25 transition-all duration-300 text-lg transform hover:scale-105 border-2 border-white/20">
                         Learn More About Our Programs
                     </button>
                 </div>
 
                 <!-- Scroll Indicator -->
                 <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white/60">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));">
                         <path d="M7 13l3 3 7-7"></path>
                         <path d="M12 2v20"></path>
                     </svg>
@@ -550,6 +548,18 @@
             50% {
                 opacity: 0.9;
                 transform: scale(1.02);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
             }
         }
 
