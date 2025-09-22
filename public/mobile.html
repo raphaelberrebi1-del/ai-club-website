@@ -1130,6 +1130,17 @@
                 console.log('🔄 Starting Google Sheets submission...');
                 updateLoadingStatus('Submitting to database...');
 
+                // Test: First check if Google Apps Script is reachable
+                console.log('🔍 Testing Google Apps Script connectivity...');
+                try {
+                    const testResponse = await fetch(GOOGLE_SHEETS_WEB_APP_URL + '?test=true', {
+                        method: 'GET'
+                    });
+                    console.log('📡 Test connectivity response:', testResponse.status, testResponse.ok);
+                } catch (testError) {
+                    console.log('⚠️ Test connectivity failed:', testError);
+                }
+
                 // Primary: Submit to Google Sheets
                 const response = await submitToGoogleSheets(formData);
 
@@ -1172,18 +1183,64 @@
 
         // Submit to Google Sheets
         async function submitToGoogleSheets(formData) {
-            const response = await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
+            console.log('📡 Attempting Google Sheets submission...');
+            console.log('URL:', GOOGLE_SHEETS_WEB_APP_URL);
+            console.log('Data being sent:', formData);
 
-            // Note: no-cors mode means we can't read the response
-            // We'll assume success if no error is thrown
-            return { success: true };
+            try {
+                // First try with CORS (the proper way)
+                const response = await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
+
+                if (response.ok) {
+                    const result = await response.text();
+                    console.log('✅ Google Sheets response:', result);
+                    return { success: true, data: result };
+                } else {
+                    console.error('❌ Google Sheets responded with error:', response.status, response.statusText);
+                    throw new Error(`Google Sheets error: ${response.status}`);
+                }
+
+            } catch (corsError) {
+                console.log('⚠️ CORS blocked, trying no-cors fallback...');
+                console.error('CORS error:', corsError);
+
+                try {
+                    // Fallback: use no-cors mode (can't read response but request might go through)
+                    await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    // With no-cors, we can't know if it succeeded, so we'll wait a bit
+                    // and then check if we should assume success or failure
+                    console.log('📡 no-cors request sent, waiting to verify...');
+
+                    // Wait a few seconds to let the request process
+                    await new Promise(resolve => setTimeout(resolve, 3000));
+
+                    // For now, we'll assume it failed and use WhatsApp fallback
+                    // This is safer than assuming success when we can't verify
+                    console.log('⚠️ Cannot verify no-cors submission, using fallback');
+                    throw new Error('Cannot verify Google Sheets submission');
+
+                } catch (noCorsError) {
+                    console.error('❌ no-cors also failed:', noCorsError);
+                    throw new Error('All Google Sheets submission methods failed');
+                }
+            }
         }
 
         // Fallback: Submit to WhatsApp
