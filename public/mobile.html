@@ -579,7 +579,7 @@
                         </div>
 
                         <!-- Reserve Button -->
-                        <button type="button" class="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 mt-6">
+                        <button type="button" onclick="submitMobileRegistration()" class="w-full bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 mt-6">
                             Reserve Your Spot
                         </button>
                     </div>
@@ -988,6 +988,195 @@
                 }
             });
         });
+
+        // Configuration for Google Sheets integration
+        const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/a/macros/aikidz.club/s/AKfycbxejhZMSqJ6qOaQqu57MU9pnXVmFh5x142fV5X-xP_Beg4gIh9-VMy-XkG9a7OpXhTcyQ/exec';
+
+        // Submit mobile registration
+        async function submitMobileRegistration() {
+            // Collect form data
+            const formData = {
+                children: [],
+                parent: {},
+                totalPrice: 0
+            };
+
+            // Collect main child data
+            const childName = document.querySelector('input[type="text"]').value;
+            const ageGroup = document.querySelector('select').value;
+
+            if (childName && ageGroup) {
+                let program, price;
+                switch(ageGroup) {
+                    case 'young':
+                        program = 'Young Innovators (Ages 8-10)';
+                        price = 1200;
+                        break;
+                    case 'tech':
+                        program = 'Tech Explorers (Ages 11-13)';
+                        price = 1500;
+                        break;
+                    case 'future':
+                        program = 'Future Leaders (Ages 14-18)';
+                        price = 1800;
+                        break;
+                }
+
+                formData.children.push({
+                    name: childName,
+                    program: program,
+                    price: price
+                });
+                formData.totalPrice += price;
+            }
+
+            // Collect additional children data
+            const additionalChildren = document.querySelectorAll('#additionalChildrenContainer > div');
+            additionalChildren.forEach(childDiv => {
+                const childInputs = childDiv.querySelectorAll('input, select');
+                const childName = childInputs[0]?.value;
+                const ageGroup = childInputs[1]?.value;
+
+                if (childName && ageGroup) {
+                    let program, price;
+                    switch(ageGroup) {
+                        case 'young':
+                            program = 'Young Innovators (Ages 8-10)';
+                            price = 1200;
+                            break;
+                        case 'tech':
+                            program = 'Tech Explorers (Ages 11-13)';
+                            price = 1500;
+                            break;
+                        case 'future':
+                            program = 'Future Leaders (Ages 14-18)';
+                            price = 1800;
+                            break;
+                    }
+
+                    formData.children.push({
+                        name: childName,
+                        program: program,
+                        price: price
+                    });
+                    formData.totalPrice += price;
+                }
+            });
+
+            // Collect parent data
+            const parentInputs = document.querySelectorAll('input[type="email"], input[type="tel"]');
+            formData.parent = {
+                name: 'Mobile User', // We don't collect parent name on mobile
+                email: parentInputs[0]?.value || '',
+                phone: parentInputs[1]?.value || ''
+            };
+
+            // Validate form
+            if (formData.children.length === 0) {
+                alert('Please fill in child name and select age group');
+                return;
+            }
+
+            if (!formData.parent.email || !formData.parent.phone) {
+                alert('Please fill in your email and phone number');
+                return;
+            }
+
+            // Show loading state
+            const submitButton = document.querySelector('button[onclick="submitMobileRegistration()"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Processing...';
+            submitButton.disabled = true;
+
+            try {
+                // Primary: Submit to Google Sheets
+                const response = await submitToGoogleSheets(formData);
+
+                if (response.success) {
+                    // Success! Show confirmation
+                    showMobileRegistrationSuccess(formData);
+                } else {
+                    throw new Error('Google Sheets submission failed');
+                }
+
+            } catch (error) {
+                console.error('Google Sheets submission error:', error);
+
+                // Fallback: Send to WhatsApp
+                submitToWhatsApp(formData);
+
+                // Show fallback message
+                alert('Registration sent via WhatsApp! We\'ll confirm your booking shortly.');
+            } finally {
+                // Reset button
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
+        }
+
+        // Submit to Google Sheets
+        async function submitToGoogleSheets(formData) {
+            const response = await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            // Note: no-cors mode means we can't read the response
+            // We'll assume success if no error is thrown
+            return { success: true };
+        }
+
+        // Fallback: Submit to WhatsApp
+        function submitToWhatsApp(formData) {
+            const message = `Hi! I'd like to register for AI Club (Mobile):\n\n` +
+                `Email: ${formData.parent.email}\n` +
+                `Phone: ${formData.parent.phone}\n\n` +
+                `Children:\n` +
+                formData.children.map(child => `- ${child.name} (${child.program})`).join('\n') +
+                `\n\nTotal: ₪${formData.totalPrice}`;
+
+            window.open(`https://wa.me/972543159025?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Show success message
+        function showMobileRegistrationSuccess(formData) {
+            const successMessage = `
+                <div class="fixed inset-0 z-[100000] flex items-center justify-center p-4" style="background-color: rgba(0,0,0,0.8);">
+                    <div class="bg-gradient-to-br from-green-600 to-green-700 border border-green-400/20 rounded-2xl shadow-2xl max-w-md w-full p-6 text-center">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                <path d="M20 6 9 17l-5-5"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white mb-2">Registration Successful!</h2>
+                        <p class="text-green-100 mb-4">
+                            Thank you! Your registration has been processed.
+                        </p>
+                        <div class="text-sm text-green-200 mb-6">
+                            <p>✅ Confirmation email sent to ${formData.parent.email}</p>
+                            <p>✅ Calendar invite will follow shortly</p>
+                            <p>✅ You'll be added to the WhatsApp group</p>
+                        </div>
+                        <button onclick="closeMobileSuccessMessage()" class="bg-white text-green-600 font-bold py-2 px-6 rounded-lg hover:bg-green-50 transition-all">
+                            Got it!
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', successMessage);
+        }
+
+        // Close success message
+        function closeMobileSuccessMessage() {
+            const successElement = document.querySelector('.fixed.inset-0.z-\\[100000\\]');
+            if (successElement) {
+                successElement.remove();
+            }
+        }
     </script>
 </body>
 </html>
