@@ -8,6 +8,9 @@
 <body>
     <div class="site-background" aria-hidden="true"></div>
 
+    <!-- Dark Overlay for better text readability -->
+    <div class="fixed inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70 z-0"></div>
+
     <!-- Fixed Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/95 backdrop-blur-xl border-b border-white/10">
         <div class="flex items-center justify-between px-4 h-16">
@@ -29,22 +32,30 @@
             </div>
 
             <!-- Reserve Spot Button -->
-            <button class="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105">
+            <button class="bg-gradient-to-r from-orange-500 to-orange-400 text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-200 transform hover:scale-105">
                 Reserve Spot
             </button>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="pt-16">
+    <main class="pt-16 relative z-10">
         <!-- Hero Section -->
-        <section class="min-h-screen flex flex-col justify-center px-6 py-12 relative">
+        <section class="min-h-screen flex flex-col justify-center px-6 py-12 relative animate-fadeIn">
             <div class="max-w-md mx-auto text-center space-y-8">
+                <!-- New Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 animate-pulse-subtle">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-400">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+                    </svg>
+                    <span class="text-sm font-medium text-white/90">New: Structured AI Programs for Kids</span>
+                </div>
+
                 <!-- Main Headline -->
                 <div class="space-y-4">
                     <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">
                         Give Your Child the
-                        <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+                        <span class="bg-gradient-to-r from-orange-400 via-orange-300 to-amber-300 bg-clip-text text-transparent">
                             AI Advantage
                         </span>
                     </h1>
@@ -62,13 +73,13 @@
 
                     <p class="text-lg leading-relaxed font-medium">
                         In a world where AI is reshaping every industry, the question isn't whether your child should learn AI – it's
-                        <span class="text-cyan-300 font-semibold">how soon they can start.</span>
+                        <span class="text-orange-300 font-semibold">how soon they can start.</span>
                     </p>
                 </div>
 
                 <!-- CTA Button -->
                 <div class="pt-4">
-                    <button class="w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 text-lg transform hover:scale-105">
+                    <button class="w-full bg-gradient-to-r from-orange-500 to-orange-400 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 text-lg transform hover:scale-105">
                         Learn More About Our Programs
                     </button>
                 </div>
@@ -93,6 +104,37 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        /* Subtle Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse-subtle {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.9;
+                transform: scale(1.02);
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .animate-pulse-subtle {
+            animation: pulse-subtle 3s ease-in-out infinite;
         }
 
         body {
