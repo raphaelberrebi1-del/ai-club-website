@@ -3973,7 +3973,7 @@
     function updateCalendar(data) {
       // Create calendar events for each group
       // This requires setting up a Google Calendar and getting its ID
-      const calendarId = 'YOUR_CALENDAR_ID_HERE'; // Replace with your calendar ID
+      const calendarId = 'c_a04462f6072fb9013027f317edb973752ed1811c7e6e8ee85f8591398a52870b@group.calendar.google.com'; // AI Club Calendar
 
       try {
         const calendar = CalendarApp.getCalendarById(calendarId);
@@ -4067,21 +4067,42 @@
       * Make calendar public: Settings → Access permissions → "Make available to public"
       * Set public visibility to "See all event details"
 
-    - Replace "YOUR_CALENDAR_ID_HERE" in TWO places:
-      1. In the Google Apps Script (updateCalendar function)
-      2. In the calendar iframe src URL in the HTML
+    ✅ Calendar ID is already configured in Apps Script:
+      - Calendar ID: c_a04462f6072fb9013027f317edb973752ed1811c7e6e8ee85f8591398a52870b@group.calendar.google.com
+      - Events will be created automatically when registrations are submitted
 
-    - The calendar will automatically show events created by the Apps Script
+    5. CURRENT STATUS:
 
-    5. UPDATE WEBSITE:
+    ✅ CONFIGURED:
+    - Google Sheets Web App URL: https://script.google.com/a/macros/...
+    - Google Calendar ID: c_a04462f6072fb9013027f317edb973752ed1811c7e6e8ee85f8591398a52870b@group.calendar.google.com
 
-    Replace these placeholders with your actual values:
-    - "YOUR_WEB_APP_URL_HERE" → Your Google Apps Script web app URL
-    - "YOUR_CALENDAR_ID_HERE" → Your Google Calendar ID
+    6. TROUBLESHOOTING CALENDAR INTEGRATION:
 
-    6. HOW IT WORKS:
+    If calendar events aren't being created, check these in Google Apps Script:
 
-    BEFORE SETUP (Current State):
+    A. SCRIPT PERMISSIONS:
+    - Run → Review permissions → Allow all requested permissions
+    - Ensure script can access Google Calendar and Google Sheets
+
+    B. CALENDAR ACCESS:
+    - Calendar must exist and be accessible to the script owner
+    - Test: CalendarApp.getCalendarById('c_a04462f6072fb9013027f317edb973752ed1811c7e6e8ee85f8591398a52870b@group.calendar.google.com')
+
+    C. ERROR CHECKING:
+    - Add logging in updateCalendar function:
+      console.log('Creating calendar event for:', child.name, child.program);
+    - Check Apps Script logs: View → Logs or View → Stackdriver Logging
+
+    D. COMMON ISSUES:
+    - Calendar ID incorrect (should match exactly)
+    - Script doesn't have calendar write permissions
+    - updateCalendar function not being called from doPost
+    - Calendar is deleted or inaccessible
+
+    7. HOW IT WORKS:
+
+    CURRENT STATE:
     ✅ Form collects data and sends to WhatsApp (backup system works)
     ✅ Shows fallback calendar with static schedule
     ✅ No real-time capacity tracking

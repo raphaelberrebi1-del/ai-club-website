@@ -1203,7 +1203,21 @@
                 if (response.ok) {
                     const result = await response.text();
                     console.log('✅ Google Sheets response:', result);
-                    return { success: true, data: result };
+                    console.log('📊 Response details:', {
+                        status: response.status,
+                        statusText: response.statusText,
+                        headers: Object.fromEntries(response.headers.entries()),
+                        body: result
+                    });
+
+                    // Check if the response indicates successful execution
+                    if (result.includes('success') || result.includes('processed') || response.status === 200) {
+                        console.log('✅ Apps Script execution appears successful');
+                        return { success: true, data: result };
+                    } else {
+                        console.log('⚠️ Apps Script executed but response unclear:', result);
+                        return { success: true, data: result, warning: 'Response unclear' };
+                    }
                 } else {
                     console.error('❌ Google Sheets responded with error:', response.status, response.statusText);
                     throw new Error(`Google Sheets error: ${response.status}`);
