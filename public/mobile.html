@@ -4,12 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AI Club — Mobile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="site-background" aria-hidden="true"></div>
 
-    <!-- Dark Overlay for better text readability -->
-    <div class="fixed inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70 z-0"></div>
+    <!-- Dark Overlay System - Multiple layers for depth -->
+    <div class="fixed inset-0 z-[1]" style="background: radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.22) 60%, rgba(0,0,0,0.45) 100%);"></div>
+    <div class="fixed inset-0 z-[2] bg-gradient-to-b from-black/20 via-black/40 to-black/30"></div>
+    <div class="fixed inset-0 z-[3] opacity-55 bg-gradient-to-br from-purple-500/22 via-orange-400/18 to-pink-500/24 mix-blend-overlay"></div>
 
     <!-- Fixed Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/95 backdrop-blur-xl border-b border-white/10">
@@ -52,28 +57,28 @@
                 </div>
 
                 <!-- Main Headline -->
-                <div class="space-y-4">
-                    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">
+                <div class="space-y-6">
+                    <h1 class="text-5xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">
                         Give Your Child the
                         <span class="bg-gradient-to-r from-orange-400 via-orange-300 to-amber-300 bg-clip-text text-transparent">
                             AI Advantage
                         </span>
                     </h1>
 
-                    <p class="text-xl text-white/90 leading-relaxed font-medium">
+                    <p class="text-xl sm:text-2xl text-white/95 leading-relaxed font-semibold" style="text-shadow: 0 1px 4px rgba(0,0,0,0.2);">
                         Join the AI Club - Where Kids Master Tomorrow's Essential Tools Today. Safe, fun, and guided learning in small groups.
                     </p>
                 </div>
 
                 <!-- Description -->
-                <div class="space-y-6 text-white/80">
-                    <p class="text-lg leading-relaxed">
+                <div class="space-y-6 text-white/90">
+                    <p class="text-lg sm:text-xl leading-relaxed" style="text-shadow: 0 1px 3px rgba(0,0,0,0.2);">
                         AI Club is the first structured program in our Raanana designed specifically for kids to learn and create with artificial intelligence tools in a safe, fun, and guided environment.
                     </p>
 
-                    <p class="text-lg leading-relaxed font-medium">
+                    <p class="text-lg sm:text-xl leading-relaxed font-semibold" style="text-shadow: 0 1px 3px rgba(0,0,0,0.2);">
                         In a world where AI is reshaping every industry, the question isn't whether your child should learn AI – it's
-                        <span class="text-orange-300 font-semibold">how soon they can start.</span>
+                        <span class="text-orange-300 font-bold">how soon they can start.</span>
                     </p>
                 </div>
 
@@ -138,11 +143,13 @@
         }
 
         body {
-            font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;
+            font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;
             min-height: 100vh;
             background-color: #0a0a12;
             position: relative;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .site-background {
