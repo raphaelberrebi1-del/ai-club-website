@@ -42,59 +42,62 @@
 
     <!-- Mobile Navigation Menu -->
     <div id="mobile-menu" class="fixed inset-0 z-40 hidden bg-black/80 backdrop-blur-sm">
-        <div class="flex flex-col h-full">
-            <!-- Menu Header -->
-            <div class="flex items-center justify-between p-6 border-b border-white/10">
-                <h2 class="text-xl font-bold text-white">Menu</h2>
-                <button id="close-menu-btn" class="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 transition-colors">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
+        <div class="flex justify-end h-full">
+            <!-- Menu Content Panel -->
+            <div class="w-80 max-w-sm bg-gray-900/95 backdrop-blur-xl border-l border-white/10 flex flex-col">
+                <!-- Menu Header -->
+                <div class="flex items-center justify-between p-6 border-b border-white/10">
+                    <h2 class="text-xl font-bold text-white">Menu</h2>
+                    <button id="close-menu-btn" class="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 transition-colors">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
 
-            <!-- Menu Items -->
-            <nav class="flex-1 p-6">
-                <ul class="space-y-4">
-                    <li>
-                        <a href="#what-child-will-learn" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-400">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            <span class="text-lg">What You'll Learn</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#what-child-could-create" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-400">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                            </svg>
-                            <span class="text-lg">What You Could Create</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#choose-program" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-400">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="16" y1="2" x2="16" y2="6"></line>
-                                <line x1="8" y1="2" x2="8" y2="6"></line>
-                                <line x1="3" y1="10" x2="21" y2="10"></line>
-                            </svg>
-                            <span class="text-lg">Choose Program</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#have-questions" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-400">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                            </svg>
-                            <span class="text-lg">Contact Us</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+                <!-- Menu Items -->
+                <nav class="flex-1 p-6">
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="#what-child-will-learn" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-400">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                </svg>
+                                <span class="text-lg">What You'll Learn</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#what-child-could-create" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-400">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                </svg>
+                                <span class="text-lg">What You Could Create</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#choose-program" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-400">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <span class="text-lg">Choose Program</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#have-questions" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-400">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                <span class="text-lg">Contact Us</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
 
@@ -957,8 +960,9 @@
             document.body.style.overflow = '';
         });
 
-        // Close menu when clicking outside
+        // Close menu when clicking outside the menu content
         mobileMenu.addEventListener('click', function(e) {
+            // Check if click is directly on the overlay background (not bubbled up from content)
             if (e.target === mobileMenu) {
                 mobileMenu.classList.add('hidden');
                 document.body.style.overflow = '';
