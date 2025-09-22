@@ -275,8 +275,11 @@
                             </div>
                         </div>
 
+                        <!-- Additional Children Container -->
+                        <div id="additionalChildrenContainer"></div>
+
                         <!-- Add Another Child -->
-                        <button type="button" class="w-full py-3 px-4 bg-white border-2 border-dashed border-gray-300 rounded-xl text-gray-600 hover:border-orange-300 hover:text-orange-600 transition-colors text-sm font-medium">
+                        <button type="button" id="addChildBtn" onclick="addChildForm()" class="w-full py-3 px-4 bg-white border-2 border-dashed border-gray-300 rounded-xl text-gray-600 hover:border-orange-300 hover:text-orange-600 transition-colors text-sm font-medium">
                             + Add another child (10% off 2nd child, 15% off 3rd+)
                         </button>
 
@@ -492,6 +495,103 @@
                 closeImageModal();
             }
         });
+
+        // Add Child Form Functionality
+        let childCount = 0;
+
+        function addChildForm() {
+            childCount++;
+            const container = document.getElementById('additionalChildrenContainer');
+            const addButton = document.getElementById('addChildBtn');
+
+            const childForm = document.createElement('div');
+            childForm.className = 'border-t border-gray-200 pt-4 mt-4';
+            childForm.id = `child-${childCount}`;
+
+            childForm.innerHTML = `
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold text-gray-700">Child ${childCount + 1}</h3>
+                    <button type="button" onclick="removeChildForm(${childCount})" class="text-red-500 hover:text-red-700 text-sm font-medium">
+                        Remove
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <!-- Child's Name -->
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-gray-700">Child's Name</label>
+                        <div class="relative">
+                            <input type="text" placeholder="e.g., Alex Johnson" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent shadow-sm h-12">
+                            <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-orange-100 hover:bg-orange-200 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-orange-600" style="stroke-width: 1.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Age Group Selection -->
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-gray-700">Select Age Group</label>
+                        <select class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent shadow-sm h-12">
+                            <option value="">Choose your child's age group</option>
+                            <option value="young">Young Innovators (Ages 8-10) - ₪1,200</option>
+                            <option value="tech">Tech Explorers (Ages 11-13) - ₪1,500</option>
+                            <option value="future">Future Leaders (Ages 14-18) - ₪1,800</option>
+                        </select>
+                    </div>
+                </div>
+            `;
+
+            container.appendChild(childForm);
+
+            // Hide add button after 3 children (limit for discounts)
+            if (childCount >= 3) {
+                addButton.style.display = 'none';
+            }
+
+            // Update button text for remaining children
+            updateAddButtonText();
+        }
+
+        function removeChildForm(id) {
+            const childForm = document.getElementById(`child-${id}`);
+            const addButton = document.getElementById('addChildBtn');
+
+            if (childForm) {
+                childForm.remove();
+                childCount--;
+
+                // Show add button if hidden
+                if (childCount < 3) {
+                    addButton.style.display = 'block';
+                }
+
+                updateAddButtonText();
+                renumberChildren();
+            }
+        }
+
+        function updateAddButtonText() {
+            const addButton = document.getElementById('addChildBtn');
+            if (childCount === 0) {
+                addButton.innerHTML = '+ Add another child (10% off 2nd child, 15% off 3rd+)';
+            } else if (childCount === 1) {
+                addButton.innerHTML = '+ Add 3rd child (15% off)';
+            } else if (childCount === 2) {
+                addButton.innerHTML = '+ Add 4th child (15% off)';
+            }
+        }
+
+        function renumberChildren() {
+            const container = document.getElementById('additionalChildrenContainer');
+            const childForms = container.children;
+
+            for (let i = 0; i < childForms.length; i++) {
+                const childForm = childForms[i];
+                const header = childForm.querySelector('h3');
+                if (header) {
+                    header.textContent = `Child ${i + 2}`;
+                }
+            }
+        }
     </script>
 </body>
 </html>
