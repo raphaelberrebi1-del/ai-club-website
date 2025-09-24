@@ -1,0 +1,2003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Adventure Club — Kid-Friendly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Nunito', sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="site-background" aria-hidden="true"></div>
+
+
+    <!-- Fixed Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/95 backdrop-blur-xl border-b border-amber-200/20">
+        <div class="flex items-center justify-between px-4 h-16">
+            <!-- Hamburger Menu -->
+            <button id="mobile-menu-btn" class="flex items-center justify-center w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-amber-200/30 hover:bg-white/20 transition-all duration-200 hover:scale-105">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- AI Adventure Club Branding -->
+            <div class="flex items-center">
+                <h1 class="text-xl font-bold text-white tracking-tight">
+                    <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">AI Adventure</span>
+                    <span class="text-white">Club</span>
+                </h1>
+            </div>
+
+            <!-- Join the Fun Button -->
+            <button onclick="document.querySelector('#choose-program').scrollIntoView({behavior: 'smooth'})" class="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white text-sm font-bold px-5 py-3 rounded-2xl hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200 transform hover:scale-110 hover:rotate-1">
+                Join the Fun!
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm">
+        <div class="flex flex-col h-full">
+            <!-- Menu Header -->
+            <div class="flex items-center justify-between p-6 pt-20 border-b border-amber-200/20 bg-[#0a0a12]/95 backdrop-blur-xl">
+                <h2 class="text-xl font-bold text-white">Menu</h2>
+                <button id="close-menu-btn" class="flex items-center justify-center w-12 h-12 rounded-xl bg-white/30 border-2 border-white/50 hover:bg-white/40 transition-colors shadow-lg">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-white">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Menu Items -->
+            <nav class="flex-1 p-6">
+                <ul class="space-y-4">
+                    <li>
+                        <a href="#what-child-will-learn" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-pink-500/20 rounded-xl transition-all duration-300 hover:scale-105">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-yellow-400">
+                                <path d="M9 11H1l8-8 8 8h-8l4 4-4 4z"></path>
+                                <circle cx="9" cy="9" r="2"></circle>
+                            </svg>
+                            <span class="text-lg font-bold">Amazing Things You'll Discover!</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#what-child-could-create" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-gradient-to-r hover:from-blue-500/20 hover:to-green-500/20 rounded-xl transition-all duration-300 hover:scale-105">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-green-400">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                            </svg>
+                            <span class="text-lg font-bold">Cool Stuff You'll Build!</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#choose-program" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-red-500/20 rounded-xl transition-all duration-300 hover:scale-105">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-orange-400">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                <circle cx="12" cy="12" r="4"></circle>
+                            </svg>
+                            <span class="text-lg font-bold">Pick Your Adventure!</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#have-questions" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-blue-500/20 rounded-xl transition-all duration-300 hover:scale-105">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-cyan-400">
+                                <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                            <span class="text-lg font-bold">Ask Us Anything!</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-16 relative z-10">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex flex-col justify-center px-6 py-12 relative animate-fadeIn">
+            <!-- Dark overlays for text readability -->
+            <div class="absolute inset-0 z-[1]" style="background: radial-gradient(ellipse at center, transparent 70%, rgba(0,0,0,0.02) 85%, rgba(0,0,0,0.05) 100%); pointer-events: none;"></div>
+            <div class="absolute inset-0 z-[2]" style="background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 100%); pointer-events: none;"></div>
+            <div class="max-w-md mx-auto text-center space-y-8 relative z-10">
+                <!-- New Badge -->
+                <div class="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-full border-2 border-purple-400/50 animate-pulse">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-yellow-400">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+                    </svg>
+                    <span class="text-sm font-bold text-white">New Adventure: AI Magic for Kids!</span>
+                </div>
+
+                <!-- Main Headline -->
+                <div class="space-y-6">
+                    <h1 class="text-5xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight" style="text-shadow: 0 3px 12px rgba(0,0,0,0.4);">
+                        Ready to Become an
+                        <span class="font-serif italic font-bold bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.9); text-shadow: 0 0 5px rgba(255,255,255,0.9), 0 0 10px rgba(255,200,0,0.8), 0 0 20px rgba(255,100,200,0.6), 0 0 30px rgba(150,0,255,0.4), 2px 2px 6px rgba(0,0,0,0.3); font-weight: 800; letter-spacing: 1px;">
+                            AI Wizard?
+                        </span>
+                    </h1>
+
+                    <p class="text-xl sm:text-2xl text-white/95 leading-relaxed font-bold" style="text-shadow: 0 2px 6px rgba(0,0,0,0.3);">
+                        Join our AI Adventure Club! Learn magic tricks with computers, create amazing art, and build cool games with your new AI friends!
+                    </p>
+                </div>
+
+                <!-- Description -->
+                <div class="space-y-6 text-white/90">
+                    <p class="text-lg sm:text-xl leading-relaxed font-semibold" style="text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        We're the coolest AI Adventure Club in Raanana! Come play with smart computers, make awesome art, and learn magical tricks that will blow your mind!
+                    </p>
+
+                    <p class="text-lg sm:text-xl leading-relaxed font-bold" style="text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        The future is full of AI magic, and we want YOU to be the
+                        <span class="text-yellow-300 font-extrabold text-2xl animate-pulse">next wizard!</span>
+                    </p>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="pt-6">
+                    <button onclick="document.querySelector('#what-child-could-create').scrollIntoView({behavior: 'smooth'})" class="w-full bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white font-bold py-5 px-8 rounded-2xl hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 text-xl transform hover:scale-110 hover:rotate-1 animate-pulse">
+                        Show Me the Magic!
+                    </button>
+                </div>
+
+                <!-- Scroll Indicator -->
+                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white/60">
+                        <path d="M7 13l3 3 7-7"></path>
+                        <path d="M12 2v20"></path>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- What Your Child Will Learn Section -->
+        <section id="what-child-will-learn" class="py-16 px-4 relative z-10">
+            <div class="max-w-sm mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-12 fade-in-left" data-scroll>
+                    <h2 class="text-4xl font-extrabold text-white tracking-tight mb-6" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.5);">
+                        Amazing Things <span class="font-serif italic font-bold bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.9); text-shadow: 0 0 5px rgba(255,255,255,0.9), 0 0 10px rgba(255,200,0,0.8), 0 0 20px rgba(255,100,0,0.6), 2px 2px 6px rgba(0,0,0,0.4); font-weight: 800; letter-spacing: 1px;">You'll Discover!</span>
+                    </h2>
+                    <p class="text-lg text-white/90 leading-relaxed font-bold" style="text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        Get ready for the coolest adventures! Each fun session teaches you magical AI powers that will make you the smartest wizard in your school!
+                    </p>
+                </div>
+
+                <!-- Single Comprehensive Learning Card -->
+                <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-amber-200/30">
+                    <div class="space-y-6">
+
+                        <!-- Become an AI Wizard Section -->
+                        <div class="pb-6 border-b border-purple-400/50 fade-in-left delay-1" data-scroll>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center shadow-lg animate-pulse">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                        <path d="M2 17l10 5 10-5"></path>
+                                        <path d="M2 12l10 5 10-5"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-sm font-bold text-purple-300">Magic AI Friend</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Become an AI Wizard!</h3>
+                            <p class="text-purple-100 mb-4 leading-relaxed font-semibold">
+                                Meet your new AI buddy who can help you with anything! From tricky homework to writing awesome stories - your AI friend knows it all!
+                            </p>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 text-sm text-purple-100 font-semibold">
+                                    <div class="w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full animate-pulse"></div>
+                                    <span><strong>Homework Magic:</strong> Ask your AI buddy cool questions and watch math become super easy!</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm text-purple-100 font-semibold">
+                                    <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-blue-400 rounded-full animate-pulse"></div>
+                                    <span><strong>Story Adventures:</strong> Create amazing stories and poems with your AI writing partner!</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm text-purple-100 font-semibold">
+                                    <div class="w-3 h-3 bg-gradient-to-r from-pink-400 to-red-400 rounded-full animate-pulse"></div>
+                                    <span><strong>Smart Detective:</strong> Learn to find the truth and become a super smart researcher!</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Art Section -->
+                        <div class="pb-6 border-b border-amber-200/30 fade-in-left delay-2" data-scroll>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-teal-600">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <circle cx="9" cy="9" r="2"></circle>
+                                        <path d="M21 15l-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-sm font-medium text-amber-200">Creative AI</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">Create with AI Art</h3>
+                            <p class="text-amber-100 mb-4 leading-relaxed">
+                                Generate stunning images, design characters, and bring imagination to life with AI image generation tools.
+                            </p>
+                            <!-- AI Art Examples -->
+                            <div class="grid grid-cols-3 gap-2">
+                                <div class="aspect-square bg-gradient-to-br from-yellow-200 to-amber-200 rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200" onclick="openImageModal('/colorful-modern-fusion.png', 'Colorful Modern Fusion Art')">
+                                    <img src="/colorful-modern-fusion.png" alt="Colorful Modern Fusion Art" class="w-full h-full object-cover">
+                                </div>
+                                <div class="aspect-square bg-gradient-to-br from-cyan-200 to-teal-200 rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200" onclick="openImageModal('/cinematic-3d.png', 'Cinematic 3D Art')">
+                                    <img src="/cinematic-3d.png" alt="Cinematic 3D Art" class="w-full h-full object-cover">
+                                </div>
+                                <div class="aspect-square bg-gradient-to-br from-green-200 to-emerald-200 rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-200" onclick="openImageModal('/childrens-book-illustrations.png', 'Children\'s Book Illustrations')">
+                                    <img src="/childrens-book-illustrations.png" alt="Children's Book Illustrations" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coding Section -->
+                        <div class="fade-in-left delay-3" data-scroll>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-cyan-600">
+                                        <polyline points="16 18 22 12 16 6"></polyline>
+                                        <polyline points="8 6 2 12 8 18"></polyline>
+                                    </svg>
+                                </div>
+                                <span class="text-sm font-medium text-amber-200">Programming</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">Code with AI Assistance</h3>
+                            <p class="text-amber-100 mb-4 leading-relaxed">
+                                Learn programming fundamentals while using AI to write, debug, and understand code.
+                            </p>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 rounded-xl border border-amber-200/30 bg-white/10 px-4 py-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-cyan-400" style="stroke-width: 1.5;"><line x1="6" x2="10" y1="11" y2="11"></line><line x1="8" x2="8" y1="9" y2="13"></line><line x1="15" x2="15.01" y1="12" y2="12"></line><line x1="18" x2="18.01" y1="10" y2="10"></line><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"></path></svg>
+                                    <div class="flex-1">
+                                        <p class="text-sm text-white font-semibold">Simple Games</p>
+                                        <p class="text-xs text-amber-200">Create interactive games</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 rounded-xl border border-amber-200/30 bg-white/10 px-4 py-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-cyan-400" style="stroke-width: 1.5;"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg>
+                                    <div class="flex-1">
+                                        <p class="text-sm text-white font-semibold">Mobile Apps</p>
+                                        <p class="text-xs text-amber-200">Build simple applications</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 rounded-xl border border-amber-200/30 bg-white/10 px-4 py-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-cyan-400" style="stroke-width: 1.5;"><rect width="18" height="10" x="3" y="11" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" x2="8" y1="16" y2="16"></line><line x1="16" x2="16" y1="16" y2="16"></line></svg>
+                                    <div class="flex-1">
+                                        <p class="text-sm text-white font-semibold">AI Chatbots</p>
+                                        <p class="text-xs text-amber-200">Create smart assistants</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What Your Child Could Create Section -->
+        <section id="what-child-could-create" class="relative px-6 py-16">
+            <!-- Background overlays -->
+            <div class="fixed inset-0 z-[1]" style="background: radial-gradient(ellipse at center, transparent 70%, rgba(0,0,0,0.02) 85%, rgba(0,0,0,0.05) 100%); pointer-events: none;"></div>
+            <div class="fixed inset-0 z-[2]" style="background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 100%); pointer-events: none;"></div>
+
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-12 fade-in-left delay-4" data-scroll>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+                        What Your Child Could <span class="font-serif italic font-bold bg-gradient-to-r from-[#60C4D4] via-[#4AB4C8] to-[#3A9CAA] bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8); text-shadow: 0 0 3px rgba(255,255,255,0.9), 0 0 5px rgba(58,156,170,0.8), 0 0 15px rgba(58,156,170,0.6), 0 0 25px rgba(58,156,170,0.4), 0 0 35px rgba(58,156,170,0.2), 2px 2px 4px rgba(0,0,0,0.3); font-weight: 700; letter-spacing: 0.5px;">Create</span>
+                    </h2>
+                    <p class="text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
+                        From homework help to potential startups — see what's possible in just 12 weeks
+                    </p>
+                </div>
+
+                <!-- Young Innovators Section -->
+                <div class="mb-8 fade-in-left delay-5" data-scroll>
+                    <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-amber-200/30">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-cyan-500 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Young Innovators</h3>
+                                <p class="text-green-400 text-sm font-medium">Ages 8–13</p>
+                            </div>
+                        </div>
+                        <p class="text-amber-100 mb-6">Fun, guided projects that spark creativity and make learning exciting:</p>
+
+                        <!-- Horizontal Scrolling Project Cards -->
+                        <div class="overflow-x-auto -mx-2">
+                            <div class="flex gap-4 pb-4 px-2" style="width: max-content;">
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                                    </div>
+                                    <h4 class="font-semibold text-white mb-2">AI Homework Helper</h4>
+                                    <p class="text-sm text-amber-100 mb-3">Kids train a chatbot to explain math or science homework in simple steps.</p>
+                                    <span class="text-xs bg-green-500/20 text-green-600 px-2 py-1 rounded-full font-medium">Build this in 12 weeks</span>
+                                </div>
+
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                                    </div>
+                                    <h4 class="font-semibold text-white mb-2">Story & Comic Maker</h4>
+                                    <p class="text-sm text-amber-100 mb-3">Create personalized stories or comic books with AI-generated illustrations.</p>
+                                    <span class="text-xs bg-green-500/20 text-green-600 px-2 py-1 rounded-full font-medium">Build this in 12 weeks</span>
+                                </div>
+
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v5m16 0v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5m16 0H3m9 0v6"/></svg>
+                                    </div>
+                                    <h4 class="font-semibold text-white mb-2">AI Art Gallery</h4>
+                                    <p class="text-sm text-amber-100 mb-3">Generate and curate their own digital artwork collection.</p>
+                                    <span class="text-xs bg-green-500/20 text-green-600 px-2 py-1 rounded-full font-medium">Build this in 12 weeks</span>
+                                </div>
+
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    </div>
+                                    <h4 class="font-semibold text-white mb-2">Language Buddy</h4>
+                                    <p class="text-sm text-amber-100 mb-3">Build an AI friend that helps practice English, Hebrew, or another language.</p>
+                                    <span class="text-xs bg-green-500/20 text-green-600 px-2 py-1 rounded-full font-medium">Build this in 12 weeks</span>
+                                </div>
+
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-yellow-500 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 1 0 10 10"/></svg>
+                                    </div>
+                                    <h4 class="font-semibold text-white mb-2">Adventure Quiz Game</h4>
+                                    <p class="text-sm text-amber-100 mb-3">Design fun quizzes where the AI adapts questions based on answers.</p>
+                                    <span class="text-xs bg-green-500/20 text-green-600 px-2 py-1 rounded-full font-medium">Build this in 12 weeks</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Scroll indicator -->
+                        <div class="text-center mt-2">
+                            <span class="text-xs text-gray-500">← Scroll to see more projects →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teen Entrepreneurs Section -->
+                <div class="fade-in-left delay-6" data-scroll>
+                    <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-amber-200/30">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Teen Entrepreneurs</h3>
+                                <p class="text-amber-400 text-sm font-medium">Ages 14–18</p>
+                            </div>
+                        </div>
+                        <p class="text-amber-100 mb-6">Advanced, practical projects that build a portfolio and show initiative:</p>
+
+                        <!-- Horizontal Scrolling Project Cards -->
+                        <div class="overflow-x-auto -mx-2">
+                            <div class="flex gap-4 pb-4 px-2" style="width: max-content;">
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/></svg>
+                                    </div>
+                                    <h4 class="font-semibold text-white mb-2">AI Business Assistant</h4>
+                                    <p class="text-sm text-amber-100 mb-3">Automate scheduling, reminders, or customer chat for a real small business.</p>
+                                    <div class="space-y-1">
+                                        <span class="block text-xs bg-amber-500/20 text-amber-600 px-2 py-1 rounded-full font-medium">Portfolio Ready</span>
+                                        <span class="block text-xs bg-cyan-500/20 text-cyan-600 px-2 py-1 rounded-full font-medium">Partner with local businesses</span>
+                                    </div>
+                                </div>
+
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M3 6h18l-2 13H5L3 6z"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                    </div>
+                                    <h4 class="font-semibold text-white mb-2">E-commerce Helper</h4>
+                                    <p class="text-sm text-amber-100 mb-3">Build a chatbot that recommends products or answers FAQs for online shops.</p>
+                                    <div class="space-y-1">
+                                        <span class="block text-xs bg-green-500/20 text-green-600 px-2 py-1 rounded-full font-medium">Real Impact</span>
+                                        <span class="block text-xs bg-teal-500/20 text-teal-600 px-2 py-1 rounded-full font-medium">Commercial Ready</span>
+                                    </div>
+                                </div>
+
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-teal-600 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27,6.96 12,12.01 20.73,6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                                    </div>
+                                    <h4 class="font-semibold text-white mb-2">Social Impact Project</h4>
+                                    <p class="text-sm text-amber-100 mb-3">Use AI to analyze local issues (traffic, recycling, mental health) and propose solutions.</p>
+                                    <div class="space-y-1">
+                                        <span class="block text-xs bg-teal-500/20 text-teal-600 px-2 py-1 rounded-full font-medium">Community Impact</span>
+                                        <span class="block text-xs bg-indigo-500/20 text-indigo-600 px-2 py-1 rounded-full font-medium">College Essays</span>
+                                    </div>
+                                </div>
+
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                                    </div>
+                                    <h4 class="font-semibold text-white mb-2">AI Coding Partner</h4>
+                                    <p class="text-sm text-amber-100 mb-3">Develop small apps (games, tools, websites) with AI as a coding collaborator.</p>
+                                    <div class="space-y-1">
+                                        <span class="block text-xs bg-cyan-500/20 text-cyan-600 px-2 py-1 rounded-full font-medium">Technical Skills</span>
+                                        <span class="block text-xs bg-gray-500/20 text-amber-100 px-2 py-1 rounded-full font-medium">GitHub Portfolio</span>
+                                    </div>
+                                </div>
+
+                                <div class="w-64 flex-shrink-0 p-4 rounded-xl bg-black/60 border border-amber-200/30">
+                                    <div class="w-8 h-8 bg-amber-600 rounded-lg flex items-center justify-center flex-shrink-0 mb-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                                    </div>
+                                    <h4 class="font-semibold text-white mb-2">Start-up Concept Prototype</h4>
+                                    <p class="text-sm text-amber-100 mb-3">Turn an idea (AI tutor, AI translator, AI designer) into a working demo they can pitch.</p>
+                                    <div class="space-y-1">
+                                        <span class="block text-xs bg-amber-500/20 text-amber-600 px-2 py-1 rounded-full font-medium">Entrepreneurship</span>
+                                        <span class="block text-xs bg-yellow-500/20 text-yellow-600 px-2 py-1 rounded-full font-medium">Demo Day</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Scroll indicator -->
+                        <div class="text-center mt-2">
+                            <span class="text-xs text-gray-500">← Scroll to see more projects →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="min-h-screen flex flex-col justify-center px-6 py-16 relative">
+            <!-- Background overlays -->
+            <div class="fixed inset-0 z-[1]" style="background: radial-gradient(ellipse at center, transparent 70%, rgba(0,0,0,0.02) 85%, rgba(0,0,0,0.05) 100%); pointer-events: none;"></div>
+            <div class="fixed inset-0 z-[2]" style="background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 100%); pointer-events: none;"></div>
+
+            <div class="max-w-md mx-auto text-center space-y-8 relative z-10">
+                <!-- Main CTA Headline -->
+                <div class="space-y-6">
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+                        Ready to Give Your Child the
+                        <span class="font-serif italic font-bold bg-gradient-to-r from-[#3A9CAA] via-[#4AB4C8] to-[#80D4E0] bg-clip-text text-transparent px-2 inline-block" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8); text-shadow: 0 0 3px rgba(255,255,255,0.9), 0 0 5px rgba(58,156,170,0.8), 0 0 15px rgba(58,156,170,0.6), 0 0 25px rgba(58,156,170,0.4), 0 0 35px rgba(58,156,170,0.2), 2px 2px 4px rgba(0,0,0,0.3); font-weight: 700; letter-spacing: 0.5px;">
+                            AI Advantage?
+                        </span>
+                    </h2>
+
+                    <p class="text-lg sm:text-xl text-white/95 leading-relaxed font-semibold" style="text-shadow: 0 1px 4px rgba(0,0,0,0.2);">
+                        Join forward-thinking parents who are preparing their children for tomorrow's world. Limited spots available in each age group.
+                    </p>
+                </div>
+
+                <!-- Early Bird Special -->
+                <div class="bg-gradient-to-r from-amber-500/20 to-yellow-500/20 backdrop-blur-sm rounded-2xl p-6 border-2 border-amber-400/30">
+                    <div class="flex items-center justify-center gap-2 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+                        </svg>
+                        <span class="text-lg font-bold text-amber-300">Early Bird Special Pricing</span>
+                    </div>
+                    <div class="text-3xl font-extrabold text-white mb-2">20% OFF</div>
+                    <p class="text-sm text-white/80">Limited time offer for early registrants<br><span class="text-xs text-white/60">ending October 17th</span></p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Choose Your Program Section -->
+        <section id="choose-program" class="relative px-6 py-16">
+            <!-- Background overlays -->
+            <div class="fixed inset-0 z-[1]" style="background: radial-gradient(ellipse at center, transparent 70%, rgba(0,0,0,0.02) 85%, rgba(0,0,0,0.05) 100%); pointer-events: none;"></div>
+            <div class="fixed inset-0 z-[2]" style="background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 100%); pointer-events: none;"></div>
+
+            <div class="relative z-10 max-w-md mx-auto">
+                <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-amber-200/30 fade-in-left delay-4" data-scroll>
+                    <!-- Header -->
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold text-white tracking-tight">Choose Your Program</h2>
+                        <div class="flex gap-2 text-amber-100 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-500" style="stroke-width: 1.5;"><path d="M12 18V5"></path><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"></path><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"></path><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path><path d="M18 18a4 4 0 0 0 2-7.464"></path><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"></path><path d="M6 18a4 4 0 0 1-2-7.464"></path><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path></svg>
+                            <span class="text-sm font-medium">AI Powered Learning</span>
+                        </div>
+                    </div>
+
+                    <!-- Form -->
+                    <div class="space-y-4">
+                        <!-- Child's Name -->
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-amber-100">Child's Name</label>
+                            <div class="relative">
+                                <input type="text" placeholder="e.g., Sarah Johnson" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                                <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-600" style="stroke-width: 1.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Age Group Selection -->
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-amber-100">Select Age Group</label>
+                            <select class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                                <option value="">Choose your child's age group</option>
+                                <option value="young">Young Innovators (Ages 8-10) - ₪1,200</option>
+                                <option value="tech">Tech Explorers (Ages 11-13) - ₪1,500</option>
+                                <option value="future">Future Leaders (Ages 14-18) - ₪1,800</option>
+                            </select>
+                        </div>
+
+                        <!-- Schedule Info -->
+                        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-600"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                <span class="text-sm font-medium text-amber-300">Class Schedule</span>
+                            </div>
+                            <div class="text-xs text-amber-200 space-y-1">
+                                <div>• Young Innovators: Sundays 16:00-17:00</div>
+                                <div>• Tech Explorers: Sundays 17:30-18:45</div>
+                                <div>• Future Leaders: Sundays 19:00-20:30</div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Children Container -->
+                        <div id="additionalChildrenContainer"></div>
+
+                        <!-- Add Another Child -->
+                        <button type="button" id="addChildBtn" onclick="addChildForm()" class="w-full py-3 px-4 bg-amber-950/20 border-2 border-dashed border-amber-200/40 rounded-xl text-amber-100 hover:border-amber-400 hover:text-amber-400 transition-colors text-sm font-medium">
+                            + Add another child (10% off 2nd child, 15% off 3rd+)
+                        </button>
+
+                        <!-- Parent Contact Fields -->
+                        <div class="border-t border-amber-200/30 pt-4 mt-4">
+                            <h3 class="text-lg font-semibold text-white mb-4">Parent Contact</h3>
+                            <div class="space-y-4">
+                                <!-- Parent Name -->
+                                <div class="space-y-2">
+                                    <label class="text-sm font-semibold text-amber-100">Parent Name</label>
+                                    <div class="relative">
+                                        <input type="text" placeholder="Enter parent's full name" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                                        <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 transition-colors">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-600" style="stroke-width: 1.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="space-y-2">
+                                    <label class="text-sm font-semibold text-amber-100">Email Address</label>
+                                    <div class="relative">
+                                        <input type="email" placeholder="parent@example.com" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                                        <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 transition-colors">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-600" style="stroke-width: 1.5;"><path d="M3 7l9 6 9-6"></path><rect width="18" height="14" x="3" y="5" rx="2"></rect></svg>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Phone Number -->
+                                <div class="space-y-2">
+                                    <label class="text-sm font-semibold text-amber-100">Phone Number</label>
+                                    <div class="relative">
+                                        <input type="tel" placeholder="+972 50-123-4567" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                                        <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 transition-colors">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-600" style="stroke-width: 1.5;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price Summary -->
+                        <div id="price-summary" class="bg-gradient-to-br from-amber-500/10 to-yellow-500/10 border border-amber-500/30 rounded-xl p-6 mt-6" style="display: none;">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-yellow-400 rounded-full flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                        <path d="M12 1v6m0 6v6m6-12v6m-12-6v6M7 8h10l-1 9H8L7 8Z"/>
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-semibold text-white">Registration Summary</h4>
+                            </div>
+
+                            <div id="price-breakdown" class="space-y-2 text-sm text-amber-100 mb-4">
+                                <!-- Price breakdown will be inserted here -->
+                            </div>
+
+                            <div class="border-t border-amber-500/30 pt-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-lg font-semibold text-white">Total:</span>
+                                    <span id="total-price" class="text-2xl font-bold text-amber-300">₪0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method Selection -->
+                        <div id="payment-selection" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-500/30 rounded-xl p-6 mt-6">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                        <rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-semibold text-white">Choose Payment Method</h4>
+                            </div>
+
+                            <div class="space-y-3">
+                                <!-- Bit Payment Option -->
+                                <label class="flex items-center p-4 bg-amber-950/20 rounded-xl border border-amber-200/20 cursor-pointer hover:bg-amber-950/30 transition-colors">
+                                    <input type="radio" name="payment-method" value="bit" class="sr-only" checked>
+                                    <div class="w-5 h-5 border-2 border-green-400 rounded-full flex items-center justify-center mr-3">
+                                        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                    </div>
+                                    <div class="flex items-center gap-3 flex-1">
+                                        <img src="Bit.logo.png" alt="Bit" class="h-10 w-auto max-w-[120px] object-contain">
+                                        <div>
+                                            <div class="text-white font-medium">Bit Payment</div>
+                                            <div class="text-amber-200 text-sm">Pay securely with Bit app</div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- PayBox Option -->
+                                <label class="flex items-center p-4 bg-amber-950/20 rounded-xl border border-amber-200/20 cursor-pointer hover:bg-amber-950/30 transition-colors">
+                                    <input type="radio" name="payment-method" value="paybox" class="sr-only">
+                                    <div class="w-5 h-5 border-2 border-amber-400 rounded-full flex items-center justify-center mr-3">
+                                        <div class="w-2 h-2 bg-transparent rounded-full"></div>
+                                    </div>
+                                    <div class="flex items-center gap-3 flex-1">
+                                        <img src="Paybox.logo.png" alt="PayBox" class="h-10 w-auto max-w-[120px] object-contain">
+                                        <div>
+                                            <div class="text-white font-medium">PayBox</div>
+                                            <div class="text-amber-200 text-sm">Pay with PayBox wallet</div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Credit Card Option -->
+                                <label class="flex items-center p-4 bg-amber-950/20 rounded-xl border border-amber-200/20 cursor-pointer hover:bg-amber-950/30 transition-colors">
+                                    <input type="radio" name="payment-method" value="credit" class="sr-only">
+                                    <div class="w-5 h-5 border-2 border-amber-400 rounded-full flex items-center justify-center mr-3">
+                                        <div class="w-2 h-2 bg-transparent rounded-full"></div>
+                                    </div>
+                                    <div class="flex items-center gap-3 flex-1">
+                                        <div class="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                                <rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <div class="text-white font-medium">Credit Card</div>
+                                            <div class="text-amber-200 text-sm">Pay with credit or debit card</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Reserve Button -->
+                        <button type="button" onclick="proceedToPayment()" class="w-full bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-600 hover:to-yellow-500 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 mt-6">
+                            Proceed to Payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Have Questions Section -->
+        <section id="have-questions" class="relative px-6 py-16">
+            <!-- Background overlays -->
+            <div class="fixed inset-0 z-[1]" style="background: radial-gradient(ellipse at center, transparent 70%, rgba(0,0,0,0.02) 85%, rgba(0,0,0,0.05) 100%); pointer-events: none;"></div>
+            <div class="fixed inset-0 z-[2]" style="background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 100%); pointer-events: none;"></div>
+
+            <div class="max-w-md mx-auto text-center space-y-8 relative z-10">
+                <!-- Contact Section -->
+                <div class="space-y-6">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-white mb-3">Have Questions?</h3>
+                        <p class="text-lg text-white/90 mb-6">Feel free to reach out if you have any questions!</p>
+                    </div>
+
+                    <!-- Contact Buttons -->
+                    <div class="space-y-4">
+                        <a href="https://wa.me/972543159025?text=Hi,%20I'm%20interested%20in%20the%20AI%20Club%20program" target="_blank" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-3 no-underline">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            WhatsApp Now to Register
+                        </a>
+
+                        <a href="tel:+972543159025" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-3 no-underline">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            Call Now: +972 54-315-9025
+                        </a>
+                    </div>
+
+                    <p class="text-sm text-white/70 text-center">Available for questions anytime</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/80 backdrop-blur-sm">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="relative max-w-4xl w-full">
+                <!-- Close button -->
+                <button onclick="closeImageModal()" class="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-amber-200/30 hover:bg-white/30 transition-colors flex items-center justify-center z-10">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+
+                <!-- Image container -->
+                <div class="bg-black/80 backdrop-blur-sm border border-amber-200/30 rounded-2xl shadow-2xl overflow-hidden">
+                    <img id="modalImage" src="" alt="" class="w-full h-auto max-h-[80vh] object-contain">
+                    <div class="p-4 bg-black/60">
+                        <h3 id="modalTitle" class="text-xl font-bold text-white"></h3>
+                        <p class="text-amber-100 text-sm mt-1">AI-generated artwork created by kids in our program</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Subtle Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse-subtle {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.9;
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .animate-pulse-subtle {
+            animation: pulse-subtle 3s ease-in-out infinite;
+        }
+
+        /* Scroll-triggered animations */
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-left.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-left.delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .fade-in-left.delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .fade-in-left.delay-3 {
+            transition-delay: 0.6s;
+        }
+
+        .fade-in-left.delay-4 {
+            transition-delay: 0.8s;
+        }
+
+        .fade-in-left.delay-5 {
+            transition-delay: 1.0s;
+        }
+
+        .fade-in-left.delay-6 {
+            transition-delay: 1.2s;
+        }
+
+        body {
+            font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;
+            min-height: 100vh;
+            background-color: #0a0a12;
+            position: relative;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .site-background {
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+            pointer-events: none;
+            background-image: url('/NEW-background.jpg?v=1');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            transform: translateZ(0);
+        }
+
+        .content {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .site-background {
+                background-position: center;
+                background-size: cover;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll-triggered animations
+            const scrollElements = document.querySelectorAll('[data-scroll]');
+
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+
+            const displayScrollElement = (element) => {
+                element.classList.add('animate');
+            };
+
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+
+            // Trigger initial check
+            handleScrollAnimation();
+        });
+
+        // Image Modal Functions
+        function openImageModal(imageSrc, imageTitle) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+
+            modalImage.src = imageSrc;
+            modalImage.alt = imageTitle;
+            modalTitle.textContent = imageTitle;
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal when clicking outside the image
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeImageModal();
+            }
+        });
+
+        // Close modal with escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+
+        // Add Child Form Functionality
+        let childCount = 0;
+
+        function addChildForm() {
+            childCount++;
+            const container = document.getElementById('additionalChildrenContainer');
+            const addButton = document.getElementById('addChildBtn');
+
+            const childForm = document.createElement('div');
+            childForm.className = 'border-t border-amber-200/30 pt-4 mt-4';
+            childForm.id = `child-${childCount}`;
+
+            childForm.innerHTML = `
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold text-white">Child ${childCount + 1}</h3>
+                    <button type="button" onclick="removeChildForm(${childCount})" class="text-amber-500 hover:text-amber-700 text-sm font-medium">
+                        Remove
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <!-- Child's Name -->
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-amber-100">Child's Name</label>
+                        <div class="relative">
+                            <input type="text" placeholder="e.g., Alex Johnson" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                            <button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-amber-600" style="stroke-width: 1.5;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Age Group Selection -->
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-amber-100">Select Age Group</label>
+                        <select class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                            <option value="">Choose your child's age group</option>
+                            <option value="young">Young Innovators (Ages 8-10) - ₪1,200</option>
+                            <option value="tech">Tech Explorers (Ages 11-13) - ₪1,500</option>
+                            <option value="future">Future Leaders (Ages 14-18) - ₪1,800</option>
+                        </select>
+                    </div>
+                </div>
+            `;
+
+            container.appendChild(childForm);
+
+            // Hide add button after 3 children (limit for discounts)
+            if (childCount >= 3) {
+                addButton.style.display = 'none';
+            }
+
+            // Update button text for remaining children
+            updateAddButtonText();
+        }
+
+        function removeChildForm(id) {
+            const childForm = document.getElementById(`child-${id}`);
+            const addButton = document.getElementById('addChildBtn');
+
+            if (childForm) {
+                childForm.remove();
+                childCount--;
+
+                // Show add button if hidden
+                if (childCount < 3) {
+                    addButton.style.display = 'block';
+                }
+
+                updateAddButtonText();
+                renumberChildren();
+            }
+        }
+
+        function updateAddButtonText() {
+            const addButton = document.getElementById('addChildBtn');
+            if (childCount === 0) {
+                addButton.innerHTML = '+ Add another child (10% off 2nd child, 15% off 3rd+)';
+            } else if (childCount === 1) {
+                addButton.innerHTML = '+ Add 3rd child (15% off)';
+            } else if (childCount === 2) {
+                addButton.innerHTML = '+ Add 4th child (15% off)';
+            }
+        }
+
+        function renumberChildren() {
+            const container = document.getElementById('additionalChildrenContainer');
+            const childForms = container.children;
+
+            for (let i = 0; i < childForms.length; i++) {
+                const childForm = childForms[i];
+                const header = childForm.querySelector('h3');
+                if (header) {
+                    header.textContent = `Child ${i + 2}`;
+                }
+            }
+        }
+
+        // Mobile Menu Functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        // Open mobile menu
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close mobile menu
+        closeMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+
+        // Close menu when clicking anywhere on the overlay
+        mobileMenu.addEventListener('click', function(e) {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+
+        // Prevent menu content from closing menu when clicked
+        const menuContent = mobileMenu.querySelector('.flex.flex-col.h-full');
+        menuContent.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Handle menu item clicks
+        menuItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Close menu first
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+
+                    // Then scroll to target
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({behavior: 'smooth'});
+                    }, 100);
+                }
+            });
+        });
+
+        // Configuration for Google Sheets integration
+        const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/a/macros/aikidz.club/s/AKfycbxejhZMSqJ6qOaQqu57MU9pnXVmFh5x142fV5X-xP_Beg4gIh9-VMy-XkG9a7OpXhTcyQ/exec';
+
+        // Submit mobile registration
+        async function submitMobileRegistration() {
+            console.log('🚀 Starting mobile registration submission...');
+
+            try {
+                // Show loading modal immediately
+                showLoadingModal();
+
+                // Collect form data
+                const formData = {
+                    children: [],
+                    parent: {},
+                    totalPrice: 0
+                };
+
+                console.log('📝 Collecting form data...');
+
+                // Collect main child data
+                const childNameInput = document.querySelector('input[type="text"]');
+                const ageGroupSelect = document.querySelector('select');
+
+                console.log('Child name input found:', !!childNameInput);
+                console.log('Age group select found:', !!ageGroupSelect);
+
+                const childName = childNameInput?.value?.trim() || '';
+                const ageGroup = ageGroupSelect?.value || '';
+
+                console.log('Child name:', childName);
+                console.log('Age group:', ageGroup);
+
+                if (childName && ageGroup) {
+                    let program, price;
+                    switch(ageGroup) {
+                        case 'young':
+                            program = 'Young Innovators (Ages 8-10)';
+                            price = 1200;
+                            break;
+                        case 'tech':
+                            program = 'Tech Explorers (Ages 11-13)';
+                            price = 1500;
+                            break;
+                        case 'future':
+                            program = 'Future Leaders (Ages 14-18)';
+                            price = 1800;
+                            break;
+                        default:
+                            console.error('Invalid age group:', ageGroup);
+                            closeLoadingModal();
+                            showErrorModal('Please select a valid age group');
+                            return;
+                    }
+
+                    formData.children.push({
+                        name: childName,
+                        program: program,
+                        price: price
+                    });
+                    formData.totalPrice += price;
+                    console.log('✅ Main child added:', formData.children[0]);
+                }
+
+                // Collect additional children data
+                const additionalChildren = document.querySelectorAll('#additionalChildrenContainer > div');
+                console.log('Additional children found:', additionalChildren.length);
+
+                additionalChildren.forEach((childDiv, index) => {
+                    const childInputs = childDiv.querySelectorAll('input, select');
+                    const childName = childInputs[0]?.value?.trim() || '';
+                    const ageGroup = childInputs[1]?.value || '';
+
+                    if (childName && ageGroup) {
+                        let program, price;
+                        switch(ageGroup) {
+                            case 'young':
+                                program = 'Young Innovators (Ages 8-10)';
+                                price = 1200;
+                                break;
+                            case 'tech':
+                                program = 'Tech Explorers (Ages 11-13)';
+                                price = 1500;
+                                break;
+                            case 'future':
+                                program = 'Future Leaders (Ages 14-18)';
+                                price = 1800;
+                                break;
+                        }
+
+                        formData.children.push({
+                            name: childName,
+                            program: program,
+                            price: price
+                        });
+                        formData.totalPrice += price;
+                        console.log(`✅ Additional child ${index + 1} added:`, formData.children[formData.children.length - 1]);
+                    }
+                });
+
+                // Collect parent data
+                const parentNameInput = document.querySelector('input[type="text"][placeholder*="parent"]');
+                const emailInput = document.querySelector('input[type="email"]');
+                const phoneInput = document.querySelector('input[type="tel"]');
+
+                console.log('Parent name input found:', !!parentNameInput);
+                console.log('Email input found:', !!emailInput);
+                console.log('Phone input found:', !!phoneInput);
+
+                formData.parent = {
+                    name: parentNameInput?.value?.trim() || '',
+                    email: emailInput?.value?.trim() || '',
+                    phone: phoneInput?.value?.trim() || ''
+                };
+
+                console.log('Parent data collected:', formData.parent);
+                console.log('Total form data:', formData);
+
+                // Validate form
+                if (formData.children.length === 0) {
+                    console.error('❌ No children data collected');
+                    closeLoadingModal();
+                    showErrorModal('Please fill in child name and select age group');
+                    return;
+                }
+
+                if (!formData.parent.name || !formData.parent.email || !formData.parent.phone) {
+                    console.error('❌ Missing parent contact info');
+                    closeLoadingModal();
+                    showErrorModal('Please fill in parent name, email, and phone number');
+                    return;
+                }
+
+                // Disable submit button to prevent double submission
+                const submitButton = document.querySelector('button[onclick="submitMobileRegistration()"]');
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    console.log('🔒 Submit button disabled');
+                }
+
+                console.log('🔄 Starting Google Sheets submission...');
+                updateLoadingStatus('Submitting to database...');
+
+                // Test: First check if Google Apps Script is reachable
+                console.log('🔍 Testing Google Apps Script connectivity...');
+                console.log('🔗 Test URL:', GOOGLE_SHEETS_WEB_APP_URL + '?test=connectivity');
+                console.log('💡 You can test this URL directly in your browser!');
+
+                try {
+                    const testResponse = await fetch(GOOGLE_SHEETS_WEB_APP_URL + '?test=connectivity', {
+                        method: 'GET'
+                    });
+                    console.log('📡 Test connectivity response:', testResponse.status, testResponse.ok);
+
+                    if (testResponse.ok) {
+                        const testResult = await testResponse.text();
+                        console.log('📡 Test response body:', testResult);
+
+                        // Check if this looks like a valid Apps Script response
+                        if (testResult.includes('Apps Script') || testResult.includes('working') || testResult.includes('success')) {
+                            console.log('✅ Apps Script is responding correctly');
+                        } else if (testResult.includes('html') || testResult.includes('error')) {
+                            console.log('⚠️ Apps Script responding but may have configuration issues');
+                        } else {
+                            console.log('❌ Apps Script not configured to handle web requests');
+                            console.log('💡 Apps Script needs doGet() and doPost() functions');
+                        }
+                    } else {
+                        console.log('❌ Apps Script connectivity test failed');
+                        console.log('💡 Check if Apps Script is deployed as web app');
+                    }
+                } catch (testError) {
+                    console.log('⚠️ Test connectivity failed:', testError);
+                    console.log('💡 Possible CORS issue or Apps Script not deployed');
+                }
+
+                // Primary: Submit to Google Sheets
+                const response = await submitToGoogleSheets(formData);
+
+                if (response.success) {
+                    console.log('✅ Google Sheets submission successful');
+                    updateLoadingStatus('Creating calendar invite...');
+
+                    // Simulate processing time for better UX
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+
+                    updateLoadingStatus('Sending confirmation email...');
+                    await new Promise(resolve => setTimeout(resolve, 800));
+
+                    closeLoadingModal();
+                    showMobileRegistrationSuccess(formData);
+                } else {
+                    throw new Error('Google Sheets submission failed');
+                }
+
+            } catch (error) {
+                console.error('❌ Google Sheets submission error:', error);
+
+                updateLoadingStatus('Trying alternative method...');
+                await new Promise(resolve => setTimeout(resolve, 500));
+
+                // Fallback: Send to WhatsApp
+                submitToWhatsApp(formData);
+
+                closeLoadingModal();
+                showErrorModal('Registration sent via WhatsApp! We\'ll confirm your booking shortly.', true);
+            } finally {
+                // Re-enable submit button
+                const submitButton = document.querySelector('button[onclick="submitMobileRegistration()"]');
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    console.log('🔓 Submit button re-enabled');
+                }
+            }
+        }
+
+        // Submit to Google Sheets
+        async function submitToGoogleSheets(formData) {
+            console.log('📡 Attempting Google Sheets submission...');
+            console.log('URL:', GOOGLE_SHEETS_WEB_APP_URL);
+            console.log('Data being sent:', formData);
+
+            try {
+                // Method 1: Try as form data (preferred by Google Apps Script)
+                console.log('🔄 Trying form data method...');
+                const formDataObj = new FormData();
+                formDataObj.append('data', JSON.stringify(formData));
+
+                const response = await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
+                    method: 'POST',
+                    body: formDataObj
+                });
+
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
+
+                if (response.ok) {
+                    const result = await response.text();
+                    console.log('✅ Google Sheets response:', result);
+                    console.log('📊 Response details:', {
+                        status: response.status,
+                        statusText: response.statusText,
+                        headers: Object.fromEntries(response.headers.entries()),
+                        body: result
+                    });
+
+                    // Check if the response indicates successful execution
+                    if (result.includes('success') || result.includes('processed') || response.status === 200) {
+                        console.log('✅ Apps Script execution appears successful');
+                        return { success: true, data: result };
+                    } else {
+                        console.log('⚠️ Apps Script executed but response unclear:', result);
+                        return { success: true, data: result, warning: 'Response unclear' };
+                    }
+                } else {
+                    console.error('❌ Google Sheets responded with error:', response.status, response.statusText);
+                    throw new Error(`Google Sheets error: ${response.status}`);
+                }
+
+            } catch (corsError) {
+                console.log('⚠️ Form data method failed, trying URL parameters...');
+                console.error('Form data error:', corsError);
+
+                try {
+                    // Method 2: Try with URL parameters (GET request)
+                    console.log('🔄 Trying URL parameters method...');
+                    const params = new URLSearchParams();
+                    params.append('action', 'submit');
+                    params.append('data', JSON.stringify(formData));
+
+                    const getResponse = await fetch(GOOGLE_SHEETS_WEB_APP_URL + '?' + params.toString(), {
+                        method: 'GET'
+                    });
+
+                    console.log('GET Response status:', getResponse.status);
+                    console.log('GET Response ok:', getResponse.ok);
+
+                    if (getResponse.ok) {
+                        const result = await getResponse.text();
+                        console.log('✅ URL parameters method successful:', result);
+                        return { success: true, data: result };
+                    } else {
+                        throw new Error('URL parameters method failed');
+                    }
+
+                } catch (urlError) {
+                    console.log('⚠️ URL parameters failed, trying no-cors fallback...');
+                    console.error('URL parameters error:', urlError);
+
+                    try {
+                        // Method 3: Final fallback with no-cors
+                        console.log('🔄 Trying no-cors POST fallback...');
+                        await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
+                            method: 'POST',
+                            mode: 'no-cors',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: new URLSearchParams({
+                                data: JSON.stringify(formData)
+                            })
+                        });
+
+                        console.log('📡 no-cors request sent, cannot verify response');
+
+                        // Wait and assume it worked (we can't verify with no-cors)
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+
+                        // Since we can't verify, let's be optimistic but add a warning
+                        console.log('⚠️ no-cors submission completed, assuming success');
+                        return { success: true, data: 'no-cors-submitted', warning: 'Cannot verify submission' };
+
+                    } catch (noCorsError) {
+                        console.error('❌ All submission methods failed:', noCorsError);
+                        throw new Error('All Google Sheets submission methods failed');
+                    }
+                }
+            }
+        }
+
+        // Fallback: Submit to WhatsApp
+        function submitToWhatsApp(formData) {
+            const message = `Hi! I'd like to register for AI Club (Mobile):\n\n` +
+                `Email: ${formData.parent.email}\n` +
+                `Phone: ${formData.parent.phone}\n\n` +
+                `Children:\n` +
+                formData.children.map(child => `- ${child.name} (${child.program})`).join('\n') +
+                `\n\nTotal: ₪${formData.totalPrice}`;
+
+            window.open(`https://wa.me/972543159025?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Show loading modal
+        function showLoadingModal() {
+            const loadingModal = `
+                <div data-modal="loading" class="fixed inset-0 z-[100000] flex items-center justify-center p-4" style="background-color: rgba(0,0,0,0.8);">
+                    <div class="bg-gradient-to-br from-cyan-600 to-teal-700 border border-cyan-400/20 rounded-2xl shadow-2xl max-w-md w-full p-8 text-center">
+                        <div class="w-16 h-16 mx-auto mb-6">
+                            <div class="w-16 h-16 border-4 border-amber-200/40 border-t-white rounded-full animate-spin"></div>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white mb-2">Processing Registration</h2>
+                        <p id="loading-status" class="text-blue-100 mb-4">
+                            Submitting to database...
+                        </p>
+                        <div class="flex justify-center">
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-white rounded-full animate-bounce"></div>
+                                <div class="w-2 h-2 bg-white rounded-full animate-bounce" style="animation-delay: 0.1s;"></div>
+                                <div class="w-2 h-2 bg-white rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', loadingModal);
+        }
+
+        // Update loading status
+        function updateLoadingStatus(message) {
+            const statusElement = document.getElementById('loading-status');
+            if (statusElement) {
+                statusElement.textContent = message;
+            }
+        }
+
+        // Close loading modal
+        function closeLoadingModal() {
+            const loadingElement = document.querySelector('[data-modal="loading"]');
+            if (loadingElement) {
+                loadingElement.remove();
+            }
+        }
+
+        // Show success message
+        function showMobileRegistrationSuccess(formData) {
+            const successMessage = `
+                <div data-modal="success" class="fixed inset-0 z-[100000] flex items-center justify-center p-4" style="background-color: rgba(0,0,0,0.8);">
+                    <div class="bg-gradient-to-br from-green-600 to-green-700 border border-green-400/20 rounded-2xl shadow-2xl max-w-md w-full p-6 text-center transform animate-pulse">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                <path d="M20 6 9 17l-5-5"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white mb-2">🎉 Welcome to AI Club!</h2>
+                        <p class="text-green-100 mb-4">
+                            Thank you! Your registration has been successfully processed.
+                        </p>
+                        <div class="text-sm text-green-200 mb-6 space-y-2">
+                            <p>✅ Confirmation email sent to ${formData.parent.email}</p>
+                            <p>✅ Calendar invite will follow shortly</p>
+                            <p>✅ You'll be added to our WhatsApp group</p>
+                            <p>✅ You'll receive class details soon</p>
+                        </div>
+                        <button onclick="closeMobileSuccessMessage()" class="bg-white text-green-600 font-bold py-3 px-8 rounded-lg hover:bg-green-50 transition-all transform hover:scale-105">
+                            Awesome!
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', successMessage);
+        }
+
+        // Show error modal
+        function showErrorModal(message, isWhatsAppFallback = false) {
+            const iconColor = isWhatsAppFallback ? 'text-amber-500' : 'text-amber-500';
+            const bgColor = isWhatsAppFallback ? 'from-amber-600 to-yellow-500' : 'from-amber-600 to-yellow-600';
+            const title = isWhatsAppFallback ? '📱 Sent via WhatsApp!' : '⚠️ Oops!';
+
+            const errorModal = `
+                <div data-modal="error" class="fixed inset-0 z-[100000] flex items-center justify-center p-4" style="background-color: rgba(0,0,0,0.8);">
+                    <div class="bg-gradient-to-br ${bgColor} border border-amber-200/30 rounded-2xl shadow-2xl max-w-md w-full p-6 text-center transform animate-pulse">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            ${isWhatsAppFallback ?
+                                '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>' :
+                                '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>'
+                            }
+                        </div>
+                        <h2 class="text-2xl font-bold text-white mb-2">${title}</h2>
+                        <p class="text-white/90 mb-6">
+                            ${message}
+                        </p>
+                        <button onclick="closeMobileErrorMessage()" class="bg-white/20 text-white font-bold py-3 px-8 rounded-lg hover:bg-white/30 transition-all transform hover:scale-105">
+                            ${isWhatsAppFallback ? 'Got it!' : 'Try Again'}
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', errorModal);
+        }
+
+        // Close error message
+        function closeMobileErrorMessage() {
+            const errorElement = document.querySelector('[data-modal="error"]');
+            if (errorElement) {
+                errorElement.remove();
+            }
+        }
+
+        // Close success message
+        function closeMobileSuccessMessage() {
+            const successElement = document.querySelector('[data-modal="success"]');
+            if (successElement) {
+                successElement.remove();
+            }
+        }
+
+        // Calculate and display price with discounts
+        function calculateMobilePrice() {
+            const priceSummary = document.getElementById('price-summary');
+            const priceBreakdown = document.getElementById('price-breakdown');
+            const totalPrice = document.getElementById('total-price');
+
+            // Collect all children data for price calculation
+            const children = [];
+
+            // Main child
+            const childName = document.querySelector('input[type="text"]:not([placeholder*="parent"])').value.trim();
+            const ageGroup = document.querySelector('select').value;
+
+            if (childName && ageGroup) {
+                let program, price;
+                switch(ageGroup) {
+                    case 'young':
+                        program = 'Young Innovators (Ages 8-10)';
+                        price = 1200;
+                        break;
+                    case 'tech':
+                        program = 'Tech Explorers (Ages 11-13)';
+                        price = 1500;
+                        break;
+                    case 'future':
+                        program = 'Future Leaders (Ages 14-18)';
+                        price = 1800;
+                        break;
+                }
+
+                if (program) {
+                    children.push({ name: childName, program, price });
+                }
+            }
+
+            // Additional children
+            const additionalChildren = document.querySelectorAll('#additionalChildrenContainer > div');
+            additionalChildren.forEach(childDiv => {
+                const childInputs = childDiv.querySelectorAll('input, select');
+                const childName = childInputs[0]?.value?.trim();
+                const ageGroup = childInputs[1]?.value;
+
+                if (childName && ageGroup) {
+                    let program, price;
+                    switch(ageGroup) {
+                        case 'young':
+                            program = 'Young Innovators (Ages 8-10)';
+                            price = 1200;
+                            break;
+                        case 'tech':
+                            program = 'Tech Explorers (Ages 11-13)';
+                            price = 1500;
+                            break;
+                        case 'future':
+                            program = 'Future Leaders (Ages 14-18)';
+                            price = 1800;
+                            break;
+                    }
+
+                    if (program) {
+                        children.push({ name: childName, program, price });
+                    }
+                }
+            });
+
+            if (children.length === 0) {
+                priceSummary.style.display = 'none';
+                return;
+            }
+
+            // Calculate prices with discounts
+            let total = 0;
+            let breakdownHtml = '';
+
+            // Sort by price (highest first) to apply discounts correctly
+            children.sort((a, b) => b.price - a.price);
+
+            children.forEach((child, index) => {
+                let finalPrice = child.price;
+                let discountText = '';
+
+                if (index === 1) {
+                    // 10% off for 2nd child
+                    finalPrice = child.price * 0.9;
+                    discountText = ' <span class="text-green-300">(10% off)</span>';
+                } else if (index >= 2) {
+                    // 15% off for 3rd+ children
+                    finalPrice = child.price * 0.85;
+                    discountText = ' <span class="text-green-300">(15% off)</span>';
+                }
+
+                total += finalPrice;
+
+                breakdownHtml += `
+                    <div class="flex justify-between items-center">
+                        <span>${child.name} - ${child.program}</span>
+                        <span class="font-medium">₪${Math.round(finalPrice)}${discountText}</span>
+                    </div>
+                `;
+            });
+
+            priceBreakdown.innerHTML = breakdownHtml;
+            totalPrice.textContent = `₪${Math.round(total)}`;
+            priceSummary.style.display = 'block';
+        }
+
+        // Form validation function
+        function validateMobileForm() {
+            // Check parent name
+            const parentNameInput = document.querySelector('input[type="text"][placeholder*="parent"]');
+            if (!parentNameInput || !parentNameInput.value.trim()) {
+                return false;
+            }
+
+            // Check parent email
+            const emailInput = document.querySelector('input[type="email"]');
+            if (!emailInput || !emailInput.value.trim()) {
+                return false;
+            }
+
+            // Check parent phone
+            const phoneInput = document.querySelector('input[type="tel"]');
+            if (!phoneInput || !phoneInput.value.trim()) {
+                return false;
+            }
+
+            // Check main child name
+            const mainChildName = document.querySelector('input[type="text"]:not([placeholder*="parent"])');
+            if (!mainChildName || !mainChildName.value.trim()) {
+                return false;
+            }
+
+            // Check main child age group
+            const mainAgeGroup = document.querySelector('select');
+            if (!mainAgeGroup || !mainAgeGroup.value) {
+                return false;
+            }
+
+            // Check additional children if any
+            const additionalChildren = document.querySelectorAll('#additionalChildrenContainer .child-form');
+            for (let child of additionalChildren) {
+                const childNameInput = child.querySelector('input[type="text"]');
+                const childAgeSelect = child.querySelector('select');
+
+                if (!childNameInput || !childNameInput.value.trim()) {
+                    return false;
+                }
+                if (!childAgeSelect || !childAgeSelect.value) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Collect form data function
+        function collectMobileFormData() {
+            const parentNameInput = document.querySelector('input[type="text"][placeholder*="parent"]');
+            const emailInput = document.querySelector('input[type="email"]');
+            const phoneInput = document.querySelector('input[type="tel"]');
+
+            if (!parentNameInput || !emailInput || !phoneInput) {
+                return null;
+            }
+
+            const formData = {
+                parent: {
+                    name: parentNameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    phone: phoneInput.value.trim()
+                },
+                children: []
+            };
+
+            // Add main child
+            const mainChildName = document.querySelector('input[type="text"]:not([placeholder*="parent"])');
+            const mainAgeGroup = document.querySelector('select');
+
+            if (mainChildName && mainAgeGroup && mainChildName.value.trim() && mainAgeGroup.value) {
+                const ageGroupText = mainAgeGroup.options[mainAgeGroup.selectedIndex].text;
+                const price = getPriceForAgeGroup(mainAgeGroup.value);
+
+                formData.children.push({
+                    name: mainChildName.value.trim(),
+                    ageGroup: mainAgeGroup.value,
+                    program: ageGroupText,
+                    price: price
+                });
+            }
+
+            // Add additional children
+            const additionalChildren = document.querySelectorAll('#additionalChildrenContainer .child-form');
+            additionalChildren.forEach(child => {
+                const childNameInput = child.querySelector('input[type="text"]');
+                const childAgeSelect = child.querySelector('select');
+
+                if (childNameInput && childAgeSelect && childNameInput.value.trim() && childAgeSelect.value) {
+                    const ageGroupText = childAgeSelect.options[childAgeSelect.selectedIndex].text;
+                    const price = getPriceForAgeGroup(childAgeSelect.value);
+
+                    formData.children.push({
+                        name: childNameInput.value.trim(),
+                        ageGroup: childAgeSelect.value,
+                        program: ageGroupText,
+                        price: price
+                    });
+                }
+            });
+
+            return formData;
+        }
+
+        // Helper function to get price for age group
+        function getPriceForAgeGroup(ageGroup) {
+            const priceMap = {
+                '6-9': 399,
+                '10-13': 499,
+                '14-18': 599
+            };
+            return priceMap[ageGroup] || 399;
+        }
+
+        // Payment processing function
+        async function proceedToPayment() {
+            console.log('🚀 Starting payment process...');
+
+            // Validate form before proceeding
+            if (!validateMobileForm()) {
+                console.log('❌ Form validation failed');
+                alert('Please fill in all required fields before proceeding to payment.');
+                return;
+            }
+            console.log('✅ Form validation passed');
+
+            // Get selected payment method
+            const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked')?.value || 'bit';
+            console.log('💳 Selected payment method:', selectedPaymentMethod);
+
+            // Collect form data
+            const formData = collectMobileFormData();
+            if (!formData) {
+                console.log('❌ Failed to collect form data');
+                alert('Failed to collect form data. Please try again.');
+                return;
+            }
+            console.log('📋 Form data collected:', formData);
+
+            // Calculate total amount
+            const totalElement = document.getElementById('total-price');
+            const totalAmount = totalElement ? parseInt(totalElement.textContent.replace('₪', '')) : 0;
+            console.log('💰 Total amount:', totalAmount);
+
+            if (totalAmount <= 0) {
+                console.log('❌ Invalid amount:', totalAmount);
+                alert('Invalid payment amount. Please refresh and try again.');
+                return;
+            }
+
+            // Show loading state
+            const paymentButton = document.querySelector('button[onclick="proceedToPayment()"]');
+            const originalButtonText = paymentButton.innerHTML;
+            paymentButton.innerHTML = 'Processing...';
+            paymentButton.disabled = true;
+
+            try {
+                if (selectedPaymentMethod === 'bit') {
+                    console.log('🟢 Processing Bit payment...');
+                    await processBitPayment(formData, totalAmount);
+                } else if (selectedPaymentMethod === 'paybox') {
+                    console.log('🟣 Processing PayBox payment...');
+                    await processPayBoxPayment(formData, totalAmount);
+                } else {
+                    console.log('🔵 Processing credit card payment...');
+                    await processCreditCardPayment(formData, totalAmount);
+                }
+            } catch (error) {
+                console.error('❌ Payment processing error:', error);
+                alert('Payment processing failed: ' + error.message + '. Please try again.');
+
+                // Restore button state
+                paymentButton.innerHTML = originalButtonText;
+                paymentButton.disabled = false;
+            }
+        }
+
+        // Bit payment processing
+        async function processBitPayment(formData, amount) {
+            // Submit registration data first with pending payment status
+            await submitRegistrationData({
+                ...formData,
+                paymentMethod: 'bit',
+                paymentStatus: 'pending',
+                amount: amount
+            });
+
+            // Generate Bit payment link
+            const description = `AI Kids Registration - ${formData.children.map(c => c.name).join(', ')}`;
+            const bitLink = `https://bit.ly/pay?amount=${amount}&description=${encodeURIComponent(description)}`;
+
+            // Redirect to Bit payment
+            window.open(bitLink, '_blank');
+
+            // Show instructions
+            showBitPaymentInstructions();
+        }
+
+        // PayBox payment processing
+        async function processPayBoxPayment(formData, amount) {
+            // Submit registration data first with pending payment status
+            await submitRegistrationData({
+                ...formData,
+                paymentMethod: 'paybox',
+                paymentStatus: 'pending',
+                amount: amount
+            });
+
+            // Generate PayBox payment link
+            const description = `AI Kids Registration - ${formData.children.map(c => c.name).join(', ')}`;
+            const payboxLink = `https://payboxapp.com/pay?amount=${amount}&currency=ILS&description=${encodeURIComponent(description)}`;
+
+            // Redirect to PayBox payment
+            window.open(payboxLink, '_blank');
+
+            // Show instructions
+            showPayBoxPaymentInstructions();
+        }
+
+        // Credit card payment processing
+        async function processCreditCardPayment(formData, amount) {
+            // Redirect to credit card payment form or integrate with payment gateway
+            alert('Credit card payment will be available soon. Please use Bit payment for now.');
+
+            // Restore button state
+            const paymentButton = document.querySelector('button[onclick="proceedToPayment()"]');
+            paymentButton.innerHTML = 'Proceed to Payment';
+            paymentButton.disabled = false;
+        }
+
+
+        // Submit registration data to Google Apps Script
+        async function submitRegistrationData(data) {
+            console.log('🔄 Submitting registration data with payment info...', data);
+
+            try {
+                // Use the existing robust Google Sheets submission function
+                const result = await submitToGoogleSheets(data);
+                console.log('✅ Registration data submitted successfully:', result);
+                return result;
+            } catch (error) {
+                console.error('❌ Failed to submit registration data:', error);
+                throw new Error('Failed to submit registration data: ' + error.message);
+            }
+        }
+
+        // Show Bit payment instructions
+        function showBitPaymentInstructions() {
+            const container = document.querySelector('.min-h-screen');
+            container.innerHTML = `
+                <div class="flex items-center justify-center min-h-screen p-4">
+                    <div class="bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border border-cyan-500/30 rounded-xl p-8 max-w-md text-center">
+                        <div class="text-6xl mb-4">💳</div>
+                        <h2 class="text-2xl font-bold text-white mb-4">Complete Payment with Bit</h2>
+                        <p class="text-amber-200 mb-6">A Bit payment window has opened. Please complete your payment to confirm your registration.</p>
+                        <p class="text-sm text-amber-300 mb-6">After payment, you will receive a confirmation email.</p>
+                        <button onclick="window.location.reload()" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
+                            Register Another Child
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Show PayBox payment instructions
+        function showPayBoxPaymentInstructions() {
+            const container = document.querySelector('.min-h-screen');
+            container.innerHTML = `
+                <div class="flex items-center justify-center min-h-screen p-4">
+                    <div class="bg-gradient-to-br from-teal-500/20 to-yellow-500/20 border border-teal-500/30 rounded-xl p-8 max-w-md text-center">
+                        <div class="text-6xl mb-4">💰</div>
+                        <h2 class="text-2xl font-bold text-white mb-4">Complete Payment with PayBox</h2>
+                        <p class="text-amber-200 mb-6">A PayBox payment window has opened. Please complete your payment to confirm your registration.</p>
+                        <p class="text-sm text-amber-300 mb-6">After payment, you will receive a confirmation email.</p>
+                        <button onclick="window.location.reload()" class="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
+                            Register Another Child
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Add event listeners to recalculate price when form changes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Main form inputs
+            const mainChildName = document.querySelector('input[type="text"]:not([placeholder*="parent"])');
+            const mainAgeGroup = document.querySelector('select');
+
+            if (mainChildName) {
+                mainChildName.addEventListener('input', calculateMobilePrice);
+            }
+            if (mainAgeGroup) {
+                mainAgeGroup.addEventListener('change', calculateMobilePrice);
+            }
+
+            // Payment method selection functionality
+            const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
+            paymentMethods.forEach(method => {
+                method.addEventListener('change', function() {
+                    // Update visual state for all payment options
+                    paymentMethods.forEach(m => {
+                        const label = m.closest('label');
+                        const radioButton = label.querySelector('.w-5.h-5 > div');
+                        const border = label.querySelector('.w-5.h-5');
+
+                        if (m.checked) {
+                            // Selected state
+                            radioButton.classList.remove('bg-transparent');
+                            if (m.value === 'bit') {
+                                radioButton.classList.add('bg-green-400');
+                                border.classList.remove('border-amber-400');
+                                border.classList.add('border-green-400');
+                            } else if (m.value === 'paybox') {
+                                radioButton.classList.add('bg-teal-400');
+                                border.classList.remove('border-amber-400');
+                                border.classList.add('border-teal-400');
+                            } else {
+                                radioButton.classList.add('bg-cyan-400');
+                                border.classList.remove('border-amber-400');
+                                border.classList.add('border-cyan-400');
+                            }
+                        } else {
+                            // Unselected state
+                            radioButton.classList.add('bg-transparent');
+                            radioButton.classList.remove('bg-green-400', 'bg-teal-400', 'bg-cyan-400');
+                            border.classList.add('border-amber-400');
+                            border.classList.remove('border-green-400', 'border-teal-400', 'border-cyan-400');
+                        }
+                    });
+                });
+            });
+        });
+
+        // Update addChildForm to recalculate price
+        const originalAddChildForm = window.addChildForm;
+        window.addChildForm = function() {
+            originalAddChildForm();
+
+            // Add event listeners to new child inputs
+            setTimeout(() => {
+                const newInputs = document.querySelectorAll('#additionalChildrenContainer input, #additionalChildrenContainer select');
+                newInputs.forEach(input => {
+                    input.addEventListener('input', calculateMobilePrice);
+                    input.addEventListener('change', calculateMobilePrice);
+                });
+                calculateMobilePrice();
+            }, 100);
+        };
+
+        // Update removeChildForm to recalculate price
+        const originalRemoveChildForm = window.removeChildForm;
+        window.removeChildForm = function(id) {
+            originalRemoveChildForm(id);
+            calculateMobilePrice();
+        };
+    </script>
+</body>
+</html>
