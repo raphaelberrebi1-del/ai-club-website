@@ -601,10 +601,17 @@
                 content.classList.remove('pt-3');
                 icon.style.transform = 'rotate(0deg)';
             } else {
-                // Expand
-                content.style.maxHeight = content.scrollHeight + 'px';
+                // Expand - add extra buffer to ensure all content is visible
+                content.style.maxHeight = (content.scrollHeight + 50) + 'px';
                 content.classList.add('pt-3');
                 icon.style.transform = 'rotate(180deg)';
+
+                // Double-check after a brief delay to ensure dynamic content is measured
+                setTimeout(() => {
+                    if (content.scrollHeight > parseInt(content.style.maxHeight)) {
+                        content.style.maxHeight = (content.scrollHeight + 50) + 'px';
+                    }
+                }, 100);
             }
         }
 
