@@ -2075,6 +2075,8 @@
         // Family Registration Functions
         function updateChildCount(change) {
             const newCount = familyData.childCount + change;
+            console.log(`👨‍👩‍👧‍👦 Updating child count from ${familyData.childCount} to ${newCount}`);
+
             if (newCount >= 1 && newCount <= 5) { // Reasonable limit
                 familyData.childCount = newCount;
 
@@ -2083,19 +2085,28 @@
                 document.getElementById('child-plural').textContent = newCount === 1 ? '' : 'ren';
 
                 // Update children array
+                console.log(`📝 Current children array length: ${familyData.children.length}`);
+
                 if (newCount > familyData.children.length) {
                     // Add children
+                    const toAdd = newCount - familyData.children.length;
+                    console.log(`➕ Adding ${toAdd} children to array`);
+
                     while (familyData.children.length < newCount) {
                         familyData.children.push({
                             name: '',
                             ageGroup: '',
-                            duration: familyData.bulkDuration
+                            duration: familyData.bulkDuration || ''
                         });
                     }
                 } else if (newCount < familyData.children.length) {
                     // Remove children
+                    const toRemove = familyData.children.length - newCount;
+                    console.log(`➖ Removing ${toRemove} children from array`);
                     familyData.children = familyData.children.slice(0, newCount);
                 }
+
+                console.log(`✅ Updated children array:`, familyData.children);
 
                 // Update pricing if duration is already selected
                 if (familyData.bulkDuration) {
@@ -2103,18 +2114,24 @@
                 }
 
                 validateStep1Family();
+            } else {
+                console.log(`❌ Invalid child count: ${newCount}. Must be between 1 and 5.`);
             }
         }
 
         function selectBulkDuration(duration) {
+            console.log(`💰 Selecting bulk duration: ${duration}`);
             familyData.bulkDuration = duration;
 
             // Update all children to inherit bulk duration
+            console.log(`🔄 Updating ${familyData.children.length} children with duration: ${duration}`);
             familyData.children.forEach(child => {
                 if (!child.durationOverride) {
                     child.duration = duration;
                 }
             });
+
+            console.log(`✅ Updated familyData:`, familyData);
 
             // Update UI - remove selection from all buttons
             document.querySelectorAll('.bulk-duration-btn').forEach(btn => {
@@ -2206,17 +2223,47 @@
         }
 
         function generateChildForms() {
+            console.log('🔧 generateChildForms called with:', {
+                childCount: familyData.childCount,
+                children: familyData.children,
+                bulkDuration: familyData.bulkDuration
+            });
+
             const container = document.getElementById('children-forms');
+            if (!container) {
+                console.error('❌ children-forms container not found!');
+                return;
+            }
+
             container.innerHTML = '';
 
-            familyData.children.forEach((child, index) => {
-                const childForm = document.createElement('div');
-                childForm.className = 'bg-amber-950/20 border border-amber-200/30 rounded-xl p-4 space-y-4';
-                childForm.innerHTML = `
-                    <div class="flex items-center justify-between border-b border-amber-200/20 pb-3">
-                        <h4 class="text-lg font-semibold text-white">Child ${index + 1}</h4>
-                        <div class="text-sm text-white/60">${familyData.bulkDuration} plan</div>
-                    </div>
+            // Show loading state briefly
+            container.innerHTML = '<div class="text-center py-8 text-white/60 bg-red-500/20 border border-red-400 rounded-xl">🔧 Generating child forms... (Debug Mode)</div>';
+
+            // Small delay to show loading state, then generate forms
+            setTimeout(() => {
+                container.innerHTML = '';
+
+                // Add a debug header first
+                const debugHeader = document.createElement('div');
+                debugHeader.className = 'mb-4 p-3 bg-green-500/20 border border-green-400 rounded-lg text-green-300 text-sm';
+                debugHeader.innerHTML = `✅ Generating ${familyData.children.length} forms for: ${familyData.children.map(c => `Child ${familyData.children.indexOf(c)+1}`).join(', ')}`;
+                container.appendChild(debugHeader);
+
+                familyData.children.forEach((child, index) => {
+                    console.log(`🧒 Creating form for child ${index + 1}:`, child);
+
+                    const childForm = document.createElement('div');
+                    childForm.className = 'bg-amber-950/20 border border-amber-200/30 rounded-xl p-4 space-y-4';
+
+                    // Handle case where bulkDuration might be undefined
+                    const planText = familyData.bulkDuration ? `${familyData.bulkDuration} plan` : 'plan to be selected';
+
+                    childForm.innerHTML = `
+                        <div class="flex items-center justify-between border-b border-amber-200/20 pb-3">
+                            <h4 class="text-lg font-semibold text-white">Child ${index + 1}</h4>
+                            <div class="text-sm text-white/60">${planText}</div>
+                        </div>
 
                     <div class="space-y-3">
                         <label class="text-sm font-semibold text-amber-100">Child's Name</label>
@@ -2273,10 +2320,13 @@
                         </div>
                     </div>
                 `;
-                container.appendChild(childForm);
-            });
+                    container.appendChild(childForm);
+                    console.log(`✅ Added form for child ${index + 1} to container`);
+                });
 
-            validateStep2();
+                console.log(`🎉 Generated ${familyData.children.length} child forms`);
+                validateStep2();
+            }, 100); // Short delay to show loading state
         }
 
         function updateChildData(index, field, value) {
@@ -2405,9 +2455,12 @@
                     updateProgressIndicator();
 
                     // Initialize step-specific content
+                    console.log(`📋 Initializing step ${currentStep} content`);
                     if (currentStep === 2) {
+                        console.log('🔄 Moving to Step 2 - generating child forms');
                         generateChildForms();
                     } else if (currentStep === 3) {
+                        console.log('🔄 Moving to Step 3 - generating final summary');
                         generateFinalSummary();
                     }
                 }, 300); // Match CSS transition duration
