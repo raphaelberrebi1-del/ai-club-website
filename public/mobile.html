@@ -1797,6 +1797,9 @@
             children.sort((a, b) => b.monthlyPrice - a.monthlyPrice);
 
             let total = 0;
+            let totalSavings = 0;
+            let breakdown = [];
+
             children.forEach((child, index) => {
                 // Calculate base price based on duration
                 let basePrice;
@@ -1814,18 +1817,39 @@
 
                 // Apply multiple child discounts
                 let finalPrice = basePrice;
+                let discountAmount = 0;
+                let discountText = '';
+
                 if (index === 1) {
                     // 10% off for 2nd child
-                    finalPrice = basePrice * 0.9;
+                    finalPrice = Math.round(basePrice * 0.9);
+                    discountAmount = basePrice - finalPrice;
+                    discountText = '2nd child: 10% off';
                 } else if (index >= 2) {
                     // 15% off for 3rd+ children
-                    finalPrice = basePrice * 0.85;
+                    finalPrice = Math.round(basePrice * 0.85);
+                    discountAmount = basePrice - finalPrice;
+                    discountText = `${index + 1}${index + 1 === 3 ? 'rd' : 'th'} child: 15% off`;
                 }
 
                 total += finalPrice;
+                totalSavings += discountAmount;
+
+                breakdown.push({
+                    childNumber: index + 1,
+                    basePrice: basePrice,
+                    finalPrice: finalPrice,
+                    discountAmount: discountAmount,
+                    discountText: discountText
+                });
             });
 
-            return { total: Math.round(total), childCount: children.length };
+            return {
+                total: Math.round(total),
+                childCount: children.length,
+                totalSavings: Math.round(totalSavings),
+                breakdown: breakdown
+            };
         }
 
         function showDurationPicker() {
@@ -1849,8 +1873,6 @@
             const quarterlyRegular = Math.round(quarterlyTotal.total / 0.72); // Reverse 28% total discount
             const yearlyRegular = Math.round(yearlyTotal.total / 0.64); // Reverse 36% total discount
 
-            const childCountText = monthlyTotal.childCount > 1 ? ` (${monthlyTotal.childCount} children with multi-child discounts)` : '';
-
             const options = [
                 {
                     duration: 'monthly',
@@ -1858,8 +1880,9 @@
                     regularPrice: monthlyRegular,
                     earlyBirdPrice: monthlyTotal.total,
                     discount: '20% off',
-                    description: `Pay month by month${childCountText}`,
-                    highlight: false
+                    description: 'Pay month by month',
+                    highlight: false,
+                    pricingData: monthlyTotal
                 },
                 {
                     duration: 'quarterly',
@@ -1867,8 +1890,9 @@
                     regularPrice: quarterlyRegular,
                     earlyBirdPrice: quarterlyTotal.total,
                     discount: '28% total off',
-                    description: `Save with 3-month billing${childCountText}`,
-                    highlight: true
+                    description: 'Save with 3-month billing',
+                    highlight: true,
+                    pricingData: quarterlyTotal
                 },
                 {
                     duration: 'yearly',
@@ -1876,12 +1900,28 @@
                     regularPrice: yearlyRegular,
                     earlyBirdPrice: yearlyTotal.total,
                     discount: '36% total off',
-                    description: `Maximum savings${childCountText}`,
-                    highlight: false
+                    description: 'Maximum savings',
+                    highlight: false,
+                    pricingData: yearlyTotal
                 }
             ];
 
-            optionsContainer.innerHTML = options.map(opt => `
+            optionsContainer.innerHTML = options.map(opt => {
+                const multiChildInfo = opt.pricingData.childCount > 1 ? `
+                    <div class="border-t border-white/10 pt-2 mt-2">
+                        <div class="text-xs text-white/80 mb-1">${opt.pricingData.childCount} Children Breakdown:</div>
+                        <div class="text-xs text-green-300 font-medium">
+                            Multi-child savings: ₪${opt.pricingData.totalSavings}
+                        </div>
+                        <div class="text-xs text-white/60 mt-1">
+                            ${opt.pricingData.breakdown.filter(child => child.discountText).map(child =>
+                                `• ${child.discountText}: -₪${child.discountAmount}`
+                            ).join('<br>')}
+                        </div>
+                    </div>
+                ` : '';
+
+                return `
                 <button type="button" onclick="selectDurationFromModal('${opt.duration}')"
                     class="w-full p-4 rounded-xl border-2 transition-all duration-200 hover:scale-105 ${
                         opt.highlight
@@ -1891,7 +1931,7 @@
                     <div class="flex justify-between items-start mb-2">
                         <div class="text-left">
                             <h4 class="text-white font-semibold text-lg">${opt.label}</h4>
-                            <p class="text-xs text-white/60">${opt.description}</p>
+                            <p class="text-xs text-white/60">${opt.description}${opt.pricingData.childCount > 1 ? ` (${opt.pricingData.childCount} children)` : ''}</p>
                         </div>
                         ${opt.highlight ? '<span class="text-xs bg-amber-400 text-black px-2 py-1 rounded-full font-bold">RECOMMENDED</span>' : ''}
                     </div>
@@ -1905,8 +1945,10 @@
                             <div class="text-xs text-white/60">Early Bird</div>
                         </div>
                     </div>
+                    ${multiChildInfo}
                 </button>
-                `).join('');
+                `;
+            }).join('');
 
             // Show modal with animation
             modal.classList.remove('hidden');
