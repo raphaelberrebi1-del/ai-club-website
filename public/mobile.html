@@ -523,7 +523,7 @@
                         <!-- Age Group Selection -->
                         <div class="space-y-2">
                             <label class="text-sm font-semibold text-amber-100">Select Age Group</label>
-                            <select id="child-age-group" onchange="showImmediatePricing(); calculateMobilePrice()" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                            <select id="child-age-group" onchange="calculateMobilePrice()" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
                                 <option value="">Choose your child's age group</option>
                                 <option value="young">Young Innovators (Ages 8-10)</option>
                                 <option value="tech">Tech Explorers (Ages 11-13)</option>
@@ -596,11 +596,11 @@
 
                         <!-- Duration Selection (moved before parent contact) -->
                         <div class="space-y-2 border-t border-amber-200/30 pt-4 mt-4">
-                            <label class="text-sm font-semibold text-amber-100">How would you like to pay?</label>
+                            <label class="text-sm font-semibold text-amber-100">Select enrollment duration</label>
 
                             <!-- Interactive Duration Selector -->
                             <button type="button" onclick="showDurationPicker()" id="duration-selector-btn" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white hover:bg-amber-950/50 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12 flex items-center justify-between transition-all duration-200">
-                                <span id="duration-display">Click to select payment plan</span>
+                                <span id="duration-display">Select monthly, quarterly, or yearly plan</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400">
                                     <path d="m6 9 6 6 6-6"/>
                                 </svg>
