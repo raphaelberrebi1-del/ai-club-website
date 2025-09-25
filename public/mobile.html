@@ -548,21 +548,38 @@
                             </div>
 
                             <div class="grid grid-cols-3 gap-3 text-center">
-                                <div class="bg-black/30 rounded-lg p-3">
+                                <button type="button" onclick="selectPricingOption('monthly')" class="pricing-option bg-black/30 rounded-lg p-3 hover:bg-black/50 transition-all duration-200 cursor-pointer hover:scale-105 relative" data-duration="monthly">
                                     <div class="text-xs text-cyan-200 mb-1">Monthly (-20%)</div>
                                     <div class="text-xs text-white/50 line-through mb-1" id="preview-monthly-before">₪499</div>
                                     <div id="preview-monthly" class="text-lg font-bold text-white">₪399</div>
-                                </div>
-                                <div class="bg-gradient-to-br from-cyan-500/30 to-teal-500/30 rounded-lg p-3 border border-cyan-400/50">
+                                    <div class="selected-indicator absolute -top-2 -right-2 bg-green-500 rounded-full p-1 hidden">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                            <path d="M20 6 9 17l-5-5"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <button type="button" onclick="selectPricingOption('quarterly')" class="pricing-option bg-gradient-to-br from-cyan-500/30 to-teal-500/30 rounded-lg p-3 border border-cyan-400/50 hover:from-cyan-500/40 hover:to-teal-500/40 transition-all duration-200 cursor-pointer hover:scale-105 relative" data-duration="quarterly">
                                     <div class="text-xs text-cyan-200 mb-1">Quarterly (-28%)</div>
                                     <div class="text-xs text-white/50 line-through mb-1" id="preview-quarterly-before">₪1,497</div>
                                     <div id="preview-quarterly" class="text-lg font-bold text-white">₪1,077</div>
-                                </div>
-                                <div class="bg-black/30 rounded-lg p-3">
+                                    <div class="text-xs text-amber-300 font-medium">Recommended</div>
+                                    <div class="selected-indicator absolute -top-2 -right-2 bg-green-500 rounded-full p-1 hidden">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                            <path d="M20 6 9 17l-5-5"/>
+                                        </svg>
+                                    </div>
+                                </button>
+                                <button type="button" onclick="selectPricingOption('yearly')" class="pricing-option bg-black/30 rounded-lg p-3 hover:bg-black/50 transition-all duration-200 cursor-pointer hover:scale-105 relative" data-duration="yearly">
                                     <div class="text-xs text-cyan-200 mb-1">Yearly (-36%)</div>
                                     <div class="text-xs text-white/50 line-through mb-1" id="preview-yearly-before">₪5,988</div>
                                     <div id="preview-yearly" class="text-lg font-bold text-white">₪3,830</div>
-                                </div>
+                                    <div class="text-xs text-green-300 font-medium">Best Value</div>
+                                    <div class="selected-indicator absolute -top-2 -right-2 bg-green-500 rounded-full p-1 hidden">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                            <path d="M20 6 9 17l-5-5"/>
+                                        </svg>
+                                    </div>
+                                </button>
                             </div>
 
                             <div class="mt-4 text-center">
@@ -595,7 +612,7 @@
                         <!-- Duration Selection (moved before parent contact) -->
                         <div class="space-y-2 border-t border-amber-200/30 pt-4 mt-4">
                             <label class="text-sm font-semibold text-amber-100">Choose Payment Duration</label>
-                            <select id="child-duration" onchange="calculateMobilePrice()" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                            <select id="child-duration" onchange="syncPricingSelection(this.value); calculateMobilePrice()" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
                                 <option value="">Select billing duration</option>
                                 <option value="monthly">Monthly (-20%) - Early Bird Price</option>
                                 <option value="quarterly">Quarterly (-28%) - Early Bird Special</option>
@@ -1679,6 +1696,48 @@
 
             // Show the pricing preview
             immediatePricing.style.display = 'block';
+        }
+
+        // Sync visual pricing selection with dropdown
+        function syncPricingSelection(duration) {
+            if (!duration) return;
+
+            // Update visual selection indicators
+            const pricingOptions = document.querySelectorAll('.pricing-option');
+            pricingOptions.forEach(option => {
+                const indicator = option.querySelector('.selected-indicator');
+                if (option.dataset.duration === duration) {
+                    // Show selected state
+                    option.classList.add('ring-2', 'ring-cyan-400', 'bg-cyan-500/20');
+                    if (indicator) indicator.classList.remove('hidden');
+                } else {
+                    // Remove selected state
+                    option.classList.remove('ring-2', 'ring-cyan-400', 'bg-cyan-500/20');
+                    if (indicator) indicator.classList.add('hidden');
+                }
+            });
+        }
+
+        // Handle pricing option selection from preview
+        function selectPricingOption(duration) {
+            // Update the duration dropdown
+            const durationSelect = document.getElementById('child-duration');
+            if (durationSelect) {
+                durationSelect.value = duration;
+            }
+
+            // Sync visual indicators
+            syncPricingSelection(duration);
+
+            // Trigger price calculation
+            calculateMobilePrice();
+
+            // Show feedback message
+            const feedbackDiv = document.createElement('div');
+            feedbackDiv.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-pulse';
+            feedbackDiv.textContent = '✓ Duration selected!';
+            document.body.appendChild(feedbackDiv);
+            setTimeout(() => feedbackDiv.remove(), 2000);
         }
 
         // Enhanced pricing calculation with duration support
