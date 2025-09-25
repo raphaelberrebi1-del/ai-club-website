@@ -523,7 +523,7 @@
                         <!-- Age Group Selection -->
                         <div class="space-y-2">
                             <label class="text-sm font-semibold text-amber-100">Select Age Group</label>
-                            <select id="child-age-group" onchange="calculateMobilePrice()" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                            <select id="child-age-group" onchange="showImmediatePricing(); calculateMobilePrice()" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
                                 <option value="">Choose your child's age group</option>
                                 <option value="young">Young Innovators (Ages 8-10)</option>
                                 <option value="tech">Tech Explorers (Ages 11-13)</option>
@@ -531,15 +531,44 @@
                             </select>
                         </div>
 
-                        <!-- Duration Selection -->
-                        <div class="space-y-2">
-                            <label class="text-sm font-semibold text-amber-100">Choose Payment Duration</label>
-                            <select id="child-duration" onchange="calculateMobilePrice()" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
-                                <option value="">Select billing duration</option>
-                                <option value="monthly">Monthly - No commitment</option>
-                                <option value="quarterly">Quarterly - Save 10%</option>
-                                <option value="yearly">Yearly - Save 20% (Best Value)</option>
-                            </select>
+                        <!-- Immediate Pricing Preview (shown after age group selection) -->
+                        <div id="immediate-pricing" class="bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border-2 border-cyan-400/40 rounded-xl p-6 mt-4" style="display: none;">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white">Early Bird Pricing</h4>
+                                </div>
+                                <div class="text-xs text-amber-300 bg-amber-500/20 px-2 py-1 rounded-full border border-amber-400/30">
+                                    🎯 Until Oct 17th
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-3 text-center">
+                                <div class="bg-black/30 rounded-lg p-3">
+                                    <div class="text-xs text-cyan-200 mb-1">Monthly</div>
+                                    <div id="preview-monthly" class="text-lg font-bold text-white">₪399</div>
+                                    <div class="text-xs text-white/60">No commitment</div>
+                                </div>
+                                <div class="bg-gradient-to-br from-cyan-500/30 to-teal-500/30 rounded-lg p-3 border border-cyan-400/50">
+                                    <div class="text-xs text-cyan-200 mb-1">Quarterly</div>
+                                    <div id="preview-quarterly" class="text-lg font-bold text-white">₪1,199</div>
+                                    <div class="text-xs text-amber-300 font-medium">20% + 10% BONUS!</div>
+                                </div>
+                                <div class="bg-black/30 rounded-lg p-3">
+                                    <div class="text-xs text-cyan-200 mb-1">Yearly</div>
+                                    <div id="preview-yearly" class="text-lg font-bold text-white">₪1,799</div>
+                                    <div class="text-xs text-amber-300 font-medium">20% + 20% BONUS!</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 text-center">
+                                <div class="text-sm text-white/80 mb-2">⚠️ After October 17th: <span class="text-red-300 font-semibold">+20% price increase</span></div>
+                                <div class="text-xs text-cyan-200">Lock in your early bird bonus today</div>
+                            </div>
                         </div>
 
                         <!-- Schedule Info -->
@@ -562,6 +591,20 @@
                         <button type="button" id="addChildBtn" onclick="addChildForm()" class="w-full py-3 px-4 bg-amber-950/20 border-2 border-dashed border-amber-200/40 rounded-xl text-amber-100 hover:border-amber-400 hover:text-amber-400 transition-colors text-sm font-medium">
                             + Add another child (10% off 2nd child, 15% off 3rd+)
                         </button>
+
+                        <!-- Duration Selection (moved before parent contact) -->
+                        <div class="space-y-2 border-t border-amber-200/30 pt-4 mt-4">
+                            <label class="text-sm font-semibold text-amber-100">Choose Payment Duration</label>
+                            <select id="child-duration" onchange="calculateMobilePrice()" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
+                                <option value="">Select billing duration</option>
+                                <option value="monthly">Monthly - No commitment</option>
+                                <option value="quarterly">Quarterly - Early Bird Bonus (20% + 10%)</option>
+                                <option value="yearly">Yearly - Maximum Early Bird Bonus (20% + 20%)</option>
+                            </select>
+                            <div class="text-xs text-amber-300 mt-2">
+                                ⏰ Early bird bonuses expire October 17th - then prices increase 20%
+                            </div>
+                        </div>
 
                         <!-- Parent Contact Fields -->
                         <div class="border-t border-amber-200/30 pt-4 mt-4">
@@ -1555,6 +1598,45 @@
             }
         }
 
+        // Show immediate pricing preview when age group is selected
+        function showImmediatePricing() {
+            const ageGroup = document.getElementById('child-age-group')?.value;
+            const immediatePricing = document.getElementById('immediate-pricing');
+
+            if (!ageGroup) {
+                immediatePricing.style.display = 'none';
+                return;
+            }
+
+            // Get pricing based on age group - using psychological pricing values
+            let monthlyPrice, quarterlyPrice, yearlyPrice;
+            switch(ageGroup) {
+                case 'young':
+                    monthlyPrice = 399;
+                    quarterlyPrice = 1199; // ₪399 * 3 * 0.9 rounded to psychological pricing
+                    yearlyPrice = 1799; // ₪399 * 12 * 0.8 rounded to psychological pricing
+                    break;
+                case 'tech':
+                    monthlyPrice = 469;
+                    quarterlyPrice = 1399; // Target psychological pricing ₪1,399
+                    yearlyPrice = 2249; // ₪469 * 12 * 0.8 rounded to psychological pricing
+                    break;
+                case 'future':
+                    monthlyPrice = 599;
+                    quarterlyPrice = 1799; // Target psychological pricing ₪1,799
+                    yearlyPrice = 2879; // ₪599 * 12 * 0.8 rounded to psychological pricing
+                    break;
+            }
+
+            // Update preview prices
+            document.getElementById('preview-monthly').textContent = `₪${monthlyPrice}`;
+            document.getElementById('preview-quarterly').textContent = `₪${quarterlyPrice}`;
+            document.getElementById('preview-yearly').textContent = `₪${yearlyPrice}`;
+
+            // Show the pricing preview
+            immediatePricing.style.display = 'block';
+        }
+
         // Enhanced pricing calculation with duration support
         function calculateMobilePrice() {
             const priceSummary = document.getElementById('price-summary');
@@ -1574,15 +1656,15 @@
                 switch(ageGroup) {
                     case 'young':
                         program = 'Young Innovators (Ages 8-10)';
-                        monthlyPrice = 450;
+                        monthlyPrice = 399;
                         break;
                     case 'tech':
                         program = 'Tech Explorers (Ages 11-13)';
-                        monthlyPrice = 550;
+                        monthlyPrice = 469;
                         break;
                     case 'future':
                         program = 'Future Leaders (Ages 14-18)';
-                        monthlyPrice = 650;
+                        monthlyPrice = 599;
                         break;
                 }
 
@@ -1604,15 +1686,15 @@
                     switch(ageGroup) {
                         case 'young':
                             program = 'Young Innovators (Ages 8-10)';
-                            monthlyPrice = 450;
+                            monthlyPrice = 399;
                             break;
                         case 'tech':
                             program = 'Tech Explorers (Ages 11-13)';
-                            monthlyPrice = 550;
+                            monthlyPrice = 469;
                             break;
                         case 'future':
                             program = 'Future Leaders (Ages 14-18)';
-                            monthlyPrice = 650;
+                            monthlyPrice = 599;
                             break;
                     }
 
@@ -1644,14 +1726,28 @@
                         periodText = 'monthly';
                         break;
                     case 'quarterly':
-                        basePrice = child.monthlyPrice * 3 * 0.9; // 10% off
+                        // Use psychological pricing based on age group
+                        if (child.monthlyPrice === 399) {
+                            basePrice = 1199; // Young Innovators
+                        } else if (child.monthlyPrice === 469) {
+                            basePrice = 1399; // Tech Explorers
+                        } else if (child.monthlyPrice === 599) {
+                            basePrice = 1799; // Future Leaders
+                        }
                         periodText = 'quarterly';
-                        savingsText = ' (Save 10%)';
+                        savingsText = ' (Early Bird 20% + 10% Bonus)';
                         break;
                     case 'yearly':
-                        basePrice = child.monthlyPrice * 12 * 0.8; // 20% off
+                        // Use psychological pricing based on age group
+                        if (child.monthlyPrice === 399) {
+                            basePrice = 1799; // Young Innovators yearly
+                        } else if (child.monthlyPrice === 469) {
+                            basePrice = 2249; // Tech Explorers yearly
+                        } else if (child.monthlyPrice === 599) {
+                            basePrice = 2879; // Future Leaders yearly
+                        }
                         periodText = 'yearly';
-                        savingsText = ' (Save 20%)';
+                        savingsText = ' (Early Bird 20% + 20% Bonus)';
                         break;
                 }
 
