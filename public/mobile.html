@@ -1186,19 +1186,19 @@
                 console.log('Age group:', ageGroup);
 
                 if (childName && ageGroup) {
-                    let program, price;
+                    let program, monthlyPrice;
                     switch(ageGroup) {
                         case 'young':
                             program = 'Young Innovators (Ages 8-10)';
-                            price = 1200;
+                            monthlyPrice = 399; // Early bird monthly price
                             break;
                         case 'tech':
                             program = 'Tech Explorers (Ages 11-13)';
-                            price = 1500;
+                            monthlyPrice = 469; // Early bird monthly price
                             break;
                         case 'future':
                             program = 'Future Leaders (Ages 14-18)';
-                            price = 1800;
+                            monthlyPrice = 599; // Early bird monthly price
                             break;
                         default:
                             console.error('Invalid age group:', ageGroup);
@@ -1207,10 +1207,26 @@
                             return;
                     }
 
+                    // Get duration and calculate price
+                    const duration = document.getElementById('child-duration')?.value || 'quarterly';
+                    let price;
+                    switch(duration) {
+                        case 'monthly':
+                            price = monthlyPrice;
+                            break;
+                        case 'quarterly':
+                            price = Math.round(monthlyPrice * 3 * 0.9); // 10% discount
+                            break;
+                        case 'yearly':
+                            price = Math.round(monthlyPrice * 12 * 0.8); // 20% discount
+                            break;
+                    }
+
                     formData.children.push({
                         name: childName,
                         program: program,
-                        price: price
+                        price: price,
+                        duration: duration
                     });
                     formData.totalPrice += price;
                     console.log('✅ Main child added:', formData.children[0]);
@@ -1226,26 +1242,43 @@
                     const ageGroup = childInputs[1]?.value || '';
 
                     if (childName && ageGroup) {
-                        let program, price;
+                        let program, monthlyPrice;
                         switch(ageGroup) {
                             case 'young':
                                 program = 'Young Innovators (Ages 8-10)';
-                                price = 1200;
+                                monthlyPrice = 399; // Early bird monthly price
                                 break;
                             case 'tech':
                                 program = 'Tech Explorers (Ages 11-13)';
-                                price = 1500;
+                                monthlyPrice = 469; // Early bird monthly price
                                 break;
                             case 'future':
                                 program = 'Future Leaders (Ages 14-18)';
-                                price = 1800;
+                                monthlyPrice = 599; // Early bird monthly price
+                                break;
+                        }
+
+                        // Get duration for additional child (they each have their own duration selector)
+                        const durationSelect = childInputs[2]; // Duration is the third input
+                        const duration = durationSelect?.value || 'quarterly';
+                        let price;
+                        switch(duration) {
+                            case 'monthly':
+                                price = monthlyPrice;
+                                break;
+                            case 'quarterly':
+                                price = Math.round(monthlyPrice * 3 * 0.9); // 10% discount
+                                break;
+                            case 'yearly':
+                                price = Math.round(monthlyPrice * 12 * 0.8); // 20% discount
                                 break;
                         }
 
                         formData.children.push({
                             name: childName,
                             program: program,
-                            price: price
+                            price: price,
+                            duration: duration
                         });
                         formData.totalPrice += price;
                         console.log(`✅ Additional child ${index + 1} added:`, formData.children[formData.children.length - 1]);
