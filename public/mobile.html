@@ -1744,7 +1744,7 @@
             const ageGroup = document.getElementById('child-age-group')?.value;
             const duration = durationOverride || document.getElementById('child-duration')?.value;
 
-            if (childName && ageGroup) {
+            if (ageGroup) {
                 let monthlyPrice;
                 switch(ageGroup) {
                     case 'young':
@@ -1770,7 +1770,7 @@
                 const ageGroup = childInputs[1]?.value;
                 const childDuration = durationOverride || childInputs[2]?.value;
 
-                if (childName && ageGroup && childDuration) {
+                if (ageGroup && childDuration && (durationOverride || childName)) {
                     let monthlyPrice;
                     switch(ageGroup) {
                         case 'young':
