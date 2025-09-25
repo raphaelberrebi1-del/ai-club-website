@@ -513,37 +513,48 @@
                             <div class="w-8 h-0.5 bg-white/20"></div>
                             <div id="progress-step-3" class="w-3 h-3 rounded-full bg-white/20 transition-all duration-300"></div>
                             <div class="w-8 h-0.5 bg-white/20"></div>
-                            <div id="progress-step-4" class="w-3 h-3 rounded-full bg-white/20 transition-all duration-300"></div>
                         </div>
                         <div class="text-center">
-                            <span id="progress-text" class="text-sm text-white/70">Step 1 of 4</span>
+                            <span id="progress-text" class="text-sm text-white/70">Step 1 of 3</span>
                         </div>
                     </div>
                     <!-- Step 1: Child Information -->
                     <div id="step-1" class="step-content p-6 flex-1 flex flex-col">
                         <div class="mb-6">
-                            <h2 class="text-2xl font-bold text-white tracking-tight mb-2">Tell us about your child</h2>
-                            <p class="text-white/60 text-sm">We'll personalize the experience based on their age and interests</p>
+                            <h2 class="text-2xl font-bold text-white tracking-tight mb-2">Family Registration</h2>
+                            <p class="text-white/60 text-sm">Set up your family's AI Club experience with streamlined enrollment</p>
                         </div>
 
                         <div class="flex-1 space-y-6">
-                            <!-- Child's Name -->
-                            <div class="space-y-3">
-                                <label class="text-base font-semibold text-amber-100">What's your child's name?</label>
-                                <input type="text" id="child-name" placeholder="Enter your child's name"
-                                       class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
+                            <!-- Number of Children -->
+                            <div class="space-y-4">
+                                <label class="text-base font-semibold text-amber-100">How many children will be joining AI Club?</label>
+                                <div class="flex items-center justify-center bg-amber-950/40 border border-amber-200/30 rounded-xl p-4">
+                                    <button type="button" onclick="updateChildCount(-1)"
+                                            class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold text-xl rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center">
+                                        −
+                                    </button>
+                                    <div class="mx-8 text-center">
+                                        <div id="child-count" class="text-3xl font-bold text-white">1</div>
+                                        <div class="text-sm text-white/60 mt-1">child<span id="child-plural"></span></div>
+                                    </div>
+                                    <button type="button" onclick="updateChildCount(1)"
+                                            class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold text-xl rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center">
+                                        +
+                                    </button>
+                                </div>
                             </div>
 
-                            <!-- Age Group Selection -->
+                            <!-- Bulk Duration Selector -->
                             <div class="space-y-4">
-                                <label class="text-base font-semibold text-amber-100">Select their age group</label>
-                                <div class="space-y-3">
-                                    <button type="button" onclick="selectAgeGroup('young')"
-                                            class="age-group-btn w-full p-5 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="young">
+                                <label class="text-base font-semibold text-amber-100">Payment Plan (applies to all children)</label>
+                                <div class="grid grid-cols-1 gap-3">
+                                    <button type="button" onclick="selectBulkDuration('monthly')"
+                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="monthly">
                                         <div class="flex justify-between items-center">
                                             <div>
-                                                <div class="text-lg font-semibold text-white">Young Innovators</div>
-                                                <div class="text-sm text-white/60">Ages 8-10 • Sundays 15:00-16:15</div>
+                                                <div class="text-lg font-semibold text-white">Monthly</div>
+                                                <div class="text-sm text-white/60">₪599 per child • Most flexibility</div>
                                             </div>
                                             <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
                                                 <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
@@ -551,12 +562,12 @@
                                         </div>
                                     </button>
 
-                                    <button type="button" onclick="selectAgeGroup('tech')"
-                                            class="age-group-btn w-full p-5 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="tech">
+                                    <button type="button" onclick="selectBulkDuration('quarterly')"
+                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="quarterly">
                                         <div class="flex justify-between items-center">
                                             <div>
-                                                <div class="text-lg font-semibold text-white">Tech Explorers</div>
-                                                <div class="text-sm text-white/60">Ages 11-13 • Sundays 16:30-17:45</div>
+                                                <div class="text-lg font-semibold text-white">Quarterly</div>
+                                                <div class="text-sm text-white/60">₪479 per child/month • <span class="text-amber-400 font-medium">Save 20%</span></div>
                                             </div>
                                             <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
                                                 <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
@@ -564,18 +575,32 @@
                                         </div>
                                     </button>
 
-                                    <button type="button" onclick="selectAgeGroup('future')"
-                                            class="age-group-btn w-full p-5 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="future">
+                                    <button type="button" onclick="selectBulkDuration('yearly')"
+                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="yearly">
                                         <div class="flex justify-between items-center">
                                             <div>
-                                                <div class="text-lg font-semibold text-white">Future Leaders</div>
-                                                <div class="text-sm text-white/60">Ages 14-18 • Sundays 18:00-19:15</div>
+                                                <div class="text-lg font-semibold text-white">Annual</div>
+                                                <div class="text-sm text-white/60">₪399 per child/month • <span class="text-amber-400 font-medium">Save 33%</span></div>
                                             </div>
                                             <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
                                                 <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
                                             </div>
                                         </div>
                                     </button>
+                                </div>
+                            </div>
+
+                            <!-- Real-time Pricing Preview -->
+                            <div id="pricing-preview" class="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-cyan-400/30 rounded-xl p-4 hidden">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-base font-semibold text-white">Total Family Cost</span>
+                                    <span id="total-price" class="text-2xl font-bold text-cyan-400"></span>
+                                </div>
+                                <div id="pricing-breakdown" class="space-y-2 text-sm text-white/80">
+                                    <!-- Dynamic breakdown will be inserted here -->
+                                </div>
+                                <div id="multi-child-discount" class="mt-3 p-2 bg-amber-500/20 border border-amber-400/30 rounded-lg text-center text-sm text-amber-200 hidden">
+                                    <!-- Multi-child discount message -->
                                 </div>
                             </div>
                         </div>
@@ -588,15 +613,15 @@
                         </div>
                     </div>
 
-                    <!-- Step 2: Program Selection with Pricing -->
+                    <!-- Step 2: Child Details -->
                     <div id="step-2" class="step-content p-6 flex-1 flex-col hidden">
                         <div class="mb-6">
-                            <h2 class="text-2xl font-bold text-white tracking-tight mb-2">Choose Your Plan</h2>
-                            <p class="text-white/60 text-sm">Select the payment duration that works best for your family</p>
+                            <h2 class="text-2xl font-bold text-white tracking-tight mb-2">Child Details</h2>
+                            <p class="text-white/60 text-sm">Tell us about each child joining AI Club</p>
                         </div>
 
-                        <div class="flex-1 space-y-4" id="pricing-options">
-                            <!-- Pricing options will be dynamically inserted here -->
+                        <div class="flex-1 space-y-6" id="children-forms">
+                            <!-- Dynamic child forms will be inserted here -->
                         </div>
 
                         <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
@@ -609,29 +634,45 @@
                         </div>
                     </div>
 
-                    <!-- Step 3: Parent Contact -->
+                    <!-- Step 3: Parent Contact & Payment -->
                     <div id="step-3" class="step-content p-6 flex-1 flex-col hidden">
                         <div class="mb-6">
-                            <h2 class="text-2xl font-bold text-white tracking-tight mb-2">Parent Information</h2>
-                            <p class="text-white/60 text-sm">We'll need your contact details to finalize registration</p>
+                            <h2 class="text-2xl font-bold text-white tracking-tight mb-2">Complete Registration</h2>
+                            <p class="text-white/60 text-sm">Final details and payment to secure your spot</p>
                         </div>
 
                         <div class="flex-1 space-y-6">
+                            <!-- Registration Summary -->
+                            <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
+                                <h3 class="text-lg font-semibold text-white mb-3">Registration Summary</h3>
+                                <div id="step-3-summary" class="space-y-2 text-sm text-white/80">
+                                    <!-- Summary will be populated here -->
+                                </div>
+                                <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-base font-semibold text-white">Total:</span>
+                                        <span id="step-3-total" class="text-xl font-bold text-cyan-300">₪0</span>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="space-y-3">
                                 <label class="text-base font-semibold text-amber-100">Parent Name</label>
                                 <input type="text" id="parent-name" placeholder="Enter your full name"
+                                       oninput="validateStep3()"
                                        class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
                             </div>
 
                             <div class="space-y-3">
                                 <label class="text-base font-semibold text-amber-100">Email Address</label>
                                 <input type="email" id="parent-email" placeholder="your@email.com"
+                                       oninput="validateStep3()"
                                        class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
                             </div>
 
                             <div class="space-y-3">
                                 <label class="text-base font-semibold text-amber-100">Phone Number</label>
                                 <input type="tel" id="parent-phone" placeholder="+972 50-123-4567"
+                                       oninput="validateStep3()"
                                        class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
                             </div>
                         </div>
@@ -640,74 +681,12 @@
                             <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
                                 Back
                             </button>
-                            <button onclick="nextStep()" id="step-3-next" class="flex-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
-                                Review Order
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Step 4: Order Review & Payment -->
-                    <div id="step-4" class="step-content p-6 flex-1 flex-col hidden">
-                        <div class="mb-6">
-                            <h2 class="text-2xl font-bold text-white tracking-tight mb-2">Review & Pay</h2>
-                            <p class="text-white/60 text-sm">Confirm your details and complete registration</p>
-                        </div>
-
-                        <div class="flex-1 space-y-6">
-                            <!-- Order Summary -->
-                            <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-6">
-                                <h3 class="text-lg font-semibold text-white mb-4">Registration Summary</h3>
-                                <div id="final-summary" class="space-y-3 text-sm text-white/80">
-                                    <!-- Summary will be populated here -->
-                                </div>
-                                <div class="border-t border-cyan-400/30 pt-4 mt-4">
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-lg font-semibold text-white">Total:</span>
-                                        <span id="final-total" class="text-2xl font-bold text-cyan-300">₪0</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Payment Method -->
-                            <div class="space-y-4">
-                                <label class="text-base font-semibold text-amber-100">Payment Method</label>
-                                <div class="space-y-3">
-                                    <label class="flex items-center p-4 bg-amber-950/20 rounded-xl border border-green-400/30 cursor-pointer">
-                                        <input type="radio" name="payment-method" value="bit" class="sr-only" checked>
-                                        <div class="w-5 h-5 border-2 border-green-400 rounded-full flex items-center justify-center mr-3">
-                                            <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                                        </div>
-                                        <div class="flex items-center gap-3 flex-1">
-                                            <img src="Bit.logo.png" alt="Bit" class="h-8 w-auto object-contain">
-                                            <div>
-                                                <div class="text-white font-medium">Bit Payment</div>
-                                                <div class="text-green-300 text-sm">✓ Most popular choice</div>
-                                            </div>
-                                        </div>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-xl p-4">
-                                <div class="flex items-start gap-3">
-                                    <div class="text-cyan-400 mt-0.5">⏰</div>
-                                    <div class="text-sm text-cyan-200">
-                                        <strong>Early Bird Special ends October 17th!</strong><br>
-                                        Lock in your 20% discount today before prices increase.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
-                            <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
-                                Back
-                            </button>
-                            <button onclick="submitRegistration()" class="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200 transform hover:scale-105">
+                            <button onclick="submitRegistration()" id="step-3-next" class="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
                                 Complete Registration
                             </button>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -2071,52 +2050,338 @@
 
         // Multi-Step Form Navigation
         let currentStep = 1;
-        let formData = {
-            childName: '',
-            ageGroup: '',
-            duration: '',
+        let familyData = {
+            childCount: 1,
+            bulkDuration: '',
+            children: [],
             parentName: '',
             parentEmail: '',
             parentPhone: '',
-            selectedPrice: 0
+            totalPrice: 0
         };
 
-        function selectAgeGroup(ageGroup) {
-            // Update form data
-            formData.ageGroup = ageGroup;
+        // Initialize with one child template
+        function initializeFamily() {
+            familyData.children = [{
+                name: '',
+                ageGroup: '',
+                duration: '' // Will inherit from bulk unless overridden
+            }];
+        }
+
+        // Call initialization
+        initializeFamily();
+
+        // Family Registration Functions
+        function updateChildCount(change) {
+            const newCount = familyData.childCount + change;
+            if (newCount >= 1 && newCount <= 5) { // Reasonable limit
+                familyData.childCount = newCount;
+
+                // Update UI
+                document.getElementById('child-count').textContent = newCount;
+                document.getElementById('child-plural').textContent = newCount === 1 ? '' : 'ren';
+
+                // Update children array
+                if (newCount > familyData.children.length) {
+                    // Add children
+                    while (familyData.children.length < newCount) {
+                        familyData.children.push({
+                            name: '',
+                            ageGroup: '',
+                            duration: familyData.bulkDuration
+                        });
+                    }
+                } else if (newCount < familyData.children.length) {
+                    // Remove children
+                    familyData.children = familyData.children.slice(0, newCount);
+                }
+
+                // Update pricing if duration is already selected
+                if (familyData.bulkDuration) {
+                    updateFamilyPricing();
+                }
+
+                validateStep1Family();
+            }
+        }
+
+        function selectBulkDuration(duration) {
+            familyData.bulkDuration = duration;
+
+            // Update all children to inherit bulk duration
+            familyData.children.forEach(child => {
+                if (!child.durationOverride) {
+                    child.duration = duration;
+                }
+            });
 
             // Update UI - remove selection from all buttons
-            document.querySelectorAll('.age-group-btn').forEach(btn => {
+            document.querySelectorAll('.bulk-duration-btn').forEach(btn => {
                 btn.classList.remove('border-cyan-400', 'bg-cyan-500/10');
                 btn.classList.add('border-amber-200/30');
                 btn.querySelector('.w-3').classList.add('opacity-0');
             });
 
             // Add selection to clicked button
-            const selectedBtn = document.querySelector(`[data-age="${ageGroup}"]`);
+            const selectedBtn = document.querySelector(`[data-duration="${duration}"]`);
             selectedBtn.classList.remove('border-amber-200/30');
             selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/10');
             selectedBtn.querySelector('.w-3').classList.remove('opacity-0');
 
-            // Check if step 1 can be completed
-            validateStep1();
+            // Update pricing display
+            updateFamilyPricing();
+            validateStep1Family();
         }
 
-        function validateStep1() {
-            const nameInput = document.getElementById('child-name');
-            const childName = nameInput.value.trim();
+        function updateFamilyPricing() {
+            if (!familyData.bulkDuration || familyData.childCount === 0) return;
+
+            // Base prices per child per month
+            const monthlyPrices = {
+                monthly: 599,
+                quarterly: 479, // 20% off monthly
+                yearly: 399     // 33% off monthly
+            };
+
+            const basePrice = monthlyPrices[familyData.bulkDuration];
+            let totalMonthlyPrice = basePrice * familyData.childCount;
+
+            // Apply multi-child discounts
+            let discountText = '';
+            if (familyData.childCount >= 2) {
+                const discountRate = familyData.childCount === 2 ? 0.10 : 0.15; // 10% for 2nd child, 15% for 3rd+
+                const discount = (basePrice * (familyData.childCount - 1)) * discountRate;
+                totalMonthlyPrice -= discount;
+
+                const discountPercent = familyData.childCount === 2 ? '10%' : '15%';
+                discountText = `${discountPercent} multi-child discount applied!`;
+            }
+
+            familyData.totalPrice = totalMonthlyPrice;
+
+            // Show pricing preview
+            const pricingPreview = document.getElementById('pricing-preview');
+            const totalPriceEl = document.getElementById('total-price');
+            const breakdownEl = document.getElementById('pricing-breakdown');
+            const discountEl = document.getElementById('multi-child-discount');
+
+            pricingPreview.classList.remove('hidden');
+
+            // Display total based on duration
+            let displayPrice, displayText;
+            if (familyData.bulkDuration === 'monthly') {
+                displayPrice = `₪${Math.round(totalMonthlyPrice)}/month`;
+                displayText = `${familyData.childCount} child${familyData.childCount === 1 ? '' : 'ren'} × ₪${basePrice}/month`;
+            } else if (familyData.bulkDuration === 'quarterly') {
+                const quarterlyTotal = Math.round(totalMonthlyPrice * 3);
+                displayPrice = `₪${quarterlyTotal}/quarter`;
+                displayText = `${familyData.childCount} child${familyData.childCount === 1 ? '' : 'ren'} × ₪${Math.round(basePrice * 3)}/quarter`;
+            } else { // yearly
+                const yearlyTotal = Math.round(totalMonthlyPrice * 12);
+                displayPrice = `₪${yearlyTotal}/year`;
+                displayText = `${familyData.childCount} child${familyData.childCount === 1 ? '' : 'ren'} × ₪${Math.round(basePrice * 12)}/year`;
+            }
+
+            totalPriceEl.textContent = displayPrice;
+            breakdownEl.innerHTML = `<div>${displayText}</div>`;
+
+            // Show discount message if applicable
+            if (discountText) {
+                discountEl.textContent = discountText;
+                discountEl.classList.remove('hidden');
+            } else {
+                discountEl.classList.add('hidden');
+            }
+        }
+
+        function validateStep1Family() {
             const continueBtn = document.getElementById('step-1-next');
 
-            if (childName && formData.ageGroup) {
-                formData.childName = childName;
+            if (familyData.bulkDuration && familyData.childCount > 0) {
                 continueBtn.disabled = false;
             } else {
                 continueBtn.disabled = true;
             }
         }
 
+        function generateChildForms() {
+            const container = document.getElementById('children-forms');
+            container.innerHTML = '';
+
+            familyData.children.forEach((child, index) => {
+                const childForm = document.createElement('div');
+                childForm.className = 'bg-amber-950/20 border border-amber-200/30 rounded-xl p-4 space-y-4';
+                childForm.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-amber-200/20 pb-3">
+                        <h4 class="text-lg font-semibold text-white">Child ${index + 1}</h4>
+                        <div class="text-sm text-white/60">${familyData.bulkDuration} plan</div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="text-sm font-semibold text-amber-100">Child's Name</label>
+                        <input type="text" id="child-name-${index}" placeholder="Enter child's name"
+                               value="${child.name}"
+                               onchange="updateChildData(${index}, 'name', this.value)"
+                               class="w-full bg-amber-950/40 border border-amber-200/30 rounded-lg px-4 py-3 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent text-base">
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="text-sm font-semibold text-amber-100">Age Group</label>
+                        <div class="space-y-2">
+                            <button type="button" onclick="selectChildAgeGroup(${index}, 'young')"
+                                    class="child-age-btn-${index} w-full p-3 bg-amber-950/40 border border-amber-200/30 rounded-lg text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200 ${child.ageGroup === 'young' ? 'border-cyan-400 bg-cyan-500/10' : ''}"
+                                    data-age="young">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="text-sm font-semibold text-white">Young Innovators</div>
+                                        <div class="text-xs text-white/60">Ages 8-10 • Sundays 15:00-16:15</div>
+                                    </div>
+                                    <div class="w-4 h-4 border border-amber-300 rounded-full flex items-center justify-center">
+                                        <div class="w-2 h-2 bg-cyan-400 rounded-full ${child.ageGroup === 'young' ? 'opacity-100' : 'opacity-0'} transition-opacity"></div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button type="button" onclick="selectChildAgeGroup(${index}, 'tech')"
+                                    class="child-age-btn-${index} w-full p-3 bg-amber-950/40 border border-amber-200/30 rounded-lg text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200 ${child.ageGroup === 'tech' ? 'border-cyan-400 bg-cyan-500/10' : ''}"
+                                    data-age="tech">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="text-sm font-semibold text-white">Tech Explorers</div>
+                                        <div class="text-xs text-white/60">Ages 11-13 • Sundays 16:30-17:45</div>
+                                    </div>
+                                    <div class="w-4 h-4 border border-amber-300 rounded-full flex items-center justify-center">
+                                        <div class="w-2 h-2 bg-cyan-400 rounded-full ${child.ageGroup === 'tech' ? 'opacity-100' : 'opacity-0'} transition-opacity"></div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button type="button" onclick="selectChildAgeGroup(${index}, 'future')"
+                                    class="child-age-btn-${index} w-full p-3 bg-amber-950/40 border border-amber-200/30 rounded-lg text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200 ${child.ageGroup === 'future' ? 'border-cyan-400 bg-cyan-500/10' : ''}"
+                                    data-age="future">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="text-sm font-semibold text-white">Future Leaders</div>
+                                        <div class="text-xs text-white/60">Ages 14-18 • Sundays 18:00-19:15</div>
+                                    </div>
+                                    <div class="w-4 h-4 border border-amber-300 rounded-full flex items-center justify-center">
+                                        <div class="w-2 h-2 bg-cyan-400 rounded-full ${child.ageGroup === 'future' ? 'opacity-100' : 'opacity-0'} transition-opacity"></div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(childForm);
+            });
+
+            validateStep2();
+        }
+
+        function updateChildData(index, field, value) {
+            familyData.children[index][field] = value;
+            validateStep2();
+        }
+
+        function selectChildAgeGroup(childIndex, ageGroup) {
+            familyData.children[childIndex].ageGroup = ageGroup;
+
+            // Update UI for this child's age group buttons
+            document.querySelectorAll(`.child-age-btn-${childIndex}`).forEach(btn => {
+                btn.classList.remove('border-cyan-400', 'bg-cyan-500/10');
+                btn.classList.add('border-amber-200/30');
+                btn.querySelector('.w-2').classList.add('opacity-0');
+            });
+
+            const selectedBtn = document.querySelector(`.child-age-btn-${childIndex}[data-age="${ageGroup}"]`);
+            selectedBtn.classList.remove('border-amber-200/30');
+            selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/10');
+            selectedBtn.querySelector('.w-2').classList.remove('opacity-0');
+
+            validateStep2();
+        }
+
+        function validateStep2() {
+            const continueBtn = document.getElementById('step-2-next');
+            let allValid = true;
+
+            // Check if all children have names and age groups
+            familyData.children.forEach(child => {
+                if (!child.name.trim() || !child.ageGroup) {
+                    allValid = false;
+                }
+            });
+
+            continueBtn.disabled = !allValid;
+        }
+
+        function generateFinalSummary() {
+            const summaryContainer = document.getElementById('step-3-summary');
+            const totalEl = document.getElementById('step-3-total');
+
+            // Generate summary content
+            let summaryHTML = '';
+            familyData.children.forEach((child, index) => {
+                const ageGroupNames = {
+                    young: 'Young Innovators (8-10)',
+                    tech: 'Tech Explorers (11-13)',
+                    future: 'Future Leaders (14-18)'
+                };
+
+                summaryHTML += `
+                    <div class="flex justify-between">
+                        <span>${child.name} - ${ageGroupNames[child.ageGroup]}</span>
+                        <span>${familyData.bulkDuration}</span>
+                    </div>
+                `;
+            });
+
+            if (familyData.childCount > 1) {
+                const discountPercent = familyData.childCount === 2 ? '10%' : '15%';
+                summaryHTML += `<div class="text-amber-300 text-xs">Multi-child discount: ${discountPercent} off</div>`;
+            }
+
+            summaryContainer.innerHTML = summaryHTML;
+
+            // Update total display based on duration
+            let displayPrice;
+            if (familyData.bulkDuration === 'monthly') {
+                displayPrice = `₪${Math.round(familyData.totalPrice)}/month`;
+            } else if (familyData.bulkDuration === 'quarterly') {
+                displayPrice = `₪${Math.round(familyData.totalPrice * 3)}/quarter`;
+            } else {
+                displayPrice = `₪${Math.round(familyData.totalPrice * 12)}/year`;
+            }
+
+            totalEl.textContent = displayPrice;
+
+            // Validate parent inputs
+            validateStep3();
+        }
+
+        function validateStep3() {
+            const continueBtn = document.getElementById('step-3-next');
+            const parentName = document.getElementById('parent-name').value.trim();
+            const parentEmail = document.getElementById('parent-email').value.trim();
+            const parentPhone = document.getElementById('parent-phone').value.trim();
+
+            const isValid = parentName && parentEmail && parentPhone &&
+                           parentEmail.includes('@') && parentPhone.length >= 9;
+
+            continueBtn.disabled = !isValid;
+
+            // Update family data
+            if (isValid) {
+                familyData.parentName = parentName;
+                familyData.parentEmail = parentEmail;
+                familyData.parentPhone = parentPhone;
+            }
+        }
+
+
         function nextStep() {
-            if (currentStep < 4) {
+            if (currentStep < 3) {
                 const currentStepEl = document.getElementById(`step-${currentStep}`);
                 const nextStepEl = document.getElementById(`step-${currentStep + 1}`);
 
@@ -2141,9 +2406,9 @@
 
                     // Initialize step-specific content
                     if (currentStep === 2) {
-                        initializeStep2();
-                    } else if (currentStep === 4) {
-                        initializeStep4();
+                        generateChildForms();
+                    } else if (currentStep === 3) {
+                        generateFinalSummary();
                     }
                 }, 300); // Match CSS transition duration
             }
@@ -2190,7 +2455,7 @@
             }
 
             // Update progress text
-            document.getElementById('progress-text').textContent = `Step ${currentStep} of 4`;
+            document.getElementById('progress-text').textContent = `Step ${currentStep} of 3`;
         }
 
         function initializeStep2() {
@@ -2374,30 +2639,37 @@
         }
 
         function submitRegistration() {
-            // Here you would submit the form data
-            console.log('Submitting registration:', formData);
+            // Prepare family registration data
+            const registrationData = {
+                family: {
+                    parentName: familyData.parentName,
+                    parentEmail: familyData.parentEmail,
+                    parentPhone: familyData.parentPhone
+                },
+                children: familyData.children,
+                pricing: {
+                    duration: familyData.bulkDuration,
+                    totalPrice: familyData.totalPrice,
+                    childCount: familyData.childCount
+                },
+                timestamp: new Date().toISOString()
+            };
 
-            // For now, show success message
-            alert('Registration submitted successfully! We will contact you soon.');
+            console.log('Submitting family registration:', registrationData);
+
+            // Create success message with family details
+            const childrenNames = familyData.children.map(child => child.name).join(', ');
+            const durationText = familyData.bulkDuration === 'monthly' ? 'monthly' :
+                               familyData.bulkDuration === 'quarterly' ? 'quarterly' : 'annual';
+
+            const successMessage = `🎉 Family registration submitted successfully!\n\n` +
+                                  `Children: ${childrenNames}\n` +
+                                  `Plan: ${durationText}\n` +
+                                  `Total: ₪${Math.round(familyData.totalPrice)}\n\n` +
+                                  `We'll contact you at ${familyData.parentEmail} soon!`;
+
+            alert(successMessage);
         }
-
-        // Add input event listeners for validation
-        document.addEventListener('DOMContentLoaded', function() {
-            // Step 1 validation
-            const childNameInput = document.getElementById('child-name');
-            if (childNameInput) {
-                childNameInput.addEventListener('input', validateStep1);
-            }
-
-            // Step 3 validation
-            const parentInputs = ['parent-name', 'parent-email', 'parent-phone'];
-            parentInputs.forEach(inputId => {
-                const input = document.getElementById(inputId);
-                if (input) {
-                    input.addEventListener('input', validateStep3);
-                }
-            });
-        });
 
         // Enhanced pricing calculation with duration support
         function calculateMobilePrice() {
