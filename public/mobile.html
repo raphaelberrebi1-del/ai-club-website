@@ -549,19 +549,19 @@
 
                             <div class="grid grid-cols-3 gap-3 text-center">
                                 <div class="bg-black/30 rounded-lg p-3">
-                                    <div class="text-xs text-cyan-200 mb-1">Monthly</div>
+                                    <div class="text-xs text-cyan-200 mb-1">Monthly (-20%)</div>
+                                    <div class="text-xs text-white/50 line-through mb-1" id="preview-monthly-before">₪499</div>
                                     <div id="preview-monthly" class="text-lg font-bold text-white">₪399</div>
-                                    <div class="text-xs text-white/60">No commitment</div>
                                 </div>
                                 <div class="bg-gradient-to-br from-cyan-500/30 to-teal-500/30 rounded-lg p-3 border border-cyan-400/50">
-                                    <div class="text-xs text-cyan-200 mb-1">Quarterly (-10%)</div>
-                                    <div class="text-xs text-white/50 line-through mb-1" id="preview-quarterly-before">₪1,197</div>
-                                    <div id="preview-quarterly" class="text-lg font-bold text-white">₪1,199</div>
+                                    <div class="text-xs text-cyan-200 mb-1">Quarterly (-28%)</div>
+                                    <div class="text-xs text-white/50 line-through mb-1" id="preview-quarterly-before">₪1,497</div>
+                                    <div id="preview-quarterly" class="text-lg font-bold text-white">₪1,077</div>
                                 </div>
                                 <div class="bg-black/30 rounded-lg p-3">
-                                    <div class="text-xs text-cyan-200 mb-1">Yearly (-20%)</div>
-                                    <div class="text-xs text-white/50 line-through mb-1" id="preview-yearly-before">₪4,788</div>
-                                    <div id="preview-yearly" class="text-lg font-bold text-white">₪1,799</div>
+                                    <div class="text-xs text-cyan-200 mb-1">Yearly (-36%)</div>
+                                    <div class="text-xs text-white/50 line-through mb-1" id="preview-yearly-before">₪5,988</div>
+                                    <div id="preview-yearly" class="text-lg font-bold text-white">₪3,830</div>
                                 </div>
                             </div>
 
@@ -597,9 +597,9 @@
                             <label class="text-sm font-semibold text-amber-100">Choose Payment Duration</label>
                             <select id="child-duration" onchange="calculateMobilePrice()" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
                                 <option value="">Select billing duration</option>
-                                <option value="monthly">Monthly - No commitment</option>
-                                <option value="quarterly">Quarterly (-10%) - Early Bird Special</option>
-                                <option value="yearly">Yearly (-20%) - Best Value</option>
+                                <option value="monthly">Monthly (-20%) - Early Bird Price</option>
+                                <option value="quarterly">Quarterly (-28%) - Early Bird Special</option>
+                                <option value="yearly">Yearly (-36%) - Best Value</option>
                             </select>
                             <div class="text-xs text-amber-300 mt-2">
                                 ⏰ Early bird bonuses expire October 17th - then prices increase 20%
@@ -1608,38 +1608,41 @@
                 return;
             }
 
-            // Get pricing based on age group - using psychological pricing values
-            let monthlyPrice, quarterlyPrice, yearlyPrice;
+            // Current prices are early bird prices (20% off regular)
+            // Calculate regular prices and early bird discounted prices
+            let earlyBirdMonthlyPrice, regularMonthlyPrice;
             switch(ageGroup) {
                 case 'young':
-                    monthlyPrice = 399;
-                    quarterlyPrice = 1199; // ₪399 * 3 * 0.9 rounded to psychological pricing
-                    yearlyPrice = 1799; // ₪399 * 12 * 0.8 rounded to psychological pricing
+                    earlyBirdMonthlyPrice = 399; // Current early bird price
+                    regularMonthlyPrice = Math.round(399 / 0.8); // ₪499
                     break;
                 case 'tech':
-                    monthlyPrice = 469;
-                    quarterlyPrice = 1399; // Target psychological pricing ₪1,399
-                    yearlyPrice = 2249; // ₪469 * 12 * 0.8 rounded to psychological pricing
+                    earlyBirdMonthlyPrice = 469; // Current early bird price
+                    regularMonthlyPrice = Math.round(469 / 0.8); // ₪586
                     break;
                 case 'future':
-                    monthlyPrice = 599;
-                    quarterlyPrice = 1799; // Target psychological pricing ₪1,799
-                    yearlyPrice = 2879; // ₪599 * 12 * 0.8 rounded to psychological pricing
+                    earlyBirdMonthlyPrice = 599; // Current early bird price
+                    regularMonthlyPrice = Math.round(599 / 0.8); // ₪749
                     break;
             }
 
-            // Calculate "before" prices (what it would cost without discount)
-            const quarterlyBeforePrice = monthlyPrice * 3; // 3 months without discount
-            const yearlyBeforePrice = monthlyPrice * 12; // 12 months without discount
+            // Calculate early bird prices with additional discounts
+            const earlyBirdQuarterlyPrice = Math.round(earlyBirdMonthlyPrice * 3 * 0.9); // 20% + 10% = 28% total off
+            const earlyBirdYearlyPrice = Math.round(earlyBirdMonthlyPrice * 12 * 0.8); // 20% + 20% = 36% total off
 
-            // Update preview prices
-            document.getElementById('preview-monthly').textContent = `₪${monthlyPrice}`;
-            document.getElementById('preview-quarterly').textContent = `₪${quarterlyPrice}`;
-            document.getElementById('preview-yearly').textContent = `₪${yearlyPrice}`;
+            // Calculate regular (non-early bird) prices for comparison
+            const regularQuarterlyPrice = regularMonthlyPrice * 3;
+            const regularYearlyPrice = regularMonthlyPrice * 12;
 
-            // Update before prices
-            document.getElementById('preview-quarterly-before').textContent = `₪${quarterlyBeforePrice}`;
-            document.getElementById('preview-yearly-before').textContent = `₪${yearlyBeforePrice}`;
+            // Update preview prices (early bird)
+            document.getElementById('preview-monthly').textContent = `₪${earlyBirdMonthlyPrice}`;
+            document.getElementById('preview-quarterly').textContent = `₪${earlyBirdQuarterlyPrice}`;
+            document.getElementById('preview-yearly').textContent = `₪${earlyBirdYearlyPrice}`;
+
+            // Update before prices (regular prices)
+            document.getElementById('preview-monthly-before').textContent = `₪${regularMonthlyPrice}`;
+            document.getElementById('preview-quarterly-before').textContent = `₪${regularQuarterlyPrice}`;
+            document.getElementById('preview-yearly-before').textContent = `₪${regularYearlyPrice}`;
 
             // Show the pricing preview
             immediatePricing.style.display = 'block';
@@ -1730,32 +1733,21 @@
 
                 switch(child.duration) {
                     case 'monthly':
-                        basePrice = child.monthlyPrice;
+                        basePrice = child.monthlyPrice; // Already early bird price (20% off regular)
                         periodText = 'monthly';
+                        savingsText = ' (Early Bird 20% off)';
                         break;
                     case 'quarterly':
-                        // Use psychological pricing based on age group
-                        if (child.monthlyPrice === 399) {
-                            basePrice = 1199; // Young Innovators
-                        } else if (child.monthlyPrice === 469) {
-                            basePrice = 1399; // Tech Explorers
-                        } else if (child.monthlyPrice === 599) {
-                            basePrice = 1799; // Future Leaders
-                        }
+                        // Early bird monthly price with additional 10% quarterly discount
+                        basePrice = Math.round(child.monthlyPrice * 3 * 0.9);
                         periodText = 'quarterly';
-                        savingsText = ' (Early Bird 20% + 10% Bonus)';
+                        savingsText = ' (Early Bird 28% total off)';
                         break;
                     case 'yearly':
-                        // Use psychological pricing based on age group
-                        if (child.monthlyPrice === 399) {
-                            basePrice = 1799; // Young Innovators yearly
-                        } else if (child.monthlyPrice === 469) {
-                            basePrice = 2249; // Tech Explorers yearly
-                        } else if (child.monthlyPrice === 599) {
-                            basePrice = 2879; // Future Leaders yearly
-                        }
+                        // Early bird monthly price with additional 20% yearly discount
+                        basePrice = Math.round(child.monthlyPrice * 12 * 0.8);
                         periodText = 'yearly';
-                        savingsText = ' (Early Bird 20% + 20% Bonus)';
+                        savingsText = ' (Early Bird 36% total off)';
                         break;
                 }
 
