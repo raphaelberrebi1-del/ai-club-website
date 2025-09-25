@@ -2223,11 +2223,7 @@
         }
 
         function generateChildForms() {
-            console.log('🔧 generateChildForms called with:', {
-                childCount: familyData.childCount,
-                children: familyData.children,
-                bulkDuration: familyData.bulkDuration
-            });
+            console.log('🔧 Generating child forms for', familyData.childCount, 'children');
 
             const container = document.getElementById('children-forms');
             if (!container) {
@@ -2237,33 +2233,20 @@
 
             container.innerHTML = '';
 
-            // Show loading state briefly
-            container.innerHTML = '<div class="text-center py-8 text-white/60 bg-red-500/20 border border-red-400 rounded-xl">🔧 Generating child forms... (Debug Mode)</div>';
+            familyData.children.forEach((child, index) => {
+                console.log(`👶 Creating form for child ${index + 1}`);
 
-            // Small delay to show loading state, then generate forms
-            setTimeout(() => {
-                container.innerHTML = '';
+                const childForm = document.createElement('div');
+                childForm.className = 'bg-amber-950/20 border border-amber-200/30 rounded-xl p-4 space-y-4 mb-4';
 
-                // Add a debug header first
-                const debugHeader = document.createElement('div');
-                debugHeader.className = 'mb-4 p-3 bg-green-500/20 border border-green-400 rounded-lg text-green-300 text-sm';
-                debugHeader.innerHTML = `✅ Generating ${familyData.children.length} forms for: ${familyData.children.map(c => `Child ${familyData.children.indexOf(c)+1}`).join(', ')}`;
-                container.appendChild(debugHeader);
+                // Handle case where bulkDuration might be undefined
+                const planText = familyData.bulkDuration ? `${familyData.bulkDuration} plan` : 'plan selected';
 
-                familyData.children.forEach((child, index) => {
-                    console.log(`🧒 Creating form for child ${index + 1}:`, child);
-
-                    const childForm = document.createElement('div');
-                    childForm.className = 'bg-amber-950/20 border border-amber-200/30 rounded-xl p-4 space-y-4';
-
-                    // Handle case where bulkDuration might be undefined
-                    const planText = familyData.bulkDuration ? `${familyData.bulkDuration} plan` : 'plan to be selected';
-
-                    childForm.innerHTML = `
-                        <div class="flex items-center justify-between border-b border-amber-200/20 pb-3">
-                            <h4 class="text-lg font-semibold text-white">Child ${index + 1}</h4>
-                            <div class="text-sm text-white/60">${planText}</div>
-                        </div>
+                childForm.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-amber-200/20 pb-3">
+                        <h4 class="text-lg font-semibold text-white">Child ${index + 1}</h4>
+                        <div class="text-sm text-white/60">${planText}</div>
+                    </div>
 
                     <div class="space-y-3">
                         <label class="text-sm font-semibold text-amber-100">Child's Name</label>
@@ -2320,13 +2303,12 @@
                         </div>
                     </div>
                 `;
-                    container.appendChild(childForm);
-                    console.log(`✅ Added form for child ${index + 1} to container`);
-                });
+                container.appendChild(childForm);
+                console.log(`✅ Added form for child ${index + 1} to container`);
+            });
 
-                console.log(`🎉 Generated ${familyData.children.length} child forms`);
-                validateStep2();
-            }, 100); // Short delay to show loading state
+            console.log(`🎉 Generated ${familyData.children.length} child forms`);
+            validateStep2();
         }
 
         function updateChildData(index, field, value) {
@@ -2495,15 +2477,19 @@
         }
 
         function updateProgressIndicator() {
-            // Update step indicators
-            for (let i = 1; i <= 4; i++) {
+            // Update step indicators (now only 3 steps)
+            for (let i = 1; i <= 3; i++) {
                 const stepIndicator = document.getElementById(`progress-step-${i}`);
-                if (i <= currentStep) {
-                    stepIndicator.classList.remove('bg-white/20');
-                    stepIndicator.classList.add('bg-cyan-400');
+                if (stepIndicator) { // Check if element exists
+                    if (i <= currentStep) {
+                        stepIndicator.classList.remove('bg-white/20');
+                        stepIndicator.classList.add('bg-cyan-400');
+                    } else {
+                        stepIndicator.classList.remove('bg-cyan-400');
+                        stepIndicator.classList.add('bg-white/20');
+                    }
                 } else {
-                    stepIndicator.classList.remove('bg-cyan-400');
-                    stepIndicator.classList.add('bg-white/20');
+                    console.warn(`⚠️ Progress indicator progress-step-${i} not found`);
                 }
             }
 
