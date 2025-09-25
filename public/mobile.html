@@ -465,7 +465,7 @@
 
             <div class="max-w-md mx-auto text-center space-y-8 relative z-10">
                 <!-- Main CTA Headline -->
-                <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-cyan-200/30">
+                <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-cyan-200/30 fade-in-up" data-scroll>
                     <div class="space-y-6">
                         <h2 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
                             Ready to Give Your Child the
@@ -481,7 +481,7 @@
                 </div>
 
                 <!-- Early Bird Special -->
-                <div class="bg-gradient-to-r from-cyan-500/40 to-teal-500/40 backdrop-blur-sm rounded-2xl p-6 border-2 border-cyan-400/50">
+                <div class="bg-gradient-to-r from-cyan-500/40 to-teal-500/40 backdrop-blur-sm rounded-2xl p-6 border-2 border-cyan-400/50 fade-in-up delay-1" data-scroll>
                     <div class="flex items-center justify-center gap-2 mb-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400">
                             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
@@ -945,6 +945,23 @@
 
         .fade-in-right.delay-6, .fade-in-up.delay-6, .fade-in-down.delay-6 {
             transition-delay: 1.2s;
+        }
+
+        /* Multi-step form transition animations */
+        .step-content {
+            opacity: 1;
+            transform: translateX(0);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+
+        .step-fade-out {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .step-fade-in {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         body {
@@ -2100,36 +2117,62 @@
 
         function nextStep() {
             if (currentStep < 4) {
-                // Hide current step
-                document.getElementById(`step-${currentStep}`).classList.add('hidden');
+                const currentStepEl = document.getElementById(`step-${currentStep}`);
+                const nextStepEl = document.getElementById(`step-${currentStep + 1}`);
 
-                // Show next step
-                currentStep++;
-                document.getElementById(`step-${currentStep}`).classList.remove('hidden');
+                // Start fade-out animation for current step
+                currentStepEl.classList.add('step-fade-out');
 
-                // Update progress indicator
-                updateProgressIndicator();
+                // After fade-out completes, show next step
+                setTimeout(() => {
+                    // Hide current step
+                    currentStepEl.classList.add('hidden');
+                    currentStepEl.classList.remove('step-fade-out');
 
-                // Initialize step-specific content
-                if (currentStep === 2) {
-                    initializeStep2();
-                } else if (currentStep === 4) {
-                    initializeStep4();
-                }
+                    // Show next step
+                    currentStep++;
+                    nextStepEl.classList.remove('hidden');
+
+                    // Start with fade-in animation
+                    nextStepEl.classList.add('step-fade-in');
+
+                    // Update progress indicator
+                    updateProgressIndicator();
+
+                    // Initialize step-specific content
+                    if (currentStep === 2) {
+                        initializeStep2();
+                    } else if (currentStep === 4) {
+                        initializeStep4();
+                    }
+                }, 300); // Match CSS transition duration
             }
         }
 
         function previousStep() {
             if (currentStep > 1) {
-                // Hide current step
-                document.getElementById(`step-${currentStep}`).classList.add('hidden');
+                const currentStepEl = document.getElementById(`step-${currentStep}`);
+                const prevStepEl = document.getElementById(`step-${currentStep - 1}`);
 
-                // Show previous step
-                currentStep--;
-                document.getElementById(`step-${currentStep}`).classList.remove('hidden');
+                // Start fade-out animation for current step
+                currentStepEl.classList.add('step-fade-out');
 
-                // Update progress indicator
-                updateProgressIndicator();
+                // After fade-out completes, show previous step
+                setTimeout(() => {
+                    // Hide current step
+                    currentStepEl.classList.add('hidden');
+                    currentStepEl.classList.remove('step-fade-out');
+
+                    // Show previous step
+                    currentStep--;
+                    prevStepEl.classList.remove('hidden');
+
+                    // Start with fade-in animation
+                    prevStepEl.classList.add('step-fade-in');
+
+                    // Update progress indicator
+                    updateProgressIndicator();
+                }, 300); // Match CSS transition duration
             }
         }
 
