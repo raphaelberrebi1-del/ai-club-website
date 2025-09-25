@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Club — Curriculum</title>
+    <meta name="description" content="Discover our comprehensive AI education curriculum with 12, 24, 36, and 48-week programs for children ages 8-18.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0a0a12] text-white">
+    <div class="site-background" aria-hidden="true"></div>
+
+    <!-- Fixed Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/95 backdrop-blur-xl border-b border-amber-200/20">
+        <div class="flex items-center justify-between px-4 h-16">
+            <!-- Back Button -->
+            <button onclick="window.history.back()" class="flex items-center justify-center w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-amber-200/30 hover:bg-white/20 transition-all duration-200 hover:scale-105">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white">
+                    <path d="m15 18-6-6 6-6"/>
+                </svg>
+            </button>
+
+            <!-- AI Club Branding -->
+            <div class="flex items-center">
+                <h1 class="text-xl font-bold text-white tracking-tight">
+                    <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">AI</span>
+                    <span class="text-white">Club</span>
+                </h1>
+            </div>
+
+            <!-- Register Button -->
+            <button onclick="window.location.href='mobile.html#choose-program'" class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105">
+                Register
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="relative px-6 py-12">
+            <div class="max-w-md mx-auto text-center">
+                <div class="mb-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-400/20 to-teal-400/20 rounded-full mb-4">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-cyan-400">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h1 class="text-3xl font-extrabold text-white mb-4 leading-tight">
+                        <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">AI Club</span><br>
+                        Curriculum
+                    </h1>
+                    <p class="text-white/80 text-lg leading-relaxed">
+                        Comprehensive AI education programs designed to prepare children for tomorrow's world
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Duration Selector -->
+        <section class="px-6 pb-8">
+            <div class="max-w-md mx-auto">
+                <h2 class="text-xl font-bold text-white mb-4 text-center">Choose Program Duration</h2>
+                <div class="grid grid-cols-2 gap-3 mb-8">
+                    <button onclick="switchProgram('12')" id="tab-12" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-cyan-400/20 border-cyan-400/40 text-cyan-300">
+                        <span class="block font-bold text-lg">12 Weeks</span>
+                        <span class="block text-xs opacity-80">Foundation</span>
+                    </button>
+                    <button onclick="switchProgram('24')" id="tab-24" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
+                        <span class="block font-bold text-lg">24 Weeks</span>
+                        <span class="block text-xs opacity-80">Intermediate</span>
+                    </button>
+                    <button onclick="switchProgram('36')" id="tab-36" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
+                        <span class="block font-bold text-lg">36 Weeks</span>
+                        <span class="block text-xs opacity-80">Advanced</span>
+                    </button>
+                    <button onclick="switchProgram('48')" id="tab-48" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
+                        <span class="block font-bold text-lg">48 Weeks</span>
+                        <span class="block text-xs opacity-80">Expert</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Content -->
+        <section class="px-6 pb-12">
+            <div class="max-w-md mx-auto">
+
+                <!-- 12 Week Program -->
+                <div id="program-12" class="program-content">
+                    <div class="bg-gradient-to-br from-cyan-400/10 to-teal-400/10 rounded-2xl p-6 mb-6 border border-cyan-400/20">
+                        <h3 class="text-2xl font-bold text-white mb-3">12-Week Foundation Program</h3>
+                        <p class="text-white/80 mb-4">Perfect introduction to AI for young minds, building essential skills and understanding.</p>
+
+                        <!-- Age Groups for 12-week -->
+                        <div class="space-y-4">
+                            <!-- Young Innovators 8-12 -->
+                            <div class="bg-black/30 rounded-xl p-4 border border-amber-200/20">
+                                <button onclick="toggleSection('young-12')" class="w-full flex items-center justify-between mb-2">
+                                    <h4 class="text-lg font-bold text-amber-300">Young Innovators (8-12)</h4>
+                                    <svg id="young-12-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-300 transform transition-transform">
+                                        <polyline points="6,9 12,15 18,9"></polyline>
+                                    </svg>
+                                </button>
+                                <div id="young-12-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
+                                    <div class="space-y-2 text-sm">
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-cyan-400/20 text-cyan-300 px-2 py-1 rounded text-xs font-medium">Week 1-2</span>
+                                            <span class="text-white/90">What is AI? Introduction through fun examples</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-cyan-400/20 text-cyan-300 px-2 py-1 rounded text-xs font-medium">Week 3-4</span>
+                                            <span class="text-white/90">Basic prompt writing with simple AI tools</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-cyan-400/20 text-cyan-300 px-2 py-1 rounded text-xs font-medium">Week 5-6</span>
+                                            <span class="text-white/90">Creating simple AI-generated stories and pictures</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-cyan-400/20 text-cyan-300 px-2 py-1 rounded text-xs font-medium">Week 7-8</span>
+                                            <span class="text-white/90">Introduction to AI helpers and assistants</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-cyan-400/20 text-cyan-300 px-2 py-1 rounded text-xs font-medium">Week 9-10</span>
+                                            <span class="text-white/90">Basic AI safety and understanding limitations</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-cyan-400/20 text-cyan-300 px-2 py-1 rounded text-xs font-medium">Week 11-12</span>
+                                            <span class="text-white/90">Final project: Create an AI-assisted presentation</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Teen Entrepreneurs 13-18 -->
+                            <div class="bg-black/30 rounded-xl p-4 border border-teal-200/20">
+                                <button onclick="toggleSection('teen-12')" class="w-full flex items-center justify-between mb-2">
+                                    <h4 class="text-lg font-bold text-teal-300">Teen Entrepreneurs (13-18)</h4>
+                                    <svg id="teen-12-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-teal-300 transform transition-transform">
+                                        <polyline points="6,9 12,15 18,9"></polyline>
+                                    </svg>
+                                </button>
+                                <div id="teen-12-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
+                                    <div class="space-y-2 text-sm">
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-teal-400/20 text-teal-300 px-2 py-1 rounded text-xs font-medium">Week 1-2</span>
+                                            <span class="text-white/90">AI landscape overview and career opportunities</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-teal-400/20 text-teal-300 px-2 py-1 rounded text-xs font-medium">Week 3-4</span>
+                                            <span class="text-white/90">Advanced prompt engineering techniques</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-teal-400/20 text-teal-300 px-2 py-1 rounded text-xs font-medium">Week 5-6</span>
+                                            <span class="text-white/90">AI tools for productivity and automation</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-teal-400/20 text-teal-300 px-2 py-1 rounded text-xs font-medium">Week 7-8</span>
+                                            <span class="text-white/90">Content creation with AI (writing, design, video)</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-teal-400/20 text-teal-300 px-2 py-1 rounded text-xs font-medium">Week 9-10</span>
+                                            <span class="text-white/90">AI ethics, bias, and responsible usage</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-teal-400/20 text-teal-300 px-2 py-1 rounded text-xs font-medium">Week 11-12</span>
+                                            <span class="text-white/90">Capstone: AI-enhanced business proposal</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 24 Week Program -->
+                <div id="program-24" class="program-content hidden">
+                    <div class="bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-2xl p-6 mb-6 border border-purple-400/20">
+                        <h3 class="text-2xl font-bold text-white mb-3">24-Week Intermediate Program</h3>
+                        <p class="text-white/80 mb-4">Build practical AI skills through hands-on projects and real-world applications.</p>
+
+                        <!-- Age Groups for 24-week -->
+                        <div class="space-y-4">
+                            <!-- Young Innovators 8-12 -->
+                            <div class="bg-black/30 rounded-xl p-4 border border-amber-200/20">
+                                <button onclick="toggleSection('young-24')" class="w-full flex items-center justify-between mb-2">
+                                    <h4 class="text-lg font-bold text-amber-300">Young Innovators (8-12)</h4>
+                                    <svg id="young-24-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-300 transform transition-transform">
+                                        <polyline points="6,9 12,15 18,9"></polyline>
+                                    </svg>
+                                </button>
+                                <div id="young-24-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
+                                    <div class="space-y-2 text-sm">
+                                        <div class="bg-amber-400/10 rounded-lg p-3 mb-2">
+                                            <span class="text-amber-300 font-semibold text-xs">MONTHS 1-3: AI FUNDAMENTALS</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 1-4</span>
+                                            <span class="text-white/90">AI basics, pattern recognition, and simple algorithms</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 5-8</span>
+                                            <span class="text-white/90">Creating with AI: Stories, art, and music</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 9-12</span>
+                                            <span class="text-white/90">AI games and interactive experiences</span>
+                                        </div>
+
+                                        <div class="bg-amber-400/10 rounded-lg p-3 mt-4 mb-2">
+                                            <span class="text-amber-300 font-semibold text-xs">MONTHS 4-6: PRACTICAL APPLICATIONS</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 13-16</span>
+                                            <span class="text-white/90">AI for school projects and homework help</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 17-20</span>
+                                            <span class="text-white/90">Building simple AI-powered applications</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 21-24</span>
+                                            <span class="text-white/90">Final project: Create an AI solution for a real problem</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Teen Entrepreneurs 13-18 -->
+                            <div class="bg-black/30 rounded-xl p-4 border border-teal-200/20">
+                                <button onclick="toggleSection('teen-24')" class="w-full flex items-center justify-between mb-2">
+                                    <h4 class="text-lg font-bold text-teal-300">Teen Entrepreneurs (13-18)</h4>
+                                    <svg id="teen-24-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-teal-300 transform transition-transform">
+                                        <polyline points="6,9 12,15 18,9"></polyline>
+                                    </svg>
+                                </button>
+                                <div id="teen-24-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
+                                    <div class="space-y-2 text-sm">
+                                        <div class="bg-teal-400/10 rounded-lg p-3 mb-2">
+                                            <span class="text-teal-300 font-semibold text-xs">MONTHS 1-3: ADVANCED FOUNDATIONS</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 1-4</span>
+                                            <span class="text-white/90">Machine learning concepts and data analysis</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 5-8</span>
+                                            <span class="text-white/90">AI APIs and integration techniques</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 9-12</span>
+                                            <span class="text-white/90">Building AI-powered websites and apps</span>
+                                        </div>
+
+                                        <div class="bg-teal-400/10 rounded-lg p-3 mt-4 mb-2">
+                                            <span class="text-teal-300 font-semibold text-xs">MONTHS 4-6: BUSINESS APPLICATIONS</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 13-16</span>
+                                            <span class="text-white/90">AI for market research and customer insights</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 17-20</span>
+                                            <span class="text-white/90">Automating workflows and business processes</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 21-24</span>
+                                            <span class="text-white/90">Capstone: Launch an AI-powered micro-business</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 36 Week Program -->
+                <div id="program-36" class="program-content hidden">
+                    <div class="bg-gradient-to-br from-green-400/10 to-emerald-400/10 rounded-2xl p-6 mb-6 border border-green-400/20">
+                        <h3 class="text-2xl font-bold text-white mb-3">36-Week Advanced Program</h3>
+                        <p class="text-white/80 mb-4">Comprehensive AI mastery with entrepreneurship focus and portfolio development.</p>
+
+                        <!-- Age Groups for 36-week -->
+                        <div class="space-y-4">
+                            <!-- Young Innovators 8-12 -->
+                            <div class="bg-black/30 rounded-xl p-4 border border-amber-200/20">
+                                <button onclick="toggleSection('young-36')" class="w-full flex items-center justify-between mb-2">
+                                    <h4 class="text-lg font-bold text-amber-300">Young Innovators (8-12)</h4>
+                                    <svg id="young-36-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-300 transform transition-transform">
+                                        <polyline points="6,9 12,15 18,9"></polyline>
+                                    </svg>
+                                </button>
+                                <div id="young-36-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
+                                    <div class="space-y-2 text-sm">
+                                        <div class="bg-amber-400/10 rounded-lg p-3 mb-2">
+                                            <span class="text-amber-300 font-semibold text-xs">MONTHS 1-4: CREATIVE AI MASTERY</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 1-6</span>
+                                            <span class="text-white/90">Advanced creative AI: Animation, 3D models, interactive stories</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 7-12</span>
+                                            <span class="text-white/90">AI for education: Teaching tools and learning games</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 13-16</span>
+                                            <span class="text-white/90">Collaborative AI projects with peers</span>
+                                        </div>
+
+                                        <div class="bg-amber-400/10 rounded-lg p-3 mt-4 mb-2">
+                                            <span class="text-amber-300 font-semibold text-xs">MONTHS 5-7: AI INNOVATION</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 17-22</span>
+                                            <span class="text-white/90">Environmental and social impact AI projects</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 23-28</span>
+                                            <span class="text-white/90">Building AI solutions for community problems</span>
+                                        </div>
+
+                                        <div class="bg-amber-400/10 rounded-lg p-3 mt-4 mb-2">
+                                            <span class="text-amber-300 font-semibold text-xs">MONTHS 8-9: SHOWCASE & LEADERSHIP</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 29-32</span>
+                                            <span class="text-white/90">Creating AI tutorials and teaching younger students</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 33-36</span>
+                                            <span class="text-white/90">Final showcase: AI innovation fair presentation</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Teen Entrepreneurs 13-18 -->
+                            <div class="bg-black/30 rounded-xl p-4 border border-teal-200/20">
+                                <button onclick="toggleSection('teen-36')" class="w-full flex items-center justify-between mb-2">
+                                    <h4 class="text-lg font-bold text-teal-300">Teen Entrepreneurs (13-18)</h4>
+                                    <svg id="teen-36-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-teal-300 transform transition-transform">
+                                        <polyline points="6,9 12,15 18,9"></polyline>
+                                    </svg>
+                                </button>
+                                <div id="teen-36-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
+                                    <div class="space-y-2 text-sm">
+                                        <div class="bg-teal-400/10 rounded-lg p-3 mb-2">
+                                            <span class="text-teal-300 font-semibold text-xs">MONTHS 1-4: ADVANCED TECHNICAL SKILLS</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 1-6</span>
+                                            <span class="text-white/90">Custom AI model training and fine-tuning</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 7-12</span>
+                                            <span class="text-white/90">AI startups: From idea to prototype</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 13-16</span>
+                                            <span class="text-white/90">Market validation and user research</span>
+                                        </div>
+
+                                        <div class="bg-teal-400/10 rounded-lg p-3 mt-4 mb-2">
+                                            <span class="text-teal-300 font-semibold text-xs">MONTHS 5-7: BUSINESS DEVELOPMENT</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 17-22</span>
+                                            <span class="text-white/90">Fundraising, investment, and financial planning</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 23-28</span>
+                                            <span class="text-white/90">Building and managing AI-powered businesses</span>
+                                        </div>
+
+                                        <div class="bg-teal-400/10 rounded-lg p-3 mt-4 mb-2">
+                                            <span class="text-teal-300 font-semibold text-xs">MONTHS 8-9: LAUNCH & SCALE</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 29-32</span>
+                                            <span class="text-white/90">Product launch strategies and marketing</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 33-36</span>
+                                            <span class="text-white/90">Demo day: Pitch to real investors and mentors</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 48 Week Program -->
+                <div id="program-48" class="program-content hidden">
+                    <div class="bg-gradient-to-br from-orange-400/10 to-red-400/10 rounded-2xl p-6 mb-6 border border-orange-400/20">
+                        <h3 class="text-2xl font-bold text-white mb-3">48-Week Expert Program</h3>
+                        <p class="text-white/80 mb-4">Complete AI mastery with business creation and advanced implementation skills.</p>
+
+                        <!-- Age Groups for 48-week -->
+                        <div class="space-y-4">
+                            <!-- Young Innovators 8-12 -->
+                            <div class="bg-black/30 rounded-xl p-4 border border-amber-200/20">
+                                <button onclick="toggleSection('young-48')" class="w-full flex items-center justify-between mb-2">
+                                    <h4 class="text-lg font-bold text-amber-300">Young Innovators (8-12)</h4>
+                                    <svg id="young-48-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-300 transform transition-transform">
+                                        <polyline points="6,9 12,15 18,9"></polyline>
+                                    </svg>
+                                </button>
+                                <div id="young-48-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
+                                    <div class="space-y-2 text-sm">
+                                        <div class="bg-amber-400/10 rounded-lg p-3 mb-2">
+                                            <span class="text-amber-300 font-semibold text-xs">MONTHS 1-6: COMPREHENSIVE AI FOUNDATIONS</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Month 1-2</span>
+                                            <span class="text-white/90">Deep dive into AI history, types, and applications</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Month 3-4</span>
+                                            <span class="text-white/90">Advanced creative projects: Multi-modal AI experiences</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Month 5-6</span>
+                                            <span class="text-white/90">Introduction to programming concepts through AI</span>
+                                        </div>
+
+                                        <div class="bg-amber-400/10 rounded-lg p-3 mt-4 mb-2">
+                                            <span class="text-amber-300 font-semibold text-xs">MONTHS 7-9: INNOVATION & PROBLEM SOLVING</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Month 7-8</span>
+                                            <span class="text-white/90">AI for social good: Environmental and community projects</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Month 9</span>
+                                            <span class="text-white/90">Research skills and scientific method with AI tools</span>
+                                        </div>
+
+                                        <div class="bg-amber-400/10 rounded-lg p-3 mt-4 mb-2">
+                                            <span class="text-amber-300 font-semibold text-xs">MONTHS 10-12: MASTERY & MENTORSHIP</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Month 10-11</span>
+                                            <span class="text-white/90">Teaching AI concepts to peers and family</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Month 12</span>
+                                            <span class="text-white/90">Capstone project: AI innovation showcase with public presentation</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Teen Entrepreneurs 13-18 -->
+                            <div class="bg-black/30 rounded-xl p-4 border border-teal-200/20">
+                                <button onclick="toggleSection('teen-48')" class="w-full flex items-center justify-between mb-2">
+                                    <h4 class="text-lg font-bold text-teal-300">Teen Entrepreneurs (13-18)</h4>
+                                    <svg id="teen-48-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-teal-300 transform transition-transform">
+                                        <polyline points="6,9 12,15 18,9"></polyline>
+                                    </svg>
+                                </button>
+                                <div id="teen-48-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
+                                    <div class="space-y-2 text-sm">
+                                        <div class="bg-teal-400/10 rounded-lg p-3 mb-2">
+                                            <span class="text-teal-300 font-semibold text-xs">MONTHS 1-6: EXPERT-LEVEL TECHNICAL MASTERY</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Month 1-2</span>
+                                            <span class="text-white/90">Advanced machine learning: Neural networks and deep learning</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Month 3-4</span>
+                                            <span class="text-white/90">AI research methodologies and academic writing</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Month 5-6</span>
+                                            <span class="text-white/90">Industry collaborations and real client projects</span>
+                                        </div>
+
+                                        <div class="bg-teal-400/10 rounded-lg p-3 mt-4 mb-2">
+                                            <span class="text-teal-300 font-semibold text-xs">MONTHS 7-9: STARTUP ACCELERATION</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Month 7-8</span>
+                                            <span class="text-white/90">Full business development: Legal, financial, operational</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Month 9</span>
+                                            <span class="text-white/90">International markets and global expansion strategies</span>
+                                        </div>
+
+                                        <div class="bg-teal-400/10 rounded-lg p-3 mt-4 mb-2">
+                                            <span class="text-teal-300 font-semibold text-xs">MONTHS 10-12: INDUSTRY LEADERSHIP</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Month 10-11</span>
+                                            <span class="text-white/90">Speaking at conferences and industry events</span>
+                                        </div>
+                                        <div class="flex items-start gap-2">
+                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Month 12</span>
+                                            <span class="text-white/90">Launch a fully functional AI company with revenue</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="text-center mt-8">
+                    <button onclick="window.location.href='mobile.html#choose-program'" class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-bold px-8 py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 mb-4">
+                        Register Now
+                    </button>
+                    <p class="text-white/60 text-sm">
+                        Ready to give your child the AI advantage?
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        /* Background Image */
+        .site-background {
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+            pointer-events: none;
+            background-image: url('/magical-ai-kids-2.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+        }
+
+        /* Smooth transitions for content sections */
+        .program-content {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .program-content.hidden {
+            display: none;
+        }
+
+        /* Active tab styling */
+        .program-tab.active {
+            background: linear-gradient(to r, #06B6D4, #22D3EE, #A5F3FC);
+            border-color: #22D3EE;
+            color: white;
+            transform: scale(1.02);
+        }
+    </style>
+
+    <script>
+        let currentProgram = '12';
+
+        function switchProgram(weeks) {
+            // Update tabs
+            document.querySelectorAll('.program-tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.classList.add('bg-white/10', 'border-white/30', 'text-white/70');
+                tab.classList.remove('bg-cyan-400/20', 'border-cyan-400/40', 'text-cyan-300');
+            });
+
+            const activeTab = document.getElementById(`tab-${weeks}`);
+            activeTab.classList.add('active');
+            activeTab.classList.remove('bg-white/10', 'border-white/30', 'text-white/70');
+            activeTab.classList.add('bg-cyan-400/20', 'border-cyan-400/40', 'text-cyan-300');
+
+            // Update content
+            document.querySelectorAll('.program-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            document.getElementById(`program-${weeks}`).classList.remove('hidden');
+            currentProgram = weeks;
+        }
+
+        function toggleSection(sectionId) {
+            const content = document.getElementById(`${sectionId}-content`);
+            const icon = document.getElementById(`${sectionId}-icon`);
+
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                // Collapse
+                content.style.maxHeight = '0px';
+                content.classList.remove('pt-3');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Expand
+                content.style.maxHeight = content.scrollHeight + 'px';
+                content.classList.add('pt-3');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Initialize with 12-week program
+        document.addEventListener('DOMContentLoaded', function() {
+            switchProgram('12');
+        });
+    </script>
+</body>
+</html>
