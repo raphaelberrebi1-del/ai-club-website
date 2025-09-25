@@ -1758,66 +1758,124 @@
             const optionsContainer = document.getElementById('duration-picker-options');
             const ageGroup = document.getElementById('child-age-group')?.value;
 
-            if (!ageGroup) {
-                // Show message if no age group selected
-                const feedbackDiv = document.createElement('div');
-                feedbackDiv.className = 'fixed bottom-4 right-4 bg-amber-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
-                feedbackDiv.textContent = '⚠️ Please select an age group first';
-                document.body.appendChild(feedbackDiv);
-                setTimeout(() => feedbackDiv.remove(), 2000);
-                return;
-            }
-
-            // Get pricing based on age group
+            // Check if age group is selected
             let earlyBirdMonthlyPrice, regularMonthlyPrice;
-            switch(ageGroup) {
-                case 'young':
-                    earlyBirdMonthlyPrice = 399;
-                    regularMonthlyPrice = 499;
-                    break;
-                case 'tech':
-                    earlyBirdMonthlyPrice = 469;
-                    regularMonthlyPrice = 586;
-                    break;
-                case 'future':
-                    earlyBirdMonthlyPrice = 599;
-                    regularMonthlyPrice = 749;
-                    break;
-            }
+            let showAllPrices = false;
 
-            // Calculate prices
-            const options = [
-                {
-                    duration: 'monthly',
-                    label: 'Monthly Payment',
-                    regularPrice: regularMonthlyPrice,
-                    earlyBirdPrice: earlyBirdMonthlyPrice,
-                    discount: '20% off',
-                    description: 'Pay month by month',
-                    highlight: false
-                },
-                {
-                    duration: 'quarterly',
-                    label: 'Quarterly Payment',
-                    regularPrice: regularMonthlyPrice * 3,
-                    earlyBirdPrice: Math.round(earlyBirdMonthlyPrice * 3 * 0.9),
-                    discount: '28% total off',
-                    description: 'Save with 3-month billing',
-                    highlight: true
-                },
-                {
-                    duration: 'yearly',
-                    label: 'Annual Payment',
-                    regularPrice: regularMonthlyPrice * 12,
-                    earlyBirdPrice: Math.round(earlyBirdMonthlyPrice * 12 * 0.8),
-                    discount: '36% total off',
-                    description: 'Maximum savings',
-                    highlight: false
+            if (ageGroup) {
+                // Get pricing for specific age group
+                switch(ageGroup) {
+                    case 'young':
+                        earlyBirdMonthlyPrice = 399;
+                        regularMonthlyPrice = 499;
+                        break;
+                    case 'tech':
+                        earlyBirdMonthlyPrice = 469;
+                        regularMonthlyPrice = 586;
+                        break;
+                    case 'future':
+                        earlyBirdMonthlyPrice = 599;
+                        regularMonthlyPrice = 749;
+                        break;
                 }
-            ];
+            } else {
+                // Show all price tiers if no age group selected
+                showAllPrices = true;
+            }
 
             // Build options HTML
-            optionsContainer.innerHTML = options.map(opt => `
+            if (showAllPrices) {
+                // Show all price tiers
+                const priceTiers = [
+                    { earlyBird: 399, regular: 499, label: 'Young Innovators (8-10)' },
+                    { earlyBird: 469, regular: 586, label: 'Tech Explorers (11-13)' },
+                    { earlyBird: 599, regular: 749, label: 'Future Leaders (14-18)' }
+                ];
+
+                const durations = [
+                    { id: 'monthly', title: 'Monthly Payment', desc: 'Pay month by month', discount: '20% off', highlight: false },
+                    { id: 'quarterly', title: 'Quarterly Payment', desc: 'Save with 3-month billing', discount: '28% total off', highlight: true },
+                    { id: 'yearly', title: 'Annual Payment', desc: 'Maximum savings', discount: '36% total off', highlight: false }
+                ];
+
+                optionsContainer.innerHTML = durations.map(duration => {
+                    const pricesHtml = priceTiers.map(tier => {
+                        let price, regularPrice;
+                        if (duration.id === 'monthly') {
+                            price = tier.earlyBird;
+                            regularPrice = tier.regular;
+                        } else if (duration.id === 'quarterly') {
+                            price = Math.round(tier.earlyBird * 3 * 0.9);
+                            regularPrice = tier.regular * 3;
+                        } else {
+                            price = Math.round(tier.earlyBird * 12 * 0.8);
+                            regularPrice = tier.regular * 12;
+                        }
+                        return `
+                            <div class="flex justify-between items-center text-sm py-1">
+                                <span class="text-white/70">${tier.label}</span>
+                                <div class="text-right">
+                                    <span class="text-white/40 line-through text-xs">₪${regularPrice}</span>
+                                    <span class="text-cyan-300 font-bold ml-2">₪${price}</span>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+
+                    return `
+                        <button type="button" onclick="selectDurationFromModal('${duration.id}')"
+                            class="w-full p-4 rounded-xl border-2 transition-all duration-200 hover:scale-105 ${
+                                duration.highlight
+                                    ? 'bg-gradient-to-r from-cyan-500/20 to-teal-500/20 border-cyan-400/50 hover:border-cyan-400'
+                                    : 'bg-black/30 border-amber-200/30 hover:border-amber-400'
+                            } mb-3">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="text-left">
+                                    <h4 class="text-white font-semibold text-lg">${duration.title}</h4>
+                                    <p class="text-xs text-white/60">${duration.desc}</p>
+                                </div>
+                                ${duration.highlight ? '<span class="text-xs bg-amber-400 text-black px-2 py-1 rounded-full font-bold">RECOMMENDED</span>' : ''}
+                            </div>
+                            <div class="border-t border-white/10 pt-2">
+                                ${pricesHtml}
+                            </div>
+                            <div class="text-amber-300 font-semibold text-sm mt-2 text-center">${duration.discount} Early Bird</div>
+                        </button>
+                    `;
+                }).join('');
+            } else {
+                // Show single price tier
+                const options = [
+                    {
+                        duration: 'monthly',
+                        label: 'Monthly Payment',
+                        regularPrice: regularMonthlyPrice,
+                        earlyBirdPrice: earlyBirdMonthlyPrice,
+                        discount: '20% off',
+                        description: 'Pay month by month',
+                        highlight: false
+                    },
+                    {
+                        duration: 'quarterly',
+                        label: 'Quarterly Payment',
+                        regularPrice: regularMonthlyPrice * 3,
+                        earlyBirdPrice: Math.round(earlyBirdMonthlyPrice * 3 * 0.9),
+                        discount: '28% total off',
+                        description: 'Save with 3-month billing',
+                        highlight: true
+                    },
+                    {
+                        duration: 'yearly',
+                        label: 'Annual Payment',
+                        regularPrice: regularMonthlyPrice * 12,
+                        earlyBirdPrice: Math.round(earlyBirdMonthlyPrice * 12 * 0.8),
+                        discount: '36% total off',
+                        description: 'Maximum savings',
+                        highlight: false
+                    }
+                ];
+
+                optionsContainer.innerHTML = options.map(opt => `
                 <button type="button" onclick="selectDurationFromModal('${opt.duration}')"
                     class="w-full p-4 rounded-xl border-2 transition-all duration-200 hover:scale-105 ${
                         opt.highlight
@@ -1842,7 +1900,8 @@
                         </div>
                     </div>
                 </button>
-            `).join('');
+                `).join('');
+            }
 
             // Show modal with animation
             modal.classList.remove('hidden');
