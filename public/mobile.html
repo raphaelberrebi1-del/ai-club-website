@@ -554,14 +554,14 @@
                                     <div class="text-xs text-white/60">No commitment</div>
                                 </div>
                                 <div class="bg-gradient-to-br from-cyan-500/30 to-teal-500/30 rounded-lg p-3 border border-cyan-400/50">
-                                    <div class="text-xs text-cyan-200 mb-1">Quarterly</div>
+                                    <div class="text-xs text-cyan-200 mb-1">Quarterly (-10%)</div>
+                                    <div class="text-xs text-white/50 line-through mb-1" id="preview-quarterly-before">₪1,197</div>
                                     <div id="preview-quarterly" class="text-lg font-bold text-white">₪1,199</div>
-                                    <div class="text-xs text-amber-300 font-medium">20% + 10% BONUS!</div>
                                 </div>
                                 <div class="bg-black/30 rounded-lg p-3">
-                                    <div class="text-xs text-cyan-200 mb-1">Yearly</div>
+                                    <div class="text-xs text-cyan-200 mb-1">Yearly (-20%)</div>
+                                    <div class="text-xs text-white/50 line-through mb-1" id="preview-yearly-before">₪4,788</div>
                                     <div id="preview-yearly" class="text-lg font-bold text-white">₪1,799</div>
-                                    <div class="text-xs text-amber-300 font-medium">20% + 20% BONUS!</div>
                                 </div>
                             </div>
 
@@ -598,8 +598,8 @@
                             <select id="child-duration" onchange="calculateMobilePrice()" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
                                 <option value="">Select billing duration</option>
                                 <option value="monthly">Monthly - No commitment</option>
-                                <option value="quarterly">Quarterly - Early Bird Bonus (20% + 10%)</option>
-                                <option value="yearly">Yearly - Maximum Early Bird Bonus (20% + 20%)</option>
+                                <option value="quarterly">Quarterly (-10%) - Early Bird Special</option>
+                                <option value="yearly">Yearly (-20%) - Best Value</option>
                             </select>
                             <div class="text-xs text-amber-300 mt-2">
                                 ⏰ Early bird bonuses expire October 17th - then prices increase 20%
@@ -1628,10 +1628,18 @@
                     break;
             }
 
+            // Calculate "before" prices (what it would cost without discount)
+            const quarterlyBeforePrice = monthlyPrice * 3; // 3 months without discount
+            const yearlyBeforePrice = monthlyPrice * 12; // 12 months without discount
+
             // Update preview prices
             document.getElementById('preview-monthly').textContent = `₪${monthlyPrice}`;
             document.getElementById('preview-quarterly').textContent = `₪${quarterlyPrice}`;
             document.getElementById('preview-yearly').textContent = `₪${yearlyPrice}`;
+
+            // Update before prices
+            document.getElementById('preview-quarterly-before').textContent = `₪${quarterlyBeforePrice}`;
+            document.getElementById('preview-yearly-before').textContent = `₪${yearlyBeforePrice}`;
 
             // Show the pricing preview
             immediatePricing.style.display = 'block';
