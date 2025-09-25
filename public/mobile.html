@@ -125,17 +125,19 @@
                 </div>
 
                 <!-- Main Headline -->
-                <div class="space-y-6">
-                    <h1 class="text-5xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">
-                        Give Your Child the
-                        <span class="font-serif italic font-bold bg-gradient-to-r from-[#3A9CAA] via-[#4AB4C8] to-[#80D4E0] bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8); text-shadow: 0 0 3px rgba(255,255,255,0.9), 0 0 5px rgba(58,156,170,0.8), 0 0 15px rgba(58,156,170,0.6), 0 0 25px rgba(58,156,170,0.4), 0 0 35px rgba(58,156,170,0.2), 2px 2px 4px rgba(0,0,0,0.3); font-weight: 700; letter-spacing: 0.5px;">
-                            AI Advantage
-                        </span>
-                    </h1>
+                <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-cyan-200/30">
+                    <div class="space-y-6">
+                        <h1 class="text-5xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                            Give Your Child the
+                            <span class="font-serif italic font-bold bg-gradient-to-r from-[#3A9CAA] via-[#4AB4C8] to-[#80D4E0] bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8); text-shadow: 0 0 3px rgba(255,255,255,0.9), 0 0 5px rgba(58,156,170,0.8), 0 0 15px rgba(58,156,170,0.6), 0 0 25px rgba(58,156,170,0.4), 0 0 35px rgba(58,156,170,0.2), 2px 2px 4px rgba(0,0,0,0.3); font-weight: 700; letter-spacing: 0.5px;">
+                                AI Advantage
+                            </span>
+                        </h1>
 
-                    <p class="text-xl sm:text-2xl text-white/95 leading-relaxed font-semibold" style="text-shadow: 0 1px 4px rgba(0,0,0,0.2);">
-                        Join the AI Club - Where Kids Master Tomorrow's Essential Tools. Safe, fun, and guided learning in small groups.
-                    </p>
+                        <p class="text-xl sm:text-2xl text-white/95 leading-relaxed font-semibold">
+                            Join the AI Club - Where Kids Master Tomorrow's Essential Tools. Safe, fun, and guided learning in small groups.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Description -->
@@ -684,10 +686,10 @@
                                 </div>
                             </div>
 
-                            <div class="bg-amber-500/10 border border-amber-400/30 rounded-xl p-4">
+                            <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-xl p-4">
                                 <div class="flex items-start gap-3">
-                                    <div class="text-amber-400 mt-0.5">⏰</div>
-                                    <div class="text-sm text-amber-200">
+                                    <div class="text-cyan-400 mt-0.5">⏰</div>
+                                    <div class="text-sm text-cyan-200">
                                         <strong>Early Bird Special ends October 17th!</strong><br>
                                         Lock in your 20% discount today before prices increase.
                                     </div>
@@ -2115,18 +2117,18 @@
                 <div class="space-y-4">
                     <div class="text-center mb-4">
                         <div class="text-sm text-white/60">${programName}</div>
-                        <div class="text-xs text-amber-300 mt-1">⏰ Early Bird Special - Save 20%+</div>
+                        <div class="text-xs text-cyan-300 mt-1">⏰ Early Bird Special - Save 20%+</div>
                     </div>
 
                     <!-- Monthly Option -->
                     <button type="button" onclick="selectPricingOption('monthly', ${monthlyPrice})"
-                            class="pricing-option-btn w-full p-6 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200"
+                            class="pricing-option-btn w-full p-6 bg-cyan-950/40 border border-cyan-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200"
                             data-duration="monthly">
                         <div class="flex justify-between items-center">
                             <div>
                                 <div class="text-lg font-semibold text-white">Monthly Payment</div>
                                 <div class="text-sm text-white/60">Pay month by month</div>
-                                <div class="text-xs text-amber-300 mt-1">20% off regular price</div>
+                                <div class="text-xs text-cyan-300 mt-1">20% off regular price</div>
                             </div>
                             <div class="text-right">
                                 <div class="text-2xl font-bold text-cyan-300">₪${monthlyPrice}</div>
@@ -2143,10 +2145,10 @@
                             <div>
                                 <div class="flex items-center gap-2">
                                     <div class="text-lg font-semibold text-white">Quarterly Payment</div>
-                                    <span class="text-xs bg-amber-400 text-black px-2 py-1 rounded-full font-bold">RECOMMENDED</span>
+                                    <span class="text-xs bg-cyan-400 text-black px-2 py-1 rounded-full font-bold">RECOMMENDED</span>
                                 </div>
                                 <div class="text-sm text-white/60">Save with 3-month billing</div>
-                                <div class="text-xs text-amber-300 mt-1">28% total savings</div>
+                                <div class="text-xs text-cyan-300 mt-1">28% total savings</div>
                             </div>
                             <div class="text-right">
                                 <div class="text-2xl font-bold text-cyan-300">₪${quarterlyPrice}</div>
@@ -2157,7 +2159,7 @@
 
                     <!-- Yearly Option -->
                     <button type="button" onclick="selectPricingOption('yearly', ${yearlyPrice})"
-                            class="pricing-option-btn w-full p-6 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200"
+                            class="pricing-option-btn w-full p-6 bg-cyan-950/40 border border-cyan-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200"
                             data-duration="yearly">
                         <div class="flex justify-between items-center">
                             <div>
@@ -2166,7 +2168,7 @@
                                     <span class="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded-full font-medium">BEST VALUE</span>
                                 </div>
                                 <div class="text-sm text-white/60">Maximum savings</div>
-                                <div class="text-xs text-amber-300 mt-1">36% total savings</div>
+                                <div class="text-xs text-cyan-300 mt-1">36% total savings</div>
                             </div>
                             <div class="text-right">
                                 <div class="text-2xl font-bold text-cyan-300">₪${yearlyPrice}</div>
