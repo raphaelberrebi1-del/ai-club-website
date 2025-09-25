@@ -223,96 +223,18 @@
                         </div>
 
                         <h3 class="text-2xl font-bold text-white mb-3">24-Week Extended Program</h3>
-                        <p class="text-white/80 mb-4">Foundation program + advanced practical applications and real-world projects.</p>
+                        <p class="text-white/80 mb-8">Foundation program + advanced practical applications and real-world projects.</p>
 
-                        <!-- Age Groups for 24-week -->
-                        <div class="space-y-4">
-                            <!-- Young Innovators 8-12 -->
-                            <div class="bg-black/30 rounded-xl p-4 border border-amber-200/20">
-                                <button onclick="toggleSection('young-24')" class="w-full flex items-center justify-between mb-2">
-                                    <h4 class="text-lg font-bold text-amber-300">Young Innovators (8-10)</h4>
-                                    <svg id="young-24-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-300 transform transition-transform">
-                                        <polyline points="6,9 12,15 18,9"></polyline>
-                                    </svg>
-                                </button>
-                                <div id="young-24-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
-                                    <div class="space-y-2 text-sm">
-                                        <div class="bg-amber-400/10 rounded-lg p-3 mb-2">
-                                            <span class="text-amber-300 font-semibold text-xs">WEEKS 13-24: ADVANCED CREATIVITY</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 13-16</span>
-                                            <span class="text-white/90">AI-powered game creation and interactive stories</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 17-20</span>
-                                            <span class="text-white/90">Building AI helpers for family and friends</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 21-24</span>
-                                            <span class="text-white/90">Final project: Create an AI solution for a real problem</span>
-                                        </div>
-                                    </div>
-                                </div>
+                        <!-- Coming Soon Message -->
+                        <div class="text-center py-12">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-400">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12,6 12,12 16,14"></polyline>
+                                </svg>
                             </div>
-
-                            <!-- Middle Teens 13-15 -->
-                            <div class="bg-black/30 rounded-xl p-4 border border-teal-200/20">
-                                <button onclick="toggleSection('middle-24')" class="w-full flex items-center justify-between mb-2">
-                                    <h4 class="text-lg font-bold text-teal-300">Tech Explorers (11-13)</h4>
-                                    <svg id="middle-24-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-teal-300 transform transition-transform">
-                                        <polyline points="6,9 12,15 18,9"></polyline>
-                                    </svg>
-                                </button>
-                                <div id="middle-24-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
-                                    <div class="space-y-2 text-sm">
-                                        <div class="bg-teal-400/10 rounded-lg p-3 mb-2">
-                                            <span class="text-teal-300 font-semibold text-xs">WEEKS 13-24: PRACTICAL APPLICATIONS</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 13-16</span>
-                                            <span class="text-white/90">Building AI-powered websites and simple apps</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 17-20</span>
-                                            <span class="text-white/90">AI for social media and digital presence</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 21-24</span>
-                                            <span class="text-white/90">Capstone: Launch a small AI-powered service</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Future Leaders 14-18 -->
-                            <div class="bg-black/30 rounded-xl p-4 border border-purple-200/20">
-                                <button onclick="toggleSection('teen-24')" class="w-full flex items-center justify-between mb-2">
-                                    <h4 class="text-lg font-bold text-purple-300">Future Leaders (14-18)</h4>
-                                    <svg id="teen-24-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-300 transform transition-transform">
-                                        <polyline points="6,9 12,15 18,9"></polyline>
-                                    </svg>
-                                </button>
-                                <div id="teen-24-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
-                                    <div class="space-y-2 text-sm">
-                                        <div class="bg-purple-400/10 rounded-lg p-3 mb-2">
-                                            <span class="text-purple-300 font-semibold text-xs">WEEKS 13-24: BUSINESS APPLICATIONS</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 13-16</span>
-                                            <span class="text-white/90">AI for market research and customer insights</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 17-20</span>
-                                            <span class="text-white/90">Automating workflows and business processes</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-purple-400/20 text-purple-300 px-2 py-1 rounded text-xs font-medium">Week 21-24</span>
-                                            <span class="text-white/90">Capstone: Launch an AI-powered micro-business</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <h4 class="text-2xl font-bold text-white mb-3">Coming Soon</h4>
+                            <p class="text-white/70 text-lg">Detailed curriculum for the 24-week program will be available shortly.</p>
                         </div>
                     </div>
                 </div>
@@ -325,96 +247,18 @@
                         </div>
 
                         <h3 class="text-2xl font-bold text-white mb-3">36-Week Advanced Program</h3>
-                        <p class="text-white/80 mb-4">Extended program + advanced projects, portfolio development, and leadership skills.</p>
+                        <p class="text-white/80 mb-8">Extended program + advanced projects, portfolio development, and leadership skills.</p>
 
-                        <!-- Age Groups for 36-week -->
-                        <div class="space-y-4">
-                            <!-- Young Innovators 8-12 -->
-                            <div class="bg-black/30 rounded-xl p-4 border border-amber-200/20">
-                                <button onclick="toggleSection('young-36')" class="w-full flex items-center justify-between mb-2">
-                                    <h4 class="text-lg font-bold text-amber-300">Young Innovators (8-10)</h4>
-                                    <svg id="young-36-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-300 transform transition-transform">
-                                        <polyline points="6,9 12,15 18,9"></polyline>
-                                    </svg>
-                                </button>
-                                <div id="young-36-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
-                                    <div class="space-y-2 text-sm">
-                                        <div class="bg-amber-400/10 rounded-lg p-3 mb-2">
-                                            <span class="text-amber-300 font-semibold text-xs">WEEKS 25-36: INNOVATION & LEADERSHIP</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 25-28</span>
-                                            <span class="text-white/90">AI for environmental and social impact projects</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 29-32</span>
-                                            <span class="text-white/90">Teaching AI concepts to younger students</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 33-36</span>
-                                            <span class="text-white/90">Portfolio showcase: AI innovation fair presentation</span>
-                                        </div>
-                                    </div>
-                                </div>
+                        <!-- Coming Soon Message -->
+                        <div class="text-center py-12">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-400/20 to-emerald-400/20 rounded-full mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-400">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12,6 12,12 16,14"></polyline>
+                                </svg>
                             </div>
-
-                            <!-- Middle Teens 13-15 -->
-                            <div class="bg-black/30 rounded-xl p-4 border border-teal-200/20">
-                                <button onclick="toggleSection('middle-36')" class="w-full flex items-center justify-between mb-2">
-                                    <h4 class="text-lg font-bold text-teal-300">Tech Explorers (11-13)</h4>
-                                    <svg id="middle-36-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-teal-300 transform transition-transform">
-                                        <polyline points="6,9 12,15 18,9"></polyline>
-                                    </svg>
-                                </button>
-                                <div id="middle-36-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
-                                    <div class="space-y-2 text-sm">
-                                        <div class="bg-teal-400/10 rounded-lg p-3 mb-2">
-                                            <span class="text-teal-300 font-semibold text-xs">WEEKS 25-36: PORTFOLIO DEVELOPMENT</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 25-28</span>
-                                            <span class="text-white/90">Advanced AI integrations and custom solutions</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 29-32</span>
-                                            <span class="text-white/90">Building portfolio for college applications</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 33-36</span>
-                                            <span class="text-white/90">Final presentation: Pitching AI solutions to industry professionals</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Future Leaders 14-18 -->
-                            <div class="bg-black/30 rounded-xl p-4 border border-purple-200/20">
-                                <button onclick="toggleSection('teen-36')" class="w-full flex items-center justify-between mb-2">
-                                    <h4 class="text-lg font-bold text-purple-300">Future Leaders (14-18)</h4>
-                                    <svg id="teen-36-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-300 transform transition-transform">
-                                        <polyline points="6,9 12,15 18,9"></polyline>
-                                    </svg>
-                                </button>
-                                <div id="teen-36-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
-                                    <div class="space-y-2 text-sm">
-                                        <div class="bg-purple-400/10 rounded-lg p-3 mb-2">
-                                            <span class="text-purple-300 font-semibold text-xs">WEEKS 25-36: STARTUP DEVELOPMENT</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 25-28</span>
-                                            <span class="text-white/90">Advanced business model development and validation</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 29-32</span>
-                                            <span class="text-white/90">Fundraising strategies and investor relations</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-green-400/20 text-green-300 px-2 py-1 rounded text-xs font-medium">Week 33-36</span>
-                                            <span class="text-white/90">Demo day: Pitch to real investors and mentors</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <h4 class="text-2xl font-bold text-white mb-3">Coming Soon</h4>
+                            <p class="text-white/70 text-lg">Detailed curriculum for the 36-week program will be available shortly.</p>
                         </div>
                     </div>
                 </div>
@@ -427,96 +271,18 @@
                         </div>
 
                         <h3 class="text-2xl font-bold text-white mb-3">48-Week Mastery Program</h3>
-                        <p class="text-white/80 mb-4">Advanced program + complete mastery, industry collaboration, and professional preparation.</p>
+                        <p class="text-white/80 mb-8">Advanced program + complete mastery, industry collaboration, and professional preparation.</p>
 
-                        <!-- Age Groups for 48-week -->
-                        <div class="space-y-4">
-                            <!-- Young Innovators 8-12 -->
-                            <div class="bg-black/30 rounded-xl p-4 border border-amber-200/20">
-                                <button onclick="toggleSection('young-48')" class="w-full flex items-center justify-between mb-2">
-                                    <h4 class="text-lg font-bold text-amber-300">Young Innovators (8-10)</h4>
-                                    <svg id="young-48-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-300 transform transition-transform">
-                                        <polyline points="6,9 12,15 18,9"></polyline>
-                                    </svg>
-                                </button>
-                                <div id="young-48-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
-                                    <div class="space-y-2 text-sm">
-                                        <div class="bg-amber-400/10 rounded-lg p-3 mb-2">
-                                            <span class="text-amber-300 font-semibold text-xs">WEEKS 37-48: MASTERY & MENTORSHIP</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Week 37-40</span>
-                                            <span class="text-white/90">Advanced programming concepts with AI assistance</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Week 41-44</span>
-                                            <span class="text-white/90">Mentoring younger students and building leadership skills</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Week 45-48</span>
-                                            <span class="text-white/90">Master's capstone: Public presentation to community leaders</span>
-                                        </div>
-                                    </div>
-                                </div>
+                        <!-- Coming Soon Message -->
+                        <div class="text-center py-12">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-400">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12,6 12,12 16,14"></polyline>
+                                </svg>
                             </div>
-
-                            <!-- Middle Teens 13-15 -->
-                            <div class="bg-black/30 rounded-xl p-4 border border-teal-200/20">
-                                <button onclick="toggleSection('middle-48')" class="w-full flex items-center justify-between mb-2">
-                                    <h4 class="text-lg font-bold text-teal-300">Tech Explorers (11-13)</h4>
-                                    <svg id="middle-48-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-teal-300 transform transition-transform">
-                                        <polyline points="6,9 12,15 18,9"></polyline>
-                                    </svg>
-                                </button>
-                                <div id="middle-48-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
-                                    <div class="space-y-2 text-sm">
-                                        <div class="bg-teal-400/10 rounded-lg p-3 mb-2">
-                                            <span class="text-teal-300 font-semibold text-xs">WEEKS 37-48: INDUSTRY PREPARATION</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Week 37-40</span>
-                                            <span class="text-white/90">Industry collaborations and real client work</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Week 41-44</span>
-                                            <span class="text-white/90">Professional networking and internship preparation</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Week 45-48</span>
-                                            <span class="text-white/90">Master's project: Launch a professional AI service</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Future Leaders 14-18 -->
-                            <div class="bg-black/30 rounded-xl p-4 border border-purple-200/20">
-                                <button onclick="toggleSection('teen-48')" class="w-full flex items-center justify-between mb-2">
-                                    <h4 class="text-lg font-bold text-purple-300">Future Leaders (14-18)</h4>
-                                    <svg id="teen-48-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-300 transform transition-transform">
-                                        <polyline points="6,9 12,15 18,9"></polyline>
-                                    </svg>
-                                </button>
-                                <div id="teen-48-content" class="space-y-3 overflow-hidden max-h-0 transition-all duration-300">
-                                    <div class="space-y-2 text-sm">
-                                        <div class="bg-purple-400/10 rounded-lg p-3 mb-2">
-                                            <span class="text-purple-300 font-semibold text-xs">WEEKS 37-48: INDUSTRY LEADERSHIP</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Week 37-40</span>
-                                            <span class="text-white/90">Advanced AI research and development projects</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Week 41-44</span>
-                                            <span class="text-white/90">Speaking at conferences and industry events</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="bg-orange-400/20 text-orange-300 px-2 py-1 rounded text-xs font-medium">Week 45-48</span>
-                                            <span class="text-white/90">Master's achievement: Launch a fully functional AI company</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <h4 class="text-2xl font-bold text-white mb-3">Coming Soon</h4>
+                            <p class="text-white/70 text-lg">Detailed curriculum for the 48-week program will be available shortly.</p>
                         </div>
                     </div>
                 </div>
