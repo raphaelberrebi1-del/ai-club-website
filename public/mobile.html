@@ -548,38 +548,23 @@
                             </div>
 
                             <div class="grid grid-cols-3 gap-3 text-center">
-                                <button type="button" onclick="selectPricingOption('monthly')" class="pricing-option bg-black/30 rounded-lg p-3 hover:bg-black/50 transition-all duration-200 cursor-pointer hover:scale-105 relative" data-duration="monthly">
+                                <div class="pricing-preview bg-black/30 rounded-lg p-3" data-duration="monthly">
                                     <div class="text-xs text-cyan-200 mb-1">Monthly (-20%)</div>
                                     <div class="text-xs text-white/50 line-through mb-1" id="preview-monthly-before">₪499</div>
                                     <div id="preview-monthly" class="text-lg font-bold text-white">₪399</div>
-                                    <div class="selected-indicator absolute -top-2 -right-2 bg-green-500 rounded-full p-1 hidden">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                                            <path d="M20 6 9 17l-5-5"/>
-                                        </svg>
-                                    </div>
-                                </button>
-                                <button type="button" onclick="selectPricingOption('quarterly')" class="pricing-option bg-gradient-to-br from-cyan-500/30 to-teal-500/30 rounded-lg p-3 border border-cyan-400/50 hover:from-cyan-500/40 hover:to-teal-500/40 transition-all duration-200 cursor-pointer hover:scale-105 relative" data-duration="quarterly">
+                                </div>
+                                <div class="pricing-preview bg-gradient-to-br from-cyan-500/30 to-teal-500/30 rounded-lg p-3 border border-cyan-400/50" data-duration="quarterly">
                                     <div class="text-xs text-cyan-200 mb-1">Quarterly (-28%)</div>
                                     <div class="text-xs text-white/50 line-through mb-1" id="preview-quarterly-before">₪1,497</div>
                                     <div id="preview-quarterly" class="text-lg font-bold text-white">₪1,077</div>
                                     <div class="text-xs text-amber-300 font-medium">Recommended</div>
-                                    <div class="selected-indicator absolute -top-2 -right-2 bg-green-500 rounded-full p-1 hidden">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                                            <path d="M20 6 9 17l-5-5"/>
-                                        </svg>
-                                    </div>
-                                </button>
-                                <button type="button" onclick="selectPricingOption('yearly')" class="pricing-option bg-black/30 rounded-lg p-3 hover:bg-black/50 transition-all duration-200 cursor-pointer hover:scale-105 relative" data-duration="yearly">
+                                </div>
+                                <div class="pricing-preview bg-black/30 rounded-lg p-3" data-duration="yearly">
                                     <div class="text-xs text-cyan-200 mb-1">Yearly (-36%)</div>
                                     <div class="text-xs text-white/50 line-through mb-1" id="preview-yearly-before">₪5,988</div>
                                     <div id="preview-yearly" class="text-lg font-bold text-white">₪3,830</div>
                                     <div class="text-xs text-green-300 font-medium">Best Value</div>
-                                    <div class="selected-indicator absolute -top-2 -right-2 bg-green-500 rounded-full p-1 hidden">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                                            <path d="M20 6 9 17l-5-5"/>
-                                        </svg>
-                                    </div>
-                                </button>
+                                </div>
                             </div>
 
                             <div class="mt-4 text-center">
@@ -1736,18 +1721,15 @@
         function syncPricingSelection(duration) {
             if (!duration) return;
 
-            // Update visual selection indicators
-            const pricingOptions = document.querySelectorAll('.pricing-option');
-            pricingOptions.forEach(option => {
-                const indicator = option.querySelector('.selected-indicator');
-                if (option.dataset.duration === duration) {
+            // Update visual selection indicators for preview cards
+            const pricingPreviews = document.querySelectorAll('.pricing-preview');
+            pricingPreviews.forEach(preview => {
+                if (preview.dataset.duration === duration) {
                     // Show selected state
-                    option.classList.add('ring-2', 'ring-cyan-400', 'bg-cyan-500/20');
-                    if (indicator) indicator.classList.remove('hidden');
+                    preview.classList.add('ring-2', 'ring-cyan-400');
                 } else {
                     // Remove selected state
-                    option.classList.remove('ring-2', 'ring-cyan-400', 'bg-cyan-500/20');
-                    if (indicator) indicator.classList.add('hidden');
+                    preview.classList.remove('ring-2', 'ring-cyan-400');
                 }
             });
         }
