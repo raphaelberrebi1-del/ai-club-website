@@ -1735,129 +1735,153 @@
         }
 
         // Show duration picker modal
+        // Helper function to calculate total pricing for all children with multi-child discounts
+        function calculateMultiChildPricing(durationOverride = null) {
+            const children = [];
+
+            // Main child
+            const childName = document.querySelector('input[type="text"]:not([placeholder*="parent"])').value.trim();
+            const ageGroup = document.getElementById('child-age-group')?.value;
+            const duration = durationOverride || document.getElementById('child-duration')?.value;
+
+            if (childName && ageGroup) {
+                let monthlyPrice;
+                switch(ageGroup) {
+                    case 'young':
+                        monthlyPrice = 399;
+                        break;
+                    case 'tech':
+                        monthlyPrice = 469;
+                        break;
+                    case 'future':
+                        monthlyPrice = 599;
+                        break;
+                }
+                if (monthlyPrice && duration) {
+                    children.push({ monthlyPrice, duration });
+                }
+            }
+
+            // Additional children
+            const additionalChildren = document.querySelectorAll('#additionalChildrenContainer > div');
+            additionalChildren.forEach(childDiv => {
+                const childInputs = childDiv.querySelectorAll('input, select');
+                const childName = childInputs[0]?.value?.trim();
+                const ageGroup = childInputs[1]?.value;
+                const childDuration = durationOverride || childInputs[2]?.value;
+
+                if (childName && ageGroup && childDuration) {
+                    let monthlyPrice;
+                    switch(ageGroup) {
+                        case 'young':
+                            monthlyPrice = 399;
+                            break;
+                        case 'tech':
+                            monthlyPrice = 469;
+                            break;
+                        case 'future':
+                            monthlyPrice = 599;
+                            break;
+                    }
+                    if (monthlyPrice) {
+                        children.push({ monthlyPrice, duration: childDuration });
+                    }
+                }
+            });
+
+            if (children.length === 0) {
+                return { total: 0, childCount: 0 };
+            }
+
+            // Sort by price (highest first) to apply multi-child discounts correctly
+            children.sort((a, b) => b.monthlyPrice - a.monthlyPrice);
+
+            let total = 0;
+            children.forEach((child, index) => {
+                // Calculate base price based on duration
+                let basePrice;
+                switch(child.duration) {
+                    case 'monthly':
+                        basePrice = child.monthlyPrice;
+                        break;
+                    case 'quarterly':
+                        basePrice = Math.round(child.monthlyPrice * 3 * 0.9);
+                        break;
+                    case 'yearly':
+                        basePrice = Math.round(child.monthlyPrice * 12 * 0.8);
+                        break;
+                }
+
+                // Apply multiple child discounts
+                let finalPrice = basePrice;
+                if (index === 1) {
+                    // 10% off for 2nd child
+                    finalPrice = basePrice * 0.9;
+                } else if (index >= 2) {
+                    // 15% off for 3rd+ children
+                    finalPrice = basePrice * 0.85;
+                }
+
+                total += finalPrice;
+            });
+
+            return { total: Math.round(total), childCount: children.length };
+        }
+
         function showDurationPicker() {
             const modal = document.getElementById('duration-picker-modal');
             const optionsContainer = document.getElementById('duration-picker-options');
             const ageGroup = document.getElementById('child-age-group')?.value;
 
-            // Check if age group is selected
-            let earlyBirdMonthlyPrice, regularMonthlyPrice;
-            let showAllPrices = false;
-
-            if (ageGroup) {
-                // Get pricing for specific age group
-                switch(ageGroup) {
-                    case 'young':
-                        earlyBirdMonthlyPrice = 399;
-                        regularMonthlyPrice = 499;
-                        break;
-                    case 'tech':
-                        earlyBirdMonthlyPrice = 469;
-                        regularMonthlyPrice = 586;
-                        break;
-                    case 'future':
-                        earlyBirdMonthlyPrice = 599;
-                        regularMonthlyPrice = 749;
-                        break;
-                }
-            } else {
-                // Show all price tiers if no age group selected
-                showAllPrices = true;
+            // Check if main age group is selected
+            if (!ageGroup) {
+                alert('Please select an age group first');
+                return;
             }
 
-            // Build options HTML
-            if (showAllPrices) {
-                // Show all price tiers
-                const priceTiers = [
-                    { earlyBird: 399, regular: 499, label: 'Young Innovators (8-10)' },
-                    { earlyBird: 469, regular: 586, label: 'Tech Explorers (11-13)' },
-                    { earlyBird: 599, regular: 749, label: 'Future Leaders (14-18)' }
-                ];
+            // Calculate pricing for each duration option with multi-child discounts
+            const monthlyTotal = calculateMultiChildPricing('monthly');
+            const quarterlyTotal = calculateMultiChildPricing('quarterly');
+            const yearlyTotal = calculateMultiChildPricing('yearly');
 
-                const durations = [
-                    { id: 'monthly', title: 'Monthly Payment', desc: 'Pay month by month', discount: '20% off', highlight: false },
-                    { id: 'quarterly', title: 'Quarterly Payment', desc: 'Save with 3-month billing', discount: '28% total off', highlight: true },
-                    { id: 'yearly', title: 'Annual Payment', desc: 'Maximum savings', discount: '36% total off', highlight: false }
-                ];
+            // Calculate regular prices (before early bird discount) for comparison
+            const monthlyRegular = Math.round(monthlyTotal.total / 0.8); // Reverse 20% early bird discount
+            const quarterlyRegular = Math.round(quarterlyTotal.total / 0.72); // Reverse 28% total discount
+            const yearlyRegular = Math.round(yearlyTotal.total / 0.64); // Reverse 36% total discount
 
-                optionsContainer.innerHTML = durations.map(duration => {
-                    const pricesHtml = priceTiers.map(tier => {
-                        let price, regularPrice;
-                        if (duration.id === 'monthly') {
-                            price = tier.earlyBird;
-                            regularPrice = tier.regular;
-                        } else if (duration.id === 'quarterly') {
-                            price = Math.round(tier.earlyBird * 3 * 0.9);
-                            regularPrice = tier.regular * 3;
-                        } else {
-                            price = Math.round(tier.earlyBird * 12 * 0.8);
-                            regularPrice = tier.regular * 12;
-                        }
-                        return `
-                            <div class="flex justify-between items-center text-sm py-1">
-                                <span class="text-white/70">${tier.label}</span>
-                                <div class="text-right">
-                                    <span class="text-white/40 line-through text-xs">₪${regularPrice}</span>
-                                    <span class="text-cyan-300 font-bold ml-2">₪${price}</span>
-                                </div>
-                            </div>
-                        `;
-                    }).join('');
+            const childCountText = monthlyTotal.childCount > 1 ? ` (${monthlyTotal.childCount} children with multi-child discounts)` : '';
 
-                    return `
-                        <button type="button" onclick="selectDurationFromModal('${duration.id}')"
-                            class="w-full p-4 rounded-xl border-2 transition-all duration-200 hover:scale-105 ${
-                                duration.highlight
-                                    ? 'bg-gradient-to-r from-cyan-500/20 to-teal-500/20 border-cyan-400/50 hover:border-cyan-400'
-                                    : 'bg-black/30 border-amber-200/30 hover:border-amber-400'
-                            } mb-3">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="text-left">
-                                    <h4 class="text-white font-semibold text-lg">${duration.title}</h4>
-                                    <p class="text-xs text-white/60">${duration.desc}</p>
-                                </div>
-                                ${duration.highlight ? '<span class="text-xs bg-amber-400 text-black px-2 py-1 rounded-full font-bold">RECOMMENDED</span>' : ''}
-                            </div>
-                            <div class="border-t border-white/10 pt-2">
-                                ${pricesHtml}
-                            </div>
-                            <div class="text-amber-300 font-semibold text-sm mt-2 text-center">${duration.discount} Early Bird</div>
-                        </button>
-                    `;
-                }).join('');
-            } else {
-                // Show single price tier
-                const options = [
-                    {
-                        duration: 'monthly',
-                        label: 'Monthly Payment',
-                        regularPrice: regularMonthlyPrice,
-                        earlyBirdPrice: earlyBirdMonthlyPrice,
-                        discount: '20% off',
-                        description: 'Pay month by month',
-                        highlight: false
-                    },
-                    {
-                        duration: 'quarterly',
-                        label: 'Quarterly Payment',
-                        regularPrice: regularMonthlyPrice * 3,
-                        earlyBirdPrice: Math.round(earlyBirdMonthlyPrice * 3 * 0.9),
-                        discount: '28% total off',
-                        description: 'Save with 3-month billing',
-                        highlight: true
-                    },
-                    {
-                        duration: 'yearly',
-                        label: 'Annual Payment',
-                        regularPrice: regularMonthlyPrice * 12,
-                        earlyBirdPrice: Math.round(earlyBirdMonthlyPrice * 12 * 0.8),
-                        discount: '36% total off',
-                        description: 'Maximum savings',
-                        highlight: false
-                    }
-                ];
+            const options = [
+                {
+                    duration: 'monthly',
+                    label: 'Monthly Payment',
+                    regularPrice: monthlyRegular,
+                    earlyBirdPrice: monthlyTotal.total,
+                    discount: '20% off',
+                    description: `Pay month by month${childCountText}`,
+                    highlight: false
+                },
+                {
+                    duration: 'quarterly',
+                    label: 'Quarterly Payment',
+                    regularPrice: quarterlyRegular,
+                    earlyBirdPrice: quarterlyTotal.total,
+                    discount: '28% total off',
+                    description: `Save with 3-month billing${childCountText}`,
+                    highlight: true
+                },
+                {
+                    duration: 'yearly',
+                    label: 'Annual Payment',
+                    regularPrice: yearlyRegular,
+                    earlyBirdPrice: yearlyTotal.total,
+                    discount: '36% total off',
+                    description: `Maximum savings${childCountText}`,
+                    highlight: false
+                }
+            ];
 
-                optionsContainer.innerHTML = options.map(opt => `
+            optionsContainer.innerHTML = options.map(opt => `
                 <button type="button" onclick="selectDurationFromModal('${opt.duration}')"
                     class="w-full p-4 rounded-xl border-2 transition-all duration-200 hover:scale-105 ${
                         opt.highlight
@@ -1883,7 +1907,6 @@
                     </div>
                 </button>
                 `).join('');
-            }
 
             // Show modal with animation
             modal.classList.remove('hidden');
