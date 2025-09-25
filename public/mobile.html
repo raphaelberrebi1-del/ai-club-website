@@ -166,7 +166,7 @@
         <section id="what-child-will-learn" class="py-16 px-4 relative z-10">
             <div class="max-w-sm mx-auto space-y-6">
                 <!-- Section Header -->
-                <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-amber-200/30 text-center fade-in-left" data-scroll>
+                <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-amber-200/30 text-center fade-in-up" data-scroll>
                     <h2 class="text-4xl font-extrabold text-white tracking-tight mb-6">
                         What Your Child Will <span class="font-serif italic font-bold bg-gradient-to-r from-[#4AB4C8] via-[#60C4D4] to-[#80D4E0] bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8); font-weight: 700; letter-spacing: 0.5px;">Learn</span>
                     </h2>
@@ -210,7 +210,7 @@
                         </div>
 
                         <!-- AI Art Section -->
-                        <div class="pb-6 border-b border-amber-200/30 fade-in-left delay-2" data-scroll>
+                        <div class="pb-6 border-b border-amber-200/30 fade-in-right delay-2" data-scroll>
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-teal-600">
@@ -291,7 +291,7 @@
 
             <div class="relative z-10 max-w-sm mx-auto space-y-6">
                 <!-- Section Header -->
-                <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-amber-200/30 text-center fade-in-left delay-4" data-scroll>
+                <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-amber-200/30 text-center fade-in-up delay-4" data-scroll>
                     <h2 class="text-3xl font-extrabold text-white tracking-tight mb-6">
                         What Your Child Could <span class="font-serif italic font-bold bg-gradient-to-r from-[#60C4D4] via-[#4AB4C8] to-[#3A9CAA] bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8); font-weight: 700; letter-spacing: 0.5px;">Create</span>
                     </h2>
@@ -301,7 +301,7 @@
                 </div>
 
                 <!-- Young Innovators Section -->
-                <div class="fade-in-left delay-5" data-scroll>
+                <div class="fade-in-right delay-5" data-scroll>
                     <div class="bg-black/50 backdrop-blur-lg rounded-2xl p-6 shadow-xl border-2 border-amber-200/30">
                         <div class="flex items-center gap-3 mb-6">
                             <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-cyan-500 rounded-full flex items-center justify-center">
@@ -883,6 +883,67 @@
         }
 
         .fade-in-left.delay-6 {
+            transition-delay: 1.2s;
+        }
+
+        /* Right slide animations */
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-right.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Up slide animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Down slide animations */
+        .fade-in-down {
+            opacity: 0;
+            transform: translateY(-30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-down.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Apply delay classes to all animation types */
+        .fade-in-right.delay-1, .fade-in-up.delay-1, .fade-in-down.delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .fade-in-right.delay-2, .fade-in-up.delay-2, .fade-in-down.delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .fade-in-right.delay-3, .fade-in-up.delay-3, .fade-in-down.delay-3 {
+            transition-delay: 0.6s;
+        }
+
+        .fade-in-right.delay-4, .fade-in-up.delay-4, .fade-in-down.delay-4 {
+            transition-delay: 0.8s;
+        }
+
+        .fade-in-right.delay-5, .fade-in-up.delay-5, .fade-in-down.delay-5 {
+            transition-delay: 1.0s;
+        }
+
+        .fade-in-right.delay-6, .fade-in-up.delay-6, .fade-in-down.delay-6 {
             transition-delay: 1.2s;
         }
 
