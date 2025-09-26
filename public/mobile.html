@@ -2322,11 +2322,18 @@
 
         function updateChildData(index, field, value) {
             familyData.children[index][field] = value;
+            console.log(`📝 Updated child ${index + 1} ${field}:`, value);
+            console.log('Updated children data:', familyData.children);
             validateStep2();
+            // If we're on step 3, also validate step 3
+            if (currentStep === 3) {
+                validateStep3();
+            }
         }
 
         function selectChildAgeGroup(childIndex, ageGroup) {
             familyData.children[childIndex].ageGroup = ageGroup;
+            console.log(`👶 Selected age group for child ${childIndex + 1}:`, ageGroup);
 
             // Update UI for this child's age group buttons
             document.querySelectorAll(`.child-age-btn-${childIndex}`).forEach(btn => {
@@ -2341,6 +2348,10 @@
             selectedBtn.querySelector('.w-2').classList.remove('opacity-0');
 
             validateStep2();
+            // If we're on step 3, also validate step 3
+            if (currentStep === 3) {
+                validateStep3();
+            }
         }
 
         function validateStep2() {
@@ -2407,16 +2418,55 @@
             const parentEmail = document.getElementById('parent-email').value.trim();
             const parentPhone = document.getElementById('parent-phone').value.trim();
 
-            const isValid = parentName && parentEmail && parentPhone &&
-                           parentEmail.includes('@') && parentPhone.length >= 9;
+            console.log('🔍 Validating Step 3...');
+            console.log('Parent Name:', parentName);
+            console.log('Parent Email:', parentEmail);
+            console.log('Parent Phone:', parentPhone);
+            console.log('Children data:', familyData.children);
+
+            // Validate parent information
+            const parentValid = parentName && parentEmail && parentPhone &&
+                               parentEmail.includes('@') && parentPhone.length >= 9;
+
+            // Validate children information
+            let childrenValid = true;
+            if (!familyData.children || familyData.children.length === 0) {
+                console.log('❌ No children data found');
+                childrenValid = false;
+            } else {
+                familyData.children.forEach((child, index) => {
+                    if (!child.name || !child.name.trim() || !child.ageGroup) {
+                        console.log(`❌ Child ${index + 1} missing data:`, child);
+                        childrenValid = false;
+                    }
+                });
+            }
+
+            const isValid = parentValid && childrenValid;
+
+            console.log('Parent validation:', parentValid);
+            console.log('Children validation:', childrenValid);
+            console.log('Overall validation:', isValid);
 
             continueBtn.disabled = !isValid;
 
             // Update family data
-            if (isValid) {
+            if (parentValid) {
                 familyData.parentName = parentName;
                 familyData.parentEmail = parentEmail;
                 familyData.parentPhone = parentPhone;
+            }
+
+            // Show validation feedback
+            if (!isValid) {
+                if (!parentValid) {
+                    console.log('⚠️ Parent information incomplete or invalid');
+                }
+                if (!childrenValid) {
+                    console.log('⚠️ Children information incomplete');
+                }
+            } else {
+                console.log('✅ All validation passed - button should be enabled');
             }
         }
 
@@ -2453,6 +2503,8 @@
                     } else if (currentStep === 3) {
                         console.log('🔄 Moving to Step 3 - generating final summary');
                         generateFinalSummary();
+                        // Trigger validation when entering step 3
+                        setTimeout(() => validateStep3(), 100);
                     }
                 }, 300); // Match CSS transition duration
             }
@@ -2616,21 +2668,6 @@
             document.getElementById('step-2-next').disabled = false;
         }
 
-        function validateStep3() {
-            const parentName = document.getElementById('parent-name').value.trim();
-            const parentEmail = document.getElementById('parent-email').value.trim();
-            const parentPhone = document.getElementById('parent-phone').value.trim();
-            const continueBtn = document.getElementById('step-3-next');
-
-            if (parentName && parentEmail && parentPhone) {
-                formData.parentName = parentName;
-                formData.parentEmail = parentEmail;
-                formData.parentPhone = parentPhone;
-                continueBtn.disabled = false;
-            } else {
-                continueBtn.disabled = true;
-            }
-        }
 
         function initializeStep4() {
             // Populate final summary
