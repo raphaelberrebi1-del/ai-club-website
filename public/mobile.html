@@ -2980,6 +2980,7 @@
         function validateMobileForm() {
             // Check parent name - use ID selector instead of placeholder
             const parentNameInput = document.getElementById('parent-name');
+            console.log('🔍 Parent name field found:', !!parentNameInput, 'Value:', parentNameInput?.value);
             if (!parentNameInput || !parentNameInput.value.trim()) {
                 console.log('❌ Parent name validation failed');
                 return false;
@@ -2987,6 +2988,7 @@
 
             // Check parent email
             const emailInput = document.getElementById('parent-email');
+            console.log('🔍 Parent email field found:', !!emailInput, 'Value:', emailInput?.value);
             if (!emailInput || !emailInput.value.trim()) {
                 console.log('❌ Parent email validation failed');
                 return false;
@@ -2994,6 +2996,7 @@
 
             // Check parent phone
             const phoneInput = document.getElementById('parent-phone');
+            console.log('🔍 Parent phone field found:', !!phoneInput, 'Value:', phoneInput?.value);
             if (!phoneInput || !phoneInput.value.trim()) {
                 console.log('❌ Parent phone validation failed');
                 return false;
@@ -3001,13 +3004,17 @@
 
             // Check main child name
             const mainChildName = document.querySelector('input[type="text"]:not([placeholder*="parent"])');
+            console.log('🔍 Child name field found:', !!mainChildName, 'Value:', mainChildName?.value);
             if (!mainChildName || !mainChildName.value.trim()) {
+                console.log('❌ Child name validation failed');
                 return false;
             }
 
             // Check main child age group
             const mainAgeGroup = document.querySelector('select');
+            console.log('🔍 Age group field found:', !!mainAgeGroup, 'Value:', mainAgeGroup?.value);
             if (!mainAgeGroup || !mainAgeGroup.value) {
+                console.log('❌ Age group validation failed');
                 return false;
             }
 
