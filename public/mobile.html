@@ -3038,11 +3038,21 @@
 
         // Collect form data function
         function collectMobileFormData() {
-            const parentNameInput = document.querySelector('input[type="text"][placeholder*="parent"]');
-            const emailInput = document.querySelector('input[type="email"]');
-            const phoneInput = document.querySelector('input[type="tel"]');
+            console.log('🔍 Collecting form data...');
+
+            // Use ID-based selectors for parent fields
+            const parentNameInput = document.getElementById('parent-name');
+            const emailInput = document.getElementById('parent-email');
+            const phoneInput = document.getElementById('parent-phone');
+
+            console.log('🔍 Parent fields found:', {
+                name: !!parentNameInput,
+                email: !!emailInput,
+                phone: !!phoneInput
+            });
 
             if (!parentNameInput || !emailInput || !phoneInput) {
+                console.error('❌ Missing parent input fields');
                 return null;
             }
 
@@ -3055,17 +3065,46 @@
                 children: []
             };
 
-            // Add main child
-            const mainChildName = document.querySelector('input[type="text"]:not([placeholder*="parent"])');
-            const mainAgeGroup = document.querySelector('select');
+            // Add main child - find the first child name input
+            const mainChildName = document.querySelector('input[type="text"]:not([id*="parent"])');
+            const mainAgeGroup = document.getElementById('child-age-group');
 
-            if (mainChildName && mainAgeGroup && mainChildName.value.trim() && mainAgeGroup.value) {
-                const ageGroupText = mainAgeGroup.options[mainAgeGroup.selectedIndex].text;
-                const price = getPriceForAgeGroup(mainAgeGroup.value);
+            console.log('🔍 Child fields found:', {
+                name: !!mainChildName,
+                nameValue: mainChildName?.value,
+                ageGroup: !!mainAgeGroup,
+                ageValue: mainAgeGroup?.value
+            });
+
+            if (mainChildName && mainChildName.value.trim()) {
+                // Try to get age group info, but don't fail if not available
+                let ageGroupValue = '';
+                let ageGroupText = '';
+                let price = 0;
+
+                if (mainAgeGroup && mainAgeGroup.value) {
+                    ageGroupValue = mainAgeGroup.value;
+                    ageGroupText = mainAgeGroup.options[mainAgeGroup.selectedIndex].text;
+                    price = getPriceForAgeGroup(mainAgeGroup.value);
+                } else {
+                    // Fallback: try to get price from the total display
+                    const totalElement = document.getElementById('total-price') || document.getElementById('step-3-total');
+                    if (totalElement) {
+                        price = parseInt(totalElement.textContent.replace('₪', '')) || 0;
+                    }
+                    ageGroupValue = 'selected'; // Generic value
+                    ageGroupText = 'Program Selected';
+                }
+
+                console.log('📋 Child data:', {
+                    name: mainChildName.value.trim(),
+                    program: ageGroupValue,
+                    price: price
+                });
 
                 formData.children.push({
                     name: mainChildName.value.trim(),
-                    ageGroup: mainAgeGroup.value,
+                    ageGroup: ageGroupValue,
                     program: ageGroupText,
                     price: price
                 });
@@ -3089,6 +3128,9 @@
                     });
                 }
             });
+
+            console.log('✅ Form data collection completed:', formData);
+            console.log('📊 Total children found:', formData.children.length);
 
             return formData;
         }
