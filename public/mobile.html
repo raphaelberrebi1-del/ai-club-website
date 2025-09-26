@@ -3227,7 +3227,7 @@
 
             // Try Bit app deep link first, fallback to web link
             const bitAppLink = `bit://pay?phone=${phone}&amount=${amount}&note=${encodeURIComponent(description)}`;
-            const bitWebLink = `https://www.bit.co.il/app/payment/link?phone=${phone}&amount=${amount}&description=${encodeURIComponent(description)}`;
+            const bitWebLink = `https://www.bitpay.co.il/he?phone=${phone}&amount=${amount}&description=${encodeURIComponent(description)}`;
 
             // Check if mobile device and try app link first
             const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
