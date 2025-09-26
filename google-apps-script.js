@@ -15,24 +15,25 @@ function doPost(e) {
 
     // Handle both FormData and direct JSON submissions
     let data;
-    if (e.postData && e.postData.contents) {
-      try {
-        // Try parsing direct JSON first
-        data = JSON.parse(e.postData.contents);
-      } catch (jsonError) {
-        // If that fails, try parsing as form data
-        const formData = e.parameter;
-        if (formData && formData.data) {
-          data = JSON.parse(formData.data);
-        } else {
-          throw new Error('Could not parse form data');
-        }
-      }
-    } else if (e.parameter && e.parameter.data) {
-      // Handle URL parameter method
+
+    console.log('🔍 Debug - e.postData:', e.postData);
+    console.log('🔍 Debug - e.parameter:', e.parameter);
+
+    // First try to get data from parameters (FormData method)
+    if (e.parameter && e.parameter.data) {
+      console.log('📦 Using parameter data (FormData method)');
       data = JSON.parse(e.parameter.data);
-    } else {
-      throw new Error('No data received');
+    }
+    // Then try postData contents (direct JSON method)
+    else if (e.postData && e.postData.contents) {
+      console.log('📦 Using postData contents (JSON method)');
+      data = JSON.parse(e.postData.contents);
+    }
+    // Final fallback
+    else {
+      console.error('❌ No data found in request');
+      console.log('Available keys in e:', Object.keys(e));
+      throw new Error('No data received - check request format');
     }
 
     console.log('📦 Parsed data:', JSON.stringify(data));
