@@ -3327,43 +3327,93 @@
         // Show Bit payment instructions
         function showBitPaymentInstructions(amount) {
             const phone = '0543159025';
-            const container = document.querySelector('.min-h-screen');
-            container.innerHTML = `
-                <div class="flex items-center justify-center min-h-screen p-4">
-                    <div class="bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border border-cyan-500/30 rounded-xl p-8 max-w-md text-center">
-                        <div class="text-6xl mb-4">💳</div>
-                        <h2 class="text-xl font-bold text-white mb-4">Complete Payment with Bit</h2>
-                        <p class="text-amber-200 mb-4">Please complete your payment in the Bit app</p>
 
-                        <div class="bg-black/30 rounded-lg p-4 mb-4">
-                            <p class="text-sm text-gray-300 mb-3">Payment Details:</p>
+            // Create modal overlay
+            const modalOverlay = document.createElement('div');
+            modalOverlay.id = 'payment-modal';
+            modalOverlay.className = 'fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in';
+            modalOverlay.style.animation = 'fadeIn 0.3s ease-out';
 
-                            <div class="mb-3">
-                                <p class="text-xs text-gray-400 mb-1">Phone Number</p>
-                                <button onclick="copyToClipboard('${phone}', 'phone')"
-                                        class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
-                                    <span id="phone-text">📱 ${phone}</span>
-                                </button>
-                            </div>
+            modalOverlay.innerHTML = `
+                <div class="bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border border-cyan-500/30 rounded-xl p-8 max-w-md w-full text-center backdrop-blur-md animate-slide-up" style="animation: slideUp 0.3s ease-out">
+                    <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-white/60 hover:text-white transition-colors">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
 
-                            <div class="mb-3">
-                                <p class="text-xs text-gray-400 mb-1">Amount to Pay</p>
-                                <button onclick="copyToClipboard('${amount}', 'amount')"
-                                        class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
-                                    <span id="amount-text">₪ ${amount}</span>
-                                </button>
-                            </div>
+                    <div class="text-6xl mb-4">💳</div>
+                    <h2 class="text-xl font-bold text-white mb-4">Complete Payment with Bit</h2>
+                    <p class="text-amber-200 mb-4">Please complete your payment in the Bit app</p>
 
-                            <p class="text-xs text-amber-300 mt-2">Click to copy!</p>
+                    <div class="bg-black/30 rounded-lg p-4 mb-4">
+                        <p class="text-sm text-gray-300 mb-3">Payment Details:</p>
+
+                        <div class="mb-3">
+                            <p class="text-xs text-gray-400 mb-1">Phone Number</p>
+                            <button onclick="copyToClipboard('${phone}', 'phone')"
+                                    class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
+                                <span id="phone-text">📱 ${phone}</span>
+                            </button>
                         </div>
 
-                        <p class="text-sm text-amber-300 mb-6">After payment, you will receive a confirmation email.</p>
-                        <button onclick="window.location.reload()" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
-                            Register Another Child
-                        </button>
+                        <div class="mb-3">
+                            <p class="text-xs text-gray-400 mb-1">Amount to Pay</p>
+                            <button onclick="copyToClipboard('${amount}', 'amount')"
+                                    class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
+                                <span id="amount-text">₪ ${amount}</span>
+                            </button>
+                        </div>
+
+                        <p class="text-xs text-amber-300 mt-2">Click to copy!</p>
                     </div>
+
+                    <p class="text-sm text-amber-300 mb-6">After payment, you will receive a confirmation email.</p>
+                    <button onclick="closePaymentModal(); window.location.reload();" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
+                        Register Another Child
+                    </button>
                 </div>
             `;
+
+            // Add to body
+            document.body.appendChild(modalOverlay);
+
+            // Add CSS animations if not already present
+            if (!document.getElementById('modal-animations')) {
+                const style = document.createElement('style');
+                style.id = 'modal-animations';
+                style.textContent = `
+                    @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to { opacity: 1; }
+                    }
+                    @keyframes fadeOut {
+                        from { opacity: 1; }
+                        to { opacity: 0; }
+                    }
+                    @keyframes slideUp {
+                        from {
+                            opacity: 0;
+                            transform: translateY(20px);
+                        }
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        // Close payment modal function
+        window.closePaymentModal = function() {
+            const modal = document.getElementById('payment-modal');
+            if (modal) {
+                modal.style.animation = 'fadeOut 0.3s ease-out';
+                setTimeout(() => modal.remove(), 300);
+            }
         }
 
         // Copy to clipboard function - moved to global scope
@@ -3384,98 +3434,124 @@
         // Show PayBox payment instructions
         function showPayBoxPaymentInstructions(amount) {
             const phone = '0543159025';
-            const container = document.querySelector('.min-h-screen');
-            container.innerHTML = `
-                <div class="flex items-center justify-center min-h-screen p-4">
-                    <div class="bg-gradient-to-br from-teal-500/20 to-yellow-500/20 border border-teal-500/30 rounded-xl p-8 max-w-md text-center">
-                        <div class="text-6xl mb-4">💰</div>
-                        <h2 class="text-xl font-bold text-white mb-4">Complete Payment with PayBox</h2>
-                        <p class="text-amber-200 mb-4">Please complete your payment in the PayBox app</p>
 
+            // Create modal overlay
+            const modalOverlay = document.createElement('div');
+            modalOverlay.id = 'payment-modal';
+            modalOverlay.className = 'fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4';
+            modalOverlay.style.animation = 'fadeIn 0.3s ease-out';
+
+            modalOverlay.innerHTML = `
+                <div class="bg-gradient-to-br from-teal-500/20 to-yellow-500/20 border border-teal-500/30 rounded-xl p-8 max-w-md w-full text-center backdrop-blur-md relative" style="animation: slideUp 0.3s ease-out">
+                    <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-white/60 hover:text-white transition-colors">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+
+                    <div class="text-6xl mb-4">💰</div>
+                    <h2 class="text-xl font-bold text-white mb-4">Complete Payment with PayBox</h2>
+                    <p class="text-amber-200 mb-4">Please complete your payment in the PayBox app</p>
+
+                    <div class="bg-black/30 rounded-lg p-4 mb-4">
+                        <p class="text-sm text-gray-300 mb-3">Payment Details:</p>
+
+                        <div class="mb-3">
+                            <p class="text-xs text-gray-400 mb-1">Phone Number</p>
+                            <button onclick="copyToClipboard('${phone}', 'paybox-phone')"
+                                    class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
+                                <span id="paybox-phone-text">📱 ${phone}</span>
+                            </button>
+                        </div>
+
+                        <div class="mb-3">
+                            <p class="text-xs text-gray-400 mb-1">Amount to Pay</p>
+                            <button onclick="copyToClipboard('${amount}', 'paybox-amount')"
+                                    class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
+                                <span id="paybox-amount-text">₪ ${amount}</span>
+                            </button>
+                        </div>
+
+                        <p class="text-xs text-amber-300 mt-2">Click to copy!</p>
+                    </div>
+
+                    <p class="text-sm text-amber-300 mb-6">After payment, you will receive a confirmation email.</p>
+                    <button onclick="closePaymentModal(); window.location.reload();" class="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
+                        Register Another Child
+                    </button>
+                </div>
+            `;
+
+            document.body.appendChild(modalOverlay);
+        }
+
+        // Show Cash/Bank Transfer payment instructions
+        function showCashPaymentInstructions(amount) {
+            const phone = '0543159025';
+
+            // Create modal overlay
+            const modalOverlay = document.createElement('div');
+            modalOverlay.id = 'payment-modal';
+            modalOverlay.className = 'fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4';
+            modalOverlay.style.animation = 'fadeIn 0.3s ease-out';
+
+            modalOverlay.innerHTML = `
+                <div class="bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl p-8 max-w-md w-full text-center backdrop-blur-md relative" style="animation: slideUp 0.3s ease-out">
+                    <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-white/60 hover:text-white transition-colors">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+
+                    <div class="text-6xl mb-4">💵</div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Complete Payment - Cash/Bank Transfer</h2>
+                    <div class="text-amber-200 mb-6">
                         <div class="bg-black/30 rounded-lg p-4 mb-4">
                             <p class="text-sm text-gray-300 mb-3">Payment Details:</p>
 
                             <div class="mb-3">
-                                <p class="text-xs text-gray-400 mb-1">Phone Number</p>
-                                <button onclick="copyToClipboard('${phone}', 'paybox-phone')"
+                                <p class="text-xs text-gray-400 mb-1">Phone Number for Payment</p>
+                                <button onclick="copyToClipboard('${phone}', 'cash-phone')"
                                         class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
-                                    <span id="paybox-phone-text">📱 ${phone}</span>
+                                    <span id="cash-phone-text">📱 ${phone}</span>
                                 </button>
                             </div>
 
                             <div class="mb-3">
                                 <p class="text-xs text-gray-400 mb-1">Amount to Pay</p>
-                                <button onclick="copyToClipboard('${amount}', 'paybox-amount')"
+                                <button onclick="copyToClipboard('${amount}', 'cash-amount')"
                                         class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
-                                    <span id="paybox-amount-text">₪ ${amount}</span>
+                                    <span id="cash-amount-text">₪ ${amount}</span>
                                 </button>
                             </div>
 
                             <p class="text-xs text-amber-300 mt-2">Click to copy!</p>
                         </div>
 
-                        <p class="text-sm text-amber-300 mb-6">After payment, you will receive a confirmation email.</p>
-                        <button onclick="window.location.reload()" class="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
+                        <div class="text-left bg-black/20 rounded-lg p-4 mb-4">
+                            <p class="font-semibold text-green-300 mb-2">Payment Options:</p>
+                            <p class="text-sm mb-2">📱 <strong>WhatsApp:</strong> Message us to arrange</p>
+                            <p class="text-sm mb-2">🏦 <strong>Bank Transfer:</strong> Contact for details</p>
+                            <p class="text-sm">💵 <strong>Cash:</strong> Arrange pickup/delivery</p>
+                        </div>
+                        <p class="text-sm">Please contact us to arrange payment and confirm your registration.</p>
+                    </div>
+                    <div class="space-y-3">
+                        <a href="https://wa.me/972543159025?text=Hi, I registered for AI Club and need to arrange payment of ₪${amount}"
+                           class="block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200"
+                           target="_blank">
+                            Contact via WhatsApp
+                        </a>
+                        <button onclick="closePaymentModal(); window.location.reload();" class="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
                             Register Another Child
                         </button>
                     </div>
                 </div>
             `;
-        }
 
-        // Show Cash/Bank Transfer payment instructions
-        function showCashPaymentInstructions(amount) {
-            const phone = '0543159025';
-            const container = document.querySelector('.min-h-screen');
-            container.innerHTML = `
-                <div class="flex items-center justify-center min-h-screen p-4">
-                    <div class="bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl p-8 max-w-md text-center">
-                        <div class="text-6xl mb-4">💵</div>
-                        <h2 class="text-2xl font-bold text-white mb-4">Complete Payment - Cash/Bank Transfer</h2>
-                        <div class="text-amber-200 mb-6">
-                            <div class="bg-black/30 rounded-lg p-4 mb-4">
-                                <p class="text-sm text-gray-300 mb-3">Payment Details:</p>
-
-                                <div class="mb-3">
-                                    <p class="text-xs text-gray-400 mb-1">Phone Number for Payment</p>
-                                    <button onclick="copyToClipboard('${phone}', 'cash-phone')"
-                                            class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
-                                        <span id="cash-phone-text">📱 ${phone}</span>
-                                    </button>
-                                </div>
-
-                                <div class="mb-3">
-                                    <p class="text-xs text-gray-400 mb-1">Amount to Pay</p>
-                                    <button onclick="copyToClipboard('${amount}', 'cash-amount')"
-                                            class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
-                                        <span id="cash-amount-text">₪ ${amount}</span>
-                                    </button>
-                                </div>
-
-                                <p class="text-xs text-amber-300 mt-2">Click to copy!</p>
-                            </div>
-
-                            <div class="text-left bg-black/20 rounded-lg p-4 mb-4">
-                                <p class="font-semibold text-green-300 mb-2">Payment Options:</p>
-                                <p class="text-sm mb-2">📱 <strong>WhatsApp:</strong> Message us to arrange</p>
-                                <p class="text-sm mb-2">🏦 <strong>Bank Transfer:</strong> Contact for details</p>
-                                <p class="text-sm">💵 <strong>Cash:</strong> Arrange pickup/delivery</p>
-                            </div>
-                            <p class="text-sm">Please contact us to arrange payment and confirm your registration.</p>
-                        </div>
-                        <div class="space-y-3">
-                            <a href="https://wa.me/972543159025?text=Hi, I registered for AI Club and need to arrange payment of ₪${amount}"
-                               class="block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200"
-                               target="_blank">
-                                Contact via WhatsApp
-                            </a>
-                            <button onclick="window.location.reload()" class="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
-                                Register Another Child
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
+            document.body.appendChild(modalOverlay);
         }
 
         // Add event listeners to recalculate price when form changes
