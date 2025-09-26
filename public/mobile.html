@@ -3011,7 +3011,7 @@
             }
 
             // Check main child age group
-            const mainAgeGroup = document.querySelector('select');
+            const mainAgeGroup = document.getElementById('child-age-group');
             console.log('🔍 Age group field found:', !!mainAgeGroup, 'Value:', mainAgeGroup?.value);
             if (!mainAgeGroup || !mainAgeGroup.value) {
                 console.log('❌ Age group validation failed');
