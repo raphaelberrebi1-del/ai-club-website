@@ -2723,20 +2723,29 @@
             finalTotal.textContent = `₪${formData.selectedPrice}`;
         }
 
+        function getPriceForAgeGroup(ageGroup) {
+            const prices = {
+                'young': 1200,
+                'tech': 1500,
+                'future': 1800
+            };
+            return prices[ageGroup] || 1200;
+        }
+
         async function submitRegistration() {
-            // Prepare family registration data
+            // Prepare family registration data in the format expected by Apps Script
             const registrationData = {
-                family: {
-                    parentName: familyData.parentName,
-                    parentEmail: familyData.parentEmail,
-                    parentPhone: familyData.parentPhone
+                parent: {
+                    name: familyData.parentName,
+                    email: familyData.parentEmail,
+                    phone: familyData.parentPhone
                 },
-                children: familyData.children,
-                pricing: {
-                    duration: familyData.bulkDuration,
-                    totalPrice: familyData.totalPrice,
-                    childCount: familyData.childCount
-                },
+                children: familyData.children.map(child => ({
+                    name: child.name,
+                    program: child.ageGroup, // Maps ageGroup to program
+                    price: getPriceForAgeGroup(child.ageGroup)
+                })),
+                totalPrice: familyData.totalPrice,
                 timestamp: new Date().toISOString()
             };
 
