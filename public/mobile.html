@@ -3010,11 +3010,12 @@
                 return false;
             }
 
-            // Check main child age group
-            const mainAgeGroup = document.getElementById('child-age-group');
-            console.log('🔍 Age group field found:', !!mainAgeGroup, 'Value:', mainAgeGroup?.value);
-            if (!mainAgeGroup || !mainAgeGroup.value) {
-                console.log('❌ Age group validation failed');
+            // Check that user has selected a program (validate by final price)
+            const totalElement = document.getElementById('total-price') || document.getElementById('step-3-total');
+            const totalAmount = totalElement ? parseInt(totalElement.textContent.replace('₪', '')) : 0;
+            console.log('🔍 Total price found:', !!totalElement, 'Value:', totalAmount);
+            if (!totalElement || totalAmount <= 0) {
+                console.log('❌ Program selection validation failed - no price calculated');
                 return false;
             }
 
