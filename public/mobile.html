@@ -684,13 +684,76 @@
                                        oninput="validateStep3()"
                                        class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
                             </div>
+
+                            <!-- Payment Method Selection -->
+                            <div id="payment-selection" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-500/30 rounded-xl p-6">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                            <rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white">Choose Payment Method</h4>
+                                </div>
+
+                                <div class="space-y-3">
+                                    <!-- Bit Payment Option -->
+                                    <label class="flex items-center p-4 bg-amber-950/20 rounded-xl border border-amber-200/20 cursor-pointer hover:bg-amber-950/30 transition-colors">
+                                        <input type="radio" name="payment-method" value="bit" class="sr-only" checked>
+                                        <div class="w-5 h-5 border-2 border-green-400 rounded-full flex items-center justify-center mr-3">
+                                            <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                        </div>
+                                        <div class="flex items-center gap-3 flex-1">
+                                            <img src="Bit.logo.png" alt="Bit" class="h-10 w-auto max-w-[120px] object-contain">
+                                            <div>
+                                                <div class="text-white font-medium">Bit Payment</div>
+                                                <div class="text-amber-200 text-sm">Pay securely with Bit app</div>
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <!-- PayBox Option -->
+                                    <label class="flex items-center p-4 bg-amber-950/20 rounded-xl border border-amber-200/20 cursor-pointer hover:bg-amber-950/30 transition-colors">
+                                        <input type="radio" name="payment-method" value="paybox" class="sr-only">
+                                        <div class="w-5 h-5 border-2 border-amber-400 rounded-full flex items-center justify-center mr-3">
+                                            <div class="w-2 h-2 bg-transparent rounded-full"></div>
+                                        </div>
+                                        <div class="flex items-center gap-3 flex-1">
+                                            <img src="Paybox.logo.png" alt="PayBox" class="h-10 w-auto max-w-[120px] object-contain">
+                                            <div>
+                                                <div class="text-white font-medium">PayBox</div>
+                                                <div class="text-amber-200 text-sm">Pay with PayBox wallet</div>
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <!-- Cash/Bank Transfer Option -->
+                                    <label class="flex items-center p-4 bg-amber-950/20 rounded-xl border border-amber-200/20 cursor-pointer hover:bg-amber-950/30 transition-colors">
+                                        <input type="radio" name="payment-method" value="cash" class="sr-only">
+                                        <div class="w-5 h-5 border-2 border-amber-400 rounded-full flex items-center justify-center mr-3">
+                                            <div class="w-2 h-2 bg-transparent rounded-full"></div>
+                                        </div>
+                                        <div class="flex items-center gap-3 flex-1">
+                                            <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                                    <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <div class="text-white font-medium">Cash/Bank Transfer</div>
+                                                <div class="text-amber-200 text-sm">Pay via bank transfer or cash</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
                             <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
                                 Back
                             </button>
-                            <button onclick="submitRegistration()" id="step-3-next" class="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                            <button onclick="proceedToPayment()" id="step-3-next" class="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
                                 Complete Registration
                             </button>
                         </div>
