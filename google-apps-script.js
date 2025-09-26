@@ -13,7 +13,28 @@ function doPost(e) {
     console.log('📝 Registrations sheet found:', !!registrations);
     console.log('👥 Groups sheet found:', !!groups);
 
-    const data = JSON.parse(e.postData.contents);
+    // Handle both FormData and direct JSON submissions
+    let data;
+    if (e.postData && e.postData.contents) {
+      try {
+        // Try parsing direct JSON first
+        data = JSON.parse(e.postData.contents);
+      } catch (jsonError) {
+        // If that fails, try parsing as form data
+        const formData = e.parameter;
+        if (formData && formData.data) {
+          data = JSON.parse(formData.data);
+        } else {
+          throw new Error('Could not parse form data');
+        }
+      }
+    } else if (e.parameter && e.parameter.data) {
+      // Handle URL parameter method
+      data = JSON.parse(e.parameter.data);
+    } else {
+      throw new Error('No data received');
+    }
+
     console.log('📦 Parsed data:', JSON.stringify(data));
 
     // Process each child registration
@@ -241,24 +262,46 @@ function sendConfirmation(email, data) {
 
 // Function to get current group data (called from website)
 function doGet(e) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet();
-  const groups = sheet.getSheetByName('Groups');
-  const data = groups.getDataRange().getValues();
+  try {
+    console.log('🔍 doGet called, fetching group data...');
 
-  // Remove header row and format for website
-  const groupData = data.slice(1).map(row => ({
-    groupId: row[0],
-    day: row[1],
-    time: row[2],
-    ageRange: row[3],
-    currentCount: row[6],
-    maxCapacity: row[7],
-    status: row[8]
-  }));
+    const spreadsheetId = '1Am1YhWuQLFq7u0jIVG-JGD3r00NB2n8Mqnm7-lQ2X_M';
+    const sheet = SpreadsheetApp.openById(spreadsheetId);
+    const groups = sheet.getSheetByName('Groups');
 
-  return ContentService
-    .createTextOutput(JSON.stringify({groups: groupData}))
-    .setMimeType(ContentService.MimeType.JSON);
+    if (!groups) {
+      throw new Error('Groups sheet not found');
+    }
+
+    const data = groups.getDataRange().getValues();
+    console.log('📊 Raw group data rows:', data.length);
+
+    // Remove header row and format for website
+    const groupData = data.slice(1).map(row => ({
+      groupId: row[0],
+      day: row[1],
+      time: row[2],
+      ageRange: row[3],
+      startDate: row[4],
+      endDate: row[5],
+      currentCount: row[6],
+      maxCapacity: row[7],
+      status: row[8]
+    }));
+
+    console.log('✅ Group data formatted:', groupData.length, 'groups');
+
+    return ContentService
+      .createTextOutput(JSON.stringify({success: true, groups: groupData}))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+    console.error('❌ doGet error:', error.toString());
+
+    return ContentService
+      .createTextOutput(JSON.stringify({success: false, error: error.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
 }
 
 function createNewGroup(ageGroup, groupsSheet) {
