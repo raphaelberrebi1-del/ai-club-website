@@ -38,7 +38,7 @@
   `;
 
   // Google Sheets Web App URL - configured in main HTML
-  const SHEETS_URL = window.GOOGLE_SHEETS_WEB_APP_URL || 'https://script.google.com/macros/s/AKfycbxYPemaR-FyQYqXEhWAeKmREk3XOjMBcumXN-zS15cWjcr26ylfF2Z_Jh-4km9PXAopKA/exec';
+  const SHEETS_URL = window.GOOGLE_SHEETS_WEB_APP_URL || 'https://script.google.com/macros/s/AKfycbwmjgsOo8mButmGjG_R0lsfi5AA2o7O1LEmEMt3xQjHhOYEu5ryU4WwfUnJzvlvrcCJ3w/exec';
 
   // Live time slots data - will be populated from Google Sheets
   let mockTimeSlots = [];
