@@ -3243,8 +3243,8 @@
                 window.open(bitWebLink, '_blank');
             }
 
-            // Show instructions
-            showBitPaymentInstructions();
+            // Show instructions with amount
+            showBitPaymentInstructions(amount);
         }
 
         // PayBox payment processing
@@ -3279,8 +3279,8 @@
                 window.open(payboxWebLink, '_blank');
             }
 
-            // Show instructions
-            showPayBoxPaymentInstructions();
+            // Show instructions with amount
+            showPayBoxPaymentInstructions(amount);
         }
 
         // Cash/Bank Transfer payment processing
@@ -3325,14 +3325,38 @@
         }
 
         // Show Bit payment instructions
-        function showBitPaymentInstructions() {
+        function showBitPaymentInstructions(amount) {
+            const phone = '0543159025';
             const container = document.querySelector('.min-h-screen');
             container.innerHTML = `
                 <div class="flex items-center justify-center min-h-screen p-4">
                     <div class="bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border border-cyan-500/30 rounded-xl p-8 max-w-md text-center">
                         <div class="text-6xl mb-4">💳</div>
                         <h2 class="text-xl font-bold text-white mb-4">Complete Payment with Bit</h2>
-                        <p class="text-amber-200 mb-6">A Bit payment window has opened. Please complete your payment to confirm your registration.</p>
+                        <p class="text-amber-200 mb-4">Please complete your payment in the Bit app</p>
+
+                        <div class="bg-black/30 rounded-lg p-4 mb-4">
+                            <p class="text-sm text-gray-300 mb-3">Payment Details:</p>
+
+                            <div class="mb-3">
+                                <p class="text-xs text-gray-400 mb-1">Phone Number</p>
+                                <button onclick="copyToClipboard('${phone}', 'phone')"
+                                        class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
+                                    <span id="phone-text">📱 ${phone}</span>
+                                </button>
+                            </div>
+
+                            <div class="mb-3">
+                                <p class="text-xs text-gray-400 mb-1">Amount to Pay</p>
+                                <button onclick="copyToClipboard('${amount}', 'amount')"
+                                        class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
+                                    <span id="amount-text">₪ ${amount}</span>
+                                </button>
+                            </div>
+
+                            <p class="text-xs text-amber-300 mt-2">Click to copy!</p>
+                        </div>
+
                         <p class="text-sm text-amber-300 mb-6">After payment, you will receive a confirmation email.</p>
                         <button onclick="window.location.reload()" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
                             Register Another Child
@@ -3342,15 +3366,54 @@
             `;
         }
 
+        // Copy to clipboard function - moved to global scope
+        window.copyToClipboard = function(text, type) {
+            navigator.clipboard.writeText(text).then(() => {
+                const element = document.getElementById(type + '-text');
+                const originalText = element.innerHTML;
+                element.innerHTML = '✅ Copied!';
+                setTimeout(() => {
+                    element.innerHTML = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy. Please copy manually: ' + text);
+            });
+        }
+
         // Show PayBox payment instructions
-        function showPayBoxPaymentInstructions() {
+        function showPayBoxPaymentInstructions(amount) {
+            const phone = '0543159025';
             const container = document.querySelector('.min-h-screen');
             container.innerHTML = `
                 <div class="flex items-center justify-center min-h-screen p-4">
                     <div class="bg-gradient-to-br from-teal-500/20 to-yellow-500/20 border border-teal-500/30 rounded-xl p-8 max-w-md text-center">
                         <div class="text-6xl mb-4">💰</div>
                         <h2 class="text-xl font-bold text-white mb-4">Complete Payment with PayBox</h2>
-                        <p class="text-amber-200 mb-6">A PayBox payment window has opened. Please complete your payment to confirm your registration.</p>
+                        <p class="text-amber-200 mb-4">Please complete your payment in the PayBox app</p>
+
+                        <div class="bg-black/30 rounded-lg p-4 mb-4">
+                            <p class="text-sm text-gray-300 mb-3">Payment Details:</p>
+
+                            <div class="mb-3">
+                                <p class="text-xs text-gray-400 mb-1">Phone Number</p>
+                                <button onclick="copyToClipboard('${phone}', 'paybox-phone')"
+                                        class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
+                                    <span id="paybox-phone-text">📱 ${phone}</span>
+                                </button>
+                            </div>
+
+                            <div class="mb-3">
+                                <p class="text-xs text-gray-400 mb-1">Amount to Pay</p>
+                                <button onclick="copyToClipboard('${amount}', 'paybox-amount')"
+                                        class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
+                                    <span id="paybox-amount-text">₪ ${amount}</span>
+                                </button>
+                            </div>
+
+                            <p class="text-xs text-amber-300 mt-2">Click to copy!</p>
+                        </div>
+
                         <p class="text-sm text-amber-300 mb-6">After payment, you will receive a confirmation email.</p>
                         <button onclick="window.location.reload()" class="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
                             Register Another Child
@@ -3362,6 +3425,7 @@
 
         // Show Cash/Bank Transfer payment instructions
         function showCashPaymentInstructions(amount) {
+            const phone = '0543159025';
             const container = document.querySelector('.min-h-screen');
             container.innerHTML = `
                 <div class="flex items-center justify-center min-h-screen p-4">
@@ -3369,11 +3433,32 @@
                         <div class="text-6xl mb-4">💵</div>
                         <h2 class="text-2xl font-bold text-white mb-4">Complete Payment - Cash/Bank Transfer</h2>
                         <div class="text-amber-200 mb-6">
-                            <p class="mb-4">Amount to pay: <strong class="text-white">₪${amount}</strong></p>
+                            <div class="bg-black/30 rounded-lg p-4 mb-4">
+                                <p class="text-sm text-gray-300 mb-3">Payment Details:</p>
+
+                                <div class="mb-3">
+                                    <p class="text-xs text-gray-400 mb-1">Phone Number for Payment</p>
+                                    <button onclick="copyToClipboard('${phone}', 'cash-phone')"
+                                            class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
+                                        <span id="cash-phone-text">📱 ${phone}</span>
+                                    </button>
+                                </div>
+
+                                <div class="mb-3">
+                                    <p class="text-xs text-gray-400 mb-1">Amount to Pay</p>
+                                    <button onclick="copyToClipboard('${amount}', 'cash-amount')"
+                                            class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg px-4 py-2 text-white font-mono transition-all duration-200 w-full">
+                                        <span id="cash-amount-text">₪ ${amount}</span>
+                                    </button>
+                                </div>
+
+                                <p class="text-xs text-amber-300 mt-2">Click to copy!</p>
+                            </div>
+
                             <div class="text-left bg-black/20 rounded-lg p-4 mb-4">
                                 <p class="font-semibold text-green-300 mb-2">Payment Options:</p>
-                                <p class="text-sm mb-2">📱 <strong>WhatsApp:</strong> 054-315-9025</p>
-                                <p class="text-sm mb-2">🏦 <strong>Bank Transfer:</strong> Contact us for details</p>
+                                <p class="text-sm mb-2">📱 <strong>WhatsApp:</strong> Message us to arrange</p>
+                                <p class="text-sm mb-2">🏦 <strong>Bank Transfer:</strong> Contact for details</p>
                                 <p class="text-sm">💵 <strong>Cash:</strong> Arrange pickup/delivery</p>
                             </div>
                             <p class="text-sm">Please contact us to arrange payment and confirm your registration.</p>
