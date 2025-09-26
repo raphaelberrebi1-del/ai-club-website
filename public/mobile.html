@@ -3078,6 +3078,9 @@
                 } else if (selectedPaymentMethod === 'paybox') {
                     console.log('🟣 Processing PayBox payment...');
                     await processPayBoxPayment(formData, totalAmount);
+                } else if (selectedPaymentMethod === 'cash') {
+                    console.log('💵 Processing cash/bank transfer payment...');
+                    await processCashPayment(formData, totalAmount);
                 } else {
                     console.log('🔵 Processing credit card payment...');
                     await processCreditCardPayment(formData, totalAmount);
@@ -3102,12 +3105,27 @@
                 amount: amount
             });
 
-            // Generate Bit payment link
+            // Generate Bit payment link with your phone number
             const description = `AI Kids Registration - ${formData.children.map(c => c.name).join(', ')}`;
-            const bitLink = `https://bit.ly/pay?amount=${amount}&description=${encodeURIComponent(description)}`;
+            const phone = '0543159025';
 
-            // Redirect to Bit payment
-            window.open(bitLink, '_blank');
+            // Try Bit app deep link first, fallback to web link
+            const bitAppLink = `bit://pay?phone=${phone}&amount=${amount}&note=${encodeURIComponent(description)}`;
+            const bitWebLink = `https://www.bit.co.il/app/payment/link?phone=${phone}&amount=${amount}&description=${encodeURIComponent(description)}`;
+
+            // Check if mobile device and try app link first
+            const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // Try app link first, fallback to web
+                window.location.href = bitAppLink;
+                setTimeout(() => {
+                    window.open(bitWebLink, '_blank');
+                }, 1000);
+            } else {
+                // Desktop: open web link
+                window.open(bitWebLink, '_blank');
+            }
 
             // Show instructions
             showBitPaymentInstructions();
@@ -3123,15 +3141,44 @@
                 amount: amount
             });
 
-            // Generate PayBox payment link
+            // Generate PayBox payment link with your phone number
             const description = `AI Kids Registration - ${formData.children.map(c => c.name).join(', ')}`;
-            const payboxLink = `https://payboxapp.com/pay?amount=${amount}&currency=ILS&description=${encodeURIComponent(description)}`;
+            const phone = '0543159025';
 
-            // Redirect to PayBox payment
-            window.open(payboxLink, '_blank');
+            // Try PayBox app deep link first, fallback to web link
+            const payboxAppLink = `paybox://pay?phone=${phone}&amount=${amount}&description=${encodeURIComponent(description)}`;
+            const payboxWebLink = `https://payboxapp.com/pay?phone=${phone}&amount=${amount}&currency=ILS&description=${encodeURIComponent(description)}`;
+
+            // Check if mobile device and try app link first
+            const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // Try app link first, fallback to web
+                window.location.href = payboxAppLink;
+                setTimeout(() => {
+                    window.open(payboxWebLink, '_blank');
+                }, 1000);
+            } else {
+                // Desktop: open web link
+                window.open(payboxWebLink, '_blank');
+            }
 
             // Show instructions
             showPayBoxPaymentInstructions();
+        }
+
+        // Cash/Bank Transfer payment processing
+        async function processCashPayment(formData, amount) {
+            // Submit registration data first with pending payment status
+            await submitRegistrationData({
+                ...formData,
+                paymentMethod: 'cash',
+                paymentStatus: 'pending',
+                amount: amount
+            });
+
+            // Show cash payment instructions
+            showCashPaymentInstructions(amount);
         }
 
         // Credit card payment processing
@@ -3192,6 +3239,39 @@
                         <button onclick="window.location.reload()" class="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
                             Register Another Child
                         </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Show Cash/Bank Transfer payment instructions
+        function showCashPaymentInstructions(amount) {
+            const container = document.querySelector('.min-h-screen');
+            container.innerHTML = `
+                <div class="flex items-center justify-center min-h-screen p-4">
+                    <div class="bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl p-8 max-w-md text-center">
+                        <div class="text-6xl mb-4">💵</div>
+                        <h2 class="text-2xl font-bold text-white mb-4">Complete Payment - Cash/Bank Transfer</h2>
+                        <div class="text-amber-200 mb-6">
+                            <p class="mb-4">Amount to pay: <strong class="text-white">₪${amount}</strong></p>
+                            <div class="text-left bg-black/20 rounded-lg p-4 mb-4">
+                                <p class="font-semibold text-green-300 mb-2">Payment Options:</p>
+                                <p class="text-sm mb-2">📱 <strong>WhatsApp:</strong> 054-315-9025</p>
+                                <p class="text-sm mb-2">🏦 <strong>Bank Transfer:</strong> Contact us for details</p>
+                                <p class="text-sm">💵 <strong>Cash:</strong> Arrange pickup/delivery</p>
+                            </div>
+                            <p class="text-sm">Please contact us to arrange payment and confirm your registration.</p>
+                        </div>
+                        <div class="space-y-3">
+                            <a href="https://wa.me/972543159025?text=Hi, I registered for AI Club and need to arrange payment of ₪${amount}"
+                               class="block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200"
+                               target="_blank">
+                                Contact via WhatsApp
+                            </a>
+                            <button onclick="window.location.reload()" class="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
+                                Register Another Child
+                            </button>
+                        </div>
                     </div>
                 </div>
             `;

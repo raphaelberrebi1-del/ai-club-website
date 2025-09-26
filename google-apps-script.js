@@ -51,19 +51,21 @@ function doPost(e) {
             throw new Error('Failed to assign child to group');
           }
 
-          // Add registration
+          // Add registration with enhanced payment tracking
           const rowData = [
-            new Date(),
-            data.parent.name,
-            data.parent.email,
-            data.parent.phone,
-            child.name,
-            child.program,
-            child.price,
-            group.groupId,
-            'Confirmed',
-            'Pending',
-            data.totalPrice
+            new Date(), // A: Date
+            data.parent.name, // B: Parent Name
+            data.parent.email, // C: Parent Email
+            data.parent.phone, // D: Parent Phone
+            child.name, // E: Child Name
+            child.program, // F: Program
+            child.price, // G: Price
+            group.groupId, // H: Group ID
+            'Confirmed', // I: Registration Status
+            data.paymentStatus || 'Pending', // J: Payment Status (Pending/Completed/Failed)
+            data.totalPrice, // K: Total Price
+            data.paymentMethod || 'Not Selected', // L: Payment Method (bit/paybox/cash)
+            data.timestamp || new Date().toISOString() // M: Timestamp
           ];
 
           console.log('📝 Writing row:', rowData);
