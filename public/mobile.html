@@ -2978,21 +2978,24 @@
 
         // Form validation function
         function validateMobileForm() {
-            // Check parent name
-            const parentNameInput = document.querySelector('input[type="text"][placeholder*="parent"]');
+            // Check parent name - use ID selector instead of placeholder
+            const parentNameInput = document.getElementById('parent-name');
             if (!parentNameInput || !parentNameInput.value.trim()) {
+                console.log('❌ Parent name validation failed');
                 return false;
             }
 
             // Check parent email
-            const emailInput = document.querySelector('input[type="email"]');
+            const emailInput = document.getElementById('parent-email');
             if (!emailInput || !emailInput.value.trim()) {
+                console.log('❌ Parent email validation failed');
                 return false;
             }
 
             // Check parent phone
-            const phoneInput = document.querySelector('input[type="tel"]');
+            const phoneInput = document.getElementById('parent-phone');
             if (!phoneInput || !phoneInput.value.trim()) {
+                console.log('❌ Parent phone validation failed');
                 return false;
             }
 
