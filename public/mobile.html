@@ -2723,7 +2723,7 @@
             finalTotal.textContent = `₪${formData.selectedPrice}`;
         }
 
-        function submitRegistration() {
+        async function submitRegistration() {
             // Prepare family registration data
             const registrationData = {
                 family: {
@@ -2742,18 +2742,27 @@
 
             console.log('Submitting family registration:', registrationData);
 
-            // Create success message with family details
-            const childrenNames = familyData.children.map(child => child.name).join(', ');
-            const durationText = familyData.bulkDuration === 'monthly' ? 'monthly' :
-                               familyData.bulkDuration === 'quarterly' ? 'quarterly' : 'annual';
+            try {
+                // Actually submit to backend
+                const result = await submitRegistrationData(registrationData);
+                console.log('✅ Backend submission successful:', result);
 
-            const successMessage = `🎉 Family registration submitted successfully!\n\n` +
-                                  `Children: ${childrenNames}\n` +
-                                  `Plan: ${durationText}\n` +
-                                  `Total: ₪${Math.round(familyData.totalPrice)}\n\n` +
-                                  `We'll contact you at ${familyData.parentEmail} soon!`;
+                // Create success message with family details
+                const childrenNames = familyData.children.map(child => child.name).join(', ');
+                const durationText = familyData.bulkDuration === 'monthly' ? 'monthly' :
+                                   familyData.bulkDuration === 'quarterly' ? 'quarterly' : 'annual';
 
-            alert(successMessage);
+                const successMessage = `🎉 Family registration submitted successfully!\n\n` +
+                                      `Children: ${childrenNames}\n` +
+                                      `Plan: ${durationText}\n` +
+                                      `Total: ₪${Math.round(familyData.totalPrice)}\n\n` +
+                                      `We'll contact you at ${familyData.parentEmail} soon!`;
+
+                alert(successMessage);
+            } catch (error) {
+                console.error('❌ Backend submission failed:', error);
+                alert('⚠️ Registration failed. Please try again or contact support.');
+            }
         }
 
         // Enhanced pricing calculation with duration support
