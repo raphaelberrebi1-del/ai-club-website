@@ -81,11 +81,11 @@ function doPost(e) {
     // Check if we need to open new groups
     checkAndOpenNewGroups(groups);
 
-    // Update calendar
-    updateCalendar(data);
+    // TESTING: Disable email and calendar for now
+    // updateCalendar(data);
+    // sendConfirmation(data.parent.email, data);
 
-    // Send confirmation email
-    sendConfirmation(data.parent.email, data);
+    console.log('✅ Registration completed successfully - email/calendar disabled for testing');
 
     return ContentService
       .createTextOutput(JSON.stringify({success: true, message: 'Registration processed'}))
