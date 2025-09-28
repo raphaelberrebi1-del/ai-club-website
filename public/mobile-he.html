@@ -2769,9 +2769,9 @@
             // Update total display based on duration
             let displayPrice;
             if (familyData.bulkDuration === 'monthly') {
-                displayPrice = `₪${Math.round(familyData.totalPrice)}/month`;
+                displayPrice = `₪${Math.round(familyData.totalPrice)}/חודש`;
             } else if (familyData.bulkDuration === 'quarterly') {
-                displayPrice = `₪${Math.round(familyData.totalPrice * 3)}/quarter`;
+                displayPrice = `₪${Math.round(familyData.totalPrice * 3)}/רבעון`;
             } else {
                 displayPrice = `₪${Math.round(familyData.totalPrice * 12)}/שנה`;
             }
