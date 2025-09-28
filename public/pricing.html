@@ -72,154 +72,113 @@
             <div class="relative z-10 max-w-md mx-auto">
                 <!-- Section Header -->
                 <div class="text-center mb-8 fade-in-up" data-scroll>
-                    <h2 class="text-4xl font-bold text-white tracking-tight mb-4">Early Bird Special</h2>
-                    <p class="text-white/80 text-lg mb-4">Lock in bonus savings before October 17th</p>
-                    <div class="bg-gradient-to-r from-amber-500/20 to-red-500/20 border border-amber-400/40 rounded-lg p-3 mb-6">
-                        <div class="flex items-center justify-center gap-2 text-amber-300 text-sm font-semibold">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                            </svg>
-                            <span>⏰ Early Bird Bonuses End October 17th - Then +20% Price Increase</span>
+                    <h1 class="text-2xl font-bold text-white tracking-tight mb-2">AI Club Ra'anana</h1>
+                    <h2 class="text-4xl font-bold text-white tracking-tight mb-4">Pricing & Programs</h2>
+                    <div class="bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-400/40 rounded-lg p-4 mb-6">
+                        <div class="text-center">
+                            <div class="text-red-300 text-lg font-bold mb-2">EARLY BIRD SPECIAL - Limited Time Only!</div>
+                            <div class="text-white/90 text-sm mb-3">Save 20% for the First 2 Months!</div>
+                            <div class="text-amber-300 text-xs">Lock in founding member rates before regular pricing begins</div>
                         </div>
                     </div>
-                    <div class="flex items-center justify-center gap-2 text-cyan-300 text-sm">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <span class="font-medium">No hidden fees • Multiple child discounts available</span>
+
+                    <!-- Countdown Timer -->
+                    <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-red-500/30 mb-6">
+                        <div class="text-center mb-4">
+                            <div class="text-red-300 text-lg font-semibold mb-2">Early Bird Special Ends In:</div>
+                        </div>
+                        <div class="grid grid-cols-4 gap-2" id="countdown">
+                            <div class="bg-gradient-to-b from-red-500/20 to-red-600/20 border border-red-400/30 rounded-lg p-3 text-center">
+                                <div class="text-2xl font-bold text-white" id="days">--</div>
+                                <div class="text-xs text-red-300">Days</div>
+                            </div>
+                            <div class="bg-gradient-to-b from-red-500/20 to-red-600/20 border border-red-400/30 rounded-lg p-3 text-center">
+                                <div class="text-2xl font-bold text-white" id="hours">--</div>
+                                <div class="text-xs text-red-300">Hours</div>
+                            </div>
+                            <div class="bg-gradient-to-b from-red-500/20 to-red-600/20 border border-red-400/30 rounded-lg p-3 text-center">
+                                <div class="text-2xl font-bold text-white" id="minutes">--</div>
+                                <div class="text-xs text-red-300">Minutes</div>
+                            </div>
+                            <div class="bg-gradient-to-b from-red-500/20 to-red-600/20 border border-red-400/30 rounded-lg p-3 text-center">
+                                <div class="text-2xl font-bold text-white" id="seconds">--</div>
+                                <div class="text-xs text-red-300">Seconds</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Billing Period Toggle -->
-                <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-cyan-500/30 mb-8 fade-in-up delay-1" data-scroll>
-                    <div class="flex rounded-xl bg-white/5 p-1 border border-cyan-400/20">
-                        <button id="monthly-tab" onclick="switchBillingPeriod('monthly')" class="flex-1 py-3 px-3 rounded-lg text-center font-medium transition-all duration-300 billing-tab text-white/80 hover:text-white hover:bg-white/10">
-                            <div class="text-sm">Monthly</div>
-                            <div class="text-xs mt-1 opacity-70">Pay as you go</div>
-                        </button>
-                        <button id="quarterly-tab" onclick="switchBillingPeriod('quarterly')" class="flex-1 py-3 px-3 rounded-lg text-center font-semibold transition-all duration-300 billing-tab bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white shadow-lg">
-                            <div class="text-sm">Quarterly</div>
-                            <div class="text-xs mt-1 text-amber-300 font-bold">20% + 10% BONUS!</div>
-                        </button>
-                        <button id="yearly-tab" onclick="switchBillingPeriod('yearly')" class="flex-1 py-3 px-3 rounded-lg text-center font-medium transition-all duration-300 billing-tab text-white/80 hover:text-white hover:bg-white/10">
-                            <div class="text-sm">Yearly</div>
-                            <div class="text-xs mt-1 text-amber-300 font-bold">20% + 20% BONUS!</div>
-                        </button>
-                    </div>
+                <!-- Choose Your Plan Section -->
+                <div class="text-center mb-6 fade-in-up delay-1" data-scroll>
+                    <h3 class="text-3xl font-bold text-white tracking-tight mb-6">Choose Your Plan</h3>
                 </div>
 
-                <!-- Pricing Cards Container -->
-                <div class="space-y-4" id="pricing-cards">
-
-                    <!-- Young Innovators Card -->
-                    <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-amber-200/30 pricing-card fade-in-up delay-2" data-scroll>
+                <!-- Unified Pricing Container -->
+                <div class="space-y-4 mb-8" id="pricing-plans">
+                    <!-- Monthly Plan -->
+                    <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-cyan-500/30 fade-in-up delay-2" data-scroll>
                         <div class="text-center">
-                            <div class="flex items-center justify-center gap-2 mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-amber-400">
-                                    <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
-                                    <path d="M20 2v4"></path>
-                                    <path d="M22 4h-4"></path>
-                                    <circle cx="4" cy="20" r="2"></circle>
-                                </svg>
-                                <h3 class="text-xl font-bold text-white">Young Innovators</h3>
+                            <h4 class="text-xl font-bold text-white mb-2">Monthly Plan</h4>
+                            <div class="flex items-center justify-center gap-3 mb-4">
+                                <div class="text-lg text-white/60 line-through">₪749</div>
+                                <div class="text-4xl font-bold text-cyan-300">₪599</div>
+                                <div class="text-lg text-white/70">/month per child</div>
                             </div>
-                            <p class="text-amber-200 text-sm mb-6">Ages 8-10 • Sundays 16:00-17:00</p>
-
-                            <!-- Monthly Price Display -->
-                            <div class="mb-6">
-                                <div class="price-display monthly-price" style="display: none;">
-                                    <div class="text-3xl font-bold text-cyan-300 mb-2">₪599</div>
-                                    <div class="text-sm text-white/70 mb-2">per month</div>
-                                    <div class="text-sm text-amber-300">Most flexibility</div>
-                                </div>
-                                <!-- Quarterly Price Display -->
-                                <div class="price-display quarterly-price">
-                                    <div class="text-3xl font-bold text-cyan-300 mb-2">₪479</div>
-                                    <div class="text-sm text-white/70 mb-2">per month</div>
-                                    <div class="text-sm text-amber-300 mb-3">Save 20% • Billed quarterly</div>
-                                    <div class="text-sm text-cyan-200">₪1,437 every 3 months</div>
-                                </div>
-                                <!-- Yearly Price Display -->
-                                <div class="price-display yearly-price" style="display: none;">
-                                    <div class="text-3xl font-bold text-cyan-300 mb-2">₪399</div>
-                                    <div class="text-sm text-white/70 mb-2">per month</div>
-                                    <div class="text-sm text-amber-300 mb-3">Save 33% • Billed annually</div>
-                                    <div class="text-sm text-cyan-200">₪4,788 per year</div>
-                                </div>
+                            <div class="text-sm text-white/80 mb-2">Regular Price: ₪749/month</div>
+                            <div class="bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full text-sm font-medium inline-block mb-4">
+                                Most Flexible Option
+                            </div>
+                            <div class="text-sm text-white/70 space-y-1">
+                                <div>• Pay month-to-month</div>
+                                <div>• No long-term commitment</div>
+                                <div>• Cancel anytime with 30 days notice</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tech Explorers Card -->
-                    <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-amber-200/30 pricing-card fade-in-up delay-3" data-scroll>
-                        <div class="text-center">
-                            <div class="flex items-center justify-center gap-2 mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-cyan-400">
-                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                                    <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
-                                </svg>
-                                <h3 class="text-xl font-bold text-white">Tech Explorers</h3>
+                    <!-- Quarterly Plan -->
+                    <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-amber-500/40 relative fade-in-up delay-3" data-scroll>
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                            <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-1 rounded-full text-xs font-bold">
+                                MOST POPULAR
                             </div>
-                            <p class="text-cyan-200 text-sm mb-6">Ages 11-13 • Sundays 17:30-18:45</p>
-
-                            <!-- Monthly Price Display -->
-                            <div class="mb-6">
-                                <div class="price-display monthly-price" style="display: none;">
-                                    <div class="text-3xl font-bold text-cyan-300 mb-2">₪599</div>
-                                    <div class="text-sm text-white/70 mb-2">per month</div>
-                                    <div class="text-sm text-amber-300">Most flexibility</div>
-                                </div>
-                                <!-- Quarterly Price Display -->
-                                <div class="price-display quarterly-price">
-                                    <div class="text-3xl font-bold text-cyan-300 mb-2">₪479</div>
-                                    <div class="text-sm text-white/70 mb-2">per month</div>
-                                    <div class="text-sm text-amber-300 mb-3">Save 20% • Billed quarterly</div>
-                                    <div class="text-sm text-cyan-200">₪1,437 every 3 months</div>
-                                </div>
-                                <!-- Yearly Price Display -->
-                                <div class="price-display yearly-price" style="display: none;">
-                                    <div class="text-3xl font-bold text-cyan-300 mb-2">₪399</div>
-                                    <div class="text-sm text-white/70 mb-2">per month</div>
-                                    <div class="text-sm text-amber-300 mb-3">Save 33% • Billed annually</div>
-                                    <div class="text-sm text-cyan-200">₪4,788 per year</div>
-                                </div>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="text-xl font-bold text-white mb-2">Quarterly Plan</h4>
+                            <div class="flex items-center justify-center gap-3 mb-4">
+                                <div class="text-lg text-white/60 line-through">₪599</div>
+                                <div class="text-4xl font-bold text-cyan-300">₪479</div>
+                                <div class="text-lg text-white/70">/month per child</div>
+                            </div>
+                            <div class="text-sm text-white/80 mb-2">Regular Price: ₪599/month</div>
+                            <div class="bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full text-sm font-medium inline-block mb-4">
+                                Save 20% vs Monthly
+                            </div>
+                            <div class="text-sm text-white/70 space-y-1 mb-3">
+                                <div>• Billed every 3 months (₪1,437)</div>
+                                <div>• Better value with consistency</div>
+                                <div>• Save ₪360 compared to monthly</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Future Leaders Card -->
-                    <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-amber-200/30 pricing-card fade-in-up delay-4" data-scroll>
+                    <!-- Annual Plan -->
+                    <div class="bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-green-500/30 fade-in-up delay-4" data-scroll>
                         <div class="text-center">
-                            <div class="flex items-center justify-center gap-2 mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-teal-400">
-                                    <path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path>
-                                    <path d="M5 21h14"></path>
-                                </svg>
-                                <h3 class="text-xl font-bold text-white">Future Leaders</h3>
+                            <h4 class="text-xl font-bold text-white mb-2">Annual Plan</h4>
+                            <div class="flex items-center justify-center gap-3 mb-4">
+                                <div class="text-lg text-white/60 line-through">₪499</div>
+                                <div class="text-4xl font-bold text-cyan-300">₪399</div>
+                                <div class="text-lg text-white/70">/month per child</div>
                             </div>
-                            <p class="text-teal-200 text-sm mb-6">Ages 14-18 • Sundays 19:00-20:30</p>
-
-                            <!-- Monthly Price Display -->
-                            <div class="mb-6">
-                                <div class="price-display monthly-price" style="display: none;">
-                                    <div class="text-3xl font-bold text-cyan-300 mb-2">₪599</div>
-                                    <div class="text-sm text-white/70 mb-2">per month</div>
-                                    <div class="text-sm text-amber-300">Most flexibility</div>
-                                </div>
-                                <!-- Quarterly Price Display -->
-                                <div class="price-display quarterly-price">
-                                    <div class="text-3xl font-bold text-cyan-300 mb-2">₪479</div>
-                                    <div class="text-sm text-white/70 mb-2">per month</div>
-                                    <div class="text-sm text-amber-300 mb-3">Save 20% • Billed quarterly</div>
-                                    <div class="text-sm text-cyan-200">₪1,437 every 3 months</div>
-                                </div>
-                                <!-- Yearly Price Display -->
-                                <div class="price-display yearly-price" style="display: none;">
-                                    <div class="text-3xl font-bold text-cyan-300 mb-2">₪399</div>
-                                    <div class="text-sm text-white/70 mb-2">per month</div>
-                                    <div class="text-sm text-amber-300 mb-3">Save 33% • Billed annually</div>
-                                    <div class="text-sm text-cyan-200">₪4,788 per year</div>
-                                </div>
+                            <div class="text-sm text-white/80 mb-2">Regular Price: ₪499/month</div>
+                            <div class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-sm font-medium inline-block mb-4">
+                                Best Value - Save 33% vs Monthly
+                            </div>
+                            <div class="text-sm text-white/70 space-y-1">
+                                <div>• Billed annually (₪4,788)</div>
+                                <div>• Maximum savings and stability</div>
+                                <div>• Save ₪2,400 compared to monthly</div>
                             </div>
                         </div>
                     </div>
@@ -233,40 +192,262 @@
                     <p class="text-xs text-white/60">Secure registration • Multiple payment options available</p>
                 </div>
 
-                <!-- Additional Info -->
-                <div class="mt-8 bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-amber-200/30 fade-in-up delay-6" data-scroll>
-                    <div class="text-center">
-                        <h4 class="text-lg font-semibold text-white mb-4">What's Included</h4>
-                        <div class="space-y-3 text-sm text-white/80">
+                <!-- What's Included Section -->
+                <div class="mt-8 bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-purple-500/30 fade-in-up delay-5" data-scroll>
+                    <div class="text-center mb-6">
+                        <h4 class="text-2xl font-bold text-white mb-2">What's Included</h4>
+                    </div>
+
+                    <!-- Expert Weekly Instruction -->
+                    <div class="mb-6">
+                        <h5 class="text-lg font-semibold text-purple-300 mb-3 flex items-center gap-2">
+                            <svg width="20" height="20" class="text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                                <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path>
+                            </svg>
+                            Expert Weekly Instruction
+                        </h5>
+                        <div class="space-y-2 text-sm text-white/80">
                             <div class="flex items-center gap-3">
-                                <svg width="16" height="16" class="text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                 </svg>
-                                <span>Weekly 75-90 minute interactive sessions</span>
+                                <span>4 weekly sessions per month (90 minutes each)</span>
                             </div>
                             <div class="flex items-center gap-3">
-                                <svg width="16" height="16" class="text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                 </svg>
-                                <span>Small group learning (max 8 kids per class)</span>
+                                <span>Small groups with maximum 12 students</span>
                             </div>
                             <div class="flex items-center gap-3">
-                                <svg width="16" height="16" class="text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                 </svg>
-                                <span>Access to premium AI tools and platforms</span>
+                                <span>Age-appropriate curriculum for 8-18 years</span>
                             </div>
                             <div class="flex items-center gap-3">
-                                <svg width="16" height="16" class="text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                 </svg>
-                                <span>Project portfolio and completion certificate</span>
+                                <span>Ongoing project mentorship and guidance</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Premium AI Tools Access -->
+                    <div class="mb-6">
+                        <h5 class="text-lg font-semibold text-cyan-300 mb-3 flex items-center gap-2">
+                            <svg width="20" height="20" class="text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"></path>
+                            </svg>
+                            Premium AI Tools Access
+                        </h5>
+                        <div class="space-y-2 text-sm text-white/80">
+                            <div class="flex items-center gap-3">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>ChatGPT Team access included</span>
                             </div>
                             <div class="flex items-center gap-3">
-                                <svg width="16" height="16" class="text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                 </svg>
-                                <span>Multiple child discounts available</span>
+                                <span>Claude Pro subscription included</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Midjourney creative AI included</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Additional specialized AI tools as needed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Portfolio Development -->
+                    <div class="mb-6">
+                        <h5 class="text-lg font-semibold text-amber-300 mb-3 flex items-center gap-2">
+                            <svg width="20" height="20" class="text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Professional Portfolio Development
+                        </h5>
+                        <div class="space-y-2 text-sm text-white/80">
+                            <div class="flex items-center gap-3">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Digital portfolio creation and maintenance</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Real-world project documentation</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>College and career preparation materials</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Skills certification and progress tracking</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Family Communication & Support -->
+                    <div>
+                        <h5 class="text-lg font-semibold text-green-300 mb-3 flex items-center gap-2">
+                            <svg width="20" height="20" class="text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                            </svg>
+                            Family Communication & Support
+                        </h5>
+                        <div class="space-y-2 text-sm text-white/80">
+                            <div class="flex items-center gap-3">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Weekly progress updates via WhatsApp</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Parent consultation sessions</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Family showcase events quarterly</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg width="16" height="16" class="text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>24/7 email support and technical assistance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Family Discounts Section -->
+                <div class="mt-8 bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-orange-500/30 fade-in-up delay-6" data-scroll>
+                    <div class="text-center mb-6">
+                        <h4 class="text-2xl font-bold text-white mb-2">Family Discounts</h4>
+                        <p class="text-orange-200 text-sm">Multiple Children Savings</p>
+                    </div>
+
+                    <div class="mb-6">
+                        <div class="space-y-3 text-center">
+                            <div class="flex items-center justify-center gap-3 text-lg">
+                                <svg width="20" height="20" class="text-orange-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-white font-semibold">Second Child: 10% discount on all plans</span>
+                            </div>
+                            <div class="flex items-center justify-center gap-3 text-lg">
+                                <svg width="20" height="20" class="text-orange-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-white font-semibold">Third Child & Beyond: 15% discount on all plans</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Family Pricing Examples -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Monthly Plan Family Pricing -->
+                        <div class="bg-cyan-500/10 border border-cyan-500/30 rounded-xl p-4">
+                            <h5 class="text-lg font-semibold text-cyan-300 mb-3 text-center">Monthly Plan Family Pricing</h5>
+                            <div class="space-y-2 text-sm text-white/80">
+                                <div class="flex justify-between">
+                                    <span>1st Child:</span>
+                                    <span class="font-semibold text-cyan-300">₪599/month</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>2nd Child:</span>
+                                    <span class="font-semibold text-cyan-300">₪539/month <span class="text-orange-300">(10% off)</span></span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>3rd Child:</span>
+                                    <span class="font-semibold text-cyan-300">₪509/month <span class="text-orange-300">(15% off)</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Annual Plan Family Pricing -->
+                        <div class="bg-green-500/10 border border-green-500/30 rounded-xl p-4">
+                            <h5 class="text-lg font-semibold text-green-300 mb-3 text-center">Annual Plan Family Pricing</h5>
+                            <div class="space-y-2 text-sm text-white/80">
+                                <div class="flex justify-between">
+                                    <span>1st Child:</span>
+                                    <span class="font-semibold text-green-300">₪399/month</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>2nd Child:</span>
+                                    <span class="font-semibold text-green-300">₪359/month <span class="text-orange-300">(10% off)</span></span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>3rd Child:</span>
+                                    <span class="font-semibold text-green-300">₪339/month <span class="text-orange-300">(15% off)</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trial & Policies Section -->
+                <div class="mt-8 bg-black/75 backdrop-blur-sm rounded-2xl p-6 shadow-xl border-2 border-blue-500/30 fade-in-up delay-7" data-scroll>
+                    <div class="text-center mb-6">
+                        <h4 class="text-2xl font-bold text-white mb-2">Trial & Policies</h4>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- 2-Lesson Trial -->
+                        <div class="flex items-start gap-3">
+                            <svg width="20" height="20" class="text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <div>
+                                <h5 class="text-lg font-semibold text-blue-300 mb-1">2-Lesson Trial Period</h5>
+                                <p class="text-sm text-white/80">Full refund available after the 2nd lesson if you're not completely satisfied with the program.</p>
+                            </div>
+                        </div>
+
+                        <!-- Cancellation Policy -->
+                        <div class="flex items-start gap-3">
+                            <svg width="20" height="20" class="text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                            </svg>
+                            <div>
+                                <h5 class="text-lg font-semibold text-blue-300 mb-1">Cancellation Terms</h5>
+                                <p class="text-sm text-white/80">30 days notice required for cancellation. No penalties or hidden fees.</p>
+                            </div>
+                        </div>
+
+                        <!-- Payment Methods -->
+                        <div class="flex items-start gap-3">
+                            <svg width="20" height="20" class="text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
+                                <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"></path>
+                            </svg>
+                            <div>
+                                <h5 class="text-lg font-semibold text-blue-300 mb-1">Payment Methods</h5>
+                                <p class="text-sm text-white/80">We accept Bit, PayBox, and all major credit cards for your convenience.</p>
                             </div>
                         </div>
                     </div>
@@ -324,6 +505,7 @@
         .fade-in-up.delay-4 { animation-delay: 0.8s; }
         .fade-in-up.delay-5 { animation-delay: 1.0s; }
         .fade-in-up.delay-6 { animation-delay: 1.2s; }
+        .fade-in-up.delay-7 { animation-delay: 1.4s; }
 
         @keyframes fadeInUp {
             to {
@@ -334,73 +516,49 @@
     </style>
 
     <script>
-        // Pricing functionality
-        function switchBillingPeriod(period) {
-            // Update tab styles
-            const monthlyTab = document.getElementById('monthly-tab');
-            const quarterlyTab = document.getElementById('quarterly-tab');
-            const yearlyTab = document.getElementById('yearly-tab');
-            const monthlyPrices = document.querySelectorAll('.monthly-price');
-            const quarterlyPrices = document.querySelectorAll('.quarterly-price');
-            const yearlyPrices = document.querySelectorAll('.yearly-price');
+        // Countdown Timer Functionality
+        function updateCountdown() {
+            // Set target date to November 1st, 2024 at midnight Israel time (GMT+3)
+            const targetDate = new Date('2024-11-01T00:00:00+03:00');
+            const now = new Date();
+            const difference = targetDate.getTime() - now.getTime();
 
-            // Reset all tabs
-            [monthlyTab, quarterlyTab, yearlyTab].forEach(tab => {
-                tab.className = "flex-1 py-3 px-3 rounded-lg text-center font-medium transition-all duration-300 billing-tab text-white/80 hover:text-white hover:bg-white/10";
-            });
+            // Check if countdown has ended
+            if (difference <= 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
 
-            // Hide all prices
-            [monthlyPrices, quarterlyPrices, yearlyPrices].forEach(prices => {
-                prices.forEach(price => {
-                    price.style.opacity = '0';
-                    setTimeout(() => {
-                        price.style.display = 'none';
-                    }, 200);
-                });
-            });
-
-            // Show selected period
-            if (period === 'monthly') {
-                monthlyTab.className = "flex-1 py-3 px-3 rounded-lg text-center font-semibold transition-all duration-300 billing-tab bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white shadow-lg";
-                setTimeout(() => {
-                    monthlyPrices.forEach(price => {
-                        price.style.display = 'block';
-                        setTimeout(() => price.style.opacity = '1', 50);
-                    });
-                }, 200);
-            } else if (period === 'quarterly') {
-                quarterlyTab.className = "flex-1 py-3 px-3 rounded-lg text-center font-semibold transition-all duration-300 billing-tab bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white shadow-lg";
-                setTimeout(() => {
-                    quarterlyPrices.forEach(price => {
-                        price.style.display = 'block';
-                        setTimeout(() => price.style.opacity = '1', 50);
-                    });
-                }, 200);
-            } else if (period === 'yearly') {
-                yearlyTab.className = "flex-1 py-3 px-3 rounded-lg text-center font-semibold transition-all duration-300 billing-tab bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white shadow-lg";
-                setTimeout(() => {
-                    yearlyPrices.forEach(price => {
-                        price.style.display = 'block';
-                        setTimeout(() => price.style.opacity = '1', 50);
-                    });
-                }, 200);
+                // Update the countdown header text
+                const countdownHeader = document.querySelector('#countdown').previousElementSibling.querySelector('div');
+                if (countdownHeader) {
+                    countdownHeader.textContent = 'Early Bird Special Has Ended';
+                }
+                return;
             }
+
+            // Calculate time units
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Update the countdown display
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
 
-        // Initialize pricing display
+        // Initialize countdown when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            // Add transition styles to price displays
-            const priceDisplays = document.querySelectorAll('.price-display');
-            priceDisplays.forEach(display => {
-                display.style.transition = 'opacity 0.3s ease-in-out';
-            });
+            // Start the countdown immediately
+            updateCountdown();
 
-            // Start with quarterly as default
-            switchBillingPeriod('quarterly');
+            // Update countdown every second
+            setInterval(updateCountdown, 1000);
         });
-
-        // Make function globally accessible
-        window.switchBillingPeriod = switchBillingPeriod;
     </script>
 </body>
 </html>
