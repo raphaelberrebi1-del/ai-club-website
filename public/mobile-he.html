@@ -2746,17 +2746,22 @@
                     future: 'מנהיגי העתיד (14-18)'
                 };
 
+                const durationNames = {
+                    monthly: 'חודשי',
+                    quarterly: 'רבעוני',
+                    yearly: 'שנתי'
+                };
                 summaryHTML += `
                     <div class="flex justify-between">
                         <span>${child.name} - ${ageGroupNames[child.ageGroup]}</span>
-                        <span>${familyData.bulkDuration}</span>
+                        <span>${durationNames[familyData.bulkDuration] || familyData.bulkDuration}</span>
                     </div>
                 `;
             });
 
             if (familyData.childCount > 1) {
                 const discountPercent = familyData.childCount === 2 ? '10%' : '15%';
-                summaryHTML += `<div class="text-amber-300 text-xs">Multi-child discount: ${discountPercent} off</div>`;
+                summaryHTML += `<div class="text-amber-300 text-xs">הנחה רב-ילדים: ${discountPercent} הנחה</div>`;
             }
 
             summaryContainer.innerHTML = summaryHTML;
@@ -2768,7 +2773,7 @@
             } else if (familyData.bulkDuration === 'quarterly') {
                 displayPrice = `₪${Math.round(familyData.totalPrice * 3)}/quarter`;
             } else {
-                displayPrice = `₪${Math.round(familyData.totalPrice * 12)}/year`;
+                displayPrice = `₪${Math.round(familyData.totalPrice * 12)}/שנה`;
             }
 
             totalEl.textContent = displayPrice;
