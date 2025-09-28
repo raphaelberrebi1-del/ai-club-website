@@ -997,7 +997,7 @@
                                 </div>
                                 <div class="border-t border-cyan-400/30 pt-3 mt-3">
                                     <div class="flex justify-between items-center">
-                                        <span class="text-base font-semibold text-white">Total:</span>
+                                        <span class="text-base font-semibold text-white">סה״כ:</span>
                                         <span id="step-3-total" class="text-xl font-bold text-cyan-300">₪0</span>
                                     </div>
                                 </div>
@@ -1615,15 +1615,15 @@
                     let program, monthlyPrice;
                     switch(ageGroup) {
                         case 'young':
-                            program = 'Young Innovators (Ages 8-10)';
+                            program = 'ממציאים צעירים (גילאי 8-10)';
                             monthlyPrice = 399; // Early bird monthly price
                             break;
                         case 'tech':
-                            program = 'Tech Explorers (Ages 11-13)';
+                            program = 'חוקרי טכנולוגיה (גילאי 11-13)';
                             monthlyPrice = 469; // Early bird monthly price
                             break;
                         case 'future':
-                            program = 'Future Leaders (Ages 14-18)';
+                            program = 'מנהיגי העתיד (גילאי 14-18)';
                             monthlyPrice = 599; // Early bird monthly price
                             break;
                         default:
@@ -1671,15 +1671,15 @@
                         let program, monthlyPrice;
                         switch(ageGroup) {
                             case 'young':
-                                program = 'Young Innovators (Ages 8-10)';
+                                program = 'ממציאים צעירים (גילאי 8-10)';
                                 monthlyPrice = 399; // Early bird monthly price
                                 break;
                             case 'tech':
-                                program = 'Tech Explorers (Ages 11-13)';
+                                program = 'חוקרי טכנולוגיה (גילאי 11-13)';
                                 monthlyPrice = 469; // Early bird monthly price
                                 break;
                             case 'future':
-                                program = 'Future Leaders (Ages 14-18)';
+                                program = 'מנהיגי העתיד (גילאי 14-18)';
                                 monthlyPrice = 599; // Early bird monthly price
                                 break;
                         }
@@ -2562,16 +2562,16 @@
             // Display total based on duration
             let displayPrice, displayText;
             if (familyData.bulkDuration === 'monthly') {
-                displayPrice = `₪${Math.round(totalMonthlyPrice)}/month`;
-                displayText = `${familyData.childCount} child${familyData.childCount === 1 ? '' : 'ren'} × ₪${basePrice}/month`;
+                displayPrice = `₪${Math.round(totalMonthlyPrice)}/חודש`;
+                displayText = `${familyData.childCount} ${familyData.childCount === 1 ? 'ילד' : 'ילדים'} × ₪${basePrice}/חודש`;
             } else if (familyData.bulkDuration === 'quarterly') {
                 const quarterlyTotal = Math.round(totalMonthlyPrice * 3);
-                displayPrice = `₪${quarterlyTotal}/quarter`;
-                displayText = `${familyData.childCount} child${familyData.childCount === 1 ? '' : 'ren'} × ₪${Math.round(basePrice * 3)}/quarter`;
+                displayPrice = `₪${quarterlyTotal}/רבעון`;
+                displayText = `${familyData.childCount} ${familyData.childCount === 1 ? 'ילד' : 'ילדים'} × ₪${Math.round(basePrice * 3)}/רבעון`;
             } else { // yearly
                 const yearlyTotal = Math.round(totalMonthlyPrice * 12);
-                displayPrice = `₪${yearlyTotal}/year`;
-                displayText = `${familyData.childCount} child${familyData.childCount === 1 ? '' : 'ren'} × ₪${Math.round(basePrice * 12)}/year`;
+                displayPrice = `₪${yearlyTotal}/שנה`;
+                displayText = `${familyData.childCount} ${familyData.childCount === 1 ? 'ילד' : 'ילדים'} × ₪${Math.round(basePrice * 12)}/שנה`;
             }
 
             totalPriceEl.textContent = displayPrice;
@@ -2614,32 +2614,32 @@
                 childForm.className = 'bg-amber-950/20 border border-amber-200/30 rounded-xl p-4 space-y-4 mb-4';
 
                 // Handle case where bulkDuration might be undefined
-                const planText = familyData.bulkDuration ? `${familyData.bulkDuration} plan` : 'plan selected';
+                const planText = familyData.bulkDuration ? `תוכנית ${familyData.bulkDuration === 'monthly' ? 'חודשית' : familyData.bulkDuration === 'quarterly' ? 'רבעונית' : 'שנתית'}` : 'תוכנית נבחרה';
 
                 childForm.innerHTML = `
                     <div class="flex items-center justify-between border-b border-amber-200/20 pb-3">
-                        <h4 class="text-lg font-semibold text-white">Child ${index + 1}</h4>
+                        <h4 class="text-lg font-semibold text-white">ילד ${index + 1}</h4>
                         <div class="text-sm text-white/60">${planText}</div>
                     </div>
 
                     <div class="space-y-3">
-                        <label class="text-sm font-semibold text-amber-100">Child's Name</label>
-                        <input type="text" id="child-name-${index}" placeholder="Enter child's name"
+                        <label class="text-sm font-semibold text-amber-100">שם הילד</label>
+                        <input type="text" id="child-name-${index}" placeholder="הכנס את שם הילד"
                                value="${child.name}"
                                onchange="updateChildData(${index}, 'name', this.value)"
                                class="w-full bg-amber-950/40 border border-amber-200/30 rounded-lg px-4 py-3 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent text-base">
                     </div>
 
                     <div class="space-y-3">
-                        <label class="text-sm font-semibold text-amber-100">Age Group</label>
+                        <label class="text-sm font-semibold text-amber-100">קבוצת גיל</label>
                         <div class="space-y-2">
                             <button type="button" onclick="selectChildAgeGroup(${index}, 'young')"
                                     class="child-age-btn-${index} w-full p-3 bg-amber-950/40 border border-amber-200/30 rounded-lg text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200 ${child.ageGroup === 'young' ? 'border-cyan-400 bg-cyan-500/10' : ''}"
                                     data-age="young">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-sm font-semibold text-white">Young Innovators</div>
-                                        <div class="text-xs text-white/60">Ages 8-10 • Sundays 15:00-16:15</div>
+                                        <div class="text-sm font-semibold text-white">ממציאים צעירים</div>
+                                        <div class="text-xs text-white/60">גילאי 8-10 • ימי ראשון 15:00-16:15</div>
                                     </div>
                                     <div class="w-4 h-4 border border-amber-300 rounded-full flex items-center justify-center">
                                         <div class="w-2 h-2 bg-cyan-400 rounded-full ${child.ageGroup === 'young' ? 'opacity-100' : 'opacity-0'} transition-opacity"></div>
@@ -2652,8 +2652,8 @@
                                     data-age="tech">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-sm font-semibold text-white">Tech Explorers</div>
-                                        <div class="text-xs text-white/60">Ages 11-13 • Sundays 16:30-17:45</div>
+                                        <div class="text-sm font-semibold text-white">חוקרי טכנולוגיה</div>
+                                        <div class="text-xs text-white/60">גילאי 11-13 • ימי ראשון 16:30-17:45</div>
                                     </div>
                                     <div class="w-4 h-4 border border-amber-300 rounded-full flex items-center justify-center">
                                         <div class="w-2 h-2 bg-cyan-400 rounded-full ${child.ageGroup === 'tech' ? 'opacity-100' : 'opacity-0'} transition-opacity"></div>
@@ -2666,8 +2666,8 @@
                                     data-age="future">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-sm font-semibold text-white">Future Leaders</div>
-                                        <div class="text-xs text-white/60">Ages 14-18 • Sundays 18:00-19:15</div>
+                                        <div class="text-sm font-semibold text-white">מנהיגי העתיד</div>
+                                        <div class="text-xs text-white/60">גילאי 14-18 • ימי ראשון 18:00-19:15</div>
                                     </div>
                                     <div class="w-4 h-4 border border-amber-300 rounded-full flex items-center justify-center">
                                         <div class="w-2 h-2 bg-cyan-400 rounded-full ${child.ageGroup === 'future' ? 'opacity-100' : 'opacity-0'} transition-opacity"></div>
@@ -2741,9 +2741,9 @@
             let summaryHTML = '';
             familyData.children.forEach((child, index) => {
                 const ageGroupNames = {
-                    young: 'Young Innovators (8-10)',
-                    tech: 'Tech Explorers (11-13)',
-                    future: 'Future Leaders (14-18)'
+                    young: 'ממציאים צעירים (8-10)',
+                    tech: 'חוקרי טכנולוגיה (11-13)',
+                    future: 'מנהיגי העתיד (14-18)'
                 };
 
                 summaryHTML += `
@@ -2932,15 +2932,15 @@
             switch(ageGroup) {
                 case 'young':
                     monthlyPrice = 399;
-                    programName = 'Young Innovators (Ages 8-10)';
+                    programName = 'ממציאים צעירים (גילאי 8-10)';
                     break;
                 case 'tech':
                     monthlyPrice = 469;
-                    programName = 'Tech Explorers (Ages 11-13)';
+                    programName = 'חוקרי טכנולוגיה (גילאי 11-13)';
                     break;
                 case 'future':
                     monthlyPrice = 599;
-                    programName = 'Future Leaders (Ages 14-18)';
+                    programName = 'מנהיגי העתיד (גילאי 14-18)';
                     break;
             }
 
@@ -3042,13 +3042,13 @@
             let programName;
             switch(formData.ageGroup) {
                 case 'young':
-                    programName = 'Young Innovators (Ages 8-10)';
+                    programName = 'ממציאים צעירים (גילאי 8-10)';
                     break;
                 case 'tech':
-                    programName = 'Tech Explorers (Ages 11-13)';
+                    programName = 'חוקרי טכנולוגיה (גילאי 11-13)';
                     break;
                 case 'future':
-                    programName = 'Future Leaders (Ages 14-18)';
+                    programName = 'מנהיגי העתיד (גילאי 14-18)';
                     break;
             }
 
@@ -3157,15 +3157,15 @@
                 let program, monthlyPrice;
                 switch(ageGroup) {
                     case 'young':
-                        program = 'Young Innovators (Ages 8-10)';
+                        program = 'ממציאים צעירים (גילאי 8-10)';
                         monthlyPrice = 399;
                         break;
                     case 'tech':
-                        program = 'Tech Explorers (Ages 11-13)';
+                        program = 'חוקרי טכנולוגיה (גילאי 11-13)';
                         monthlyPrice = 469;
                         break;
                     case 'future':
-                        program = 'Future Leaders (Ages 14-18)';
+                        program = 'מנהיגי העתיד (גילאי 14-18)';
                         monthlyPrice = 599;
                         break;
                 }
@@ -3187,15 +3187,15 @@
                     let program, monthlyPrice;
                     switch(ageGroup) {
                         case 'young':
-                            program = 'Young Innovators (Ages 8-10)';
+                            program = 'ממציאים צעירים (גילאי 8-10)';
                             monthlyPrice = 399;
                             break;
                         case 'tech':
-                            program = 'Tech Explorers (Ages 11-13)';
+                            program = 'חוקרי טכנולוגיה (גילאי 11-13)';
                             monthlyPrice = 469;
                             break;
                         case 'future':
-                            program = 'Future Leaders (Ages 14-18)';
+                            program = 'מנהיגי העתיד (גילאי 14-18)';
                             monthlyPrice = 599;
                             break;
                     }
