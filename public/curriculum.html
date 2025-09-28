@@ -508,6 +508,14 @@
             transform: translateZ(0);
         }
 
+        .site-background::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
         /* Smooth transitions for content sections */
         .program-content {
             transition: all 0.3s ease-in-out;
