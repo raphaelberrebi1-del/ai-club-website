@@ -605,7 +605,7 @@
                             </div>
 
                             <!-- Real-time Pricing Preview -->
-                            <div id="pricing-preview" class="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-cyan-400/30 rounded-xl p-4 hidden">
+                            <div id="pricing-preview-old" class="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-cyan-400/30 rounded-xl p-4 hidden">
                                 <div class="flex justify-between items-center mb-3">
                                     <span class="text-base font-semibold text-white">Total Family Cost</span>
                                     <span id="total-price-old" class="text-2xl font-bold text-cyan-400"></span>
@@ -628,13 +628,13 @@
                     </div>
 
                     <!-- Step 2: Child Details -->
-                    <div id="step-2" class="step-content p-6 flex-1 flex-col hidden">
+                    <div id="step-2-old" class="step-content p-6 flex-1 flex-col hidden">
                         <div class="mb-6">
                             <h2 class="text-xl font-bold text-white tracking-tight mb-2">Child Details</h2>
                             <p class="text-white/60 text-sm">Tell us about each child joining AI Club</p>
                         </div>
 
-                        <div class="flex-1 space-y-6" id="children-forms">
+                        <div class="flex-1 space-y-6" id="children-forms-old">
                             <!-- Dynamic child forms will be inserted here -->
                         </div>
 
@@ -642,14 +642,14 @@
                             <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
                                 חזור
                             </button>
-                            <button onclick="nextStep()" id="step-2-next" class="flex-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                            <button onclick="nextStep()" id="step-2-next-old" class="flex-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
                                 המשך
                             </button>
                         </div>
                     </div>
 
                     <!-- Step 3: Parent Contact & Payment -->
-                    <div id="step-3" class="step-content p-6 flex-1 flex-col hidden">
+                    <div id="step-3-old" class="step-content p-6 flex-1 flex-col hidden">
                         <div class="mb-6">
                             <h2 class="text-xl font-bold text-white tracking-tight mb-2">השלם רישום</h2>
                             <p class="text-white/60 text-sm">פרטים אחרונים ותשלום לשמירת המקום</p>
@@ -659,39 +659,39 @@
                             <!-- Registration Summary -->
                             <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
                                 <h3 class="text-lg font-semibold text-white mb-3">סיכום רישום</h3>
-                                <div id="step-3-summary" class="space-y-2 text-sm text-white/80">
+                                <div id="step-3-summary-old" class="space-y-2 text-sm text-white/80">
                                     <!-- Summary will be populated here -->
                                 </div>
                                 <div class="border-t border-cyan-400/30 pt-3 mt-3">
                                     <div class="flex justify-between items-center">
                                         <span class="text-base font-semibold text-white">Total:</span>
-                                        <span id="step-3-total" class="text-xl font-bold text-cyan-300">₪0</span>
+                                        <span id="step-3-total-old" class="text-xl font-bold text-cyan-300">₪0</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="space-y-3">
                                 <label class="text-base font-semibold text-amber-100">שם ההורה</label>
-                                <input type="text" id="parent-name" placeholder="הכנס את שמך המלא"
+                                <input type="text" id="parent-name-old" placeholder="הכנס את שמך המלא"
                                        oninput="validateStep3()"
                                        class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
                             </div>
 
                             <div class="space-y-3">
                                 <label class="text-base font-semibold text-amber-100">כתובת אימייל</label>
-                                <input type="email" id="parent-email" placeholder="your@email.com"
+                                <input type="email" id="parent-email-old" placeholder="your@email.com"
                                        oninput="validateStep3()"
                                        class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
                             </div>
 
                             <div class="space-y-3">
                                 <label class="text-base font-semibold text-amber-100">מספר טלפון</label>
-                                <input type="tel" id="parent-phone" placeholder="050-123-4567"
+                                <input type="tel" id="parent-phone-old" placeholder="050-123-4567"
                                        oninput="validateStep3()"
                                        class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
                             </div>
 
                             <!-- Payment Method Selection -->
-                            <div id="payment-selection" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-500/30 rounded-xl p-6">
+                            <div id="payment-selection-old" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-500/30 rounded-xl p-6">
                                 <div class="flex items-center gap-3 mb-4">
                                     <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full flex items-center justify-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
@@ -758,7 +758,7 @@
                             <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
                                 חזור
                             </button>
-                            <button onclick="proceedToPayment()" id="step-3-next" class="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                            <button onclick="proceedToPayment()" id="step-3-next-old" class="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
                                 השלם רישום
                             </button>
                         </div>
@@ -981,8 +981,121 @@
                         </div>
                     </div>
 
-                    <!-- Step 3: Parent Contact & Payment (Already translated above) -->
-                    <!-- Using the existing Step 3 content that was already translated -->
+                    <!-- Step 3: Parent Contact & Payment -->
+                    <div id="step-3" class="step-content p-6 flex-1 flex-col hidden">
+                        <div class="mb-6">
+                            <h2 class="text-xl font-bold text-white tracking-tight mb-2">השלם רישום</h2>
+                            <p class="text-white/60 text-sm">פרטים אחרונים ותשלום לשמירת המקום</p>
+                        </div>
+
+                        <div class="flex-1 space-y-6">
+                            <!-- Registration Summary -->
+                            <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
+                                <h3 class="text-lg font-semibold text-white mb-3">סיכום רישום</h3>
+                                <div id="step-3-summary" class="space-y-2 text-sm text-white/80">
+                                    <!-- Summary will be populated here -->
+                                </div>
+                                <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-base font-semibold text-white">Total:</span>
+                                        <span id="step-3-total" class="text-xl font-bold text-cyan-300">₪0</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <label class="text-base font-semibold text-amber-100">שם ההורה</label>
+                                <input type="text" id="parent-name" placeholder="הכנס את שמך המלא"
+                                       oninput="validateStep3()"
+                                       class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
+                            </div>
+
+                            <div class="space-y-3">
+                                <label class="text-base font-semibold text-amber-100">כתובת אימייל</label>
+                                <input type="email" id="parent-email" placeholder="your@email.com"
+                                       oninput="validateStep3()"
+                                       class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
+                            </div>
+
+                            <div class="space-y-3">
+                                <label class="text-base font-semibold text-amber-100">מספר טלפון</label>
+                                <input type="tel" id="parent-phone" placeholder="050-123-4567"
+                                       oninput="validateStep3()"
+                                       class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
+                            </div>
+
+                            <!-- Payment Method Selection -->
+                            <div id="payment-selection" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-500/30 rounded-xl p-6">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                            <rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+                                        </svg>
+                                    </div>
+                                    <h4 class="text-lg font-semibold text-white">בחר אמצעי תשלום</h4>
+                                </div>
+
+                                <div class="space-y-3">
+                                    <!-- Bit Payment Option -->
+                                    <label class="flex items-center p-4 bg-amber-950/20 rounded-xl border border-amber-200/20 cursor-pointer hover:bg-amber-950/30 transition-colors">
+                                        <input type="radio" name="payment-method" value="bit" class="sr-only" checked>
+                                        <div class="w-5 h-5 border-2 border-green-400 rounded-full flex items-center justify-center mr-3">
+                                            <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                        </div>
+                                        <div class="flex items-center gap-3 flex-1">
+                                            <img src="Bit.logo.png" alt="Bit" class="h-10 w-auto max-w-[120px] object-contain">
+                                            <div>
+                                                <div class="text-white font-medium">תשלום ב-Bit</div>
+                                                <div class="text-amber-200 text-sm">שלם בצורה מאובטחת עם אפליקציית Bit</div>
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <!-- PayBox Option -->
+                                    <label class="flex items-center p-4 bg-amber-950/20 rounded-xl border border-amber-200/20 cursor-pointer hover:bg-amber-950/30 transition-colors">
+                                        <input type="radio" name="payment-method" value="paybox" class="sr-only">
+                                        <div class="w-5 h-5 border-2 border-amber-400 rounded-full flex items-center justify-center mr-3">
+                                            <div class="w-2 h-2 bg-transparent rounded-full"></div>
+                                        </div>
+                                        <div class="flex items-center gap-3 flex-1">
+                                            <img src="Paybox.logo.png" alt="PayBox" class="h-10 w-auto max-w-[120px] object-contain">
+                                            <div>
+                                                <div class="text-white font-medium">PayBox</div>
+                                                <div class="text-amber-200 text-sm">שלם עם ארנק PayBox</div>
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <!-- Cash/Bank Transfer Option -->
+                                    <label class="flex items-center p-4 bg-amber-950/20 rounded-xl border border-amber-200/20 cursor-pointer hover:bg-amber-950/30 transition-colors">
+                                        <input type="radio" name="payment-method" value="cash" class="sr-only">
+                                        <div class="w-5 h-5 border-2 border-amber-400 rounded-full flex items-center justify-center mr-3">
+                                            <div class="w-2 h-2 bg-transparent rounded-full"></div>
+                                        </div>
+                                        <div class="flex items-center gap-3 flex-1">
+                                            <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                                    <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <div class="text-white font-medium">מזומן/העברה בנקאית</div>
+                                                <div class="text-amber-200 text-sm">שלם בהעברה בנקאית או במזומן</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
+                            <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
+                                חזור
+                            </button>
+                            <button onclick="proceedToPayment()" id="step-3-next" class="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                                השלם רישום
+                            </button>
+                        </div>
+                    </div>
 
                 </div>
             </div>
