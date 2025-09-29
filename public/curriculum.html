@@ -93,15 +93,15 @@
                         <span class="block font-bold text-lg">12 Weeks</span>
                         <span class="block text-xs opacity-80">Foundation</span>
                     </button>
-                    <button onclick="switchProgram('24')" id="tab-24" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-rose-400 text-white/70">
+                    <button onclick="switchProgram('24')" id="tab-24" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
                         <span class="block font-bold text-lg">24 Weeks</span>
                         <span class="block text-xs opacity-80">+ Advanced Skills</span>
                     </button>
-                    <button onclick="switchProgram('36')" id="tab-36" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-green-400 text-white/70">
+                    <button onclick="switchProgram('36')" id="tab-36" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
                         <span class="block font-bold text-lg">36 Weeks</span>
                         <span class="block text-xs opacity-80">+ Projects</span>
                     </button>
-                    <button onclick="switchProgram('48')" id="tab-48" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-sky-400 text-white/70">
+                    <button onclick="switchProgram('48')" id="tab-48" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
                         <span class="block font-bold text-lg">48 Weeks</span>
                         <span class="block text-xs opacity-80">+ Mastery</span>
                     </button>
@@ -541,17 +541,17 @@
             // Update tabs - reset all to inactive state
             document.querySelectorAll('.program-tab').forEach(tab => {
                 tab.classList.remove('active');
-                tab.classList.add('bg-white/10', 'text-white/70');
-                // Remove all possible active color classes
-                tab.classList.remove('bg-cyan-400/20', 'border-cyan-400/40', 'text-cyan-300');
-                tab.classList.remove('bg-rose-400/20', 'border-rose-400/40', 'text-rose-300');
-                tab.classList.remove('bg-green-400/20', 'border-green-400/40', 'text-green-300');
-                tab.classList.remove('bg-sky-400/20', 'border-sky-400/40', 'text-sky-300');
+                tab.classList.add('bg-white/10', 'border-white/30', 'text-white/70');
+                // Remove all possible color classes
+                tab.classList.remove('bg-cyan-400/20', 'border-cyan-400/40', 'border-cyan-400', 'text-cyan-300');
+                tab.classList.remove('bg-rose-400/20', 'border-rose-400/40', 'border-rose-400', 'text-rose-300');
+                tab.classList.remove('bg-green-400/20', 'border-green-400/40', 'border-green-400', 'text-green-300');
+                tab.classList.remove('bg-sky-400/20', 'border-sky-400/40', 'border-sky-400', 'text-sky-300');
             });
 
             const activeTab = document.getElementById(`tab-${weeks}`);
             activeTab.classList.add('active');
-            activeTab.classList.remove('bg-white/10', 'text-white/70');
+            activeTab.classList.remove('bg-white/10', 'border-white/30', 'text-white/70');
 
             // Apply color scheme based on program duration
             if (weeks === '12') {
