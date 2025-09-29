@@ -122,7 +122,7 @@
                         <!-- Age Groups for 12-week -->
                         <div class="space-y-4">
                             <!-- Young Innovators 8-12 -->
-                            <div class="bg-black/90 rounded-xl p-4 border border-amber-200/20">
+                            <div class="bg-black/60 rounded-xl p-4 border border-amber-200/20">
                                 <button onclick="toggleSection('young-12')" class="w-full flex items-center justify-between mb-2">
                                     <h4 class="text-base font-bold text-amber-300">Young Innovators (8-10)</h4>
                                     <svg id="young-12-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-300 transform transition-transform">
@@ -216,7 +216,7 @@
                             </div>
 
                             <!-- Tech Explorers 11-13 -->
-                            <div class="bg-black/90 rounded-xl p-4 border border-teal-200/20">
+                            <div class="bg-black/60 rounded-xl p-4 border border-teal-200/20">
                                 <button onclick="toggleSection('middle-12')" class="w-full flex items-center justify-between mb-2">
                                     <h4 class="text-base font-bold text-teal-300">Tech Explorers (11-13)</h4>
                                     <svg id="middle-12-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-teal-300 transform transition-transform">
@@ -311,7 +311,7 @@
                             </div>
 
                             <!-- Future Leaders 14-18 -->
-                            <div class="bg-black/90 rounded-xl p-4 border border-purple-200/20">
+                            <div class="bg-black/60 rounded-xl p-4 border border-purple-200/20">
                                 <button onclick="toggleSection('teen-12')" class="w-full flex items-center justify-between mb-2">
                                     <h4 class="text-base font-bold text-purple-300">Future Leaders (14-18)</h4>
                                     <svg id="teen-12-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-300 transform transition-transform">
@@ -411,8 +411,8 @@
 
                 <!-- 24 Week Program -->
                 <div id="program-24" class="program-content hidden">
-                    <div class="bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-2xl p-6 mb-6 border border-purple-400/20">
-                        <div class="bg-gradient-to-r from-cyan-400/10 to-purple-400/10 rounded-lg p-3 mb-4">
+                    <div class="bg-gradient-to-br from-orange-400/15 to-red-400/15 rounded-2xl p-6 mb-6 border border-orange-400/30">
+                        <div class="bg-gradient-to-r from-cyan-400/10 to-orange-400/10 rounded-lg p-3 mb-4">
                             <p class="text-sm text-cyan-300"><strong>Includes:</strong> Complete 12-Week Foundation Program +</p>
                         </div>
 
@@ -421,8 +421,8 @@
 
                         <!-- Coming Soon Message -->
                         <div class="text-center py-12">
-                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full mb-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-400">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-400">
                                     <circle cx="12" cy="12" r="10"></circle>
                                     <polyline points="12,6 12,12 16,14"></polyline>
                                 </svg>
@@ -459,8 +459,8 @@
 
                 <!-- 48 Week Program -->
                 <div id="program-48" class="program-content hidden">
-                    <div class="bg-gradient-to-br from-orange-400/10 to-red-400/10 rounded-2xl p-6 mb-6 border border-orange-400/20">
-                        <div class="bg-gradient-to-r from-cyan-400/10 to-orange-400/10 rounded-lg p-3 mb-4">
+                    <div class="bg-gradient-to-br from-purple-400/15 to-pink-400/15 rounded-2xl p-6 mb-6 border border-purple-400/30">
+                        <div class="bg-gradient-to-r from-cyan-400/10 to-purple-400/10 rounded-lg p-3 mb-4">
                             <p class="text-sm text-cyan-300"><strong>Includes:</strong> Complete 36-Week Advanced Program +</p>
                         </div>
 
@@ -469,8 +469,8 @@
 
                         <!-- Coming Soon Message -->
                         <div class="text-center py-12">
-                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full mb-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-400">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-400">
                                     <circle cx="12" cy="12" r="10"></circle>
                                     <polyline points="12,6 12,12 16,14"></polyline>
                                 </svg>
@@ -538,17 +538,31 @@
         let currentProgram = '12';
 
         function switchProgram(weeks) {
-            // Update tabs
+            // Update tabs - reset all to inactive state
             document.querySelectorAll('.program-tab').forEach(tab => {
                 tab.classList.remove('active');
                 tab.classList.add('bg-white/10', 'border-white/30', 'text-white/70');
+                // Remove all possible color classes
                 tab.classList.remove('bg-cyan-400/20', 'border-cyan-400/40', 'text-cyan-300');
+                tab.classList.remove('bg-orange-400/20', 'border-orange-400/40', 'text-orange-300');
+                tab.classList.remove('bg-green-400/20', 'border-green-400/40', 'text-green-300');
+                tab.classList.remove('bg-purple-400/20', 'border-purple-400/40', 'text-purple-300');
             });
 
             const activeTab = document.getElementById(`tab-${weeks}`);
             activeTab.classList.add('active');
             activeTab.classList.remove('bg-white/10', 'border-white/30', 'text-white/70');
-            activeTab.classList.add('bg-cyan-400/20', 'border-cyan-400/40', 'text-cyan-300');
+
+            // Apply color scheme based on program duration
+            if (weeks === '12') {
+                activeTab.classList.add('bg-cyan-400/20', 'border-cyan-400/40', 'text-cyan-300');
+            } else if (weeks === '24') {
+                activeTab.classList.add('bg-orange-400/20', 'border-orange-400/40', 'text-orange-300');
+            } else if (weeks === '36') {
+                activeTab.classList.add('bg-green-400/20', 'border-green-400/40', 'text-green-300');
+            } else if (weeks === '48') {
+                activeTab.classList.add('bg-purple-400/20', 'border-purple-400/40', 'text-purple-300');
+            }
 
             // Update content
             document.querySelectorAll('.program-content').forEach(content => {
