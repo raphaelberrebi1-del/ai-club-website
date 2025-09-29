@@ -459,8 +459,8 @@
 
                 <!-- 48 Week Program -->
                 <div id="program-48" class="program-content hidden">
-                    <div class="bg-gradient-to-br from-sky-400/15 to-blue-400/15 rounded-2xl p-6 mb-6 border border-sky-400/30">
-                        <div class="bg-gradient-to-r from-cyan-400/10 to-sky-400/10 rounded-lg p-3 mb-4">
+                    <div class="bg-gradient-to-br from-violet-400/15 to-purple-400/15 rounded-2xl p-6 mb-6 border border-violet-400/30">
+                        <div class="bg-gradient-to-r from-cyan-400/10 to-violet-400/10 rounded-lg p-3 mb-4">
                             <p class="text-sm text-cyan-300"><strong>Includes:</strong> Complete 36-Week Advanced Program +</p>
                         </div>
 
@@ -469,8 +469,8 @@
 
                         <!-- Coming Soon Message -->
                         <div class="text-center py-12">
-                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-sky-400/20 to-blue-400/20 rounded-full mb-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-sky-400">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-400/20 to-purple-400/20 rounded-full mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-violet-400">
                                     <circle cx="12" cy="12" r="10"></circle>
                                     <polyline points="12,6 12,12 16,14"></polyline>
                                 </svg>
@@ -544,6 +544,7 @@
                 tab.classList.remove('bg-rose-400/20', 'border-rose-400/40', 'border-rose-400', 'text-rose-300');
                 tab.classList.remove('bg-green-400/20', 'border-green-400/40', 'border-green-400', 'text-green-300');
                 tab.classList.remove('bg-sky-400/20', 'border-sky-400/40', 'border-sky-400', 'text-sky-300');
+                tab.classList.remove('bg-violet-400/20', 'border-violet-400/40', 'border-violet-400', 'text-violet-300');
             });
 
             const activeTab = document.getElementById(`tab-${weeks}`);
@@ -558,7 +559,7 @@
             } else if (weeks === '36') {
                 activeTab.classList.add('bg-green-400/20', 'border-green-400', 'text-green-300');
             } else if (weeks === '48') {
-                activeTab.classList.add('bg-sky-400/20', 'border-sky-400', 'text-sky-300');
+                activeTab.classList.add('bg-violet-400/20', 'border-violet-400', 'text-violet-300');
             }
 
             // Update content
