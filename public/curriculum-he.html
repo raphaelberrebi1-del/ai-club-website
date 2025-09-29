@@ -89,7 +89,7 @@
             <div class="max-w-md mx-auto">
                 <h2 class="text-lg font-bold text-white mb-4 text-center">בחר אורך תוכנית</h2>
                 <div class="grid grid-cols-2 gap-3 mb-8">
-                    <button onclick="switchProgram('12')" id="tab-12" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-cyan-400/20 border-cyan-400/40 text-cyan-300">
+                    <button onclick="switchProgram('12')" id="tab-12" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-cyan-400/20 border-cyan-400 text-cyan-300">
                         <span class="block font-bold text-lg">12 שבועות</span>
                         <span class="block text-xs opacity-80">יסודות</span>
                     </button>
@@ -543,10 +543,10 @@
                 tab.classList.remove('active');
                 tab.classList.add('bg-white/10', 'border-white/30', 'text-white/70');
                 // Remove all possible color classes
-                tab.classList.remove('bg-cyan-400/20', 'border-cyan-400/40', 'text-cyan-300');
-                tab.classList.remove('bg-rose-400/20', 'border-rose-400/40', 'text-rose-300');
-                tab.classList.remove('bg-green-400/20', 'border-green-400/40', 'text-green-300');
-                tab.classList.remove('bg-sky-400/20', 'border-sky-400/40', 'text-sky-300');
+                tab.classList.remove('bg-cyan-400/20', 'border-cyan-400/40', 'border-cyan-400', 'text-cyan-300');
+                tab.classList.remove('bg-rose-400/20', 'border-rose-400/40', 'border-rose-400', 'text-rose-300');
+                tab.classList.remove('bg-green-400/20', 'border-green-400/40', 'border-green-400', 'text-green-300');
+                tab.classList.remove('bg-sky-400/20', 'border-sky-400/40', 'border-sky-400', 'text-sky-300');
             });
 
             const activeTab = document.getElementById(`tab-${weeks}`);
@@ -555,13 +555,13 @@
 
             // Apply color scheme based on program duration
             if (weeks === '12') {
-                activeTab.classList.add('bg-cyan-400/20', 'border-cyan-400/40', 'text-cyan-300');
+                activeTab.classList.add('bg-cyan-400/20', 'border-cyan-400', 'text-cyan-300');
             } else if (weeks === '24') {
-                activeTab.classList.add('bg-rose-400/20', 'border-rose-400/40', 'text-rose-300');
+                activeTab.classList.add('bg-rose-400/20', 'border-rose-400', 'text-rose-300');
             } else if (weeks === '36') {
-                activeTab.classList.add('bg-green-400/20', 'border-green-400/40', 'text-green-300');
+                activeTab.classList.add('bg-green-400/20', 'border-green-400', 'text-green-300');
             } else if (weeks === '48') {
-                activeTab.classList.add('bg-sky-400/20', 'border-sky-400/40', 'text-sky-300');
+                activeTab.classList.add('bg-sky-400/20', 'border-sky-400', 'text-sky-300');
             }
 
             // Update content
