@@ -117,11 +117,19 @@
             inset: 0;
             z-index: -10;
             pointer-events: none;
-            background-image: url('/magical-ai-kids.jpg');
+            background-image: url('/NEW-background.jpg?v=1');
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
             transform: translateZ(0);
+        }
+
+        .site-background::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
         }
 
         /* Removed conflicting body::before overlay that was blocking background image */
@@ -979,7 +987,7 @@
     </style>
 
     <!-- Nav -->
-    <header class="relative z-50 sticky top-0 backdrop-blur-xl bg-[#0a0a12]/80 border-b border-white/5">
+    <header class="relative z-50 sticky top-0 backdrop-blur-xl bg-[#0a0a12]/95 border-b border-amber-200/20">
         <div class="max-w-7xl sm:px-6 lg:px-8 border-slate-50/5 mr-auto ml-auto pr-4 pl-4">
             <div class="flex h-16 items-center justify-between">
                 <a href="#" class="flex items-center gap-3">
@@ -998,7 +1006,7 @@
                 </nav>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors">
+                <button id="mobile-menu-button" class="md:hidden flex items-center justify-center w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-amber-200/30 hover:bg-white/20 transition-all duration-200 hover:scale-105">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -1164,26 +1172,28 @@
             </style>
 
             <div class="flex flex-col relative z-10 text-center mr-auto mb-60 ml-auto space-y-6 items-center">
-                <!-- Gradient overlays restored for visual depth -->
+                <!-- Clean translucent container -->
                 <div class="relative max-w-4xl mx-auto">
-                    <div class="absolute inset-0 rounded-3xl pointer-events-none" style="background: radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.22) 60%, rgba(0,0,0,0.45) 100%);"></div>
-                    <div class="absolute inset-0 rounded-3xl pointer-events-none bg-gradient-to-b from-black/5 via-black/30 to-black/12"></div>
-                    <div class="absolute inset-0 rounded-3xl pointer-events-none opacity-55 bg-gradient-to-br from-purple-500/22 via-orange-400/18 to-pink-500/24 mix-blend-overlay"></div>
                     <!-- Content area with relative positioning -->
                     <div class="relative z-10 p-12">
                     <!-- Integrated badge within main container -->
                     <div class="mb-8">
-                        <span class="inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/20 px-6 py-3 text-base font-semibold text-white backdrop-blur-sm shadow-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="brain" class="lucide lucide-brain w-5 h-5 text-orange-300" style="stroke-width: 1.5;"><path d="M12 18V5"></path><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"></path><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"></path><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path><path d="M18 18a4 4 0 0 0 2-7.464"></path><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"></path><path d="M6 18a4 4 0 0 1-2-7.464"></path><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path></svg>
-                            New: Structured AI Programs for Kids
+                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full border border-amber-200/40 animate-pulse-subtle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-400">
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+                            </svg>
+                            <span class="text-sm font-medium text-white/90">Now in Raanana: AI Programs for Ages 8–18</span>
                         </span>
                     </div>
 
                     <h1 class="sm:text-6xl md:text-7xl text-4xl font-extrabold text-white tracking-tight mb-6" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">
-                        Give Your Child the AI <span class="font-serif italic bg-gradient-to-r from-orange-300 via-pink-300 to-orange-400 bg-clip-text text-transparent">Advantage</span>
+                        Give Your Child a Head Start in the
+                        <span class="font-serif italic font-bold bg-gradient-to-r from-[#3A9CAA] via-[#4AB4C8] to-[#80D4E0] bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8); text-shadow: 0 0 3px rgba(255,255,255,0.9), 0 0 5px rgba(58,156,170,0.8), 0 0 15px rgba(58,156,170,0.6), 0 0 25px rgba(58,156,170,0.4), 0 0 35px rgba(58,156,170,0.2), 2px 2px 4px rgba(0,0,0,0.3); font-weight: 700; letter-spacing: 0.5px;">
+                            AI Era
+                        </span>
                     </h1>
-                    <p class="max-w-2xl sm:text-xl text-lg text-white/90 mt-0 mx-auto leading-relaxed">
-                        Join AI Club - Where Kids Master Tomorrow's Essential Tools Today. Safe, fun, and guided learning in small groups.
+                    <p class="max-w-2xl sm:text-xl text-lg text-white/95 mt-0 mx-auto leading-relaxed font-semibold">
+                        Where Kids Turn Curiosity into AI Skills — Fun, Safe, and Guided.
                     </p>
 
 
