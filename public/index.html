@@ -289,6 +289,87 @@
             opacity: 1;
             transform: translateX(0);
         }
+
+        /* Auto-play CSS animations for page load */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Base auto-play animation class */
+        .fade-in-on-load {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Delay variations */
+        .fade-in-on-load.delay-1 {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .fade-in-on-load.delay-2 {
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        .fade-in-on-load.delay-3 {
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+
+        .fade-in-on-load.delay-4 {
+            animation-delay: 0.8s;
+            opacity: 0;
+        }
+
+        .fade-in-on-load.delay-5 {
+            animation-delay: 1.0s;
+            opacity: 0;
+        }
+
+        .fade-in-on-load.delay-6 {
+            animation-delay: 1.2s;
+            opacity: 0;
+        }
     </style>
 </head>
 <body class="antialiased text-zinc-100">
@@ -1720,7 +1801,7 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center space-y-8">
                 <!-- Main CTA Headline -->
-                <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-8 md:p-10 shadow-xl border border-cyan-200/30 fade-in-up" data-scroll>
+                <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-8 md:p-10 shadow-xl border border-cyan-200/30 fade-in-on-load">
                     <div class="space-y-6">
                         <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
                             Don't Miss Out on the Future of
@@ -1736,7 +1817,7 @@
                 </div>
 
                 <!-- Early Bird Special -->
-                <div class="bg-gradient-to-r from-cyan-500/40 to-teal-500/40 backdrop-blur-sm rounded-2xl p-8 md:p-10 border-2 border-cyan-400/50 fade-in-up delay-1" data-scroll>
+                <div class="bg-gradient-to-r from-cyan-500/40 to-teal-500/40 backdrop-blur-sm rounded-2xl p-8 md:p-10 border-2 border-cyan-400/50 fade-in-on-load delay-1">
                     <div class="flex items-center justify-center gap-2 mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400">
                             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
@@ -2018,12 +2099,12 @@
                 <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/5 via-black/50 to-black/60"></div>
                 <div class="absolute inset-0 pointer-events-none" style="border: 1px solid rgba(255,255,255,0.04); border-radius: inherit;"></div>
 
-                <div class="relative z-10 fade-in-up delay-1" data-scroll>
+                <div class="relative z-10 fade-in-on-load delay-1">
                 <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-white">Ready to Give Your Child the AI <span class="font-serif italic font-bold bg-gradient-to-r from-[#3A9CAA] via-[#4AB4C8] to-[#80D4E0] bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8); text-shadow: 0 0 3px rgba(255,255,255,0.9), 0 0 5px rgba(58,156,170,0.8), 0 0 15px rgba(58,156,170,0.6), 0 0 25px rgba(58,156,170,0.4), 0 0 35px rgba(58,156,170,0.2), 2px 2px 4px rgba(0,0,0,0.3); font-weight: 700; letter-spacing: 0.5px;">Advantage</span>?</h2>
                 <p class="mt-6 text-lg text-white/90 max-w-3xl mx-auto">Join hundreds of parents preparing their kids for tomorrow's digital world with structured AI learning in a safe, fun, and guided environment.</p>
 
                 <!-- Enhanced Pricing Information -->
-                <div class="mt-8 max-w-4xl mx-auto fade-in-up delay-2" data-scroll>
+                <div class="mt-8 max-w-4xl mx-auto fade-in-on-load delay-2">
                     <div class="text-xl font-bold text-white mb-6 text-center">Early Bird Special Pricing <span class="bg-cyan-500 text-white text-sm px-3 py-1 rounded-full ml-2">20% OFF</span></div>
                     <div class="text-sm text-white/70 text-center mb-4">ending October 17th</div>
 
