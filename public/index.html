@@ -150,6 +150,19 @@
             z-index: 1;
         }
 
+        /* Desktop-specific background optimization */
+        @media (min-width: 769px) {
+            .site-background {
+                background-image: url('/desktop.background.png');
+                background-size: cover;
+                background-position: center center;
+            }
+
+            .site-background::after {
+                background: rgba(0, 0, 0, 0.4);
+            }
+        }
+
         /* Removed conflicting body::before overlay that was blocking background image */
 
         /* Liquid scroll effect */
@@ -224,16 +237,28 @@
             transform: translateX(0);
         }
 
-        /* Up slide animations */
+        /* Up slide animations - for scroll trigger */
         .fade-in-up {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
         .fade-in-up.animate {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .fade-in-up.animate.delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .fade-in-up.animate.delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .fade-in-up.animate.delay-3 {
+            transition-delay: 0.3s;
         }
 
         /* Down slide animations */
@@ -1449,7 +1474,7 @@
             <!-- Content area with relative positioning -->
             <div class="relative z-10 p-8 md:p-12">
                 <!-- Skills Header with Container -->
-                <div class="text-center mb-16 max-w-4xl mx-auto">
+                <div class="text-center mb-16 max-w-4xl mx-auto fade-in-up">
                     <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-8 md:p-10 shadow-xl border border-amber-200/30">
                         <h2 class="sm:text-4xl md:text-5xl text-3xl font-extrabold text-white tracking-tight mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
                             Skills Your Child Will <span class="font-serif italic font-bold bg-gradient-to-r from-[#4AB4C8] via-[#60C4D4] to-[#80D4E0] bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8); text-shadow: 0 0 3px rgba(255,255,255,0.9), 0 0 5px rgba(58,156,170,0.8), 0 0 15px rgba(58,156,170,0.6), 0 0 25px rgba(58,156,170,0.4), 0 0 35px rgba(58,156,170,0.2), 2px 2px 4px rgba(0,0,0,0.3); font-weight: 700; letter-spacing: 0.5px;">Build</span>
@@ -1462,7 +1487,7 @@
                 <div class="rounded-2xl p-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
                         <!-- Master ChatGPT -->
-                        <div class="relative h-full flex flex-col rounded-2xl bg-black/50 backdrop-blur-lg border-2 border-amber-200/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group p-6">
+                        <div class="relative h-full flex flex-col rounded-2xl bg-black/50 backdrop-blur-lg border-2 border-amber-200/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group p-6 fade-in-up delay-1">
                                 <div class="flex items-center gap-3 mb-4">
                                     <!-- Icon on white circle overlay -->
                                     <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
@@ -1801,7 +1826,7 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center space-y-8">
                 <!-- Main CTA Headline -->
-                <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-8 md:p-10 shadow-xl border border-cyan-200/30 fade-in-on-load">
+                <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-8 md:p-10 shadow-xl border border-cyan-200/30 fade-in-up">
                     <div class="space-y-6">
                         <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
                             Don't Miss Out on the Future of
@@ -1817,7 +1842,7 @@
                 </div>
 
                 <!-- Early Bird Special -->
-                <div class="bg-gradient-to-r from-cyan-500/40 to-teal-500/40 backdrop-blur-sm rounded-2xl p-8 md:p-10 border-2 border-cyan-400/50 fade-in-on-load delay-1">
+                <div class="bg-gradient-to-r from-cyan-500/40 to-teal-500/40 backdrop-blur-sm rounded-2xl p-8 md:p-10 border-2 border-cyan-400/50 fade-in-up delay-1">
                     <div class="flex items-center justify-center gap-2 mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400">
                             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
@@ -2099,12 +2124,12 @@
                 <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-white/5 via-black/50 to-black/60"></div>
                 <div class="absolute inset-0 pointer-events-none" style="border: 1px solid rgba(255,255,255,0.04); border-radius: inherit;"></div>
 
-                <div class="relative z-10 fade-in-on-load delay-1">
+                <div class="relative z-10 fade-in-up delay-1">
                 <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-white">Ready to Give Your Child the AI <span class="font-serif italic font-bold bg-gradient-to-r from-[#3A9CAA] via-[#4AB4C8] to-[#80D4E0] bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8); text-shadow: 0 0 3px rgba(255,255,255,0.9), 0 0 5px rgba(58,156,170,0.8), 0 0 15px rgba(58,156,170,0.6), 0 0 25px rgba(58,156,170,0.4), 0 0 35px rgba(58,156,170,0.2), 2px 2px 4px rgba(0,0,0,0.3); font-weight: 700; letter-spacing: 0.5px;">Advantage</span>?</h2>
                 <p class="mt-6 text-lg text-white/90 max-w-3xl mx-auto">Join hundreds of parents preparing their kids for tomorrow's digital world with structured AI learning in a safe, fun, and guided environment.</p>
 
                 <!-- Enhanced Pricing Information -->
-                <div class="mt-8 max-w-4xl mx-auto fade-in-on-load delay-2">
+                <div class="mt-8 max-w-4xl mx-auto fade-in-up delay-2">
                     <div class="text-xl font-bold text-white mb-6 text-center">Early Bird Special Pricing <span class="bg-cyan-500 text-white text-sm px-3 py-1 rounded-full ml-2">20% OFF</span></div>
                     <div class="text-sm text-white/70 text-center mb-4">ending October 17th</div>
 
@@ -2535,6 +2560,26 @@
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
+
+            // Intersection Observer for scroll-triggered animations
+            const observerOptions = {
+                threshold: 0.15, // Trigger when 15% of element is visible
+                rootMargin: '0px 0px -50px 0px' // Trigger slightly before element enters viewport
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        // Optional: Stop observing after animation
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with fade-in classes
+            const fadeElements = document.querySelectorAll('.fade-in-up, .fade-in-down, .fade-in-left, .fade-in-right');
+            fadeElements.forEach(el => observer.observe(el));
 
             // Debug: Check if button exists and add alternative event listener
             console.log('DOM Content Loaded - checking button...');
