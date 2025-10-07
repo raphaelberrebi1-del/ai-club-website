@@ -259,8 +259,36 @@
                     <p class="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
                         Choose the plan that works for your family. No hidden fees, no surprises.
                     </p>
-                    <div class="inline-block bg-gradient-to-r from-orange-500 to-pink-500 rounded-full px-6 py-3 mb-6">
-                        <p class="text-white font-semibold">⏰ Early Bird Pricing - First 50 Families Only!</p>
+                    <!-- Early Bird Banner with Countdown -->
+                    <div class="inline-block bg-gradient-to-r from-orange-500 to-pink-500 rounded-2xl px-8 py-4 mb-6 shadow-lg">
+                        <div class="flex items-center gap-3 mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <p class="text-white font-bold text-lg">Early Bird Pricing - First 50 Families Only!</p>
+                        </div>
+                        <div class="flex items-center justify-center gap-4 text-white">
+                            <div class="text-center">
+                                <div id="days" class="text-2xl font-extrabold">0</div>
+                                <div class="text-xs opacity-80">Days</div>
+                            </div>
+                            <div class="text-2xl font-bold">:</div>
+                            <div class="text-center">
+                                <div id="hours" class="text-2xl font-extrabold">0</div>
+                                <div class="text-xs opacity-80">Hours</div>
+                            </div>
+                            <div class="text-2xl font-bold">:</div>
+                            <div class="text-center">
+                                <div id="minutes" class="text-2xl font-extrabold">0</div>
+                                <div class="text-xs opacity-80">Minutes</div>
+                            </div>
+                            <div class="text-2xl font-bold">:</div>
+                            <div class="text-center">
+                                <div id="seconds" class="text-2xl font-extrabold">0</div>
+                                <div class="text-xs opacity-80">Seconds</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -774,6 +802,42 @@
 
     <!-- Cursor and Animation Scripts -->
     <script>
+        // Countdown Timer
+        function updateCountdown() {
+            // Set the date we're counting down to (January 31, 2025, 23:59:59)
+            const countDownDate = new Date("January 31, 2025 23:59:59").getTime();
+
+            // Update the countdown every 1 second
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
+
+                // Calculate days, hours, minutes and seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result
+                document.getElementById("days").textContent = days;
+                document.getElementById("hours").textContent = hours;
+                document.getElementById("minutes").textContent = minutes;
+                document.getElementById("seconds").textContent = seconds;
+
+                // If the countdown is finished
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("days").textContent = "0";
+                    document.getElementById("hours").textContent = "0";
+                    document.getElementById("minutes").textContent = "0";
+                    document.getElementById("seconds").textContent = "0";
+                }
+            }, 1000);
+        }
+
+        // Start countdown when page loads
+        updateCountdown();
+
         // Custom cursor effect
         document.addEventListener('DOMContentLoaded', function() {
             const cursorGlow = document.querySelector('.cursor-glow');
