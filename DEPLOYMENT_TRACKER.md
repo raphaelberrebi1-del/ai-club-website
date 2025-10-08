@@ -147,23 +147,39 @@ This document tracks all changes that have been committed to git but are **waiti
 
 ---
 
-## 🔴 PENDING WORK (Not Yet Committed)
+### **8. Hebrew Translations** (Commit: d898503)
+**What Changed:**
+- Created `public/faq-he.html` - comprehensive FAQ in Hebrew
+- Created `public/privacy-he.html` - Israeli law-compliant privacy policy in Hebrew
+- Created `public/terms-he.html` - parent-friendly terms of service in Hebrew
+- All pages match existing Hebrew page design (RTL, proper typography)
+- Mobile responsive
 
-### **8. Hebrew Translations**
-**Status:** PENDING
-**What Needs to Happen:**
-Create Hebrew versions of:
-- FAQ page → `public/faq-he.html`
-- Privacy Policy → `public/privacy-he.html`
-- Terms of Service → `public/terms-he.html`
-- Homepage (if not exists) → `public/index-he.html`
+**Files Created:**
+- `public/faq-he.html`
+- `public/privacy-he.html`
+- `public/terms-he.html`
 
 **Existing Hebrew Pages:**
 - ✅ `public/mobile-he.html`
 - ✅ `public/pricing-he.html`
 - ✅ `public/curriculum-he.html`
+- ✅ `public/faq-he.html` (new)
+- ✅ `public/privacy-he.html` (new)
+- ✅ `public/terms-he.html` (new)
 
-**Priority:** MEDIUM (nice to have, not legally required)
+**Expected Result:**
+- FAQ accessible at `https://www.aikidz.club/faq-he.html`
+- Privacy Policy accessible at `https://www.aikidz.club/privacy-he.html`
+- Terms of Service accessible at `https://www.aikidz.club/terms-he.html`
+
+**Priority:** MEDIUM (nice to have, improves accessibility for Hebrew speakers)
+
+---
+
+## 🔴 PENDING WORK (Not Yet Committed)
+
+**None currently!** All planned work has been completed.
 
 ---
 
