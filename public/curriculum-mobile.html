@@ -66,7 +66,7 @@
         <!-- Hero Section -->
         <section class="relative px-6 py-12">
             <div class="max-w-md mx-auto text-center">
-                <div class="mb-6 fade-in-up" data-scroll>
+                <div class="mb-6">
                     <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-400/20 to-teal-400/20 rounded-full mb-4">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-cyan-400">
                             <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
@@ -87,9 +87,9 @@
         <!-- Program Duration Selector -->
         <section class="px-6 pb-8">
             <div class="max-w-md mx-auto">
-                <h2 class="text-lg font-bold text-white mb-4 text-center fade-in-up delay-1" data-scroll>Choose Program Duration</h2>
-                <div class="grid grid-cols-2 gap-3 mb-8 fade-in-up delay-2" data-scroll>
-                    <button onclick="switchProgram('12')" id="tab-12" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-cyan-400/20 border-cyan-400 text-cyan-300">
+                <h2 class="text-lg font-bold text-white mb-4 text-center">Choose Program Duration</h2>
+                <div class="grid grid-cols-2 gap-3 mb-8">
+                    <button onclick="switchProgram('12')" id="tab-12" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-cyan-400/20 border-cyan-400/40 text-cyan-300">
                         <span class="block font-bold text-lg">12 Weeks</span>
                         <span class="block text-xs opacity-80">Foundation</span>
                     </button>
@@ -111,7 +111,7 @@
 
         <!-- Program Content -->
         <section class="px-6 pb-12">
-            <div class="max-w-md mx-auto fade-in-up delay-3" data-scroll>
+            <div class="max-w-md mx-auto">
 
                 <!-- 12 Week Program -->
                 <div id="program-12" class="program-content">
@@ -122,7 +122,7 @@
                         <!-- Age Groups for 12-week -->
                         <div class="space-y-4">
                             <!-- Young Innovators 8-12 -->
-                            <div class="bg-black/60 rounded-xl p-4 border border-amber-200/20">
+                            <div class="bg-black/90 rounded-xl p-4 border border-amber-200/20">
                                 <button onclick="toggleSection('young-12')" class="w-full flex items-center justify-between mb-2">
                                     <h4 class="text-base font-bold text-amber-300">Young Innovators (8-10)</h4>
                                     <svg id="young-12-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-300 transform transition-transform">
@@ -216,7 +216,7 @@
                             </div>
 
                             <!-- Tech Explorers 11-13 -->
-                            <div class="bg-black/60 rounded-xl p-4 border border-teal-200/20">
+                            <div class="bg-black/90 rounded-xl p-4 border border-teal-200/20">
                                 <button onclick="toggleSection('middle-12')" class="w-full flex items-center justify-between mb-2">
                                     <h4 class="text-base font-bold text-teal-300">Tech Explorers (11-13)</h4>
                                     <svg id="middle-12-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-teal-300 transform transition-transform">
@@ -311,7 +311,7 @@
                             </div>
 
                             <!-- Future Leaders 14-18 -->
-                            <div class="bg-black/60 rounded-xl p-4 border border-purple-200/20">
+                            <div class="bg-black/90 rounded-xl p-4 border border-purple-200/20">
                                 <button onclick="toggleSection('teen-12')" class="w-full flex items-center justify-between mb-2">
                                     <h4 class="text-base font-bold text-purple-300">Future Leaders (14-18)</h4>
                                     <svg id="teen-12-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-300 transform transition-transform">
@@ -482,7 +482,7 @@
                 </div>
 
                 <!-- CTA Section -->
-                <div class="text-center mt-8 fade-in-up delay-4" data-scroll>
+                <div class="text-center mt-8">
                     <button onclick="window.location.href='mobile.html#choose-program'" class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-bold px-8 py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 mb-4">
                         Register Now
                     </button>
@@ -576,13 +576,13 @@
 
             // Apply color scheme based on program duration
             if (weeks === '12') {
-                activeTab.classList.add('bg-cyan-400/20', 'border-cyan-400', 'text-cyan-300');
+                activeTab.classList.add('bg-cyan-400/20', 'border-cyan-400/40', 'text-cyan-300');
             } else if (weeks === '24') {
-                activeTab.classList.add('bg-rose-400/20', 'border-rose-400', 'text-rose-300');
+                activeTab.classList.add('bg-rose-400/20', 'border-rose-400/40', 'text-rose-300');
             } else if (weeks === '36') {
-                activeTab.classList.add('bg-green-400/20', 'border-green-400', 'text-green-300');
+                activeTab.classList.add('bg-green-400/20', 'border-green-400/40', 'text-green-300');
             } else if (weeks === '48') {
-                activeTab.classList.add('bg-violet-400/20', 'border-violet-400', 'text-violet-300');
+                activeTab.classList.add('bg-violet-400/20', 'border-violet-400/40', 'text-violet-300');
             }
 
             // Update content
