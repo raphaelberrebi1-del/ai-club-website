@@ -111,39 +111,43 @@ This document tracks all changes that have been committed to git but are **waiti
 
 ---
 
-## 🔴 PENDING WORK (Not Yet Committed)
-
-### **6. Privacy & Terms HTML Pages**
-**Status:** IN PROGRESS
-**What Needs to Happen:**
-- Convert `PRIVACY_POLICY_SIMPLIFIED.md` → `public/privacy.html`
-- Convert `TERMS_OF_SERVICE.md` → `public/terms.html`
-- Match design of existing pages (dark background, backdrop-blur-lg, cyan/teal accents)
+### **6. Privacy & Terms HTML Pages** (Commit: 8d236f5)
+**What Changed:**
+- Created `public/privacy.html` from PRIVACY_POLICY_SIMPLIFIED.md
+- Created `public/terms.html` from TERMS_OF_SERVICE.md
+- Both pages match site design (dark background, backdrop-blur-lg, cyan/teal accents)
 - Mobile responsive
+- Israeli law compliant (Privacy Protection Law Amendment 13, Consumer Protection Law)
 
-**Priority:** CRITICAL
+**Files Created:**
+- `public/privacy.html`
+- `public/terms.html`
+
+**Expected Result:**
+- Privacy Policy accessible at `https://www.aikidz.club/privacy.html`
+- Terms of Service accessible at `https://www.aikidz.club/terms.html`
+
+**Priority:** CRITICAL - Legally required
 
 ---
 
-### **7. Fix Footer Links**
-**Status:** PENDING
-**What Needs to Happen:**
-Update footer on ALL pages to link to new privacy.html and terms.html:
-- `public/index.html`
-- `public/curriculum.html`
-- `public/pricing.html`
-- `public/faq.html`
-- `public/mobile.html`
-- `public/mobile-he.html`
-- `public/pricing-he.html`
-- `public/curriculum-he.html`
+### **7. Fix Footer Links** (Commit: 8d236f5)
+**What Changed:**
+- Updated footer links from `href="#"` to actual pages on:
+  - `public/index.html`
+  - `public/curriculum.html`
+  - `public/pricing.html`
+  - `public/faq.html`
 
-**Current State:** Links go to `href="#"` (nowhere)
-**Target State:** Links go to `href="privacy.html"` and `href="terms.html"`
+**Note:** Mobile and Hebrew pages don't have Privacy/Terms footer links (no footer on those pages)
+
+**Expected Result:** All footer Privacy Policy and Terms links now work
 
 **Priority:** HIGH
 
 ---
+
+## 🔴 PENDING WORK (Not Yet Committed)
 
 ### **8. Hebrew Translations**
 **Status:** PENDING
