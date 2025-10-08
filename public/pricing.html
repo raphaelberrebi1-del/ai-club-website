@@ -174,6 +174,34 @@
             transform: translateY(-4px);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
+
+        @keyframes rollArrowDown {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            51% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .arrow-roll {
+            display: inline-block;
+            position: relative;
+        }
+
+        button:hover .arrow-roll {
+            animation: rollArrowDown 0.8s ease-in-out;
+        }
     </style>
 </head>
 <body class="antialiased text-zinc-100">
@@ -311,7 +339,7 @@
                                         Compare <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">Plans</span>
                                     </h2>
                                     <button onclick="if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 768){window.location.href='mobile.html#choose-program'}else{window.location.href='index.html#registration-form'}" class="bg-cyan-500/20 border border-cyan-400/50 rounded-lg px-3 py-1.5 text-white text-xs font-semibold hover:bg-cyan-500/30 hover:border-cyan-400 transition-all">
-                                        Register Now →
+                                        Register Now <span class="arrow-roll">→</span>
                                     </button>
                                 </th>
                                 <th class="p-3 text-center">
