@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="utf-8">
@@ -66,7 +66,7 @@
         <!-- Hero Section -->
         <section class="relative px-6 py-12">
             <div class="max-w-md mx-auto text-center">
-                <div class="mb-6 fade-in-up" data-scroll>
+                <div class="mb-6">
                     <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-400/20 to-teal-400/20 rounded-full mb-4">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-cyan-400">
                             <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
@@ -87,9 +87,9 @@
         <!-- Program Duration Selector -->
         <section class="px-6 pb-8">
             <div class="max-w-md mx-auto">
-                <h2 class="text-lg font-bold text-white mb-4 text-center fade-in-up delay-1" data-scroll>בחר אורך תוכנית</h2>
-                <div class="grid grid-cols-2 gap-3 mb-8 fade-in-up delay-2" data-scroll>
-                    <button onclick="switchProgram('12')" id="tab-12" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-cyan-400/20 border-cyan-400 text-cyan-300">
+                <h2 class="text-lg font-bold text-white mb-4 text-center">בחר אורך תוכנית</h2>
+                <div class="grid grid-cols-2 gap-3 mb-8">
+                    <button onclick="switchProgram('12')" id="tab-12" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-cyan-400/20 border-cyan-400/40 text-cyan-300">
                         <span class="block font-bold text-lg">12 שבועות</span>
                         <span class="block text-xs opacity-80">יסודות</span>
                     </button>
@@ -111,7 +111,7 @@
 
         <!-- Program Content -->
         <section class="px-6 pb-12">
-            <div class="max-w-md mx-auto fade-in-up delay-3" data-scroll>
+            <div class="max-w-md mx-auto">
 
                 <!-- 12 Week Program -->
                 <div id="program-12" class="program-content">
@@ -122,7 +122,7 @@
                         <!-- Age Groups for 12-week -->
                         <div class="space-y-4">
                             <!-- Young Innovators 8-12 -->
-                            <div class="bg-black/60 rounded-xl p-4 border border-amber-200/20">
+                            <div class="bg-black/90 rounded-xl p-4 border border-amber-200/20">
                                 <button onclick="toggleSection('young-12')" class="w-full flex items-center justify-between mb-2">
                                     <h4 class="text-base font-bold text-amber-300">ממציאים צעירים (8-10)</h4>
                                     <svg id="young-12-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-300 transform transition-transform">
@@ -216,7 +216,7 @@
                             </div>
 
                             <!-- Tech Explorers 11-13 -->
-                            <div class="bg-black/60 rounded-xl p-4 border border-teal-200/20">
+                            <div class="bg-black/90 rounded-xl p-4 border border-teal-200/20">
                                 <button onclick="toggleSection('middle-12')" class="w-full flex items-center justify-between mb-2">
                                     <h4 class="text-base font-bold text-teal-300">חוקרי טכנולוגיה (11-13)</h4>
                                     <svg id="middle-12-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-teal-300 transform transition-transform">
@@ -311,7 +311,7 @@
                             </div>
 
                             <!-- Future Leaders 14-18 -->
-                            <div class="bg-black/60 rounded-xl p-4 border border-purple-200/20">
+                            <div class="bg-black/90 rounded-xl p-4 border border-purple-200/20">
                                 <button onclick="toggleSection('teen-12')" class="w-full flex items-center justify-between mb-2">
                                     <h4 class="text-base font-bold text-purple-300">מנהיגי העתיד (14-18)</h4>
                                     <svg id="teen-12-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-300 transform transition-transform">
@@ -411,8 +411,8 @@
 
                 <!-- 24 Week Program -->
                 <div id="program-24" class="program-content hidden">
-                    <div class="bg-gradient-to-br from-rose-400/15 to-pink-400/15 rounded-2xl p-6 mb-6 border border-rose-400/30">
-                        <div class="bg-gradient-to-r from-cyan-400/10 to-rose-400/10 rounded-lg p-3 mb-4">
+                    <div class="bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-2xl p-6 mb-6 border border-purple-400/20">
+                        <div class="bg-gradient-to-r from-cyan-400/10 to-purple-400/10 rounded-lg p-3 mb-4">
                             <p class="text-sm text-cyan-300"><strong>כולל:</strong> תוכנית יסודות 12 שבועות מלאה +</p>
                         </div>
 
@@ -421,8 +421,8 @@
 
                         <!-- Coming Soon Message -->
                         <div class="text-center py-12">
-                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-rose-400/20 to-pink-400/20 rounded-full mb-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-rose-400">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-400">
                                     <circle cx="12" cy="12" r="10"></circle>
                                     <polyline points="12,6 12,12 16,14"></polyline>
                                 </svg>
@@ -459,8 +459,8 @@
 
                 <!-- 48 Week Program -->
                 <div id="program-48" class="program-content hidden">
-                    <div class="bg-gradient-to-br from-violet-400/15 to-purple-400/15 rounded-2xl p-6 mb-6 border border-violet-400/30">
-                        <div class="bg-gradient-to-r from-cyan-400/10 to-violet-400/10 rounded-lg p-3 mb-4">
+                    <div class="bg-gradient-to-br from-orange-400/10 to-red-400/10 rounded-2xl p-6 mb-6 border border-orange-400/20">
+                        <div class="bg-gradient-to-r from-cyan-400/10 to-orange-400/10 rounded-lg p-3 mb-4">
                             <p class="text-sm text-cyan-300"><strong>כולל:</strong> תוכנית מתקדמת 36 שבועות מלאה +</p>
                         </div>
 
@@ -469,8 +469,8 @@
 
                         <!-- Coming Soon Message -->
                         <div class="text-center py-12">
-                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-400/20 to-purple-400/20 rounded-full mb-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-violet-400">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-400">
                                     <circle cx="12" cy="12" r="10"></circle>
                                     <polyline points="12,6 12,12 16,14"></polyline>
                                 </svg>
@@ -482,7 +482,7 @@
                 </div>
 
                 <!-- CTA Section -->
-                <div class="text-center mt-8 fade-in-up delay-4" data-scroll>
+                <div class="text-center mt-8">
                     <button onclick="window.location.href='mobile-he.html#choose-program'" class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-bold px-8 py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 mb-4">
                         הירשם עכשיו
                     </button>
@@ -527,30 +527,10 @@
 
         /* Active tab styling */
         .program-tab.active {
+            background: linear-gradient(to r, #06B6D4, #22D3EE, #A5F3FC);
+            border-color: #22D3EE;
+            color: white;
             transform: scale(1.02);
-        }
-
-        /* Animation classes */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .fade-in-up.animate {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .fade-in-up.delay-1 { animation-delay: 0.2s; }
-        .fade-in-up.delay-2 { animation-delay: 0.4s; }
-        .fade-in-up.delay-3 { animation-delay: 0.6s; }
-        .fade-in-up.delay-4 { animation-delay: 0.8s; }
-        .fade-in-up.delay-5 { animation-delay: 1.0s; }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
     </style>
 
@@ -558,32 +538,17 @@
         let currentProgram = '12';
 
         function switchProgram(weeks) {
-            // Update tabs - reset all to inactive state
+            // Update tabs
             document.querySelectorAll('.program-tab').forEach(tab => {
                 tab.classList.remove('active');
                 tab.classList.add('bg-white/10', 'border-white/30', 'text-white/70');
-                // Remove all possible color classes
-                tab.classList.remove('bg-cyan-400/20', 'border-cyan-400/40', 'border-cyan-400', 'text-cyan-300');
-                tab.classList.remove('bg-rose-400/20', 'border-rose-400/40', 'border-rose-400', 'text-rose-300');
-                tab.classList.remove('bg-green-400/20', 'border-green-400/40', 'border-green-400', 'text-green-300');
-                tab.classList.remove('bg-sky-400/20', 'border-sky-400/40', 'border-sky-400', 'text-sky-300');
-                tab.classList.remove('bg-violet-400/20', 'border-violet-400/40', 'border-violet-400', 'text-violet-300');
+                tab.classList.remove('bg-cyan-400/20', 'border-cyan-400/40', 'text-cyan-300');
             });
 
             const activeTab = document.getElementById(`tab-${weeks}`);
             activeTab.classList.add('active');
             activeTab.classList.remove('bg-white/10', 'border-white/30', 'text-white/70');
-
-            // Apply color scheme based on program duration
-            if (weeks === '12') {
-                activeTab.classList.add('bg-cyan-400/20', 'border-cyan-400', 'text-cyan-300');
-            } else if (weeks === '24') {
-                activeTab.classList.add('bg-rose-400/20', 'border-rose-400', 'text-rose-300');
-            } else if (weeks === '36') {
-                activeTab.classList.add('bg-green-400/20', 'border-green-400', 'text-green-300');
-            } else if (weeks === '48') {
-                activeTab.classList.add('bg-violet-400/20', 'border-violet-400', 'text-violet-300');
-            }
+            activeTab.classList.add('bg-cyan-400/20', 'border-cyan-400/40', 'text-cyan-300');
 
             // Update content
             document.querySelectorAll('.program-content').forEach(content => {
@@ -618,34 +583,9 @@
             }
         }
 
-        // Scroll Animation Observer
-        function initScrollAnimations() {
-            // Create intersection observer for scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all elements with data-scroll attribute
-            const animatedElements = document.querySelectorAll('[data-scroll]');
-            animatedElements.forEach((el) => {
-                observer.observe(el);
-            });
-        }
-
         // Initialize with 12-week program
         document.addEventListener('DOMContentLoaded', function() {
             switchProgram('12');
-            initScrollAnimations();
         });
     </script>
 </body>

@@ -19,12 +19,12 @@
 #### Desktop (index.html serves as desktop home)
 - **index.html** - English desktop homepage
 - **pricing.html** - English desktop pricing page
-- **curriculum.html** - English desktop curriculum page
+- **curriculum.html** - English desktop curriculum page (NEW)
 
 #### Mobile
 - **mobile.html** - English mobile homepage
-- **pricing-mobile.html** - English mobile pricing page (NEW)
-- *(curriculum-mobile.html - if needed)*
+- **pricing-mobile.html** - English mobile pricing page
+- **curriculum-mobile.html** - English mobile curriculum page
 
 ### Hebrew Pages
 
@@ -96,7 +96,8 @@ Update only pricing-mobile.html
 - **pricing-he.html** - Hebrew mobile pricing (should be renamed to pricing-mobile-he.html)
 
 ### Curriculum Pages
-- **curriculum.html** - English curriculum details
+- **curriculum.html** - English desktop curriculum details (NEW)
+- **curriculum-mobile.html** - English mobile curriculum details
 - **curriculum-he.html** - Hebrew curriculum details
 
 ---
@@ -177,6 +178,8 @@ Before pushing changes:
 
 ## 📝 Version History
 
+- **2025-10-08:** Created desktop curriculum.html and renamed mobile version to curriculum-mobile.html
+- **2025-10-08:** Added Curriculum link to desktop and mobile navigation
 - **2025-01-08:** Created README.md and pricing-mobile.html
 - **2025-01-08:** Updated navigation links in mobile.html
 - **2025-01-08:** Established parallel development rule

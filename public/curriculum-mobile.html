@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Club — Curriculum</title>
+    <meta name="description" content="Discover our comprehensive AI education curriculum with 12, 24, 36, and 48-week programs for children ages 8-18.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aikidz.club/curriculum.html">
+    <meta property="og:title" content="AI Club — Curriculum">
+    <meta property="og:description" content="Discover our comprehensive AI education curriculum with 12, 24, 36, and 48-week programs for children ages 8-18.">
+    <meta property="og:image" content="https://www.aikidz.club/whatsapp-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="AI Club - AI Education for Children">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:secure_url" content="https://www.aikidz.club/whatsapp-preview.jpg">
+    <meta property="og:site_name" content="AI Club">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.aikidz.club/curriculum.html">
+    <meta property="twitter:title" content="AI Club — Curriculum">
+    <meta property="twitter:description" content="Discover our comprehensive AI education curriculum with 12, 24, 36, and 48-week programs for children ages 8-18.">
+    <meta property="twitter:image" content="https://www.aikidz.club/whatsapp-preview.jpg">
+    <meta property="twitter:image:alt" content="AI Club - AI Education for Children">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0a0a12] text-white">
+    <div class="site-background" aria-hidden="true"></div>
+
+    <!-- Fixed Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/95 backdrop-blur-xl border-b border-amber-200/20">
+        <div class="flex items-center justify-between px-4 h-16">
+            <!-- Back Button -->
+            <button onclick="window.history.back()" class="flex items-center justify-center w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-amber-200/30 hover:bg-white/20 transition-all duration-200 hover:scale-105">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white">
+                    <path d="m15 18-6-6 6-6"/>
+                </svg>
+            </button>
+
+            <!-- AI Club Branding -->
+            <div class="flex items-center">
+                <h1 class="text-xl font-bold text-white tracking-tight">
+                    <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">AI</span>
+                    <span class="text-white">Club</span>
+                </h1>
+            </div>
+
+            <!-- Register Button -->
+            <button onclick="window.location.href='mobile.html#choose-program'" class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105">
+                Register
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section class="relative px-6 py-12">
+            <div class="max-w-md mx-auto text-center">
+                <div class="mb-6 fade-in-up" data-scroll>
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-400/20 to-teal-400/20 rounded-full mb-4">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-cyan-400">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h1 class="text-2xl font-extrabold text-white mb-4 leading-tight">
+                        <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">AI Club</span><br>
+                        Curriculum
+                    </h1>
+                    <p class="text-white/80 text-lg leading-relaxed">
+                        Progressive AI education programs that build on each other
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Duration Selector -->
+        <section class="px-6 pb-8">
+            <div class="max-w-md mx-auto">
+                <h2 class="text-lg font-bold text-white mb-4 text-center fade-in-up delay-1" data-scroll>Choose Program Duration</h2>
+                <div class="grid grid-cols-2 gap-3 mb-8 fade-in-up delay-2" data-scroll>
+                    <button onclick="switchProgram('12')" id="tab-12" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-cyan-400/20 border-cyan-400 text-cyan-300">
+                        <span class="block font-bold text-lg">12 Weeks</span>
+                        <span class="block text-xs opacity-80">Foundation</span>
+                    </button>
+                    <button onclick="switchProgram('24')" id="tab-24" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
+                        <span class="block font-bold text-lg">24 Weeks</span>
+                        <span class="block text-xs opacity-80">+ Advanced Skills</span>
+                    </button>
+                    <button onclick="switchProgram('36')" id="tab-36" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
+                        <span class="block font-bold text-lg">36 Weeks</span>
+                        <span class="block text-xs opacity-80">+ Projects</span>
+                    </button>
+                    <button onclick="switchProgram('48')" id="tab-48" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
+                        <span class="block font-bold text-lg">48 Weeks</span>
+                        <span class="block text-xs opacity-80">+ Mastery</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Content -->
+        <section class="px-6 pb-12">
+            <div class="max-w-md mx-auto fade-in-up delay-3" data-scroll>
+
+                <!-- 12 Week Program -->
+                <div id="program-12" class="program-content">
+                    <div class="bg-gradient-to-br from-cyan-400/10 to-teal-400/10 rounded-2xl p-6 mb-6 border border-cyan-400/20">
+                        <h3 class="text-xl font-bold text-white mb-3">12-Week Foundation Program</h3>
+                        <p class="text-white/80 mb-4">Essential AI skills and understanding - the foundation for all longer programs.</p>
+
+                        <!-- Age Groups for 12-week -->
+                        <div class="space-y-4">
+                            <!-- Young Innovators 8-12 -->
+                            <div class="bg-black/60 rounded-xl p-4 border border-amber-200/20">
+                                <button onclick="toggleSection('young-12')" class="w-full flex items-center justify-between mb-2">
+                                    <h4 class="text-base font-bold text-amber-300">Young Innovators (8-10)</h4>
+                                    <svg id="young-12-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-300 transform transition-transform">
+                                        <polyline points="6,9 12,15 18,9"></polyline>
+                                    </svg>
+                                </button>
+                                <div id="young-12-content" class="space-y-4 overflow-hidden max-h-0 transition-all duration-300">
+                                    <div class="space-y-4">
+                                        <!-- Program Philosophy -->
+                                        <div class="bg-gradient-to-r from-cyan-400/20 to-amber-400/20 rounded-lg p-3 border-l-4 border-cyan-400">
+                                            <h5 class="text-cyan-300 font-bold text-sm mb-2">AI Explorers Program</h5>
+                                            <p class="text-white/85 text-xs leading-relaxed">
+                                                Designed for young learners who discover AI through games, creative activities, and hands-on projects.
+                                                Every concept is taught through play and visual learning with immediate, exciting results.
+                                            </p>
+                                        </div>
+
+                                        <!-- Weekly Timeline -->
+                                        <div class="space-y-2">
+                                            <h5 class="text-cyan-300 font-semibold text-sm mb-3">12-Week Learning Journey:</h5>
+
+                                            <div class="space-y-3">
+                                                <div class="border-l-3 border-cyan-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-cyan-400/30 text-cyan-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 1-2</span>
+                                                        <h6 class="text-white font-semibold text-xs">Meet Your AI Friend</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">Discover smart computers all around us!</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: AI Scavenger Hunt in everyday items</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-cyan-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-cyan-400/30 text-cyan-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 3-4</span>
+                                                        <h6 class="text-white font-semibold text-xs">Teaching AI to Understand</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">Learn how to talk to smart computers!</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: AI Pet Training with commands</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-cyan-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-cyan-400/30 text-cyan-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 5-6</span>
+                                                        <h6 class="text-white font-semibold text-xs">AI Art & Story Studio</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">Create amazing art and stories with AI!</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Collaborative Art projects and Digital Collage Creation</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-cyan-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-cyan-400/30 text-cyan-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 7-8</span>
+                                                        <h6 class="text-white font-semibold text-xs">AI Helpers in Our World</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">Discover AI helpers everywhere!</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Career Dress-Up with AI jobs and AI Assistant design</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-cyan-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-cyan-400/30 text-cyan-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 9-10</span>
+                                                        <h6 class="text-white font-semibold text-xs">Smart Choices with AI</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">Learn when to use AI and when to use our brains!</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Choice Champions scenarios and Privacy Protector Game</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-cyan-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-cyan-400/30 text-cyan-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 11-12</span>
+                                                        <h6 class="text-white font-semibold text-xs">Young Innovator Showcase</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">Create and present amazing AI projects!</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Choose Your Adventure project and Family Showcase Event</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Skills & Outcomes -->
+                                        <div class="bg-gradient-to-r from-amber-400/10 to-cyan-400/10 rounded-lg p-3 mt-4">
+                                            <h6 class="text-amber-300 font-semibold text-xs mb-2">What Your Child Will Achieve:</h6>
+                                            <ul class="text-white/80 text-xs space-y-1">
+                                                <li>Personal AI art gallery to share with family</li>
+                                                <li>AI Helpers book they created themselves</li>
+                                                <li>Portfolio of creative projects and worksheets</li>
+                                                <li>Confidence presenting to family and friends</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tech Explorers 11-13 -->
+                            <div class="bg-black/60 rounded-xl p-4 border border-teal-200/20">
+                                <button onclick="toggleSection('middle-12')" class="w-full flex items-center justify-between mb-2">
+                                    <h4 class="text-base font-bold text-teal-300">Tech Explorers (11-13)</h4>
+                                    <svg id="middle-12-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-teal-300 transform transition-transform">
+                                        <polyline points="6,9 12,15 18,9"></polyline>
+                                    </svg>
+                                </button>
+                                <div id="middle-12-content" class="space-y-4 overflow-hidden max-h-0 transition-all duration-300">
+                                    <div class="space-y-4">
+                                        <!-- Program Philosophy -->
+                                        <div class="bg-gradient-to-r from-teal-400/20 to-cyan-400/20 rounded-lg p-3 border-l-4 border-teal-400">
+                                            <h5 class="text-teal-300 font-bold text-sm mb-2">AI Mastery Program</h5>
+                                            <p class="text-white/85 text-xs leading-relaxed">
+                                                Designed for middle schoolers ready to dive deeper into AI technology. Students explore real-world applications,
+                                                develop professional skills, and build impressive portfolios while discovering AI career pathways.
+                                            </p>
+                                        </div>
+
+                                        <!-- Weekly Timeline -->
+                                        <div class="space-y-2">
+                                            <h5 class="text-teal-300 font-semibold text-sm mb-3">12-Week Learning Journey:</h5>
+
+                                            <div class="space-y-3">
+                                                <div class="border-l-3 border-teal-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-teal-400/30 text-teal-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 1-2</span>
+                                                        <h6 class="text-white font-semibold text-xs">AI Career Explorer</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">Industry landscape tour, AI jobs of the future, and setting career goals</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Create My AI Future vision board and career roadmap</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-teal-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-teal-400/30 text-teal-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 3-4</span>
+                                                        <h6 class="text-white font-semibold text-xs">Prompt Engineering Pro</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">Advanced prompting techniques, chain-of-thought reasoning, and optimization strategies</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Build custom AI assistant for homework help</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-teal-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-teal-400/30 text-teal-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 5-6</span>
+                                                        <h6 class="text-white font-semibold text-xs">School Success Hacker</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">AI tools for research, note-taking, studying, and project organization</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Transform a school project using AI research and presentation tools</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-teal-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-teal-400/30 text-teal-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 7-8</span>
+                                                        <h6 class="text-white font-semibold text-xs">Content Creator Accelerator</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">AI-powered writing, design, video, and social media content creation</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Launch personal blog or YouTube channel with AI-assisted content</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-teal-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-teal-400/30 text-teal-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 9-10</span>
+                                                        <h6 class="text-white font-semibold text-xs">Responsible AI Leader</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">AI ethics, bias detection, privacy concerns, and developing responsible usage habits</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Create AI ethics guide for peers and present to school community</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-teal-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-teal-400/30 text-teal-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 11-12</span>
+                                                        <h6 class="text-white font-semibold text-xs">Capstone Portfolio Project</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">Comprehensive project showcasing all learned skills with professional presentation</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Choose from: AI-enhanced science fair project, startup pitch, or social impact initiative</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Skills & Outcomes -->
+                                        <div class="bg-gradient-to-r from-amber-400/10 to-teal-400/10 rounded-lg p-3 mt-4">
+                                            <h6 class="text-amber-300 font-semibold text-xs mb-2">What Your Teen Will Achieve:</h6>
+                                            <ul class="text-white/80 text-xs space-y-1">
+                                                <li>Professional AI toolkit for academic and creative success</li>
+                                                <li>Career clarity with concrete next steps in AI field</li>
+                                                <li>Published content showcasing AI collaboration skills</li>
+                                                <li>Leadership experience in AI ethics and responsible innovation</li>
+                                                <li>Impressive portfolio project for high school applications</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Future Leaders 14-18 -->
+                            <div class="bg-black/60 rounded-xl p-4 border border-purple-200/20">
+                                <button onclick="toggleSection('teen-12')" class="w-full flex items-center justify-between mb-2">
+                                    <h4 class="text-base font-bold text-purple-300">Future Leaders (14-18)</h4>
+                                    <svg id="teen-12-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-300 transform transition-transform">
+                                        <polyline points="6,9 12,15 18,9"></polyline>
+                                    </svg>
+                                </button>
+                                <div id="teen-12-content" class="space-y-4 overflow-hidden max-h-0 transition-all duration-300">
+                                    <div class="space-y-4">
+                                        <!-- Program Philosophy -->
+                                        <div class="bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-lg p-3 border-l-4 border-purple-400">
+                                            <h5 class="text-purple-300 font-bold text-sm mb-2">AI Leadership Academy</h5>
+                                            <p class="text-white/85 text-xs leading-relaxed">
+                                                Designed for high school students ready to become AI leaders and innovators. This intensive program develops
+                                                entrepreneurial thinking, professional skills, and real-world business applications that prepare students for college and careers.
+                                            </p>
+                                        </div>
+
+                                        <!-- Weekly Timeline -->
+                                        <div class="space-y-2">
+                                            <h5 class="text-purple-300 font-semibold text-sm mb-3">12-Week Leadership Journey:</h5>
+
+                                            <div class="space-y-3">
+                                                <div class="border-l-3 border-purple-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-purple-400/30 text-purple-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 1-2</span>
+                                                        <h6 class="text-white font-semibold text-xs">AI Industry Pioneer</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">Deep dive into AI market analysis, emerging opportunities, and competitive landscape assessment</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Create comprehensive AI industry report and investment thesis presentation</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-purple-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-purple-400/30 text-purple-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 3-4</span>
+                                                        <h6 class="text-white font-semibold text-xs">Professional AI Engineer</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">Advanced prompt engineering, API integration, and workflow automation for professional environments</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Build and deploy custom AI solution for real client or school challenge</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-purple-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-purple-400/30 text-purple-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 5-6</span>
+                                                        <h6 class="text-white font-semibold text-xs">Business Automation Expert</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">Enterprise AI applications, process optimization, cost-benefit analysis, and ROI calculation</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Audit local business and create comprehensive AI transformation plan</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-purple-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-purple-400/30 text-purple-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 7-8</span>
+                                                        <h6 class="text-white font-semibold text-xs">Marketing & Brand Strategist</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">AI-powered marketing campaigns, brand development, content strategy, and customer experience design</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Launch complete marketing campaign for startup idea or local organization</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-purple-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-purple-400/30 text-purple-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 9-10</span>
+                                                        <h6 class="text-white font-semibold text-xs">Ethics & Policy Leader</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">AI governance frameworks, regulatory compliance, bias mitigation, and ethical decision-making in business</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Draft AI policy proposal for school district or local government</div>
+                                                </div>
+
+                                                <div class="border-l-3 border-purple-400/50 pl-3 py-1">
+                                                    <div class="flex items-center gap-2 mb-1">
+                                                        <span class="bg-purple-400/30 text-purple-200 px-2 py-0.5 rounded text-xs font-bold">Weeks 11-12</span>
+                                                        <h6 class="text-white font-semibold text-xs">Capstone: Startup Launch</h6>
+                                                    </div>
+                                                    <p class="text-white/70 text-xs">Comprehensive business plan, financial projections, and investor pitch for AI-powered venture</p>
+                                                    <div class="text-amber-300 text-xs mt-1">Activity: Present to real investors/entrepreneurs and receive professional feedback</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Skills & Outcomes -->
+                                        <div class="bg-gradient-to-r from-amber-400/10 to-purple-400/10 rounded-lg p-3 mt-4">
+                                            <h6 class="text-amber-300 font-semibold text-xs mb-2">What Your Teen Will Achieve:</h6>
+                                            <ul class="text-white/80 text-xs space-y-1">
+                                                <li>Professional-grade AI development and deployment skills</li>
+                                                <li>Real business experience with measurable impact and testimonials</li>
+                                                <li>Startup pitch deck and business plan ready for investors</li>
+                                                <li>Leadership portfolio demonstrating ethics and policy expertise</li>
+                                                <li>College application standout with entrepreneurship credentials</li>
+                                                <li>Network of mentors and industry connections</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 24 Week Program -->
+                <div id="program-24" class="program-content hidden">
+                    <div class="bg-gradient-to-br from-rose-400/15 to-pink-400/15 rounded-2xl p-6 mb-6 border border-rose-400/30">
+                        <div class="bg-gradient-to-r from-cyan-400/10 to-rose-400/10 rounded-lg p-3 mb-4">
+                            <p class="text-sm text-cyan-300"><strong>Includes:</strong> Complete 12-Week Foundation Program +</p>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-3">24-Week Extended Program</h3>
+                        <p class="text-white/80 mb-8">Foundation program + advanced practical applications and real-world projects.</p>
+
+                        <!-- Coming Soon Message -->
+                        <div class="text-center py-12">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-rose-400/20 to-pink-400/20 rounded-full mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-rose-400">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12,6 12,12 16,14"></polyline>
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-3">Coming Soon</h4>
+                            <p class="text-white/70 text-lg">Detailed curriculum for the 24-week program will be available shortly.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 36 Week Program -->
+                <div id="program-36" class="program-content hidden">
+                    <div class="bg-gradient-to-br from-green-400/10 to-emerald-400/10 rounded-2xl p-6 mb-6 border border-green-400/20">
+                        <div class="bg-gradient-to-r from-cyan-400/10 to-green-400/10 rounded-lg p-3 mb-4">
+                            <p class="text-sm text-cyan-300"><strong>Includes:</strong> Complete 24-Week Extended Program +</p>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-3">36-Week Advanced Program</h3>
+                        <p class="text-white/80 mb-8">Extended program + advanced projects, portfolio development, and leadership skills.</p>
+
+                        <!-- Coming Soon Message -->
+                        <div class="text-center py-12">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-400/20 to-emerald-400/20 rounded-full mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-400">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12,6 12,12 16,14"></polyline>
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-3">Coming Soon</h4>
+                            <p class="text-white/70 text-lg">Detailed curriculum for the 36-week program will be available shortly.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 48 Week Program -->
+                <div id="program-48" class="program-content hidden">
+                    <div class="bg-gradient-to-br from-violet-400/15 to-purple-400/15 rounded-2xl p-6 mb-6 border border-violet-400/30">
+                        <div class="bg-gradient-to-r from-cyan-400/10 to-violet-400/10 rounded-lg p-3 mb-4">
+                            <p class="text-sm text-cyan-300"><strong>Includes:</strong> Complete 36-Week Advanced Program +</p>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-3">48-Week Mastery Program</h3>
+                        <p class="text-white/80 mb-8">Advanced program + complete mastery, industry collaboration, and professional preparation.</p>
+
+                        <!-- Coming Soon Message -->
+                        <div class="text-center py-12">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-400/20 to-purple-400/20 rounded-full mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-violet-400">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12,6 12,12 16,14"></polyline>
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-3">Coming Soon</h4>
+                            <p class="text-white/70 text-lg">Detailed curriculum for the 48-week program will be available shortly.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="text-center mt-8 fade-in-up delay-4" data-scroll>
+                    <button onclick="window.location.href='mobile.html#choose-program'" class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-bold px-8 py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 mb-4">
+                        Register Now
+                    </button>
+                    <p class="text-white/60 text-sm">
+                        Ready to give your child the AI advantage?
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        /* Background Image */
+        .site-background {
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+            pointer-events: none;
+            background-image: url('/NEW-background.jpg?v=1');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            transform: translateZ(0);
+        }
+
+        .site-background::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        /* Smooth transitions for content sections */
+        .program-content {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .program-content.hidden {
+            display: none;
+        }
+
+        /* Active tab styling */
+        .program-tab.active {
+            transform: scale(1.02);
+        }
+
+        /* Animation classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .fade-in-up.animate {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .fade-in-up.delay-1 { animation-delay: 0.2s; }
+        .fade-in-up.delay-2 { animation-delay: 0.4s; }
+        .fade-in-up.delay-3 { animation-delay: 0.6s; }
+        .fade-in-up.delay-4 { animation-delay: 0.8s; }
+        .fade-in-up.delay-5 { animation-delay: 1.0s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <script>
+        let currentProgram = '12';
+
+        function switchProgram(weeks) {
+            // Update tabs - reset all to inactive state
+            document.querySelectorAll('.program-tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.classList.add('bg-white/10', 'border-white/30', 'text-white/70');
+                // Remove all possible color classes
+                tab.classList.remove('bg-cyan-400/20', 'border-cyan-400/40', 'border-cyan-400', 'text-cyan-300');
+                tab.classList.remove('bg-rose-400/20', 'border-rose-400/40', 'border-rose-400', 'text-rose-300');
+                tab.classList.remove('bg-green-400/20', 'border-green-400/40', 'border-green-400', 'text-green-300');
+                tab.classList.remove('bg-sky-400/20', 'border-sky-400/40', 'border-sky-400', 'text-sky-300');
+                tab.classList.remove('bg-violet-400/20', 'border-violet-400/40', 'border-violet-400', 'text-violet-300');
+            });
+
+            const activeTab = document.getElementById(`tab-${weeks}`);
+            activeTab.classList.add('active');
+            activeTab.classList.remove('bg-white/10', 'border-white/30', 'text-white/70');
+
+            // Apply color scheme based on program duration
+            if (weeks === '12') {
+                activeTab.classList.add('bg-cyan-400/20', 'border-cyan-400', 'text-cyan-300');
+            } else if (weeks === '24') {
+                activeTab.classList.add('bg-rose-400/20', 'border-rose-400', 'text-rose-300');
+            } else if (weeks === '36') {
+                activeTab.classList.add('bg-green-400/20', 'border-green-400', 'text-green-300');
+            } else if (weeks === '48') {
+                activeTab.classList.add('bg-violet-400/20', 'border-violet-400', 'text-violet-300');
+            }
+
+            // Update content
+            document.querySelectorAll('.program-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            document.getElementById(`program-${weeks}`).classList.remove('hidden');
+            currentProgram = weeks;
+        }
+
+        function toggleSection(sectionId) {
+            const content = document.getElementById(`${sectionId}-content`);
+            const icon = document.getElementById(`${sectionId}-icon`);
+
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                // Collapse
+                content.style.maxHeight = '0px';
+                content.classList.remove('pt-3');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Expand - add extra buffer to ensure all content is visible
+                content.style.maxHeight = (content.scrollHeight + 50) + 'px';
+                content.classList.add('pt-3');
+                icon.style.transform = 'rotate(180deg)';
+
+                // Double-check after a brief delay to ensure dynamic content is measured
+                setTimeout(() => {
+                    if (content.scrollHeight > parseInt(content.style.maxHeight)) {
+                        content.style.maxHeight = (content.scrollHeight + 50) + 'px';
+                    }
+                }, 100);
+            }
+        }
+
+        // Scroll Animation Observer
+        function initScrollAnimations() {
+            // Create intersection observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with data-scroll attribute
+            const animatedElements = document.querySelectorAll('[data-scroll]');
+            animatedElements.forEach((el) => {
+                observer.observe(el);
+            });
+        }
+
+        // Initialize with 12-week program
+        document.addEventListener('DOMContentLoaded', function() {
+            switchProgram('12');
+            initScrollAnimations();
+        });
+    </script>
+</body>
+</html>
