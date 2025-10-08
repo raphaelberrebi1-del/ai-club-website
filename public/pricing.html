@@ -161,6 +161,29 @@
         .particle-1 { top: 20%; left: 10%; }
         .particle-2 { top: 60%; left: 80%; }
         .particle-3 { top: 40%; left: 50%; }
+
+        /* Column hover effects */
+        .pricing-table th:hover,
+        .pricing-table td:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .pricing-table th {
+            transition: all 0.3s ease;
+        }
+
+        .pricing-table th:hover {
+            transform: translateY(-2px);
+        }
+
+        .pricing-table tr:hover td {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .pricing-table td {
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 <body class="antialiased text-zinc-100">
@@ -283,7 +306,7 @@
             <div class="max-w-5xl mx-auto">
                 <!-- Comparison Table -->
                 <div class="overflow-x-auto fade-in-up">
-                    <table class="w-full bg-black/40 backdrop-blur-lg rounded-xl border border-amber-200/30">
+                    <table class="pricing-table w-full bg-black/40 backdrop-blur-lg rounded-xl border border-amber-200/30">
                         <thead>
                             <tr class="border-b border-white/10">
                                 <th class="text-left p-3">
