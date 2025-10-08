@@ -2709,7 +2709,19 @@
                 }
             }
 
-            document.getElementById('total-price').textContent = `₪${Math.round(totalMonthlyPrice)}`;
+            // Display total based on duration
+            let displayPrice;
+            if (wizardData.bulkDuration === 'monthly') {
+                displayPrice = `₪${Math.round(totalMonthlyPrice)}/month`;
+            } else if (wizardData.bulkDuration === 'quarterly') {
+                const quarterlyTotal = Math.round(totalMonthlyPrice * 3);
+                displayPrice = `₪${quarterlyTotal}/quarter`;
+            } else { // yearly
+                const yearlyTotal = Math.round(totalMonthlyPrice * 12);
+                displayPrice = `₪${yearlyTotal}/year`;
+            }
+
+            document.getElementById('total-price').textContent = displayPrice;
             document.getElementById('pricing-preview').classList.remove('hidden');
         }
 
