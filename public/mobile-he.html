@@ -1444,9 +1444,9 @@
                         <label class="text-sm font-semibold text-amber-100">בחר קבוצת גיל</label>
                         <select id="child-age-group" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
                             <option value="">בחר את קבוצת הגיל של הילד</option>
-                            <option value="young">ממציאים צעירים (גילאי 8-10) - ₪1,200</option>
-                            <option value="tech">חוקרי טכנולוגיה (גילאי 11-13) - ₪1,500</option>
-                            <option value="future">מנהיגי העתיד (גילאי 14-18) - ₪1,800</option>
+                            <option value="young">ממציאים צעירים (גילאי 8-10)</option>
+                            <option value="tech">חוקרי טכנולוגיה (גילאי 11-13)</option>
+                            <option value="future">מנהיגי העתיד (גילאי 14-18)</option>
                         </select>
                     </div>
                 </div>
@@ -3081,12 +3081,9 @@
         }
 
         function getPriceForAgeGroup(ageGroup) {
-            const prices = {
-                'young': 1200,
-                'tech': 1500,
-                'future': 1800
-            };
-            return prices[ageGroup] || 1200;
+            // Pricing is now subscription-based (monthly/quarterly/annual)
+            // No per-program pricing anymore
+            return 0;
         }
 
         async function submitRegistration() {

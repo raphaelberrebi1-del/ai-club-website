@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FAQ - AI Club Raanana</title>
+    <meta name="description" content="Frequently asked questions about AI Club - structured AI learning programs for children ages 8-18 in Raanana.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.aikidz.club/faq.html">
+    <meta property="og:title" content="FAQ - AI Club Raanana">
+    <meta property="og:description" content="Frequently asked questions about AI Club - structured AI learning programs for children ages 8-18 in Raanana.">
+    <meta property="og:image" content="https://www.aikidz.club/whatsapp-preview.jpg">
+    <meta property="og:site_name" content="AI Club">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <style>
+        /* Glowing cursor effect */
+        * {
+            cursor: none !important;
+        }
+
+        .cursor-glow {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            background: radial-gradient(circle at center,
+                rgba(6, 182, 212, 0.3) 0%,
+                rgba(251, 146, 60, 0.25) 30%,
+                rgba(236, 72, 153, 0.15) 60%,
+                transparent 80%);
+            filter: blur(20px);
+            z-index: 9999;
+            transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform: translate(-50%, -50%);
+            animation: cursor-pulse 2s ease-in-out infinite;
+        }
+
+        .cursor-trail {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            background: radial-gradient(circle at center,
+                rgba(6, 182, 212, 0.2) 0%,
+                rgba(251, 146, 60, 0.15) 40%,
+                transparent 70%);
+            filter: blur(15px);
+            z-index: 9998;
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            background: rgba(6, 182, 212, 0.9);
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.8), 0 0 30px rgba(251, 146, 60, 0.4);
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        @keyframes cursor-pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        body {
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;
+            background-color: #0a0a12;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .site-background {
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+            pointer-events: none;
+            background-image: url('/NEW-background.jpg?v=1');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            transform: translateZ(0);
+        }
+
+        .site-background::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        @media (min-width: 769px) {
+            .site-background {
+                background-image: url('/Desktop.background.png');
+                background-size: cover;
+                background-position: center center;
+            }
+
+            .site-background::after {
+                background: transparent;
+            }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in-up.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FAQ Accordion Styles */
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding 0.4s ease-out;
+            opacity: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            opacity: 1;
+            padding-top: 1rem;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="antialiased text-zinc-100">
+    <div class="site-background" aria-hidden="true"></div>
+
+    <!-- Custom cursor elements -->
+    <div class="cursor-glow"></div>
+    <div class="cursor-trail"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Enhanced Background glow effects -->
+    <div class="pointer-events-none fixed inset-0 overflow-hidden" style="z-index: 1;">
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[1400px] h-[1400px] rounded-full blur-3xl opacity-60"
+             style="background: radial-gradient(circle at center, rgba(34, 211, 238, 0.7), rgba(34, 211, 238, 0.3) 40%, transparent 70%);"></div>
+        <div class="absolute bottom-0 right-0 w-[900px] h-[900px] translate-x-1/4 translate-y-1/4 rounded-full blur-3xl opacity-50"
+             style="background: radial-gradient(circle at center, rgba(236, 72, 153, 0.6), rgba(236, 72, 153, 0.2) 40%, transparent 70%);"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="relative z-50 sticky top-0 backdrop-blur-xl bg-[#0a0a12]/95 border-b border-amber-200/20">
+        <div class="max-w-7xl sm:px-6 lg:px-8 border-slate-50/5 mr-auto ml-auto pr-4 pl-4">
+            <div class="flex h-16 items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3">
+                    <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-500 shadow-[0_0_0_2px_rgba(255,255,255,0.06)_inset]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-white" style="stroke-width: 1.5;"><path d="M12 18V5"></path><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"></path><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"></path><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path><path d="M18 18a4 4 0 0 0 2-7.464"></path><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"></path><path d="M6 18a4 4 0 0 1-2-7.464"></path><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path></svg>
+                    </span>
+                    <span class="text-lg font-semibold tracking-tight">AI Club</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex gap-1 border-slate-50/5 border rounded-full px-4 items-center">
+                    <a href="index.html" class="flex items-center gap-2 hover:text-white text-sm font-medium text-zinc-300 pt-2 pr-3 pb-2 pl-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        Home
+                    </a>
+                    <a href="curriculum.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-zinc-300 hover:text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                        Curriculum
+                    </a>
+                    <a href="pricing.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-zinc-300 hover:text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        Pricing
+                    </a>
+                    <a href="faq.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white bg-white/10 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg>
+                        FAQ
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="window.location.href='index.html'" class="md:hidden flex items-center justify-center w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-amber-200/30 hover:bg-white/20 transition-all duration-200 hover:scale-105">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section class="py-8 px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="fade-in-up">
+                    <div class="bg-black/40 backdrop-blur-lg rounded-3xl p-4 md:p-6 border-2 border-amber-200/30 shadow-2xl">
+                        <h1 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-3">
+                            <span class="bg-gradient-to-r from-cyan-400 via-cyan-300 to-teal-400 bg-clip-text text-transparent">Frequently Asked</span> Questions
+                        </h1>
+                        <p class="text-white/80 text-lg">Everything you need to know about AI Club</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Sections -->
+        <section class="py-12 px-4">
+            <div class="max-w-4xl mx-auto space-y-8">
+
+                <!-- General & About AI Club -->
+                <div class="fade-in-up">
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-4">📚 General & About AI Club</h2>
+                    <div class="space-y-3">
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">What is AI Club?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                AI Club is Raanana's first structured AI education program for children ages 8-18. We teach kids how to effectively use AI tools like ChatGPT, Claude, and Midjourney in a safe, supervised, and engaging environment. Our program focuses on practical skills that prepare children for an AI-powered future.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">Where is AI Club located?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                We're based in Raanana, Israel, offering in-person classes.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">Who teaches the classes?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                Classes are taught by an experienced instructor trained in both AI technology and age-appropriate teaching methods. All sessions are supervised to ensure safe and ethical AI usage.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">Is AI Club suitable for beginners?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                Absolutely! Our programs are designed for all skill levels. We start with fundamentals and progress based on each age group's capabilities.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Age Groups & Programs -->
+                <div class="fade-in-up">
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-4">👥 Age Groups & Programs</h2>
+                    <div class="space-y-3">
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">What age groups do you offer?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                <p class="mb-2">We have three age-specific programs:</p>
+                                <ul class="space-y-2 ml-4">
+                                    <li><strong class="text-amber-300">Young Innovators (8-10 years)</strong> - Play-based AI introduction through games and creative projects</li>
+                                    <li><strong class="text-teal-300">Tech Explorers (11-13 years)</strong> - Programming fundamentals and AI-assisted research</li>
+                                    <li><strong class="text-purple-300">Future Leaders (14-18 years)</strong> - Advanced applications, personal AI assistants (higher level), startup concepts, and entrepreneurship</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">What program lengths are available?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                <p class="mb-2">We offer flexible program lengths:</p>
+                                <ul class="space-y-1 ml-4">
+                                    <li><strong>12 weeks</strong> - Foundation program covering essential AI skills</li>
+                                    <li><strong>24 weeks</strong> - Extended program with advanced applications</li>
+                                    <li><strong>36 weeks</strong> - Advanced program with portfolio development</li>
+                                    <li><strong>48 weeks</strong> - Complete mastery program with industry insights</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">What will my child learn?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                <p class="mb-2">Students learn:</p>
+                                <ul class="space-y-1 ml-4">
+                                    <li>• Creative writing & storytelling with AI</li>
+                                    <li>• Digital art & media creation</li>
+                                    <li>• Programming & development with AI assistance</li>
+                                    <li>• Research & learning skills</li>
+                                    <li>• Problem-solving & critical thinking</li>
+                                    <li>• AI ethics & responsible usage</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">What AI tools do students use?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                Students work with industry-leading tools including ChatGPT Pro, Claude Pro, Midjourney, and other age-appropriate AI platforms.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Pricing & Payment -->
+                <div class="fade-in-up">
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-4">💰 Pricing & Payment</h2>
+                    <div class="space-y-3">
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">What are your subscription options?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                <p class="mb-2">We offer flexible subscription plans (currently 20% OFF early bird pricing):</p>
+                                <ul class="space-y-2 ml-4">
+                                    <li><strong>Monthly:</strong> ₪599/month (regularly ₪749)</li>
+                                    <li><strong class="text-amber-300">Quarterly:</strong> ₪519/month - Most Popular! (regularly ₪649)</li>
+                                    <li><strong>Annual:</strong> ₪479/month (regularly ₪599)</li>
+                                </ul>
+                                <p class="mt-3">All plans include 4 sessions per month, 90-minute sessions, and access to Pro AI tools.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">Do you offer family discounts?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                Yes! We offer <strong>10% discount</strong> for your second child and <strong>15% discount</strong> for third child and beyond.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">What payment methods do you accept?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                We accept Bit (primary), PayBox, and credit cards.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">Is there a free trial?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                Yes! We offer a free trial with 2 lessons (90 minutes each) with access to free versions of ChatGPT and Claude.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Schedule & Logistics -->
+                <div class="fade-in-up">
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-4">📅 Schedule & Logistics</h2>
+                    <div class="space-y-3">
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">When are classes held?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                <p class="mb-2">Classes run on Sundays:</p>
+                                <ul class="space-y-1 ml-4">
+                                    <li><strong>Young Innovators (8-10):</strong> 4:00-5:30 PM</li>
+                                    <li><strong>Tech Explorers (11-13):</strong> 5:30-7:00 PM</li>
+                                    <li><strong>Future Leaders (14-18):</strong> 7:00-8:30 PM</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">How long are the sessions?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                Each session is 90 minutes long.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">How many students are in each class?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                We maintain small groups with a maximum of 12 students per class to ensure personalized attention.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Safety & Support -->
+                <div class="fade-in-up">
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-4">🛡️ Safety & Support</h2>
+                    <div class="space-y-3">
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">How do you ensure safe AI usage?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                <p class="mb-2">Safety is our top priority:</p>
+                                <ul class="space-y-1 ml-4">
+                                    <li>• All sessions are supervised by trained instructor</li>
+                                    <li>• We teach AI ethics and responsible usage</li>
+                                    <li>• Age-appropriate content and tools</li>
+                                    <li>• Small group sizes for personalized attention</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">How do parents stay informed?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                We maintain parent WhatsApp groups for updates, Discord community channels for student collaboration, and provide regular progress updates.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">Do students get access to AI tools outside of class?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                Yes! With Quarterly and Annual plans, students get access to Pro AI tools (ChatGPT Pro, Claude Pro, Midjourney) outside of class sessions.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Outcomes & Benefits -->
+                <div class="fade-in-up">
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-4">🎯 Outcomes & Benefits</h2>
+                    <div class="space-y-3">
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">What will my child create?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                <p class="mb-2">Students build impressive portfolios including:</p>
+                                <ul class="space-y-1 ml-4">
+                                    <li><strong>Young Innovators:</strong> AI art gallery, creative projects, presentations</li>
+                                    <li><strong>Tech Explorers:</strong> Blog/YouTube content, school projects, personal AI assistants</li>
+                                    <li><strong>Future Leaders:</strong> Advanced applications, sophisticated AI assistants, startup pitch decks, business plans</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">How does this prepare my child for the future?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                AI literacy is becoming as essential as reading and writing. Our programs teach practical skills that will benefit students in school, college applications, and future careers in any field.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Registration -->
+                <div class="fade-in-up">
+                    <h2 class="text-2xl font-bold text-cyan-300 mb-4">📝 Registration</h2>
+                    <div class="space-y-3">
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">How do I register my child?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                Click the "Register Now" button on our website and fill out the registration form. You'll be able to select your child's age group, program length, and payment plan.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">Can I register multiple children?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                Yes! Our registration form supports multiple children, and family discounts are automatically applied.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-white/5 transition-colors">
+                                <span class="font-semibold text-white">What if I have more questions?</span>
+                                <svg class="faq-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                <p class="mb-2">Contact us via:</p>
+                                <ul class="space-y-1 ml-4">
+                                    <li><strong>WhatsApp:</strong> +972-54-315-9025</li>
+                                    <li><strong>Phone:</strong> +972-54-315-9025</li>
+                                    <li>Or visit us in Raanana</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="text-center mt-16 fade-in-up">
+                    <div class="bg-gradient-to-r from-cyan-500/20 to-teal-500/20 backdrop-blur-lg rounded-2xl p-8 border-2 border-cyan-400/50">
+                        <h3 class="text-2xl font-bold text-white mb-3">Still have questions?</h3>
+                        <p class="text-white/80 mb-6">We're here to help! Contact us and we'll get back to you right away.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="https://wa.me/972543159025?text=Hi, I have a question about AI Club" target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                                </svg>
+                                WhatsApp Us
+                            </a>
+                            <a href="index.html#registration-form" class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold px-8 py-4 rounded-xl hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105">
+                                Register Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="instructor" class="relative z-10 border-t border-white/10 mt-16">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a12]/85 via-[#0a0a12]/90 to-[#0a0a12]/95"></div>
+        <div class="relative z-10 max-w-7xl sm:px-6 lg:px-8 mr-auto ml-auto pt-10 pr-4 pb-10 pl-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <!-- About AI Club -->
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-teal-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-white" style="stroke-width: 1.5;"><path d="M12 18V5"></path><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"></path><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"></path><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"></path><path d="M18 18a4 4 0 0 0 2-7.464"></path><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"></path><path d="M6 18a4 4 0 0 1-2-7.464"></path><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"></path></svg>
+                        </span>
+                        <span class="text-lg font-semibold text-zinc-300">AI Club</span>
+                    </div>
+                    <p class="text-sm text-zinc-400 mb-4">Empowering the next generation with essential AI skills in a safe, supervised, and fun learning environment.</p>
+                    <div class="flex items-center gap-4 text-sm text-zinc-400">
+                        <span>📍 In-person classes</span>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Contact Us</h3>
+                    <div class="space-y-3 text-sm text-zinc-400">
+                        <div class="flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" style="stroke-width: 1.5;"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+                            <a href="https://wa.me/972543159025" class="hover:text-white">WhatsApp: +972-54-315-9025</a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" style="stroke-width: 1.5;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <a href="tel:+972543159025" class="hover:text-white">Call: +972-54-315-9025</a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" style="stroke-width: 1.5;"><circle cx="12" cy="12" r="10"></circle><polyline points="12,6 12,12 16,14"></polyline></svg>
+                            <span>Sunday Classes: 4PM - 8:30PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program Information -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Programs</h3>
+                    <div class="space-y-3 text-sm text-zinc-400">
+                        <div>
+                            <div class="font-medium text-white">Young Innovators (8-10)</div>
+                            <div class="text-xs">Sundays 4:00-5:30 PM</div>
+                        </div>
+                        <div>
+                            <div class="font-medium text-white">Tech Explorers (11-13)</div>
+                            <div class="text-xs">Sundays 5:30-7:00 PM</div>
+                        </div>
+                        <div>
+                            <div class="font-medium text-white">Future Leaders (14-18)</div>
+                            <div class="text-xs">Sundays 7:00-8:30 PM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="text-sm text-zinc-400">
+                    © 2025 AI Club. Where Future Leaders Learn Today.
+                </div>
+                <div class="flex items-center gap-4 text-sm text-zinc-400">
+                    <a href="#" class="hover:text-zinc-200">Privacy Policy</a>
+                    <a href="#" class="hover:text-zinc-200">Terms of Service</a>
+                    <a href="faq.html" class="hover:text-zinc-200">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Toggle FAQ accordion
+        function toggleFAQ(button) {
+            const faqItem = button.closest('.faq-item');
+            const wasActive = faqItem.classList.contains('active');
+
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Toggle current item
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Custom cursor effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const cursorGlow = document.querySelector('.cursor-glow');
+            const cursorTrail = document.querySelector('.cursor-trail');
+            const cursorDot = document.querySelector('.cursor-dot');
+            let mouseX = 0, mouseY = 0;
+            let glowX = 0, glowY = 0;
+            let trailX = 0, trailY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                cursorDot.style.left = mouseX + 'px';
+                cursorDot.style.top = mouseY + 'px';
+            });
+
+            function animateCursor() {
+                glowX += (mouseX - glowX) * 0.15;
+                glowY += (mouseY - glowY) * 0.15;
+                trailX += (mouseX - trailX) * 0.1;
+                trailY += (mouseY - trailY) * 0.1;
+
+                cursorGlow.style.left = glowX + 'px';
+                cursorGlow.style.top = glowY + 'px';
+                cursorTrail.style.left = trailX + 'px';
+                cursorTrail.style.top = trailY + 'px';
+
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+        });
+
+        // Intersection Observer for fade-in animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Initialize Lucide icons
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
+
+</body>
+</html>

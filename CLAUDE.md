@@ -11,18 +11,15 @@
 ## 🎯 Target Audience & Age Segmentation
 
 ### Young Innovators (8–10 years)
-- **Price:** ₪1,200 per program
 - **Focus:** Play-based AI introduction, creative storytelling, digital art
 - **Learning Style:** Visual, interactive, game-based learning
 
 ### Tech Explorers (11–13 years)
-- **Price:** ₪1,500 per program
 - **Focus:** Programming fundamentals, AI-assisted research, advanced digital projects
 - **Learning Style:** Project-based learning, peer collaboration
 
 ### Future Leaders (14–18 years)
-- **Price:** ₪1,800 per program
-- **Focus:** Complex projects, entrepreneurship, advanced content creation, business applications
+- **Focus:** Advanced applications, personal AI assistants (higher level), startup concepts, entrepreneurship, business applications
 - **Learning Style:** Professional development, real-world applications, mentorship
 
 ## 📚 Core Curriculum Areas
