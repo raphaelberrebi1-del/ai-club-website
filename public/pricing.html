@@ -35,20 +35,6 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
     <!-- Mobile Device Detection and Redirect -->
-    <script>
-        (function() {
-            const isMobile = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            const isTablet = /iPad|Android(?!.*Mobile)/i.test(navigator.userAgent);
-            const maxMobileWidth = 768;
-
-            if (isMobile && !isTablet && window.innerWidth < maxMobileWidth) {
-                if (!window.location.pathname.includes('mobile.html')) {
-                    window.location.href = '/mobile.html#choose-program';
-                }
-            }
-        })();
-    </script>
-
     <style>
         /* Glowing cursor effect */
         * {
@@ -503,7 +489,7 @@
                     Join AI Club today and give your child the skills they need for tomorrow
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button onclick="window.location.href='index.html#registration-form'" class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white text-lg font-semibold px-8 py-4 rounded-xl hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105">
+                    <button onclick="if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 768){window.location.href='mobile.html#choose-program'}else{window.location.href='index.html#registration-form'}" class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white text-lg font-semibold px-8 py-4 rounded-xl hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105">
                         Register Now
                     </button>
                     <a href="https://wa.me/972543159025?text=Hi, I'd like to learn more about AI Club pricing" target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-lg font-semibold px-8 py-4 rounded-xl transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-2">
