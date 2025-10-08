@@ -175,34 +175,6 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
-        /* Plan column hover tooltip */
-        .plan-header {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .plan-tooltip {
-            position: absolute;
-            bottom: -45px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            border: 1px solid rgba(34, 211, 238, 0.5);
-            z-index: 100;
-        }
-
-        .plan-header:hover .plan-tooltip {
-            opacity: 1;
-        }
-
         @keyframes rotateArrow {
             0%, 100% { transform: rotate(0deg); }
             25% { transform: rotate(15deg); }
@@ -347,33 +319,32 @@
                         <thead>
                             <tr class="border-b border-white/10">
                                 <th class="text-left p-3 align-top">
-                                    <h2 class="text-base font-bold text-white tracking-tight">
+                                    <h2 class="text-base font-bold text-white tracking-tight mb-2">
                                         Compare <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">Plans</span>
                                     </h2>
+                                    <button onclick="if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 768){window.location.href='mobile.html#choose-program'}else{window.location.href='index.html#registration-form'}" class="text-cyan-400 text-xs font-semibold hover:text-cyan-300 transition-all">
+                                        Register Now <span class="rotating-arrow">→</span>
+                                    </button>
                                 </th>
-                                <th class="p-3 text-center plan-header" onclick="if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 768){window.location.href='mobile.html#choose-program'}else{window.location.href='index.html#registration-form'}">
+                                <th class="p-3 text-center">
                                     <div class="text-white font-bold text-sm mb-1">Free Trial</div>
                                     <div class="text-purple-300 text-lg font-extrabold">₪0</div>
-                                    <div class="plan-tooltip">Register now <span class="rotating-arrow">→</span></div>
                                 </th>
-                                <th class="p-3 text-center plan-header" onclick="if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 768){window.location.href='mobile.html#choose-program'}else{window.location.href='index.html#registration-form'}">
+                                <th class="p-3 text-center">
                                     <div class="text-white font-bold text-sm mb-1">Monthly</div>
                                     <div class="text-white/50 line-through text-xs mb-1">₪749</div>
                                     <div class="text-cyan-300 text-lg font-extrabold">₪599<span class="text-xs">/mo</span></div>
-                                    <div class="plan-tooltip">Register now <span class="rotating-arrow">→</span></div>
                                 </th>
-                                <th class="p-3 text-center bg-amber-500/10 rounded-t-xl plan-header" onclick="if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 768){window.location.href='mobile.html#choose-program'}else{window.location.href='index.html#registration-form'}">
+                                <th class="p-3 text-center bg-amber-500/10 rounded-t-xl">
                                     <div class="inline-block bg-gradient-to-r from-amber-500 to-orange-500 text-white px-2 py-0.5 rounded-full text-xs font-bold mb-1">MOST POPULAR</div>
                                     <div class="text-white font-bold text-sm mb-1">Quarterly</div>
                                     <div class="text-white/50 line-through text-xs mb-1">₪649</div>
                                     <div class="text-amber-300 text-lg font-extrabold">₪519<span class="text-xs">/mo</span></div>
-                                    <div class="plan-tooltip">Register now <span class="rotating-arrow">→</span></div>
                                 </th>
-                                <th class="p-3 text-center plan-header" onclick="if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 768){window.location.href='mobile.html#choose-program'}else{window.location.href='index.html#registration-form'}">
+                                <th class="p-3 text-center">
                                     <div class="text-white font-bold text-sm mb-1">Annual 💎</div>
                                     <div class="text-white/50 line-through text-xs mb-1">₪599</div>
                                     <div class="text-green-300 text-lg font-extrabold">₪479<span class="text-xs">/mo</span></div>
-                                    <div class="plan-tooltip">Register now <span class="rotating-arrow">→</span></div>
                                 </th>
                             </tr>
                         </thead>
