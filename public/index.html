@@ -2765,13 +2765,46 @@
 
                     <div>
                         <label class="text-sm font-semibold text-amber-100 block mb-2">Age Group</label>
-                        <select id="child-age-${i}" onchange="updateChildData(${i}, 'ageGroup', this.value)"
-                                class="w-full bg-amber-950/40 border border-amber-200/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent">
-                            <option value="">Select age group</option>
-                            <option value="young" ${wizardData.children[i]?.ageGroup === 'young' ? 'selected' : ''}>Young Innovators (8-10)</option>
-                            <option value="tech" ${wizardData.children[i]?.ageGroup === 'tech' ? 'selected' : ''}>Tech Explorers (11-13)</option>
-                            <option value="future" ${wizardData.children[i]?.ageGroup === 'future' ? 'selected' : ''}>Future Leaders (14-18)</option>
-                        </select>
+                        <div class="grid grid-cols-1 gap-3">
+                            <button type="button" onclick="selectChildAgeGroup(${i}, 'young')"
+                                    class="age-group-btn-${i} p-4 bg-amber-950/40 border ${wizardData.children[i]?.ageGroup === 'young' ? 'border-cyan-400 bg-cyan-500/10' : 'border-amber-200/30'} rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="young">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="text-lg font-semibold text-white">Young Innovators</div>
+                                        <div class="text-sm text-white/60">Ages 8-10 • Sundays 16:00-17:00</div>
+                                    </div>
+                                    <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
+                                        <div class="w-3 h-3 bg-cyan-400 rounded-full ${wizardData.children[i]?.ageGroup === 'young' ? '' : 'opacity-0'} transition-opacity"></div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button type="button" onclick="selectChildAgeGroup(${i}, 'tech')"
+                                    class="age-group-btn-${i} p-4 bg-amber-950/40 border ${wizardData.children[i]?.ageGroup === 'tech' ? 'border-cyan-400 bg-cyan-500/10' : 'border-amber-200/30'} rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="tech">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="text-lg font-semibold text-white">Tech Explorers</div>
+                                        <div class="text-sm text-white/60">Ages 11-13 • Sundays 17:30-18:45</div>
+                                    </div>
+                                    <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
+                                        <div class="w-3 h-3 bg-cyan-400 rounded-full ${wizardData.children[i]?.ageGroup === 'tech' ? '' : 'opacity-0'} transition-opacity"></div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button type="button" onclick="selectChildAgeGroup(${i}, 'future')"
+                                    class="age-group-btn-${i} p-4 bg-amber-950/40 border ${wizardData.children[i]?.ageGroup === 'future' ? 'border-cyan-400 bg-cyan-500/10' : 'border-amber-200/30'} rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="future">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="text-lg font-semibold text-white">Future Leaders</div>
+                                        <div class="text-sm text-white/60">Ages 14-18 • Sundays 19:00-20:30</div>
+                                    </div>
+                                    <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
+                                        <div class="w-3 h-3 bg-cyan-400 rounded-full ${wizardData.children[i]?.ageGroup === 'future' ? '' : 'opacity-0'} transition-opacity"></div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
                     </div>
                 `;
 
@@ -2786,6 +2819,37 @@
                 wizardData.children[index] = { name: '', ageGroup: '' };
             }
             wizardData.children[index][field] = value;
+            validateStep2();
+        }
+
+        function selectChildAgeGroup(index, ageGroup) {
+            // Update data
+            if (!wizardData.children[index]) {
+                wizardData.children[index] = { name: '', ageGroup: '' };
+            }
+            wizardData.children[index].ageGroup = ageGroup;
+
+            // Update UI - remove selection from all buttons for this child
+            document.querySelectorAll(`.age-group-btn-${index}`).forEach(btn => {
+                btn.classList.remove('border-cyan-400', 'bg-cyan-500/10');
+                btn.classList.add('border-amber-200/30');
+                const indicator = btn.querySelector('.w-3.h-3.bg-cyan-400');
+                if (indicator) {
+                    indicator.classList.add('opacity-0');
+                }
+            });
+
+            // Add selection to clicked button
+            const selectedBtn = document.querySelector(`.age-group-btn-${index}[data-age="${ageGroup}"]`);
+            if (selectedBtn) {
+                selectedBtn.classList.remove('border-amber-200/30');
+                selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/10');
+                const indicator = selectedBtn.querySelector('.w-3.h-3.bg-cyan-400');
+                if (indicator) {
+                    indicator.classList.remove('opacity-0');
+                }
+            }
+
             validateStep2();
         }
 
