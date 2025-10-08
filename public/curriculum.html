@@ -264,17 +264,29 @@
                             <h3 class="text-3xl font-bold text-white mb-4">12-Week Foundation Program</h3>
                             <p class="text-white/80 text-lg mb-8">Essential AI skills and understanding - the foundation for all longer programs.</p>
 
-                            <!-- Age Groups -->
-                            <div class="space-y-6">
-                                <!-- Young Innovators 8-10 -->
-                                <div class="bg-black/60 rounded-xl p-6 border border-amber-200/20">
-                                    <button onclick="toggleSection('young-12')" class="w-full flex items-center justify-between mb-4">
-                                        <h4 class="text-xl md:text-2xl font-bold text-amber-300">Young Innovators (8-10)</h4>
-                                        <svg id="young-12-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-300 transform transition-transform">
-                                            <polyline points="6,9 12,15 18,9"></polyline>
-                                        </svg>
+                            <!-- Age Group Tabs -->
+                            <div class="mb-8">
+                                <div class="flex gap-4 justify-center">
+                                    <button onclick="switchAgeGroup('12', 'young')" id="age-tab-12-young" class="age-tab flex-1 max-w-xs px-6 py-4 rounded-xl border-2 transition-all duration-300 bg-amber-400/20 border-amber-400 text-amber-300 shadow-lg shadow-amber-500/20">
+                                        <div class="text-xl font-bold">Young Innovators</div>
+                                        <div class="text-sm opacity-80 mt-1">Ages 8-10</div>
                                     </button>
-                                    <div id="young-12-content" class="space-y-6 overflow-hidden max-h-0 transition-all duration-300">
+                                    <button onclick="switchAgeGroup('12', 'middle')" id="age-tab-12-middle" class="age-tab flex-1 max-w-xs px-6 py-4 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
+                                        <div class="text-xl font-bold">Tech Explorers</div>
+                                        <div class="text-sm opacity-80 mt-1">Ages 11-13</div>
+                                    </button>
+                                    <button onclick="switchAgeGroup('12', 'teen')" id="age-tab-12-teen" class="age-tab flex-1 max-w-xs px-6 py-4 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
+                                        <div class="text-xl font-bold">Future Leaders</div>
+                                        <div class="text-sm opacity-80 mt-1">Ages 14-18</div>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Age Group Content -->
+                            <div class="age-group-content">
+                                <!-- Young Innovators 8-10 -->
+                                <div id="age-content-12-young" class="age-content-section">
+                                    <div class="space-y-6">
                                         <!-- Program Philosophy -->
                                         <div class="bg-gradient-to-r from-cyan-400/20 to-amber-400/20 rounded-lg p-4 border-l-4 border-cyan-400">
                                             <h5 class="text-cyan-300 font-bold text-lg mb-3">AI Explorers Program</h5>
@@ -359,14 +371,8 @@
                                 </div>
 
                                 <!-- Tech Explorers 11-13 -->
-                                <div class="bg-black/60 rounded-xl p-6 border border-teal-200/20">
-                                    <button onclick="toggleSection('middle-12')" class="w-full flex items-center justify-between mb-4">
-                                        <h4 class="text-xl md:text-2xl font-bold text-teal-300">Tech Explorers (11-13)</h4>
-                                        <svg id="middle-12-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-teal-300 transform transition-transform">
-                                            <polyline points="6,9 12,15 18,9"></polyline>
-                                        </svg>
-                                    </button>
-                                    <div id="middle-12-content" class="space-y-6 overflow-hidden max-h-0 transition-all duration-300">
+                                <div id="age-content-12-middle" class="age-content-section hidden">
+                                    <div class="space-y-6">
                                         <!-- Program Philosophy -->
                                         <div class="bg-gradient-to-r from-teal-400/20 to-cyan-400/20 rounded-lg p-4 border-l-4 border-teal-400">
                                             <h5 class="text-teal-300 font-bold text-lg mb-3">AI Mastery Program</h5>
@@ -452,14 +458,8 @@
                                 </div>
 
                                 <!-- Future Leaders 14-18 -->
-                                <div class="bg-black/60 rounded-xl p-6 border border-purple-200/20">
-                                    <button onclick="toggleSection('teen-12')" class="w-full flex items-center justify-between mb-4">
-                                        <h4 class="text-xl md:text-2xl font-bold text-purple-300">Future Leaders (14-18)</h4>
-                                        <svg id="teen-12-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-300 transform transition-transform">
-                                            <polyline points="6,9 12,15 18,9"></polyline>
-                                        </svg>
-                                    </button>
-                                    <div id="teen-12-content" class="space-y-6 overflow-hidden max-h-0 transition-all duration-300">
+                                <div id="age-content-12-teen" class="age-content-section hidden">
+                                    <div class="space-y-6">
                                         <!-- Program Philosophy -->
                                         <div class="bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-lg p-4 border-l-4 border-purple-400">
                                             <h5 class="text-purple-300 font-bold text-lg mb-3">AI Leadership Academy</h5>
@@ -709,6 +709,40 @@
 
     <script>
         let currentProgram = '12';
+        let currentAgeGroup = {'12': 'young', '24': 'young', '36': 'young', '48': 'young'};
+
+        function switchAgeGroup(program, ageGroup) {
+            currentAgeGroup[program] = ageGroup;
+
+            // Update age tabs
+            document.querySelectorAll(`#age-tab-${program}-young, #age-tab-${program}-middle, #age-tab-${program}-teen`).forEach(tab => {
+                tab.classList.remove('active');
+                tab.classList.add('bg-white/10', 'border-white/30', 'text-white/70');
+                tab.classList.remove('bg-amber-400/20', 'border-amber-400', 'text-amber-300', 'shadow-lg', 'shadow-amber-500/20');
+                tab.classList.remove('bg-teal-400/20', 'border-teal-400', 'text-teal-300', 'shadow-lg', 'shadow-teal-500/20');
+                tab.classList.remove('bg-purple-400/20', 'border-purple-400', 'text-purple-300', 'shadow-lg', 'shadow-purple-500/20');
+            });
+
+            // Activate selected tab
+            const activeTab = document.getElementById(`age-tab-${program}-${ageGroup}`);
+            activeTab.classList.add('active');
+            activeTab.classList.remove('bg-white/10', 'border-white/30', 'text-white/70');
+
+            // Apply color based on age group
+            if (ageGroup === 'young') {
+                activeTab.classList.add('bg-amber-400/20', 'border-amber-400', 'text-amber-300', 'shadow-lg', 'shadow-amber-500/20');
+            } else if (ageGroup === 'middle') {
+                activeTab.classList.add('bg-teal-400/20', 'border-teal-400', 'text-teal-300', 'shadow-lg', 'shadow-teal-500/20');
+            } else if (ageGroup === 'teen') {
+                activeTab.classList.add('bg-purple-400/20', 'border-purple-400', 'text-purple-300', 'shadow-lg', 'shadow-purple-500/20');
+            }
+
+            // Update content visibility
+            document.querySelectorAll(`#age-content-${program}-young, #age-content-${program}-middle, #age-content-${program}-teen`).forEach(content => {
+                content.classList.add('hidden');
+            });
+            document.getElementById(`age-content-${program}-${ageGroup}`).classList.remove('hidden');
+        }
 
         function switchProgram(weeks) {
             // Update tabs - reset all to inactive state
@@ -745,30 +779,6 @@
 
             document.getElementById(`program-${weeks}`).classList.remove('hidden');
             currentProgram = weeks;
-        }
-
-        function toggleSection(sectionId) {
-            const content = document.getElementById(`${sectionId}-content`);
-            const icon = document.getElementById(`${sectionId}-icon`);
-
-            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-                // Collapse
-                content.style.maxHeight = '0px';
-                content.classList.remove('pt-3');
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                // Expand - add extra buffer to ensure all content is visible
-                content.style.maxHeight = (content.scrollHeight + 50) + 'px';
-                content.classList.add('pt-3');
-                icon.style.transform = 'rotate(180deg)';
-
-                // Double-check after a brief delay to ensure dynamic content is measured
-                setTimeout(() => {
-                    if (content.scrollHeight > parseInt(content.style.maxHeight)) {
-                        content.style.maxHeight = (content.scrollHeight + 50) + 'px';
-                    }
-                }, 100);
-            }
         }
 
         // Scroll Animation Observer
@@ -824,8 +834,9 @@
             }
             animateCursor();
 
-            // Initialize with 12-week program
+            // Initialize with 12-week program and young age group
             switchProgram('12');
+            switchAgeGroup('12', 'young');
             initScrollAnimations();
 
             // Initialize Lucide icons
