@@ -2686,13 +2686,27 @@
                 const discountPercent = wizardData.childCount === 2 ? '10%' : '15%';
                 discountText = `${discountPercent} multi-child discount applied!`;
 
-                document.getElementById('discount-badge').textContent = `Save ${discountPercent}`;
-                document.getElementById('discount-badge').classList.remove('hidden');
-                document.getElementById('multi-child-discount').textContent = discountText;
-                document.getElementById('multi-child-discount').classList.remove('hidden');
+                const discountBadge = document.getElementById('discount-badge');
+                const multiChildDiscount = document.getElementById('multi-child-discount');
+
+                if (discountBadge) {
+                    discountBadge.textContent = `Save ${discountPercent}`;
+                    discountBadge.classList.remove('hidden');
+                }
+                if (multiChildDiscount) {
+                    multiChildDiscount.textContent = discountText;
+                    multiChildDiscount.classList.remove('hidden');
+                }
             } else {
-                document.getElementById('discount-badge').classList.add('hidden');
-                document.getElementById('multi-child-discount').classList.add('hidden');
+                const discountBadge = document.getElementById('discount-badge');
+                const multiChildDiscount = document.getElementById('multi-child-discount');
+
+                if (discountBadge) {
+                    discountBadge.classList.add('hidden');
+                }
+                if (multiChildDiscount) {
+                    multiChildDiscount.classList.add('hidden');
+                }
             }
 
             document.getElementById('total-price').textContent = `₪${Math.round(totalMonthlyPrice)}`;
