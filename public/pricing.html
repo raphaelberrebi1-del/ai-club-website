@@ -183,8 +183,12 @@
 
         .rotating-arrow {
             display: inline-block;
-            animation: rotateArrow 1.5s ease-in-out infinite;
+            transition: transform 0.3s ease;
             transform-origin: center;
+        }
+
+        button:hover .rotating-arrow {
+            animation: rotateArrow 1.5s ease-in-out infinite;
         }
     </style>
 </head>
