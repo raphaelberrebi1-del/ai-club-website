@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תנאי שירות - מועדון AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .site-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 50%, #0c4a6e 100%);
+            z-index: -2;
+        }
+        .site-background::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen">
+    <div class="site-background"></div>
+
+    <!-- Header -->
+    <header class="bg-black/40 backdrop-blur-lg border-b border-white/20 sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <button onclick="window.location.href='mobile-he.html#choose-program'" class="bg-gradient-to-r from-cyan-500 to-teal-500 px-6 py-2 rounded-full hover:from-cyan-400 hover:to-teal-400 transition-all">
+                    הרשמה
+                </button>
+                <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                    מועדון AI
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                    תנאי שירות
+                </h1>
+                <p class="text-white/80 text-lg">תאריך תחילה: 8 באוקטובר 2025</p>
+                <p class="text-white/80">עדכון אחרון: 8 באוקטובר 2025</p>
+            </div>
+
+            <!-- Quick Summary -->
+            <section class="bg-gradient-to-br from-cyan-500/20 to-teal-500/20 backdrop-blur-lg rounded-xl border border-cyan-400/30 p-8 mb-8">
+                <h2 class="text-2xl font-bold text-cyan-400 mb-4">סיכום מהיר</h2>
+                <ul class="space-y-2 text-white/90">
+                    <li><strong class="text-white">מה:</strong> חינוך AI לילדים בגילאי 8-18 ברעננה</li>
+                    <li><strong class="text-white">איך:</strong> מפגשים שבועיים של 90 דקות, מבוסס מנוי</li>
+                    <li><strong class="text-white">ביטול:</strong> נדרשת הודעה של 30 יום</li>
+                    <li><strong class="text-white">החזרים:</strong> משתנים לפי תוכנית (ראו סעיף 4)</li>
+                    <li><strong class="text-white">זכויותיכם:</strong> מוגנים תחת חוק הגנת הצרכן הישראלי</li>
+                    <li><strong class="text-white">שאלות?</strong> אימייל <a href="mailto:raphael@aikidz.club" class="text-cyan-300 hover:underline">raphael@aikidz.club</a> או טלפון <a href="tel:+972543159025" class="text-cyan-300 hover:underline">054-315-9025</a></li>
+                </ul>
+            </section>
+
+            <!-- 1. Agreement to Terms -->
+            <section class="bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 p-8 mb-8">
+                <h2 class="text-2xl font-bold text-cyan-400 mb-4">1. הסכמה לתנאים</h2>
+                <p class="text-white/80 mb-4">
+                    על ידי הרשמת ילדכם למועדון AI, אתם מסכימים לתנאי שירות אלה. זהו הסכם מחייב מבחינה משפטית בינכם (ההורה/האפוטרופוס) לבין רפאל ברבי, מייסד מועדון AI.
+                </p>
+                <div class="text-white/80 space-y-2 mb-4">
+                    <p><strong class="text-white">פרטי קשר:</strong></p>
+                    <ul class="list-disc list-inside mr-4 space-y-1">
+                        <li><strong class="text-white">אימייל:</strong> <a href="mailto:raphael@aikidz.club" class="text-cyan-400 hover:underline">raphael@aikidz.club</a></li>
+                        <li><strong class="text-white">טלפון:</strong> <a href="tel:+972543159025" class="text-cyan-400 hover:underline">054-315-9025</a></li>
+                        <li><strong class="text-white">אתר:</strong> <a href="https://www.aikidz.club" class="text-cyan-400 hover:underline">www.aikidz.club</a></li>
+                        <li><strong class="text-white">מיקום:</strong> רעננה, ישראל (מיקומי מפגשים ספציפיים יסופקו עם ההרשמה)</li>
+                    </ul>
+                </div>
+                <p class="text-white/80">
+                    <strong class="text-white">בסיס משפטי:</strong> כהורה/אפוטרופוס, יש לכם סמכות משפטית לחתום על הסכם זה בשם ילדכם לפי חוק הכשרות המשפטית והאפוטרופסות, התשכ״ב-1962.
+                </p>
+            </section>
+
+            <!-- 2. What We Provide -->
+            <section class="bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 p-8 mb-8">
+                <h2 class="text-2xl font-bold text-cyan-400 mb-4">2. מה אנו מספקים</h2>
+                <p class="text-white/80 mb-4">מועדון AI מציע הוראת AI חינוכית לתלמידים בגילאי 8-18:</p>
+
+                <h3 class="text-xl font-semibold text-white mb-3">השירותים כוללים:</h3>
+                <ul class="list-disc list-inside text-white/80 space-y-2 mb-6">
+                    <li>מפגשים שבועיים של 90 דקות פנים אל פנים ברעננה</li>
+                    <li>תוכנית לימודים מותאמת לגיל (חדשנים צעירים 8-10, חוקרי טכנולוגיה 11-13, מנהיגי העתיד 14-18)</li>
+                    <li>הוראה בקבוצות קטנות (מקסימום 12 תלמידים לקבוצה)</li>
+                    <li>גישה מפוקחת לכלי AI (ChatGPT, Claude, Midjourney)</li>
+                    <li>תיק עבודות דיגיטלי של עבודת התלמיד</li>
+                    <li>תקשורת עם הורים דרך WhatsApp ואימייל</li>
+                </ul>
+
+                <h3 class="text-xl font-semibold text-white mb-3">מה אנחנו לא מספקים:</h3>
+                <ul class="list-disc list-inside text-white/80 space-y-2 mb-6">
+                    <li>שיעורים אישיים או מפגשים פרטיים</li>
+                    <li>מחשבים ניידים/מכשירים (תלמידים מביאים מכשיר משלהם - ראו סעיף 6)</li>
+                    <li>שירותי טיפול או חינוך מיוחד</li>
+                    <li>זיכוי אקדמי או הסמכה רשמית</li>
+                </ul>
+
+                <h3 class="text-xl font-semibold text-white mb-3">לוח זמנים:</h3>
+                <ul class="list-disc list-inside text-white/80 space-y-2">
+                    <li>המפגשים מתקיימים בימי ראשון (שעות ספציפיות משתנות לפי קבוצת גיל)</li>
+                    <li>אין מפגשים בחגים יהודיים מרכזיים</li>
+                    <li>לוח זמנים של מפגשים מסופק עם ההרשמה</li>
+                </ul>
+            </section>
+
+            <!-- 3. Enrollment -->
+            <section class="bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 p-8 mb-8">
+                <h2 class="text-2xl font-bold text-cyan-400 mb-4">3. הרשמה</h2>
+
+                <h3 class="text-xl font-semibold text-white mb-3">זכאות:</h3>
+                <ul class="list-disc list-inside text-white/80 space-y-2 mb-6">
+                    <li>תלמידים בגילאי 8-18</li>
+                    <li>תלמידים חייבים להביא מחשב נייד או טאבלט משלהם</li>
+                    <li>הורה/אפוטרופוס ממלא טופס הרשמה וחותם על הסכם זה</li>
+                </ul>
+
+                <h3 class="text-xl font-semibold text-white mb-3">תהליך הרשמה:</h3>
+                <ol class="list-decimal list-inside text-white/80 space-y-2 mb-6">
+                    <li>השלימו הרשמה מקוונת ב-www.aikidz.club</li>
+                    <li>בחרו תוכנית מנוי וקבוצת גיל</li>
+                    <li>בצעו תשלום</li>
+                    <li>קבלו אישור והצטרפו לקבוצת WhatsApp של ההורים</li>
+                    <li>הגיעו למפגש הראשון!</li>
+                </ol>
+
+                <h3 class="text-xl font-semibold text-white mb-3">גודל קבוצה:</h3>
+                <ul class="list-disc list-inside text-white/80 space-y-2">
+                    <li>מקסימום 12 תלמידים בכל קבוצה</li>
+                    <li>ההרשמה לפי סדר ההגעה</li>
+                    <li>רשימות המתנה זמינות אם קבוצות מלאות</li>
+                </ul>
+            </section>
+
+            <!-- 4. Pricing, Cancellation & Refunds -->
+            <section class="bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 p-8 mb-8">
+                <h2 class="text-2xl font-bold text-cyan-400 mb-4">4. מחירים, ביטול והחזרים</h2>
+
+                <h3 class="text-xl font-semibold text-white mb-3">תוכניות מנוי</h3>
+
+                <div class="space-y-4 mb-6">
+                    <div class="bg-white/5 rounded-lg p-4">
+                        <p class="text-white font-semibold mb-2">תוכנית חודשית: ₪599/חודש (מחיר מייסדים) | ₪749/חודש (רגיל)</p>
+                        <ul class="list-disc list-inside text-white/80 space-y-1 mr-4">
+                            <li>חיוב חודשי</li>
+                            <li>ביטול בכל עת עם הודעה של 30 יום</li>
+                            <li>ללא התחייבות לטווח ארוך</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white/5 rounded-lg p-4">
+                        <p class="text-white font-semibold mb-2">תוכנית רבעונית: ₪519/חודש (מחיר מייסדים) | ₪649/חודש (רגיל)</p>
+                        <ul class="list-disc list-inside text-white/80 space-y-1 mr-4">
+                            <li>חיוב כל 3 חודשים (₪1,557/רבעון)</li>
+                            <li>התחייבות ל-3 חודשים</li>
+                            <li>ביטול עם הודעה של 30 יום לפני חידוש אוטומטי</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white/5 rounded-lg p-4">
+                        <p class="text-white font-semibold mb-2">תוכנית שנתית: ₪479/חודש (מחיר מייסדים) | ₪599/חודש (רגיל)</p>
+                        <ul class="list-disc list-inside text-white/80 space-y-1 mr-4">
+                            <li>חיוב שנתי (₪5,748/שנה)</li>
+                            <li>התחייבות ל-12 חודשים</li>
+                            <li>ביטול עם הודעה של 60 יום לפני חידוש אוטומטי</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 rounded-lg p-4 mb-6">
+                    <p class="text-white font-semibold mb-2">הנחות משפחתיות:</p>
+                    <ul class="list-disc list-inside text-white/80 space-y-1 mr-4">
+                        <li>ילד שני: 10% הנחה</li>
+                        <li>ילד שלישי ומעבר לו: 15% הנחה</li>
+                    </ul>
+                </div>
+
+                <p class="text-white/80 mb-6"><strong class="text-white">כל המחירים בשקלים (₪) וכוללים מיסים ישימים.</strong></p>
+
+                <h3 class="text-xl font-semibold text-white mb-3">תנאי תשלום</h3>
+                <ul class="list-disc list-inside text-white/80 space-y-2 mb-6">
+                    <li>תשלום מראש עבור תקופת המנוי</li>
+                    <li>אמצעי תשלום מקובלים: כרטיס אשראי, העברה בנקאית, Bit, PayBox</li>
+                    <li>תשלום מאוחר? תקופת חסד של 7 ימים, אחר כך השירות מושעה</li>
+                    <li>חידוש אוטומטי: תוכניות מתחדשות אוטומטית אלא אם תבטלו</li>
+                </ul>
+
+                <h3 class="text-xl font-semibold text-white mb-3">ביטול והחזרים</h3>
+
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-white font-semibold mb-2">לפני תחילת התוכנית:</p>
+                        <ul class="list-disc list-inside text-white/80 space-y-1 mr-4">
+                            <li>ביטול 7+ ימים לפני המפגש הראשון: <strong class="text-white">החזר כספי מלא</strong></li>
+                            <li>ביטול בתוך 7 ימים מהמפגש הראשון: <strong class="text-white">החזר של 80%</strong></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <p class="text-white font-semibold mb-2">לאחר תחילת התוכנית:</p>
+                        <ul class="list-disc list-inside text-white/80 space-y-1 mr-4">
+                            <li>בתוך שבועיים הראשונים: <strong class="text-white">החזר של 50%</strong> מהיתרה הנותרת</li>
+                            <li>אחרי חודש: <strong class="text-white">ללא החזר</strong> (אפשר להעביר למחזור/קבוצת גיל שונה)</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <p class="text-white font-semibold mb-2">הודעת ביטול:</p>
+                        <ul class="list-disc list-inside text-white/80 space-y-1 mr-4">
+                            <li>תוכניות חודשיות: נדרשת הודעה של 30 יום</li>
+                            <li>תוכניות רבעוניות: הודעה של 30 יום לפני חידוש</li>
+                            <li>תוכניות שנתיות: הודעה של 60 יום לפני חידוש</li>
+                            <li>שלחו ביטול ל: <a href="mailto:raphael@aikidz.club" class="text-cyan-400 hover:underline">raphael@aikidz.club</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5-17. Additional Sections Summary -->
+            <section class="bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 p-8 mb-8">
+                <h2 class="text-2xl font-bold text-cyan-400 mb-4">תנאים נוספים</h2>
+                <div class="space-y-6 text-white/80">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">5. נוכחות ומפגשי איפוס</h3>
+                        <p>מומלץ נוכחות קבועה. מפגשי איפוס זמינים בהודעה מראש (מקסימום 2 לרבעון). אין החזרים לחגים מתוכננים.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">6. ציוד ודרישות טכניות</h3>
+                        <p>התלמידים חייבים להביא מחשב נייד/טאבלט משלהם עם אינטרנט. מועדון AI אינו אחראי למכשירים אבודים או פגומים. חשבונות כלי AI מסופקים.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">7. קוד התנהגות</h3>
+                        <p>התלמידים חייבים להתנהג בכבוד, להשתמש ב-AI רק כמתואר, ולא ליצור תוכן לא הולם. הפרות מובילות לאזהרות, השעיה או סיום.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">8. אחריות ההורים</h3>
+                        <p>ספקו מידע מדויק, וודאו ציוד, תקשרו היעדרויות, תמכו בלמידה, פקחו על שימוש ב-AI מחוץ למפגשים.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">9. בטיחות ואחריות</h3>
+                        <p>אנו מספקים סביבת למידה בטוחה ומפוקחת אבל לא אחראים לפציעות, מכשירים אבודים, שימוש לרעה של תלמידים מחוץ למפגשים או פלטי AI לא צפויים.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">10. קניין רוחני ועבודת תלמידים</h3>
+                        <p>תלמידים הבעלים של הפרויקטים שלהם. אנו עשויים להציג עבודת תלמידים ברשות. חומרי תוכנית הלימודים נשארים קניין של מועדון AI.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">11. תמונות וסרטונים</h3>
+                        <p>נדרשת הסכמה נפרדת. לעולם לא מצולמים ללא רשות בכתב. תוכלו למשוך הסכמה בכל עת.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">12. תקשורת ופרטיות</h3>
+                        <p>אימייל, WhatsApp, טלפון. זמן תגובה של 48 שעות. ראו מדיניות פרטיות לפרטי הגנת מידע.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">13. שינויים בתנאים אלה</h3>
+                        <p>הודעה של 30 יום לשינויים משמעותיים. המשך הרשמה = קבלת תנאים חדשים.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">14. זכויותיכם לפי החוק הישראלי</h3>
+                        <p>מוגנים על ידי חוק הגנת הצרכן הישראלי. צרו קשר עם רשות הגנת הצרכן במידת הצורך.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">15. דין החל</h3>
+                        <p>חוק ישראלי חל. סכסוכים כפופים לבתי המשפט הישראליים בסמכות השיפוט של רעננה.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">16. חירום ונסיבות בלתי צפויות</h3>
+                        <p>במקרה של מלחמה, אסון, מגיפה או חירום: מפגשים עשויים להיות מושעים. מוצעים מפגשים מקוונים כאשר אפשרי. החזרים/זיכויים יחסיים אם לא ניתן לספק שירותים.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-2">17. הערות סופיות חשובות</h3>
+                        <p>הסכם מלא עם מדיניות פרטיות. ניתנות להפרדה, אי-ויתור, הרשמה לא ניתנת להעברה.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="bg-gradient-to-br from-cyan-500/20 to-teal-500/20 backdrop-blur-lg rounded-xl border border-cyan-400/30 p-8 text-center">
+                <h2 class="text-2xl font-bold text-white mb-4">צרו קשר</h2>
+                <p class="text-white/80 mb-4">שאלות לגבי התנאים האלה?</p>
+                <div class="space-y-2 text-white/90">
+                    <p><strong>רפאל ברבי</strong></p>
+                    <p>מייסד ומדריך, מועדון AI</p>
+                    <p class="mt-4">📧 אימייל: <a href="mailto:raphael@aikidz.club" class="text-cyan-300 hover:underline">raphael@aikidz.club</a></p>
+                    <p>📱 טלפון: <a href="tel:+972543159025" class="text-cyan-300 hover:underline">054-315-9025</a></p>
+                    <p>🌐 אתר: <a href="https://www.aikidz.club" class="text-cyan-300 hover:underline">www.aikidz.club</a></p>
+                    <p>📍 מיקום: רעננה, ישראל</p>
+                </div>
+                <div class="mt-8 p-4 bg-white/10 rounded-lg">
+                    <p class="text-white font-semibold">
+                        על ידי הרשמת ילדכם למועדון AI, אתם מאשרים שקראתם, הבנתם ומסכימים לתנאי שירות אלה.
+                    </p>
+                </div>
+                <p class="text-white/60 mt-6">עדכון אחרון: 8 באוקטובר 2025</p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black/40 backdrop-blur-lg border-t border-white/20 mt-20">
+        <div class="container mx-auto px-6 py-12">
+            <div class="text-center text-white/60">
+                <p>&copy; 2025 מועדון AI. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

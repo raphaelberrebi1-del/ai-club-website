@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>שאלות נפוצות - מועדון AI</title>
+    <meta name="description" content="שאלות ותשובות על מועדון AI - תוכניות למידה מובנות ב-AI לילדים בגילאי 8-18 ברעננה.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;
+            background-color: #0a0a12;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .site-background {
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+            pointer-events: none;
+            background-image: url('/NEW-background.jpg?v=1');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            transform: translateZ(0);
+        }
+
+        .site-background::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon.rotated {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="text-white">
+    <div class="site-background"></div>
+
+    <!-- Fixed Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/95 backdrop-blur-xl border-b border-amber-200/20">
+        <div class="flex items-center justify-between px-4 h-16">
+            <!-- Register Button -->
+            <button onclick="window.location.href='mobile-he.html#choose-program'" class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105">
+                הרשמה
+            </button>
+
+            <!-- AI Club Branding -->
+            <div class="flex items-center">
+                <h1 class="text-xl font-bold text-white tracking-tight">
+                    <span class="text-white">מועדון</span>
+                    <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">AI</span>
+                </h1>
+            </div>
+
+            <!-- Back Button -->
+            <button onclick="window.history.back()" class="flex items-center justify-center w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-amber-200/30 hover:bg-white/20 transition-all duration-200 hover:scale-105">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white">
+                    <path d="m9 18 6-6-6-6"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24 px-6 pb-12 relative z-10">
+        <div class="max-w-3xl mx-auto">
+            <!-- Page Title -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                    שאלות נפוצות
+                </h1>
+                <p class="text-white/80 text-lg">כל מה שרציתם לדעת על מועדון AI</p>
+            </div>
+
+            <!-- FAQ Categories -->
+            <div class="space-y-6">
+                <!-- General Questions -->
+                <div>
+                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">שאלות כלליות</h2>
+                    <div class="space-y-3">
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">מה זה מועדון AI?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                מועדון AI הוא תוכנית חינוך מובנית המלמדת ילדים בגילאי 8-18 כיצד להשתמש בכלי בינה מלאכותית באופן יצירתי, אתי ואחראי. אנחנו מתמקדים בלמידה מעשית עם פרויקטים אמיתיים, לא רק הרצאות.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">איפה נמצאים המפגשים?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                כל המפגשים מתקיימים ברעננה, ישראל. מיקום מדויק יסופק בזמן ההרשמה. אנחנו שומרים על קבוצות קטנות (מקסימום 12 תלמידים) לפיקוח טוב יותר.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">מתי מתקיימים המפגשים?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                המפגשים מתקיימים בימי ראשון, עם שעות שונות לכל קבוצת גיל. כל מפגש נמשך 90 דקות. לוח שנה מפורט יינתן בעת ההרשמה.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">כמה תלמידים יש בכל קבוצה?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                אנחנו שומרים על מקסימום 12 תלמידים בכל קבוצה כדי להבטיח תשומת לב אישית והדרכה מעשית. זה מאפשר למדריך לפקח על כל תלמיד ולספק עזרה מותאמת אישית.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Age Groups -->
+                <div>
+                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">קבוצות גיל</h2>
+                    <div class="space-y-3">
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">מה ההבדל בין קבוצות הגיל?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                <strong class="text-white">חדשנים צעירים (8-10):</strong> למידה מבוססת משחק, סיפורים יצירתיים, אמנות דיגיטלית.<br>
+                                <strong class="text-white">חוקרי טכנולוגיה (11-13):</strong> יסודות תכנות, מחקר בעזרת AI, פרויקטים דיגיטליים.<br>
+                                <strong class="text-white">מנהיגי העתיד (14-18):</strong> יישומים מתקדמים, עוזרים אישיים של AI, קונספטים של סטארט-אפ.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">הילד שלי בדיוק בין שתי קבוצות גיל. לאיזו קבוצה הוא צריך להצטרף?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                צרו איתנו קשר! נשמח לדון ברמת הניסיון הטכנולוגי והבשלות של ילדכם כדי להמליץ על הקבוצה הטובה ביותר. לפעמים, תלמידים מוכנים לקבוצה מתקדמת יותר או נהנים יותר מקצב איטי יותר.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">האם הילד שלי צריך ניסיון קודם עם AI או תכנות?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                לא! התוכנית שלנו מתחילה מהיסודות. אנחנו מקבלים בברכה מתחילים ומתאימים את התוכן לרמה של כל תלמיד. הדבר החשוב היותר הוא סקרנות ונכונות ללמוד.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing & Registration -->
+                <div>
+                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">מחירים והרשמה</h2>
+                    <div class="space-y-3">
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">כמה עולה?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                <strong class="text-white">חודשי:</strong> ₪599/חודש (מחיר מייסדים) | ₪749/חודש (רגיל)<br>
+                                <strong class="text-white">רבעוני:</strong> ₪519/חודש (מחיר מייסדים) | ₪649/חודש (רגיל)<br>
+                                <strong class="text-white">שנתי:</strong> ₪479/חודש (מחיר מייסדים) | ₪599/חודש (רגיל)<br>
+                                <strong class="text-white">הנחות משפחתיות:</strong> 10% לילד שני, 15% לילד שלישי ומעבר לו.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">אילו אמצעי תשלום אתם מקבלים?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                אנחנו מקבלים כרטיסי אשראי, העברה בנקאית, Bit ו-PayBox. התשלום מאובטח ומעובד דרך ספקי תשלום מהימנים.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">האם אפשר לבטל? מה מדיניות ההחזרים?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                <strong class="text-white">לפני תחילת התוכנית:</strong> החזר כספי מלא (7+ ימים לפני), 80% החזר (בתוך 7 ימים).<br>
+                                <strong class="text-white">לאחר תחילת התוכנית:</strong> 50% החזר (בתוך שבועיים הראשונים), ללא החזר (אחרי חודש - אבל אפשר להעביר למחזור אחר).<br>
+                                <strong class="text-white">הודעת ביטול:</strong> 30 יום עבור תוכניות חודשיות/רבעוניות, 60 יום עבור תוכניות שנתיות.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">איך מתבצעת ההרשמה?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                1. בחרו תוכנית מנוי וקבוצת גיל באתר<br>
+                                2. מלאו טופס הרשמה<br>
+                                3. בצעו תשלום<br>
+                                4. קבלו אישור והצטרפו לקבוצת WhatsApp של ההורים<br>
+                                5. הגיעו למפגש הראשון!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Safety & Supervision -->
+                <div>
+                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">בטיחות ופיקוח</h2>
+                    <div class="space-y-3">
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">כיצד אתם מבטיחים שימוש בטוח ב-AI?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                - כל השימוש ב-AI מפוקח על ידי המדריך<br>
+                                - תלמידים לומדים לעולם לא לשתף מידע אישי עם מערכות AI<br>
+                                - משתמשים רק בכלי AI מאושרים המתאימים לגיל<br>
+                                - קבוצות קטנות (מקסימום 12) לפיקוח טוב יותר<br>
+                                - הורים מקבלים עדכונים קבועים על התקדמות התלמידים
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">מה קורה אם הילד שלי יוצר תוכן לא הולם?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                יש לנו קוד התנהגות ברור. הפרה ראשונה = אזהרה בעל פה + הודעה להורים. הפרות חוזרות מובילות לאזהרה בכתב, השעיה או סיום ההרשמה. אנחנו שומרים על סביבת למידה מכבדת.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">איך אתם מתקשרים עם ההורים?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                אנחנו משתמשים ב-WhatsApp (קבוצת הורים), אימייל ובטלפון למצבי חירום. תקבלו עדכונים על התקדמות הילד שלכם, שינויים בלוח השנה ועדכוני תוכנית. זמן תגובה: 48 שעות לעניינים לא דחופים.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Requirements -->
+                <div>
+                    <h2 class="text-2xl font-bold text-cyan-400 mb-4">דרישות טכניות</h2>
+                    <div class="space-y-3">
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">האם עלי לספק מחשב נייד?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                כן, תלמידים צריכים להביא מחשב נייד או טאבלט משלהם עם אינטרנט אמין. מחשב נייד עם מקלדת מועדף על פני טאבלט. המכשיר צריך להיות טעון (מינימום 2 שעות סוללה).
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">מה קורה אם המחשב הנייד של ילדי נשבר או נגנב?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                מועדון AI לא אחראי למכשירים אבודים, גנובים או פגומים. אנחנו ממליצים לא להביא מכשירים יקרים או שלא ניתן להחליף. מכשירים לשאילה זמינים במקרי חירום - צרו קשר מראש.
+                            </div>
+                        </div>
+
+                        <div class="faq-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                            <button onclick="toggleFAQ(this)" class="w-full text-right px-6 py-4 flex justify-between items-center">
+                                <svg class="faq-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <span class="font-semibold text-white">האם עלי לרכוש תוכנה או חשבונות AI?</span>
+                            </button>
+                            <div class="faq-answer px-6 pb-4 text-white/80">
+                                לא! חשבונות כלי AI מסופקים או מפוקחים על ידי המדריך. אנחנו משתמשים רק בתוכנה חינמית - אין צורך לרכוש דבר. תלמידים לא צריכים ליצור חשבונות AI אישיים ללא פיקוח הורי.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="bg-gradient-to-br from-cyan-500/20 to-teal-500/20 backdrop-blur-lg rounded-xl border border-cyan-400/30 p-8 text-center mt-12">
+                    <h2 class="text-2xl font-bold text-white mb-4">יש עוד שאלות?</h2>
+                    <p class="text-white/80 mb-6">צרו קשר - נשמח לעזור!</p>
+                    <div class="space-y-2 text-white/90">
+                        <p>📧 אימייל: <a href="mailto:raphael@aikidz.club" class="text-cyan-300 hover:underline">raphael@aikidz.club</a></p>
+                        <p>📱 טלפון: <a href="tel:+972543159025" class="text-cyan-300 hover:underline">054-315-9025</a></p>
+                        <p>🌐 אתר: <a href="https://www.aikidz.club" class="text-cyan-300 hover:underline">www.aikidz.club</a></p>
+                    </div>
+                    <button onclick="window.location.href='mobile-he.html#choose-program'" class="mt-6 bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-8 py-3 rounded-full font-semibold hover:from-cyan-400 hover:to-teal-400 transition-all">
+                        הירשמו עכשיו
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon');
+            const isActive = answer.classList.contains('active');
+
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelectorAll('.faq-icon').forEach(item => {
+                item.classList.remove('rotated');
+            });
+
+            // Toggle current FAQ
+            if (!isActive) {
+                answer.classList.add('active');
+                icon.classList.add('rotated');
+            }
+        }
+    </script>
+</body>
+</html>
