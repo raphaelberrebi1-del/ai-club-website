@@ -163,26 +163,16 @@
         .particle-3 { top: 40%; left: 50%; }
 
         /* Column hover effects */
-        .pricing-table th:hover,
-        .pricing-table td:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .pricing-table th {
-            transition: all 0.3s ease;
-        }
-
-        .pricing-table th:hover {
-            transform: translateY(-2px);
-        }
-
-        .pricing-table tr:hover td {
-            background-color: rgba(255, 255, 255, 0.02);
-        }
-
+        .pricing-table th,
         .pricing-table td {
             transition: all 0.3s ease;
+        }
+
+        .pricing-table th.column-hover,
+        .pricing-table td.column-hover {
+            background-color: rgba(255, 255, 255, 0.08) !important;
+            transform: translateY(-4px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -593,6 +583,39 @@
 
         // Start countdown when page loads
         updateCountdown();
+
+        // Column hover effect for pricing table
+        document.addEventListener('DOMContentLoaded', function() {
+            const table = document.querySelector('.pricing-table');
+            if (table) {
+                const rows = table.querySelectorAll('tr');
+
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('th, td');
+                    cells.forEach((cell, index) => {
+                        cell.addEventListener('mouseenter', function() {
+                            // Add hover class to all cells in the same column
+                            rows.forEach(r => {
+                                const targetCell = r.querySelectorAll('th, td')[index];
+                                if (targetCell) {
+                                    targetCell.classList.add('column-hover');
+                                }
+                            });
+                        });
+
+                        cell.addEventListener('mouseleave', function() {
+                            // Remove hover class from all cells in the same column
+                            rows.forEach(r => {
+                                const targetCell = r.querySelectorAll('th, td')[index];
+                                if (targetCell) {
+                                    targetCell.classList.remove('column-hover');
+                                }
+                            });
+                        });
+                    });
+                });
+            }
+        });
 
         // Custom cursor effect
         document.addEventListener('DOMContentLoaded', function() {
