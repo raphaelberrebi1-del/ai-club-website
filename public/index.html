@@ -380,7 +380,7 @@
         .fade-in-up {
             opacity: 0;
             transform: translateY(50px);
-            transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .fade-in-up.animate {
@@ -414,15 +414,15 @@
 
         /* Apply delay classes to all animation types */
         .fade-in-right.delay-1, .fade-in-up.delay-1, .fade-in-down.delay-1 {
-            transition-delay: 0.2s;
+            transition-delay: 0.1s;
         }
 
         .fade-in-right.delay-2, .fade-in-up.delay-2, .fade-in-down.delay-2 {
-            transition-delay: 0.4s;
+            transition-delay: 0.2s;
         }
 
         .fade-in-right.delay-3, .fade-in-up.delay-3, .fade-in-down.delay-3 {
-            transition-delay: 0.6s;
+            transition-delay: 0.3s;
         }
 
         .fade-in-right.delay-4, .fade-in-up.delay-4, .fade-in-down.delay-4 {
@@ -2456,7 +2456,7 @@
                         // Add a slight delay for a more premium, intentional feel
                         setTimeout(() => {
                             entry.target.classList.add('animate');
-                        }, 200); // 200ms delay after element enters viewport
+                        }, 50); // 50ms delay after element enters viewport
                         // Stop observing after animation is triggered
                         observer.unobserve(entry.target);
                     }
