@@ -188,11 +188,6 @@
             backdrop-filter: blur(24px) saturate(180%) !important;
             -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
         }
-
-        /* Ensure background color renders properly */
-        .bg-black\/40 {
-            background-color: rgba(0, 0, 0, 0.5) !important;
-        }
     </style>
 </head>
 <body class="antialiased text-zinc-100">
@@ -204,8 +199,8 @@
 
     <!-- Enhanced Background glow effects -->
     <div class="pointer-events-none fixed inset-0 overflow-hidden" style="z-index: 1;">
-        <div class="absolute top-0 -right-40 w-[1000px] h-[1000px] rounded-full blur-3xl opacity-50"
-             style="background: radial-gradient(circle at center, rgba(34, 211, 238, 0.5), rgba(34, 211, 238, 0.2) 40%, transparent 70%);"></div>
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[1400px] h-[1400px] rounded-full blur-3xl opacity-60"
+             style="background: radial-gradient(circle at center, rgba(34, 211, 238, 0.7), rgba(34, 211, 238, 0.3) 40%, transparent 70%);"></div>
         <div class="absolute bottom-0 right-0 w-[900px] h-[900px] translate-x-1/4 translate-y-1/4 rounded-full blur-3xl opacity-50"
              style="background: radial-gradient(circle at center, rgba(236, 72, 153, 0.6), rgba(236, 72, 153, 0.2) 40%, transparent 70%);"></div>
         <div class="absolute top-1/2 left-0 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl opacity-40"
