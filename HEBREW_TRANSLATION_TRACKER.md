@@ -2,7 +2,7 @@
 
 **Project:** AI Club Website Hebrew Version
 **Last Updated:** 2025-10-09
-**Status:** In Progress
+**Status:** Completed ✅
 
 ---
 
@@ -80,32 +80,49 @@
 
 ### Completed Pages ✅
 - [x] mobile-he.html (Hebrew mobile landing page)
-- [x] curriculum-he.html (Hebrew curriculum page)
-- [x] pricing-he.html (Hebrew pricing page)
+- [x] curriculum-he.html (Hebrew curriculum page - mobile-optimized)
+- [x] pricing-he.html (Hebrew pricing page - mobile-optimized)
 - [x] faq-he.html (Hebrew FAQ page)
 - [x] privacy-he.html (Hebrew privacy policy)
 - [x] terms-he.html (Hebrew terms of service)
+- [x] index-he.html (Hebrew desktop landing page) - **COMPLETED 2025-10-09**
 
-### In Progress 🚧
-- [ ] index-he.html (Hebrew desktop landing page) - **CREATING NOW**
+### Recent Fixes (2025-10-09) 🔧
+**index-he.html - Removed ALL remaining English text:**
+- ✅ Fixed "Learning" → "הלמידה" in main heading
+- ✅ Fixed "ילדren" → "ילדים" (mixed text)
+- ✅ Translated all registration form labels and placeholders
+- ✅ Fixed "Registration Summary" → "סיכום הרשמה"
+- ✅ Fixed "Age Group" → "קבוצת גיל"
+- ✅ Translated payment method labels (Bit, PayBox, Cash/Bank Transfer)
+- ✅ Fixed all "/month" → "/חודש" (14 instances)
+- ✅ Fixed "Sundays" → "ימי ראשון" (12 instances)
+- ✅ Translated "Back" → "חזור" and "Continue" → "המשך"
+- ✅ Fixed price discount labels to Hebrew
+- ✅ Translated all child form placeholders
+- ✅ Total changes: 75+ individual edits
 
-### Language Switcher Status
+### Language Switcher Status ✅
 
-**English Pages (need switcher to Hebrew):**
-- [ ] index.html → index-he.html
-- [ ] curriculum.html → curriculum-he.html
-- [ ] pricing.html → pricing-he.html
-- [ ] faq.html → faq-he.html
-- [ ] privacy.html → privacy-he.html
-- [ ] terms.html → terms-he.html
+**English Pages (with Hebrew switcher):**
+- [x] index.html → index-he.html
+- [x] curriculum.html → curriculum-he.html
+- [x] pricing.html → pricing-he.html
+- [x] faq.html → faq-he.html
+- [x] privacy.html → privacy-he.html
+- [x] terms.html → terms-he.html
 
-**Hebrew Pages (need switcher to English):**
-- [ ] index-he.html → index.html
-- [ ] curriculum-he.html → curriculum.html
-- [ ] pricing-he.html → pricing.html
-- [ ] faq-he.html → faq.html
-- [ ] privacy-he.html → privacy.html
-- [ ] terms-he.html → terms.html
+**Hebrew Pages (with English switcher):**
+- [x] index-he.html → index.html
+- [x] curriculum-he.html → curriculum.html
+- [x] pricing-he.html → pricing.html
+- [x] faq-he.html → faq.html
+- [x] privacy-he.html → privacy.html
+- [x] terms-he.html → terms.html
+
+**Mobile Pages (still need switchers):**
+- [ ] pricing-mobile.html → pricing-he.html (or mobile equivalent)
+- [ ] curriculum-mobile.html → curriculum-he.html (or mobile equivalent)
 
 ---
 
@@ -282,6 +299,41 @@ grep -r "מועדון AI\|AI Club" public/*.html
 ```bash
 grep -r "054-315-9025\|+972-54-315-9025" public/*.html
 ```
+
+---
+
+## Important Page Structure Notes
+
+### Desktop vs Mobile Page Architecture
+
+The site has **three types of pages**:
+
+1. **Desktop Pages (Full Features)**:
+   - `index.html` / `index-he.html` - Main landing with full registration form
+   - Has desktop-optimized layout with auto-redirect to mobile on phones
+
+2. **Mobile-Optimized Pages**:
+   - `mobile.html` / `mobile-he.html` - Mobile landing page
+   - `pricing-mobile.html` - English mobile pricing (no Hebrew switcher yet)
+   - `curriculum-mobile.html` - English mobile curriculum (no Hebrew switcher yet)
+
+3. **Hebrew Pages (Mobile-Optimized)**:
+   - `pricing-he.html` - Hebrew pricing (mobile-optimized, NOT desktop)
+   - `curriculum-he.html` - Hebrew curriculum (mobile-optimized, NOT desktop)
+   - These ARE the mobile equivalents, not separate desktop versions
+
+### Current Behavior:
+- **index.html** → auto-redirects mobile users to `mobile.html`
+- **index-he.html** → auto-redirects mobile users to `mobile-he.html`
+- **pricing.html** / **curriculum.html** → Desktop versions (no auto-redirect)
+- **pricing-he.html** / **curriculum-he.html** → Mobile-optimized (users can access on desktop)
+
+### Why This Matters:
+- Desktop users clicking Hebrew on pricing/curriculum pages will see mobile-optimized layouts (acceptable)
+- If you want true desktop Hebrew versions, would need to create:
+  - `pricing-he-desktop.html`
+  - `curriculum-he-desktop.html`
+- Current setup is functional but not perfectly symmetrical
 
 ---
 
