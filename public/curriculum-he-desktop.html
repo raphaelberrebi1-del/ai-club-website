@@ -270,6 +270,32 @@
         a:hover .arrow-roll {
             animation: rollArrowDown 0.4s ease-in-out;
         }
+
+        /* Week Accordion Styles */
+        .week-section {
+            transition: all 0.3s ease;
+        }
+
+        .week-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+
+        .week-section.active .week-content {
+            max-height: 500px;
+            padding: 1rem;
+            padding-top: 0;
+        }
+
+        .week-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .week-section.active .week-icon {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body class="antialiased text-zinc-100">
@@ -374,45 +400,87 @@
 
                     <div class="space-y-4">
                         <!-- Week 1-2 -->
-                        <div class="bg-black/20 rounded-xl p-4 border border-cyan-400/30">
-                            <h4 class="text-base font-bold text-cyan-300 mb-1.5">שבועות 1-2: פגישה עם חבר ה-AI שלך</h4>
-                            <p class="text-sm text-white/80 mb-2">גלו מחשבים חכמים מסביבנו!</p>
-                            <p class="text-xs text-white/70"><strong>פעילות:</strong> ציד אוצרות AI בחפצים יומיומיים</p>
+                        <div class="week-section active bg-black/20 rounded-xl border border-cyan-400/30">
+                            <button onclick="toggleWeek(this)" class="w-full text-right px-4 py-4 flex justify-between items-center">
+                                <svg class="week-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <h4 class="text-base font-bold text-cyan-300">שבועות 1-2: פגישה עם חבר ה-AI שלך</h4>
+                            </button>
+                            <div class="week-content">
+                                <p class="text-sm text-white/80 mb-2 px-4">גלו מחשבים חכמים מסביבנו!</p>
+                                <p class="text-xs text-white/70 px-4"><strong>פעילות:</strong> ציד אוצרות AI בחפצים יומיומיים</p>
+                            </div>
                         </div>
 
                         <!-- Week 3-4 -->
-                        <div class="bg-black/20 rounded-xl p-4 border border-cyan-400/30">
-                            <h4 class="text-base font-bold text-cyan-300 mb-1.5">שבועות 3-4: מלמדים את ה-AI להבין</h4>
-                            <p class="text-sm text-white/80 mb-2">לומדים איך לדבר עם מחשבים חכמים!</p>
-                            <p class="text-xs text-white/70"><strong>פעילות:</strong> אילוף חיית מחמד AI עם פקודות</p>
+                        <div class="week-section bg-black/20 rounded-xl border border-cyan-400/30">
+                            <button onclick="toggleWeek(this)" class="w-full text-right px-4 py-4 flex justify-between items-center">
+                                <svg class="week-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <h4 class="text-base font-bold text-cyan-300">שבועות 3-4: מלמדים את ה-AI להבין</h4>
+                            </button>
+                            <div class="week-content">
+                                <p class="text-sm text-white/80 mb-2 px-4">לומדים איך לדבר עם מחשבים חכמים!</p>
+                                <p class="text-xs text-white/70 px-4"><strong>פעילות:</strong> אילוף חיית מחמד AI עם פקודות</p>
+                            </div>
                         </div>
 
                         <!-- Week 5-6 -->
-                        <div class="bg-black/20 rounded-xl p-4 border border-cyan-400/30">
-                            <h4 class="text-base font-bold text-cyan-300 mb-1.5">שבועות 5-6: סטודיו לאמנות וסיפורים עם AI</h4>
-                            <p class="text-sm text-white/80 mb-2">יוצרים אמנות וסיפורים מדהימים עם AI!</p>
-                            <p class="text-xs text-white/70"><strong>פעילות:</strong> פרויקטי אמנות שיתופיים ויצירת קולאז' דיגיטלי</p>
+                        <div class="week-section bg-black/20 rounded-xl border border-cyan-400/30">
+                            <button onclick="toggleWeek(this)" class="w-full text-right px-4 py-4 flex justify-between items-center">
+                                <svg class="week-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <h4 class="text-base font-bold text-cyan-300">שבועות 5-6: סטודיו לאמנות וסיפורים עם AI</h4>
+                            </button>
+                            <div class="week-content">
+                                <p class="text-sm text-white/80 mb-2 px-4">יוצרים אמנות וסיפורים מדהימים עם AI!</p>
+                                <p class="text-xs text-white/70 px-4"><strong>פעילות:</strong> פרויקטי אמנות שיתופיים ויצירת קולאז' דיגיטלי</p>
+                            </div>
                         </div>
 
                         <!-- Week 7-8 -->
-                        <div class="bg-black/20 rounded-xl p-4 border border-cyan-400/30">
-                            <h4 class="text-base font-bold text-cyan-300 mb-1.5">שבועות 7-8: עוזרי AI בעולמנו</h4>
-                            <p class="text-sm text-white/80 mb-2">מגלים עוזרי AI בכל מקום!</p>
-                            <p class="text-xs text-white/70"><strong>פעילות:</strong> תחפושות מקצועות AI ועיצוב עוזר AI</p>
+                        <div class="week-section bg-black/20 rounded-xl border border-cyan-400/30">
+                            <button onclick="toggleWeek(this)" class="w-full text-right px-4 py-4 flex justify-between items-center">
+                                <svg class="week-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <h4 class="text-base font-bold text-cyan-300">שבועות 7-8: עוזרי AI בעולמנו</h4>
+                            </button>
+                            <div class="week-content">
+                                <p class="text-sm text-white/80 mb-2 px-4">מגלים עוזרי AI בכל מקום!</p>
+                                <p class="text-xs text-white/70 px-4"><strong>פעילות:</strong> תחפושות מקצועות AI ועיצוב עוזר AI</p>
+                            </div>
                         </div>
 
                         <!-- Week 9-10 -->
-                        <div class="bg-black/20 rounded-xl p-4 border border-cyan-400/30">
-                            <h4 class="text-base font-bold text-cyan-300 mb-1.5">שבועות 9-10: בחירות חכמות עם AI</h4>
-                            <p class="text-sm text-white/80 mb-2">לומדים מתי להשתמש ב-AI ומתי להשתמש במוח שלנו!</p>
-                            <p class="text-xs text-white/70"><strong>פעילות:</strong> תרחישי אלופי הבחירה ומשחק מגן הפרטיות</p>
+                        <div class="week-section bg-black/20 rounded-xl border border-cyan-400/30">
+                            <button onclick="toggleWeek(this)" class="w-full text-right px-4 py-4 flex justify-between items-center">
+                                <svg class="week-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <h4 class="text-base font-bold text-cyan-300">שבועות 9-10: בחירות חכמות עם AI</h4>
+                            </button>
+                            <div class="week-content">
+                                <p class="text-sm text-white/80 mb-2 px-4">לומדים מתי להשתמש ב-AI ומתי להשתמש במוח שלנו!</p>
+                                <p class="text-xs text-white/70 px-4"><strong>פעילות:</strong> תרחישי אלופי הבחירה ומשחק מגן הפרטיות</p>
+                            </div>
                         </div>
 
                         <!-- Week 11-12 -->
-                        <div class="bg-black/20 rounded-xl p-4 border border-cyan-400/30">
-                            <h4 class="text-base font-bold text-cyan-300 mb-1.5">שבועות 11-12: תערוכת ממציאים צעירים</h4>
-                            <p class="text-sm text-white/80 mb-2">יוצרים ומציגים פרויקטי AI מדהימים!</p>
-                            <p class="text-xs text-white/70"><strong>פעילות:</strong> פרויקט בחר את ההרפתקה שלך ואירוע תערוכה משפחתי</p>
+                        <div class="week-section bg-black/20 rounded-xl border border-cyan-400/30">
+                            <button onclick="toggleWeek(this)" class="w-full text-right px-4 py-4 flex justify-between items-center">
+                                <svg class="week-icon w-5 h-5 text-cyan-400 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                                <h4 class="text-base font-bold text-cyan-300">שבועות 11-12: תערוכת ממציאים צעירים</h4>
+                            </button>
+                            <div class="week-content">
+                                <p class="text-sm text-white/80 mb-2 px-4">יוצרים ומציגים פרויקטי AI מדהימים!</p>
+                                <p class="text-xs text-white/70 px-4"><strong>פעילות:</strong> פרויקט בחר את ההרפתקה שלך ואירוע תערוכה משפחתי</p>
+                            </div>
                         </div>
                     </div>
 
@@ -854,6 +922,24 @@
         document.addEventListener('DOMContentLoaded', function() {
             showProgram('young');
         });
+
+        // Week Accordion Toggle
+        function toggleWeek(button) {
+            const section = button.closest('.week-section');
+            const content = button.nextElementSibling;
+            const isActive = section.classList.contains('active');
+
+            // Close all other week sections in the same program
+            const programContainer = section.closest('.space-y-4');
+            programContainer.querySelectorAll('.week-section').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Toggle current section
+            if (!isActive) {
+                section.classList.add('active');
+            }
+        }
     </script>
 
 </body>
