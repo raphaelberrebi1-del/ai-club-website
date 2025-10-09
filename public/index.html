@@ -378,13 +378,12 @@
 
         /* Up slide animations - for scroll trigger */
         .fade-in-up {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateY(30px);
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
         }
 
         .fade-in-up.animate {
-            opacity: 1;
             transform: translateY(0);
         }
 
@@ -1649,7 +1648,7 @@
                 <div class="rounded-2xl p-6">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
                         <!-- Master ChatGPT -->
-                        <div class="relative h-full flex flex-col rounded-2xl bg-black/50 backdrop-blur-lg border-2 border-amber-200/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group p-6 fade-in-up delay-1">
+                        <div class="relative h-full flex flex-col rounded-2xl bg-black/50 backdrop-blur-lg border-2 border-amber-200/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group p-6 fade-in-up transform-gpu" style="will-change: transform;">
                                 <div class="flex items-center gap-3 mb-4">
                                     <!-- Icon on white circle overlay -->
                                     <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
@@ -1680,7 +1679,7 @@
                         </div>
 
                         <!-- Create with AI Art Tools -->
-                        <div class="relative h-full flex flex-col rounded-2xl bg-black/50 backdrop-blur-lg border-2 border-amber-200/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group p-6 fade-in-up delay-2">
+                        <div class="relative h-full flex flex-col rounded-2xl bg-black/50 backdrop-blur-lg border-2 border-amber-200/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group p-6 fade-in-up transform-gpu" style="will-change: transform;">
                                 <div class="flex items-center gap-3 mb-4">
                                     <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="palette" class="lucide lucide-palette w-4 h-4 text-teal-600" style="stroke-width: 1.5;"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"></path><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle></svg>
@@ -1740,7 +1739,7 @@
                         </div>
 
                         <!-- Code with AI Assistance -->
-                        <div class="relative h-full flex flex-col rounded-2xl bg-black/50 backdrop-blur-lg border-2 border-amber-200/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group p-6 fade-in-up delay-3">
+                        <div class="relative h-full flex flex-col rounded-2xl bg-black/50 backdrop-blur-lg border-2 border-amber-200/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group p-6 fade-in-up transform-gpu" style="will-change: transform;">
                                 <div class="flex items-center gap-3 mb-4">
                                     <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="code" class="lucide lucide-code w-4 h-4 text-cyan-600" style="stroke-width: 1.5;"><polyline points="16,18 22,12 16,6"></polyline><polyline points="8,6 2,12 8,18"></polyline></svg>
@@ -2453,10 +2452,8 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Add a slight delay for a more premium, intentional feel
-                        setTimeout(() => {
-                            entry.target.classList.add('animate');
-                        }, 50); // 50ms delay after element enters viewport
+                        // Instant animation trigger for seamless interaction
+                        entry.target.classList.add('animate');
                         // Stop observing after animation is triggered
                         observer.unobserve(entry.target);
                     }
