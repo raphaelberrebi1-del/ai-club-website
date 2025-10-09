@@ -280,26 +280,14 @@
         a:hover .arrow-roll {
             animation: rollArrowDown 0.4s ease-in-out;
         }
-        /* Water Ripple Cursor Effect */
-        body {
-            cursor: none;
-        }
-
-        #rippleCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 10000;
-        }
     </style>
 </head>
 <body class="antialiased text-zinc-100">
     <div class="site-background" aria-hidden="true"></div>
-    <!-- Water Ripple Cursor Canvas -->
-    <canvas id="rippleCanvas"></canvas>
+    <!-- Custom cursor elements -->
+    <div class="cursor-glow"></div>
+    <div class="cursor-trail"></div>
+    <div class="cursor-dot"></div>
 
     <!-- Enhanced Background glow effects -->
     <div class="pointer-events-none fixed inset-0 overflow-hidden" style="z-index: 1;">
@@ -617,86 +605,39 @@
     </footer>
 
     <script>
-        // Water Ripple Cursor Effect
+        // Custom cursor effect
         document.addEventListener('DOMContentLoaded', function() {
-            const canvas = document.getElementById('rippleCanvas');
-            const ctx = canvas.getContext('2d');
-
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            let ripples = [];
-
-            class Ripple {
-                constructor(x, y) {
-                    this.x = x;
-                    this.y = y;
-                    this.radius = 0;
-                    this.maxRadius = 100;
-                    this.speed = 3;
-                    this.opacity = 1;
-                }
-
-                update() {
-                    this.radius += this.speed;
-                    this.opacity = 1 - (this.radius / this.maxRadius);
-                }
-
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.strokeStyle = `rgba(34, 211, 238, ${this.opacity * 0.6})`;
-                    ctx.lineWidth = 2;
-                    ctx.stroke();
-
-                    // Inner ripple
-                    if (this.radius > 10) {
-                        ctx.beginPath();
-                        ctx.arc(this.x, this.y, this.radius - 10, 0, Math.PI * 2);
-                        ctx.strokeStyle = `rgba(20, 184, 166, ${this.opacity * 0.4})`;
-                        ctx.lineWidth = 1.5;
-                        ctx.stroke();
-                    }
-                }
-
-                isFinished() {
-                    return this.radius >= this.maxRadius;
-                }
-            }
+            const cursorGlow = document.querySelector('.cursor-glow');
+            const cursorTrail = document.querySelector('.cursor-trail');
+            const cursorDot = document.querySelector('.cursor-dot');
+            let mouseX = 0, mouseY = 0;
+            let glowX = 0, glowY = 0;
+            let trailX = 0, trailY = 0;
 
             document.addEventListener('mousemove', (e) => {
-                ripples.push(new Ripple(e.clientX, e.clientY));
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                cursorDot.style.left = mouseX + 'px';
+                cursorDot.style.top = mouseY + 'px';
             });
 
-            document.addEventListener('click', (e) => {
-                for (let i = 0; i < 3; i++) {
-                    setTimeout(() => {
-                        ripples.push(new Ripple(e.clientX, e.clientY));
-                    }, i * 50);
-                }
-            });
+            function animateCursor() {
+                glowX += (mouseX - glowX) * 0.15;
+                glowY += (mouseY - glowY) * 0.15;
+                trailX += (mouseX - trailX) * 0.1;
+                trailY += (mouseY - trailY) * 0.1;
 
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                cursorGlow.style.left = glowX + 'px';
+                cursorGlow.style.top = glowY + 'px';
+                cursorTrail.style.left = trailX + 'px';
+                cursorTrail.style.top = trailY + 'px';
 
-                for (let i = ripples.length - 1; i >= 0; i--) {
-                    ripples[i].update();
-                    ripples[i].draw();
-
-                    if (ripples[i].isFinished()) {
-                        ripples.splice(i, 1);
-                    }
-                }
-
-                requestAnimationFrame(animate);
+                requestAnimationFrame(animateCursor);
             }
+            animateCursor();
 
-            animate();
-
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
+            // Initialize Lucide icons
+            lucide.createIcons();
         });
 
         // Program tab switching
