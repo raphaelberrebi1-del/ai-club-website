@@ -1,5 +1,9 @@
 {
   "buildCommand": "cp -r public/* .",
   "outputDirectory": ".",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/curriculum-he-desktop", "destination": "/curriculum-he-desktop.html" },
+    { "source": "/pricing-he-desktop", "destination": "/pricing-he-desktop.html" }
+  ]
 }
