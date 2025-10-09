@@ -75,6 +75,55 @@
         a:hover .nav-link-roll {
             animation: rollTextDown 0.4s ease-in-out;
         }
+
+        /* Arrow roll animation for Register Now button */
+        @keyframes rollArrowDown {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            51% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rollArrowUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            51% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .arrow-roll {
+            display: inline-block;
+            position: relative;
+            animation: rollArrowUp 0.4s ease-in-out;
+        }
+
+        a:hover .arrow-roll {
+            animation: rollArrowDown 0.4s ease-in-out;
+        }
     </style>
 </head>
 <body class="text-white min-h-screen">
@@ -93,7 +142,7 @@
                     <a href="pricing.html" class="hover:text-cyan-400 transition-colors"><span class="nav-link-roll">Pricing</span></a>
                     <a href="faq.html" class="hover:text-cyan-400 transition-colors"><span class="nav-link-roll">FAQ</span></a>
                     <a href="mobile.html" class="bg-gradient-to-r from-cyan-500 to-teal-500 px-6 py-2 rounded-full hover:from-cyan-400 hover:to-teal-400 hover:shadow-lg transition-all duration-300">
-                        <span class="nav-link-roll">Register Now</span>
+                        Register Now <span class="arrow-roll">→</span>
                     </a>
                 </nav>
             </div>
