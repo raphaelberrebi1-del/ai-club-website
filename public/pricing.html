@@ -224,14 +224,52 @@
         }
 
         /* Navigation link roll animation */
+        @keyframes rollTextDown {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            51% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rollTextUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            51% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         .nav-link-roll {
             display: inline-block;
             position: relative;
-            animation: rollArrowUp 0.4s ease-in-out;
+            animation: rollTextUp 0.4s ease-in-out;
         }
 
         a:hover .nav-link-roll {
-            animation: rollArrowDown 0.4s ease-in-out;
+            animation: rollTextDown 0.4s ease-in-out;
         }
     </style>
 </head>
