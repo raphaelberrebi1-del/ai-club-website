@@ -400,6 +400,54 @@
         #projects .space-y-4 > div {
             min-height: 120px;
         }
+
+        /* Navigation link roll animation */
+        @keyframes rollTextDown {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            51% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rollTextUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            51% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-link-roll {
+            display: inline-block;
+            position: relative;
+        }
+
+        a:hover .nav-link-roll {
+            animation: rollTextDown 0.4s ease-in-out;
+        }
     </style>
 </head>
 <body class="antialiased text-zinc-100">
@@ -1238,12 +1286,12 @@
                     AI Kidz Club
                 </a>
                 <nav class="hidden md:flex space-x-8">
-                    <a href="index.html" class="hover:text-cyan-400 hover:-translate-y-1 transition-all duration-300">Home</a>
-                    <a href="curriculum.html" class="hover:text-cyan-400 hover:-translate-y-1 transition-all duration-300">Curriculum</a>
-                    <a href="pricing.html" class="hover:text-cyan-400 hover:-translate-y-1 transition-all duration-300">Pricing</a>
-                    <a href="faq.html" class="hover:text-cyan-400 hover:-translate-y-1 transition-all duration-300">FAQ</a>
-                    <a href="#register" class="bg-gradient-to-r from-cyan-500 to-teal-500 px-6 py-2 rounded-full hover:from-cyan-400 hover:to-teal-400 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
-                        Register Now
+                    <a href="index.html" class="hover:text-cyan-400 transition-colors"><span class="nav-link-roll">Home</span></a>
+                    <a href="curriculum.html" class="hover:text-cyan-400 transition-colors"><span class="nav-link-roll">Curriculum</span></a>
+                    <a href="pricing.html" class="hover:text-cyan-400 transition-colors"><span class="nav-link-roll">Pricing</span></a>
+                    <a href="faq.html" class="hover:text-cyan-400 transition-colors"><span class="nav-link-roll">FAQ</span></a>
+                    <a href="#register" class="bg-gradient-to-r from-cyan-500 to-teal-500 px-6 py-2 rounded-full hover:from-cyan-400 hover:to-teal-400 hover:shadow-lg transition-all duration-300">
+                        <span class="nav-link-roll">Register Now</span>
                     </a>
                 </nav>
             </div>
