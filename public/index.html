@@ -122,6 +122,30 @@
             }
         }
 
+        /* Typewriter effect */
+        .typewriter-text {
+            display: inline-block;
+            position: relative;
+            min-width: 20px;
+        }
+
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background-color: rgba(128, 212, 224, 0.9);
+            margin-left: 2px;
+            animation: blink-caret 0.75s step-end infinite;
+            vertical-align: middle;
+            position: relative;
+            top: -0.05em;
+        }
+
+        @keyframes blink-caret {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
         /* Fixed magical background for entire page */
         body {
             font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;
@@ -1455,7 +1479,7 @@
                         <h1 class="sm:text-5xl md:text-6xl text-4xl font-extrabold text-white tracking-tight mb-8" style="text-shadow: 0 2px 8px rgba(0,0,0,0.3);">
                             Give Your Child a Head Start in the
                             <span class="font-serif italic font-bold bg-gradient-to-r from-[#3A9CAA] via-[#4AB4C8] to-[#80D4E0] bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8); text-shadow: 0 0 3px rgba(255,255,255,0.9), 0 0 5px rgba(58,156,170,0.8), 0 0 15px rgba(58,156,170,0.6), 0 0 25px rgba(58,156,170,0.4), 0 0 35px rgba(58,156,170,0.2), 2px 2px 4px rgba(0,0,0,0.3); font-weight: 700; letter-spacing: 0.5px;">
-                                AI Era
+                                <span id="typewriter-text" class="typewriter-text">AI Era</span><span class="typewriter-cursor"></span>
                             </span>
                         </h1>
 
@@ -2181,6 +2205,70 @@
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
+
+            // Typewriter effect
+            const typewriterElement = document.getElementById('typewriter-text');
+            const phrases = [
+                'AI Era',
+                'AI Revolution',
+                'Digital World',
+                'Future of Learning',
+                'Age of Innovation',
+                'Tech-Powered Future'
+            ];
+
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let isPaused = false;
+
+            function typeWriter() {
+                const currentPhrase = phrases[phraseIndex];
+
+                if (isPaused) {
+                    return;
+                }
+
+                if (isDeleting) {
+                    // Delete character
+                    typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+
+                    if (charIndex === 0) {
+                        isDeleting = false;
+                        phraseIndex = (phraseIndex + 1) % phrases.length;
+                        isPaused = true;
+                        setTimeout(() => {
+                            isPaused = false;
+                            typeWriter();
+                        }, 800); // Pause before typing next phrase
+                        return;
+                    }
+                } else {
+                    // Type character
+                    typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+
+                    if (charIndex === currentPhrase.length) {
+                        isPaused = true;
+                        setTimeout(() => {
+                            isPaused = false;
+                            isDeleting = true;
+                            typeWriter();
+                        }, 2500); // Pause after typing complete phrase
+                        return;
+                    }
+                }
+
+                // Call next iteration with appropriate speed
+                const typingSpeed = isDeleting ? 40 : 80;
+                setTimeout(typeWriter, typingSpeed);
+            }
+
+            // Start typewriter effect after a brief delay
+            setTimeout(() => {
+                typeWriter();
+            }, 1500);
 
             // Intersection Observer for scroll-triggered animations
             const observerOptions = {
