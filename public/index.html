@@ -54,186 +54,51 @@
     </script>
 
     <style>
-        /* Glowing cursor effect */
+        /* New Ribbon Trail Cursor */
         * {
             cursor: none !important;
         }
 
-        .cursor-glow {
-            width: 150px;
-            height: 150px;
+        .cursor-ring {
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(6, 182, 212, 0.8);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
-            background: radial-gradient(circle at center,
-                rgba(6, 182, 212, 0.3) 0%,
-                rgba(251, 146, 60, 0.25) 30%,
-                rgba(236, 72, 153, 0.15) 60%,
-                transparent 80%);
-            filter: blur(20px);
-            z-index: 9999;
-            transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
-            transform: translate(-50%, -50%);
-            animation: cursor-pulse 2s ease-in-out infinite;
-        }
-
-        .cursor-trail {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            background: radial-gradient(circle at center,
-                rgba(6, 182, 212, 0.2) 0%,
-                rgba(251, 146, 60, 0.15) 40%,
-                transparent 70%);
-            filter: blur(15px);
-            z-index: 9998;
-            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            background: rgba(6, 182, 212, 0.9);
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.8), 0 0 30px rgba(251, 146, 60, 0.4);
             z-index: 10000;
             transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-out;
+            transition: transform 0.1s ease-out, border-color 0.3s ease;
+            animation: cursor-rotate 4s linear infinite;
         }
 
-        @keyframes cursor-pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.1); }
+        .cursor-ring.hover {
+            transform: translate(-50%, -50%) scale(1.4);
+            border-color: rgba(168, 85, 247, 0.9);
+            border-width: 3px;
         }
 
-        @keyframes sparkle-burst {
-            0% {
-                transform: translate(-50%, -50%) scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(3);
-                opacity: 0;
-            }
+        @keyframes cursor-rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        /* Enhanced Cursor States */
-        .cursor-glow.hover-state {
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle at center,
-                rgba(168, 85, 247, 0.4) 0%,
-                rgba(236, 72, 153, 0.3) 30%,
-                rgba(6, 182, 212, 0.2) 60%,
-                transparent 80%);
-            animation: cursor-hover-pulse 1.5s ease-in-out infinite;
-        }
-
-        .cursor-dot.hover-state {
-            width: 40px;
-            height: 40px;
-            background: rgba(168, 85, 247, 0.6);
-            border: 2px solid rgba(236, 72, 153, 0.8);
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.8),
-                        0 0 40px rgba(236, 72, 153, 0.6),
-                        inset 0 0 10px rgba(255, 255, 255, 0.3);
-        }
-
-        .cursor-trail.hover-state {
-            width: 140px;
-            height: 140px;
-            background: radial-gradient(circle at center,
-                rgba(236, 72, 153, 0.3) 0%,
-                rgba(168, 85, 247, 0.2) 40%,
-                transparent 70%);
-        }
-
-        @keyframes cursor-hover-pulse {
-            0%, 100% {
-                transform: translate(-50%, -50%) scale(1);
-                filter: blur(20px);
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.15);
-                filter: blur(25px);
-            }
-        }
-
-        /* Click Ripple Effect */
-        @keyframes ripple-expand {
-            0% {
-                width: 0;
-                height: 0;
-                opacity: 0.8;
-            }
-            100% {
-                width: 300px;
-                height: 300px;
-                opacity: 0;
-            }
-        }
-
-        .click-ripple {
+        .cursor-trail-svg {
             position: fixed;
-            border-radius: 50%;
-            border: 2px solid rgba(6, 182, 212, 0.6);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            z-index: 10001;
-            animation: ripple-expand 0.6s ease-out forwards;
-            transform: translate(-50%, -50%);
+            z-index: 9999;
         }
 
-        /* Particle Burst */
-        @keyframes particle-burst {
-            0% {
-                transform: translate(-50%, -50%) translate(0, 0) scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(-50%, -50%) var(--tx) var(--ty) scale(0);
-                opacity: 0;
-            }
-        }
-
-        .burst-particle {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(6, 182, 212, 1), rgba(168, 85, 247, 0.5));
-            pointer-events: none;
-            z-index: 10002;
-            animation: particle-burst 0.8s ease-out forwards;
-        }
-
-        /* Magnetic Button Effect */
-        .magnetic-target {
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            will-change: transform;
-        }
-
-        /* Cursor Text Label */
-        .cursor-label {
-            position: fixed;
-            pointer-events: none;
-            z-index: 10003;
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            opacity: 0;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.2s ease;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-        }
-
-        .cursor-label.visible {
-            opacity: 1;
+        .cursor-trail-path {
+            fill: none;
+            stroke: url(#trail-gradient);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         /* Typewriter effect */
@@ -755,10 +620,17 @@
 <body class="antialiased text-zinc-100">
     <div class="site-background" aria-hidden="true"></div>
     <!-- Custom cursor elements -->
-    <div class="cursor-glow"></div>
-    <div class="cursor-trail"></div>
-    <div class="cursor-dot"></div>
-    <div class="cursor-label"></div>
+    <div class="cursor-ring"></div>
+    <svg class="cursor-trail-svg">
+        <defs>
+            <linearGradient id="trail-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:rgba(6, 182, 212, 0);stop-opacity:0" />
+                <stop offset="50%" style="stop-color:rgba(6, 182, 212, 0.6);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgba(6, 182, 212, 1);stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <path class="cursor-trail-path" d=""></path>
+    </svg>
     <!-- Enhanced Background glow effects -->
     <div class="pointer-events-none fixed inset-0 overflow-hidden" style="z-index: 1;">
         <!-- Primary cyan glow - more visible -->
@@ -2607,167 +2479,90 @@
                 }
             }, 1000);
 
-            // Enhanced Magical cursor effect with trail
-            const cursorGlow = document.querySelector('.cursor-glow');
-            const cursorTrail = document.querySelector('.cursor-trail');
-            const cursorDot = document.querySelector('.cursor-dot');
-            const cursorLabel = document.querySelector('.cursor-label');
+            // New Ribbon Trail Cursor
+            const cursorRing = document.querySelector('.cursor-ring');
+            const trailPath = document.querySelector('.cursor-trail-path');
 
             let mouseX = 0, mouseY = 0;
-            let trailX = 0, trailY = 0;
-            let glowX = 0, glowY = 0;
-            let currentMagneticTarget = null;
+            const trailPoints = [];
+            const maxTrailPoints = 20;
 
+            // Track mouse position
             document.addEventListener('mousemove', (e) => {
                 mouseX = e.clientX;
                 mouseY = e.clientY;
 
-                // Instant dot follow (or magnetic if hovering button)
-                if (!currentMagneticTarget) {
-                    cursorDot.style.left = mouseX + 'px';
-                    cursorDot.style.top = mouseY + 'px';
-                    cursorLabel.style.left = mouseX + 'px';
-                    cursorLabel.style.top = (mouseY - 10) + 'px';
+                // Update ring position
+                cursorRing.style.left = mouseX + 'px';
+                cursorRing.style.top = mouseY + 'px';
+
+                // Add point to trail
+                trailPoints.push({ x: mouseX, y: mouseY, time: Date.now() });
+
+                // Keep only recent points
+                if (trailPoints.length > maxTrailPoints) {
+                    trailPoints.shift();
                 }
             });
 
-            // Smooth trail animation
-            function animateCursor() {
-                // Glow follows with slight delay
-                glowX += (mouseX - glowX) * 0.15;
-                glowY += (mouseY - glowY) * 0.15;
+            // Animate trail
+            function updateTrail() {
+                // Remove old points
+                const now = Date.now();
+                while (trailPoints.length > 0 && now - trailPoints[0].time > 500) {
+                    trailPoints.shift();
+                }
 
-                // Trail follows with more delay
-                trailX += (mouseX - trailX) * 0.08;
-                trailY += (mouseY - trailY) * 0.08;
+                // Create smooth SVG path
+                if (trailPoints.length > 1) {
+                    let pathD = `M ${trailPoints[0].x} ${trailPoints[0].y}`;
 
-                cursorGlow.style.left = glowX + 'px';
-                cursorGlow.style.top = glowY + 'px';
-                cursorTrail.style.left = trailX + 'px';
-                cursorTrail.style.top = trailY + 'px';
+                    for (let i = 1; i < trailPoints.length; i++) {
+                        const point = trailPoints[i];
+                        const prevPoint = trailPoints[i - 1];
 
-                requestAnimationFrame(animateCursor);
+                        // Create smooth curve
+                        const midX = (prevPoint.x + point.x) / 2;
+                        const midY = (prevPoint.y + point.y) / 2;
+
+                        pathD += ` Q ${prevPoint.x} ${prevPoint.y}, ${midX} ${midY}`;
+                    }
+
+                    // Add final point
+                    if (trailPoints.length > 0) {
+                        const lastPoint = trailPoints[trailPoints.length - 1];
+                        pathD += ` L ${lastPoint.x} ${lastPoint.y}`;
+                    }
+
+                    trailPath.setAttribute('d', pathD);
+                } else {
+                    trailPath.setAttribute('d', '');
+                }
+
+                requestAnimationFrame(updateTrail);
             }
-            animateCursor();
+            updateTrail();
 
-            // Enhanced hover detection for interactive elements
+            // Hover detection for interactive elements
             const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, [onclick]');
 
             interactiveElements.forEach(el => {
                 el.addEventListener('mouseenter', () => {
-                    cursorGlow.classList.add('hover-state');
-                    cursorDot.classList.add('hover-state');
-                    cursorTrail.classList.add('hover-state');
-
-                    // Show label based on element type
-                    if (el.tagName === 'A') {
-                        cursorLabel.textContent = 'CLICK';
-                        cursorLabel.classList.add('visible');
-                    } else if (el.tagName === 'BUTTON' || el.hasAttribute('onclick')) {
-                        cursorLabel.textContent = 'CLICK';
-                        cursorLabel.classList.add('visible');
-                    }
-
-                    // Add magnetic class to buttons
-                    if (el.tagName === 'BUTTON' || el.tagName === 'A') {
-                        el.classList.add('magnetic-target');
-                    }
+                    cursorRing.classList.add('hover');
                 });
 
                 el.addEventListener('mouseleave', () => {
-                    cursorGlow.classList.remove('hover-state');
-                    cursorDot.classList.remove('hover-state');
-                    cursorTrail.classList.remove('hover-state');
-                    cursorLabel.classList.remove('visible');
-                    cursorLabel.textContent = '';
-
-                    if (el.classList.contains('magnetic-target')) {
-                        el.style.transform = '';
-                    }
-                });
-            });
-
-            // Magnetic effect on buttons
-            document.addEventListener('mousemove', (e) => {
-                const buttons = document.querySelectorAll('.magnetic-target');
-
-                buttons.forEach(button => {
-                    const rect = button.getBoundingClientRect();
-                    const buttonCenterX = rect.left + rect.width / 2;
-                    const buttonCenterY = rect.top + rect.height / 2;
-                    const distance = Math.sqrt(
-                        Math.pow(e.clientX - buttonCenterX, 2) +
-                        Math.pow(e.clientY - buttonCenterY, 2)
-                    );
-
-                    // Apply magnetic effect within 80px radius
-                    if (distance < 80) {
-                        const strength = (80 - distance) / 80;
-                        const pullX = (e.clientX - buttonCenterX) * strength * 0.3;
-                        const pullY = (e.clientY - buttonCenterY) * strength * 0.3;
-
-                        button.style.transform = `translate(${pullX}px, ${pullY}px)`;
-
-                        // Pull cursor toward button center
-                        const magnetX = buttonCenterX + (e.clientX - buttonCenterX) * 0.7;
-                        const magnetY = buttonCenterY + (e.clientY - buttonCenterY) * 0.7;
-
-                        cursorDot.style.left = magnetX + 'px';
-                        cursorDot.style.top = magnetY + 'px';
-                        cursorLabel.style.left = magnetX + 'px';
-                        cursorLabel.style.top = (magnetY - 10) + 'px';
-
-                        currentMagneticTarget = button;
-                    } else if (button.style.transform) {
-                        button.style.transform = '';
-                        currentMagneticTarget = null;
-                    }
+                    cursorRing.classList.remove('hover');
                 });
             });
 
             // Handle cursor visibility
             document.addEventListener('mouseleave', () => {
-                cursorGlow.style.opacity = '0';
-                cursorTrail.style.opacity = '0';
-                cursorDot.style.opacity = '0';
-                cursorLabel.style.opacity = '0';
+                cursorRing.style.opacity = '0';
             });
 
             document.addEventListener('mouseenter', () => {
-                cursorGlow.style.opacity = '1';
-                cursorTrail.style.opacity = '1';
-                cursorDot.style.opacity = '1';
-            });
-
-            // Enhanced click effect with ripple and particles
-            document.addEventListener('click', (e) => {
-                // Ripple effect
-                const ripple = document.createElement('div');
-                ripple.className = 'click-ripple';
-                ripple.style.left = e.clientX + 'px';
-                ripple.style.top = e.clientY + 'px';
-                document.body.appendChild(ripple);
-                setTimeout(() => ripple.remove(), 600);
-
-                // Particle burst
-                const particleCount = 8;
-                for (let i = 0; i < particleCount; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'burst-particle';
-                    particle.style.left = e.clientX + 'px';
-                    particle.style.top = e.clientY + 'px';
-
-                    const angle = (Math.PI * 2 * i) / particleCount;
-                    const distance = 100;
-                    const tx = Math.cos(angle) * distance;
-                    const ty = Math.sin(angle) * distance;
-
-                    particle.style.setProperty('--tx', `${tx}px`);
-                    particle.style.setProperty('--ty', `${ty}px`);
-
-                    document.body.appendChild(particle);
-                    setTimeout(() => particle.remove(), 800);
-                }
+                cursorRing.style.opacity = '1';
             });
 
             // Enhanced particle animations
