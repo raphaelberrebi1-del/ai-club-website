@@ -213,20 +213,6 @@
             }
         }
 
-        .arrow-roll {
-            display: inline-block;
-            position: relative;
-            animation: rollArrowUp 0.4s ease-in-out;
-        }
-
-        button:hover .arrow-roll {
-            animation: rollArrowDown 0.4s ease-in-out;
-        }
-
-        a:hover .arrow-roll {
-            animation: rollArrowDown 0.4s ease-in-out !important;
-        }
-
         /* Navigation link roll animation */
         @keyframes rollTextDown {
             0% {
@@ -274,6 +260,21 @@
 
         a:hover .nav-link-roll {
             animation: rollTextDown 0.4s ease-in-out;
+        }
+
+        /* Arrow roll - must come AFTER nav-link-roll to take precedence */
+        .arrow-roll {
+            display: inline-block;
+            position: relative;
+            animation: rollArrowUp 0.4s ease-in-out;
+        }
+
+        button:hover .arrow-roll {
+            animation: rollArrowDown 0.4s ease-in-out;
+        }
+
+        a:hover .arrow-roll {
+            animation: rollArrowDown 0.4s ease-in-out !important;
         }
     </style>
 </head>
