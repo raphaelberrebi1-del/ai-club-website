@@ -86,9 +86,29 @@
 - [x] privacy-he.html (Hebrew privacy policy)
 - [x] terms-he.html (Hebrew terms of service)
 - [x] index-he.html (Hebrew desktop landing page) - **COMPLETED 2025-10-09**
+- [x] **pricing-he-desktop.html** (Hebrew desktop pricing) - **NEW! COMPLETED 2025-10-09**
+- [x] **curriculum-he-desktop.html** (Hebrew desktop curriculum) - **NEW! COMPLETED 2025-10-09**
 
-### Recent Fixes (2025-10-09) 🔧
-**index-he.html - Removed ALL remaining English text:**
+### Recent Fixes & Additions (2025-10-09) 🔧
+
+**NEW Desktop Hebrew Pages Created:**
+- ✅ **pricing-he-desktop.html** - Full desktop Hebrew pricing page
+  - Complete RTL layout with all desktop styling
+  - Countdown timer, comparison table, hover effects
+  - All content translated from pricing.html
+  - Language switcher points back to pricing.html
+- ✅ **curriculum-he-desktop.html** - Full desktop Hebrew curriculum page
+  - Complete RTL layout with all desktop styling
+  - Tab switching, accordion toggles, all animations
+  - All curriculum content translated (12/24/36/48 week programs)
+  - All age groups and week-by-week breakdowns in Hebrew
+  - Language switcher points back to curriculum.html
+
+**Updated Language Switchers:**
+- ✅ pricing.html now links to pricing-he-desktop.html (was pricing-he.html)
+- ✅ curriculum.html now links to curriculum-he-desktop.html (was curriculum-he.html)
+
+**index-he.html - Removed ALL remaining English text (earlier fix):**
 - ✅ Fixed "Learning" → "הלמידה" in main heading
 - ✅ Fixed "ילדren" → "ילדים" (mixed text)
 - ✅ Translated all registration form labels and placeholders
