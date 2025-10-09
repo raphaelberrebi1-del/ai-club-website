@@ -253,31 +253,33 @@
     <main class="relative z-10 min-h-screen py-20">
         <div class="max-w-6xl mx-auto px-6">
             <!-- Page Header -->
-            <div class="text-center mb-12 bg-black/40 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-xl border border-white/20">
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
-                    AI Club Curriculum
-                </h1>
-                <p class="text-xl text-white/90 mb-4">
-                    12-Week Foundation Program
-                </p>
-                <p class="text-lg text-white/80">
-                    Essential AI skills and understanding - the foundation for all longer programs.
-                </p>
+            <div class="max-w-xl mx-auto text-center mb-12">
+                <div class="bg-black/40 backdrop-blur-lg rounded-3xl p-3 md:p-4 shadow-2xl border-2 border-white/20">
+                    <h1 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-3">
+                        <span class="bg-gradient-to-r from-cyan-400 via-cyan-300 to-teal-400 bg-clip-text text-transparent">AI Club Curriculum</span>
+                    </h1>
+                    <p class="text-base text-white/90 mb-2">
+                        12-Week Foundation Program
+                    </p>
+                    <p class="text-sm text-white/80">
+                        Essential AI skills and understanding - the foundation for all longer programs.
+                    </p>
+                </div>
             </div>
 
             <!-- Age Group Tabs -->
             <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button onclick="showProgram('young')" id="tab-young" class="program-tab bg-black/40 backdrop-blur-lg px-8 py-4 rounded-xl border border-white/20 text-white font-bold hover:border-cyan-400/50 transition-all">
-                    <div class="text-cyan-400 text-sm mb-1">Young Innovators</div>
-                    <div>Ages 8-10</div>
+                <button onclick="showProgram('young')" id="tab-young" class="program-tab bg-black/40 backdrop-blur-lg px-12 py-5 rounded-xl border-2 border-white/20 text-white font-bold hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="text-cyan-400 text-base mb-1">Young Innovators</div>
+                    <div class="text-lg">Ages 8-10</div>
                 </button>
-                <button onclick="showProgram('tech')" id="tab-tech" class="program-tab bg-black/40 backdrop-blur-lg px-8 py-4 rounded-xl border border-white/20 text-white font-bold hover:border-teal-400/50 transition-all">
-                    <div class="text-teal-400 text-sm mb-1">Tech Explorers</div>
-                    <div>Ages 11-13</div>
+                <button onclick="showProgram('tech')" id="tab-tech" class="program-tab bg-black/40 backdrop-blur-lg px-12 py-5 rounded-xl border-2 border-white/20 text-white font-bold hover:border-teal-400/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="text-teal-400 text-base mb-1">Tech Explorers</div>
+                    <div class="text-lg">Ages 11-13</div>
                 </button>
-                <button onclick="showProgram('future')" id="tab-future" class="program-tab bg-black/40 backdrop-blur-lg px-8 py-4 rounded-xl border border-white/20 text-white font-bold hover:border-amber-400/50 transition-all">
-                    <div class="text-amber-400 text-sm mb-1">Future Leaders</div>
-                    <div>Ages 14-18</div>
+                <button onclick="showProgram('future')" id="tab-future" class="program-tab bg-black/40 backdrop-blur-lg px-12 py-5 rounded-xl border-2 border-white/20 text-white font-bold hover:border-amber-400/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="text-amber-400 text-base mb-1">Future Leaders</div>
+                    <div class="text-lg">Ages 14-18</div>
                 </button>
             </div>
 
