@@ -251,29 +251,236 @@
     </header>
 
     <main class="relative z-10 min-h-screen py-20">
-        <div class="max-w-4xl mx-auto px-6">
-            <!-- Test Blur Section -->
-            <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-xl border border-white/20">
-                <h1 class="text-4xl md:text-5xl font-extrabold mb-6 text-white">
-                    Curriculum Page - Blur Test
+        <div class="max-w-6xl mx-auto px-6">
+            <!-- Page Header -->
+            <div class="text-center mb-12 bg-black/40 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-xl border border-white/20">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                    AI Club Curriculum
                 </h1>
-                <p class="text-lg text-white/90 mb-4">
-                    This is a minimal version of the curriculum page to test the blur effect.
+                <p class="text-xl text-white/90 mb-4">
+                    12-Week Foundation Program
                 </p>
-                <p class="text-white/80">
-                    If you can see a frosted glass blur effect behind this box, then the blur is working!
-                    The background should be blurred/out of focus behind this text container.
+                <p class="text-lg text-white/80">
+                    Essential AI skills and understanding - the foundation for all longer programs.
                 </p>
             </div>
 
-            <!-- Second Test Section -->
-            <div class="mt-8 bg-black/40 backdrop-blur-lg rounded-2xl p-8 shadow-xl border border-white/20">
-                <h2 class="text-2xl font-bold mb-4 text-white">
-                    Second Blur Container
-                </h2>
-                <p class="text-white/90">
-                    Another test container with the same blur effect. Both should have visible frosted glass appearance.
-                </p>
+            <!-- Age Group Tabs -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="showProgram('young')" id="tab-young" class="program-tab bg-black/40 backdrop-blur-lg px-8 py-4 rounded-xl border border-white/20 text-white font-bold hover:border-cyan-400/50 transition-all">
+                    <div class="text-cyan-400 text-sm mb-1">Young Innovators</div>
+                    <div>Ages 8-10</div>
+                </button>
+                <button onclick="showProgram('tech')" id="tab-tech" class="program-tab bg-black/40 backdrop-blur-lg px-8 py-4 rounded-xl border border-white/20 text-white font-bold hover:border-teal-400/50 transition-all">
+                    <div class="text-teal-400 text-sm mb-1">Tech Explorers</div>
+                    <div>Ages 11-13</div>
+                </button>
+                <button onclick="showProgram('future')" id="tab-future" class="program-tab bg-black/40 backdrop-blur-lg px-8 py-4 rounded-xl border border-white/20 text-white font-bold hover:border-amber-400/50 transition-all">
+                    <div class="text-amber-400 text-sm mb-1">Future Leaders</div>
+                    <div>Ages 14-18</div>
+                </button>
+            </div>
+
+            <!-- Program Content -->
+            <div id="content-young" class="program-content">
+                <!-- Young Innovators Program -->
+                <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-xl border border-white/20 mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-cyan-400">AI Explorers Program</h2>
+                    <p class="text-lg text-white/90 mb-6">
+                        Designed for young learners who discover AI through games, creative activities, and hands-on projects. Every concept is taught through play and visual learning with immediate, exciting results.
+                    </p>
+
+                    <h3 class="text-2xl font-bold text-white mb-6 mt-8">12-Week Learning Journey:</h3>
+
+                    <div class="space-y-6">
+                        <!-- Week 1-2 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-cyan-400/30">
+                            <h4 class="text-xl font-bold text-cyan-300 mb-2">Weeks 1-2: Meet Your AI Friend</h4>
+                            <p class="text-white/80 mb-3">Discover smart computers all around us!</p>
+                            <p class="text-white/70"><strong>Activity:</strong> AI Scavenger Hunt in everyday items</p>
+                        </div>
+
+                        <!-- Week 3-4 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-cyan-400/30">
+                            <h4 class="text-xl font-bold text-cyan-300 mb-2">Weeks 3-4: Teaching AI to Understand</h4>
+                            <p class="text-white/80 mb-3">Learn how to talk to smart computers!</p>
+                            <p class="text-white/70"><strong>Activity:</strong> AI Pet Training with commands</p>
+                        </div>
+
+                        <!-- Week 5-6 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-cyan-400/30">
+                            <h4 class="text-xl font-bold text-cyan-300 mb-2">Weeks 5-6: AI Art & Story Studio</h4>
+                            <p class="text-white/80 mb-3">Create amazing art and stories with AI!</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Collaborative Art projects and Digital Collage Creation</p>
+                        </div>
+
+                        <!-- Week 7-8 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-cyan-400/30">
+                            <h4 class="text-xl font-bold text-cyan-300 mb-2">Weeks 7-8: AI Helpers in Our World</h4>
+                            <p class="text-white/80 mb-3">Discover AI helpers everywhere!</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Career Dress-Up with AI jobs and AI Assistant design</p>
+                        </div>
+
+                        <!-- Week 9-10 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-cyan-400/30">
+                            <h4 class="text-xl font-bold text-cyan-300 mb-2">Weeks 9-10: Smart Choices with AI</h4>
+                            <p class="text-white/80 mb-3">Learn when to use AI and when to use our brains!</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Choice Champions scenarios and Privacy Protector Game</p>
+                        </div>
+
+                        <!-- Week 11-12 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-cyan-400/30">
+                            <h4 class="text-xl font-bold text-cyan-300 mb-2">Weeks 11-12: Young Innovator Showcase</h4>
+                            <p class="text-white/80 mb-3">Create and present amazing AI projects!</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Choose Your Adventure project and Family Showcase Event</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 bg-black/20 rounded-xl p-6 border border-cyan-400/50">
+                        <h3 class="text-2xl font-bold text-white mb-4">What Your Child Will Achieve:</h3>
+                        <ul class="space-y-2 text-white/80">
+                            <li>✓ Personal AI art gallery to share with family</li>
+                            <li>✓ AI Helpers book they created themselves</li>
+                            <li>✓ Portfolio of creative projects and worksheets</li>
+                            <li>✓ Confidence presenting to family and friends</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-tech" class="program-content hidden">
+                <!-- Tech Explorers Program -->
+                <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-xl border border-white/20 mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-teal-400">AI Mastery Program</h2>
+                    <p class="text-lg text-white/90 mb-6">
+                        Designed for middle schoolers ready to dive deeper into AI technology. Students explore real-world applications, develop professional skills, and build impressive portfolios while discovering AI career pathways.
+                    </p>
+
+                    <h3 class="text-2xl font-bold text-white mb-6 mt-8">12-Week Learning Journey:</h3>
+
+                    <div class="space-y-6">
+                        <!-- Week 1-2 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-teal-400/30">
+                            <h4 class="text-xl font-bold text-teal-300 mb-2">Weeks 1-2: AI Career Explorer</h4>
+                            <p class="text-white/80 mb-3">Industry landscape tour, AI jobs of the future, and setting career goals</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Create My AI Future vision board and career roadmap</p>
+                        </div>
+
+                        <!-- Week 3-4 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-teal-400/30">
+                            <h4 class="text-xl font-bold text-teal-300 mb-2">Weeks 3-4: Prompt Engineering Pro</h4>
+                            <p class="text-white/80 mb-3">Advanced prompting techniques, chain-of-thought reasoning, and optimization strategies</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Build custom AI assistant for homework help</p>
+                        </div>
+
+                        <!-- Week 5-6 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-teal-400/30">
+                            <h4 class="text-xl font-bold text-teal-300 mb-2">Weeks 5-6: School Success Hacker</h4>
+                            <p class="text-white/80 mb-3">AI tools for research, note-taking, studying, and project organization</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Transform a school project using AI research and presentation tools</p>
+                        </div>
+
+                        <!-- Week 7-8 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-teal-400/30">
+                            <h4 class="text-xl font-bold text-teal-300 mb-2">Weeks 7-8: Content Creator Accelerator</h4>
+                            <p class="text-white/80 mb-3">AI-powered writing, design, video, and social media content creation</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Launch personal blog or YouTube channel with AI-assisted content</p>
+                        </div>
+
+                        <!-- Week 9-10 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-teal-400/30">
+                            <h4 class="text-xl font-bold text-teal-300 mb-2">Weeks 9-10: Responsible AI Leader</h4>
+                            <p class="text-white/80 mb-3">AI ethics, bias detection, privacy concerns, and developing responsible usage habits</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Create AI ethics guide for peers and present to school community</p>
+                        </div>
+
+                        <!-- Week 11-12 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-teal-400/30">
+                            <h4 class="text-xl font-bold text-teal-300 mb-2">Weeks 11-12: Capstone Portfolio Project</h4>
+                            <p class="text-white/80 mb-3">Comprehensive project showcasing all learned skills with professional presentation</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Choose from: AI-enhanced science fair project, startup pitch, or social impact initiative</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 bg-black/20 rounded-xl p-6 border border-teal-400/50">
+                        <h3 class="text-2xl font-bold text-white mb-4">What Your Teen Will Achieve:</h3>
+                        <ul class="space-y-2 text-white/80">
+                            <li>✓ Professional AI toolkit for academic and creative success</li>
+                            <li>✓ Career clarity with concrete next steps in AI field</li>
+                            <li>✓ Published content showcasing AI collaboration skills</li>
+                            <li>✓ Leadership experience in AI ethics and responsible innovation</li>
+                            <li>✓ Impressive portfolio project for high school applications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-future" class="program-content hidden">
+                <!-- Future Leaders Program -->
+                <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-xl border border-white/20 mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-amber-400">AI Leadership Academy</h2>
+                    <p class="text-lg text-white/90 mb-6">
+                        Designed for high school students ready to become AI leaders and innovators. This intensive program develops entrepreneurial thinking, professional skills, and real-world business applications that prepare students for college and careers.
+                    </p>
+
+                    <h3 class="text-2xl font-bold text-white mb-6 mt-8">12-Week Leadership Journey:</h3>
+
+                    <div class="space-y-6">
+                        <!-- Week 1-2 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-amber-400/30">
+                            <h4 class="text-xl font-bold text-amber-300 mb-2">Weeks 1-2: AI Industry Pioneer</h4>
+                            <p class="text-white/80 mb-3">Deep dive into AI market analysis, emerging opportunities, and competitive landscape assessment</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Create comprehensive AI industry report and investment thesis presentation</p>
+                        </div>
+
+                        <!-- Week 3-4 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-amber-400/30">
+                            <h4 class="text-xl font-bold text-amber-300 mb-2">Weeks 3-4: Professional AI Engineer</h4>
+                            <p class="text-white/80 mb-3">Advanced prompt engineering, API integration, and workflow automation for professional environments</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Build and deploy custom AI solution for real client or school challenge</p>
+                        </div>
+
+                        <!-- Week 5-6 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-amber-400/30">
+                            <h4 class="text-xl font-bold text-amber-300 mb-2">Weeks 5-6: Business Automation Expert</h4>
+                            <p class="text-white/80 mb-3">Enterprise AI applications, process optimization, cost-benefit analysis, and ROI calculation</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Audit local business and create comprehensive AI transformation plan</p>
+                        </div>
+
+                        <!-- Week 7-8 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-amber-400/30">
+                            <h4 class="text-xl font-bold text-amber-300 mb-2">Weeks 7-8: Marketing & Brand Strategist</h4>
+                            <p class="text-white/80 mb-3">AI-powered marketing campaigns, brand development, content strategy, and customer experience design</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Launch complete marketing campaign for startup idea or local organization</p>
+                        </div>
+
+                        <!-- Week 9-10 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-amber-400/30">
+                            <h4 class="text-xl font-bold text-amber-300 mb-2">Weeks 9-10: Ethics & Policy Leader</h4>
+                            <p class="text-white/80 mb-3">AI governance frameworks, regulatory compliance, bias mitigation, and ethical decision-making in business</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Draft AI policy proposal for school district or local government</p>
+                        </div>
+
+                        <!-- Week 11-12 -->
+                        <div class="bg-black/20 rounded-xl p-6 border border-amber-400/30">
+                            <h4 class="text-xl font-bold text-amber-300 mb-2">Weeks 11-12: Capstone: Startup Launch</h4>
+                            <p class="text-white/80 mb-3">Comprehensive business plan, financial projections, and investor pitch for AI-powered venture</p>
+                            <p class="text-white/70"><strong>Activity:</strong> Present to real investors/entrepreneurs and receive professional feedback</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 bg-black/20 rounded-xl p-6 border border-amber-400/50">
+                        <h3 class="text-2xl font-bold text-white mb-4">What Your Teen Will Achieve:</h3>
+                        <ul class="space-y-2 text-white/80">
+                            <li>✓ Professional-grade AI development and deployment skills</li>
+                            <li>✓ Real business experience with measurable impact and testimonials</li>
+                            <li>✓ Startup pitch deck and business plan ready for investors</li>
+                            <li>✓ Leadership portfolio demonstrating ethics and policy expertise</li>
+                            <li>✓ College application standout with entrepreneurship credentials</li>
+                            <li>✓ Network of mentors and industry connections</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -352,6 +559,42 @@
 
             // Initialize Lucide icons
             lucide.createIcons();
+        });
+
+        // Program tab switching
+        function showProgram(programType) {
+            // Hide all content
+            document.querySelectorAll('.program-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Remove active state from all tabs
+            document.querySelectorAll('.program-tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.style.transform = 'scale(1)';
+            });
+
+            // Show selected content
+            document.getElementById('content-' + programType).classList.remove('hidden');
+
+            // Add active state to selected tab
+            const activeTab = document.getElementById('tab-' + programType);
+            activeTab.classList.add('active');
+            activeTab.style.transform = 'scale(1.05)';
+
+            // Update border colors
+            if (programType === 'young') {
+                activeTab.style.borderColor = 'rgba(34, 211, 238, 0.8)';
+            } else if (programType === 'tech') {
+                activeTab.style.borderColor = 'rgba(20, 184, 166, 0.8)';
+            } else if (programType === 'future') {
+                activeTab.style.borderColor = 'rgba(251, 191, 36, 0.8)';
+            }
+        }
+
+        // Set default active program
+        document.addEventListener('DOMContentLoaded', function() {
+            showProgram('young');
         });
     </script>
 
