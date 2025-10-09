@@ -615,6 +615,21 @@
         a:hover .arrow-roll {
             animation: rollArrowDown 0.4s ease-in-out;
         }
+
+        /* Robot Logo Wave Animation */
+        .robot-logo {
+            transition: transform 0.3s ease;
+        }
+
+        .robot-logo:hover {
+            animation: wave 0.6s ease-in-out;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
     </style>
 </head>
 <body class="antialiased text-zinc-100">
@@ -1457,8 +1472,11 @@
     <header class="bg-black/40 backdrop-blur-lg border-b border-white/20 sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="index-he.html" class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
-                    מועדון AI
+                <a href="index-he.html" class="flex items-center gap-3">
+                    <span class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                        מועדון AI
+                    </span>
+                    <img src="New.Logo.png" alt="מועדון AI רובוט" class="robot-logo h-12 w-auto">
                 </a>
                 <nav class="hidden md:flex space-x-reverse space-x-8 items-center">
                     <a href="index-he.html" class="hover:text-cyan-400 transition-colors"><span class="nav-link-roll">בית</span></a>
