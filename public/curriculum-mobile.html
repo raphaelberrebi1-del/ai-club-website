@@ -797,7 +797,9 @@
         document.addEventListener('mouseenter', () => {
             cursorRing.style.opacity = '1';
         });
+    </script>
 
+    <script>
         // Mobile Menu Functionality
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -826,6 +828,36 @@
         const menuContent = mobileMenu.querySelector('.flex.flex-col.h-full');
         menuContent.addEventListener('click', function(e) {
             e.stopPropagation();
+        });
+
+        // Handle menu item clicks
+        menuItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+
+                // If it's an external link (contains .html), allow normal navigation
+                if (href.includes('.html')) {
+                    // Close menu and allow normal navigation
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                    return; // Don't prevent default, let the link navigate normally
+                }
+
+                // For internal links (starting with #), prevent default and scroll
+                e.preventDefault();
+                const targetElement = document.querySelector(href);
+
+                if (targetElement) {
+                    // Close menu first
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+
+                    // Then scroll to target
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({behavior: 'smooth'});
+                    }, 100);
+                }
+            });
         });
     </script>
 
