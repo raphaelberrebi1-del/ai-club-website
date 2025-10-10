@@ -30,72 +30,14 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* New Ribbon Trail Cursor */
-        * {
-            cursor: none !important;
-        }
-
-        .cursor-ring {
-            width: 24px;
-            height: 24px;
-            border: 2px solid rgba(6, 182, 212, 0.8);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 10000;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-out, border-color 0.3s ease;
-            animation: cursor-rotate 4s linear infinite;
-        }
-
-        .cursor-ring.hover {
-            transform: translate(-50%, -50%) scale(1.4);
-            border-color: rgba(168, 85, 247, 0.9);
-            border-width: 3px;
-        }
-
-        @keyframes cursor-rotate {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        .cursor-trail-svg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        .cursor-trail-path {
-            fill: none;
-            stroke: url(#trail-gradient);
-            stroke-width: 3;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
+        /* Mobile-optimized styles */
     </style>
 </head>
 <body>
     <div class="site-background" aria-hidden="true"></div>
-
-    <!-- Custom cursor elements -->
-    <div class="cursor-ring"></div>
-    <svg class="cursor-trail-svg">
-        <defs>
-            <linearGradient id="trail-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:rgba(6, 182, 212, 0);stop-opacity:0" />
-                <stop offset="50%" style="stop-color:rgba(6, 182, 212, 0.6);stop-opacity:1" />
-                <stop offset="100%" style="stop-color:rgba(6, 182, 212, 1);stop-opacity:1" />
-            </linearGradient>
-        </defs>
-        <path class="cursor-trail-path" d=""></path>
-    </svg>
 
     <!-- Fixed Header -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/95 backdrop-blur-xl border-b border-amber-200/20">
@@ -109,9 +51,10 @@
                 </svg>
             </button>
 
-            <!-- AI Club Branding -->
-            <div class="flex items-center">
-                <h1 class="text-xl font-bold text-white tracking-tight">
+            <!-- AI Club Branding with Robot Logo -->
+            <div class="flex items-center gap-2">
+                <img src="New.logov2.gif" alt="AI Kidz Club Robot" class="h-10 w-auto rounded-lg">
+                <h1 class="text-xl font-bold text-white tracking-tight" style="font-family: 'Nunito', sans-serif;">
                     <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">AI</span>
                     <span class="text-white">Club</span>
                 </h1>
@@ -119,10 +62,11 @@
 
             <!-- Language Toggle & View Pricing Button -->
             <div class="flex items-center gap-2">
-                <a href="mobile-he.html" class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 transition-colors" title="עברית">
-                    <span class="text-sm font-bold text-white">HE</span>
+                <a href="mobile-he.html" class="flex items-center gap-1 px-2 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors" title="עברית">
+                    <span>🌐</span>
+                    <span class="text-xs font-semibold text-white">HE</span>
                 </a>
-                <button onclick="window.location.href='pricing-mobile.html'" class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105">
+                <button onclick="window.location.href='pricing-mobile.html'" class="bg-gradient-to-r from-cyan-500 to-teal-500 text-white text-sm font-bold px-4 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300" style="font-family: 'Nunito', sans-serif;">
                     View Pricing
                 </button>
             </div>
