@@ -37,7 +37,7 @@
 
         /* Smooth Menu Slide Animation */
         #mobile-menu {
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.35s ease-in-out;
             opacity: 0;
             pointer-events: none;
         }
@@ -48,7 +48,8 @@
         }
 
         #mobile-menu .flex.flex-col.h-full {
-            transform: translateY(-100%);
+            padding-top: 4rem; /* Start below navbar (h-16 = 4rem) */
+            transform: translateY(calc(-100% - 4rem));
             transition: transform 0.35s ease-in-out;
         }
 
@@ -100,7 +101,7 @@
     <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm">
         <div class="flex flex-col h-full">
             <!-- Menu Header -->
-            <div class="flex items-center justify-between p-6 pt-20 border-b border-amber-200/20 bg-[#0a0a12]/95 backdrop-blur-xl">
+            <div class="flex items-center justify-between p-6 border-b border-amber-200/20 bg-[#0a0a12]/95 backdrop-blur-xl">
                 <h2 class="text-xl font-bold text-white">Menu</h2>
                 <button id="close-menu-btn" class="flex items-center justify-center w-12 h-12 rounded-xl bg-white/30 border-2 border-white/50 hover:bg-white/40 transition-colors shadow-lg">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-white">
