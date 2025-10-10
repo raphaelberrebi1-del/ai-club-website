@@ -34,6 +34,27 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Mobile-optimized styles */
+
+        /* Smooth Menu Slide Animation */
+        #mobile-menu {
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #mobile-menu.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #mobile-menu .flex.flex-col.h-full {
+            transform: translateY(-100%);
+            transition: transform 0.35s ease-in-out;
+        }
+
+        #mobile-menu.active .flex.flex-col.h-full {
+            transform: translateY(0);
+        }
     </style>
 
 
@@ -76,7 +97,7 @@
     </header>
 
     <!-- Mobile Navigation Menu -->
-    <div id="mobile-menu" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm">
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm">
         <div class="flex flex-col h-full">
             <!-- Menu Header -->
             <div class="flex items-center justify-between p-6 pt-20 border-b border-amber-200/20 bg-[#0a0a12]/95 backdrop-blur-xl">
@@ -758,19 +779,19 @@
 
         // Open mobile menu
         mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
 
         // Close mobile menu
         closeMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('active');
             document.body.style.overflow = '';
         });
 
         // Close menu when clicking anywhere on the overlay
         mobileMenu.addEventListener('click', function(e) {
-            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('active');
             document.body.style.overflow = '';
         });
 
@@ -788,7 +809,7 @@
                 // If it's an external link (contains .html), allow normal navigation
                 if (href.includes('.html')) {
                     // Close menu and allow normal navigation
-                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('active');
                     document.body.style.overflow = '';
                     return; // Don't prevent default, let the link navigate normally
                 }
@@ -799,7 +820,7 @@
 
                 if (targetElement) {
                     // Close menu first
-                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('active');
                     document.body.style.overflow = '';
 
                     // Then scroll to target
