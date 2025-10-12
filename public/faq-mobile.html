@@ -122,6 +122,55 @@
         #mobile-menu-btn.active .particle-7 { animation: formX 0.8s ease-out forwards; --explode-x: -8px; --explode-y: 12px; --final-x: -6px; --final-y: 6px; }
         #mobile-menu-btn.active .particle-9 { animation: formX 0.8s ease-out forwards; --explode-x: 8px; --explode-y: 12px; --final-x: 6px; --final-y: 6px; }
 
+        /* Arrow roll animation for Register Now button */
+        @keyframes rollArrowDown {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            51% {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rollArrowUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(10px);
+                opacity: 0;
+            }
+            51% {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .arrow-roll {
+            display: inline-block;
+            position: relative;
+            animation: rollArrowUp 0.4s ease-in-out;
+        }
+
+        button:hover .arrow-roll {
+            animation: rollArrowDown 0.4s ease-in-out;
+        }
+
         /* FAQ Accordion Styles */
         .faq-answer {
             max-height: 0;
@@ -181,7 +230,7 @@
 
             <!-- Register Button -->
             <button onclick="window.location.href='mobile.html#choose-program'" class="bg-gradient-to-r from-cyan-500 to-teal-500 text-white text-sm font-bold px-4 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300" style="font-family: 'Nunito', sans-serif;">
-                Register Now
+                Register Now <span class="arrow-roll">→</span>
             </button>
         </div>
     </header>
