@@ -59,13 +59,15 @@
             50% { opacity: 0; }
         }
 
-        /* Mobile Menu - Simple Toggle (No Animation) */
+        /* Mobile Menu Slide Animation from Navbar Bottom */
         #mobile-menu {
-            display: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
         }
 
         #mobile-menu.active {
-            display: block;
+            max-height: calc(100vh - 4rem);
         }
     </style>
 
@@ -111,8 +113,8 @@
     </header>
 
     <!-- Mobile Navigation Menu -->
-    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm">
-        <div class="flex flex-col h-full pt-16">
+    <div id="mobile-menu" class="fixed inset-x-0 top-16 bottom-0 z-50 bg-black/80 backdrop-blur-sm">
+        <div class="flex flex-col h-full">
             <!-- Menu Header -->
             <div class="flex items-center justify-between p-6 border-b border-amber-200/20 bg-[#0a0a12]/95 backdrop-blur-xl">
                 <h2 class="text-xl font-bold text-white">תפריט</h2>
