@@ -1048,7 +1048,7 @@
     </div>
 
     <!-- Image Modal -->
-    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/80 backdrop-blur-sm">
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/80 backdrop-blur-sm" style="touch-action: none; overscroll-behavior: contain;">
         <div class="flex items-center justify-center min-h-screen p-4">
             <div class="relative max-w-4xl w-full">
                 <!-- Close button -->
@@ -1407,6 +1407,12 @@
         let touchEndX = 0;
 
         const modalImage = document.getElementById('modalImage');
+        const imageModal = document.getElementById('imageModal');
+
+        // Prevent background scrolling when modal is open
+        imageModal.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
 
         modalImage.addEventListener('touchstart', function(e) {
             touchStartX = e.changedTouches[0].screenX;
