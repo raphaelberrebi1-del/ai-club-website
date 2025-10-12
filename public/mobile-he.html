@@ -1294,7 +1294,7 @@
                     <img id="modalImage" src="" alt="" class="w-full h-auto max-h-[80vh] object-contain transition-opacity duration-300">
                     <div class="p-4 bg-black/60">
                         <h3 id="modalTitle" class="text-xl font-bold text-white"></h3>
-                        <p class="text-amber-100 text-sm mt-1">AI-generated artwork created by kids in our program</p>
+                        <p id="modalDescription" class="text-amber-100 text-sm mt-1"></p>
                         <!-- Image counter -->
                         <p id="imageCounter" class="text-white/60 text-sm mt-2 text-center"></p>
                     </div>
@@ -1543,9 +1543,21 @@
 
         // Image Modal Functions with Gallery Navigation
         const galleryImages = [
-            {src: '/colorful-modern-fusion.png', title: 'Colorful Modern Fusion Art'},
-            {src: '/cinematic-3d.png', title: 'Cinematic 3D Art'},
-            {src: '/childrens-book-illustrations.png', title: "Children's Book Illustrations"}
+            {
+                src: '/colorful-modern-fusion.png',
+                title: 'Colorful Modern Fusion Art',
+                description: 'A vibrant abstract digital artwork featuring geometric shapes and flowing gradients in bold colors, modern fusion style with dynamic composition'
+            },
+            {
+                src: '/cinematic-3d.png',
+                title: 'Cinematic 3D Art',
+                description: 'A stunning 3D rendered scene with cinematic lighting, dramatic composition, and photorealistic details in a fantasy world'
+            },
+            {
+                src: '/childrens-book-illustrations.png',
+                title: "Children's Book Illustrations",
+                description: 'Whimsical children\'s book illustration with soft colors, friendly characters, and magical storytelling elements in a storybook style'
+            }
         ];
 
         let currentImageIndex = 0;
@@ -1567,6 +1579,7 @@
         function showImageAtIndex(index) {
             const modalImage = document.getElementById('modalImage');
             const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
             const imageCounter = document.getElementById('imageCounter');
 
             // Add fade effect
@@ -1576,6 +1589,7 @@
                 modalImage.src = galleryImages[index].src;
                 modalImage.alt = galleryImages[index].title;
                 modalTitle.textContent = galleryImages[index].title;
+                modalDescription.textContent = galleryImages[index].description;
                 imageCounter.textContent = `${index + 1} מתוך ${galleryImages.length}`;
                 modalImage.style.opacity = '1';
             }, 150);
