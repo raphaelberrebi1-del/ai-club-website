@@ -39,8 +39,6 @@
         .typewriter-text {
             display: inline-block;
             position: relative;
-            min-width: 150px;
-            text-align: right;
         }
 
         .typewriter-cursor {
@@ -182,7 +180,7 @@
                         <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
                             תנו לילד שלכם יתרון בעידן ה<br>
                             <span class="font-serif italic font-bold bg-gradient-to-r from-[#3A9CAA] via-[#4AB4C8] to-[#80D4E0] bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8); text-shadow: 0 0 3px rgba(255,255,255,0.9), 0 0 5px rgba(58,156,170,0.8), 0 0 15px rgba(58,156,170,0.6), 0 0 25px rgba(58,156,170,0.4), 0 0 35px rgba(58,156,170,0.2), 2px 2px 4px rgba(0,0,0,0.3); font-weight: 700; letter-spacing: 0.5px;">
-                                <span id="typewriter-text" class="typewriter-text">AI</span><span class="typewriter-cursor"></span>
+                                <span id="typewriter-text" class="typewriter-text">AI<span class="typewriter-cursor"></span></span>
                             </span>
                         </h1>
 
@@ -4135,7 +4133,7 @@
 
             if (isDeleting) {
                 // Delete character
-                typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                typewriterElement.innerHTML = currentPhrase.substring(0, charIndex - 1) + '<span class="typewriter-cursor"></span>';
                 charIndex--;
 
                 if (charIndex === 0) {
@@ -4150,7 +4148,7 @@
                 }
             } else {
                 // Type character
-                typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                typewriterElement.innerHTML = currentPhrase.substring(0, charIndex + 1) + '<span class="typewriter-cursor"></span>';
                 charIndex++;
 
                 if (charIndex === currentPhrase.length) {
