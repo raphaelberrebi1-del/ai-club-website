@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>מדיניות פרטיות - מועדון AI</title>
+    <meta name="description" content="מדיניות פרטיות מועדון AI - איך אנו מגנים על הפרטיות של הילד שלכם בתוכניות חינוך ה-AI שלנו.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a12; }
+        .site-background { position: fixed; inset: 0; z-index: -10; pointer-events: none; background-image: url('/NEW-background.jpg?v=1'); background-size: cover; background-position: center center; background-repeat: no-repeat; }
+        .site-background::after { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 1; }
+        #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+        #mobile-menu.active { max-height: calc(100vh - 4rem); }
+        .section-content { max-height: 0; overflow: hidden; padding: 0; transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding 0.4s ease-out; opacity: 0; }
+        .section-content.active { max-height: 2000px; opacity: 1; padding: 1rem; }
+        .section-icon { transition: transform 0.3s ease; }
+        .section-icon.active { transform: rotate(180deg); }
+    </style>
+</head>
+<body class="text-white">
+    <div class="site-background"></div>
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/95 backdrop-blur-xl border-b border-amber-200/20">
+        <div class="flex items-center justify-between px-4 h-16">
+            <button id="mobile-menu-btn" class="flex items-center justify-center w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-amber-200/30 hover:bg-white/20 transition-all duration-200 hover:scale-105">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+            <div class="flex items-center gap-2">
+                <img src="New.logov2.gif" alt="AI Kidz Club Robot" class="h-10 w-auto rounded-lg">
+                <h1 class="text-xl font-bold text-white tracking-tight" style="font-family: 'Nunito', sans-serif;"><span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">מועדון</span><span class="text-white">AI</span></h1>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="privacy-mobile.html" class="flex items-center gap-1 px-2 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors" title="English"><span>🌐</span><span class="text-xs font-semibold text-white">EN</span></a>
+                <button onclick="window.location.href='mobile-he.html#choose-program'" class="bg-gradient-to-r from-cyan-500 to-teal-500 text-white text-sm font-bold px-4 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300" style="font-family: 'Nunito', sans-serif;">הירשם</button>
+            </div>
+        </div>
+    </header>
+    <div id="mobile-menu" class="fixed inset-x-0 top-16 bottom-0 z-50 bg-black/80 backdrop-blur-sm">
+        <div class="flex flex-col h-full relative">
+            <button id="close-menu-btn" class="absolute top-4 left-4 z-10 flex items-center justify-center w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/30 hover:bg-white/30 transition-all duration-200 shadow-lg">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <nav class="flex-1 p-6 pt-20">
+                <ul class="space-y-4">
+                    <li><a href="mobile-he.html" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors flex-row-reverse"><span class="text-lg">בית</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-cyan-400"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></a></li>
+                    <li><a href="curriculum-mobile-he.html" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors flex-row-reverse"><span class="text-lg">תוכנית לימודים</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-400"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></a></li>
+                    <li><a href="pricing-mobile-he.html" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors flex-row-reverse"><span class="text-lg">מחירים</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-400"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></a></li>
+                    <li><a href="faq-mobile-he.html" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors flex-row-reverse"><span class="text-lg">שאלות נפוצות</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-400"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></a></li>
+                    <li><a href="privacy-mobile-he.html" class="menu-item flex items-center gap-4 p-4 bg-white/10 rounded-xl transition-colors flex-row-reverse"><span class="text-lg">מדיניות פרטיות</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-400"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></a></li>
+                    <li><a href="terms-mobile-he.html" class="menu-item flex items-center gap-4 p-4 text-white hover:bg-white/10 rounded-xl transition-colors flex-row-reverse"><span class="text-lg">תנאי שירות</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-400"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <main class="pt-16 relative z-10">
+        <section class="relative px-6 py-12">
+            <div class="max-w-md mx-auto text-center">
+                <div class="mb-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full mb-4">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-400"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h1 class="text-3xl font-extrabold text-white mb-3 leading-tight"><span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">מדיניות</span><br>פרטיות</h1>
+                    <p class="text-white/80 text-sm">תאריך תחילה: 8 באוקטובר 2025</p>
+                    <p class="text-white/60 text-xs">עדכון אחרון: 8 באוקטובר 2025</p>
+                </div>
+            </div>
+        </section>
+        <section class="px-6 pb-12">
+            <div class="max-w-md mx-auto space-y-4">
+                <div class="section-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                    <button onclick="toggleSection(this)" class="w-full text-right px-4 py-4 flex justify-between items-center hover:bg-white/5 transition-colors min-h-[44px] flex-row-reverse">
+                        <svg class="section-icon w-5 h-5 text-cyan-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="font-semibold text-base text-white pl-4">פרטי קשר</span>
+                    </button>
+                    <div class="section-content text-sm text-white/80 leading-relaxed text-right"><p class="mb-2"><strong>מועדון AI</strong><br>רפאל ברבי - מייסד ומדריך<br>רעננה, ישראל</p><p><strong>אימייל:</strong> <a href="mailto:raphael@aikidz.club" class="text-cyan-400">raphael@aikidz.club</a><br><strong>טלפון:</strong> <a href="tel:+972543159025" class="text-cyan-400">054-315-9025</a></p></div>
+                </div>
+                <div class="section-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                    <button onclick="toggleSection(this)" class="w-full text-right px-4 py-4 flex justify-between items-center hover:bg-white/5 transition-colors min-h-[44px] flex-row-reverse">
+                        <svg class="section-icon w-5 h-5 text-cyan-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="font-semibold text-base text-white pl-4">מבוא ותאימות לחוק</span>
+                    </button>
+                    <div class="section-content text-sm text-white/80 leading-relaxed text-right"><p class="mb-3">מועדון AI מחויב להגן על הפרטיות של התלמידים והמשפחות שלנו. מדיניות זו עומדת בדרישות החוק הישראלי.</p><p class="mb-2"><strong>מסגרת משפטית:</strong></p><ul class="list-disc mr-4 space-y-1"><li>חוק הגנת הפרטיות, התשמ״א-1981</li><li>תיקון מס׳ 13 (14 באוגוסט 2025)</li><li>הרשות להגנת הפרטיות</li></ul></div>
+                </div>
+                <div class="section-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                    <button onclick="toggleSection(this)" class="w-full text-right px-4 py-4 flex justify-between items-center hover:bg-white/5 transition-colors min-h-[44px] flex-row-reverse">
+                        <svg class="section-icon w-5 h-5 text-cyan-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="font-semibold text-base text-white pl-4">איזה מידע אנו אוספים</span>
+                    </button>
+                    <div class="section-content text-sm text-white/80 leading-relaxed text-right"><p class="mb-2"><strong>מידע הורה/אפוטרופוס:</strong> שם, פרטי קשר, מידע חיוב, אנשי קשר לחירום</p><p class="mb-2"><strong>מידע תלמיד:</strong> שם, גיל, בית ספר (אופציונלי), נוכחות, התקדמות, עבודות פרויקט</p><p class="mb-2"><strong>שימוש בכלי AI:</strong> תלמידים משתמשים בכלי AI מפוקחים. <strong>לעולם לא להזין מידע אישי</strong> למערכות AI.</p><p><strong>אתר:</strong> נתוני שימוש בסיסיים, Cookies חיוניים בלבד</p></div>
+                </div>
+                <div class="section-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                    <button onclick="toggleSection(this)" class="w-full text-right px-4 py-4 flex justify-between items-center hover:bg-white/5 transition-colors min-h-[44px] flex-row-reverse">
+                        <svg class="section-icon w-5 h-5 text-cyan-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="font-semibold text-base text-white pl-4">כיצד אנו משתמשים ומגנים על המידע שלכם</span>
+                    </button>
+                    <div class="section-content text-sm text-white/80 leading-relaxed text-right"><p class="mb-3">אנו משתמשים במידע שלכם כדי לספק חינוך AI, לעקוב אחר התקדמות, לעבד תשלומים ולתקשר עדכונים. <strong>אנו לא מוכרים את המידע שלכם.</strong></p><p class="mb-2"><strong>הגנה:</strong></p><ul class="list-disc mr-4 space-y-1"><li>גישת מדריך יחיד</li><li>אחסון מוצפן וגיבוי ענן</li><li>עיבוד תשלום מאובטח</li><li>שימוש מפוקח ב-AI</li></ul></div>
+                </div>
+                <div class="section-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                    <button onclick="toggleSection(this)" class="w-full text-right px-4 py-4 flex justify-between items-center hover:bg-white/5 transition-colors min-h-[44px] flex-row-reverse">
+                        <svg class="section-icon w-5 h-5 text-cyan-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="font-semibold text-base text-white pl-4">פרטיות ילדים וזכויותיכם</span>
+                    </button>
+                    <div class="section-content text-sm text-white/80 leading-relaxed text-right"><p class="mb-3">כל התלמידים מתחת לגיל 18. אנו דורשים הסכמה מפורשת של הורים ומלמדים תלמידים לעולם לא לשתף מידע אישי עם AI.</p><p class="mb-2"><strong>זכויותיכם:</strong></p><ul class="list-disc mr-4 space-y-1"><li>גישה לכל המידע על ילדכם</li><li>תיקון מידע לא מדויק</li><li>מחיקת הנתונים של ילדכם</li><li>משיכת הסכמה בכל עת</li></ul><p class="mt-3"><strong>צור קשר:</strong> <a href="mailto:raphael@aikidz.club" class="text-cyan-400">raphael@aikidz.club</a></p></div>
+                </div>
+                <div class="section-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                    <button onclick="toggleSection(this)" class="w-full text-right px-4 py-4 flex justify-between items-center hover:bg-white/5 transition-colors min-h-[44px] flex-row-reverse">
+                        <svg class="section-icon w-5 h-5 text-cyan-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="font-semibold text-base text-white pl-4">שיתוף, תמונות ושמירת נתונים</span>
+                    </button>
+                    <div class="section-content text-sm text-white/80 leading-relaxed text-right"><p class="mb-3"><strong>אנו לא מוכרים את המידע שלכם.</strong> אנו משתפים רק עם ספקי שירות (תשלום, ענן), רשויות חוק (אם נדרש), ובפומבי ברשותכם.</p><p class="mb-3"><strong>תמונות/סרטונים:</strong> לעולם לא מצולמים ללא הסכמה בכתב. נדרש טופס הסכמה נפרד.</p><p class="mb-2"><strong>שמירת נתונים:</strong></p><ul class="list-disc mr-4 space-y-1"><li>תלמידים פעילים: במהלך ההרשמה + שנה</li><li>רישומים פיננסיים: 7 שנים (חוק מס)</li><li>תיקי עבודות: עד שתתבקש מחיקה</li></ul></div>
+                </div>
+                <div class="section-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                    <button onclick="toggleSection(this)" class="w-full text-right px-4 py-4 flex justify-between items-center hover:bg-white/5 transition-colors min-h-[44px] flex-row-reverse">
+                        <svg class="section-icon w-5 h-5 text-cyan-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="font-semibold text-base text-white pl-4">כלי AI והעברות בינלאומיות</span>
+                    </button>
+                    <div class="section-content text-sm text-white/80 leading-relaxed text-right"><p class="mb-2"><strong>כלים נוכחיים:</strong> ChatGPT (OpenAI), Claude (Anthropic), Midjourney - כולם חברות אמריקאיות.</p><p class="mb-3"><strong>חשוב:</strong> תלמידים לעולם לא מזינים מידע אישי ל-AI. כל השימוש מפוקח. רק תוכן פרויקט משמש עם כלי AI.</p><p>תוכלו לסרב לכלי AI ספציפיים אם תעדיפו.</p></div>
+                </div>
+                <div class="section-item bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 overflow-hidden">
+                    <button onclick="toggleSection(this)" class="w-full text-right px-4 py-4 flex justify-between items-center hover:bg-white/5 transition-colors min-h-[44px] flex-row-reverse">
+                        <svg class="section-icon w-5 h-5 text-cyan-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="font-semibold text-base text-white pl-4">Cookies, שינויים ותלונות</span>
+                    </button>
+                    <div class="section-content text-sm text-white/80 leading-relaxed text-right"><p class="mb-3"><strong>Cookies:</strong> Cookies חיוניים נדרשים, Cookies לניתוח אופציונליים. ללא Cookies לפרסום.</p><p class="mb-3"><strong>שינויים:</strong> הודעה של 30 יום לעדכונים מרכזיים. עיינו במדיניות זו מעת לעת.</p><p class="mb-2"><strong>תלונות:</strong></p><p class="mb-2">ראשית צרו איתנו קשר: <a href="mailto:raphael@aikidz.club" class="text-cyan-400">raphael@aikidz.club</a></p><p>אם לא מרוצים: הרשות להגנת הפרטיות (www.gov.il/privacyprotection, *3050)</p></div>
+                </div>
+                <div class="mt-8 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 backdrop-blur-lg rounded-2xl p-6 border-2 border-cyan-400/50 text-center">
+                    <p class="text-white font-semibold mb-4">שאלות לגבי הפרטיות שלכם?</p>
+                    <p class="text-white/80 text-sm mb-4">צור קשר: <a href="mailto:raphael@aikidz.club" class="text-cyan-400">raphael@aikidz.club</a> | <a href="tel:+972543159025" class="text-cyan-400">054-315-9025</a></p>
+                    <p class="text-white/60 text-xs">כפוף לחוק הישראלי</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-black/40 backdrop-blur-lg border-t border-white/20 mt-12">
+        <div class="px-6 py-8">
+            <div class="max-w-md mx-auto">
+                <div class="text-center mb-6">
+                    <h3 class="text-lg font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent mb-2">מועדון AI</h3>
+                    <p class="text-white/60 text-sm">העצמת הדור הבא בחינוך AI ברעננה.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-6 mb-6 text-sm">
+                    <div class="text-right"><h4 class="font-semibold mb-3 text-white">קישורים מהירים</h4><ul class="space-y-2 text-white/60"><li><a href="mobile-he.html" class="hover:text-cyan-400 transition-colors">בית</a></li><li><a href="curriculum-mobile-he.html" class="hover:text-cyan-400 transition-colors">תוכנית לימודים</a></li><li><a href="pricing-mobile-he.html" class="hover:text-cyan-400 transition-colors">מחירים</a></li><li><a href="faq-mobile-he.html" class="hover:text-cyan-400 transition-colors">שאלות נפוצות</a></li></ul></div>
+                    <div class="text-right"><h4 class="font-semibold mb-3 text-white">משפטי</h4><ul class="space-y-2 text-white/60"><li><a href="privacy-mobile-he.html" class="hover:text-cyan-400 transition-colors">מדיניות פרטיות</a></li><li><a href="terms-mobile-he.html" class="hover:text-cyan-400 transition-colors">תנאי שירות</a></li></ul></div>
+                </div>
+                <div class="text-center text-white/60 text-xs border-t border-white/20 pt-6">
+                    <p class="mb-2">אימייל: <a href="mailto:raphael@aikidz.club" class="hover:text-cyan-400 transition-colors">raphael@aikidz.club</a></p>
+                    <p class="mb-4">טלפון: <a href="tel:+972543159025" class="hover:text-cyan-400 transition-colors">054-315-9025</a></p>
+                    <p>&copy; 2025 מועדון AI. כל הזכויות שמורות.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function toggleSection(button) {
+            const sectionItem = button.closest('.section-item');
+            const content = sectionItem.querySelector('.section-content');
+            const icon = sectionItem.querySelector('.section-icon');
+            const wasActive = content.classList.contains('active');
+            document.querySelectorAll('.section-content').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.section-icon').forEach(item => item.classList.remove('active'));
+            if (!wasActive) { content.classList.add('active'); icon.classList.add('active'); }
+        }
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.add('active'); });
+        closeMenuBtn.addEventListener('click', () => { mobileMenu.classList.remove('active'); });
+        document.querySelectorAll('.menu-item').forEach(item => { item.addEventListener('click', () => { mobileMenu.classList.remove('active'); }); });
+    </script>
+</body>
+</html>
