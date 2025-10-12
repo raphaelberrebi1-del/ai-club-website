@@ -15,6 +15,10 @@
         .site-background::after { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 1; }
         #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
         #mobile-menu.active { max-height: calc(100vh - 4rem); }
+        .hamburger-line { transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); transform-origin: center; }
+        #mobile-menu-btn.active .hamburger-line:nth-child(1) { transform: translateY(6px) rotate(45deg) scaleX(0.9); }
+        #mobile-menu-btn.active .hamburger-line:nth-child(2) { transform: scaleX(0); opacity: 0; }
+        #mobile-menu-btn.active .hamburger-line:nth-child(3) { transform: translateY(-6px) rotate(-45deg) scaleX(0.9); }
         .section-content { max-height: 0; overflow: hidden; padding: 0; transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding 0.4s ease-out; opacity: 0; }
         .section-content.active { max-height: 2000px; opacity: 1; padding: 1rem; }
         .section-icon { transition: transform 0.3s ease; }
@@ -26,7 +30,7 @@
     <header class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a12]/95 backdrop-blur-xl border-b border-amber-200/20">
         <div class="flex items-center justify-between px-4 h-16">
             <button id="mobile-menu-btn" class="flex items-center justify-center w-11 h-11 rounded-xl bg-white/10 backdrop-blur-sm border border-amber-200/30 hover:bg-white/20 transition-all duration-200 hover:scale-105">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-white"><line x1="3" y1="6" x2="21" y2="6" class="hamburger-line"></line><line x1="3" y1="12" x2="21" y2="12" class="hamburger-line"></line><line x1="3" y1="18" x2="21" y2="18" class="hamburger-line"></line></svg>
             </button>
             <div class="flex items-center gap-2">
                 <img src="New.logov2.gif" alt="AI Kidz Club Robot" class="h-10 w-auto rounded-lg">
@@ -169,9 +173,9 @@
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.add('active'); });
-        closeMenuBtn.addEventListener('click', () => { mobileMenu.classList.remove('active'); });
-        document.querySelectorAll('.menu-item').forEach(item => { item.addEventListener('click', () => { mobileMenu.classList.remove('active'); }); });
+        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.add('active'); mobileMenuBtn.classList.add('active'); });
+        closeMenuBtn.addEventListener('click', () => { mobileMenu.classList.remove('active'); mobileMenuBtn.classList.remove('active'); });
+        document.querySelectorAll('.menu-item').forEach(item => { item.addEventListener('click', () => { mobileMenu.classList.remove('active'); mobileMenuBtn.classList.remove('active'); }); });
     </script>
 </body>
 </html>
