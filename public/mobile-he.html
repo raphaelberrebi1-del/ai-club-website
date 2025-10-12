@@ -1275,12 +1275,28 @@
                     </svg>
                 </button>
 
+                <!-- Previous button -->
+                <button onclick="showPrevImage()" class="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-amber-200/30 hover:bg-white/40 transition-all flex items-center justify-center z-10">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <!-- Next button -->
+                <button onclick="showNextImage()" class="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-amber-200/30 hover:bg-white/40 transition-all flex items-center justify-center z-10">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+
                 <!-- Image container -->
                 <div class="bg-black/80 backdrop-blur-sm border border-amber-200/30 rounded-xl shadow-2xl overflow-hidden">
-                    <img id="modalImage" src="" alt="" class="w-full h-auto max-h-[80vh] object-contain">
+                    <img id="modalImage" src="" alt="" class="w-full h-auto max-h-[80vh] object-contain transition-opacity duration-300">
                     <div class="p-4 bg-black/60">
                         <h3 id="modalTitle" class="text-xl font-bold text-white"></h3>
                         <p class="text-amber-100 text-sm mt-1">AI-generated artwork created by kids in our program</p>
+                        <!-- Image counter -->
+                        <p id="imageCounter" class="text-white/60 text-sm mt-2 text-center"></p>
                     </div>
                 </div>
             </div>
@@ -1525,18 +1541,54 @@
             handleScrollAnimation();
         });
 
-        // Image Modal Functions
+        // Image Modal Functions with Gallery Navigation
+        const galleryImages = [
+            {src: '/colorful-modern-fusion.png', title: 'Colorful Modern Fusion Art'},
+            {src: '/cinematic-3d.png', title: 'Cinematic 3D Art'},
+            {src: '/childrens-book-illustrations.png', title: "Children's Book Illustrations"}
+        ];
+
+        let currentImageIndex = 0;
+
         function openImageModal(imageSrc, imageTitle) {
             const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            const modalTitle = document.getElementById('modalTitle');
 
-            modalImage.src = imageSrc;
-            modalImage.alt = imageTitle;
-            modalTitle.textContent = imageTitle;
+            // Find the index of the clicked image
+            currentImageIndex = galleryImages.findIndex(img => img.src === imageSrc);
+            if (currentImageIndex === -1) currentImageIndex = 0;
+
+            // Display the image
+            showImageAtIndex(currentImageIndex);
 
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
+        }
+
+        function showImageAtIndex(index) {
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const imageCounter = document.getElementById('imageCounter');
+
+            // Add fade effect
+            modalImage.style.opacity = '0';
+
+            setTimeout(() => {
+                modalImage.src = galleryImages[index].src;
+                modalImage.alt = galleryImages[index].title;
+                modalTitle.textContent = galleryImages[index].title;
+                imageCounter.textContent = `${index + 1} מתוך ${galleryImages.length}`;
+                modalImage.style.opacity = '1';
+            }, 150);
+        }
+
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            showImageAtIndex(currentImageIndex);
+        }
+
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            showImageAtIndex(currentImageIndex);
         }
 
         function closeImageModal() {
@@ -1552,10 +1604,17 @@
             }
         });
 
-        // Close modal with escape key
+        // Keyboard navigation
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeImageModal();
+            const modal = document.getElementById('imageModal');
+            if (!modal.classList.contains('hidden')) {
+                if (e.key === 'Escape') {
+                    closeImageModal();
+                } else if (e.key === 'ArrowRight') {
+                    showNextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrevImage();
+                }
             }
         });
 
