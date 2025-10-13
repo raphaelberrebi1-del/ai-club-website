@@ -4109,91 +4109,94 @@
     </script>
 
     <script>
-        // New Ribbon Trail Cursor
+        // New Ribbon Trail Cursor (desktop only)
         const cursorRing = document.querySelector('.cursor-ring');
         const trailPath = document.querySelector('.cursor-trail-path');
 
-        let mouseX = 0, mouseY = 0;
-        const trailPoints = [];
-        const maxTrailPoints = 20;
+        // Only run cursor code if elements exist (desktop only)
+        if (cursorRing && trailPath) {
+            let mouseX = 0, mouseY = 0;
+            const trailPoints = [];
+            const maxTrailPoints = 20;
 
-        // Track mouse position
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+            // Track mouse position
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
 
-            // Update ring position
-            cursorRing.style.left = mouseX + 'px';
-            cursorRing.style.top = mouseY + 'px';
+                // Update ring position
+                cursorRing.style.left = mouseX + 'px';
+                cursorRing.style.top = mouseY + 'px';
 
-            // Add point to trail
-            trailPoints.push({ x: mouseX, y: mouseY, time: Date.now() });
+                // Add point to trail
+                trailPoints.push({ x: mouseX, y: mouseY, time: Date.now() });
 
-            // Keep only recent points
-            if (trailPoints.length > maxTrailPoints) {
-                trailPoints.shift();
-            }
-        });
+                // Keep only recent points
+                if (trailPoints.length > maxTrailPoints) {
+                    trailPoints.shift();
+                }
+            });
 
-        // Animate trail
-        function updateTrail() {
-            // Remove old points
-            const now = Date.now();
-            while (trailPoints.length > 0 && now - trailPoints[0].time > 500) {
-                trailPoints.shift();
-            }
-
-            // Create smooth SVG path
-            if (trailPoints.length > 1) {
-                let pathD = `M ${trailPoints[0].x} ${trailPoints[0].y}`;
-
-                for (let i = 1; i < trailPoints.length; i++) {
-                    const point = trailPoints[i];
-                    const prevPoint = trailPoints[i - 1];
-
-                    // Create smooth curve
-                    const midX = (prevPoint.x + point.x) / 2;
-                    const midY = (prevPoint.y + point.y) / 2;
-
-                    pathD += ` Q ${prevPoint.x} ${prevPoint.y}, ${midX} ${midY}`;
+            // Animate trail
+            function updateTrail() {
+                // Remove old points
+                const now = Date.now();
+                while (trailPoints.length > 0 && now - trailPoints[0].time > 500) {
+                    trailPoints.shift();
                 }
 
-                // Add final point
-                if (trailPoints.length > 0) {
-                    const lastPoint = trailPoints[trailPoints.length - 1];
-                    pathD += ` L ${lastPoint.x} ${lastPoint.y}`;
+                // Create smooth SVG path
+                if (trailPoints.length > 1) {
+                    let pathD = `M ${trailPoints[0].x} ${trailPoints[0].y}`;
+
+                    for (let i = 1; i < trailPoints.length; i++) {
+                        const point = trailPoints[i];
+                        const prevPoint = trailPoints[i - 1];
+
+                        // Create smooth curve
+                        const midX = (prevPoint.x + point.x) / 2;
+                        const midY = (prevPoint.y + point.y) / 2;
+
+                        pathD += ` Q ${prevPoint.x} ${prevPoint.y}, ${midX} ${midY}`;
+                    }
+
+                    // Add final point
+                    if (trailPoints.length > 0) {
+                        const lastPoint = trailPoints[trailPoints.length - 1];
+                        pathD += ` L ${lastPoint.x} ${lastPoint.y}`;
+                    }
+
+                    trailPath.setAttribute('d', pathD);
+                } else {
+                    trailPath.setAttribute('d', '');
                 }
 
-                trailPath.setAttribute('d', pathD);
-            } else {
-                trailPath.setAttribute('d', '');
+                requestAnimationFrame(updateTrail);
             }
+            updateTrail();
 
-            requestAnimationFrame(updateTrail);
+            // Hover detection for interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, [onclick]');
+
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorRing.classList.add('hover');
+                });
+
+                el.addEventListener('mouseleave', () => {
+                    cursorRing.classList.remove('hover');
+                });
+            });
+
+            // Handle cursor visibility
+            document.addEventListener('mouseleave', () => {
+                cursorRing.style.opacity = '0';
+            });
+
+            document.addEventListener('mouseenter', () => {
+                cursorRing.style.opacity = '1';
+            });
         }
-        updateTrail();
-
-        // Hover detection for interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, [onclick]');
-
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorRing.classList.add('hover');
-            });
-
-            el.addEventListener('mouseleave', () => {
-                cursorRing.classList.remove('hover');
-            });
-        });
-
-        // Handle cursor visibility
-        document.addEventListener('mouseleave', () => {
-            cursorRing.style.opacity = '0';
-        });
-
-        document.addEventListener('mouseenter', () => {
-            cursorRing.style.opacity = '1';
-        });
     </script>
 
     <script>
