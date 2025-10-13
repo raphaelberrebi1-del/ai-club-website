@@ -38,8 +38,10 @@ function doPost(e) {
 
     console.log('📦 Parsed data:', JSON.stringify(data));
 
-    // Process each child registration
+    // Process each child registration and collect group assignments
     console.log('👥 Processing children:', data.children.length);
+    const groupAssignments = [];
+
     data.children.forEach((child, index) => {
       console.log(`👶 Processing child ${index + 1}:`, child.name, 'Program:', child.program);
 
@@ -50,6 +52,15 @@ function doPost(e) {
           if (!group) {
             throw new Error('Failed to assign child to group');
           }
+
+          // Store group assignment for email
+          groupAssignments.push({
+            childName: child.name,
+            program: child.program,
+            groupId: group.groupId,
+            day: group.day,
+            time: group.time
+          });
 
           // Add registration with enhanced payment tracking
           const rowData = [
@@ -84,11 +95,16 @@ function doPost(e) {
     // Check if we need to open new groups
     checkAndOpenNewGroups(groups);
 
-    // TESTING: Disable email and calendar for now
-    // updateCalendar(data);
-    // sendConfirmation(data.parent.email, data);
+    // Send confirmation email with group details
+    try {
+      sendConfirmation(data.parent.email, data, groupAssignments);
+      console.log('✅ Confirmation email sent');
+    } catch (emailError) {
+      console.error('❌ Email sending failed:', emailError.toString());
+      // Don't fail the registration if email fails
+    }
 
-    console.log('✅ Registration completed successfully - email/calendar disabled for testing');
+    console.log('✅ Registration completed successfully');
 
     return ContentService
       .createTextOutput(JSON.stringify({success: true, message: 'Registration processed'}))
@@ -241,25 +257,285 @@ function updateCalendar(data) {
   }
 }
 
-function sendConfirmation(email, data) {
-  const subject = 'AI Club Registration Confirmed!';
-  const childrenList = data.children.map(child => '- ' + child.name + ' (' + child.program + ')').join('\n');
-  const body = 'Hi ' + data.parent.name + ',\n\n' +
-    'Thank you for registering for AI Club! Here are your registration details:\n\n' +
-    'Children registered:\n' + childrenList + '\n\n' +
-    'Total: ₪' + data.totalPrice + '\n\n' +
-    'Next steps:\n' +
-    '1. You will receive a calendar invite with class schedules\n' +
-    '2. Payment instructions will follow shortly\n' +
-    '3. We will add you to the WhatsApp group before classes start\n\n' +
-    'Questions? Reply to this email or WhatsApp us at +972-54-315-9025\n\n' +
-    'Welcome to AI Club!\n' +
-    'The AI Club Team';
+function sendConfirmation(email, data, groupAssignments) {
+  const subject = '🤖 Welcome to AI Kids Club - Registration Confirmed!';
+
+  // Generate children list HTML
+  const childrenListHtml = groupAssignments.map(assignment => `
+    <tr>
+      <td style="padding: 12px; border-bottom: 1px solid #e5e7eb;">
+        <div style="font-weight: 600; color: #06b6d4; margin-bottom: 4px;">
+          ${assignment.childName}
+        </div>
+        <div style="font-size: 14px; color: #6b7280;">
+          ${assignment.program}
+        </div>
+      </td>
+      <td style="padding: 12px; border-bottom: 1px solid #e5e7eb; text-align: right;">
+        <div style="font-weight: 600; color: #1e293b; margin-bottom: 4px;">
+          ${assignment.groupId}
+        </div>
+        <div style="font-size: 14px; color: #6b7280;">
+          ${assignment.day} ${assignment.time}
+        </div>
+      </td>
+    </tr>
+  `).join('');
+
+  // Payment instructions based on method
+  let paymentInstructions = '';
+  if (data.paymentMethod === 'bit') {
+    paymentInstructions = `
+      <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
+        <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px;">
+          💚 Pay with Bit
+        </div>
+        <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6;">
+          Complete your payment via Bit to: <strong>054-315-9025</strong><br>
+          Amount: <strong>₪${data.totalPrice}</strong><br>
+          Include child name(s) in payment note
+        </div>
+      </div>
+    `;
+  } else if (data.paymentMethod === 'paybox') {
+    paymentInstructions = `
+      <div style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
+        <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px;">
+          💙 Pay with PayBox
+        </div>
+        <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6;">
+          Complete your payment via PayBox to: <strong>054-315-9025</strong><br>
+          Amount: <strong>₪${data.totalPrice}</strong><br>
+          Include child name(s) in payment note
+        </div>
+      </div>
+    `;
+  } else if (data.paymentMethod === 'cash') {
+    paymentInstructions = `
+      <div style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
+        <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px;">
+          🏦 Bank Transfer
+        </div>
+        <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6;">
+          <strong>Bank:</strong> Bank Hapoalim (12)<br>
+          <strong>Branch:</strong> 689<br>
+          <strong>Account:</strong> 518748<br>
+          <strong>Amount:</strong> ₪${data.totalPrice}<br>
+          <strong>Reference:</strong> Include child name(s)
+        </div>
+      </div>
+    `;
+  }
+
+  const htmlBody = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>AI Kids Club - Registration Confirmed</title>
+    </head>
+    <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #0f172a;">
+      <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; background-color: #0f172a;">
+        <tr>
+          <td align="center" style="padding: 40px 20px;">
+            <!-- Main Container -->
+            <table role="presentation" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%; background: linear-gradient(to bottom right, #1e293b, #0f172a); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+
+              <!-- Header -->
+              <tr>
+                <td style="background: linear-gradient(135deg, #06b6d4 0%, #14b8a6 100%); padding: 40px 30px; text-align: center;">
+                  <h1 style="margin: 0; font-size: 32px; font-weight: bold; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                    🤖 AI Kids Club
+                  </h1>
+                  <p style="margin: 12px 0 0 0; font-size: 16px; color: rgba(255,255,255,0.95);">
+                    Registration Confirmed!
+                  </p>
+                </td>
+              </tr>
+
+              <!-- Greeting -->
+              <tr>
+                <td style="padding: 40px 30px 20px 30px;">
+                  <h2 style="margin: 0 0 16px 0; font-size: 24px; font-weight: 600; color: #06b6d4;">
+                    Welcome, ${data.parent.name}! 🎉
+                  </h2>
+                  <p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.8);">
+                    Thank you for registering your ${data.children.length > 1 ? 'children' : 'child'} for AI Kids Club!
+                    We're excited to embark on this AI learning journey together.
+                  </p>
+                </td>
+              </tr>
+
+              <!-- Registration Summary Card -->
+              <tr>
+                <td style="padding: 0 30px 30px 30px;">
+                  <div style="background: rgba(6, 182, 212, 0.1); border: 2px solid rgba(6, 182, 212, 0.3); border-radius: 12px; padding: 24px;">
+                    <h3 style="margin: 0 0 20px 0; font-size: 18px; font-weight: 600; color: #06b6d4;">
+                      📋 Registration Details
+                    </h3>
+                    <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse;">
+                      ${childrenListHtml}
+                    </table>
+                    <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid rgba(6, 182, 212, 0.3); text-align: right;">
+                      <div style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 4px;">
+                        Total Amount
+                      </div>
+                      <div style="font-size: 28px; font-weight: bold; color: #06b6d4;">
+                        ₪${data.totalPrice}<span style="font-size: 16px; color: rgba(255,255,255,0.6);">/month</span>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Payment Instructions -->
+              ${paymentInstructions ? `
+                <tr>
+                  <td style="padding: 0 30px 30px 30px;">
+                    <h3 style="margin: 0 0 16px 0; font-size: 18px; font-weight: 600; color: #06b6d4;">
+                      💳 Complete Your Payment
+                    </h3>
+                    ${paymentInstructions}
+                  </td>
+                </tr>
+              ` : ''}
+
+              <!-- Next Steps -->
+              <tr>
+                <td style="padding: 0 30px 30px 30px;">
+                  <h3 style="margin: 0 0 20px 0; font-size: 18px; font-weight: 600; color: #06b6d4;">
+                    ✅ What Happens Next
+                  </h3>
+                  <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%;">
+                    <tr>
+                      <td style="padding: 12px 0;">
+                        <div style="display: flex; align-items: start;">
+                          <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #06b6d4, #14b8a6); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-right: 12px;">
+                            <span style="color: white; font-weight: bold; font-size: 16px;">1</span>
+                          </div>
+                          <div>
+                            <div style="font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 4px;">
+                              Calendar Invite Coming Soon
+                            </div>
+                            <div style="font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.5;">
+                              You'll receive a detailed calendar invite with your group's schedule
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 12px 0;">
+                        <div style="display: flex; align-items: start;">
+                          <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #06b6d4, #14b8a6); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-right: 12px;">
+                            <span style="color: white; font-weight: bold; font-size: 16px;">2</span>
+                          </div>
+                          <div>
+                            <div style="font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 4px;">
+                              Join WhatsApp Group
+                            </div>
+                            <div style="font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.5;">
+                              We'll add you to your group's WhatsApp channel for updates & community
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 12px 0;">
+                        <div style="display: flex; align-items: start;">
+                          <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #06b6d4, #14b8a6); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-right: 12px;">
+                            <span style="color: white; font-weight: bold; font-size: 16px;">3</span>
+                          </div>
+                          <div>
+                            <div style="font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 4px;">
+                              Prepare for First Class
+                            </div>
+                            <div style="font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.5;">
+                              We'll send pre-class instructions and materials via email
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <!-- CTA Button -->
+              <tr>
+                <td style="padding: 0 30px 40px 30px; text-align: center;">
+                  <a href="https://wa.me/972543159025?text=Hi!%20I%20just%20registered%20for%20AI%20Kids%20Club" style="display: inline-block; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-weight: 600; font-size: 16px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
+                    💬 Contact Us on WhatsApp
+                  </a>
+                </td>
+              </tr>
+
+              <!-- Footer -->
+              <tr>
+                <td style="background: rgba(0,0,0,0.2); padding: 30px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1);">
+                  <p style="margin: 0 0 12px 0; font-size: 14px; color: rgba(255,255,255,0.6);">
+                    Questions? We're here to help!
+                  </p>
+                  <p style="margin: 0 0 8px 0;">
+                    <a href="mailto:contact@aikidz.club" style="color: #06b6d4; text-decoration: none; font-size: 14px;">
+                      contact@aikidz.club
+                    </a>
+                  </p>
+                  <p style="margin: 0 0 16px 0;">
+                    <a href="https://wa.me/972543159025" style="color: #06b6d4; text-decoration: none; font-size: 14px;">
+                      +972-54-315-9025
+                    </a>
+                  </p>
+                  <p style="margin: 0; font-size: 12px; color: rgba(255,255,255,0.4);">
+                    © ${new Date().getFullYear()} AI Kids Club · Raanana, Israel<br>
+                    <a href="https://www.aikidz.club" style="color: rgba(6, 182, 212, 0.6); text-decoration: none;">www.aikidz.club</a>
+                  </p>
+                </td>
+              </tr>
+
+            </table>
+          </td>
+        </tr>
+      </table>
+    </body>
+    </html>
+  `;
+
+  const plainTextBody = `Hi ${data.parent.name},
+
+Thank you for registering for AI Kids Club! Here are your registration details:
+
+${groupAssignments.map(a => `${a.childName} - ${a.program}\nGroup: ${a.groupId} (${a.day} ${a.time})`).join('\n\n')}
+
+Total: ₪${data.totalPrice}/month
+Payment Method: ${data.paymentMethod || 'Not Selected'}
+
+Next steps:
+1. Complete your payment
+2. You'll receive a calendar invite with class schedules
+3. We'll add you to the WhatsApp group before classes start
+
+Questions? Reply to this email or WhatsApp us at +972-54-315-9025
+
+Welcome to AI Kids Club!
+The AI Kids Club Team
+
+www.aikidz.club
+`;
 
   try {
-    MailApp.sendEmail(email, subject, body);
+    MailApp.sendEmail({
+      to: email,
+      subject: subject,
+      htmlBody: htmlBody,
+      body: plainTextBody
+    });
+    console.log('✅ Email sent successfully to:', email);
   } catch (error) {
-    console.log('Email send failed:', error);
+    console.error('❌ Email send failed:', error.toString());
+    throw error;
   }
 }
 
