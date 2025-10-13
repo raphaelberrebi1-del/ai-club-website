@@ -2525,7 +2525,7 @@
 
             let mouseX = 0, mouseY = 0;
             const trailPoints = [];
-            const maxTrailPoints = 20;
+            const maxTrailPoints = 12;
 
             // Track mouse position
             document.addEventListener('mousemove', (e) => {
@@ -2549,7 +2549,7 @@
             function updateTrail() {
                 // Remove old points
                 const now = Date.now();
-                while (trailPoints.length > 0 && now - trailPoints[0].time > 500) {
+                while (trailPoints.length > 0 && now - trailPoints[0].time > 200) {
                     trailPoints.shift();
                 }
 
