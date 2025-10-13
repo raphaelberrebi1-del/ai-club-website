@@ -21,61 +21,57 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
     <style>
-        /* Glowing cursor effect */
+        /* New Ribbon Trail Cursor */
         * {
             cursor: none !important;
         }
 
-        .cursor-glow {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
+        .cursor-ring {
+            width: 20px;
+            height: 20px;
             position: fixed;
             pointer-events: none;
-            background: radial-gradient(circle at center,
-                rgba(6, 182, 212, 0.3) 0%,
-                rgba(251, 146, 60, 0.25) 30%,
-                rgba(236, 72, 153, 0.15) 60%,
-                transparent 80%);
-            filter: blur(20px);
-            z-index: 9999;
-            transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 10001;
             transform: translate(-50%, -50%);
-            animation: cursor-pulse 2s ease-in-out infinite;
+            transition: transform 0.08s ease-out;
         }
 
-        .cursor-trail {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
+        .cursor-ring::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid rgba(6, 182, 212, 0.9);
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            left: 50%;
+            top: 50%;
+            transform: translate(-30%, -50%);
+        }
+
+        .cursor-ring.hover::before {
+            border-left-color: rgba(168, 85, 247, 0.9);
+            border-left-width: 12px;
+            border-top-width: 8px;
+            border-bottom-width: 8px;
+        }
+
+        .cursor-trail-svg {
             position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            background: radial-gradient(circle at center,
-                rgba(6, 182, 212, 0.2) 0%,
-                rgba(251, 146, 60, 0.15) 40%,
-                transparent 70%);
-            filter: blur(15px);
-            z-index: 9998;
-            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            transform: translate(-50%, -50%);
+            z-index: 10001;
         }
 
-        .cursor-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            background: rgba(6, 182, 212, 0.9);
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.8), 0 0 30px rgba(251, 146, 60, 0.4);
-            z-index: 10000;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-out;
-        }
-
-        @keyframes cursor-pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.1); }
+        .cursor-trail-path {
+            fill: none;
+            stroke: url(#trail-gradient);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         body {
@@ -292,9 +288,17 @@
     <div class="site-background" aria-hidden="true"></div>
 
     <!-- Custom cursor elements -->
-    <div class="cursor-glow"></div>
-    <div class="cursor-trail"></div>
-    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+    <svg class="cursor-trail-svg">
+        <defs>
+            <linearGradient id="trail-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:rgba(6, 182, 212, 0);stop-opacity:0" />
+                <stop offset="50%" style="stop-color:rgba(6, 182, 212, 0.6);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgba(6, 182, 212, 1);stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <path class="cursor-trail-path" d=""></path>
+    </svg>
 
     <!-- Enhanced Background glow effects -->
     <div class="pointer-events-none fixed inset-0 overflow-hidden" style="z-index: 1;">
@@ -802,36 +806,103 @@
             }
         }
 
-        // Custom cursor effect
-        document.addEventListener('DOMContentLoaded', function() {
-            const cursorGlow = document.querySelector('.cursor-glow');
-            const cursorTrail = document.querySelector('.cursor-trail');
-            const cursorDot = document.querySelector('.cursor-dot');
-            let mouseX = 0, mouseY = 0;
-            let glowX = 0, glowY = 0;
-            let trailX = 0, trailY = 0;
+        // New Ribbon Trail Cursor
+        const cursorRing = document.querySelector('.cursor-ring');
+        const trailPath = document.querySelector('.cursor-trail-path');
 
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                cursorDot.style.left = mouseX + 'px';
-                cursorDot.style.top = mouseY + 'px';
+        let mouseX = 0, mouseY = 0;
+        let prevMouseX = 0, prevMouseY = 0;
+        let currentAngle = 0;
+        const trailPoints = [];
+        const maxTrailPoints = 12;
+
+        // Track mouse position
+        document.addEventListener('mousemove', (e) => {
+            prevMouseX = mouseX;
+            prevMouseY = mouseY;
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            // Calculate angle of movement
+            const deltaX = mouseX - prevMouseX;
+            const deltaY = mouseY - prevMouseY;
+
+            if (deltaX !== 0 || deltaY !== 0) {
+                currentAngle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+            }
+
+            // Update ring position and rotation
+            cursorRing.style.left = mouseX + 'px';
+            cursorRing.style.top = mouseY + 'px';
+            cursorRing.style.transform = `translate(-50%, -50%) rotate(${currentAngle}deg)`;
+
+            // Add point to trail
+            trailPoints.push({ x: mouseX, y: mouseY, time: Date.now() });
+
+            // Keep only recent points
+            if (trailPoints.length > maxTrailPoints) {
+                trailPoints.shift();
+            }
+        });
+
+        // Animate trail
+        function updateTrail() {
+            // Remove old points
+            const now = Date.now();
+            while (trailPoints.length > 0 && now - trailPoints[0].time > 200) {
+                trailPoints.shift();
+            }
+
+            // Create smooth SVG path
+            if (trailPoints.length > 1) {
+                let pathD = `M ${trailPoints[0].x} ${trailPoints[0].y}`;
+
+                for (let i = 1; i < trailPoints.length; i++) {
+                    const point = trailPoints[i];
+                    const prevPoint = trailPoints[i - 1];
+
+                    // Create smooth curve
+                    const midX = (prevPoint.x + point.x) / 2;
+                    const midY = (prevPoint.y + point.y) / 2;
+
+                    pathD += ` Q ${prevPoint.x} ${prevPoint.y}, ${midX} ${midY}`;
+                }
+
+                // Add final point
+                if (trailPoints.length > 0) {
+                    const lastPoint = trailPoints[trailPoints.length - 1];
+                    pathD += ` L ${lastPoint.x} ${lastPoint.y}`;
+                }
+
+                trailPath.setAttribute('d', pathD);
+            } else {
+                trailPath.setAttribute('d', '');
+            }
+
+            requestAnimationFrame(updateTrail);
+        }
+        updateTrail();
+
+        // Hover detection for interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, [onclick]');
+
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorRing.classList.add('hover');
             });
 
-            function animateCursor() {
-                glowX += (mouseX - glowX) * 0.15;
-                glowY += (mouseY - glowY) * 0.15;
-                trailX += (mouseX - trailX) * 0.1;
-                trailY += (mouseY - trailY) * 0.1;
+            el.addEventListener('mouseleave', () => {
+                cursorRing.classList.remove('hover');
+            });
+        });
 
-                cursorGlow.style.left = glowX + 'px';
-                cursorGlow.style.top = glowY + 'px';
-                cursorTrail.style.left = trailX + 'px';
-                cursorTrail.style.top = trailY + 'px';
+        // Handle cursor visibility
+        document.addEventListener('mouseleave', () => {
+            cursorRing.style.opacity = '0';
+        });
 
-                requestAnimationFrame(animateCursor);
-            }
-            animateCursor();
+        document.addEventListener('mouseenter', () => {
+            cursorRing.style.opacity = '1';
         });
 
         // Intersection Observer for fade-in animations
