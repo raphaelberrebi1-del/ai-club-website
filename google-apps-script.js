@@ -273,7 +273,7 @@ function sendConfirmation(email, data, groupAssignments) {
   console.log('📨 Children count:', data.children ? data.children.length : 0);
   console.log('📨 Group assignments:', groupAssignments ? groupAssignments.length : 0);
 
-  const subject = '🤖 Welcome to AI Kids Club - Registration Confirmed!';
+  const subject = 'Welcome to AI Kids Club - Registration Confirmed!';
 
   // Generate children list HTML
   const childrenListHtml = groupAssignments.map(assignment => `
@@ -303,7 +303,7 @@ function sendConfirmation(email, data, groupAssignments) {
     paymentInstructions = `
       <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
         <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px;">
-          💚 Pay with Bit
+          Pay with Bit
         </div>
         <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6;">
           Complete your payment via Bit to: <strong>054-315-9025</strong><br>
@@ -316,7 +316,7 @@ function sendConfirmation(email, data, groupAssignments) {
     paymentInstructions = `
       <div style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
         <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px;">
-          💙 Pay with PayBox
+          Pay with PayBox
         </div>
         <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6;">
           Complete your payment via PayBox to: <strong>054-315-9025</strong><br>
@@ -329,7 +329,7 @@ function sendConfirmation(email, data, groupAssignments) {
     paymentInstructions = `
       <div style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
         <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px;">
-          🏦 Bank Transfer
+          Bank Transfer
         </div>
         <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6;">
           <strong>Bank:</strong> Bank Hapoalim (12)<br>
@@ -361,7 +361,7 @@ function sendConfirmation(email, data, groupAssignments) {
               <tr>
                 <td style="background: linear-gradient(135deg, #06b6d4 0%, #14b8a6 100%); padding: 40px 30px; text-align: center;">
                   <h1 style="margin: 0; font-size: 32px; font-weight: bold; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-                    🤖 AI Kids Club
+                    AI Kids Club
                   </h1>
                   <p style="margin: 12px 0 0 0; font-size: 16px; color: rgba(255,255,255,0.95);">
                     Registration Confirmed!
@@ -373,7 +373,7 @@ function sendConfirmation(email, data, groupAssignments) {
               <tr>
                 <td style="padding: 40px 30px 20px 30px;">
                   <h2 style="margin: 0 0 16px 0; font-size: 24px; font-weight: 600; color: #06b6d4;">
-                    Welcome, ${data.parent.name}! 🎉
+                    Welcome, ${data.parent.name}!
                   </h2>
                   <p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.8);">
                     Thank you for registering your ${data.children.length > 1 ? 'children' : 'child'} for AI Kids Club!
@@ -387,7 +387,7 @@ function sendConfirmation(email, data, groupAssignments) {
                 <td style="padding: 0 30px 30px 30px;">
                   <div style="background: rgba(6, 182, 212, 0.1); border: 2px solid rgba(6, 182, 212, 0.3); border-radius: 12px; padding: 24px;">
                     <h3 style="margin: 0 0 20px 0; font-size: 18px; font-weight: 600; color: #06b6d4;">
-                      📋 Registration Details
+                      Registration Details
                     </h3>
                     <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse;">
                       ${childrenListHtml}
@@ -409,7 +409,7 @@ function sendConfirmation(email, data, groupAssignments) {
                 <tr>
                   <td style="padding: 0 30px 30px 30px;">
                     <h3 style="margin: 0 0 16px 0; font-size: 18px; font-weight: 600; color: #06b6d4;">
-                      💳 Complete Your Payment
+                      Complete Your Payment
                     </h3>
                     ${paymentInstructions}
                   </td>
@@ -420,7 +420,7 @@ function sendConfirmation(email, data, groupAssignments) {
               <tr>
                 <td style="padding: 0 30px 30px 30px;">
                   <h3 style="margin: 0 0 20px 0; font-size: 18px; font-weight: 600; color: #06b6d4;">
-                    ✅ What Happens Next
+                    What Happens Next
                   </h3>
                   <table role="presentation" cellpadding="0" cellspacing="0" style="width: 100%;">
                     <tr>
@@ -482,7 +482,7 @@ function sendConfirmation(email, data, groupAssignments) {
               <tr>
                 <td style="padding: 0 30px 40px 30px; text-align: center;">
                   <a href="https://wa.me/972543159025?text=Hi!%20I%20just%20registered%20for%20AI%20Kids%20Club" style="display: inline-block; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-weight: 600; font-size: 16px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
-                    💬 Contact Us on WhatsApp
+                    Contact Us on WhatsApp
                   </a>
                 </td>
               </tr>
