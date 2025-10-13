@@ -3246,18 +3246,40 @@
 
         // Payment method selection
         document.addEventListener('DOMContentLoaded', function() {
-            const paymentRadios = document.querySelectorAll('.payment-radio');
+            const paymentRadios = document.querySelectorAll('input[name="payment-method"]');
             paymentRadios.forEach(radio => {
                 radio.addEventListener('change', function() {
-                    // Hide all indicators
-                    document.querySelectorAll('.payment-indicator').forEach(indicator => {
-                        indicator.classList.add('opacity-0');
+                    // Reset all payment options to default state
+                    document.querySelectorAll('input[name="payment-method"]').forEach(r => {
+                        const label = r.closest('label');
+                        if (label) {
+                            // Reset border
+                            label.classList.remove('border-cyan-400', 'bg-cyan-500/10');
+                            label.classList.add('border-amber-200/20');
+                            // Hide circle indicator
+                            const circle = label.querySelector('.w-2.h-2');
+                            if (circle) {
+                                circle.classList.remove('bg-green-400');
+                                circle.classList.add('bg-transparent');
+                            }
+                        }
                     });
-                    // Show selected indicator
-                    const indicator = this.parentElement.querySelector('.payment-indicator');
-                    if (indicator) {
-                        indicator.classList.remove('opacity-0');
+
+                    // Highlight selected option
+                    const selectedLabel = this.closest('label');
+                    if (selectedLabel) {
+                        // Update border
+                        selectedLabel.classList.remove('border-amber-200/20');
+                        selectedLabel.classList.add('border-cyan-400', 'bg-cyan-500/10');
+                        // Show circle indicator
+                        const circle = selectedLabel.querySelector('.w-2.h-2');
+                        if (circle) {
+                            circle.classList.remove('bg-transparent');
+                            circle.classList.add('bg-green-400');
+                        }
                     }
+
+                    // Store selection in wizardData
                     wizardData.paymentMethod = this.value;
                 });
             });
