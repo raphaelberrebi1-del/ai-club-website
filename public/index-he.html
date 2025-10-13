@@ -3988,46 +3988,60 @@
                 totalPrice: 0
             };
 
-            // Collect children data
-            document.querySelectorAll('.child-form').forEach((form, index) => {
-                const childName = form.querySelector('input[type="text"]').value;
-                const childNum = form.dataset.childNumber;
-                const program = selectedPrograms[childNum];
+            // Collect children data from wizardData
+            const monthlyPrices = {
+                monthly: 599,
+                quarterly: 519,
+                yearly: 479
+            };
 
-                if (childName && program) {
+            const basePrice = monthlyPrices[wizardData.bulkDuration] || 599;
+
+            wizardData.children.forEach((child, index) => {
+                if (child.name && child.ageGroup) {
+                    // Map age group to program name
+                    const programName = child.ageGroup === 'young' ? 'Young Innovators (8-10)' :
+                                       child.ageGroup === 'tech' ? 'Tech Explorers (11-13)' :
+                                       'Future Leaders (14-18)';
+
                     formData.children.push({
-                        name: childName,
-                        program: program.group,
-                        price: program.price
+                        name: child.name,
+                        program: programName,
+                        ageGroup: child.ageGroup,
+                        price: basePrice
                     });
                 }
             });
 
-            // Collect parent data
-            const parentSection = document.querySelector('#registrationFormContainer .pt-4');
-            if (parentSection) {
-                const inputs = parentSection.querySelectorAll('input');
-                formData.parent = {
-                    name: inputs[0].value,
-                    email: inputs[1].value,
-                    phone: inputs[2].value
-                };
-            }
+            // Collect parent data from form fields
+            formData.parent = {
+                name: document.getElementById('parent-name')?.value || '',
+                email: document.getElementById('parent-email')?.value || '',
+                phone: document.getElementById('parent-phone')?.value || ''
+            };
 
-            // Get total price
-            const totalPriceElement = document.getElementById('totalPriceDisplay');
-            if (totalPriceElement) {
-                formData.totalPrice = totalPriceElement.textContent.replace('₪', '').replace(',', '');
+            // Get payment method
+            const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
+            formData.paymentMethod = selectedPaymentMethod ? selectedPaymentMethod.value : 'bit';
+            formData.paymentPlan = wizardData.bulkDuration;
+
+            // Calculate total price with discounts
+            let totalMonthlyPrice = basePrice * wizardData.childCount;
+            if (wizardData.childCount >= 2) {
+                const discountRate = wizardData.childCount === 2 ? 0.10 : 0.15;
+                const discount = (basePrice * (wizardData.childCount - 1)) * discountRate;
+                totalMonthlyPrice -= discount;
             }
+            formData.totalPrice = Math.round(totalMonthlyPrice);
 
             // Validate form
             if (formData.children.length === 0) {
-                alert('Please select at least one program');
+                alert('נא להשלים את כל פרטי הילדים כולל שם וקבוצת גיל לכל ילד.');
                 return;
             }
 
             if (!formData.parent.name || !formData.parent.email || !formData.parent.phone) {
-                alert('Please fill in all parent contact information');
+                alert('נא למלא את כל פרטי יצירת הקשר של ההורה.');
                 return;
             }
 
