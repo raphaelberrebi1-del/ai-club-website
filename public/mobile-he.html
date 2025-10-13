@@ -3770,6 +3770,15 @@
             console.log('✅ Form data collection completed:', formData);
             console.log('📊 Total children found:', formData.children.length);
 
+            // Add payment plan (default to monthly for mobile)
+            formData.paymentPlan = 'monthly';
+
+            // Add total price from the displayed total
+            const totalElement = document.getElementById('total-price');
+            if (totalElement) {
+                formData.totalPrice = parseInt(totalElement.textContent.replace('₪', '')) || 0;
+            }
+
             return formData;
         }
 
