@@ -97,10 +97,19 @@ function doPost(e) {
 
     // Send confirmation email with group details
     try {
+      console.log('🔵 About to call sendConfirmation...');
+      console.log('📧 Email recipient:', data.parent.email);
+      console.log('👥 Group assignments count:', groupAssignments.length);
+      console.log('👥 Group assignments:', JSON.stringify(groupAssignments));
+
       sendConfirmation(data.parent.email, data, groupAssignments);
-      console.log('✅ Confirmation email sent');
+
+      console.log('✅ sendConfirmation returned successfully');
+      console.log('✅ Confirmation email sent to:', data.parent.email);
     } catch (emailError) {
-      console.error('❌ Email sending failed:', emailError.toString());
+      console.error('❌ Email sending FAILED with error:', emailError.toString());
+      console.error('❌ Error message:', emailError.message);
+      console.error('❌ Error stack:', emailError.stack);
       // Don't fail the registration if email fails
     }
 
@@ -258,6 +267,12 @@ function updateCalendar(data) {
 }
 
 function sendConfirmation(email, data, groupAssignments) {
+  console.log('📨 sendConfirmation called');
+  console.log('📨 Recipient email:', email);
+  console.log('📨 Parent name:', data.parent ? data.parent.name : 'undefined');
+  console.log('📨 Children count:', data.children ? data.children.length : 0);
+  console.log('📨 Group assignments:', groupAssignments ? groupAssignments.length : 0);
+
   const subject = '🤖 Welcome to AI Kids Club - Registration Confirmed!';
 
   // Generate children list HTML
@@ -526,15 +541,26 @@ www.aikidz.club
 `;
 
   try {
-    MailApp.sendEmail({
-      to: email,
-      subject: subject,
+    console.log('📤 Attempting GmailApp.sendEmail...');
+    console.log('📤 To:', email);
+    console.log('📤 Subject:', subject);
+    console.log('📤 HTML body length:', htmlBody.length);
+    console.log('📤 Plain text body length:', plainTextBody.length);
+
+    GmailApp.sendEmail(email, subject, plainTextBody, {
       htmlBody: htmlBody,
-      body: plainTextBody
+      name: 'AI Kids Club',
+      replyTo: 'raphael@aikidz.club'
     });
+
+    console.log('✅ GmailApp.sendEmail completed successfully');
     console.log('✅ Email sent successfully to:', email);
   } catch (error) {
-    console.error('❌ Email send failed:', error.toString());
+    console.error('❌ GmailApp.sendEmail FAILED');
+    console.error('❌ Error type:', error.name);
+    console.error('❌ Error message:', error.message);
+    console.error('❌ Error toString:', error.toString());
+    console.error('❌ Error stack:', error.stack);
     throw error;
   }
 }
@@ -618,4 +644,72 @@ function createNewGroup(ageGroup, groupsSheet) {
     time: time,
     row: groupsSheet.getLastRow()
   };
+}
+
+// ========================================
+// TEST FUNCTIONS - Run these manually to debug email issues
+// ========================================
+
+/**
+ * Test 1: Simple email test - Just sends a plain test email
+ * Run this first to verify MailApp works at all
+ */
+function testEmailSimple() {
+  console.log('🧪 Starting simple email test...');
+  try {
+    GmailApp.sendEmail('raphael.berrebi.1@gmail.com',
+      'Test Email from AI Kids Club Script',
+      'This is a simple test email. If you receive this, GmailApp is working!', {
+        name: 'AI Kids Club',
+        replyTo: 'raphael@aikidz.club'
+      });
+    console.log('✅ Simple test email sent successfully');
+    return 'Success! Check your email: raphael.berrebi.1@gmail.com';
+  } catch (error) {
+    console.error('❌ Simple test email failed:', error.toString());
+    console.error('❌ Error details:', error.message);
+    return 'Failed: ' + error.toString();
+  }
+}
+
+/**
+ * Test 2: Full confirmation email test - Tests the complete sendConfirmation function
+ * Run this to test the actual confirmation email with HTML
+ */
+function testConfirmationEmail() {
+  console.log('🧪 Starting confirmation email test...');
+
+  const testData = {
+    parent: {
+      name: 'Test Parent',
+      email: 'raphael.berrebi.1@gmail.com'
+    },
+    children: [{
+      name: 'Test Child',
+      program: 'Young Innovators (8-10)',
+      price: 399
+    }],
+    totalPrice: 399,
+    paymentMethod: 'bit',
+    paymentPlan: 'monthly'
+  };
+
+  const testAssignments = [{
+    childName: 'Test Child',
+    program: 'Young Innovators (8-10)',
+    groupId: 'SUN-810-1',
+    day: 'Sunday',
+    time: '15:00-16:15'
+  }];
+
+  try {
+    sendConfirmation('raphael.berrebi.1@gmail.com', testData, testAssignments);
+    console.log('✅ Confirmation email test completed');
+    return 'Success! Check your email: raphael.berrebi.1@gmail.com';
+  } catch (error) {
+    console.error('❌ Confirmation email test failed:', error.toString());
+    console.error('❌ Error details:', error.message);
+    console.error('❌ Stack:', error.stack);
+    return 'Failed: ' + error.toString();
+  }
 }
