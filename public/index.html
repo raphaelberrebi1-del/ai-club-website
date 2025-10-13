@@ -4068,10 +4068,12 @@
             }
 
             // Show loading state
-            const submitButton = document.querySelector('button[onclick="submitRegistration()"]');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Processing...';
-            submitButton.disabled = true;
+            const submitButton = document.getElementById('step-4-next');
+            const originalText = submitButton ? submitButton.textContent : '';
+            if (submitButton) {
+                submitButton.textContent = 'Processing...';
+                submitButton.disabled = true;
+            }
 
             try {
                 // Primary: Submit to Google Sheets
@@ -4096,8 +4098,10 @@
                 closeRegistrationModal();
             } finally {
                 // Reset button
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
+                if (submitButton) {
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }
             }
         }
 
