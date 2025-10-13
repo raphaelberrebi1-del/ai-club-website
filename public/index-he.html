@@ -2085,9 +2085,11 @@
                         <div id="progress-step-2" class="w-3 h-3 rounded-full bg-white/20 transition-all duration-300"></div>
                         <div class="w-8 h-0.5 bg-white/20"></div>
                         <div id="progress-step-3" class="w-3 h-3 rounded-full bg-white/20 transition-all duration-300"></div>
+                        <div class="w-8 h-0.5 bg-white/20"></div>
+                        <div id="progress-step-4" class="w-3 h-3 rounded-full bg-white/20 transition-all duration-300"></div>
                     </div>
                     <div class="text-center">
-                        <span id="progress-text" class="text-sm text-white/70">שלב 1 מתוך 3</span>
+                        <span id="progress-text" class="text-sm text-white/70">שלב 1 מתוך 4</span>
                     </div>
                 </div>
 
@@ -2193,7 +2195,7 @@
                         <p class="text-white/60 text-sm">ספרו לנו על כל ילד שמצטרף למועדון AI</p>
                     </div>
 
-                    <div class="flex-1 space-y-6" id="children-forms" style="max-height: 400px; overflow-y: auto;">
+                    <div class="flex-1 space-y-6" id="children-forms">
                         <!-- Dynamic child forms will be inserted here -->
                     </div>
 
@@ -2207,14 +2209,14 @@
                     </div>
                 </div>
 
-                <!-- Step 3: Parent יצירת קשר & Payment -->
+                <!-- Step 3: Parent Contact Details -->
                 <div id="step-3" class="step-content p-6 flex-1 flex-col hidden">
                     <div class="mb-6">
-                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">השלמת רישום</h2>
-                        <p class="text-white/60 text-sm">פרטים אחרונים ותשלום כדי להבטיח את מקומכם</p>
+                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">פרטי יצירת קשר של ההורה</h2>
+                        <p class="text-white/60 text-sm">פרטי יצירת הקשר שלך לרישום</p>
                     </div>
 
-                    <div class="flex-1 space-y-6" style="max-height: 450px; overflow-y: auto;">
+                    <div class="flex-1 space-y-6">
                         <!-- Registration Summary -->
                         <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
                             <h3 class="text-lg font-semibold text-white mb-3">סיכום הרשמה</h3>
@@ -2249,7 +2251,26 @@
                                    oninput="validateStep3()"
                                    class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
                         </div>
+                    </div>
 
+                    <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
+                        <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
+                            חזור
+                        </button>
+                        <button onclick="nextStep()" id="step-3-next" class="flex-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                            המשך
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Payment Method Selection -->
+                <div id="step-4" class="step-content p-6 flex-1 flex-col hidden">
+                    <div class="mb-6">
+                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">בחר אמצעי תשלום</h2>
+                        <p class="text-white/60 text-sm">בחר את אפשרות התשלום המועדפת עליך</p>
+                    </div>
+
+                    <div class="flex-1 space-y-6">
                         <!-- Payment Method Selection -->
                         <div id="payment-selection" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-500/30 rounded-xl p-6">
                             <div class="flex items-center gap-3 mb-4">
@@ -2258,7 +2279,7 @@
                                         <rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
                                     </svg>
                                 </div>
-                                <h4 class="text-lg font-semibold text-white">בחר אמצעי תשלום</h4>
+                                <h4 class="text-lg font-semibold text-white">אפשרויות תשלום</h4>
                             </div>
 
                             <div class="space-y-3">
@@ -2318,7 +2339,7 @@
                         <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
                             חזור
                         </button>
-                        <button onclick="proceedToPayment()" id="step-3-next" class="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                        <button onclick="proceedToPayment()" id="step-4-next" class="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200 transform hover:scale-105">
                             השלמת רישום
                         </button>
                     </div>
@@ -2899,8 +2920,13 @@
             updateProgressIndicator();
         }
 
+        function proceedToPayment() {
+            // Call the main registration submission function
+            submitRegistration();
+        }
+
         function updateProgressIndicator() {
-            for (let i = 1; i <= 3; i++) {
+            for (let i = 1; i <= 4; i++) {
                 const stepIndicator = document.getElementById(`progress-step-${i}`);
                 if (stepIndicator) {
                     if (i <= currentWizardStep) {
@@ -2915,7 +2941,7 @@
 
             const progressText = document.getElementById('progress-text');
             if (progressText) {
-                progressText.textContent = `Step ${currentWizardStep} of 3`;
+                progressText.textContent = `שלב ${currentWizardStep} מתוך 4`;
             }
         }
 
@@ -3204,7 +3230,7 @@
         }
 
         function validateStep3() {
-            const submitBtn = document.getElementById('step-3-submit');
+            const submitBtn = document.getElementById('step-3-next');
             const parentName = document.getElementById('parent-name')?.value || '';
             const parentEmail = document.getElementById('parent-email')?.value || '';
             const parentPhone = document.getElementById('parent-phone')?.value || '';
@@ -3213,7 +3239,9 @@
                            parentEmail.trim() !== '' &&
                            parentPhone.trim() !== '';
 
-            submitBtn.disabled = !allValid;
+            if (submitBtn) {
+                submitBtn.disabled = !allValid;
+            }
         }
 
         // Payment method selection
