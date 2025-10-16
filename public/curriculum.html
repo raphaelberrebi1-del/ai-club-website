@@ -406,11 +406,16 @@
             </div>
 
             <!-- Q1 Preview Banner -->
-            <div class="bg-gradient-to-r from-cyan-400/40 to-teal-400/40 rounded-xl p-4 border border-cyan-400/60 text-center mb-12">
-                <p class="text-white/90 text-sm md:text-base">
-                    👇 <strong>Quarter 1 Preview</strong> (Weeks 1-12) •
-                    <span class="text-cyan-300">Download complete 48-week curriculum below</span>
+            <div class="bg-gradient-to-r from-cyan-400/40 to-teal-400/40 rounded-xl p-5 border border-cyan-400/60 text-center mb-12">
+                <p class="text-white text-sm md:text-base mb-3">
+                    👇 <strong>Quarter 1 Preview</strong> (Weeks 1-12)
                 </p>
+                <button onclick="scrollToDownload()"
+                    class="download-scroll-btn inline-flex items-center gap-2 bg-gradient-to-r from-white to-cyan-50 hover:from-cyan-50 hover:to-teal-50 text-cyan-700 font-bold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-lg">
+                    <span>Download Complete 48-Week Curriculum</span>
+                    <span class="arrow-roll text-xl">↓</span>
+                </button>
+                <p class="text-white/70 text-xs mt-2">Free • No credit card • Instant access</p>
             </div>
 
             <!-- Program Content -->
@@ -1129,6 +1134,33 @@
                 activeTab.style.borderColor = 'rgba(20, 184, 166, 0.8)';
             } else if (programType === 'future') {
                 activeTab.style.borderColor = 'rgba(251, 191, 36, 0.8)';
+            }
+        }
+
+        /**
+         * Scroll to download form section
+         */
+        function scrollToDownload() {
+            // Get the currently visible program's download form
+            const visibleProgram = document.querySelector('.program-content:not(.hidden)');
+            if (visibleProgram) {
+                const downloadForm = visibleProgram.querySelector('.curriculum-download-form');
+                if (downloadForm) {
+                    downloadForm.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+
+                    // Optional: Highlight the form briefly
+                    downloadForm.style.transition = 'all 0.3s ease';
+                    downloadForm.style.transform = 'scale(1.02)';
+                    downloadForm.style.boxShadow = '0 0 30px rgba(6, 182, 212, 0.4)';
+
+                    setTimeout(() => {
+                        downloadForm.style.transform = 'scale(1)';
+                        downloadForm.style.boxShadow = 'none';
+                    }, 600);
+                }
             }
         }
 
