@@ -486,7 +486,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-white">ממציאים צעירים</h3>
+                                <h3 class="text-xl font-bold text-white">חוקרים צעירים</h3>
                                 <p class="text-green-400 text-sm font-medium">גילאי 8–13</p>
                             </div>
                         </div>
@@ -1679,6 +1679,13 @@
         }
 
         // Add Child Form Functionality
+        // Age-specific pricing configuration
+        const AGE_PRICING = {
+            young: { monthly: 599, quarterly: 519, yearly: 479 },
+            tech: { monthly: 699, quarterly: 599, yearly: 549 },
+            future: { monthly: 849, quarterly: 729, yearly: 649 }
+        };
+
         let childCount = 0;
 
         function addChildForm() {
@@ -1714,8 +1721,8 @@
                         <label class="text-sm font-semibold text-amber-100">בחר קבוצת גיל</label>
                         <select id="child-age-group" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
                             <option value="">בחר את קבוצת הגיל של הילד</option>
-                            <option value="young">ממציאים צעירים (גילאי 8-10)</option>
-                            <option value="tech">חוקרי טכנולוגיה (גילאי 11-13)</option>
+                            <option value="young">חוקרים צעירים (גילאי 8-10)</option>
+                            <option value="tech">אלופי טכנולוגיה (גילאי 11-13)</option>
                             <option value="future">מנהיגי העתיד (גילאי 14-18)</option>
                         </select>
                     </div>
@@ -1812,11 +1819,11 @@
                     let program, monthlyPrice;
                     switch(ageGroup) {
                         case 'young':
-                            program = 'ממציאים צעירים (גילאי 8-10)';
+                            program = 'חוקרים צעירים (גילאי 8-10)';
                             monthlyPrice = 399; // Early bird monthly price
                             break;
                         case 'tech':
-                            program = 'חוקרי טכנולוגיה (גילאי 11-13)';
+                            program = 'אלופי טכנולוגיה (גילאי 11-13)';
                             monthlyPrice = 469; // Early bird monthly price
                             break;
                         case 'future':
@@ -1868,11 +1875,11 @@
                         let program, monthlyPrice;
                         switch(ageGroup) {
                             case 'young':
-                                program = 'ממציאים צעירים (גילאי 8-10)';
+                                program = 'חוקרים צעירים (גילאי 8-10)';
                                 monthlyPrice = 399; // Early bird monthly price
                                 break;
                             case 'tech':
-                                program = 'חוקרי טכנולוגיה (גילאי 11-13)';
+                                program = 'אלופי טכנולוגיה (גילאי 11-13)';
                                 monthlyPrice = 469; // Early bird monthly price
                                 break;
                             case 'future':
@@ -2835,7 +2842,7 @@
                                     data-age="young">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-sm font-semibold text-white">ממציאים צעירים</div>
+                                        <div class="text-sm font-semibold text-white">חוקרים צעירים</div>
                                         <div class="text-xs text-white/60">גילאי 8-10 • ימי ראשון 15:00-16:15</div>
                                     </div>
                                     <div class="w-4 h-4 border border-amber-300 rounded-full flex items-center justify-center">
@@ -2849,7 +2856,7 @@
                                     data-age="tech">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-sm font-semibold text-white">חוקרי טכנולוגיה</div>
+                                        <div class="text-sm font-semibold text-white">אלופי טכנולוגיה</div>
                                         <div class="text-xs text-white/60">גילאי 11-13 • ימי ראשון 16:30-17:45</div>
                                     </div>
                                     <div class="w-4 h-4 border border-amber-300 rounded-full flex items-center justify-center">
@@ -2938,8 +2945,8 @@
             let summaryHTML = '';
             familyData.children.forEach((child, index) => {
                 const ageGroupNames = {
-                    young: 'ממציאים צעירים (8-10)',
-                    tech: 'חוקרי טכנולוגיה (11-13)',
+                    young: 'חוקרים צעירים (8-10)',
+                    tech: 'אלופי טכנולוגיה (11-13)',
                     future: 'מנהיגי העתיד (14-18)'
                 };
 
@@ -3134,11 +3141,11 @@
             switch(ageGroup) {
                 case 'young':
                     monthlyPrice = 399;
-                    programName = 'ממציאים צעירים (גילאי 8-10)';
+                    programName = 'חוקרים צעירים (גילאי 8-10)';
                     break;
                 case 'tech':
                     monthlyPrice = 469;
-                    programName = 'חוקרי טכנולוגיה (גילאי 11-13)';
+                    programName = 'אלופי טכנולוגיה (גילאי 11-13)';
                     break;
                 case 'future':
                     monthlyPrice = 599;
@@ -3244,10 +3251,10 @@
             let programName;
             switch(formData.ageGroup) {
                 case 'young':
-                    programName = 'ממציאים צעירים (גילאי 8-10)';
+                    programName = 'חוקרים צעירים (גילאי 8-10)';
                     break;
                 case 'tech':
-                    programName = 'חוקרי טכנולוגיה (גילאי 11-13)';
+                    programName = 'אלופי טכנולוגיה (גילאי 11-13)';
                     break;
                 case 'future':
                     programName = 'מנהיגי העתיד (גילאי 14-18)';
@@ -3493,11 +3500,11 @@
                 let program, monthlyPrice;
                 switch(ageGroup) {
                     case 'young':
-                        program = 'ממציאים צעירים (גילאי 8-10)';
+                        program = 'חוקרים צעירים (גילאי 8-10)';
                         monthlyPrice = 399;
                         break;
                     case 'tech':
-                        program = 'חוקרי טכנולוגיה (גילאי 11-13)';
+                        program = 'אלופי טכנולוגיה (גילאי 11-13)';
                         monthlyPrice = 469;
                         break;
                     case 'future':
@@ -3523,11 +3530,11 @@
                     let program, monthlyPrice;
                     switch(ageGroup) {
                         case 'young':
-                            program = 'ממציאים צעירים (גילאי 8-10)';
+                            program = 'חוקרים צעירים (גילאי 8-10)';
                             monthlyPrice = 399;
                             break;
                         case 'tech':
-                            program = 'חוקרי טכנולוגיה (גילאי 11-13)';
+                            program = 'אלופי טכנולוגיה (גילאי 11-13)';
                             monthlyPrice = 469;
                             break;
                         case 'future':

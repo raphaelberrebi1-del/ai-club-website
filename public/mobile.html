@@ -474,7 +474,7 @@
                     </p>
                 </div>
 
-                <!-- Young Innovators Section -->
+                <!-- Young Explorers Section -->
                 <div class="fade-in-right delay-5" data-scroll>
                     <div class="bg-black/50 backdrop-blur-lg rounded-xl p-6 shadow-xl border-2 border-amber-200/30">
                         <div class="flex items-center gap-3 mb-6">
@@ -482,7 +482,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-white">Young Innovators</h3>
+                                <h3 class="text-xl font-bold text-white">Young Explorers</h3>
                                 <p class="text-green-400 text-sm font-medium">Ages 8–13</p>
                             </div>
                         </div>
@@ -1463,6 +1463,13 @@
         }
 
         // Add Child Form Functionality
+        // Age-specific pricing configuration
+        const AGE_PRICING = {
+            young: { monthly: 599, quarterly: 519, yearly: 479 },
+            tech: { monthly: 699, quarterly: 599, yearly: 549 },
+            future: { monthly: 849, quarterly: 729, yearly: 649 }
+        };
+
         let childCount = 0;
 
         function addChildForm() {
@@ -1498,8 +1505,8 @@
                         <label class="text-sm font-semibold text-amber-100">Select Age Group</label>
                         <select id="child-age-group" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
                             <option value="">Choose your child's age group</option>
-                            <option value="young">Young Innovators (Ages 8-10)</option>
-                            <option value="tech">Tech Explorers (Ages 11-13)</option>
+                            <option value="young">Young Explorers (Ages 8-10)</option>
+                            <option value="tech">Tech Champions (Ages 11-13)</option>
                             <option value="future">Future Leaders (Ages 14-18)</option>
                         </select>
                     </div>
@@ -1596,11 +1603,11 @@
                     let program, monthlyPrice;
                     switch(ageGroup) {
                         case 'young':
-                            program = 'Young Innovators (Ages 8-10)';
+                            program = 'Young Explorers (Ages 8-10)';
                             monthlyPrice = 399; // Early bird monthly price
                             break;
                         case 'tech':
-                            program = 'Tech Explorers (Ages 11-13)';
+                            program = 'Tech Champions (Ages 11-13)';
                             monthlyPrice = 469; // Early bird monthly price
                             break;
                         case 'future':
@@ -1652,11 +1659,11 @@
                         let program, monthlyPrice;
                         switch(ageGroup) {
                             case 'young':
-                                program = 'Young Innovators (Ages 8-10)';
+                                program = 'Young Explorers (Ages 8-10)';
                                 monthlyPrice = 399; // Early bird monthly price
                                 break;
                             case 'tech':
-                                program = 'Tech Explorers (Ages 11-13)';
+                                program = 'Tech Champions (Ages 11-13)';
                                 monthlyPrice = 469; // Early bird monthly price
                                 break;
                             case 'future':
@@ -2619,7 +2626,7 @@
                                     data-age="young">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-sm font-semibold text-white">Young Innovators</div>
+                                        <div class="text-sm font-semibold text-white">Young Explorers</div>
                                         <div class="text-xs text-white/60">Ages 8-10 • Sundays 15:00-16:15</div>
                                     </div>
                                     <div class="w-4 h-4 border border-amber-300 rounded-full flex items-center justify-center">
@@ -2633,7 +2640,7 @@
                                     data-age="tech">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-sm font-semibold text-white">Tech Explorers</div>
+                                        <div class="text-sm font-semibold text-white">Tech Champions</div>
                                         <div class="text-xs text-white/60">Ages 11-13 • Sundays 16:30-17:45</div>
                                     </div>
                                     <div class="w-4 h-4 border border-amber-300 rounded-full flex items-center justify-center">
@@ -2722,8 +2729,8 @@
             let summaryHTML = '';
             familyData.children.forEach((child, index) => {
                 const ageGroupNames = {
-                    young: 'Young Innovators (8-10)',
-                    tech: 'Tech Explorers (11-13)',
+                    young: 'Young Explorers (8-10)',
+                    tech: 'Tech Champions (11-13)',
                     future: 'Future Leaders (14-18)'
                 };
 
@@ -2913,11 +2920,11 @@
             switch(ageGroup) {
                 case 'young':
                     monthlyPrice = 399;
-                    programName = 'Young Innovators (Ages 8-10)';
+                    programName = 'Young Explorers (Ages 8-10)';
                     break;
                 case 'tech':
                     monthlyPrice = 469;
-                    programName = 'Tech Explorers (Ages 11-13)';
+                    programName = 'Tech Champions (Ages 11-13)';
                     break;
                 case 'future':
                     monthlyPrice = 599;
@@ -3023,10 +3030,10 @@
             let programName;
             switch(formData.ageGroup) {
                 case 'young':
-                    programName = 'Young Innovators (Ages 8-10)';
+                    programName = 'Young Explorers (Ages 8-10)';
                     break;
                 case 'tech':
-                    programName = 'Tech Explorers (Ages 11-13)';
+                    programName = 'Tech Champions (Ages 11-13)';
                     break;
                 case 'future':
                     programName = 'Future Leaders (Ages 14-18)';
@@ -3272,11 +3279,11 @@
                 let program, monthlyPrice;
                 switch(ageGroup) {
                     case 'young':
-                        program = 'Young Innovators (Ages 8-10)';
+                        program = 'Young Explorers (Ages 8-10)';
                         monthlyPrice = 399;
                         break;
                     case 'tech':
-                        program = 'Tech Explorers (Ages 11-13)';
+                        program = 'Tech Champions (Ages 11-13)';
                         monthlyPrice = 469;
                         break;
                     case 'future':
@@ -3302,11 +3309,11 @@
                     let program, monthlyPrice;
                     switch(ageGroup) {
                         case 'young':
-                            program = 'Young Innovators (Ages 8-10)';
+                            program = 'Young Explorers (Ages 8-10)';
                             monthlyPrice = 399;
                             break;
                         case 'tech':
-                            program = 'Tech Explorers (Ages 11-13)';
+                            program = 'Tech Champions (Ages 11-13)';
                             monthlyPrice = 469;
                             break;
                         case 'future':

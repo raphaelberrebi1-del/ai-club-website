@@ -1838,7 +1838,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
                             </div>
                             <div>
-                                <h3 class="text-xl md:text-2xl font-bold text-white">ממציאים צעירים</h3>
+                                <h3 class="text-xl md:text-2xl font-bold text-white">חוקרים צעירים</h3>
                                 <p class="text-cyan-200 text-sm">גילאי 8-13</p>
                             </div>
                         </div>
@@ -2866,6 +2866,14 @@
 
         // === 3-STEP WIZARD FUNCTIONS ===
         let currentWizardStep = 1;
+
+        // Age-specific pricing configuration
+        const AGE_PRICING = {
+            young: { monthly: 599, quarterly: 519, yearly: 479 },
+            tech: { monthly: 699, quarterly: 599, yearly: 549 },
+            future: { monthly: 849, quarterly: 729, yearly: 649 }
+        };
+
         let wizardData = {
             childCount: 1,
             bulkDuration: null,
@@ -3096,7 +3104,7 @@
                                     class="age-group-btn-${i} p-4 bg-amber-950/40 border ${wizardData.children[i]?.ageGroup === 'young' ? 'border-cyan-400 bg-cyan-500/10' : 'border-amber-200/30'} rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="young">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-lg font-semibold text-white">ממציאים צעירים</div>
+                                        <div class="text-lg font-semibold text-white">חוקרים צעירים</div>
                                         <div class="text-sm text-white/60">גילאי 8-10 • ימי ראשון 16:00-17:00</div>
                                     </div>
                                     <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
@@ -3109,7 +3117,7 @@
                                     class="age-group-btn-${i} p-4 bg-amber-950/40 border ${wizardData.children[i]?.ageGroup === 'tech' ? 'border-cyan-400 bg-cyan-500/10' : 'border-amber-200/30'} rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="tech">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-lg font-semibold text-white">חוקרי טכנולוגיה</div>
+                                        <div class="text-lg font-semibold text-white">אלופי טכנולוגיה</div>
                                         <div class="text-sm text-white/60">גילאי 11-13 • ימי ראשון 17:30-18:45</div>
                                     </div>
                                     <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
@@ -3217,8 +3225,8 @@
             `;
 
             wizardData.children.forEach((child, i) => {
-                const ageGroupName = child.ageGroup === 'young' ? 'ממציאים צעירים (8-10)' :
-                                    child.ageGroup === 'tech' ? 'חוקרי טכנולוגיה (11-13)' :
+                const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים (8-10)' :
+                                    child.ageGroup === 'tech' ? 'אלופי טכנולוגיה (11-13)' :
                                     'מנהיגי העתיד (14-18)';
                 summaryHTML += `<div class="text-xs">• ${child.name} - ${ageGroupName}</div>`;
             });
@@ -3359,11 +3367,11 @@
                                 <label class="text-sm font-medium text-white/90">בחר קבוצת גיל</label>
                                 <div class="grid grid-cols-1 gap-2 mt-2">
                                     <button type="button" onclick="selectMainFormAgeGroup(this, 'young', 599, ${mainFormChildCount}, event)" class="main-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">ממציאים צעירים (8-10)</div>
+                                        <div class="font-medium text-white">חוקרים צעירים (8-10)</div>
                                         <div class="text-xs text-white/60">₪599/חודש • ימי ראשון 16:00-17:00</div>
                                     </button>
                                     <button type="button" onclick="selectMainFormAgeGroup(this, 'tech', 599, ${mainFormChildCount}, event)" class="main-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">חוקרי טכנולוגיה (11-13)</div>
+                                        <div class="font-medium text-white">אלופי טכנולוגיה (11-13)</div>
                                         <div class="text-xs text-white/60">₪599/חודש • ימי ראשון 17:30-18:45</div>
                                     </button>
                                     <button type="button" onclick="selectMainFormAgeGroup(this, 'future', 599, ${mainFormChildCount}, event)" class="main-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
@@ -3626,11 +3634,11 @@
                                 <label class="text-sm font-medium text-white/90">בחר קבוצת גיל</label>
                                 <div class="grid grid-cols-1 gap-2 mt-2">
                                     <button type="button" onclick="selectModalAgeGroup1(this, 'young', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">ממציאים צעירים (8-10)</div>
+                                        <div class="font-medium text-white">חוקרים צעירים (8-10)</div>
                                         <div class="text-xs text-white/60">₪599/חודש • ימי ראשון 16:00-17:00</div>
                                     </button>
                                     <button type="button" onclick="selectModalAgeGroup1(this, 'tech', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">חוקרי טכנולוגיה (11-13)</div>
+                                        <div class="font-medium text-white">אלופי טכנולוגיה (11-13)</div>
                                         <div class="text-xs text-white/60">₪599/חודש • ימי ראשון 17:30-18:45</div>
                                     </button>
                                     <button type="button" onclick="selectModalAgeGroup1(this, 'future', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
@@ -3697,11 +3705,11 @@
                                 <label class="text-sm font-medium text-white/90">בחר קבוצת גיל</label>
                                 <div class="grid grid-cols-1 gap-2 mt-2">
                                     <button type="button" onclick="selectModalAgeGroup2(this, 'young', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">ממציאים צעירים (8-10)</div>
+                                        <div class="font-medium text-white">חוקרים צעירים (8-10)</div>
                                         <div class="text-xs text-white/60">₪599/חודש • ימי ראשון 16:00-17:00</div>
                                     </button>
                                     <button type="button" onclick="selectModalAgeGroup2(this, 'tech', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">חוקרי טכנולוגיה (11-13)</div>
+                                        <div class="font-medium text-white">אלופי טכנולוגיה (11-13)</div>
                                         <div class="text-xs text-white/60">₪599/חודש • ימי ראשון 17:30-18:45</div>
                                     </button>
                                     <button type="button" onclick="selectModalAgeGroup2(this, 'future', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
