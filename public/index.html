@@ -1838,7 +1838,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
                             </div>
                             <div>
-                                <h3 class="text-xl md:text-2xl font-bold text-white">Young Innovators</h3>
+                                <h3 class="text-xl md:text-2xl font-bold text-white">Young Explorers</h3>
                                 <p class="text-cyan-200 text-sm md:text-base">Ages 8–13</p>
                             </div>
                         </div>
@@ -2093,11 +2093,11 @@
                     </div>
                 </div>
 
-                <!-- Step 1: How many children & Payment Plan -->
+                <!-- Step 1: Child Details -->
                 <div id="step-1" class="step-content p-6 flex-1 flex flex-col">
                     <div class="mb-6">
-                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">Family Registration</h2>
-                        <p class="text-white/60 text-sm">Set up your family's AI Club experience with streamlined enrollment</p>
+                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">Child Details</h2>
+                        <p class="text-white/60 text-sm">Tell us about each child joining AI Club</p>
                     </div>
 
                     <div class="flex-1 space-y-6">
@@ -2120,63 +2120,9 @@
                             </div>
                         </div>
 
-                        <!-- Bulk Duration Selector -->
-                        <div class="space-y-4">
-                            <label class="text-base font-semibold text-amber-100">Payment Plan (applies to all children)</label>
-                            <div class="grid grid-cols-1 gap-3">
-                                <button type="button" onclick="selectBulkDuration('monthly')"
-                                        class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="monthly">
-                                    <div class="flex justify-between items-center">
-                                        <div>
-                                            <div class="text-lg font-semibold text-white">Monthly</div>
-                                            <div class="text-sm text-white/60">₪599 per child/month • <span class="text-amber-400 font-medium">Save 20%</span></div>
-                                        </div>
-                                        <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
-                                            <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
-                                        </div>
-                                    </div>
-                                </button>
-
-                                <button type="button" onclick="selectBulkDuration('quarterly')"
-                                        class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="quarterly">
-                                    <div class="flex justify-between items-center">
-                                        <div>
-                                            <div class="text-lg font-semibold text-white">Quarterly</div>
-                                            <div class="text-sm text-white/60">₪519 per child/month • <span class="text-amber-400 font-medium">Save 20%</span></div>
-                                        </div>
-                                        <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
-                                            <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
-                                        </div>
-                                    </div>
-                                </button>
-
-                                <button type="button" onclick="selectBulkDuration('yearly')"
-                                        class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="yearly">
-                                    <div class="flex justify-between items-center">
-                                        <div>
-                                            <div class="text-lg font-semibold text-white">Annual</div>
-                                            <div class="text-sm text-white/60">₪479 per child/month • <span class="text-amber-400 font-medium">Save 20%</span></div>
-                                        </div>
-                                        <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
-                                            <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Real-time Pricing Preview -->
-                        <div id="pricing-preview" class="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-cyan-400/30 rounded-xl p-4 hidden">
-                            <div class="flex justify-between items-center mb-3">
-                                <span class="text-base font-semibold text-white">Total Family Cost</span>
-                                <span id="total-price" class="text-2xl font-bold text-cyan-400"></span>
-                            </div>
-                            <div id="pricing-breakdown" class="space-y-2 text-sm text-white/80">
-                                <!-- Dynamic breakdown will be inserted here -->
-                            </div>
-                            <div id="multi-child-discount" class="mt-3 p-2 bg-amber-500/20 border border-amber-400/30 rounded-lg text-center text-sm text-amber-200 hidden">
-                                <!-- Multi-child discount message -->
-                            </div>
+                        <!-- Dynamic Child Forms Container -->
+                        <div id="children-forms-step1" class="space-y-6">
+                            <!-- Dynamic child forms will be inserted here -->
                         </div>
                     </div>
 
@@ -2188,15 +2134,84 @@
                     </div>
                 </div>
 
-                <!-- Step 2: Child Details -->
+                <!-- Step 2: Payment Plan Selection -->
                 <div id="step-2" class="step-content p-6 flex-1 flex-col hidden">
                     <div class="mb-6">
-                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">Child Details</h2>
-                        <p class="text-white/60 text-sm">Tell us about each child joining AI Club</p>
+                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">Choose Your Payment Plan</h2>
+                        <p class="text-white/60 text-sm">Select the best plan for your family</p>
                     </div>
 
-                    <div class="flex-1 space-y-6" id="children-forms">
-                        <!-- Dynamic child forms will be inserted here -->
+                    <div class="flex-1 space-y-6">
+                        <!-- Registration Summary Box -->
+                        <div id="registration-summary" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
+                            <h3 class="text-lg font-semibold text-white mb-3">Registration Summary</h3>
+                            <div id="step-2-summary" class="space-y-2 text-sm text-white/80">
+                                <!-- Summary will be populated here -->
+                            </div>
+                        </div>
+
+                        <!-- Payment Plan Selection -->
+                        <div class="space-y-4">
+                            <label class="text-base font-semibold text-amber-100">Payment Plan (applies to all children)</label>
+                            <div class="grid grid-cols-1 gap-3">
+                                <button type="button" onclick="selectBulkDuration('monthly')"
+                                        class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="monthly">
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex-1">
+                                            <div class="text-lg font-semibold text-white">Monthly</div>
+                                            <div id="monthly-price-display" class="text-sm text-white/60">Starting at ₪599/month</div>
+                                        </div>
+                                        <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
+                                            <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
+                                        </div>
+                                    </div>
+                                </button>
+
+                                <button type="button" onclick="selectBulkDuration('quarterly')"
+                                        class="bulk-duration-btn relative p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="quarterly">
+                                    <span class="absolute top-2 right-2 bg-gradient-to-r from-amber-400 to-amber-500 text-amber-950 text-xs font-bold px-2 py-1 rounded-full">MOST POPULAR</span>
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex-1">
+                                            <div class="text-lg font-semibold text-white">Quarterly</div>
+                                            <div id="quarterly-price-display" class="text-sm text-white/60">Starting at ₪519/month</div>
+                                        </div>
+                                        <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
+                                            <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
+                                        </div>
+                                    </div>
+                                </button>
+
+                                <button type="button" onclick="selectBulkDuration('yearly')"
+                                        class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="yearly">
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex-1">
+                                            <div class="text-lg font-semibold text-white flex items-center gap-2">
+                                                <span>Annual</span>
+                                                <span>💎</span>
+                                            </div>
+                                            <div id="yearly-price-display" class="text-sm text-white/60">Starting at ₪479/month</div>
+                                        </div>
+                                        <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
+                                            <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Collapsible Pricing Breakdown -->
+                        <div class="border-t border-amber-200/20 pt-4">
+                            <button type="button" onclick="togglePricingBreakdown()"
+                                    class="w-full flex items-center justify-between text-amber-100 hover:text-cyan-400 transition-colors">
+                                <span class="text-sm font-medium">See pricing breakdown</span>
+                                <svg id="breakdown-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+                            <div id="pricing-breakdown-content" class="hidden mt-4 space-y-3 bg-amber-950/20 border border-amber-200/20 rounded-lg p-4">
+                                <!-- Breakdown will be populated here -->
+                            </div>
+                        </div>
                     </div>
 
                     <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
@@ -2866,6 +2881,14 @@
 
         // === 3-STEP WIZARD FUNCTIONS ===
         let currentWizardStep = 1;
+
+        // Age-specific pricing configuration
+        const AGE_PRICING = {
+            young: { monthly: 599, quarterly: 519, yearly: 479 },
+            tech: { monthly: 699, quarterly: 599, yearly: 549 },
+            future: { monthly: 849, quarterly: 729, yearly: 649 }
+        };
+
         let wizardData = {
             childCount: 1,
             bulkDuration: null,
@@ -2895,7 +2918,8 @@
 
             // Initialize step-specific content
             if (currentWizardStep === 2) {
-                generateChildForms();
+                generateStep2Summary();
+                updatePricingDisplays();
             } else if (currentWizardStep === 3) {
                 generateFinalSummary();
             }
@@ -2945,7 +2969,7 @@
             }
         }
 
-        // Step 1 Functions
+        // Step 1 Functions (Child Details)
         function updateChildCount(change) {
             const newCount = wizardData.childCount + change;
             if (newCount < 1 || newCount > 5) return;
@@ -2960,125 +2984,27 @@
                 ageGroup: wizardData.children[i]?.ageGroup || ''
             }));
 
-            updatePricingPreview();
+            generateChildFormsStep1();
             validateStep1();
         }
 
-        function selectBulkDuration(duration) {
-            wizardData.bulkDuration = duration;
-
-            // Update UI - remove selection from all buttons
-            document.querySelectorAll('.bulk-duration-btn').forEach(btn => {
-                btn.classList.remove('border-cyan-400', 'bg-cyan-500/10');
-                btn.classList.add('border-amber-200/30');
-                btn.querySelector('.w-3').classList.add('opacity-0');
-            });
-
-            // Add selection to clicked button
-            const selectedBtn = document.querySelector(`[data-duration="${duration}"]`);
-            if (selectedBtn) {
-                selectedBtn.classList.remove('border-amber-200/30');
-                selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/10');
-                selectedBtn.querySelector('.w-3').classList.remove('opacity-0');
-            }
-
-            updatePricingPreview();
-            validateStep1();
-        }
-
-        function updatePricingPreview() {
-            if (!wizardData.bulkDuration) {
-                document.getElementById('pricing-preview').classList.add('hidden');
-                return;
-            }
-
-            // Base prices per child per month
-            const monthlyPrices = {
-                monthly: 599,
-                quarterly: 519,
-                yearly: 479
-            };
-
-            const basePrice = monthlyPrices[wizardData.bulkDuration];
-            let totalMonthlyPrice = basePrice * wizardData.childCount;
-
-            // Apply multi-child discounts
-            let discountText = '';
-            if (wizardData.childCount >= 2) {
-                const discountRate = wizardData.childCount === 2 ? 0.10 : 0.15;
-                const discount = (basePrice * (wizardData.childCount - 1)) * discountRate;
-                totalMonthlyPrice -= discount;
-
-                const discountPercent = wizardData.childCount === 2 ? '10%' : '15%';
-                discountText = `${discountPercent} multi-child discount applied!`;
-
-                const discountBadge = document.getElementById('discount-badge');
-                const multiChildDiscount = document.getElementById('multi-child-discount');
-
-                if (discountBadge) {
-                    discountBadge.textContent = `Save ${discountPercent}`;
-                    discountBadge.classList.remove('hidden');
-                }
-                if (multiChildDiscount) {
-                    multiChildDiscount.textContent = discountText;
-                    multiChildDiscount.classList.remove('hidden');
-                }
-            } else {
-                const discountBadge = document.getElementById('discount-badge');
-                const multiChildDiscount = document.getElementById('multi-child-discount');
-
-                if (discountBadge) {
-                    discountBadge.classList.add('hidden');
-                }
-                if (multiChildDiscount) {
-                    multiChildDiscount.classList.add('hidden');
-                }
-            }
-
-            // Display total based on duration
-            let displayPrice;
-            if (wizardData.bulkDuration === 'monthly') {
-                displayPrice = `₪${Math.round(totalMonthlyPrice)}/month`;
-            } else if (wizardData.bulkDuration === 'quarterly') {
-                const quarterlyTotal = Math.round(totalMonthlyPrice * 3);
-                displayPrice = `₪${quarterlyTotal}/quarter`;
-            } else { // yearly
-                const yearlyTotal = Math.round(totalMonthlyPrice * 12);
-                displayPrice = `₪${yearlyTotal}/year`;
-            }
-
-            document.getElementById('total-price').textContent = displayPrice;
-            document.getElementById('pricing-preview').classList.remove('hidden');
-        }
-
-        function validateStep1() {
-            const continueBtn = document.getElementById('step-1-next');
-            if (wizardData.bulkDuration && wizardData.childCount > 0) {
-                continueBtn.disabled = false;
-            } else {
-                continueBtn.disabled = true;
-            }
-        }
-
-        // Step 2 Functions
-        function generateChildForms() {
-            const container = document.getElementById('children-forms');
+        function generateChildFormsStep1() {
+            const container = document.getElementById('children-forms-step1');
             if (!container) return;
 
             container.innerHTML = '';
-
-            const planText = wizardData.bulkDuration ?
-                `${wizardData.bulkDuration.charAt(0).toUpperCase() + wizardData.bulkDuration.slice(1)} plan` :
-                'plan selected';
 
             for (let i = 0; i < wizardData.childCount; i++) {
                 const childForm = document.createElement('div');
                 childForm.className = 'bg-amber-950/20 border border-amber-200/30 rounded-xl p-4 space-y-4';
 
+                const removeButton = wizardData.childCount > 1 ?
+                    `<button type="button" onclick="removeChild(${i})" class="text-red-400 hover:text-red-300 text-sm font-medium transition-colors">Remove</button>` : '';
+
                 childForm.innerHTML = `
                     <div class="flex items-center justify-between border-b border-amber-200/20 pb-3">
                         <h4 class="text-lg font-semibold text-white">Child ${i + 1}</h4>
-                        <div class="text-sm text-white/60">${planText}</div>
+                        ${removeButton}
                     </div>
 
                     <div>
@@ -3096,8 +3022,9 @@
                                     class="age-group-btn-${i} p-4 bg-amber-950/40 border ${wizardData.children[i]?.ageGroup === 'young' ? 'border-cyan-400 bg-cyan-500/10' : 'border-amber-200/30'} rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="young">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-lg font-semibold text-white">Young Innovators</div>
+                                        <div class="text-lg font-semibold text-white">Young Explorers</div>
                                         <div class="text-sm text-white/60">Ages 8-10 • Sundays 16:00-17:00</div>
+                                        <div class="text-xs text-cyan-300 mt-1">₪599/mo • ₪519/qtr • ₪479/yr</div>
                                     </div>
                                     <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
                                         <div class="w-3 h-3 bg-cyan-400 rounded-full ${wizardData.children[i]?.ageGroup === 'young' ? '' : 'opacity-0'} transition-opacity"></div>
@@ -3109,8 +3036,9 @@
                                     class="age-group-btn-${i} p-4 bg-amber-950/40 border ${wizardData.children[i]?.ageGroup === 'tech' ? 'border-cyan-400 bg-cyan-500/10' : 'border-amber-200/30'} rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="tech">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-lg font-semibold text-white">Tech Explorers</div>
+                                        <div class="text-lg font-semibold text-white">Tech Champions</div>
                                         <div class="text-sm text-white/60">Ages 11-13 • Sundays 17:30-18:45</div>
+                                        <div class="text-xs text-cyan-300 mt-1">₪699/mo • ₪599/qtr • ₪549/yr</div>
                                     </div>
                                     <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
                                         <div class="w-3 h-3 bg-cyan-400 rounded-full ${wizardData.children[i]?.ageGroup === 'tech' ? '' : 'opacity-0'} transition-opacity"></div>
@@ -3124,6 +3052,7 @@
                                     <div>
                                         <div class="text-lg font-semibold text-white">Future Leaders</div>
                                         <div class="text-sm text-white/60">Ages 14-18 • Sundays 19:00-20:30</div>
+                                        <div class="text-xs text-cyan-300 mt-1">₪849/mo • ₪729/qtr • ₪649/yr</div>
                                     </div>
                                     <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
                                         <div class="w-3 h-3 bg-cyan-400 rounded-full ${wizardData.children[i]?.ageGroup === 'future' ? '' : 'opacity-0'} transition-opacity"></div>
@@ -3137,7 +3066,17 @@
                 container.appendChild(childForm);
             }
 
-            validateStep2();
+            validateStep1();
+        }
+
+        function removeChild(index) {
+            if (wizardData.childCount <= 1) return;
+            wizardData.childCount--;
+            wizardData.children.splice(index, 1);
+            document.getElementById('child-count').textContent = wizardData.childCount;
+            document.getElementById('child-plural').textContent = wizardData.childCount > 1 ? 'ren' : '';
+            generateChildFormsStep1();
+            validateStep1();
         }
 
         function updateChildData(index, field, value) {
@@ -3145,7 +3084,7 @@
                 wizardData.children[index] = { name: '', ageGroup: '' };
             }
             wizardData.children[index][field] = value;
-            validateStep2();
+            validateStep1();
         }
 
         function selectChildAgeGroup(index, ageGroup) {
@@ -3176,15 +3115,157 @@
                 }
             }
 
-            validateStep2();
+            validateStep1();
         }
 
-        function validateStep2() {
-            const continueBtn = document.getElementById('step-2-next');
+        function validateStep1() {
+            const continueBtn = document.getElementById('step-1-next');
             const allValid = wizardData.children.every(child =>
                 child && child.name.trim() !== '' && child.ageGroup !== ''
             );
             continueBtn.disabled = !allValid;
+        }
+
+        // Initialize Step 1 on load
+        document.addEventListener('DOMContentLoaded', function() {
+            generateChildFormsStep1();
+        });
+
+        // Step 2 Functions (Payment Plan Selection)
+        function generateStep2Summary() {
+            const summaryContainer = document.getElementById('step-2-summary');
+            if (!summaryContainer) return;
+
+            let summaryHTML = `<div class="text-base font-medium text-white mb-2">${wizardData.childCount} child${wizardData.childCount > 1 ? 'ren' : ''} enrolled:</div>`;
+
+            wizardData.children.forEach((child, i) => {
+                const ageGroupName = child.ageGroup === 'young' ? 'Young Explorers' :
+                                    child.ageGroup === 'tech' ? 'Tech Champions' :
+                                    'Future Leaders';
+                const ageRange = child.ageGroup === 'young' ? '8-10' :
+                                child.ageGroup === 'tech' ? '11-13' : '14-18';
+                summaryHTML += `<div class="text-sm text-white/80">• ${child.name} - ${ageGroupName} (${ageRange})</div>`;
+            });
+
+            summaryContainer.innerHTML = summaryHTML;
+        }
+
+        function updatePricingDisplays() {
+            // Calculate totals for each plan based on selected age groups
+            const totals = { monthly: 0, quarterly: 0, yearly: 0 };
+
+            wizardData.children.forEach(child => {
+                if (child.ageGroup) {
+                    totals.monthly += AGE_PRICING[child.ageGroup].monthly;
+                    totals.quarterly += AGE_PRICING[child.ageGroup].quarterly;
+                    totals.yearly += AGE_PRICING[child.ageGroup].yearly;
+                }
+            });
+
+            // Update displays
+            const monthlyDisplay = document.getElementById('monthly-price-display');
+            const quarterlyDisplay = document.getElementById('quarterly-price-display');
+            const yearlyDisplay = document.getElementById('yearly-price-display');
+
+            if (monthlyDisplay) monthlyDisplay.textContent = `₪${totals.monthly}/month per family`;
+            if (quarterlyDisplay) quarterlyDisplay.textContent = `₪${totals.quarterly}/month per family`;
+            if (yearlyDisplay) yearlyDisplay.textContent = `₪${totals.yearly}/month per family`;
+        }
+
+        function selectBulkDuration(duration) {
+            wizardData.bulkDuration = duration;
+
+            // Update UI - remove selection from all buttons
+            document.querySelectorAll('.bulk-duration-btn').forEach(btn => {
+                btn.classList.remove('border-cyan-400', 'bg-cyan-500/10');
+                btn.classList.add('border-amber-200/30');
+                const indicator = btn.querySelector('.w-3');
+                if (indicator) indicator.classList.add('opacity-0');
+            });
+
+            // Add selection to clicked button
+            const selectedBtn = document.querySelector(`[data-duration="${duration}"]`);
+            if (selectedBtn) {
+                selectedBtn.classList.remove('border-amber-200/30');
+                selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/10');
+                const indicator = selectedBtn.querySelector('.w-3');
+                if (indicator) indicator.classList.remove('opacity-0');
+            }
+
+            updatePricingBreakdown();
+            validateStep2();
+        }
+
+        function togglePricingBreakdown() {
+            const content = document.getElementById('pricing-breakdown-content');
+            const chevron = document.getElementById('breakdown-chevron');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                chevron.style.transform = 'rotate(180deg)';
+                updatePricingBreakdown();
+            } else {
+                content.classList.add('hidden');
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function updatePricingBreakdown() {
+            if (!wizardData.bulkDuration) return;
+
+            const content = document.getElementById('pricing-breakdown-content');
+            if (!content || content.classList.contains('hidden')) return;
+
+            let breakdownHTML = '';
+            let total = 0;
+
+            wizardData.children.forEach((child, i) => {
+                const price = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
+                total += price;
+
+                const ageGroupName = child.ageGroup === 'young' ? 'Young Explorers' :
+                                    child.ageGroup === 'tech' ? 'Tech Champions' :
+                                    'Future Leaders';
+
+                breakdownHTML += `
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-white/80">${child.name} (${ageGroupName})</span>
+                        <span class="text-white font-medium">₪${price}/month</span>
+                    </div>
+                `;
+            });
+
+            // Apply family discounts
+            if (wizardData.childCount >= 2) {
+                const discountRate = wizardData.childCount === 2 ? 0.10 : 0.15;
+                const discount = Math.round((AGE_PRICING[wizardData.children[1].ageGroup][wizardData.bulkDuration] * discountRate));
+                total -= discount;
+
+                breakdownHTML += `
+                    <div class="border-t border-amber-200/20 pt-2 mt-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-amber-300">Family discount (${discountRate * 100}%)</span>
+                            <span class="text-amber-300">-₪${discount}/month</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            breakdownHTML += `
+                <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-base font-bold text-white">Total</span>
+                        <span class="text-xl font-bold text-cyan-300">₪${Math.round(total)}/month</span>
+                    </div>
+                </div>
+            `;
+
+            content.innerHTML = breakdownHTML;
+        }
+
+        function validateStep2() {
+            const continueBtn = document.getElementById('step-2-next');
+            continueBtn.disabled = !wizardData.bulkDuration;
         }
 
         // Step 3 Functions
@@ -3194,33 +3275,37 @@
 
             if (!summaryContainer || !totalElement) return;
 
-            // Calculate pricing
-            const monthlyPrices = {
-                monthly: 599,
-                quarterly: 519,
-                yearly: 479
-            };
+            // Calculate pricing based on age-specific rates
+            let totalMonthlyPrice = 0;
+            wizardData.children.forEach(child => {
+                if (child.ageGroup && wizardData.bulkDuration) {
+                    totalMonthlyPrice += AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
+                }
+            });
 
-            const basePrice = monthlyPrices[wizardData.bulkDuration];
-            let totalMonthlyPrice = basePrice * wizardData.childCount;
-
-            if (wizardData.childCount >= 2) {
+            // Apply family discounts
+            if (wizardData.childCount >= 2 && wizardData.children[1]?.ageGroup) {
                 const discountRate = wizardData.childCount === 2 ? 0.10 : 0.15;
-                const discount = (basePrice * (wizardData.childCount - 1)) * discountRate;
+                const secondChildPrice = AGE_PRICING[wizardData.children[1].ageGroup][wizardData.bulkDuration];
+                const discount = Math.round(secondChildPrice * discountRate);
                 totalMonthlyPrice -= discount;
             }
 
             // Build summary HTML
+            const planName = wizardData.bulkDuration.charAt(0).toUpperCase() + wizardData.bulkDuration.slice(1);
             let summaryHTML = `
-                <div><strong>${wizardData.childCount}</strong> child${wizardData.childCount > 1 ? 'ren' : ''} enrolled</div>
-                <div><strong>${wizardData.bulkDuration.charAt(0).toUpperCase() + wizardData.bulkDuration.slice(1)}</strong> payment plan</div>
+                <div class="text-base font-medium text-white mb-2">
+                    <strong>${wizardData.childCount}</strong> child${wizardData.childCount > 1 ? 'ren' : ''} enrolled • <strong>${planName}</strong> payment plan
+                </div>
             `;
 
             wizardData.children.forEach((child, i) => {
-                const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators (8-10)' :
-                                    child.ageGroup === 'tech' ? 'Tech Explorers (11-13)' :
-                                    'Future Leaders (14-18)';
-                summaryHTML += `<div class="text-xs">• ${child.name} - ${ageGroupName}</div>`;
+                const ageGroupName = child.ageGroup === 'young' ? 'Young Explorers' :
+                                    child.ageGroup === 'tech' ? 'Tech Champions' :
+                                    'Future Leaders';
+                const ageRange = child.ageGroup === 'young' ? '8-10' :
+                                child.ageGroup === 'tech' ? '11-13' : '14-18';
+                summaryHTML += `<div class="text-sm text-white/80 mt-1">• ${child.name} - ${ageGroupName} (${ageRange})</div>`;
             });
 
             summaryContainer.innerHTML = summaryHTML;
@@ -3359,11 +3444,11 @@
                                 <label class="text-sm font-medium text-white/90">Select Age Group</label>
                                 <div class="grid grid-cols-1 gap-2 mt-2">
                                     <button type="button" onclick="selectMainFormAgeGroup(this, 'young', 599, ${mainFormChildCount}, event)" class="main-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Young Innovators (8-10)</div>
+                                        <div class="font-medium text-white">Young Explorers (8-10)</div>
                                         <div class="text-xs text-white/60">₪599/month • Sundays 16:00-17:00</div>
                                     </button>
                                     <button type="button" onclick="selectMainFormAgeGroup(this, 'tech', 599, ${mainFormChildCount}, event)" class="main-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Tech Explorers (11-13)</div>
+                                        <div class="font-medium text-white">Tech Champions (11-13)</div>
                                         <div class="text-xs text-white/60">₪599/month • Sundays 17:30-18:45</div>
                                     </button>
                                     <button type="button" onclick="selectMainFormAgeGroup(this, 'future', 599, ${mainFormChildCount}, event)" class="main-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
@@ -3626,11 +3711,11 @@
                                 <label class="text-sm font-medium text-white/90">Select Age Group</label>
                                 <div class="grid grid-cols-1 gap-2 mt-2">
                                     <button type="button" onclick="selectModalAgeGroup1(this, 'young', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Young Innovators (8-10)</div>
+                                        <div class="font-medium text-white">Young Explorers (8-10)</div>
                                         <div class="text-xs text-white/60">₪599/month • Sundays 16:00-17:00</div>
                                     </button>
                                     <button type="button" onclick="selectModalAgeGroup1(this, 'tech', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Tech Explorers (11-13)</div>
+                                        <div class="font-medium text-white">Tech Champions (11-13)</div>
                                         <div class="text-xs text-white/60">₪599/month • Sundays 17:30-18:45</div>
                                     </button>
                                     <button type="button" onclick="selectModalAgeGroup1(this, 'future', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
@@ -3697,11 +3782,11 @@
                                 <label class="text-sm font-medium text-white/90">Select Age Group</label>
                                 <div class="grid grid-cols-1 gap-2 mt-2">
                                     <button type="button" onclick="selectModalAgeGroup2(this, 'young', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Young Innovators (8-10)</div>
+                                        <div class="font-medium text-white">Young Explorers (8-10)</div>
                                         <div class="text-xs text-white/60">₪599/month • Sundays 16:00-17:00</div>
                                     </button>
                                     <button type="button" onclick="selectModalAgeGroup2(this, 'tech', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Tech Explorers (11-13)</div>
+                                        <div class="font-medium text-white">Tech Champions (11-13)</div>
                                         <div class="text-xs text-white/60">₪599/month • Sundays 17:30-18:45</div>
                                     </button>
                                     <button type="button" onclick="selectModalAgeGroup2(this, 'future', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
@@ -3768,11 +3853,11 @@
                             <label class="text-sm font-medium text-white/90">Select Age Group</label>
                             <div class="grid grid-cols-1 gap-2 mt-2">
                                 <button type="button" onclick="selectModalAgeGroup(this, 'young', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                    <div class="font-medium text-white">Young Innovators (8-10)</div>
+                                    <div class="font-medium text-white">Young Explorers (8-10)</div>
                                     <div class="text-xs text-white/60">₪599/month • Sundays 16:00-17:00</div>
                                 </button>
                                 <button type="button" onclick="selectModalAgeGroup(this, 'tech', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                    <div class="font-medium text-white">Tech Explorers (11-13)</div>
+                                    <div class="font-medium text-white">Tech Champions (11-13)</div>
                                     <div class="text-xs text-white/60">₪599/month • Sundays 17:30-18:45</div>
                                 </button>
                                 <button type="button" onclick="selectModalAgeGroup(this, 'future', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
@@ -4022,8 +4107,8 @@
             wizardData.children.forEach((child, index) => {
                 if (child.name && child.ageGroup) {
                     // Map age group to program name
-                    const programName = child.ageGroup === 'young' ? 'Young Innovators (8-10)' :
-                                       child.ageGroup === 'tech' ? 'Tech Explorers (11-13)' :
+                    const programName = child.ageGroup === 'young' ? 'Young Explorers (8-10)' :
+                                       child.ageGroup === 'tech' ? 'Tech Champions (11-13)' :
                                        'Future Leaders (14-18)';
 
                     formData.children.push({
