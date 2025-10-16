@@ -968,11 +968,11 @@
                             <span id="progress-text" class="text-sm text-white/70">שלב 1 מתוך 4</span>
                         </div>
                     </div>
-                    <!-- Step 1: Child Information -->
+                    <!-- Step 1: Child Details -->
                     <div id="step-1" class="step-content p-6 flex-1 flex flex-col">
                         <div class="mb-6">
-                            <h2 class="text-xl font-bold text-white tracking-tight mb-2">רישום משפחתי</h2>
-                            <p class="text-white/60 text-sm">הגדר את חווית מועדון AI למשפחתכם ברישום יעיל</p>
+                            <h2 class="text-xl font-bold text-white tracking-tight mb-2">פרטי הילד</h2>
+                            <p class="text-white/60 text-sm">ספרו לנו על כל ילד שמצטרף למועדון AI</p>
                         </div>
 
                         <div class="flex-1 space-y-6">
@@ -995,63 +995,9 @@
                                 </div>
                             </div>
 
-                            <!-- Bulk Duration Selector -->
-                            <div class="space-y-4">
-                                <label class="text-base font-semibold text-amber-100">תוכנית תשלום (חלה על כל הילדים)</label>
-                                <div class="grid grid-cols-1 gap-3">
-                                    <button type="button" onclick="selectBulkDuration('monthly')"
-                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="monthly">
-                                        <div class="flex justify-between items-center">
-                                            <div>
-                                                <div class="text-lg font-semibold text-white min-w-[80px]">חודשי</div>
-                                                <div class="text-sm text-white/60">₪599 לילד • הכי גמיש</div>
-                                            </div>
-                                            <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
-                                                <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
-                                            </div>
-                                        </div>
-                                    </button>
-
-                                    <button type="button" onclick="selectBulkDuration('quarterly')"
-                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="quarterly">
-                                        <div class="flex justify-between items-center">
-                                            <div>
-                                                <div class="text-lg font-semibold text-white min-w-[80px]">רבעוני</div>
-                                                <div class="text-sm text-white/60">₪479 לילד/לחודש • <span class="text-amber-400 font-medium">חיסכון 20%</span></div>
-                                            </div>
-                                            <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
-                                                <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
-                                            </div>
-                                        </div>
-                                    </button>
-
-                                    <button type="button" onclick="selectBulkDuration('yearly')"
-                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="yearly">
-                                        <div class="flex justify-between items-center">
-                                            <div>
-                                                <div class="text-lg font-semibold text-white min-w-[80px]">שנתי</div>
-                                                <div class="text-sm text-white/60">₪399 לילד/לחודש • <span class="text-amber-400 font-medium">חיסכון 33%</span></div>
-                                            </div>
-                                            <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
-                                                <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Real-time Pricing Preview -->
-                            <div id="pricing-preview" class="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-cyan-400/30 rounded-xl p-4 hidden">
-                                <div class="flex justify-between items-center mb-3">
-                                    <span class="text-base font-semibold text-white">עלות משפחתית כוללת</span>
-                                    <span id="total-price" class="text-2xl font-bold text-cyan-400"></span>
-                                </div>
-                                <div id="pricing-breakdown" class="space-y-2 text-sm text-white/80">
-                                    <!-- Dynamic breakdown will be inserted here -->
-                                </div>
-                                <div id="multi-child-discount" class="mt-3 p-2 bg-amber-500/20 border border-amber-400/30 rounded-lg text-center text-sm text-amber-200 hidden">
-                                    <!-- Multi-child discount message -->
-                                </div>
+                            <!-- Child Forms Container -->
+                            <div id="children-forms-step1" class="space-y-6">
+                                <!-- Dynamic child forms will be inserted here -->
                             </div>
                         </div>
 
@@ -1063,15 +1009,84 @@
                         </div>
                     </div>
 
-                    <!-- Step 2: Child Details -->
+                    <!-- Step 2: Payment Plan Selection -->
                     <div id="step-2" class="step-content p-6 flex-1 flex-col hidden">
                         <div class="mb-6">
-                            <h2 class="text-xl font-bold text-white tracking-tight mb-2">פרטי הילד</h2>
-                            <p class="text-white/60 text-sm">ספרו לנו על כל ילד שמצטרף למועדון AI</p>
+                            <h2 class="text-xl font-bold text-white tracking-tight mb-2">בחר תוכנית תשלום</h2>
+                            <p class="text-white/60 text-sm">בחר את התוכנית הטובה ביותר למשפחה שלך</p>
                         </div>
 
-                        <div class="flex-1 space-y-6" id="children-forms">
-                            <!-- Dynamic child forms will be inserted here -->
+                        <div class="flex-1 space-y-6">
+                            <!-- Registration Summary Box -->
+                            <div id="registration-summary" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
+                                <h3 class="text-lg font-semibold text-white mb-3">סיכום הרשמה</h3>
+                                <div id="step-2-summary" class="space-y-2 text-sm text-white/80">
+                                    <!-- Summary will be populated here -->
+                                </div>
+                            </div>
+
+                            <!-- Payment Plan Selection -->
+                            <div class="space-y-4">
+                                <label class="text-base font-semibold text-amber-100">תוכנית תשלום (חלה על כל הילדים)</label>
+                                <div class="grid grid-cols-1 gap-3">
+                                    <button type="button" onclick="selectBulkDuration('monthly')"
+                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="monthly">
+                                        <div class="flex justify-between items-center">
+                                            <div class="flex-1">
+                                                <div class="text-lg font-semibold text-white">חודשי</div>
+                                                <div id="monthly-price-display" class="text-sm text-white/60">החל מ-₪599 לחודש</div>
+                                            </div>
+                                            <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
+                                                <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
+                                            </div>
+                                        </div>
+                                    </button>
+
+                                    <button type="button" onclick="selectBulkDuration('quarterly')"
+                                            class="bulk-duration-btn relative p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="quarterly">
+                                        <span class="absolute top-2 left-2 bg-gradient-to-r from-amber-400 to-amber-500 text-amber-950 text-xs font-bold px-2 py-1 rounded-full">הכי פופולרי</span>
+                                        <div class="flex justify-between items-center">
+                                            <div class="flex-1">
+                                                <div class="text-lg font-semibold text-white">רבעוני</div>
+                                                <div id="quarterly-price-display" class="text-sm text-white/60">החל מ-₪519 לחודש</div>
+                                            </div>
+                                            <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
+                                                <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
+                                            </div>
+                                        </div>
+                                    </button>
+
+                                    <button type="button" onclick="selectBulkDuration('yearly')"
+                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="yearly">
+                                        <div class="flex justify-between items-center">
+                                            <div class="flex-1">
+                                                <div class="text-lg font-semibold text-white flex items-center gap-2">
+                                                    <span>שנתי</span>
+                                                    <span>💎</span>
+                                                </div>
+                                                <div id="yearly-price-display" class="text-sm text-white/60">החל מ-₪479 לחודש</div>
+                                            </div>
+                                            <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
+                                                <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Collapsible Pricing Breakdown -->
+                            <div class="border-t border-amber-200/20 pt-4">
+                                <button type="button" onclick="togglePricingBreakdown()"
+                                        class="w-full flex items-center justify-between text-amber-100 hover:text-cyan-400 transition-colors">
+                                    <span class="text-sm font-medium">ראה פירוט מחירים</span>
+                                    <svg id="breakdown-chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                                <div id="pricing-breakdown-content" class="hidden mt-4 space-y-3 bg-amber-950/20 border border-amber-200/20 rounded-lg p-4">
+                                    <!-- Breakdown will be populated here -->
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
@@ -2720,13 +2735,16 @@
 
             // Add selection to clicked button
             const selectedBtn = document.querySelector(`[data-duration="${duration}"]`);
-            selectedBtn.classList.remove('border-amber-200/30');
-            selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/10');
-            selectedBtn.querySelector('.w-3').classList.remove('opacity-0');
+            if (selectedBtn) {
+                selectedBtn.classList.remove('border-amber-200/30');
+                selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/10');
+                const indicator = selectedBtn.querySelector('.w-3');
+                if (indicator) indicator.classList.remove('opacity-0');
+            }
 
             // Update pricing display
-            updateFamilyPricing();
-            validateStep1Family();
+            updatePricingBreakdown();
+            validateStep2New();
         }
 
         function updateFamilyPricing() {
@@ -2937,6 +2955,135 @@
             continueBtn.disabled = !allValid;
         }
 
+        // Rename old validateStep2 to validateStep1 (validates child details)
+        function validateStep1() {
+            const continueBtn = document.getElementById('step-1-next');
+            let allValid = true;
+
+            // Check if all children have names and age groups
+            familyData.children.forEach(child => {
+                if (!child.name.trim() || !child.ageGroup) {
+                    allValid = false;
+                }
+            });
+
+            continueBtn.disabled = !allValid;
+        }
+
+        // Step 2 Functions (Payment Plan Selection)
+        function generateStep2Summary() {
+            const summaryContainer = document.getElementById('step-2-summary');
+            if (!summaryContainer) return;
+
+            let summaryHTML = `<div class="text-base font-medium text-white mb-2">${familyData.childCount} ילד${familyData.childCount > 1 ? 'ים' : ''} רשום${familyData.childCount > 1 ? 'ים' : ''}:</div>`;
+
+            familyData.children.forEach((child, i) => {
+                const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים' :
+                                    child.ageGroup === 'tech' ? 'אלופי טכנולוגיה' :
+                                    'מנהיגי העתיד';
+                const ageRange = child.ageGroup === 'young' ? '8-10' :
+                                child.ageGroup === 'tech' ? '11-13' : '14-18';
+                summaryHTML += `<div class="text-sm text-white/80">• ${child.name} - ${ageGroupName} (${ageRange})</div>`;
+            });
+
+            summaryContainer.innerHTML = summaryHTML;
+        }
+
+        function updatePricingDisplays() {
+            // Calculate totals for each plan based on selected age groups
+            const totals = { monthly: 0, quarterly: 0, yearly: 0 };
+
+            familyData.children.forEach(child => {
+                if (child.ageGroup) {
+                    totals.monthly += AGE_PRICING[child.ageGroup].monthly;
+                    totals.quarterly += AGE_PRICING[child.ageGroup].quarterly;
+                    totals.yearly += AGE_PRICING[child.ageGroup].yearly;
+                }
+            });
+
+            // Update displays
+            const monthlyDisplay = document.getElementById('monthly-price-display');
+            const quarterlyDisplay = document.getElementById('quarterly-price-display');
+            const yearlyDisplay = document.getElementById('yearly-price-display');
+
+            if (monthlyDisplay) monthlyDisplay.textContent = `₪${totals.monthly} לחודש למשפחה`;
+            if (quarterlyDisplay) quarterlyDisplay.textContent = `₪${totals.quarterly} לחודש למשפחה`;
+            if (yearlyDisplay) yearlyDisplay.textContent = `₪${totals.yearly} לחודש למשפחה`;
+        }
+
+        function togglePricingBreakdown() {
+            const content = document.getElementById('pricing-breakdown-content');
+            const chevron = document.getElementById('breakdown-chevron');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                chevron.style.transform = 'rotate(180deg)';
+                updatePricingBreakdown();
+            } else {
+                content.classList.add('hidden');
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function updatePricingBreakdown() {
+            if (!familyData.bulkDuration) return;
+
+            const content = document.getElementById('pricing-breakdown-content');
+            if (!content || content.classList.contains('hidden')) return;
+
+            let breakdownHTML = '';
+            let total = 0;
+
+            familyData.children.forEach((child, i) => {
+                const price = AGE_PRICING[child.ageGroup][familyData.bulkDuration];
+                total += price;
+
+                const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים' :
+                                    child.ageGroup === 'tech' ? 'אלופי טכנולוגיה' :
+                                    'מנהיגי העתיד';
+
+                breakdownHTML += `
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-white/80">${child.name} (${ageGroupName})</span>
+                        <span class="text-white font-medium">₪${price}/חודש</span>
+                    </div>
+                `;
+            });
+
+            // Apply family discounts
+            if (familyData.childCount >= 2) {
+                const discountRate = familyData.childCount === 2 ? 0.10 : 0.15;
+                const discount = Math.round((AGE_PRICING[familyData.children[1].ageGroup][familyData.bulkDuration] * discountRate));
+                total -= discount;
+
+                breakdownHTML += `
+                    <div class="border-t border-amber-200/20 pt-2 mt-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-amber-300">הנחה משפחתית (${discountRate * 100}%)</span>
+                            <span class="text-amber-300">-₪${discount}/חודש</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            breakdownHTML += `
+                <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-base font-bold text-white">סה״כ</span>
+                        <span class="text-xl font-bold text-cyan-300">₪${Math.round(total)}/חודש</span>
+                    </div>
+                </div>
+            `;
+
+            content.innerHTML = breakdownHTML;
+        }
+
+        // New validateStep2 for payment plan selection
+        function validateStep2New() {
+            const continueBtn = document.getElementById('step-2-next');
+            continueBtn.disabled = !familyData.bulkDuration;
+        }
+
         function generateFinalSummary() {
             const summaryContainer = document.getElementById('step-3-summary');
             const totalEl = document.getElementById('step-3-total');
@@ -3072,8 +3219,9 @@
                     // Initialize step-specific content
                     console.log(`📋 Initializing step ${currentStep} content`);
                     if (currentStep === 2) {
-                        console.log('🔄 Moving to Step 2 - generating child forms');
-                        generateChildForms();
+                        console.log('🔄 Moving to Step 2 - generating payment plan summary');
+                        generateStep2Summary();
+                        updatePricingDisplays();
                     } else if (currentStep === 3) {
                         console.log('🔄 Moving to Step 3 - generating final summary');
                         generateFinalSummary();
