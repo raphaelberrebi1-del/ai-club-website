@@ -306,6 +306,108 @@
             from { width: 0; }
             to { width: 100%; }
         }
+
+        /* ==========================================
+           AGE GROUP CARD SELECTION STYLES
+           ========================================== */
+
+        /* Age card base styles with smooth transitions */
+        .age-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            cursor: pointer;
+        }
+
+        /* Selected state for age group cards */
+        .age-card.selected {
+            border-width: 3px !important;
+            border-color: rgba(6, 182, 212, 0.8) !important;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(20, 184, 166, 0.15)) !important;
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(6, 182, 212, 0.4), 0 0 30px rgba(6, 182, 212, 0.2) !important;
+        }
+
+        /* Enhance the icon glow on selected cards */
+        .age-card.selected .w-14 {
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+        }
+
+        /* Add a subtle pulse animation to selected cards */
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 20px 50px rgba(6, 182, 212, 0.4), 0 0 30px rgba(6, 182, 212, 0.2);
+            }
+            50% {
+                box-shadow: 0 20px 60px rgba(6, 182, 212, 0.5), 0 0 40px rgba(6, 182, 212, 0.3);
+            }
+        }
+
+        .age-card.selected {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        /* ==========================================
+           PRICING TABLE ANIMATIONS
+           ========================================== */
+
+        /* Pricing table containers - hidden by default */
+        .pricing-table-container {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Show state for pricing tables */
+        .pricing-table-container.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Value proposition section animations */
+        #value-proposition-professional {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s,
+                        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+        }
+
+        #value-proposition-professional.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================
+           RESPONSIVE ADJUSTMENTS
+           ========================================== */
+
+        /* Mobile: Stack age cards vertically with adjusted spacing */
+        @media (max-width: 768px) {
+            .age-card {
+                margin-bottom: 1rem;
+            }
+
+            .age-card.selected {
+                transform: translateY(-4px) scale(1.01);
+            }
+
+            /* Reduce animation intensity on mobile for better performance */
+            .age-card.selected {
+                animation: none;
+                box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4) !important;
+            }
+        }
+
+        /* Smooth scroll behavior for entire page */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Ensure smooth transitions on back button */
+        .pricing-table-container,
+        #value-proposition-professional {
+            will-change: opacity, transform;
+        }
     </style>
 </head>
 <body class="antialiased text-zinc-100">
@@ -1097,31 +1199,335 @@
             </div>
         </section>
 
-        <!-- Multi-Child Discount Banner -->
+        <!-- Value Proposition Section - Professional Leaders Only -->
+        <section id="value-proposition-professional" class="py-12 px-4" style="display: none;">
+            <div class="max-w-6xl mx-auto">
+                <!-- Main Heading -->
+                <div class="text-center mb-12 fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">
+                        Why Professional Leaders Delivers More
+                    </h2>
+                    <p class="text-lg text-white/80 max-w-2xl mx-auto">
+                        Premium college preparation, business mentorship, and career guidance—all in one program
+                    </p>
+                </div>
+
+                <!-- Three Column Benefits -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 fade-in-up delay-1">
+                    <!-- Column 1: Expert Instructors -->
+                    <div class="bg-black/40 backdrop-blur-lg rounded-xl p-6 border-2 border-amber-400/30 hover:border-amber-400/50 transition-all">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-amber-300 mb-3 text-center">Expert Instructors</h3>
+                        <ul class="space-y-2 text-white/80 text-sm">
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-400 mt-0.5">✓</span>
+                                <span>Professional mentors from tech industry and business</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-400 mt-0.5">✓</span>
+                                <span>College admissions advisors with proven track records</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-400 mt-0.5">✓</span>
+                                <span>Entrepreneurs who've launched successful startups</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: Premium Outcomes -->
+                    <div class="bg-black/40 backdrop-blur-lg rounded-xl p-6 border-2 border-amber-400/30 hover:border-amber-400/50 transition-all">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-amber-300 mb-3 text-center">Premium Outcomes</h3>
+                        <ul class="space-y-2 text-white/80 text-sm">
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-400 mt-0.5">✓</span>
+                                <span>College acceptances to top universities worldwide</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-400 mt-0.5">✓</span>
+                                <span>Student-launched businesses generating real revenue</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-400 mt-0.5">✓</span>
+                                <span>Professional portfolios that stand out to admissions</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: Comprehensive Support -->
+                    <div class="bg-black/40 backdrop-blur-lg rounded-xl p-6 border-2 border-amber-400/30 hover:border-amber-400/50 transition-all">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mb-4 mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-amber-300 mb-3 text-center">Comprehensive Support</h3>
+                        <ul class="space-y-2 text-white/80 text-sm">
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-400 mt-0.5">✓</span>
+                                <span>Weekly 1-on-1 coaching sessions tailored to your goals</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-400 mt-0.5">✓</span>
+                                <span>Unlimited college essay reviews and editing support</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-400 mt-0.5">✓</span>
+                                <span>Direct access to business mentors and career advisors</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Value Comparison Box -->
+                <div class="fade-in-up delay-2">
+                    <div class="bg-gradient-to-br from-amber-500/20 to-orange-500/20 backdrop-blur-lg rounded-2xl p-8 border-2 border-amber-400/50">
+                        <h3 class="text-2xl font-bold text-center text-white mb-6">
+                            Exceptional Value: Everything You Need in One Program
+                        </h3>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-6">
+                            <!-- Alternative Services Cost -->
+                            <div class="bg-black/40 rounded-xl p-6 border border-white/20">
+                                <div class="text-sm text-white/60 mb-2 font-medium">If You Paid Separately:</div>
+                                <div class="space-y-2 mb-4 text-sm text-white/80">
+                                    <div class="flex justify-between">
+                                        <span>College Counseling</span>
+                                        <span class="font-medium">₪25,000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Business Launch Program</span>
+                                        <span class="font-medium">₪10,000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>SAT/Essay Tutoring</span>
+                                        <span class="font-medium">₪5,000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Executive Coaching</span>
+                                        <span class="font-medium">₪3,000</span>
+                                    </div>
+                                </div>
+                                <div class="border-t border-white/20 pt-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-white/60 font-medium">Total Alternative Cost:</span>
+                                        <span class="text-2xl font-bold text-red-400">₪43,000</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AI Kidz Professional Leaders Cost -->
+                            <div class="bg-black/40 rounded-xl p-6 border-2 border-amber-400/50">
+                                <div class="text-sm text-amber-300 mb-2 font-medium">AI Kidz Professional Leaders:</div>
+                                <div class="space-y-3 mb-4">
+                                    <div class="text-white/80 text-sm">
+                                        Everything listed on the left, plus:
+                                    </div>
+                                    <ul class="space-y-1 text-sm text-white/70">
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-amber-400 text-xs mt-0.5">+</span>
+                                            <span>AI skill development</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-amber-400 text-xs mt-0.5">+</span>
+                                            <span>Professional portfolio creation</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-amber-400 text-xs mt-0.5">+</span>
+                                            <span>Ongoing community support</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="border-t border-amber-400/30 pt-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-white/80 font-medium">Annual Investment:</span>
+                                        <span class="text-2xl font-bold text-amber-300">₪7,788</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Savings Highlight -->
+                        <div class="text-center bg-gradient-to-r from-amber-400/20 to-orange-400/20 rounded-xl py-4 px-6 border border-amber-400/40">
+                            <div class="text-sm text-white/70 mb-1">You Save</div>
+                            <div class="text-4xl font-bold text-amber-300 mb-1">₪35,212</div>
+                            <div class="text-lg text-white/80">
+                                That's <span class="font-bold text-amber-300">82% savings</span> for a comprehensive program
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Family Discounts Section -->
         <section class="py-12 px-4">
-            <div class="max-w-4xl mx-auto">
-                <div class="fade-in-up bg-gradient-to-r from-cyan-500/20 to-teal-500/20 backdrop-blur-lg rounded-2xl p-8 border-2 border-cyan-400/50">
-                    <div class="text-center">
-                        <div class="flex items-center justify-center gap-2 mb-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="fade-in-up bg-gradient-to-r from-cyan-500/20 to-teal-500/20 backdrop-blur-lg rounded-2xl p-8 md:p-10 border-2 border-cyan-400/50">
+                    <!-- Header -->
+                    <div class="text-center mb-8">
+                        <div class="flex items-center justify-center gap-2 mb-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400">
                                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="9" cy="7" r="4"></circle>
                                 <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                             </svg>
-                            <h2 class="text-3xl font-extrabold text-white">Family Discounts Available</h2>
+                            <h2 class="text-3xl md:text-4xl font-extrabold text-white">Family Discounts</h2>
                         </div>
-                        <p class="text-lg text-white/80 mb-6">Enroll multiple children and save more</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                            <div class="bg-black/30 rounded-xl p-4 border border-cyan-400/30">
-                                <div class="text-3xl font-bold text-cyan-300 mb-1">10% OFF</div>
-                                <div class="text-white/80">Second Child</div>
-                            </div>
-                            <div class="bg-black/30 rounded-xl p-4 border border-cyan-400/30">
-                                <div class="text-3xl font-bold text-cyan-300 mb-1">15% OFF</div>
-                                <div class="text-white/80">Third Child & Beyond</div>
+                        <p class="text-lg text-white/80 mb-2">Enroll multiple children and save more</p>
+                        <p class="text-sm text-cyan-300 font-medium">Siblings can be in different age groups—choose what's best for each child!</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                        <!-- Left: Discount Breakdown -->
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-4">Automatic Discounts Applied:</h3>
+                            <div class="space-y-3">
+                                <!-- First Child -->
+                                <div class="bg-black/40 rounded-xl p-4 border border-white/20 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full flex items-center justify-center font-bold text-white text-sm">1</div>
+                                        <div>
+                                            <div class="text-white font-semibold">First Child</div>
+                                            <div class="text-white/60 text-sm">Regular pricing</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-white/70 font-medium">Full price</div>
+                                </div>
+
+                                <!-- Second Child -->
+                                <div class="bg-black/40 rounded-xl p-4 border-2 border-cyan-400/40 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full flex items-center justify-center font-bold text-white text-sm">2</div>
+                                        <div>
+                                            <div class="text-white font-semibold">Second Child</div>
+                                            <div class="text-cyan-300 text-sm">Automatic savings</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-2xl font-bold text-cyan-300">10% OFF</div>
+                                </div>
+
+                                <!-- Third Child -->
+                                <div class="bg-black/40 rounded-xl p-4 border-2 border-teal-400/40 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-gradient-to-br from-teal-400 to-emerald-500 rounded-full flex items-center justify-center font-bold text-white text-sm">3</div>
+                                        <div>
+                                            <div class="text-white font-semibold">Third Child</div>
+                                            <div class="text-teal-300 text-sm">Even more savings</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-2xl font-bold text-teal-300">15% OFF</div>
+                                </div>
+
+                                <!-- Fourth Child -->
+                                <div class="bg-black/40 rounded-xl p-4 border-2 border-emerald-400/40 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full flex items-center justify-center font-bold text-white text-sm">4+</div>
+                                        <div>
+                                            <div class="text-white font-semibold">Fourth Child & Beyond</div>
+                                            <div class="text-emerald-300 text-sm">Maximum savings</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-2xl font-bold text-emerald-300">20% OFF</div>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- Right: Example Calculation -->
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-4">Real Family Example:</h3>
+                            <div class="bg-black/40 rounded-xl p-6 border border-white/20">
+                                <div class="mb-4">
+                                    <p class="text-white/80 text-sm mb-4">
+                                        The Cohen family has 3 children in different age groups:
+                                    </p>
+                                </div>
+
+                                <div class="space-y-3 mb-4">
+                                    <!-- Child 1 -->
+                                    <div class="flex justify-between items-center pb-2 border-b border-white/10">
+                                        <div>
+                                            <div class="text-white font-medium">Sarah (9) - Young Explorers</div>
+                                            <div class="text-white/60 text-sm">Annual Plan</div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-white font-semibold">₪479/mo</div>
+                                            <div class="text-white/50 text-xs">Full price</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Child 2 -->
+                                    <div class="flex justify-between items-center pb-2 border-b border-white/10">
+                                        <div>
+                                            <div class="text-white font-medium">David (12) - Teen Champions</div>
+                                            <div class="text-white/60 text-sm">Annual Plan</div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-cyan-300 font-semibold line-through text-sm">₪549/mo</div>
+                                            <div class="text-cyan-300 font-bold">₪494/mo</div>
+                                            <div class="text-cyan-300 text-xs">10% off</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Child 3 -->
+                                    <div class="flex justify-between items-center pb-3 border-b border-white/10">
+                                        <div>
+                                            <div class="text-white font-medium">Maya (16) - Pro Leaders</div>
+                                            <div class="text-white/60 text-sm">Annual Plan</div>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-teal-300 font-semibold line-through text-sm">₪649/mo</div>
+                                            <div class="text-teal-300 font-bold">₪552/mo</div>
+                                            <div class="text-teal-300 text-xs">15% off</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Total -->
+                                    <div class="pt-2">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-white/70">Total without discounts:</span>
+                                            <span class="text-white/70 line-through">₪1,677/mo</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-white font-bold text-lg">Total with family discounts:</span>
+                                            <span class="text-cyan-300 font-bold text-2xl">₪1,525/mo</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Savings Highlight -->
+                                <div class="bg-gradient-to-r from-cyan-400/20 to-teal-400/20 rounded-lg p-4 text-center border border-cyan-400/40">
+                                    <div class="text-sm text-white/70 mb-1">Annual Family Savings</div>
+                                    <div class="text-3xl font-bold text-cyan-300">₪1,824</div>
+                                    <div class="text-xs text-white/60 mt-1">That's like 3 months free!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="text-center">
+                        <p class="text-white/70 text-sm mb-4">
+                            Discounts are automatically applied during registration. No promo codes needed.
+                        </p>
+                        <a href="#age-selector" class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl shadow-lg">
+                            <span>Calculate Your Family Discount</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1257,6 +1663,167 @@
             3: { second: 0.10, third: 0.15 },
             4: { second: 0.10, third: 0.15, fourth: 0.20 }
         };
+
+        // ==========================================
+        // AGE GROUP SELECTION LOGIC
+        // ==========================================
+
+        let selectedAgeGroup = null;
+
+        /**
+         * Handles age group card selection
+         * @param {string} group - The age group identifier (young-explorers, teen-champions, professional-leaders)
+         */
+        function selectAgeGroup(group) {
+            // Validate group exists in config
+            if (!PRICING_CONFIG[group]) {
+                console.error('Invalid age group:', group);
+                return;
+            }
+
+            // Store selected group
+            selectedAgeGroup = group;
+
+            // Update URL with hash (for sharing and back button support)
+            window.history.pushState({ ageGroup: group }, '', `#${group}`);
+
+            // Update card visual states
+            updateCardStates(group);
+
+            // Hide all pricing tables and value proposition
+            hideAllPricingContent();
+
+            // Show selected pricing table with animation
+            const selectedTable = document.getElementById(`pricing-${group}`);
+            if (selectedTable) {
+                // Use setTimeout to allow hiding animation to complete first
+                setTimeout(() => {
+                    selectedTable.style.display = 'block';
+                    selectedTable.classList.add('show');
+
+                    // Smooth scroll to the pricing table
+                    selectedTable.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            }
+
+            // Show value proposition section only for Professional Leaders
+            if (group === 'professional-leaders') {
+                const valueProposition = document.getElementById('value-proposition-professional');
+                if (valueProposition) {
+                    setTimeout(() => {
+                        valueProposition.style.display = 'block';
+                        valueProposition.classList.add('show');
+                    }, 100);
+                }
+            }
+        }
+
+        /**
+         * Updates visual state of age group cards
+         * @param {string} selectedGroup - The selected age group identifier
+         */
+        function updateCardStates(selectedGroup) {
+            const allCards = document.querySelectorAll('.age-card');
+            allCards.forEach(card => {
+                const cardId = card.id;
+                if (cardId === `card-${selectedGroup}`) {
+                    card.classList.add('selected');
+                } else {
+                    card.classList.remove('selected');
+                }
+            });
+        }
+
+        /**
+         * Hides all pricing tables and value proposition
+         */
+        function hideAllPricingContent() {
+            // Hide all pricing tables
+            const pricingTables = document.querySelectorAll('.pricing-table-container');
+            pricingTables.forEach(table => {
+                table.classList.remove('show');
+                table.style.display = 'none';
+            });
+
+            // Hide value proposition section
+            const valueProposition = document.getElementById('value-proposition-professional');
+            if (valueProposition) {
+                valueProposition.classList.remove('show');
+                valueProposition.style.display = 'none';
+            }
+        }
+
+        /**
+         * Returns to age group selector view
+         */
+        function backToAgeSelector() {
+            // Clear selected group
+            selectedAgeGroup = null;
+
+            // Update URL (remove hash)
+            window.history.pushState({}, '', window.location.pathname + window.location.search);
+
+            // Remove selected state from all cards
+            const allCards = document.querySelectorAll('.age-card');
+            allCards.forEach(card => card.classList.remove('selected'));
+
+            // Hide all pricing content
+            hideAllPricingContent();
+
+            // Scroll back to age selector
+            const ageSelector = document.getElementById('age-selector');
+            if (ageSelector) {
+                ageSelector.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        /**
+         * Handles deep linking via URL hash or query parameters
+         */
+        function handleDirectLink() {
+            // Check for hash in URL (e.g., #young-explorers)
+            const hash = window.location.hash.substring(1); // Remove the '#'
+
+            if (hash && PRICING_CONFIG[hash]) {
+                selectAgeGroup(hash);
+                return;
+            }
+
+            // Check for query parameter (e.g., ?age=young-explorers)
+            const urlParams = new URLSearchParams(window.location.search);
+            const ageParam = urlParams.get('age');
+
+            if (ageParam && PRICING_CONFIG[ageParam]) {
+                selectAgeGroup(ageParam);
+                return;
+            }
+        }
+
+        /**
+         * Handles browser back/forward button navigation
+         */
+        function handlePopState(event) {
+            if (event.state && event.state.ageGroup) {
+                selectAgeGroup(event.state.ageGroup);
+            } else {
+                backToAgeSelector();
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle direct links
+            handleDirectLink();
+
+            // Add event listener for browser back/forward buttons
+            window.addEventListener('popstate', handlePopState);
+        });
 
         // Countdown Timer
         function updateCountdown() {
