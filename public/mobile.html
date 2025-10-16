@@ -2519,13 +2519,16 @@
 
             // Add selection to clicked button
             const selectedBtn = document.querySelector(`[data-duration="${duration}"]`);
-            selectedBtn.classList.remove('border-amber-200/30');
-            selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/10');
-            selectedBtn.querySelector('.w-3').classList.remove('opacity-0');
+            if (selectedBtn) {
+                selectedBtn.classList.remove('border-amber-200/30');
+                selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/10');
+                const indicator = selectedBtn.querySelector('.w-3');
+                if (indicator) indicator.classList.remove('opacity-0');
+            }
 
             // Update pricing display
-            updateFamilyPricing();
-            validateStep1Family();
+            updatePricingBreakdown();
+            validateStep2New();
         }
 
         function updateFamilyPricing() {
@@ -2734,6 +2737,135 @@
             });
 
             continueBtn.disabled = !allValid;
+        }
+
+        // Rename old validateStep2 to validateStep1 (validates child details)
+        function validateStep1() {
+            const continueBtn = document.getElementById('step-1-next');
+            let allValid = true;
+
+            // Check if all children have names and age groups
+            familyData.children.forEach(child => {
+                if (!child.name.trim() || !child.ageGroup) {
+                    allValid = false;
+                }
+            });
+
+            continueBtn.disabled = !allValid;
+        }
+
+        // Step 2 Functions (Payment Plan Selection)
+        function generateStep2Summary() {
+            const summaryContainer = document.getElementById('step-2-summary');
+            if (!summaryContainer) return;
+
+            let summaryHTML = `<div class="text-base font-medium text-white mb-2">${familyData.childCount} child${familyData.childCount > 1 ? 'ren' : ''} enrolled:</div>`;
+
+            familyData.children.forEach((child, i) => {
+                const ageGroupName = child.ageGroup === 'young' ? 'Young Explorers' :
+                                    child.ageGroup === 'tech' ? 'Tech Champions' :
+                                    'Future Leaders';
+                const ageRange = child.ageGroup === 'young' ? '8-10' :
+                                child.ageGroup === 'tech' ? '11-13' : '14-18';
+                summaryHTML += `<div class="text-sm text-white/80">• ${child.name} - ${ageGroupName} (${ageRange})</div>`;
+            });
+
+            summaryContainer.innerHTML = summaryHTML;
+        }
+
+        function updatePricingDisplays() {
+            // Calculate totals for each plan based on selected age groups
+            const totals = { monthly: 0, quarterly: 0, yearly: 0 };
+
+            familyData.children.forEach(child => {
+                if (child.ageGroup) {
+                    totals.monthly += AGE_PRICING[child.ageGroup].monthly;
+                    totals.quarterly += AGE_PRICING[child.ageGroup].quarterly;
+                    totals.yearly += AGE_PRICING[child.ageGroup].yearly;
+                }
+            });
+
+            // Update displays
+            const monthlyDisplay = document.getElementById('monthly-price-display');
+            const quarterlyDisplay = document.getElementById('quarterly-price-display');
+            const yearlyDisplay = document.getElementById('yearly-price-display');
+
+            if (monthlyDisplay) monthlyDisplay.textContent = `₪${totals.monthly}/month per family`;
+            if (quarterlyDisplay) quarterlyDisplay.textContent = `₪${totals.quarterly}/month per family`;
+            if (yearlyDisplay) yearlyDisplay.textContent = `₪${totals.yearly}/month per family`;
+        }
+
+        function togglePricingBreakdown() {
+            const content = document.getElementById('pricing-breakdown-content');
+            const chevron = document.getElementById('breakdown-chevron');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                chevron.style.transform = 'rotate(180deg)';
+                updatePricingBreakdown();
+            } else {
+                content.classList.add('hidden');
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function updatePricingBreakdown() {
+            if (!familyData.bulkDuration) return;
+
+            const content = document.getElementById('pricing-breakdown-content');
+            if (!content || content.classList.contains('hidden')) return;
+
+            let breakdownHTML = '';
+            let total = 0;
+
+            familyData.children.forEach((child, i) => {
+                const price = AGE_PRICING[child.ageGroup][familyData.bulkDuration];
+                total += price;
+
+                const ageGroupName = child.ageGroup === 'young' ? 'Young Explorers' :
+                                    child.ageGroup === 'tech' ? 'Tech Champions' :
+                                    'Future Leaders';
+
+                breakdownHTML += `
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-white/80">${child.name} (${ageGroupName})</span>
+                        <span class="text-white font-medium">₪${price}/month</span>
+                    </div>
+                `;
+            });
+
+            // Apply family discounts
+            if (familyData.childCount >= 2) {
+                const discountRate = familyData.childCount === 2 ? 0.10 : 0.15;
+                const discount = Math.round((AGE_PRICING[familyData.children[1].ageGroup][familyData.bulkDuration] * discountRate));
+                total -= discount;
+
+                breakdownHTML += `
+                    <div class="border-t border-amber-200/20 pt-2 mt-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-amber-300">Family discount (${discountRate * 100}%)</span>
+                            <span class="text-amber-300">-₪${discount}/month</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            breakdownHTML += `
+                <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-base font-bold text-white">Total</span>
+                        <span class="text-xl font-bold text-cyan-300">₪${Math.round(total)}/month</span>
+                    </div>
+                </div>
+            `;
+
+            content.innerHTML = breakdownHTML;
+        }
+
+        // New validateStep2 for payment plan selection
+        function validateStep2New() {
+            const continueBtn = document.getElementById('step-2-next');
+            continueBtn.disabled = !familyData.bulkDuration;
         }
 
         function generateFinalSummary() {
