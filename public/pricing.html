@@ -414,9 +414,191 @@
             </div>
         </section>
 
-        <!-- Detailed Comparison Table -->
-        <section class="py-8 px-4">
+        <!-- Age Group Selection Section -->
+        <section id="age-selector" class="py-12 px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-10 fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">
+                        Choose Your Child's Program
+                    </h2>
+                    <p class="text-lg text-white/80">
+                        Select the age group that matches your child
+                    </p>
+                </div>
+
+                <!-- Three Age Group Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in-up delay-1">
+
+                    <!-- Card 1: Young Explorers (8-10) -->
+                    <button onclick="selectAgeGroup('young-explorers')"
+                        id="card-young-explorers"
+                        class="age-card group bg-black/40 backdrop-blur-lg rounded-xl p-6 border-2
+                        border-white/20 hover:border-cyan-400/60 transition-all duration-300
+                        hover:-translate-y-2 hover:shadow-2xl text-left">
+
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-teal-500
+                                rounded-full flex items-center justify-center flex-shrink-0
+                                group-hover:scale-110 transition-transform">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" class="text-white">
+                                    <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-cyan-400 text-lg font-bold">Ages 8-10</div>
+                                <div class="text-white font-semibold text-base">Young Explorers</div>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-2 mb-4 text-sm text-white/80">
+                            <li class="flex items-start gap-2">
+                                <span class="text-cyan-400 mt-0.5">✓</span>
+                                <span>Creative AI projects</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-cyan-400 mt-0.5">✓</span>
+                                <span>Organization & study skills</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-cyan-400 mt-0.5">✓</span>
+                                <span>Fun, hands-on learning</span>
+                            </li>
+                        </ul>
+
+                        <div class="text-center pt-4 border-t border-white/20">
+                            <span class="text-cyan-400 font-semibold group-hover:text-cyan-300
+                                transition-colors">
+                                View Pricing →
+                            </span>
+                        </div>
+                    </button>
+
+                    <!-- Card 2: Teen Champions (11-13) -->
+                    <button onclick="selectAgeGroup('teen-champions')"
+                        id="card-teen-champions"
+                        class="age-card group bg-black/40 backdrop-blur-lg rounded-xl p-6 border-2
+                        border-white/20 hover:border-teal-400/60 transition-all duration-300
+                        hover:-translate-y-2 hover:shadow-2xl text-left">
+
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-14 h-14 bg-gradient-to-br from-teal-400 to-emerald-500
+                                rounded-full flex items-center justify-center flex-shrink-0
+                                group-hover:scale-110 transition-transform">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" class="text-white">
+                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-teal-400 text-lg font-bold">Ages 11-13</div>
+                                <div class="text-white font-semibold text-base">Teen Champions</div>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-2 mb-4 text-sm text-white/80">
+                            <li class="flex items-start gap-2">
+                                <span class="text-teal-400 mt-0.5">✓</span>
+                                <span>Academic excellence systems</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-teal-400 mt-0.5">✓</span>
+                                <span>Personal productivity mastery</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-teal-400 mt-0.5">✓</span>
+                                <span>Real-world applications</span>
+                            </li>
+                        </ul>
+
+                        <div class="text-center pt-4 border-t border-white/20">
+                            <span class="text-teal-400 font-semibold group-hover:text-teal-300
+                                transition-colors">
+                                View Pricing →
+                            </span>
+                        </div>
+                    </button>
+
+                    <!-- Card 3: Professional Leaders (14-18) -->
+                    <button onclick="selectAgeGroup('professional-leaders')"
+                        id="card-professional-leaders"
+                        class="age-card group bg-black/40 backdrop-blur-lg rounded-xl p-6 border-2
+                        border-white/20 hover:border-amber-400/60 transition-all duration-300
+                        hover:-translate-y-2 hover:shadow-2xl text-left relative">
+
+                        <!-- Premium Badge -->
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white
+                                px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                                PREMIUM
+                            </span>
+                        </div>
+
+                        <div class="flex items-center gap-3 mb-4 mt-2">
+                            <div class="w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500
+                                rounded-full flex items-center justify-center flex-shrink-0
+                                group-hover:scale-110 transition-transform">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" class="text-white">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-amber-400 text-lg font-bold">Ages 14-18</div>
+                                <div class="text-white font-semibold text-base">Professional Leaders</div>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-2 mb-4 text-sm text-white/80">
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-400 mt-0.5">✓</span>
+                                <span>College application support</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-400 mt-0.5">✓</span>
+                                <span>Business & entrepreneurship</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-amber-400 mt-0.5">✓</span>
+                                <span>Career preparation</span>
+                            </li>
+                        </ul>
+
+                        <div class="text-center pt-4 border-t border-white/20">
+                            <span class="text-amber-400 font-semibold group-hover:text-amber-300
+                                transition-colors">
+                                View Pricing →
+                            </span>
+                        </div>
+                    </button>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Young Explorers Pricing Table (8-10) - Hidden by default -->
+        <section id="pricing-young-explorers" class="pricing-table-container py-8 px-4" style="display: none;">
             <div class="max-w-5xl mx-auto">
+
+                <!-- Back Navigation -->
+                <div class="mb-6 text-center fade-in-up">
+                    <button onclick="backToAgeSelector()"
+                        class="text-cyan-400 hover:text-cyan-300 text-sm font-medium
+                        transition-colors inline-flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Programs
+                    </button>
+                </div>
+
                 <!-- Comparison Table -->
                 <div class="overflow-x-auto fade-in-up">
                     <table class="pricing-table w-full bg-black/40 backdrop-blur-lg rounded-xl border border-amber-200/30" style="table-layout: fixed;">
@@ -431,8 +613,11 @@
                             <tr class="border-b border-white/10">
                                 <th class="text-left p-3 align-top">
                                     <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight mb-2">
-                                        Compare <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">Plans</span>
+                                        Young Explorers <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">Pricing</span>
                                     </h2>
+                                    <p class="text-sm text-white/70 font-normal mb-3">
+                                        Building creativity, organization, and AI confidence
+                                    </p>
                                     <button onclick="if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 768){window.location.href='mobile.html#choose-program'}else{window.location.href='index.html#registration-form'}" class="bg-cyan-500/20 border border-cyan-400/50 rounded-lg px-3 py-1.5 text-white text-xs font-semibold hover:bg-cyan-500/30 hover:border-cyan-400 transition-all">
                                         Register Now <span class="arrow-roll">→</span>
                                     </button>
@@ -551,6 +736,367 @@
             </div>
         </section>
 
+        <!-- Teen Champions Pricing Table (11-13) - Hidden by default -->
+        <section id="pricing-teen-champions" class="pricing-table-container py-8 px-4" style="display: none;">
+            <div class="max-w-5xl mx-auto">
+
+                <!-- Back Navigation -->
+                <div class="mb-6 text-center fade-in-up">
+                    <button onclick="backToAgeSelector()"
+                        class="text-teal-400 hover:text-teal-300 text-sm font-medium
+                        transition-colors inline-flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Programs
+                    </button>
+                </div>
+
+                <!-- Pricing Table -->
+                <div class="overflow-x-auto fade-in-up">
+                    <table class="pricing-table w-full bg-black/40 backdrop-blur-lg rounded-xl border border-amber-200/30" style="table-layout: fixed;">
+                        <colgroup>
+                            <col style="width: 35%;">
+                            <col style="width: 16.25%;">
+                            <col style="width: 16.25%;">
+                            <col style="width: 16.25%;">
+                            <col style="width: 16.25%;">
+                        </colgroup>
+                        <thead>
+                            <tr class="border-b border-white/10">
+                                <th class="text-left p-3 align-top">
+                                    <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight mb-2">
+                                        Teen Champions <span class="bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">Pricing</span>
+                                    </h2>
+                                    <p class="text-sm text-white/70 font-normal mb-3">
+                                        Academic excellence and life productivity mastery
+                                    </p>
+                                    <button onclick="if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 768){window.location.href='mobile.html#choose-program'}else{window.location.href='index.html#registration-form'}" class="bg-teal-500/20 border border-teal-400/50 rounded-lg px-3 py-1.5 text-white text-xs font-semibold hover:bg-teal-500/30 hover:border-teal-400 transition-all">
+                                        Register Now <span class="arrow-roll">→</span>
+                                    </button>
+                                </th>
+                                <th class="p-3 text-center">
+                                    <div class="text-white font-bold text-sm mb-1">Free Trial</div>
+                                    <div class="text-purple-300 text-lg font-extrabold">₪0</div>
+                                </th>
+                                <th class="p-3 text-center">
+                                    <div class="text-white font-bold text-sm mb-1">Monthly</div>
+                                    <div class="text-white/50 line-through text-xs mb-1">₪874</div>
+                                    <div class="text-teal-300 text-lg font-extrabold">₪699<span class="text-xs">/mo</span></div>
+                                    <div class="text-xs text-teal-400 mt-1">Save 20%</div>
+                                </th>
+                                <th class="p-3 text-center bg-amber-500/10 rounded-t-xl">
+                                    <div class="inline-block bg-gradient-to-r from-amber-500 to-orange-500 text-white px-2 py-0.5 rounded-full text-xs font-bold mb-1">MOST POPULAR</div>
+                                    <div class="text-white font-bold text-sm mb-1">Quarterly</div>
+                                    <div class="text-white/50 line-through text-xs mb-1">₪749</div>
+                                    <div class="text-amber-300 text-lg font-extrabold">₪599<span class="text-xs">/mo</span></div>
+                                    <div class="text-xs text-amber-400 mt-1">Save 20%</div>
+                                </th>
+                                <th class="p-3 text-center">
+                                    <div class="text-white font-bold text-sm mb-1">Annual 💎</div>
+                                    <div class="text-white/50 line-through text-xs mb-1">₪686</div>
+                                    <div class="text-green-300 text-lg font-extrabold">₪549<span class="text-xs">/mo</span></div>
+                                    <div class="text-xs text-green-400 mt-1">Save 20%</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-white/80 text-sm">
+                            <!-- Copy all feature rows from Young Explorers -->
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Number of Sessions</td>
+                                <td class="p-2 text-center">2 lessons</td>
+                                <td class="p-2 text-center">4 per month</td>
+                                <td class="p-2 text-center bg-amber-500/5">4 per month</td>
+                                <td class="p-2 text-center">4 per month</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Session Length</td>
+                                <td class="p-2 text-center">90 minutes</td>
+                                <td class="p-2 text-center">90 minutes</td>
+                                <td class="p-2 text-center bg-amber-500/5">90 minutes</td>
+                                <td class="p-2 text-center">90 minutes</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Group Size</td>
+                                <td class="p-2 text-center">Max 12</td>
+                                <td class="p-2 text-center">Max 12</td>
+                                <td class="p-2 text-center bg-amber-500/5">Max 12</td>
+                                <td class="p-2 text-center">Max 12</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">ChatGPT</td>
+                                <td class="p-2 text-center">✓ Free</td>
+                                <td class="p-2 text-center">✓ Pro</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                                <td class="p-2 text-center">✓ Pro</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Claude</td>
+                                <td class="p-2 text-center">✓ Free</td>
+                                <td class="p-2 text-center">✓ Pro</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                                <td class="p-2 text-center">✓ Pro</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Midjourney</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✓ Pro</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                                <td class="p-2 text-center">✓ Pro</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">AI Tools - Outside Sessions</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                <td class="p-2 text-center">✓</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Parent WhatsApp Group</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✓</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                <td class="p-2 text-center">✓</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Discord Community Channel</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✓</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                <td class="p-2 text-center">✓</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Resource Library</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                <td class="p-2 text-center">✓</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Digital Portfolio</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓ Professional</td>
+                                <td class="p-2 text-center">✓ Premium + video</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Priority Wait List</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                <td class="p-2 text-center">✓</td>
+                            </tr>
+                            <!-- Additional row for Teen Champions: 1-on-1 Coaching -->
+                            <tr class="border-b border-white/5 bg-teal-500/5">
+                                <td class="p-2 font-medium text-teal-300">1-on-1 Coaching Sessions</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center bg-amber-500/5">1 per quarter</td>
+                                <td class="p-2 text-center">2 per quarter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Leaders Pricing Table (14-18) - Hidden by default -->
+        <section id="pricing-professional-leaders" class="pricing-table-container py-8 px-4" style="display: none;">
+            <div class="max-w-5xl mx-auto">
+
+                <!-- Back Navigation -->
+                <div class="mb-6 text-center fade-in-up">
+                    <button onclick="backToAgeSelector()"
+                        class="text-amber-400 hover:text-amber-300 text-sm font-medium
+                        transition-colors inline-flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Programs
+                    </button>
+                </div>
+
+                <!-- Pricing Table -->
+                <div class="overflow-x-auto fade-in-up">
+                    <table class="pricing-table w-full bg-black/40 backdrop-blur-lg rounded-xl border border-amber-200/30" style="table-layout: fixed;">
+                        <colgroup>
+                            <col style="width: 35%;">
+                            <col style="width: 16.25%;">
+                            <col style="width: 16.25%;">
+                            <col style="width: 16.25%;">
+                            <col style="width: 16.25%;">
+                        </colgroup>
+                        <thead>
+                            <tr class="border-b border-white/10">
+                                <th class="text-left p-3 align-top">
+                                    <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight mb-2">
+                                        Professional Leaders <span class="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">Pricing</span>
+                                    </h2>
+                                    <p class="text-sm text-white/70 font-normal mb-3">
+                                        College applications, business launch, and career preparation
+                                    </p>
+                                    <button onclick="if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 768){window.location.href='mobile.html#choose-program'}else{window.location.href='index.html#registration-form'}" class="bg-amber-500/20 border border-amber-400/50 rounded-lg px-3 py-1.5 text-white text-xs font-semibold hover:bg-amber-500/30 hover:border-amber-400 transition-all">
+                                        Register Now <span class="arrow-roll">→</span>
+                                    </button>
+                                </th>
+                                <th class="p-3 text-center">
+                                    <div class="text-white font-bold text-sm mb-1">Free Trial</div>
+                                    <div class="text-purple-300 text-lg font-extrabold">₪0</div>
+                                </th>
+                                <th class="p-3 text-center">
+                                    <div class="text-white font-bold text-sm mb-1">Monthly</div>
+                                    <div class="text-white/50 line-through text-xs mb-1">₪1,061</div>
+                                    <div class="text-amber-300 text-lg font-extrabold">₪849<span class="text-xs">/mo</span></div>
+                                    <div class="text-xs text-amber-400 mt-1">Save 20%</div>
+                                </th>
+                                <th class="p-3 text-center">
+                                    <div class="text-white font-bold text-sm mb-1">Quarterly</div>
+                                    <div class="text-white/50 line-through text-xs mb-1">₪911</div>
+                                    <div class="text-orange-300 text-lg font-extrabold">₪729<span class="text-xs">/mo</span></div>
+                                    <div class="text-xs text-orange-400 mt-1">Save 20%</div>
+                                </th>
+                                <th class="p-3 text-center bg-amber-500/10 rounded-t-xl">
+                                    <div class="inline-block bg-gradient-to-r from-amber-500 to-orange-500 text-white px-2 py-0.5 rounded-full text-xs font-bold mb-1">MOST POPULAR</div>
+                                    <div class="text-white font-bold text-sm mb-1">Annual 💎</div>
+                                    <div class="text-white/50 line-through text-xs mb-1">₪811</div>
+                                    <div class="text-green-300 text-lg font-extrabold">₪649<span class="text-xs">/mo</span></div>
+                                    <div class="text-xs text-green-400 mt-1">Save 20%</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-white/80 text-sm">
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Number of Sessions</td>
+                                <td class="p-2 text-center">2 lessons</td>
+                                <td class="p-2 text-center">4 per month</td>
+                                <td class="p-2 text-center">4 per month</td>
+                                <td class="p-2 text-center bg-amber-500/5">4 per month</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Session Length</td>
+                                <td class="p-2 text-center">90 minutes</td>
+                                <td class="p-2 text-center">90 minutes</td>
+                                <td class="p-2 text-center">90 minutes</td>
+                                <td class="p-2 text-center bg-amber-500/5">90 minutes</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Group Size</td>
+                                <td class="p-2 text-center">Max 12</td>
+                                <td class="p-2 text-center">Max 10</td>
+                                <td class="p-2 text-center">Max 10</td>
+                                <td class="p-2 text-center bg-amber-500/5">Max 10</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">ChatGPT</td>
+                                <td class="p-2 text-center">✓ Free</td>
+                                <td class="p-2 text-center">✓ Pro</td>
+                                <td class="p-2 text-center">✓ Pro</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Claude</td>
+                                <td class="p-2 text-center">✓ Free</td>
+                                <td class="p-2 text-center">✓ Pro</td>
+                                <td class="p-2 text-center">✓ Pro</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Midjourney</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✓ Pro</td>
+                                <td class="p-2 text-center">✓ Pro</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">AI Tools - Outside Sessions</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✓</td>
+                                <td class="p-2 text-center">✓</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Parent WhatsApp Group</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✓</td>
+                                <td class="p-2 text-center">✓</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Discord Community Channel</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✓</td>
+                                <td class="p-2 text-center">✓</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Resource Library</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✓</td>
+                                <td class="p-2 text-center">✓</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Digital Portfolio</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✓ Professional</td>
+                                <td class="p-2 text-center">✓ Professional + video</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓ Premium + video</td>
+                            </tr>
+                            <tr class="border-b border-white/5">
+                                <td class="p-2 font-medium text-white">Priority Wait List</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✓</td>
+                                <td class="p-2 text-center">✓</td>
+                                <td class="p-2 text-center bg-amber-500/5">✓</td>
+                            </tr>
+                            <!-- Premium features for Professional Leaders -->
+                            <tr class="border-b border-white/5 bg-amber-500/5">
+                                <td class="p-2 font-medium text-amber-300">1-on-1 Coaching Sessions</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">1 per month</td>
+                                <td class="p-2 text-center">2 per month</td>
+                                <td class="p-2 text-center bg-amber-500/10">3 per month</td>
+                            </tr>
+                            <tr class="border-b border-white/5 bg-amber-500/5">
+                                <td class="p-2 font-medium text-amber-300">College Essay Reviews</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✓ Unlimited</td>
+                                <td class="p-2 text-center bg-amber-500/10">✓ Unlimited</td>
+                            </tr>
+                            <tr class="border-b border-white/5 bg-amber-500/5">
+                                <td class="p-2 font-medium text-amber-300">Business Mentor Access</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✓</td>
+                                <td class="p-2 text-center bg-amber-500/10">✓ Priority</td>
+                            </tr>
+                            <tr class="border-b border-white/5 bg-amber-500/5">
+                                <td class="p-2 font-medium text-amber-300">Professional Portfolio Development</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✗</td>
+                                <td class="p-2 text-center">✓</td>
+                                <td class="p-2 text-center bg-amber-500/10">✓ Premium</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Value Callout -->
+                <div class="mt-6 text-center fade-in-up">
+                    <div class="inline-block bg-amber-500/20 border border-amber-400/50 rounded-xl px-6 py-3">
+                        <p class="text-sm text-white/90">
+                            <span class="font-bold text-amber-300">Includes:</span>
+                            College counseling support (₪10,000+ value) • Business mentorship •
+                            Professional career guidance
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Multi-Child Discount Banner -->
         <section class="py-12 px-4">
             <div class="max-w-4xl mx-auto">
@@ -644,6 +1190,74 @@
 
     <!-- Cursor and Animation Scripts -->
     <script>
+        // ==========================================
+        // PRICING CONFIGURATION DATA
+        // ==========================================
+        const PRICING_CONFIG = {
+            'young-explorers': {
+                ageRange: '8-10',
+                name: 'Young Explorers',
+                tagline: 'Building creativity, organization, and AI confidence',
+                pricing: {
+                    monthly: { original: 749, early: 599 },
+                    quarterly: { original: 649, early: 519 },
+                    annual: { original: 599, early: 479 }
+                },
+                mostPopular: 'quarterly',
+                groupSize: 12,
+                features: {
+                    aiToolsOutside: { monthly: false, quarterly: true, annual: true },
+                    coaching: null,
+                    essayReviews: false,
+                    businessMentor: false
+                }
+            },
+            'teen-champions': {
+                ageRange: '11-13',
+                name: 'Teen Champions',
+                tagline: 'Academic excellence and life productivity mastery',
+                pricing: {
+                    monthly: { original: 874, early: 699 },
+                    quarterly: { original: 749, early: 599 },
+                    annual: { original: 686, early: 549 }
+                },
+                mostPopular: 'quarterly',
+                groupSize: 12,
+                features: {
+                    aiToolsOutside: { monthly: false, quarterly: true, annual: true },
+                    coaching: { quarterly: '1 per quarter', annual: '2 per quarter' },
+                    essayReviews: false,
+                    businessMentor: false
+                }
+            },
+            'professional-leaders': {
+                ageRange: '14-18',
+                name: 'Professional Leaders',
+                tagline: 'College applications, business launch, and career preparation',
+                pricing: {
+                    monthly: { original: 1061, early: 849 },
+                    quarterly: { original: 911, early: 729 },
+                    annual: { original: 811, early: 649 }
+                },
+                mostPopular: 'annual',
+                groupSize: 10,
+                features: {
+                    aiToolsOutside: { monthly: true, quarterly: true, annual: true },
+                    coaching: { monthly: '1 per month', quarterly: '2 per month', annual: '3 per month' },
+                    essayReviews: { quarterly: true, annual: true },
+                    businessMentor: { quarterly: true, annual: 'priority' },
+                    professionalPortfolio: { quarterly: true, annual: 'premium' }
+                },
+                valueCallout: 'Includes college counseling support (₪10,000+ value) • Business mentorship • Professional career guidance'
+            }
+        };
+
+        const FAMILY_DISCOUNTS = {
+            2: { second: 0.10 },
+            3: { second: 0.10, third: 0.15 },
+            4: { second: 0.10, third: 0.15, fourth: 0.20 }
+        };
+
         // Countdown Timer
         function updateCountdown() {
             // Set the date we're counting down to (December 16, 2025, 23:59:59)
