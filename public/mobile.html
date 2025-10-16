@@ -2485,12 +2485,13 @@
 
                 console.log(`✅ Updated children array:`, familyData.children);
 
+                // Regenerate child forms
+                generateChildFormsStep1();
+
                 // Update pricing if duration is already selected
                 if (familyData.bulkDuration) {
                     updateFamilyPricing();
                 }
-
-                validateStep1Family();
             } else {
                 console.log(`❌ Invalid child count: ${newCount}. Must be between 1 and 5.`);
             }
@@ -2695,7 +2696,7 @@
             familyData.children[index][field] = value;
             console.log(`📝 Updated child ${index + 1} ${field}:`, value);
             console.log('Updated children data:', familyData.children);
-            validateStep2();
+            validateStep1();
             // If we're on step 3, also validate step 3
             if (currentStep === 3) {
                 validateStep3();
@@ -2707,18 +2708,22 @@
             console.log(`👶 Selected age group for child ${childIndex + 1}:`, ageGroup);
 
             // Update UI for this child's age group buttons
-            document.querySelectorAll(`.child-age-btn-${childIndex}`).forEach(btn => {
+            document.querySelectorAll(`.age-group-btn-${childIndex}`).forEach(btn => {
                 btn.classList.remove('border-cyan-400', 'bg-cyan-500/10');
                 btn.classList.add('border-amber-200/30');
-                btn.querySelector('.w-2').classList.add('opacity-0');
+                const indicator = btn.querySelector('.w-2, .w-2\\.5');
+                if (indicator) indicator.classList.add('opacity-0');
             });
 
-            const selectedBtn = document.querySelector(`.child-age-btn-${childIndex}[data-age="${ageGroup}"]`);
-            selectedBtn.classList.remove('border-amber-200/30');
-            selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/10');
-            selectedBtn.querySelector('.w-2').classList.remove('opacity-0');
+            const selectedBtn = document.querySelector(`.age-group-btn-${childIndex}[data-age="${ageGroup}"]`);
+            if (selectedBtn) {
+                selectedBtn.classList.remove('border-amber-200/30');
+                selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/10');
+                const indicator = selectedBtn.querySelector('.w-2, .w-2\\.5');
+                if (indicator) indicator.classList.remove('opacity-0');
+            }
 
-            validateStep2();
+            validateStep1();
             // If we're on step 3, also validate step 3
             if (currentStep === 3) {
                 validateStep3();
@@ -2753,6 +2758,104 @@
 
             continueBtn.disabled = !allValid;
         }
+
+        // Step 1 Function - Generate Child Forms
+        function generateChildFormsStep1() {
+            const container = document.getElementById('children-forms-step1');
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            for (let i = 0; i < familyData.childCount; i++) {
+                const childForm = document.createElement('div');
+                childForm.className = 'bg-amber-950/20 border border-amber-200/30 rounded-xl p-4 space-y-4';
+
+                const removeButton = familyData.childCount > 1 ?
+                    `<button type="button" onclick="removeChild(${i})" class="text-red-400 hover:text-red-300 text-sm font-medium transition-colors">Remove</button>` : '';
+
+                childForm.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-amber-200/20 pb-3">
+                        <h4 class="text-lg font-semibold text-white">Child ${i + 1}</h4>
+                        ${removeButton}
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-semibold text-amber-100 block mb-2">Child's Name</label>
+                        <input type="text" id="child-name-${i}" placeholder="Enter child's name"
+                               value="${familyData.children[i]?.name || ''}"
+                               oninput="updateChildData(${i}, 'name', this.value)"
+                               class="w-full bg-amber-950/40 border border-amber-200/30 rounded-lg px-4 py-3 text-white placeholder-amber-300/50 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent">
+                    </div>
+
+                    <div>
+                        <label class="text-sm font-semibold text-amber-100 block mb-2">Age Group</label>
+                        <div class="grid grid-cols-1 gap-3">
+                            <button type="button" onclick="selectChildAgeGroup(${i}, 'young')"
+                                    class="age-group-btn-${i} p-3 bg-amber-950/40 border ${familyData.children[i]?.ageGroup === 'young' ? 'border-cyan-400 bg-cyan-500/10' : 'border-amber-200/30'} rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="young">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="text-base font-semibold text-white">Young Explorers</div>
+                                        <div class="text-xs text-white/60">Ages 8-10 • Sundays 16:00-17:00</div>
+                                        <div class="text-xs text-cyan-300 mt-1">₪599/mo • ₪519/qtr • ₪479/yr</div>
+                                    </div>
+                                    <div class="w-5 h-5 border-2 border-amber-300 rounded-full flex items-center justify-center">
+                                        <div class="w-2.5 h-2.5 bg-cyan-400 rounded-full ${familyData.children[i]?.ageGroup === 'young' ? '' : 'opacity-0'} transition-opacity"></div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button type="button" onclick="selectChildAgeGroup(${i}, 'tech')"
+                                    class="age-group-btn-${i} p-3 bg-amber-950/40 border ${familyData.children[i]?.ageGroup === 'tech' ? 'border-cyan-400 bg-cyan-500/10' : 'border-amber-200/30'} rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="tech">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="text-base font-semibold text-white">Tech Champions</div>
+                                        <div class="text-xs text-white/60">Ages 11-13 • Sundays 17:30-18:45</div>
+                                        <div class="text-xs text-cyan-300 mt-1">₪699/mo • ₪599/qtr • ₪549/yr</div>
+                                    </div>
+                                    <div class="w-5 h-5 border-2 border-amber-300 rounded-full flex items-center justify-center">
+                                        <div class="w-2.5 h-2.5 bg-cyan-400 rounded-full ${familyData.children[i]?.ageGroup === 'tech' ? '' : 'opacity-0'} transition-opacity"></div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button type="button" onclick="selectChildAgeGroup(${i}, 'future')"
+                                    class="age-group-btn-${i} p-3 bg-amber-950/40 border ${familyData.children[i]?.ageGroup === 'future' ? 'border-cyan-400 bg-cyan-500/10' : 'border-amber-200/30'} rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="future">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="text-base font-semibold text-white">Future Leaders</div>
+                                        <div class="text-xs text-white/60">Ages 14-18 • Sundays 19:00-20:30</div>
+                                        <div class="text-xs text-cyan-300 mt-1">₪849/mo • ₪729/qtr • ₪649/yr</div>
+                                    </div>
+                                    <div class="w-5 h-5 border-2 border-amber-300 rounded-full flex items-center justify-center">
+                                        <div class="w-2.5 h-2.5 bg-cyan-400 rounded-full ${familyData.children[i]?.ageGroup === 'future' ? '' : 'opacity-0'} transition-opacity"></div>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(childForm);
+            }
+
+            validateStep1();
+        }
+
+        function removeChild(index) {
+            if (familyData.childCount <= 1) return;
+            familyData.childCount--;
+            familyData.children.splice(index, 1);
+            document.getElementById('child-count').textContent = familyData.childCount;
+            const pluralEl = document.getElementById('child-plural');
+            if (pluralEl) pluralEl.textContent = familyData.childCount > 1 ? 'ren' : '';
+            generateChildFormsStep1();
+            validateStep1();
+        }
+
+        // Initialize Step 1 on load
+        document.addEventListener('DOMContentLoaded', function() {
+            generateChildFormsStep1();
+        });
 
         // Step 2 Functions (Payment Plan Selection)
         function generateStep2Summary() {
