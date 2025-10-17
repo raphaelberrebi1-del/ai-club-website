@@ -691,15 +691,7 @@
             </div>
 
             <!-- Young Explorers (8-10) Pricing Table -->
-            <div id="young-explorers-table" class="max-w-6xl mx-auto" style="display:none;">
-                <!-- Back Button -->
-                <button onclick="showAgeSelection()" class="mb-6 flex items-center gap-2 text-white hover:text-cyan-400 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 12H5M12 19l-7-7 7-7"/>
-                    </svg>
-                    <span class="font-semibold">Back to Age Selection</span>
-                </button>
-
+            <div id="young-explorers-table" class="max-w-6xl mx-auto mt-8" style="display:none;">
                 <div class="overflow-x-auto">
                     <table class="pricing-table w-full bg-black/40 backdrop-blur-lg rounded-xl border border-amber-200/30" style="table-layout: fixed;">
                         <colgroup>
@@ -830,15 +822,7 @@
             </div>
 
             <!-- Teen Champions (11-13) Pricing Table -->
-            <div id="teen-champions-table" class="max-w-6xl mx-auto" style="display:none;">
-                <!-- Back Button -->
-                <button onclick="showAgeSelection()" class="mb-6 flex items-center gap-2 text-white hover:text-cyan-400 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 12H5M12 19l-7-7 7-7"/>
-                    </svg>
-                    <span class="font-semibold">Back to Age Selection</span>
-                </button>
-
+            <div id="teen-champions-table" class="max-w-6xl mx-auto mt-8" style="display:none;">
                 <div class="overflow-x-auto">
                     <table class="pricing-table w-full bg-black/40 backdrop-blur-lg rounded-xl border border-amber-200/30" style="table-layout: fixed;">
                         <colgroup>
@@ -970,15 +954,7 @@
             </div>
 
             <!-- Professional Leaders (14-18) Pricing Table -->
-            <div id="professional-leaders-table" class="max-w-6xl mx-auto" style="display:none;">
-                <!-- Back Button -->
-                <button onclick="showAgeSelection()" class="mb-6 flex items-center gap-2 text-white hover:text-cyan-400 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 12H5M12 19l-7-7 7-7"/>
-                    </svg>
-                    <span class="font-semibold">Back to Age Selection</span>
-                </button>
-
+            <div id="professional-leaders-table" class="max-w-6xl mx-auto mt-8" style="display:none;">
                 <div class="overflow-x-auto">
                     <table class="pricing-table w-full bg-black/40 backdrop-blur-lg rounded-xl border border-amber-200/30" style="table-layout: fixed;">
                         <colgroup>
@@ -1210,32 +1186,42 @@
 
         // Show/Hide functions for age-specific pricing tables
         function showPricingTable(ageGroup) {
-            // Hide age selection
-            document.getElementById('age-selection').style.display = 'none';
+            // Get all pricing tables
+            const youngExplorers = document.getElementById('young-explorers-table');
+            const teenChampions = document.getElementById('teen-champions-table');
+            const professionalLeaders = document.getElementById('professional-leaders-table');
+            const tables = [youngExplorers, teenChampions, professionalLeaders];
 
-            // Hide all pricing tables
-            document.getElementById('young-explorers-table').style.display = 'none';
-            document.getElementById('teen-champions-table').style.display = 'none';
-            document.getElementById('professional-leaders-table').style.display = 'none';
+            // Hide all tables with fade-out
+            tables.forEach(table => {
+                if (table.style.display === 'block') {
+                    table.style.opacity = '0';
+                    setTimeout(() => {
+                        table.style.display = 'none';
+                    }, 300);
+                }
+            });
 
-            // Show selected pricing table
-            document.getElementById(ageGroup + '-table').style.display = 'block';
+            // Show selected table with fade-in after brief delay
+            const selectedTable = document.getElementById(ageGroup + '-table');
+            setTimeout(() => {
+                selectedTable.style.display = 'block';
+                selectedTable.style.opacity = '0';
+                selectedTable.style.transform = 'translateY(20px)';
 
-            // Scroll to top of pricing section
-            document.querySelector('.relative.px-6.py-16.min-h-screen').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+                // Trigger reflow
+                selectedTable.offsetHeight;
 
-        function showAgeSelection() {
-            // Hide all pricing tables
-            document.getElementById('young-explorers-table').style.display = 'none';
-            document.getElementById('teen-champions-table').style.display = 'none';
-            document.getElementById('professional-leaders-table').style.display = 'none';
+                // Animate in
+                selectedTable.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                selectedTable.style.opacity = '1';
+                selectedTable.style.transform = 'translateY(0)';
 
-            // Show age selection
-            document.getElementById('age-selection').style.display = 'block';
-
-            // Scroll to top of pricing section
-            document.querySelector('.relative.px-6.py-16.min-h-screen').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Smooth scroll to table
+                setTimeout(() => {
+                    selectedTable.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }, 350);
         }
 
         // Column hover effect for pricing table
