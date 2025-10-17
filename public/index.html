@@ -3238,7 +3238,7 @@
             // Apply family discounts
             if (wizardData.childCount >= 2) {
                 const discountRate = wizardData.childCount === 2 ? 0.10 : 0.15;
-                const discount = Math.round((AGE_PRICING[wizardData.children[1].ageGroup][wizardData.bulkDuration] * discountRate));
+                const discount = Math.round(total * discountRate);
                 total -= discount;
 
                 breakdownHTML += `
@@ -3286,8 +3286,7 @@
             // Apply family discounts
             if (wizardData.childCount >= 2 && wizardData.children[1]?.ageGroup) {
                 const discountRate = wizardData.childCount === 2 ? 0.10 : 0.15;
-                const secondChildPrice = AGE_PRICING[wizardData.children[1].ageGroup][wizardData.bulkDuration];
-                const discount = Math.round(secondChildPrice * discountRate);
+                const discount = Math.round(totalMonthlyPrice * discountRate);
                 totalMonthlyPrice -= discount;
             }
 
