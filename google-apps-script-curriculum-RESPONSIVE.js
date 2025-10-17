@@ -7,6 +7,16 @@
 //
 // READY TO COPY-PASTE INTO GOOGLE APPS SCRIPT AT: https://script.google.com
 
+// Handle preflight OPTIONS requests (CORS)
+function doGet(e) {
+  const output = ContentService.createTextOutput(JSON.stringify({ status: 'ok' }));
+  output.setMimeType(ContentService.MimeType.JSON);
+  output.setHeader('Access-Control-Allow-Origin', '*');
+  output.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+  output.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  return output;
+}
+
 function doPost(e) {
   try {
     console.log('📥 Curriculum download request received');
@@ -74,7 +84,7 @@ function doPost(e) {
 
     console.log('✅ Curriculum download processed successfully');
 
-    return ContentService
+    const output = ContentService
       .createTextOutput(JSON.stringify({
         success: true,
         curriculumUrl: curriculumUrl,
@@ -82,16 +92,28 @@ function doPost(e) {
       }))
       .setMimeType(ContentService.MimeType.JSON);
 
+    output.setHeader('Access-Control-Allow-Origin', '*');
+    output.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+    output.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    return output;
+
   } catch (error) {
     console.error('❌ Error processing curriculum download:', error.toString());
     console.error('❌ Error stack:', error.stack);
 
-    return ContentService
+    const errorOutput = ContentService
       .createTextOutput(JSON.stringify({
         success: false,
         error: error.toString()
       }))
       .setMimeType(ContentService.MimeType.JSON);
+
+    errorOutput.setHeader('Access-Control-Allow-Origin', '*');
+    errorOutput.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+    errorOutput.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    return errorOutput;
   }
 }
 
