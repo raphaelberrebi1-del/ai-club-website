@@ -1838,7 +1838,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
                             </div>
                             <div>
-                                <h3 class="text-xl md:text-2xl font-bold text-white">Young Explorers</h3>
+                                <h3 class="text-xl md:text-2xl font-bold text-white">Young Innovators</h3>
                                 <p class="text-cyan-200 text-sm md:text-base">Ages 8–13</p>
                             </div>
                         </div>
@@ -3022,7 +3022,7 @@
                                     class="age-group-btn-${i} p-4 bg-amber-950/40 border ${wizardData.children[i]?.ageGroup === 'young' ? 'border-cyan-400 bg-cyan-500/10' : 'border-amber-200/30'} rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="young">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-lg font-semibold text-white">Young Explorers</div>
+                                        <div class="text-lg font-semibold text-white">Young Innovators</div>
                                         <div class="text-sm text-white/60">Ages 8-10 • Sundays 16:00-17:00</div>
                                         <div class="text-xs text-cyan-300 mt-1">₪599/mo • ₪519/qtr • ₪479/yr</div>
                                     </div>
@@ -3139,7 +3139,7 @@
             let summaryHTML = `<div class="text-base font-medium text-white mb-2">${wizardData.childCount} child${wizardData.childCount > 1 ? 'ren' : ''} enrolled:</div>`;
 
             wizardData.children.forEach((child, i) => {
-                const ageGroupName = child.ageGroup === 'young' ? 'Young Explorers' :
+                const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators' :
                                     child.ageGroup === 'tech' ? 'Tech Champions' :
                                     'Future Leaders';
                 const ageRange = child.ageGroup === 'young' ? '8-10' :
@@ -3223,7 +3223,7 @@
                 const price = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
                 total += price;
 
-                const ageGroupName = child.ageGroup === 'young' ? 'Young Explorers' :
+                const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators' :
                                     child.ageGroup === 'tech' ? 'Tech Champions' :
                                     'Future Leaders';
 
@@ -3300,7 +3300,7 @@
             `;
 
             wizardData.children.forEach((child, i) => {
-                const ageGroupName = child.ageGroup === 'young' ? 'Young Explorers' :
+                const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators' :
                                     child.ageGroup === 'tech' ? 'Tech Champions' :
                                     'Future Leaders';
                 const ageRange = child.ageGroup === 'young' ? '8-10' :
@@ -3444,7 +3444,7 @@
                                 <label class="text-sm font-medium text-white/90">Select Age Group</label>
                                 <div class="grid grid-cols-1 gap-2 mt-2">
                                     <button type="button" onclick="selectMainFormAgeGroup(this, 'young', 599, ${mainFormChildCount}, event)" class="main-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Young Explorers (8-10)</div>
+                                        <div class="font-medium text-white">Young Innovators (8-10)</div>
                                         <div class="text-xs text-white/60">₪599/month • Sundays 16:00-17:00</div>
                                     </button>
                                     <button type="button" onclick="selectMainFormAgeGroup(this, 'tech', 599, ${mainFormChildCount}, event)" class="main-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
@@ -3711,7 +3711,7 @@
                                 <label class="text-sm font-medium text-white/90">Select Age Group</label>
                                 <div class="grid grid-cols-1 gap-2 mt-2">
                                     <button type="button" onclick="selectModalAgeGroup1(this, 'young', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Young Explorers (8-10)</div>
+                                        <div class="font-medium text-white">Young Innovators (8-10)</div>
                                         <div class="text-xs text-white/60">₪599/month • Sundays 16:00-17:00</div>
                                     </button>
                                     <button type="button" onclick="selectModalAgeGroup1(this, 'tech', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
@@ -3782,7 +3782,7 @@
                                 <label class="text-sm font-medium text-white/90">Select Age Group</label>
                                 <div class="grid grid-cols-1 gap-2 mt-2">
                                     <button type="button" onclick="selectModalAgeGroup2(this, 'young', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Young Explorers (8-10)</div>
+                                        <div class="font-medium text-white">Young Innovators (8-10)</div>
                                         <div class="text-xs text-white/60">₪599/month • Sundays 16:00-17:00</div>
                                     </button>
                                     <button type="button" onclick="selectModalAgeGroup2(this, 'tech', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
@@ -3853,7 +3853,7 @@
                             <label class="text-sm font-medium text-white/90">Select Age Group</label>
                             <div class="grid grid-cols-1 gap-2 mt-2">
                                 <button type="button" onclick="selectModalAgeGroup(this, 'young', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                    <div class="font-medium text-white">Young Explorers (8-10)</div>
+                                    <div class="font-medium text-white">Young Innovators (8-10)</div>
                                     <div class="text-xs text-white/60">₪599/month • Sundays 16:00-17:00</div>
                                 </button>
                                 <button type="button" onclick="selectModalAgeGroup(this, 'tech', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
@@ -4107,7 +4107,7 @@
             wizardData.children.forEach((child, index) => {
                 if (child.name && child.ageGroup) {
                     // Map age group to program name
-                    const programName = child.ageGroup === 'young' ? 'Young Explorers (8-10)' :
+                    const programName = child.ageGroup === 'young' ? 'Young Innovators (8-10)' :
                                        child.ageGroup === 'tech' ? 'Tech Champions (11-13)' :
                                        'Future Leaders (14-18)';
 
