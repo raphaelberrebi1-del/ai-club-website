@@ -553,17 +553,6 @@
 
         <!-- Pricing Section -->
         <section class="relative px-6 py-16 min-h-screen">
-            <!-- Hero Header -->
-            <div class="max-w-6xl mx-auto text-center mb-12">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4 fade-in-up">
-                    <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">Pricing</span> & Plans
-                </h1>
-                <div class="inline-block bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-400/40 rounded-lg px-6 py-3 mb-6 fade-in-up delay-1">
-                    <div class="text-red-300 text-lg font-bold mb-1">⏰ 20% OFF Early Bird Pricing</div>
-                    <div class="text-amber-300 text-sm">Lock in founders pricing before regular rates begin</div>
-                </div>
-            </div>
-
             <!-- Age Group Selection Cards -->
             <div class="max-w-6xl mx-auto mb-16">
                 <div class="text-center mb-10 fade-in-up delay-2">
@@ -932,6 +921,39 @@
         // Start countdown when page loads
         document.addEventListener('DOMContentLoaded', function() {
             updateCountdown();
+        });
+
+        // Column hover effect for pricing table
+        document.addEventListener('DOMContentLoaded', function() {
+            const table = document.querySelector('.pricing-table');
+            if (table) {
+                const rows = table.querySelectorAll('tr');
+
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('th, td');
+                    cells.forEach((cell, index) => {
+                        cell.addEventListener('mouseenter', function() {
+                            // Add hover class to all cells in the same column
+                            rows.forEach(r => {
+                                const targetCell = r.querySelectorAll('th, td')[index];
+                                if (targetCell) {
+                                    targetCell.classList.add('column-hover');
+                                }
+                            });
+                        });
+
+                        cell.addEventListener('mouseleave', function() {
+                            // Remove hover class from all cells in the same column
+                            rows.forEach(r => {
+                                const targetCell = r.querySelectorAll('th, td')[index];
+                                if (targetCell) {
+                                    targetCell.classList.remove('column-hover');
+                                }
+                            });
+                        });
+                    });
+                });
+            }
         });
 
         // Chevron Cursor with Ribbon Trail
