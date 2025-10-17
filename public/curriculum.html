@@ -328,6 +328,13 @@
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease-out;
+            cursor: auto !important;
+        }
+
+        /* Override global cursor: none for modal */
+        .modal-overlay *,
+        .modal-overlay * * {
+            cursor: auto !important;
         }
 
         .modal-overlay.show {
@@ -372,7 +379,7 @@
             align-items: center;
             justify-content: center;
             color: white;
-            cursor: pointer;
+            cursor: pointer !important;
             transition: all 0.2s;
         }
 
