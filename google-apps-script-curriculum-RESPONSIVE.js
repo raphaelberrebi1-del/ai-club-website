@@ -129,7 +129,7 @@ function sendCurriculumEmail(email, name, program, curriculumUrl) {
 
   const programName = programNames[program] || 'AI Club';
 
-  const subject = `🤖 Your Complete ${programName} Curriculum - AI Kidz Club`;
+  const subject = `Your Complete ${programName} Curriculum - AI Kidz Club`;
 
   // Get the curriculum HTML based on program type
   console.log('📄 Generating curriculum HTML for:', programName);
@@ -395,8 +395,8 @@ function getYoungExplorersHTML() {
         }
 
         /* Desktop button visibility (default) */
-        .desktop-only-button { display: inline-block; }
-        .mobile-only-button { display: none; }
+        .desktop-only-button { display: inline-block !important; }
+        .mobile-only-button { display: none !important; }
     </style>
 
 </head>
