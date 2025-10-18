@@ -15,7 +15,16 @@
 
 function doPost(e) {
   try {
-    console.log('🚀 doPost called with:', e.postData);
+    console.log('🚀 ========== doPost CALLED ==========');
+    console.log('🔍 DEBUG - e object keys:', Object.keys(e));
+    console.log('🔍 DEBUG - e.parameter:', JSON.stringify(e.parameter));
+    console.log('🔍 DEBUG - e.postData:', JSON.stringify(e.postData));
+
+    if (e.postData) {
+      console.log('🔍 DEBUG - e.postData.type:', e.postData.type);
+      console.log('🔍 DEBUG - e.postData.length:', e.postData.length);
+      console.log('🔍 DEBUG - e.postData.contents:', e.postData.contents);
+    }
 
     // Parse incoming data
     let data;
@@ -31,6 +40,11 @@ function doPost(e) {
     }
 
     console.log('📦 Parsed data:', JSON.stringify(data));
+    console.log('🔍 DEBUG - data.name:', data.name);
+    console.log('🔍 DEBUG - data.email:', data.email);
+    console.log('🔍 DEBUG - data.program:', data.program);
+    console.log('🔍 DEBUG - data.language:', data.language);
+    console.log('🔍 DEBUG - data.children:', data.children);
 
     // ========================================
     // ROUTING LOGIC: Check request type
@@ -185,6 +199,13 @@ function handleRegistration(e, data) {
 
 function handleCurriculumDownload(e, data) {
   try {
+    console.log('📥 ========== CURRICULUM DOWNLOAD HANDLER ==========');
+    console.log('🔍 DEBUG - Received data:', JSON.stringify(data));
+    console.log('🔍 DEBUG - data.name:', data.name);
+    console.log('🔍 DEBUG - data.email:', data.email);
+    console.log('🔍 DEBUG - data.program:', data.program);
+    console.log('🔍 DEBUG - data.source:', data.source);
+    console.log('🔍 DEBUG - data.language:', data.language);
     console.log('📥 Processing CURRICULUM DOWNLOAD request');
     console.log('📥 Language:', data.language || 'en (default)');
     console.log('📥 Program:', data.program);
