@@ -425,7 +425,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
 
                     <!-- Card 1: Young Innovators (8-10) -->
-                    <div class="group bg-black/40 backdrop-blur-lg rounded-xl p-8 border-2 border-white/20 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer">
+                    <div onclick="showPricingTable('young-innovators')" class="group bg-black/40 backdrop-blur-lg rounded-xl p-8 border-2 border-white/20 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
@@ -461,7 +461,7 @@
                     </div>
 
                     <!-- Card 2: Tech Explorers (11-13) -->
-                    <div class="group bg-black/40 backdrop-blur-lg rounded-xl p-8 border-2 border-white/20 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer">
+                    <div onclick="showPricingTable('tech-explorers')" class="group bg-black/40 backdrop-blur-lg rounded-xl p-8 border-2 border-white/20 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
@@ -500,7 +500,7 @@
                     </div>
 
                     <!-- Card 3: Future Leaders (14-18) -->
-                    <div class="group bg-black/40 backdrop-blur-lg rounded-xl p-8 border-2 border-amber-300/50 hover:border-amber-400/70 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer relative">
+                    <div onclick="showPricingTable('future-leaders')" class="group bg-black/40 backdrop-blur-lg rounded-xl p-8 border-2 border-amber-300/50 hover:border-amber-400/70 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer relative">
 
                         <!-- Premium Badge -->
                         <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
@@ -1251,6 +1251,34 @@
             mobileMenuButton.addEventListener('click', function() {
                 window.location.href = 'index-he.html';
             });
+        }
+
+        // Show Pricing Table based on age group
+        function showPricingTable(ageGroup) {
+            // Hide all pricing tables
+            document.getElementById('young-innovators-table').style.display = 'none';
+            document.getElementById('tech-explorers-table').style.display = 'none';
+            document.getElementById('future-leaders-table').style.display = 'none';
+
+            // Hide age selection cards
+            const ageSelection = document.querySelector('#age-selection');
+            if (ageSelection) {
+                ageSelection.style.display = 'none';
+            }
+
+            // Show selected pricing table
+            const selectedTable = document.getElementById(ageGroup + '-table');
+            if (selectedTable) {
+                selectedTable.style.display = 'block';
+
+                // Smooth scroll to the pricing table
+                setTimeout(() => {
+                    selectedTable.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest'
+                    });
+                }, 100);
+            }
         }
 
         // Initialize Lucide icons
