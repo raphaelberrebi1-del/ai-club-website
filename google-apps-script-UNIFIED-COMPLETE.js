@@ -14,6 +14,19 @@
 // ========================================
 
 function doPost(e) {
+  // Capture debug info for browser visibility
+  const debugInfo = {
+    eKeys: e ? Object.keys(e) : [],
+    hasParameter: !!(e && e.parameter),
+    hasPostData: !!(e && e.postData),
+    parameterKeys: e && e.parameter ? Object.keys(e.parameter) : [],
+    postDataType: e && e.postData ? e.postData.type : null,
+    postDataContents: e && e.postData ? e.postData.contents : null,
+    parsingMethod: null,
+    parsedData: null,
+    parseError: null
+  };
+
   try {
     console.log('🚀 ========== doPost CALLED ==========');
     console.log('🔍 DEBUG - e object keys:', Object.keys(e));
@@ -28,15 +41,24 @@ function doPost(e) {
 
     // Parse incoming data
     let data;
-    if (e.parameter && e.parameter.data) {
-      console.log('📦 Using parameter data (FormData method)');
-      data = JSON.parse(e.parameter.data);
-    } else if (e.postData && e.postData.contents) {
-      console.log('📦 Using postData contents (JSON method)');
-      data = JSON.parse(e.postData.contents);
-    } else {
-      console.error('❌ No data found in request');
-      throw new Error('No data received - check request format');
+    try {
+      if (e.parameter && e.parameter.data) {
+        console.log('📦 Using parameter data (FormData method)');
+        debugInfo.parsingMethod = 'e.parameter.data';
+        data = JSON.parse(e.parameter.data);
+      } else if (e.postData && e.postData.contents) {
+        console.log('📦 Using postData contents (JSON method)');
+        debugInfo.parsingMethod = 'e.postData.contents';
+        data = JSON.parse(e.postData.contents);
+      } else {
+        console.error('❌ No data found in request');
+        debugInfo.parseError = 'No data found in request';
+        throw new Error('No data received - check request format');
+      }
+      debugInfo.parsedData = data;
+    } catch (parseError) {
+      debugInfo.parseError = parseError.toString();
+      throw parseError;
     }
 
     console.log('📦 Parsed data:', JSON.stringify(data));
@@ -53,12 +75,30 @@ function doPost(e) {
     if (data.children) {
       // This is a REGISTRATION request
       console.log('🎯 ROUTING → Registration Handler');
-      return handleRegistration(e, data);
+      const result = handleRegistration(e, data);
+      // Add debug info to response during debugging
+      try {
+        const resultObj = JSON.parse(result.getContent());
+        resultObj.debug = debugInfo;
+        return ContentService.createTextOutput(JSON.stringify(resultObj))
+          .setMimeType(ContentService.MimeType.JSON);
+      } catch(e) {
+        return result; // Return original if can't parse
+      }
 
     } else if (data.program) {
       // This is a CURRICULUM DOWNLOAD request
       console.log('🎯 ROUTING → Curriculum Download Handler');
-      return handleCurriculumDownload(e, data);
+      const result = handleCurriculumDownload(e, data);
+      // Add debug info to response during debugging
+      try {
+        const resultObj = JSON.parse(result.getContent());
+        resultObj.debug = debugInfo;
+        return ContentService.createTextOutput(JSON.stringify(resultObj))
+          .setMimeType(ContentService.MimeType.JSON);
+      } catch(e) {
+        return result; // Return original if can't parse
+      }
 
     } else {
       throw new Error('Unknown request type - missing both children and program fields');
@@ -69,7 +109,8 @@ function doPost(e) {
     return ContentService
       .createTextOutput(JSON.stringify({
         success: false,
-        error: error.toString()
+        error: error.toString(),
+        debug: debugInfo  // Include debug info in error response for browser visibility
       }))
       .setMimeType(ContentService.MimeType.JSON);
   }

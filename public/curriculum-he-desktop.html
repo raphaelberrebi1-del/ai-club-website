@@ -1388,6 +1388,18 @@
 
                         const result = await response.json();
 
+                        // DEBUG: Log full response including debug info
+                        console.log('========== GOOGLE APPS SCRIPT RESPONSE ==========');
+                        console.log('Full Response:', JSON.stringify(result, null, 2));
+                        if (result.debug) {
+                            console.log('DEBUG INFO from Google Apps Script:');
+                            console.log('  - Post Data Contents:', result.debug.postDataContents);
+                            console.log('  - Parsing Method:', result.debug.parsingMethod);
+                            console.log('  - Parsed Data:', result.debug.parsedData);
+                            console.log('  - Parse Error:', result.debug.parseError);
+                        }
+                        console.log('=================================================');
+
                         if (result.success) {
                             // Show success modal
                             showSuccessModal(formData.email);
