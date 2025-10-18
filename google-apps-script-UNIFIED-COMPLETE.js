@@ -387,7 +387,7 @@ function sendCurriculumEmailHebrew(email, name, program, curriculumUrl) {
 
   const programName = programNames[program] || 'AI Kidz Club';
 
-  const subject = `🤖 תכנית הלימודים המלאה - ${programName} - AI Kidz Club`;
+  const subject = `תכנית הלימודים המלאה - ${programName} - AI Kidz Club`;
 
   // Get the HEBREW curriculum HTML based on program type
   console.log('📄 Generating Hebrew curriculum HTML for:', programName);
@@ -395,11 +395,11 @@ function sendCurriculumEmailHebrew(email, name, program, curriculumUrl) {
 
   try {
     if (program === 'young') {
-      htmlBody = getYoungExplorersHebrewHTML();
+      htmlBody = getYoungExplorersHTMLHebrew();
     } else if (program === 'tech') {
-      htmlBody = getTeenChampionsHebrewHTML();
+      htmlBody = getTeenChampionsHTMLHebrew();
     } else if (program === 'future') {
-      htmlBody = getFutureLeadersHebrewHTML();
+      htmlBody = getFutureLeadersHTMLHebrew();
     } else {
       throw new Error('Invalid program type');
     }
