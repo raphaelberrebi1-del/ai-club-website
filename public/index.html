@@ -4080,7 +4080,7 @@
         }
 
         // Configuration for Google Sheets integration
-        const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyd2JQh1w7_TjO2In9KJFt_U3lReXLv2ITJMyEoSrDiUQ3w6se0DtiOYo7_W_chgwNM5g/exec'; // Your deployed Web App URL
+        const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzBHIYBrnlPC9INxmrc8rwndL7jTvBl-PVW4QhTbQHAZ59CrUpShQzkRybA0HsQnUFdIg/exec'; // Your deployed Web App URL
 
         // Make it available globally for calendar widget
         window.GOOGLE_SHEETS_WEB_APP_URL = GOOGLE_SHEETS_WEB_APP_URL;
@@ -4139,6 +4139,7 @@
                 totalMonthlyPrice -= discount;
             }
             formData.totalPrice = Math.round(totalMonthlyPrice);
+            formData.language = 'en';  // English registration form
 
             // Validate form
             if (formData.children.length === 0) {

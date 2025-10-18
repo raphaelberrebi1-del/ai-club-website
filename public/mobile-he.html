@@ -1798,7 +1798,7 @@
         }
 
         // Configuration for Google Sheets integration
-        const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyd2JQh1w7_TjO2In9KJFt_U3lReXLv2ITJMyEoSrDiUQ3w6se0DtiOYo7_W_chgwNM5g/exec';
+        const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzBHIYBrnlPC9INxmrc8rwndL7jTvBl-PVW4QhTbQHAZ59CrUpShQzkRybA0HsQnUFdIg/exec';
 
         // Submit mobile registration
         async function submitMobileRegistration() {
@@ -3569,7 +3569,8 @@
                 })),
                 totalPrice: familyData.totalPrice,
                 paymentPlan: familyData.bulkDuration || 'monthly',
-                timestamp: new Date().toISOString()
+                timestamp: new Date().toISOString(),
+                language: 'he'  // Hebrew mobile registration form
             };
 
             console.log('Submitting family registration:', registrationData);
