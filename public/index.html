@@ -3072,8 +3072,18 @@
         function removeChild(index) {
             if (wizardData.childCount <= 1) return; // Don't allow removing the last child
 
-            wizardData.childCount--;
+            // Remove the child at the specified index
             wizardData.children.splice(index, 1);
+            wizardData.childCount--;
+
+            // Ensure children array matches the new count
+            // This prevents index misalignment after removal
+            wizardData.children = wizardData.children.slice(0, wizardData.childCount);
+
+            // Fill in any missing slots with empty objects
+            while (wizardData.children.length < wizardData.childCount) {
+                wizardData.children.push({ name: '', ageGroup: '' });
+            }
 
             // Update UI
             document.getElementById('child-count').textContent = wizardData.childCount;
