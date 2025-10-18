@@ -2976,7 +2976,7 @@
 
             wizardData.childCount = newCount;
             document.getElementById('child-count').textContent = newCount;
-            document.getElementById('child-plural').textContent = newCount > 1 ? 'ren' : '';
+            document.getElementById('child-plural').textContent = newCount > 1 ? 'ים' : '';
 
             // Initialize children array
             wizardData.children = Array(newCount).fill(null).map((_, i) => ({
@@ -2984,7 +2984,7 @@
                 ageGroup: wizardData.children[i]?.ageGroup || ''
             }));
 
-            updatePricingPreview();
+            generateChildFormsStep1();
             validateStep1();
         }
 
@@ -3175,6 +3175,11 @@
             if (pluralEl) pluralEl.textContent = wizardData.childCount > 1 ? 'ים' : '';
             generateChildFormsStep1();
             validateStep1();
+
+            // Update pricing if on step 2
+            if (wizardData.bulkDuration) {
+                updatePricingPreview();
+            }
         }
 
         function updateChildData(index, field, value) {
