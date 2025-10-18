@@ -307,79 +307,530 @@
                     </div>
                 </div>
 
-                <!-- Choose Your Plan Section -->
-                <div class="text-center mb-6 fade-in-up delay-1" data-scroll>
-                    <h3 class="text-3xl font-bold text-white tracking-tight mb-6">בחרו את התוכנית שלכם</h3>
+                <!-- Age Group Selection Cards -->
+                <div id="age-selection" class="max-w-6xl mx-auto mb-16">
+                    <div class="text-center mb-10 fade-in-up delay-2">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">
+                            בחרו את תוכנית הילד שלכם
+                        </h2>
+                        <p class="text-lg text-white/80">
+                            בחרו את קבוצת הגיל שמתאימה לילד שלכם
+                        </p>
+                    </div>
+
+                    <!-- Three Age Group Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in-up delay-3">
+
+                        <!-- Card 1: Young Innovators (8-10) -->
+                        <div onclick="showPricingTable('young-innovators')" class="group bg-black/40 backdrop-blur-lg rounded-xl p-6 border-2 border-white/20 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+                                        <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-cyan-400 text-lg font-bold">גילאי 8-10</div>
+                                    <div class="text-white font-semibold text-base">חדשנים צעירים</div>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-2 mb-4 text-sm text-white/80">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyan-400 mt-0.5">✓</span>
+                                    <span>פרויקטים יצירתיים עם AI</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyan-400 mt-0.5">✓</span>
+                                    <span>ארגון ומיומנויות למידה</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyan-400 mt-0.5">✓</span>
+                                    <span>למידה מעשית ומהנה</span>
+                                </li>
+                            </ul>
+
+                            <div class="text-center pt-4 border-t border-white/20">
+                                <span class="text-amber-400 font-semibold group-hover:text-amber-300 transition-colors">
+                                    ← צפה במחירים
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Tech Explorers (11-13) -->
+                        <div onclick="showPricingTable('tech-explorers')" class="group bg-black/40 backdrop-blur-lg rounded-xl p-6 border-2 border-white/20 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+                                        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+                                        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+                                        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+                                        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-purple-400 text-lg font-bold">גילאי 11-13</div>
+                                    <div class="text-white font-semibold text-base">חוקרי טכנולוגיה</div>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-2 mb-4 text-sm text-white/80">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-purple-400 mt-0.5">✓</span>
+                                    <span>מערכות מצוינות אקדמית</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-purple-400 mt-0.5">✓</span>
+                                    <span>שליטה בפרודוקטיביות אישית</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-purple-400 mt-0.5">✓</span>
+                                    <span>יישומים מהעולם האמיתי</span>
+                                </li>
+                            </ul>
+
+                            <div class="text-center pt-4 border-t border-white/20">
+                                <span class="text-amber-400 font-semibold group-hover:text-amber-300 transition-colors">
+                                    ← צפה במחירים
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Future Leaders (14-18) -->
+                        <div onclick="showPricingTable('future-leaders')" class="group bg-black/40 backdrop-blur-lg rounded-xl p-6 border-2 border-amber-300/50 hover:border-amber-400/70 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer relative">
+
+                            <!-- Premium Badge -->
+                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                                <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                                    PREMIUM
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+                                        <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-amber-400 text-lg font-bold">גילאי 14-18</div>
+                                    <div class="text-white font-semibold text-base">מנהיגי העתיד</div>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-2 mb-4 text-sm text-white/80">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-amber-400 mt-0.5">✓</span>
+                                    <span>תמיכה בבקשות לקולג'</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-amber-400 mt-0.5">✓</span>
+                                    <span>עסקים ויזמות</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-amber-400 mt-0.5">✓</span>
+                                    <span>הכנה לקריירה</span>
+                                </li>
+                            </ul>
+
+                            <div class="text-center pt-4 border-t border-white/20">
+                                <span class="text-amber-400 font-semibold group-hover:text-amber-300 transition-colors">
+                                    ← צפה במחירים
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
-                <!-- Unified Pricing Container -->
-                <div class="space-y-4 mb-8" id="pricing-plans">
-                    <!-- Monthly Plan -->
-                    <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-amber-200/30 fade-in-up delay-2" data-scroll>
-                        <div class="text-center">
-                            <h4 class="text-xl font-bold text-white mb-2">תוכנית חודשית</h4>
-                            <div class="flex items-center justify-center gap-3 mb-4">
-                                <div class="text-lg text-white/60 line-through">₪749</div>
-                                <div class="text-4xl font-bold text-cyan-300">₪599</div>
-                                <div class="text-sm text-white/70">/חודש לילד</div>
-                            </div>
-                            <div class="text-sm text-white/80 mb-2">מחיר רגיל: ₪749/חודש</div>
-                            <div class="bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full text-sm font-medium inline-block mb-4">
-                                הכי גמיש
-                            </div>
-                            <div class="text-sm text-white/70 space-y-1">
-                                <div>• תשלום חודש אחר חודש</div>
-                                <div>• ללא התחייבות לטווח ארוך</div>
-                                <div>• ביטול בכל עת עם הודעה של 30 יום</div>
-                            </div>
-                        </div>
+                <!-- Young Innovators (8-10) Pricing Table -->
+                <div id="young-innovators-table" class="max-w-6xl mx-auto mt-8" style="display:none;">
+                    <div class="overflow-x-auto">
+                        <table class="pricing-table w-full bg-black/40 backdrop-blur-lg rounded-xl border border-amber-200/30" style="table-layout: fixed;">
+                            <colgroup>
+                                <col style="width: 35%;">
+                                <col style="width: 16.25%;">
+                                <col style="width: 16.25%;">
+                                <col style="width: 16.25%;">
+                                <col style="width: 16.25%;">
+                            </colgroup>
+                            <thead>
+                                <tr class="border-b border-white/10">
+                                    <th class="text-right p-4 md:p-6 align-top">
+                                        <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight mb-2">
+                                            <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">חדשנים צעירים</span> (גילאי 8-10)
+                                        </h2>
+                                        <button onclick="if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 768){window.location.href='mobile-he.html#choose-program'}else{window.location.href='index-he.html#registration-form'}" class="bg-cyan-500/20 border border-cyan-400/50 rounded-lg px-3 py-1.5 text-white text-xs font-semibold hover:bg-cyan-500/30 hover:border-cyan-400 transition-all">
+                                            הירשם עכשיו ←
+                                        </button>
+                                    </th>
+                                    <th class="p-3 text-center">
+                                        <div class="text-white font-bold text-sm mb-1">ניסיון חינם</div>
+                                        <div class="text-purple-300 text-xl md:text-2xl font-extrabold">₪0</div>
+                                    </th>
+                                    <th class="p-3 text-center">
+                                        <div class="text-white font-bold text-sm mb-1">חודשי</div>
+                                        <div class="text-cyan-300 text-xl md:text-2xl font-extrabold">₪599<span class="text-xs md:text-sm">/חודש</span></div>
+                                    </th>
+                                    <th class="p-3 text-center bg-amber-500/10 rounded-t-xl">
+                                        <div class="inline-block bg-gradient-to-r from-amber-500 to-orange-500 text-white px-2 py-0.5 rounded-full text-xs font-bold mb-1">הכי פופולרי</div>
+                                        <div class="text-white font-bold text-sm mb-1">רבעוני</div>
+                                        <div class="text-amber-300 text-xl md:text-2xl font-extrabold">₪519<span class="text-xs md:text-sm">/חודש</span></div>
+                                    </th>
+                                    <th class="p-3 text-center">
+                                        <div class="text-white font-bold text-sm mb-1">שנתי 💎</div>
+                                        <div class="text-green-300 text-xl md:text-2xl font-extrabold">₪479<span class="text-xs md:text-sm">/חודש</span></div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-white/80 text-sm">
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">מספר מפגשים</td>
+                                    <td class="p-2 text-center">2 שיעורים</td>
+                                    <td class="p-2 text-center">4 בחודש</td>
+                                    <td class="p-2 text-center bg-amber-500/5">4 בחודש</td>
+                                    <td class="p-2 text-center">4 בחודש</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">משך מפגש</td>
+                                    <td class="p-2 text-center">90 דקות</td>
+                                    <td class="p-2 text-center">90 דקות</td>
+                                    <td class="p-2 text-center bg-amber-500/5">90 דקות</td>
+                                    <td class="p-2 text-center">90 דקות</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">גודל קבוצה</td>
+                                    <td class="p-2 text-center">עד 12</td>
+                                    <td class="p-2 text-center">עד 12</td>
+                                    <td class="p-2 text-center bg-amber-500/5">עד 12</td>
+                                    <td class="p-2 text-center">עד 12</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">ChatGPT</td>
+                                    <td class="p-2 text-center">✓ חינם</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">Claude</td>
+                                    <td class="p-2 text-center">✓ חינם</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">Midjourney</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">כלי AI - מחוץ למפגשים</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">קבוצת הורים בוואטסאפ</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✓</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">ערוץ קהילה ב-Discord</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✓</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">ספריית משאבים</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">תיק עבודות דיגיטלי</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓ מקצועי</td>
+                                    <td class="p-2 text-center">✓ פרימיום + וידאו</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">עדיפות ברשימת המתנה</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                </div>
 
-                    <!-- Quarterly Plan -->
-                    <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 shadow-xl border-2 border-amber-200/30 relative fade-in-up delay-3" data-scroll>
-                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                            <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-1 rounded-full text-xs font-bold">
-                                הכי פופולרי
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <h4 class="text-xl font-bold text-white mb-2">תוכנית רבעונית</h4>
-                            <div class="flex items-center justify-center gap-3 mb-4">
-                                <div class="text-lg text-white/60 line-through">₪599</div>
-                                <div class="text-4xl font-bold text-cyan-300">₪479</div>
-                                <div class="text-sm text-white/70">/חודש לילד</div>
-                            </div>
-                            <div class="text-sm text-white/80 mb-2">מחיר רגיל: ₪599/חודש</div>
-                            <div class="bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full text-sm font-medium inline-block mb-4">
-                                חיסכון 20% לעומת חודשי
-                            </div>
-                            <div class="text-sm text-white/70 space-y-1 mb-3">
-                                <div>• חיוב כל 3 חודשים (₪1,437)</div>
-                                <div>• ערך טוב יותר עם עקביות</div>
-                                <div>• חיסכון ₪360 לעומת חודשי</div>
-                            </div>
-                        </div>
+                <!-- Tech Explorers (11-13) Pricing Table -->
+                <div id="tech-explorers-table" class="max-w-6xl mx-auto mt-8" style="display:none;">
+                    <div class="overflow-x-auto">
+                        <table class="pricing-table w-full bg-black/40 backdrop-blur-lg rounded-xl border border-amber-200/30" style="table-layout: fixed;">
+                            <colgroup>
+                                <col style="width: 35%;">
+                                <col style="width: 16.25%;">
+                                <col style="width: 16.25%;">
+                                <col style="width: 16.25%;">
+                                <col style="width: 16.25%;">
+                            </colgroup>
+                            <thead>
+                                <tr class="border-b border-white/10">
+                                    <th class="text-right p-4 md:p-6 align-top">
+                                        <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight mb-2">
+                                            <span class="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">חוקרי טכנולוגיה</span> (גילאי 11-13)
+                                        </h2>
+                                        <button onclick="if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 768){window.location.href='mobile-he.html#choose-program'}else{window.location.href='index-he.html#registration-form'}" class="bg-cyan-500/20 border border-cyan-400/50 rounded-lg px-3 py-1.5 text-white text-xs font-semibold hover:bg-cyan-500/30 hover:border-cyan-400 transition-all">
+                                            הירשם עכשיו ←
+                                        </button>
+                                    </th>
+                                    <th class="p-3 text-center">
+                                        <div class="text-white font-bold text-sm mb-1">ניסיון חינם</div>
+                                        <div class="text-purple-300 text-xl md:text-2xl font-extrabold">₪0</div>
+                                    </th>
+                                    <th class="p-3 text-center">
+                                        <div class="text-white font-bold text-sm mb-1">חודשי</div>
+                                        <div class="text-cyan-300 text-xl md:text-2xl font-extrabold">₪649<span class="text-xs md:text-sm">/חודש</span></div>
+                                    </th>
+                                    <th class="p-3 text-center bg-amber-500/10 rounded-t-xl">
+                                        <div class="inline-block bg-gradient-to-r from-amber-500 to-orange-500 text-white px-2 py-0.5 rounded-full text-xs font-bold mb-1">הכי פופולרי</div>
+                                        <div class="text-white font-bold text-sm mb-1">רבעוני</div>
+                                        <div class="text-amber-300 text-xl md:text-2xl font-extrabold">₪569<span class="text-xs md:text-sm">/חודש</span></div>
+                                    </th>
+                                    <th class="p-3 text-center">
+                                        <div class="text-white font-bold text-sm mb-1">שנתי 💎</div>
+                                        <div class="text-green-300 text-xl md:text-2xl font-extrabold">₪519<span class="text-xs md:text-sm">/חודש</span></div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-white/80 text-sm">
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">מספר מפגשים</td>
+                                    <td class="p-2 text-center">2 שיעורים</td>
+                                    <td class="p-2 text-center">4 בחודש</td>
+                                    <td class="p-2 text-center bg-amber-500/5">4 בחודש</td>
+                                    <td class="p-2 text-center">4 בחודש</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">משך מפגש</td>
+                                    <td class="p-2 text-center">90 דקות</td>
+                                    <td class="p-2 text-center">90 דקות</td>
+                                    <td class="p-2 text-center bg-amber-500/5">90 דקות</td>
+                                    <td class="p-2 text-center">90 דקות</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">גודל קבוצה</td>
+                                    <td class="p-2 text-center">עד 12</td>
+                                    <td class="p-2 text-center">עד 12</td>
+                                    <td class="p-2 text-center bg-amber-500/5">עד 12</td>
+                                    <td class="p-2 text-center">עד 12</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">ChatGPT</td>
+                                    <td class="p-2 text-center">✓ חינם</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">Claude</td>
+                                    <td class="p-2 text-center">✓ חינם</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">Midjourney</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">כלי AI - מחוץ למפגשים</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">קבוצת הורים בוואטסאפ</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✓</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">ערוץ קהילה ב-Discord</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✓</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">ספריית משאבים</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">תיק עבודות דיגיטלי</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓ מקצועי</td>
+                                    <td class="p-2 text-center">✓ פרימיום + וידאו</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">עדיפות ברשימת המתנה</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                </div>
 
-                    <!-- Annual Plan -->
-                    <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-amber-200/30 fade-in-up delay-4" data-scroll>
-                        <div class="text-center">
-                            <h4 class="text-xl font-bold text-white mb-2">תוכנית שנתית</h4>
-                            <div class="flex items-center justify-center gap-3 mb-4">
-                                <div class="text-lg text-white/60 line-through">₪499</div>
-                                <div class="text-4xl font-bold text-cyan-300">₪399</div>
-                                <div class="text-sm text-white/70">/חודש לילד</div>
-                            </div>
-                            <div class="text-sm text-white/80 mb-2">מחיר רגיל: ₪499/חודש</div>
-                            <div class="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-sm font-medium inline-block mb-4">
-                                הערך הטוב ביותר - חיסכון 33% לעומת חודשי
-                            </div>
-                            <div class="text-sm text-white/70 space-y-1">
-                                <div>• חיוב שנתי (₪4,788)</div>
-                                <div>• חיסכון מירבי ויציבות</div>
-                                <div>• חיסכון ₪2,400 לעומת חודשי</div>
-                            </div>
-                        </div>
+                <!-- Future Leaders (14-18) Pricing Table -->
+                <div id="future-leaders-table" class="max-w-6xl mx-auto mt-8" style="display:none;">
+                    <div class="overflow-x-auto">
+                        <table class="pricing-table w-full bg-black/40 backdrop-blur-lg rounded-xl border border-amber-200/30" style="table-layout: fixed;">
+                            <colgroup>
+                                <col style="width: 35%;">
+                                <col style="width: 16.25%;">
+                                <col style="width: 16.25%;">
+                                <col style="width: 16.25%;">
+                                <col style="width: 16.25%;">
+                            </colgroup>
+                            <thead>
+                                <tr class="border-b border-white/10">
+                                    <th class="text-right p-4 md:p-6 align-top">
+                                        <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight mb-2">
+                                            <span class="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">מנהיגי העתיד</span> (גילאי 14-18)
+                                        </h2>
+                                        <button onclick="if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 768){window.location.href='mobile-he.html#choose-program'}else{window.location.href='index-he.html#registration-form'}" class="bg-cyan-500/20 border border-cyan-400/50 rounded-lg px-3 py-1.5 text-white text-xs font-semibold hover:bg-cyan-500/30 hover:border-cyan-400 transition-all">
+                                            הירשם עכשיו ←
+                                        </button>
+                                    </th>
+                                    <th class="p-3 text-center">
+                                        <div class="text-white font-bold text-sm mb-1">ניסיון חינם</div>
+                                        <div class="text-purple-300 text-xl md:text-2xl font-extrabold">₪0</div>
+                                    </th>
+                                    <th class="p-3 text-center">
+                                        <div class="text-white font-bold text-sm mb-1">חודשי</div>
+                                        <div class="text-cyan-300 text-xl md:text-2xl font-extrabold">₪749<span class="text-xs md:text-sm">/חודש</span></div>
+                                    </th>
+                                    <th class="p-3 text-center bg-amber-500/10 rounded-t-xl">
+                                        <div class="inline-block bg-gradient-to-r from-amber-500 to-orange-500 text-white px-2 py-0.5 rounded-full text-xs font-bold mb-1">הכי פופולרי</div>
+                                        <div class="text-white font-bold text-sm mb-1">רבעוני</div>
+                                        <div class="text-amber-300 text-xl md:text-2xl font-extrabold">₪649<span class="text-xs md:text-sm">/חודש</span></div>
+                                    </th>
+                                    <th class="p-3 text-center">
+                                        <div class="text-white font-bold text-sm mb-1">שנתי 💎</div>
+                                        <div class="text-green-300 text-xl md:text-2xl font-extrabold">₪599<span class="text-xs md:text-sm">/חודש</span></div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-white/80 text-sm">
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">מספר מפגשים</td>
+                                    <td class="p-2 text-center">2 שיעורים</td>
+                                    <td class="p-2 text-center">4 בחודש</td>
+                                    <td class="p-2 text-center bg-amber-500/5">4 בחודש</td>
+                                    <td class="p-2 text-center">4 בחודש</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">משך מפגש</td>
+                                    <td class="p-2 text-center">90 דקות</td>
+                                    <td class="p-2 text-center">90 דקות</td>
+                                    <td class="p-2 text-center bg-amber-500/5">90 דקות</td>
+                                    <td class="p-2 text-center">90 דקות</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">גודל קבוצה</td>
+                                    <td class="p-2 text-center">עד 12</td>
+                                    <td class="p-2 text-center">עד 12</td>
+                                    <td class="p-2 text-center bg-amber-500/5">עד 12</td>
+                                    <td class="p-2 text-center">עד 12</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">ChatGPT</td>
+                                    <td class="p-2 text-center">✓ חינם</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">Claude</td>
+                                    <td class="p-2 text-center">✓ חינם</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">Midjourney</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓ Pro</td>
+                                    <td class="p-2 text-center">✓ Pro</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">כלי AI - מחוץ למפגשים</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">קבוצת הורים בוואטסאפ</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✓</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">ערוץ קהילה ב-Discord</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✓</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">ספריית משאבים</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">תיק עבודות דיגיטלי</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓ מקצועי</td>
+                                    <td class="p-2 text-center">✓ פרימיום + וידאו</td>
+                                </tr>
+                                <tr class="border-b border-white/5">
+                                    <td class="p-2 font-medium text-white text-right">עדיפות ברשימת המתנה</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center">✗</td>
+                                    <td class="p-2 text-center bg-amber-500/5">✓</td>
+                                    <td class="p-2 text-center">✓</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
@@ -978,6 +1429,104 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Show Pricing Table Function
+        function showPricingTable(ageGroup) {
+            // Hide all pricing tables
+            document.getElementById('young-innovators-table').style.display = 'none';
+            document.getElementById('tech-explorers-table').style.display = 'none';
+            document.getElementById('future-leaders-table').style.display = 'none';
+
+            // Hide age selection cards
+            document.getElementById('age-selection').style.display = 'none';
+
+            // Show selected pricing table
+            document.getElementById(ageGroup + '-table').style.display = 'block';
+
+            // Smooth scroll to the pricing table
+            setTimeout(() => {
+                document.getElementById(ageGroup + '-table').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+            }, 100);
+        }
+
+        // Pricing Table Column Hover Effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const tables = document.querySelectorAll('.pricing-table');
+
+            tables.forEach(table => {
+                const headerCells = table.querySelectorAll('thead th');
+                const bodyCells = table.querySelectorAll('tbody td');
+
+                // Add hover effect to header cells
+                headerCells.forEach((header, index) => {
+                    header.addEventListener('mouseenter', () => {
+                        // Highlight all cells in this column
+                        headerCells[index].classList.add('bg-white/10');
+
+                        table.querySelectorAll('tbody tr').forEach(row => {
+                            const cell = row.cells[index];
+                            if (cell) {
+                                cell.classList.add('bg-white/10');
+                            }
+                        });
+                    });
+
+                    header.addEventListener('mouseleave', () => {
+                        // Remove highlight from all cells in this column
+                        headerCells[index].classList.remove('bg-white/10');
+
+                        table.querySelectorAll('tbody tr').forEach(row => {
+                            const cell = row.cells[index];
+                            if (cell) {
+                                cell.classList.remove('bg-white/10');
+                            }
+                        });
+                    });
+                });
+
+                // Add hover effect to body cells
+                bodyCells.forEach((cell, cellIndex) => {
+                    cell.addEventListener('mouseenter', () => {
+                        const columnIndex = cell.cellIndex;
+
+                        // Highlight header
+                        if (headerCells[columnIndex]) {
+                            headerCells[columnIndex].classList.add('bg-white/10');
+                        }
+
+                        // Highlight all cells in this column
+                        table.querySelectorAll('tbody tr').forEach(row => {
+                            const targetCell = row.cells[columnIndex];
+                            if (targetCell) {
+                                targetCell.classList.add('bg-white/10');
+                            }
+                        });
+                    });
+
+                    cell.addEventListener('mouseleave', () => {
+                        const columnIndex = cell.cellIndex;
+
+                        // Remove highlight from header
+                        if (headerCells[columnIndex]) {
+                            headerCells[columnIndex].classList.remove('bg-white/10');
+                        }
+
+                        // Remove highlight from all cells in this column
+                        table.querySelectorAll('tbody tr').forEach(row => {
+                            const targetCell = row.cells[columnIndex];
+                            if (targetCell) {
+                                targetCell.classList.remove('bg-white/10');
+                            }
+                        });
+                    });
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
