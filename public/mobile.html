@@ -1499,9 +1499,6 @@
             childForm.innerHTML = `
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="text-lg font-semibold text-white">Child ${childCount + 1}</h3>
-                    <button type="button" onclick="removeChildForm(${childCount})" class="text-amber-500 hover:text-amber-700 text-sm font-medium">
-                        Remove
-                    </button>
                 </div>
                 <div class="space-y-4">
                     <!-- Child's Name -->
@@ -2770,13 +2767,9 @@
                 const childForm = document.createElement('div');
                 childForm.className = 'bg-amber-950/20 border border-amber-200/30 rounded-xl p-4 space-y-4';
 
-                const removeButton = familyData.childCount > 1 ?
-                    `<button type="button" onclick="removeChild(${i})" class="text-red-400 hover:text-red-300 text-sm font-medium transition-colors">Remove</button>` : '';
-
                 childForm.innerHTML = `
                     <div class="flex items-center justify-between border-b border-amber-200/20 pb-3">
                         <h4 class="text-lg font-semibold text-white">Child ${i + 1}</h4>
-                        ${removeButton}
                     </div>
 
                     <div>
