@@ -2842,14 +2842,26 @@
         }
 
         function removeChild(index) {
-            if (familyData.childCount <= 1) return;
+            if (familyData.childCount <= 1) return; // Don't allow removing the last child
+
             familyData.childCount--;
             familyData.children.splice(index, 1);
+
+            // Update UI
             document.getElementById('child-count').textContent = familyData.childCount;
             const pluralEl = document.getElementById('child-plural');
             if (pluralEl) pluralEl.textContent = familyData.childCount > 1 ? 'ren' : '';
+
+            // Regenerate child forms to reflect removal
             generateChildFormsStep1();
+
+            // Revalidate step
             validateStep1();
+
+            // Update pricing if on step 2
+            if (familyData.bulkDuration) {
+                updatePricingBreakdown();
+            }
         }
 
         // Initialize Step 1 on load
@@ -2912,6 +2924,34 @@
             }
         }
 
+        // Centralized function to calculate family total with age-specific pricing and family discounts
+        function calculateFamilyTotal() {
+            if (!familyData.bulkDuration) return 0;
+
+            let total = 0;
+            const childPrices = [];
+
+            // Calculate price for each child based on their age group
+            familyData.children.forEach((child) => {
+                if (child.ageGroup && familyData.bulkDuration) {
+                    const price = AGE_PRICING[child.ageGroup][familyData.bulkDuration];
+                    childPrices.push(price);
+                    total += price;
+                }
+            });
+
+            // Apply family discounts correctly:
+            // - 2 children: 10% off the total
+            // - 3+ children: 15% off the total
+            if (childPrices.length >= 2) {
+                const discountRate = childPrices.length === 2 ? 0.10 : 0.15;
+                const discount = Math.round(total * discountRate);
+                total -= discount;
+            }
+
+            return Math.round(total);
+        }
+
         function updatePricingBreakdown() {
             if (!familyData.bulkDuration) return;
 
@@ -2919,11 +2959,11 @@
             if (!content || content.classList.contains('hidden')) return;
 
             let breakdownHTML = '';
-            let total = 0;
+            let subtotal = 0;
 
             familyData.children.forEach((child, i) => {
                 const price = AGE_PRICING[child.ageGroup][familyData.bulkDuration];
-                total += price;
+                subtotal += price;
 
                 const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators' :
                                     child.ageGroup === 'tech' ? 'Tech Champions' :
@@ -2938,10 +2978,11 @@
             });
 
             // Apply family discounts
+            let total = subtotal;
             if (familyData.childCount >= 2) {
                 const discountRate = familyData.childCount === 2 ? 0.10 : 0.15;
-                const discount = Math.round((AGE_PRICING[familyData.children[1].ageGroup][familyData.bulkDuration] * discountRate));
-                total -= discount;
+                const discount = Math.round(subtotal * discountRate);
+                total = subtotal - discount;
 
                 breakdownHTML += `
                     <div class="border-t border-amber-200/20 pt-2 mt-2">
@@ -2975,6 +3016,9 @@
             const summaryContainer = document.getElementById('step-3-summary');
             const totalEl = document.getElementById('step-3-total');
 
+            // Use centralized calculation function for consistency
+            const totalMonthlyPrice = calculateFamilyTotal();
+
             // Generate summary content
             let summaryHTML = '';
             familyData.children.forEach((child, index) => {
@@ -2999,17 +3043,11 @@
 
             summaryContainer.innerHTML = summaryHTML;
 
-            // Update total display based on duration
-            let displayPrice;
-            if (familyData.bulkDuration === 'monthly') {
-                displayPrice = `₪${Math.round(familyData.totalPrice)}/month`;
-            } else if (familyData.bulkDuration === 'quarterly') {
-                displayPrice = `₪${Math.round(familyData.totalPrice * 3)}/quarter`;
-            } else {
-                displayPrice = `₪${Math.round(familyData.totalPrice * 12)}/year`;
-            }
+            // Update total display - always show monthly price for consistency
+            totalEl.textContent = `₪${totalMonthlyPrice}/month`;
 
-            totalEl.textContent = displayPrice;
+            // Update familyData.totalPrice for submission
+            familyData.totalPrice = totalMonthlyPrice;
 
             // Validate parent inputs
             validateStep3();

@@ -3070,13 +3070,25 @@
         }
 
         function removeChild(index) {
-            if (wizardData.childCount <= 1) return;
+            if (wizardData.childCount <= 1) return; // Don't allow removing the last child
+
             wizardData.childCount--;
             wizardData.children.splice(index, 1);
+
+            // Update UI
             document.getElementById('child-count').textContent = wizardData.childCount;
             document.getElementById('child-plural').textContent = wizardData.childCount > 1 ? 'ren' : '';
+
+            // Regenerate child forms to reflect removal
             generateChildFormsStep1();
+
+            // Revalidate step
             validateStep1();
+
+            // Update pricing if on step 2
+            if (wizardData.bulkDuration) {
+                updatePricingBreakdown();
+            }
         }
 
         function updateChildData(index, field, value) {
@@ -3210,6 +3222,34 @@
             }
         }
 
+        // Centralized function to calculate wizard total with age-specific pricing and family discounts
+        function calculateWizardTotal() {
+            if (!wizardData.bulkDuration) return 0;
+
+            let total = 0;
+            const childPrices = [];
+
+            // Calculate price for each child based on their age group
+            wizardData.children.forEach((child) => {
+                if (child.ageGroup && wizardData.bulkDuration) {
+                    const price = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
+                    childPrices.push(price);
+                    total += price;
+                }
+            });
+
+            // Apply family discounts correctly:
+            // - 2 children: 10% off the total
+            // - 3+ children: 15% off the total
+            if (childPrices.length >= 2) {
+                const discountRate = childPrices.length === 2 ? 0.10 : 0.15;
+                const discount = Math.round(total * discountRate);
+                total -= discount;
+            }
+
+            return Math.round(total);
+        }
+
         function updatePricingBreakdown() {
             if (!wizardData.bulkDuration) return;
 
@@ -3217,11 +3257,11 @@
             if (!content || content.classList.contains('hidden')) return;
 
             let breakdownHTML = '';
-            let total = 0;
+            let subtotal = 0;
 
             wizardData.children.forEach((child, i) => {
                 const price = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
-                total += price;
+                subtotal += price;
 
                 const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators' :
                                     child.ageGroup === 'tech' ? 'Tech Champions' :
@@ -3236,10 +3276,11 @@
             });
 
             // Apply family discounts
+            let total = subtotal;
             if (wizardData.childCount >= 2) {
                 const discountRate = wizardData.childCount === 2 ? 0.10 : 0.15;
-                const discount = Math.round(total * discountRate);
-                total -= discount;
+                const discount = Math.round(subtotal * discountRate);
+                total = subtotal - discount;
 
                 breakdownHTML += `
                     <div class="border-t border-amber-200/20 pt-2 mt-2">
@@ -3275,20 +3316,8 @@
 
             if (!summaryContainer || !totalElement) return;
 
-            // Calculate pricing based on age-specific rates
-            let totalMonthlyPrice = 0;
-            wizardData.children.forEach(child => {
-                if (child.ageGroup && wizardData.bulkDuration) {
-                    totalMonthlyPrice += AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
-                }
-            });
-
-            // Apply family discounts
-            if (wizardData.childCount >= 2 && wizardData.children[1]?.ageGroup) {
-                const discountRate = wizardData.childCount === 2 ? 0.10 : 0.15;
-                const discount = Math.round(totalMonthlyPrice * discountRate);
-                totalMonthlyPrice -= discount;
-            }
+            // Use centralized calculation function for consistency
+            const totalMonthlyPrice = calculateWizardTotal();
 
             // Build summary HTML
             const planName = wizardData.bulkDuration.charAt(0).toUpperCase() + wizardData.bulkDuration.slice(1);
@@ -3308,7 +3337,7 @@
             });
 
             summaryContainer.innerHTML = summaryHTML;
-            totalElement.textContent = `₪${Math.round(totalMonthlyPrice)}/month`;
+            totalElement.textContent = `₪${totalMonthlyPrice}/month`;
 
             validateStep3();
         }
@@ -4095,14 +4124,6 @@
             };
 
             // Collect children data from wizardData
-            const monthlyPrices = {
-                monthly: 599,
-                quarterly: 519,
-                yearly: 479
-            };
-
-            const basePrice = monthlyPrices[wizardData.bulkDuration] || 599;
-
             wizardData.children.forEach((child, index) => {
                 if (child.name && child.ageGroup) {
                     // Map age group to program name
@@ -4110,11 +4131,14 @@
                                        child.ageGroup === 'tech' ? 'Tech Champions (11-13)' :
                                        'Future Leaders (14-18)';
 
+                    // Get age-specific pricing
+                    const childPrice = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
+
                     formData.children.push({
                         name: child.name,
                         program: programName,
                         ageGroup: child.ageGroup,
-                        price: basePrice
+                        price: childPrice
                     });
                 }
             });
@@ -4131,14 +4155,8 @@
             formData.paymentMethod = selectedPaymentMethod ? selectedPaymentMethod.value : 'bit';
             formData.paymentPlan = wizardData.bulkDuration;
 
-            // Calculate total price with discounts
-            let totalMonthlyPrice = basePrice * wizardData.childCount;
-            if (wizardData.childCount >= 2) {
-                const discountRate = wizardData.childCount === 2 ? 0.10 : 0.15;
-                const discount = (basePrice * (wizardData.childCount - 1)) * discountRate;
-                totalMonthlyPrice -= discount;
-            }
-            formData.totalPrice = Math.round(totalMonthlyPrice);
+            // Use centralized calculation function for consistency
+            formData.totalPrice = calculateWizardTotal();
             formData.language = 'en';  // English registration form
 
             // Validate form
