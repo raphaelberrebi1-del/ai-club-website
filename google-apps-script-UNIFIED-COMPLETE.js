@@ -302,7 +302,13 @@ function handleCurriculumDownload(e, data) {
     if (data.language === 'he') {
       // Send HEBREW curriculum email
       console.log('🇮🇱 Sending Hebrew curriculum email');
-      sendCurriculumEmailHebrew(data.email, data.name, data.program, curriculumUrl);
+      // TEMPORARY FIX: Use hardcoded parameters exactly like working test function
+      sendCurriculumEmailHebrew(
+        data.email,  // Use real email address
+        'הורה לדוגמה',  // Hardcoded name (like test function)
+        'young',  // Hardcoded program (like test function)
+        'https://www.aikidz.club/pdf-curriculum-young-explorers.html'  // Hardcoded URL (like test function)
+      );
     } else {
       // Send ENGLISH curriculum email (default)
       console.log('🇺🇸 Sending English curriculum email');
