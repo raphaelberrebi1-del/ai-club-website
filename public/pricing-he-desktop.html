@@ -1097,10 +1097,10 @@
         // Start countdown when page loads
         updateCountdown();
 
-        // Column hover effect for pricing table
+        // Column hover effect for pricing table - applies to ALL pricing tables
         document.addEventListener('DOMContentLoaded', function() {
-            const table = document.querySelector('.pricing-table');
-            if (table) {
+            const tables = document.querySelectorAll('.pricing-table');
+            tables.forEach(table => {
                 const rows = table.querySelectorAll('tr');
 
                 rows.forEach(row => {
@@ -1127,7 +1127,7 @@
                         });
                     });
                 });
-            }
+            });
         });
 
         // New Ribbon Trail Cursor
