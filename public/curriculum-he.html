@@ -284,43 +284,16 @@
             </div>
         </section>
 
-        <!-- Program Duration Selector -->
-        <section class="px-6 pb-8">
-            <div class="max-w-md mx-auto">
-                <h2 class="text-lg font-bold text-white mb-4 text-center">בחר אורך תוכנית</h2>
-                <div class="grid grid-cols-2 gap-3 mb-8">
-                    <button onclick="switchProgram('12')" id="tab-12" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-cyan-400/20 border-cyan-400/40 text-cyan-300">
-                        <span class="block font-bold text-lg">12 שבועות</span>
-                        <span class="block text-xs opacity-80">יסודות</span>
-                    </button>
-                    <button onclick="switchProgram('24')" id="tab-24" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
-                        <span class="block font-bold text-lg">24 שבועות</span>
-                        <span class="block text-xs opacity-80">+ כישורים מתקדמים</span>
-                    </button>
-                    <button onclick="switchProgram('36')" id="tab-36" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
-                        <span class="block font-bold text-lg">36 שבועות</span>
-                        <span class="block text-xs opacity-80">+ פרויקטים</span>
-                    </button>
-                    <button onclick="switchProgram('48')" id="tab-48" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
-                        <span class="block font-bold text-lg">48 שבועות</span>
-                        <span class="block text-xs opacity-80">+ מיומנות</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-
         <!-- Program Content -->
         <section class="px-6 pb-12">
             <div class="max-w-md mx-auto">
 
-                <!-- 12 Week Program -->
-                <div id="program-12" class="program-content">
-                    <div class="bg-gradient-to-br from-cyan-400/10 to-teal-400/10 rounded-2xl p-6 mb-6 border border-cyan-400/20">
-                        <h3 class="text-xl font-bold text-white mb-3">תוכנית יסודות 12 שבועות</h3>
-                        <p class="text-white/80 mb-4">כישורי AI בסיסיים והבנה - היסוד לכל התוכניות הארוכות יותר.</p>
+                <div class="bg-gradient-to-br from-cyan-400/10 to-teal-400/10 rounded-2xl p-6 mb-6 border border-cyan-400/20">
+                    <h3 class="text-xl font-bold text-white mb-3">תוכניות לימוד מועדון AI</h3>
+                    <p class="text-white/80 mb-4">תוכניות חינוך AI מקיפות של 12 שבועות המותאמות לכל קבוצת גיל.</p>
 
-                        <!-- Age Groups for 12-week -->
-                        <div class="space-y-4">
+                    <!-- Age Groups -->
+                    <div class="space-y-4">
                             <!-- Young Innovators 8-12 -->
                             <div class="bg-black/90 rounded-xl p-4 border border-amber-200/20">
                                 <button onclick="toggleSection('young-12')" class="w-full flex items-center justify-between mb-2">
@@ -789,78 +762,6 @@
                     </div>
                 </div>
 
-                <!-- 24 Week Program -->
-                <div id="program-24" class="program-content hidden">
-                    <div class="bg-gradient-to-br from-purple-400/10 to-pink-400/10 rounded-2xl p-6 mb-6 border border-purple-400/20">
-                        <div class="bg-gradient-to-r from-cyan-400/10 to-purple-400/10 rounded-lg p-3 mb-4">
-                            <p class="text-sm text-cyan-300"><strong>כולל:</strong> תוכנית יסודות 12 שבועות מלאה +</p>
-                        </div>
-
-                        <h3 class="text-xl font-bold text-white mb-3">תוכנית מורחבת 24 שבועות</h3>
-                        <p class="text-white/80 mb-8">תוכנית יסודות + יישומים מעשיים מתקדמים ופרויקטים מהעולם האמיתי.</p>
-
-                        <!-- Coming Soon Message -->
-                        <div class="text-center py-12">
-                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full mb-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-purple-400">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12,6 12,12 16,14"></polyline>
-                                </svg>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3">בקרוב</h4>
-                            <p class="text-white/70 text-lg">תוכנית הלימודים המפורטת לתוכנית 24 השבועות תהיה זמינה בקרוב.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 36 Week Program -->
-                <div id="program-36" class="program-content hidden">
-                    <div class="bg-gradient-to-br from-green-400/10 to-emerald-400/10 rounded-2xl p-6 mb-6 border border-green-400/20">
-                        <div class="bg-gradient-to-r from-cyan-400/10 to-green-400/10 rounded-lg p-3 mb-4">
-                            <p class="text-sm text-cyan-300"><strong>כולל:</strong> תוכנית מורחבת 24 שבועות מלאה +</p>
-                        </div>
-
-                        <h3 class="text-xl font-bold text-white mb-3">תוכנית מתקדמת 36 שבועות</h3>
-                        <p class="text-white/80 mb-8">תוכנית מורחבת + פרויקטים מתקדמים, פיתוח תיק עבודות וכישורי מנהיגות.</p>
-
-                        <!-- Coming Soon Message -->
-                        <div class="text-center py-12">
-                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-400/20 to-emerald-400/20 rounded-full mb-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-400">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12,6 12,12 16,14"></polyline>
-                                </svg>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3">בקרוב</h4>
-                            <p class="text-white/70 text-lg">תוכנית הלימודים המפורטת לתוכנית 36 השבועות תהיה זמינה בקרוב.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 48 Week Program -->
-                <div id="program-48" class="program-content hidden">
-                    <div class="bg-gradient-to-br from-orange-400/10 to-red-400/10 rounded-2xl p-6 mb-6 border border-orange-400/20">
-                        <div class="bg-gradient-to-r from-cyan-400/10 to-orange-400/10 rounded-lg p-3 mb-4">
-                            <p class="text-sm text-cyan-300"><strong>כולל:</strong> תוכנית מתקדמת 36 שבועות מלאה +</p>
-                        </div>
-
-                        <h3 class="text-xl font-bold text-white mb-3">תוכנית מיומנות 48 שבועות</h3>
-                        <p class="text-white/80 mb-8">תוכנית מתקדמת + שליטה מלאה, שיתוף פעולה עם התעשייה והכנה מקצועית.</p>
-
-                        <!-- Coming Soon Message -->
-                        <div class="text-center py-12">
-                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full mb-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-orange-400">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12,6 12,12 16,14"></polyline>
-                                </svg>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3">בקרוב</h4>
-                            <p class="text-white/70 text-lg">תוכנית הלימודים המפורטת לתוכנית 48 השבועות תהיה זמינה בקרוב.</p>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- CTA Section -->
                 <div class="text-center mt-8">
                     <button onclick="window.location.href='mobile-he.html#choose-program'" class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-bold px-8 py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 mb-4">
@@ -896,49 +797,9 @@
             z-index: 1;
         }
 
-        /* Smooth transitions for content sections */
-        .program-content {
-            transition: all 0.3s ease-in-out;
-        }
-
-        .program-content.hidden {
-            display: none;
-        }
-
-        /* Active tab styling */
-        .program-tab.active {
-            background: linear-gradient(to r, #06B6D4, #22D3EE, #A5F3FC);
-            border-color: #22D3EE;
-            color: white;
-            transform: scale(1.02);
-        }
     </style>
 
     <script>
-        let currentProgram = '12';
-
-        function switchProgram(weeks) {
-            // Update tabs
-            document.querySelectorAll('.program-tab').forEach(tab => {
-                tab.classList.remove('active');
-                tab.classList.add('bg-white/10', 'border-white/30', 'text-white/70');
-                tab.classList.remove('bg-cyan-400/20', 'border-cyan-400/40', 'text-cyan-300');
-            });
-
-            const activeTab = document.getElementById(`tab-${weeks}`);
-            activeTab.classList.add('active');
-            activeTab.classList.remove('bg-white/10', 'border-white/30', 'text-white/70');
-            activeTab.classList.add('bg-cyan-400/20', 'border-cyan-400/40', 'text-cyan-300');
-
-            // Update content
-            document.querySelectorAll('.program-content').forEach(content => {
-                content.classList.add('hidden');
-            });
-
-            document.getElementById(`program-${weeks}`).classList.remove('hidden');
-            currentProgram = weeks;
-        }
-
         function toggleSection(sectionId) {
             const content = document.getElementById(`${sectionId}-content`);
             const icon = document.getElementById(`${sectionId}-icon`);
@@ -963,10 +824,6 @@
             }
         }
 
-        // Initialize with 12-week program
-        document.addEventListener('DOMContentLoaded', function() {
-            switchProgram('12');
-        });
     </script>
 
     <script>

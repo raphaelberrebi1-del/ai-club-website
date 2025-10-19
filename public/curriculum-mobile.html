@@ -283,43 +283,16 @@
             </div>
         </section>
 
-        <!-- Program Duration Selector -->
-        <section class="px-6 pb-8">
-            <div class="max-w-md mx-auto">
-                <h2 class="text-lg font-bold text-white mb-4 text-center">Choose Program Duration</h2>
-                <div class="grid grid-cols-2 gap-3 mb-8">
-                    <button onclick="switchProgram('12')" id="tab-12" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-cyan-400/20 border-cyan-400/40 text-cyan-300">
-                        <span class="block font-bold text-lg">12 Weeks</span>
-                        <span class="block text-xs opacity-80">Foundation</span>
-                    </button>
-                    <button onclick="switchProgram('24')" id="tab-24" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
-                        <span class="block font-bold text-lg">24 Weeks</span>
-                        <span class="block text-xs opacity-80">+ Advanced Skills</span>
-                    </button>
-                    <button onclick="switchProgram('36')" id="tab-36" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
-                        <span class="block font-bold text-lg">36 Weeks</span>
-                        <span class="block text-xs opacity-80">+ Projects</span>
-                    </button>
-                    <button onclick="switchProgram('48')" id="tab-48" class="program-tab px-4 py-3 rounded-xl border-2 transition-all duration-300 bg-white/10 border-white/30 text-white/70">
-                        <span class="block font-bold text-lg">48 Weeks</span>
-                        <span class="block text-xs opacity-80">+ Mastery</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-
         <!-- Program Content -->
         <section class="px-6 pb-12">
             <div class="max-w-md mx-auto">
 
-                <!-- 12 Week Program -->
-                <div id="program-12" class="program-content">
-                    <div class="bg-gradient-to-br from-cyan-400/10 to-teal-400/10 rounded-xl p-6 mb-6 border border-cyan-400/20">
-                        <h3 class="text-xl font-bold text-white mb-3">12-Week Foundation Program</h3>
-                        <p class="text-white/80 mb-4">Essential AI skills and understanding - the foundation for all longer programs.</p>
+                <div class="bg-gradient-to-br from-cyan-400/10 to-teal-400/10 rounded-xl p-6 mb-6 border border-cyan-400/20">
+                    <h3 class="text-xl font-bold text-white mb-3">AI Club Curriculum Programs</h3>
+                    <p class="text-white/80 mb-4">12-week comprehensive AI education programs tailored for each age group.</p>
 
-                        <!-- Age Groups for 12-week -->
-                        <div class="space-y-4">
+                    <!-- Age Groups -->
+                    <div class="space-y-4">
                             <!-- Young Innovators 8-12 -->
                             <div class="bg-black/90 rounded-xl p-4 border border-amber-200/20">
                                 <button onclick="toggleSection('young-12')" class="w-full flex items-center justify-between mb-2">
@@ -788,78 +761,6 @@
                     </div>
                 </div>
 
-                <!-- 24 Week Program -->
-                <div id="program-24" class="program-content hidden">
-                    <div class="bg-gradient-to-br from-rose-400/15 to-pink-400/15 rounded-xl p-6 mb-6 border border-rose-400/30">
-                        <div class="bg-gradient-to-r from-cyan-400/10 to-rose-400/10 rounded-lg p-3 mb-4">
-                            <p class="text-sm text-cyan-300"><strong>Includes:</strong> Complete 12-Week Foundation Program +</p>
-                        </div>
-
-                        <h3 class="text-xl font-bold text-white mb-3">24-Week Extended Program</h3>
-                        <p class="text-white/80 mb-8">Foundation program + advanced practical applications and real-world projects.</p>
-
-                        <!-- Coming Soon Message -->
-                        <div class="text-center py-12">
-                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-rose-400/20 to-pink-400/20 rounded-full mb-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-rose-400">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12,6 12,12 16,14"></polyline>
-                                </svg>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3">Coming Soon</h4>
-                            <p class="text-white/70 text-lg">Detailed curriculum for the 24-week program will be available shortly.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 36 Week Program -->
-                <div id="program-36" class="program-content hidden">
-                    <div class="bg-gradient-to-br from-green-400/10 to-emerald-400/10 rounded-xl p-6 mb-6 border border-green-400/20">
-                        <div class="bg-gradient-to-r from-cyan-400/10 to-green-400/10 rounded-lg p-3 mb-4">
-                            <p class="text-sm text-cyan-300"><strong>Includes:</strong> Complete 24-Week Extended Program +</p>
-                        </div>
-
-                        <h3 class="text-xl font-bold text-white mb-3">36-Week Advanced Program</h3>
-                        <p class="text-white/80 mb-8">Extended program + advanced projects, portfolio development, and leadership skills.</p>
-
-                        <!-- Coming Soon Message -->
-                        <div class="text-center py-12">
-                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-400/20 to-emerald-400/20 rounded-full mb-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-400">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12,6 12,12 16,14"></polyline>
-                                </svg>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3">Coming Soon</h4>
-                            <p class="text-white/70 text-lg">Detailed curriculum for the 36-week program will be available shortly.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 48 Week Program -->
-                <div id="program-48" class="program-content hidden">
-                    <div class="bg-gradient-to-br from-violet-400/15 to-purple-400/15 rounded-xl p-6 mb-6 border border-violet-400/30">
-                        <div class="bg-gradient-to-r from-cyan-400/10 to-violet-400/10 rounded-lg p-3 mb-4">
-                            <p class="text-sm text-cyan-300"><strong>Includes:</strong> Complete 36-Week Advanced Program +</p>
-                        </div>
-
-                        <h3 class="text-xl font-bold text-white mb-3">48-Week Mastery Program</h3>
-                        <p class="text-white/80 mb-8">Advanced program + complete mastery, industry collaboration, and professional preparation.</p>
-
-                        <!-- Coming Soon Message -->
-                        <div class="text-center py-12">
-                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-400/20 to-purple-400/20 rounded-full mb-4">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-violet-400">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12,6 12,12 16,14"></polyline>
-                                </svg>
-                            </div>
-                            <h4 class="text-xl font-bold text-white mb-3">Coming Soon</h4>
-                            <p class="text-white/70 text-lg">Detailed curriculum for the 48-week program will be available shortly.</p>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- CTA Section -->
                 <div class="text-center mt-8">
                     <button onclick="window.location.href='mobile.html#choose-program'" class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-bold px-8 py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 mb-4">
@@ -895,20 +796,6 @@
             z-index: 1;
         }
 
-        /* Smooth transitions for content sections */
-        .program-content {
-            transition: all 0.3s ease-in-out;
-        }
-
-        .program-content.hidden {
-            display: none;
-        }
-
-        /* Active tab styling */
-        .program-tab.active {
-            transform: scale(1.02);
-        }
-
         /* Animation classes */
         .fade-in-up {
             opacity: 0;
@@ -934,45 +821,6 @@
     </style>
 
     <script>
-        let currentProgram = '12';
-
-        function switchProgram(weeks) {
-            // Update tabs - reset all to inactive state
-            document.querySelectorAll('.program-tab').forEach(tab => {
-                tab.classList.remove('active');
-                tab.classList.add('bg-white/10', 'border-white/30', 'text-white/70');
-                // Remove all possible color classes
-                tab.classList.remove('bg-cyan-400/20', 'border-cyan-400/40', 'border-cyan-400', 'text-cyan-300');
-                tab.classList.remove('bg-rose-400/20', 'border-rose-400/40', 'border-rose-400', 'text-rose-300');
-                tab.classList.remove('bg-green-400/20', 'border-green-400/40', 'border-green-400', 'text-green-300');
-                tab.classList.remove('bg-sky-400/20', 'border-sky-400/40', 'border-sky-400', 'text-sky-300');
-                tab.classList.remove('bg-violet-400/20', 'border-violet-400/40', 'border-violet-400', 'text-violet-300');
-            });
-
-            const activeTab = document.getElementById(`tab-${weeks}`);
-            activeTab.classList.add('active');
-            activeTab.classList.remove('bg-white/10', 'border-white/30', 'text-white/70');
-
-            // Apply color scheme based on program duration
-            if (weeks === '12') {
-                activeTab.classList.add('bg-cyan-400/20', 'border-cyan-400/40', 'text-cyan-300');
-            } else if (weeks === '24') {
-                activeTab.classList.add('bg-rose-400/20', 'border-rose-400/40', 'text-rose-300');
-            } else if (weeks === '36') {
-                activeTab.classList.add('bg-green-400/20', 'border-green-400/40', 'text-green-300');
-            } else if (weeks === '48') {
-                activeTab.classList.add('bg-violet-400/20', 'border-violet-400/40', 'text-violet-300');
-            }
-
-            // Update content
-            document.querySelectorAll('.program-content').forEach(content => {
-                content.classList.add('hidden');
-            });
-
-            document.getElementById(`program-${weeks}`).classList.remove('hidden');
-            currentProgram = weeks;
-        }
-
         function toggleSection(sectionId) {
             const content = document.getElementById(`${sectionId}-content`);
             const icon = document.getElementById(`${sectionId}-icon`);
@@ -1021,9 +869,8 @@
             });
         }
 
-        // Initialize with 12-week program
+        // Initialize scroll animations
         document.addEventListener('DOMContentLoaded', function() {
-            switchProgram('12');
             initScrollAnimations();
         });
     </script>
