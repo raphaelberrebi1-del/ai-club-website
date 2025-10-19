@@ -307,6 +307,671 @@
                     </div>
                 </div>
 
+                <!-- Age Group Selection Section -->
+                <div id="age-selection" class="max-w-6xl mx-auto mb-16">
+                    <div class="text-center mb-10 fade-in-up delay-2">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">
+                            Choose Your Child's Program
+                        </h2>
+                        <p class="text-lg text-white/80">
+                            Select the age group that matches your child
+                        </p>
+                    </div>
+
+                    <!-- Three Age Group Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in-up delay-3">
+
+                        <!-- Card 1: Young Innovators (8-10) -->
+                        <div onclick="showPricingTable('young-innovators')" class="group bg-black/40 backdrop-blur-lg rounded-xl p-6 border-2 border-white/20 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+                                        <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-cyan-400 text-lg font-bold">Ages 8-10</div>
+                                    <div class="text-white font-semibold text-base">Young Innovators</div>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-2 mb-4 text-sm text-white/80">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyan-400 mt-0.5">✓</span>
+                                    <span>AI Fundamentals & Safety</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyan-400 mt-0.5">✓</span>
+                                    <span>Creative Storytelling & Art</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-cyan-400 mt-0.5">✓</span>
+                                    <span>Project-Based Learning</span>
+                                </li>
+                            </ul>
+
+                            <div class="text-center pt-4 border-t border-white/20">
+                                <span class="text-amber-400 font-semibold group-hover:text-amber-300 transition-colors">
+                                    View Pricing →
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Tech Explorers (11-13) -->
+                        <div onclick="showPricingTable('tech-explorers')" class="group bg-black/40 backdrop-blur-lg rounded-xl p-6 border-2 border-white/20 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+                                        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+                                        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+                                        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+                                        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-purple-400 text-lg font-bold">Ages 11-13</div>
+                                    <div class="text-white font-semibold text-base">Tech Explorers</div>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-2 mb-4 text-sm text-white/80">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-purple-400 mt-0.5">✓</span>
+                                    <span>Programming Fundamentals</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-purple-400 mt-0.5">✓</span>
+                                    <span>AI Research Skills</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-purple-400 mt-0.5">✓</span>
+                                    <span>Advanced Projects</span>
+                                </li>
+                            </ul>
+
+                            <div class="text-center pt-4 border-t border-white/20">
+                                <span class="text-amber-400 font-semibold group-hover:text-amber-300 transition-colors">
+                                    View Pricing →
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Future Leaders (14-18) - PREMIUM -->
+                        <div onclick="showPricingTable('future-leaders')" class="group bg-black/40 backdrop-blur-lg rounded-xl p-6 border-2 border-amber-300/50 hover:border-amber-400/70 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer relative">
+                            <!-- PREMIUM Badge -->
+                            <div class="absolute -top-3 -right-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                                PREMIUM
+                            </div>
+
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+                                        <path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/>
+                                        <path d="M5 21h14"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-amber-400 text-lg font-bold">Ages 14-18</div>
+                                    <div class="text-white font-semibold text-base">Future Leaders</div>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-2 mb-4 text-sm text-white/80">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-amber-400 mt-0.5">✓</span>
+                                    <span>College Application Support</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-amber-400 mt-0.5">✓</span>
+                                    <span>Business & Entrepreneurship</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-amber-400 mt-0.5">✓</span>
+                                    <span>Career Preparation</span>
+                                </li>
+                            </ul>
+
+                            <div class="text-center pt-4 border-t border-white/20">
+                                <span class="text-amber-400 font-semibold group-hover:text-amber-300 transition-colors">
+                                    View Pricing →
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Young Innovators Pricing Table (Ages 8-10) -->
+                <div id="young-innovators-table" class="hidden max-w-6xl mx-auto mb-16">
+                    <!-- Back Button -->
+                    <button onclick="backToAgeSelection()" class="mb-6 flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors group">
+                        <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Back to Age Selection
+                    </button>
+
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">
+                            Young Innovators Pricing
+                        </h2>
+                        <p class="text-lg text-white/80">Ages 8-10 • Creative AI Introduction</p>
+                    </div>
+
+                    <!-- Mobile Scroll Hint -->
+                    <div class="text-center text-sm text-cyan-400 mb-4 md:hidden">
+                        ← Swipe to see all pricing options →
+                    </div>
+
+                    <!-- Pricing Table Container with Horizontal Scroll -->
+                    <div class="overflow-x-auto rounded-xl">
+                        <table class="pricing-table w-full min-w-[800px] bg-black/40 backdrop-blur-lg rounded-xl border-2 border-white/20">
+                            <thead>
+                                <tr class="border-b border-white/20">
+                                    <th class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-left text-white/60 font-medium">Features</th>
+                                    <th class="p-4 text-center">
+                                        <div class="text-white font-bold text-xl mb-2">Free Trial</div>
+                                        <div class="text-4xl font-bold text-cyan-300 mb-2">₪0</div>
+                                        <div class="text-sm text-white/60">First Session</div>
+                                    </th>
+                                    <th class="p-4 text-center bg-white/5">
+                                        <div class="text-white font-bold text-xl mb-2">Monthly</div>
+                                        <div class="flex items-center justify-center gap-2 mb-1">
+                                            <span class="text-lg text-white/60 line-through">₪749</span>
+                                            <span class="text-4xl font-bold text-cyan-300">₪599</span>
+                                        </div>
+                                        <div class="text-sm text-white/60">per child/month</div>
+                                    </th>
+                                    <th class="p-4 text-center bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-2 border-amber-400/50 relative">
+                                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                                            <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">MOST POPULAR</span>
+                                        </div>
+                                        <div class="text-white font-bold text-xl mb-2 mt-2">Quarterly</div>
+                                        <div class="flex items-center justify-center gap-2 mb-1">
+                                            <span class="text-lg text-white/60 line-through">₪649</span>
+                                            <span class="text-4xl font-bold text-amber-300">₪519</span>
+                                        </div>
+                                        <div class="text-sm text-white/60">per child/month</div>
+                                        <div class="text-xs text-amber-300 mt-2">Save 20%</div>
+                                    </th>
+                                    <th class="p-4 text-center bg-white/5">
+                                        <div class="text-white font-bold text-xl mb-2">Annual</div>
+                                        <div class="flex items-center justify-center gap-2 mb-1">
+                                            <span class="text-lg text-white/60 line-through">₪599</span>
+                                            <span class="text-4xl font-bold text-emerald-300">₪479</span>
+                                        </div>
+                                        <div class="text-sm text-white/60">per child/month</div>
+                                        <div class="text-xs text-emerald-300 mt-2">Save 36%</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Core Features -->
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Weekly Sessions</td>
+                                    <td class="p-4 text-center text-white/80">1 Session</td>
+                                    <td class="p-4 text-center text-white/80 bg-white/5">4 Sessions</td>
+                                    <td class="p-4 text-center text-white/80 bg-gradient-to-br from-amber-500/10 to-orange-500/10">12 Sessions</td>
+                                    <td class="p-4 text-center text-white/80 bg-white/5">48 Sessions</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Creative AI Storytelling</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Digital Art Creation</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Interactive AI Games</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Small Group Setting (6-8 kids)</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Age-Appropriate AI Tools</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Safety & Supervision</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Project Portfolio</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Parent Progress Updates</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Completion Certificate</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-white/40 bg-white/5">–</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Family Discount (2+ kids)</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-amber-300 bg-white/5">10-15%</td>
+                                    <td class="p-4 text-center text-amber-300 bg-gradient-to-br from-amber-500/10 to-orange-500/10">10-15%</td>
+                                    <td class="p-4 text-center text-amber-300 bg-white/5">10-15%</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Priority Support</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-white/40 bg-white/5">–</td>
+                                    <td class="p-4 text-center text-white/40 bg-gradient-to-br from-amber-500/10 to-orange-500/10">–</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr>
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Flexible Cancellation</td>
+                                    <td class="p-4 text-center text-green-400">Anytime</td>
+                                    <td class="p-4 text-center text-white/80 bg-white/5">30 days notice</td>
+                                    <td class="p-4 text-center text-white/80 bg-gradient-to-br from-amber-500/10 to-orange-500/10">30 days notice</td>
+                                    <td class="p-4 text-center text-white/80 bg-white/5">30 days notice</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="text-center mt-8">
+                        <a href="/index.html#registration" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-4 px-8 rounded-lg hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-cyan-500/50 hover:-translate-y-1">
+                            Register for Young Innovators
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tech Explorers Pricing Table (Ages 11-13) -->
+                <div id="tech-explorers-table" class="hidden max-w-6xl mx-auto mb-16">
+                    <!-- Back Button -->
+                    <button onclick="backToAgeSelection()" class="mb-6 flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors group">
+                        <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Back to Age Selection
+                    </button>
+
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">
+                            Tech Explorers Pricing
+                        </h2>
+                        <p class="text-lg text-white/80">Ages 11-13 • Advanced AI Programming</p>
+                    </div>
+
+                    <!-- Mobile Scroll Hint -->
+                    <div class="text-center text-sm text-purple-400 mb-4 md:hidden">
+                        ← Swipe to see all pricing options →
+                    </div>
+
+                    <!-- Pricing Table Container with Horizontal Scroll -->
+                    <div class="overflow-x-auto rounded-xl">
+                        <table class="pricing-table w-full min-w-[800px] bg-black/40 backdrop-blur-lg rounded-xl border-2 border-white/20">
+                            <thead>
+                                <tr class="border-b border-white/20">
+                                    <th class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-left text-white/60 font-medium">Features</th>
+                                    <th class="p-4 text-center">
+                                        <div class="text-white font-bold text-xl mb-2">Free Trial</div>
+                                        <div class="text-4xl font-bold text-purple-300 mb-2">₪0</div>
+                                        <div class="text-sm text-white/60">First Session</div>
+                                    </th>
+                                    <th class="p-4 text-center bg-white/5">
+                                        <div class="text-white font-bold text-xl mb-2">Monthly</div>
+                                        <div class="flex items-center justify-center gap-2 mb-1">
+                                            <span class="text-lg text-white/60 line-through">₪799</span>
+                                            <span class="text-4xl font-bold text-purple-300">₪649</span>
+                                        </div>
+                                        <div class="text-sm text-white/60">per child/month</div>
+                                    </th>
+                                    <th class="p-4 text-center bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-2 border-amber-400/50 relative">
+                                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                                            <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">MOST POPULAR</span>
+                                        </div>
+                                        <div class="text-white font-bold text-xl mb-2 mt-2">Quarterly</div>
+                                        <div class="flex items-center justify-center gap-2 mb-1">
+                                            <span class="text-lg text-white/60 line-through">₪699</span>
+                                            <span class="text-4xl font-bold text-amber-300">₪569</span>
+                                        </div>
+                                        <div class="text-sm text-white/60">per child/month</div>
+                                        <div class="text-xs text-amber-300 mt-2">Save 19%</div>
+                                    </th>
+                                    <th class="p-4 text-center bg-white/5">
+                                        <div class="text-white font-bold text-xl mb-2">Annual</div>
+                                        <div class="flex items-center justify-center gap-2 mb-1">
+                                            <span class="text-lg text-white/60 line-through">₪649</span>
+                                            <span class="text-4xl font-bold text-emerald-300">₪519</span>
+                                        </div>
+                                        <div class="text-sm text-white/60">per child/month</div>
+                                        <div class="text-xs text-emerald-300 mt-2">Save 36%</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Core Features -->
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Weekly Sessions</td>
+                                    <td class="p-4 text-center text-white/80">1 Session</td>
+                                    <td class="p-4 text-center text-white/80 bg-white/5">4 Sessions</td>
+                                    <td class="p-4 text-center text-white/80 bg-gradient-to-br from-amber-500/10 to-orange-500/10">12 Sessions</td>
+                                    <td class="p-4 text-center text-white/80 bg-white/5">48 Sessions</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Programming Fundamentals</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">AI-Assisted Coding</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Advanced Research Skills</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Digital Projects & Portfolio</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Small Group Setting (6-8 kids)</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Collaborative Team Projects</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Safety & Supervision</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">GitHub Portfolio Setup</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Parent Progress Updates</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Completion Certificate</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-white/40 bg-white/5">–</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Family Discount (2+ kids)</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-amber-300 bg-white/5">10-15%</td>
+                                    <td class="p-4 text-center text-amber-300 bg-gradient-to-br from-amber-500/10 to-orange-500/10">10-15%</td>
+                                    <td class="p-4 text-center text-amber-300 bg-white/5">10-15%</td>
+                                </tr>
+                                <tr class="border-b border-white/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Priority Support</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-white/40 bg-white/5">–</td>
+                                    <td class="p-4 text-center text-white/40 bg-gradient-to-br from-amber-500/10 to-orange-500/10">–</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr>
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Flexible Cancellation</td>
+                                    <td class="p-4 text-center text-green-400">Anytime</td>
+                                    <td class="p-4 text-center text-white/80 bg-white/5">30 days notice</td>
+                                    <td class="p-4 text-center text-white/80 bg-gradient-to-br from-amber-500/10 to-orange-500/10">30 days notice</td>
+                                    <td class="p-4 text-center text-white/80 bg-white/5">30 days notice</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="text-center mt-8">
+                        <a href="/index.html#registration" class="inline-block bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold py-4 px-8 rounded-lg hover:from-purple-600 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-purple-500/50 hover:-translate-y-1">
+                            Register for Tech Explorers
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Future Leaders Pricing Table (Ages 14-18) - PREMIUM -->
+                <div id="future-leaders-table" class="hidden max-w-6xl mx-auto mb-16">
+                    <!-- Back Button -->
+                    <button onclick="backToAgeSelection()" class="mb-6 flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors group">
+                        <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Back to Age Selection
+                    </button>
+
+                    <div class="text-center mb-8">
+                        <div class="inline-block mb-4">
+                            <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold">PREMIUM PROGRAM</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">
+                            Future Leaders Pricing
+                        </h2>
+                        <p class="text-lg text-white/80">Ages 14-18 • Professional AI Development & Entrepreneurship</p>
+                    </div>
+
+                    <!-- Mobile Scroll Hint -->
+                    <div class="text-center text-sm text-amber-400 mb-4 md:hidden">
+                        ← Swipe to see all pricing options →
+                    </div>
+
+                    <!-- Pricing Table Container with Horizontal Scroll -->
+                    <div class="overflow-x-auto rounded-xl">
+                        <table class="pricing-table w-full min-w-[800px] bg-black/40 backdrop-blur-lg rounded-xl border-2 border-amber-300/50">
+                            <thead>
+                                <tr class="border-b border-amber-300/30">
+                                    <th class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-left text-white/60 font-medium">Features</th>
+                                    <th class="p-4 text-center">
+                                        <div class="text-white font-bold text-xl mb-2">Free Trial</div>
+                                        <div class="text-4xl font-bold text-amber-300 mb-2">₪0</div>
+                                        <div class="text-sm text-white/60">First Session</div>
+                                    </th>
+                                    <th class="p-4 text-center bg-white/5">
+                                        <div class="text-white font-bold text-xl mb-2">Monthly</div>
+                                        <div class="flex items-center justify-center gap-2 mb-1">
+                                            <span class="text-lg text-white/60 line-through">₪899</span>
+                                            <span class="text-4xl font-bold text-amber-300">₪749</span>
+                                        </div>
+                                        <div class="text-sm text-white/60">per child/month</div>
+                                    </th>
+                                    <th class="p-4 text-center bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-2 border-amber-400/50 relative">
+                                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                                            <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">MOST POPULAR</span>
+                                        </div>
+                                        <div class="text-white font-bold text-xl mb-2 mt-2">Quarterly</div>
+                                        <div class="flex items-center justify-center gap-2 mb-1">
+                                            <span class="text-lg text-white/60 line-through">₪749</span>
+                                            <span class="text-4xl font-bold text-amber-300">₪649</span>
+                                        </div>
+                                        <div class="text-sm text-white/60">per child/month</div>
+                                        <div class="text-xs text-amber-300 mt-2">Save 17%</div>
+                                    </th>
+                                    <th class="p-4 text-center bg-white/5">
+                                        <div class="text-white font-bold text-xl mb-2">Annual</div>
+                                        <div class="flex items-center justify-center gap-2 mb-1">
+                                            <span class="text-lg text-white/60 line-through">₪699</span>
+                                            <span class="text-4xl font-bold text-emerald-300">₪599</span>
+                                        </div>
+                                        <div class="text-sm text-white/60">per child/month</div>
+                                        <div class="text-xs text-emerald-300 mt-2">Save 33%</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Core Features -->
+                                <tr class="border-b border-amber-300/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Weekly Sessions</td>
+                                    <td class="p-4 text-center text-white/80">1 Session</td>
+                                    <td class="p-4 text-center text-white/80 bg-white/5">4 Sessions</td>
+                                    <td class="p-4 text-center text-white/80 bg-gradient-to-br from-amber-500/10 to-orange-500/10">12 Sessions</td>
+                                    <td class="p-4 text-center text-white/80 bg-white/5">48 Sessions</td>
+                                </tr>
+                                <tr class="border-b border-amber-300/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Advanced Programming & AI Development</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-amber-300/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Personal AI Assistant Setup</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-amber-300/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Startup & Entrepreneurship Concepts</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-amber-300/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Real-World Business Applications</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-amber-300/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Professional Portfolio Development</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-amber-300/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Small Group Setting (6-8 students)</td>
+                                    <td class="p-4 text-center text-green-400">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-amber-300/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Industry Mentorship</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-amber-300/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">GitHub & LinkedIn Portfolio Setup</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-amber-300/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">College Application Support</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-amber-300/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Parent Progress Updates</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-amber-300/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Professional Certificate</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-white/40 bg-white/5">–</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr class="border-b border-amber-300/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Family Discount (2+ kids)</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-amber-300 bg-white/5">10-15%</td>
+                                    <td class="p-4 text-center text-amber-300 bg-gradient-to-br from-amber-500/10 to-orange-500/10">10-15%</td>
+                                    <td class="p-4 text-center text-amber-300 bg-white/5">10-15%</td>
+                                </tr>
+                                <tr class="border-b border-amber-300/10">
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Priority Support</td>
+                                    <td class="p-4 text-center text-white/40">–</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
+                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
+                                </tr>
+                                <tr>
+                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Flexible Cancellation</td>
+                                    <td class="p-4 text-center text-green-400">Anytime</td>
+                                    <td class="p-4 text-center text-white/80 bg-white/5">30 days notice</td>
+                                    <td class="p-4 text-center text-white/80 bg-gradient-to-br from-amber-500/10 to-orange-500/10">30 days notice</td>
+                                    <td class="p-4 text-center text-white/80 bg-white/5">30 days notice</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="text-center mt-8">
+                        <a href="/index.html#registration" class="inline-block bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold py-4 px-8 rounded-lg hover:from-amber-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-amber-500/50 hover:-translate-y-1">
+                            Register for Future Leaders
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Choose Your Plan Section -->
                 <div class="text-center mb-6 fade-in-up delay-1" data-scroll>
                     <h3 class="text-3xl font-bold text-white tracking-tight mb-6">Choose Your Plan</h3>
@@ -715,6 +1380,76 @@
             });
         }
 
+        // Age Group Pricing Table Functions
+        function showPricingTable(ageGroup) {
+            // Hide age selection cards
+            const ageSelection = document.getElementById('age-selection');
+            if (ageSelection) {
+                ageSelection.style.display = 'none';
+            }
+
+            // Hide old generic pricing section
+            const oldPricingPlans = document.getElementById('pricing-plans');
+            if (oldPricingPlans) {
+                oldPricingPlans.style.display = 'none';
+            }
+            const oldPricingHeader = oldPricingPlans?.previousElementSibling;
+            if (oldPricingHeader) {
+                oldPricingHeader.style.display = 'none';
+            }
+
+            // Hide all pricing tables first
+            document.getElementById('young-innovators-table')?.classList.add('hidden');
+            document.getElementById('tech-explorers-table')?.classList.add('hidden');
+            document.getElementById('future-leaders-table')?.classList.add('hidden');
+
+            // Show the selected pricing table
+            const tableId = ageGroup + '-table';
+            const selectedTable = document.getElementById(tableId);
+            if (selectedTable) {
+                selectedTable.classList.remove('hidden');
+
+                // Smooth scroll to the table
+                setTimeout(() => {
+                    selectedTable.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            }
+        }
+
+        function backToAgeSelection() {
+            // Hide all pricing tables
+            document.getElementById('young-innovators-table')?.classList.add('hidden');
+            document.getElementById('tech-explorers-table')?.classList.add('hidden');
+            document.getElementById('future-leaders-table')?.classList.add('hidden');
+
+            // Show age selection cards
+            const ageSelection = document.getElementById('age-selection');
+            if (ageSelection) {
+                ageSelection.style.display = 'block';
+
+                // Smooth scroll to age selection
+                setTimeout(() => {
+                    ageSelection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            }
+
+            // Keep old generic pricing section hidden
+            const oldPricingPlans = document.getElementById('pricing-plans');
+            if (oldPricingPlans) {
+                oldPricingPlans.style.display = 'none';
+            }
+            const oldPricingHeader = oldPricingPlans?.previousElementSibling;
+            if (oldPricingHeader) {
+                oldPricingHeader.style.display = 'none';
+            }
+        }
+
         // Initialize countdown when page loads
         document.addEventListener('DOMContentLoaded', function() {
             // Start the countdown immediately
@@ -725,6 +1460,16 @@
 
             // Initialize scroll animations
             initScrollAnimations();
+
+            // Hide old generic pricing section by default
+            const oldPricingPlans = document.getElementById('pricing-plans');
+            if (oldPricingPlans) {
+                oldPricingPlans.style.display = 'none';
+            }
+            const oldPricingHeader = oldPricingPlans?.previousElementSibling;
+            if (oldPricingHeader) {
+                oldPricingHeader.style.display = 'none';
+            }
         });
     </script>
 
