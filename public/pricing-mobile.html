@@ -620,173 +620,140 @@
                         <p class="text-lg text-white/80">Ages 11-13 • Advanced AI Programming</p>
                     </div>
 
-                    <!-- Pricing Cards Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <!-- Accordion Pricing Cards -->
+                    <div class="space-y-4 mb-12 max-w-4xl mx-auto px-4">
 
-                        <!-- Free Trial Card -->
-                        <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/20 hover:border-purple-400/50 transition-all duration-300">
-                            <div class="text-center mb-6">
-                                <h3 class="text-xl font-bold text-white mb-2">Free Trial</h3>
-                                <div class="text-5xl font-bold text-purple-300 mb-2">₪0</div>
-                                <p class="text-sm text-white/60">First Session</p>
+                        <!-- Free Trial Accordion Card -->
+                        <div id="te-free-trial" class="pricing-accordion-card bg-black/40 backdrop-blur-lg rounded-2xl border-2 border-white/20 overflow-hidden transition-all duration-300">
+                            <button onclick="toggleAccordion('te-free-trial')" class="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors">
+                                <div class="flex-1">
+                                    <div class="flex items-baseline gap-3 mb-1">
+                                        <h3 class="text-2xl font-bold text-white">Free Trial</h3>
+                                        <span class="text-4xl font-bold text-purple-300">₪0</span>
+                                    </div>
+                                    <p class="text-sm text-white/60">First Session • Try before you commit</p>
+                                </div>
+                                <svg class="accordion-chevron w-6 h-6 text-purple-300 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+
+                            <div class="accordion-content overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 0; opacity: 0;">
+                                <div class="px-6 pb-6">
+                                    <div class="grid grid-cols-1 gap-3 text-base">
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">1 Session</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">Programming Fundamentals</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">AI-Assisted Coding</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">Small Group Setting (6-8 kids)</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><span class="text-white/50">GitHub Portfolio</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><span class="text-white/50">Completion Certificate</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><span class="text-white/50">Priority Support</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><span class="text-white/50">Family Discount</span></div>
+                                    </div>
+                                    <a href="/index.html#registration" class="mt-6 block w-full bg-white/10 hover:bg-white/20 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300">
+                                        Try Free
+                                    </a>
+                                </div>
                             </div>
-                            <ul class="space-y-3 mb-6">
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">1 Session</span>
-                                </li>
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">Programming Fundamentals</span>
-                                </li>
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">AI-Assisted Coding</span>
-                                </li>
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">Small Group Setting</span>
-                                </li>
-                            </ul>
-                            <a href="/index.html#registration" class="block w-full bg-white/10 hover:bg-white/20 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300">
-                                Try Free
-                            </a>
                         </div>
 
-                        <!-- Monthly Card -->
-                        <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/20 hover:border-purple-400/50 transition-all duration-300">
-                            <div class="text-center mb-6">
-                                <h3 class="text-xl font-bold text-white mb-2">Monthly</h3>
-                                <div class="flex items-baseline justify-center gap-2 mb-2">
-                                    <span class="text-lg text-white/60 line-through">₪799</span>
-                                    <div class="text-5xl font-bold text-purple-300">₪649</div>
+                        <!-- Monthly Accordion Card -->
+                        <div id="te-monthly" class="pricing-accordion-card bg-black/40 backdrop-blur-lg rounded-2xl border-2 border-purple-400/30 overflow-hidden transition-all duration-300">
+                            <button onclick="toggleAccordion('te-monthly')" class="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors">
+                                <div class="flex-1">
+                                    <div class="flex items-baseline gap-3 mb-1">
+                                        <h3 class="text-2xl font-bold text-white">Monthly</h3>
+                                        <span class="text-lg text-white/60 line-through">₪799</span>
+                                        <span class="text-4xl font-bold text-purple-300">₪649</span>
+                                    </div>
+                                    <p class="text-sm text-white/60">per child/month • 4 Sessions</p>
                                 </div>
-                                <p class="text-sm text-white/60">per child/month</p>
+                                <svg class="accordion-chevron w-6 h-6 text-purple-300 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+
+                            <div class="accordion-content overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 0; opacity: 0;">
+                                <div class="px-6 pb-6">
+                                    <div class="grid grid-cols-1 gap-3 text-base">
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">4 Weekly Sessions</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">All Free Trial Features</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">GitHub Portfolio Development</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">Family Discount (10-15%)</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><span class="text-white/50">Completion Certificate</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><span class="text-white/50">Priority Support</span></div>
+                                    </div>
+                                    <a href="/index.html#registration" class="mt-6 block w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg">
+                                        Get Started
+                                    </a>
+                                </div>
                             </div>
-                            <ul class="space-y-3 mb-6">
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">4 Weekly Sessions</span>
-                                </li>
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">All Free Trial Features</span>
-                                </li>
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">GitHub Portfolio</span>
-                                </li>
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">Family Discount (10-15%)</span>
-                                </li>
-                            </ul>
-                            <a href="/index.html#registration" class="block w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg">
-                                Get Started
-                            </a>
                         </div>
 
-                        <!-- Quarterly Card (Most Popular) -->
-                        <div class="bg-gradient-to-br from-amber-500/10 to-orange-500/10 backdrop-blur-lg rounded-2xl p-6 border-2 border-amber-400/50 hover:border-amber-400 transition-all duration-300 relative">
-                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                                <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-1 rounded-full text-xs font-bold">MOST POPULAR</span>
+                        <!-- Quarterly Accordion Card (Most Popular) -->
+                        <div id="te-quarterly" class="pricing-accordion-card bg-gradient-to-br from-amber-500/10 to-orange-500/10 backdrop-blur-lg rounded-2xl border-2 border-amber-400/50 overflow-hidden transition-all duration-300 relative">
+                            <div class="absolute -top-2 right-4">
+                                <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">MOST POPULAR</span>
                             </div>
-                            <div class="text-center mb-6 mt-2">
-                                <h3 class="text-xl font-bold text-white mb-2">Quarterly</h3>
-                                <div class="flex items-baseline justify-center gap-2 mb-2">
-                                    <span class="text-lg text-white/60 line-through">₪699</span>
-                                    <div class="text-5xl font-bold text-amber-300">₪569</div>
+                            <button onclick="toggleAccordion('te-quarterly')" class="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors">
+                                <div class="flex-1">
+                                    <div class="flex items-baseline gap-3 mb-1">
+                                        <h3 class="text-2xl font-bold text-white">Quarterly</h3>
+                                        <span class="text-lg text-white/60 line-through">₪699</span>
+                                        <span class="text-4xl font-bold text-amber-300">₪569</span>
+                                    </div>
+                                    <p class="text-sm text-white/60">per child/month • 12 Sessions • Save 19%</p>
                                 </div>
-                                <p class="text-sm text-white/60">per child/month</p>
-                                <p class="text-sm text-amber-300 font-semibold mt-1">Save 19%</p>
+                                <svg class="accordion-chevron w-6 h-6 text-amber-300 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+
+                            <div class="accordion-content overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 0; opacity: 0;">
+                                <div class="px-6 pb-6">
+                                    <div class="grid grid-cols-1 gap-3 text-base">
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">12 Weekly Sessions</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">All Monthly Features</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">Completion Certificate</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">Best Value (19% savings)</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><span class="text-white/50">Priority Support</span></div>
+                                    </div>
+                                    <a href="/index.html#registration" class="mt-6 block w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg">
+                                        Choose Plan
+                                    </a>
+                                </div>
                             </div>
-                            <ul class="space-y-3 mb-6">
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">12 Weekly Sessions</span>
-                                </li>
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">All Monthly Features</span>
-                                </li>
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">Completion Certificate</span>
-                                </li>
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">Best Value</span>
-                                </li>
-                            </ul>
-                            <a href="/index.html#registration" class="block w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg">
-                                Choose Plan
-                            </a>
                         </div>
 
-                        <!-- Annual Card -->
-                        <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/20 hover:border-emerald-400/50 transition-all duration-300">
-                            <div class="text-center mb-6">
-                                <h3 class="text-xl font-bold text-white mb-2">Annual</h3>
-                                <div class="flex items-baseline justify-center gap-2 mb-2">
-                                    <span class="text-lg text-white/60 line-through">₪649</span>
-                                    <div class="text-5xl font-bold text-emerald-300">₪519</div>
+                        <!-- Annual Accordion Card -->
+                        <div id="te-annual" class="pricing-accordion-card bg-black/40 backdrop-blur-lg rounded-2xl border-2 border-emerald-400/30 overflow-hidden transition-all duration-300">
+                            <button onclick="toggleAccordion('te-annual')" class="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors">
+                                <div class="flex-1">
+                                    <div class="flex items-baseline gap-3 mb-1">
+                                        <h3 class="text-2xl font-bold text-white">Annual</h3>
+                                        <span class="text-lg text-white/60 line-through">₪649</span>
+                                        <span class="text-4xl font-bold text-emerald-300">₪519</span>
+                                    </div>
+                                    <p class="text-sm text-white/60">per child/month • 48 Sessions • Save 36%</p>
                                 </div>
-                                <p class="text-sm text-white/60">per child/month</p>
-                                <p class="text-sm text-emerald-300 font-semibold mt-1">Save 36%</p>
+                                <svg class="accordion-chevron w-6 h-6 text-emerald-300 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+
+                            <div class="accordion-content overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 0; opacity: 0;">
+                                <div class="px-6 pb-6">
+                                    <div class="grid grid-cols-1 gap-3 text-base">
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">48 Weekly Sessions</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">All Quarterly Features</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">Priority Support</span></div>
+                                        <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="text-white/90">Maximum Savings (36%)</span></div>
+                                    </div>
+                                    <a href="/index.html#registration" class="mt-6 block w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg">
+                                        Get Started
+                                    </a>
+                                </div>
                             </div>
-                            <ul class="space-y-3 mb-6">
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">48 Weekly Sessions</span>
-                                </li>
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">All Quarterly Features</span>
-                                </li>
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">Priority Support</span>
-                                </li>
-                                <li class="flex items-start gap-2 text-white/90">
-                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="text-base">Maximum Savings</span>
-                                </li>
-                            </ul>
-                            <a href="/index.html#registration" class="block w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg">
-                                Get Started
-                            </a>
                         </div>
                     </div>
 
