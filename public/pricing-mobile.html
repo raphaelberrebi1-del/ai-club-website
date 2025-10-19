@@ -442,7 +442,7 @@
                 </div>
 
                 <!-- Young Innovators Pricing Table (Ages 8-10) -->
-                <div id="young-innovators-table" class="hidden max-w-6xl mx-auto mb-16">
+                <div id="young-innovators-table" class="hidden max-w-6xl mx-auto mb-16 px-4">
                     <!-- Back Button -->
                     <button onclick="backToAgeSelection()" class="mb-6 flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors group">
                         <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -458,152 +458,178 @@
                         <p class="text-lg text-white/80">Ages 8-10 • Creative AI Introduction</p>
                     </div>
 
-                    <!-- Mobile Scroll Hint -->
-                    <div class="text-center text-sm text-cyan-400 mb-4 md:hidden">
-                        ← Swipe to see all pricing options →
+                    <!-- Pricing Cards Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+
+                        <!-- Free Trial Card -->
+                        <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/20 hover:border-cyan-400/50 transition-all duration-300">
+                            <div class="text-center mb-6">
+                                <h3 class="text-xl font-bold text-white mb-2">Free Trial</h3>
+                                <div class="text-5xl font-bold text-cyan-300 mb-2">₪0</div>
+                                <p class="text-sm text-white/60">First Session</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">1 Session</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Creative AI Storytelling</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Digital Art Creation</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Small Group Setting</span>
+                                </li>
+                            </ul>
+                            <a href="/index.html#registration" class="block w-full bg-white/10 hover:bg-white/20 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300">
+                                Try Free
+                            </a>
+                        </div>
+
+                        <!-- Monthly Card -->
+                        <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/20 hover:border-cyan-400/50 transition-all duration-300">
+                            <div class="text-center mb-6">
+                                <h3 class="text-xl font-bold text-white mb-2">Monthly</h3>
+                                <div class="flex items-baseline justify-center gap-2 mb-2">
+                                    <span class="text-lg text-white/60 line-through">₪749</span>
+                                    <div class="text-5xl font-bold text-cyan-300">₪599</div>
+                                </div>
+                                <p class="text-sm text-white/60">per child/month</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">4 Weekly Sessions</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">All Free Trial Features</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Project Portfolio</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Family Discount (10-15%)</span>
+                                </li>
+                            </ul>
+                            <a href="/index.html#registration" class="block w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg">
+                                Get Started
+                            </a>
+                        </div>
+
+                        <!-- Quarterly Card (Most Popular) -->
+                        <div class="bg-gradient-to-br from-amber-500/10 to-orange-500/10 backdrop-blur-lg rounded-2xl p-6 border-2 border-amber-400/50 hover:border-amber-400 transition-all duration-300 relative">
+                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                                <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-1 rounded-full text-xs font-bold">MOST POPULAR</span>
+                            </div>
+                            <div class="text-center mb-6 mt-2">
+                                <h3 class="text-xl font-bold text-white mb-2">Quarterly</h3>
+                                <div class="flex items-baseline justify-center gap-2 mb-2">
+                                    <span class="text-lg text-white/60 line-through">₪649</span>
+                                    <div class="text-5xl font-bold text-amber-300">₪519</div>
+                                </div>
+                                <p class="text-sm text-white/60">per child/month</p>
+                                <p class="text-sm text-amber-300 font-semibold mt-1">Save 20%</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">12 Weekly Sessions</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">All Monthly Features</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Completion Certificate</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Best Value</span>
+                                </li>
+                            </ul>
+                            <a href="/index.html#registration" class="block w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg">
+                                Choose Plan
+                            </a>
+                        </div>
+
+                        <!-- Annual Card -->
+                        <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/20 hover:border-emerald-400/50 transition-all duration-300">
+                            <div class="text-center mb-6">
+                                <h3 class="text-xl font-bold text-white mb-2">Annual</h3>
+                                <div class="flex items-baseline justify-center gap-2 mb-2">
+                                    <span class="text-lg text-white/60 line-through">₪599</span>
+                                    <div class="text-5xl font-bold text-emerald-300">₪479</div>
+                                </div>
+                                <p class="text-sm text-white/60">per child/month</p>
+                                <p class="text-sm text-emerald-300 font-semibold mt-1">Save 36%</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">48 Weekly Sessions</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">All Quarterly Features</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Priority Support</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Maximum Savings</span>
+                                </li>
+                            </ul>
+                            <a href="/index.html#registration" class="block w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg">
+                                Get Started
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Pricing Table Container with Horizontal Scroll -->
-                    <div class="overflow-x-auto rounded-xl">
-                        <table class="pricing-table w-full min-w-[800px] bg-black/40 backdrop-blur-lg rounded-xl border-2 border-white/20">
-                            <thead>
-                                <tr class="border-b border-white/20">
-                                    <th class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-left text-white/60 font-medium">Features</th>
-                                    <th class="p-4 text-center">
-                                        <div class="text-white font-bold text-xl mb-2">Free Trial</div>
-                                        <div class="text-4xl font-bold text-cyan-300 mb-2">₪0</div>
-                                        <div class="text-sm text-white/60">First Session</div>
-                                    </th>
-                                    <th class="p-4 text-center bg-white/5">
-                                        <div class="text-white font-bold text-xl mb-2">Monthly</div>
-                                        <div class="flex items-center justify-center gap-2 mb-1">
-                                            <span class="text-lg text-white/60 line-through">₪749</span>
-                                            <span class="text-4xl font-bold text-cyan-300">₪599</span>
-                                        </div>
-                                        <div class="text-sm text-white/60">per child/month</div>
-                                    </th>
-                                    <th class="p-4 text-center bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-2 border-amber-400/50 relative">
-                                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                                            <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">MOST POPULAR</span>
-                                        </div>
-                                        <div class="text-white font-bold text-xl mb-2 mt-2">Quarterly</div>
-                                        <div class="flex items-center justify-center gap-2 mb-1">
-                                            <span class="text-lg text-white/60 line-through">₪649</span>
-                                            <span class="text-4xl font-bold text-amber-300">₪519</span>
-                                        </div>
-                                        <div class="text-sm text-white/60">per child/month</div>
-                                        <div class="text-xs text-amber-300 mt-2">Save 20%</div>
-                                    </th>
-                                    <th class="p-4 text-center bg-white/5">
-                                        <div class="text-white font-bold text-xl mb-2">Annual</div>
-                                        <div class="flex items-center justify-center gap-2 mb-1">
-                                            <span class="text-lg text-white/60 line-through">₪599</span>
-                                            <span class="text-4xl font-bold text-emerald-300">₪479</span>
-                                        </div>
-                                        <div class="text-sm text-white/60">per child/month</div>
-                                        <div class="text-xs text-emerald-300 mt-2">Save 36%</div>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Core Features -->
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Weekly Sessions</td>
-                                    <td class="p-4 text-center text-white/80">1 Session</td>
-                                    <td class="p-4 text-center text-white/80 bg-white/5">4 Sessions</td>
-                                    <td class="p-4 text-center text-white/80 bg-gradient-to-br from-amber-500/10 to-orange-500/10">12 Sessions</td>
-                                    <td class="p-4 text-center text-white/80 bg-white/5">48 Sessions</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Creative AI Storytelling</td>
-                                    <td class="p-4 text-center text-green-400">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Digital Art Creation</td>
-                                    <td class="p-4 text-center text-green-400">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Interactive AI Games</td>
-                                    <td class="p-4 text-center text-green-400">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Small Group Setting (6-8 kids)</td>
-                                    <td class="p-4 text-center text-green-400">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Age-Appropriate AI Tools</td>
-                                    <td class="p-4 text-center text-green-400">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Safety & Supervision</td>
-                                    <td class="p-4 text-center text-green-400">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Project Portfolio</td>
-                                    <td class="p-4 text-center text-white/40">–</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Parent Progress Updates</td>
-                                    <td class="p-4 text-center text-white/40">–</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Completion Certificate</td>
-                                    <td class="p-4 text-center text-white/40">–</td>
-                                    <td class="p-4 text-center text-white/40 bg-white/5">–</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Family Discount (2+ kids)</td>
-                                    <td class="p-4 text-center text-white/40">–</td>
-                                    <td class="p-4 text-center text-amber-300 bg-white/5">10-15%</td>
-                                    <td class="p-4 text-center text-amber-300 bg-gradient-to-br from-amber-500/10 to-orange-500/10">10-15%</td>
-                                    <td class="p-4 text-center text-amber-300 bg-white/5">10-15%</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Priority Support</td>
-                                    <td class="p-4 text-center text-white/40">–</td>
-                                    <td class="p-4 text-center text-white/40 bg-white/5">–</td>
-                                    <td class="p-4 text-center text-white/40 bg-gradient-to-br from-amber-500/10 to-orange-500/10">–</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr>
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Flexible Cancellation</td>
-                                    <td class="p-4 text-center text-green-400">Anytime</td>
-                                    <td class="p-4 text-center text-white/80 bg-white/5">30 days notice</td>
-                                    <td class="p-4 text-center text-white/80 bg-gradient-to-br from-amber-500/10 to-orange-500/10">30 days notice</td>
-                                    <td class="p-4 text-center text-white/80 bg-white/5">30 days notice</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- CTA Button -->
-                    <div class="text-center mt-8">
+                    <!-- Registration CTA -->
+                    <div class="text-center mt-12">
                         <a href="/index.html#registration" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-4 px-8 rounded-lg hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-cyan-500/50 hover:-translate-y-1">
                             Register for Young Innovators
                         </a>
@@ -611,7 +637,7 @@
                 </div>
 
                 <!-- Tech Explorers Pricing Table (Ages 11-13) -->
-                <div id="tech-explorers-table" class="hidden max-w-6xl mx-auto mb-16">
+                <div id="tech-explorers-table" class="hidden max-w-6xl mx-auto mb-16 px-4">
                     <!-- Back Button -->
                     <button onclick="backToAgeSelection()" class="mb-6 flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors group">
                         <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -627,159 +653,178 @@
                         <p class="text-lg text-white/80">Ages 11-13 • Advanced AI Programming</p>
                     </div>
 
-                    <!-- Mobile Scroll Hint -->
-                    <div class="text-center text-sm text-purple-400 mb-4 md:hidden">
-                        ← Swipe to see all pricing options →
+                    <!-- Pricing Cards Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+
+                        <!-- Free Trial Card -->
+                        <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/20 hover:border-purple-400/50 transition-all duration-300">
+                            <div class="text-center mb-6">
+                                <h3 class="text-xl font-bold text-white mb-2">Free Trial</h3>
+                                <div class="text-5xl font-bold text-purple-300 mb-2">₪0</div>
+                                <p class="text-sm text-white/60">First Session</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">1 Session</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Programming Fundamentals</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">AI-Assisted Coding</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Small Group Setting</span>
+                                </li>
+                            </ul>
+                            <a href="/index.html#registration" class="block w-full bg-white/10 hover:bg-white/20 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300">
+                                Try Free
+                            </a>
+                        </div>
+
+                        <!-- Monthly Card -->
+                        <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/20 hover:border-purple-400/50 transition-all duration-300">
+                            <div class="text-center mb-6">
+                                <h3 class="text-xl font-bold text-white mb-2">Monthly</h3>
+                                <div class="flex items-baseline justify-center gap-2 mb-2">
+                                    <span class="text-lg text-white/60 line-through">₪799</span>
+                                    <div class="text-5xl font-bold text-purple-300">₪649</div>
+                                </div>
+                                <p class="text-sm text-white/60">per child/month</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">4 Weekly Sessions</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">All Free Trial Features</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">GitHub Portfolio</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Family Discount (10-15%)</span>
+                                </li>
+                            </ul>
+                            <a href="/index.html#registration" class="block w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg">
+                                Get Started
+                            </a>
+                        </div>
+
+                        <!-- Quarterly Card (Most Popular) -->
+                        <div class="bg-gradient-to-br from-amber-500/10 to-orange-500/10 backdrop-blur-lg rounded-2xl p-6 border-2 border-amber-400/50 hover:border-amber-400 transition-all duration-300 relative">
+                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                                <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-1 rounded-full text-xs font-bold">MOST POPULAR</span>
+                            </div>
+                            <div class="text-center mb-6 mt-2">
+                                <h3 class="text-xl font-bold text-white mb-2">Quarterly</h3>
+                                <div class="flex items-baseline justify-center gap-2 mb-2">
+                                    <span class="text-lg text-white/60 line-through">₪699</span>
+                                    <div class="text-5xl font-bold text-amber-300">₪569</div>
+                                </div>
+                                <p class="text-sm text-white/60">per child/month</p>
+                                <p class="text-sm text-amber-300 font-semibold mt-1">Save 19%</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">12 Weekly Sessions</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">All Monthly Features</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Completion Certificate</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Best Value</span>
+                                </li>
+                            </ul>
+                            <a href="/index.html#registration" class="block w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg">
+                                Choose Plan
+                            </a>
+                        </div>
+
+                        <!-- Annual Card -->
+                        <div class="bg-black/40 backdrop-blur-lg rounded-2xl p-6 border-2 border-white/20 hover:border-emerald-400/50 transition-all duration-300">
+                            <div class="text-center mb-6">
+                                <h3 class="text-xl font-bold text-white mb-2">Annual</h3>
+                                <div class="flex items-baseline justify-center gap-2 mb-2">
+                                    <span class="text-lg text-white/60 line-through">₪649</span>
+                                    <div class="text-5xl font-bold text-emerald-300">₪519</div>
+                                </div>
+                                <p class="text-sm text-white/60">per child/month</p>
+                                <p class="text-sm text-emerald-300 font-semibold mt-1">Save 36%</p>
+                            </div>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">48 Weekly Sessions</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">All Quarterly Features</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Priority Support</span>
+                                </li>
+                                <li class="flex items-start gap-2 text-white/90">
+                                    <svg class="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="text-base">Maximum Savings</span>
+                                </li>
+                            </ul>
+                            <a href="/index.html#registration" class="block w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-center font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg">
+                                Get Started
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Pricing Table Container with Horizontal Scroll -->
-                    <div class="overflow-x-auto rounded-xl">
-                        <table class="pricing-table w-full min-w-[800px] bg-black/40 backdrop-blur-lg rounded-xl border-2 border-white/20">
-                            <thead>
-                                <tr class="border-b border-white/20">
-                                    <th class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-left text-white/60 font-medium">Features</th>
-                                    <th class="p-4 text-center">
-                                        <div class="text-white font-bold text-xl mb-2">Free Trial</div>
-                                        <div class="text-4xl font-bold text-purple-300 mb-2">₪0</div>
-                                        <div class="text-sm text-white/60">First Session</div>
-                                    </th>
-                                    <th class="p-4 text-center bg-white/5">
-                                        <div class="text-white font-bold text-xl mb-2">Monthly</div>
-                                        <div class="flex items-center justify-center gap-2 mb-1">
-                                            <span class="text-lg text-white/60 line-through">₪799</span>
-                                            <span class="text-4xl font-bold text-purple-300">₪649</span>
-                                        </div>
-                                        <div class="text-sm text-white/60">per child/month</div>
-                                    </th>
-                                    <th class="p-4 text-center bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-2 border-amber-400/50 relative">
-                                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                                            <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">MOST POPULAR</span>
-                                        </div>
-                                        <div class="text-white font-bold text-xl mb-2 mt-2">Quarterly</div>
-                                        <div class="flex items-center justify-center gap-2 mb-1">
-                                            <span class="text-lg text-white/60 line-through">₪699</span>
-                                            <span class="text-4xl font-bold text-amber-300">₪569</span>
-                                        </div>
-                                        <div class="text-sm text-white/60">per child/month</div>
-                                        <div class="text-xs text-amber-300 mt-2">Save 19%</div>
-                                    </th>
-                                    <th class="p-4 text-center bg-white/5">
-                                        <div class="text-white font-bold text-xl mb-2">Annual</div>
-                                        <div class="flex items-center justify-center gap-2 mb-1">
-                                            <span class="text-lg text-white/60 line-through">₪649</span>
-                                            <span class="text-4xl font-bold text-emerald-300">₪519</span>
-                                        </div>
-                                        <div class="text-sm text-white/60">per child/month</div>
-                                        <div class="text-xs text-emerald-300 mt-2">Save 36%</div>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Core Features -->
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Weekly Sessions</td>
-                                    <td class="p-4 text-center text-white/80">1 Session</td>
-                                    <td class="p-4 text-center text-white/80 bg-white/5">4 Sessions</td>
-                                    <td class="p-4 text-center text-white/80 bg-gradient-to-br from-amber-500/10 to-orange-500/10">12 Sessions</td>
-                                    <td class="p-4 text-center text-white/80 bg-white/5">48 Sessions</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Programming Fundamentals</td>
-                                    <td class="p-4 text-center text-green-400">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">AI-Assisted Coding</td>
-                                    <td class="p-4 text-center text-green-400">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Advanced Research Skills</td>
-                                    <td class="p-4 text-center text-green-400">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Digital Projects & Portfolio</td>
-                                    <td class="p-4 text-center text-green-400">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Small Group Setting (6-8 kids)</td>
-                                    <td class="p-4 text-center text-green-400">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Collaborative Team Projects</td>
-                                    <td class="p-4 text-center text-green-400">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Safety & Supervision</td>
-                                    <td class="p-4 text-center text-green-400">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">GitHub Portfolio Setup</td>
-                                    <td class="p-4 text-center text-white/40">–</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Parent Progress Updates</td>
-                                    <td class="p-4 text-center text-white/40">–</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Completion Certificate</td>
-                                    <td class="p-4 text-center text-white/40">–</td>
-                                    <td class="p-4 text-center text-white/40 bg-white/5">–</td>
-                                    <td class="p-4 text-center text-green-400 bg-gradient-to-br from-amber-500/10 to-orange-500/10">✓</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Family Discount (2+ kids)</td>
-                                    <td class="p-4 text-center text-white/40">–</td>
-                                    <td class="p-4 text-center text-amber-300 bg-white/5">10-15%</td>
-                                    <td class="p-4 text-center text-amber-300 bg-gradient-to-br from-amber-500/10 to-orange-500/10">10-15%</td>
-                                    <td class="p-4 text-center text-amber-300 bg-white/5">10-15%</td>
-                                </tr>
-                                <tr class="border-b border-white/10">
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Priority Support</td>
-                                    <td class="p-4 text-center text-white/40">–</td>
-                                    <td class="p-4 text-center text-white/40 bg-white/5">–</td>
-                                    <td class="p-4 text-center text-white/40 bg-gradient-to-br from-amber-500/10 to-orange-500/10">–</td>
-                                    <td class="p-4 text-center text-green-400 bg-white/5">✓</td>
-                                </tr>
-                                <tr>
-                                    <td class="sticky left-0 bg-black/60 backdrop-blur-lg z-10 p-4 text-white font-medium">Flexible Cancellation</td>
-                                    <td class="p-4 text-center text-green-400">Anytime</td>
-                                    <td class="p-4 text-center text-white/80 bg-white/5">30 days notice</td>
-                                    <td class="p-4 text-center text-white/80 bg-gradient-to-br from-amber-500/10 to-orange-500/10">30 days notice</td>
-                                    <td class="p-4 text-center text-white/80 bg-white/5">30 days notice</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <!-- CTA Button -->
-                    <div class="text-center mt-8">
+                    <!-- Registration CTA -->
+                    <div class="text-center mt-12">
                         <a href="/index.html#registration" class="inline-block bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold py-4 px-8 rounded-lg hover:from-purple-600 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-purple-500/50 hover:-translate-y-1">
                             Register for Tech Explorers
                         </a>
