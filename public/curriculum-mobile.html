@@ -799,27 +799,6 @@
             transform: translateZ(0);
         }
 
-        .site-background::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
-        }
-
-        /* Desktop-specific background optimization */
-        @media (min-width: 769px) {
-            .site-background {
-                background-image: url('/Desktop.background.png');
-                background-size: cover;
-                background-position: center center;
-            }
-
-            .site-background::after {
-                background: transparent;
-            }
-        }
-
         /* Animation classes */
         .fade-in-up {
             opacity: 0;
