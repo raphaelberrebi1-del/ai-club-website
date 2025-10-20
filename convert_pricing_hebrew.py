@@ -66,6 +66,7 @@ translations = {
     'Monthly': 'חודשי',
     'Quarterly': 'רבעוני',
     'Annually': 'שנתי',
+    'Annual': 'שנתי',
 
     # Pricing details
     'per child/month': 'לילד/חודש',
@@ -118,6 +119,33 @@ translations = {
 
     # Meta and internal links
     'pricing-mobile.html': 'pricing-he.html',
+
+    # Family Discounts Section
+    'Family Discounts': 'הנחות משפחתיות',
+    'Save with multiple children': 'חסכו עם מספר ילדים',
+    'Second child: 10% off all plans': 'ילד שני: 10% הנחה על כל התוכניות',
+    'Third child and beyond: 15% off all plans': 'ילד שלישי ומעלה: 15% הנחה על כל התוכניות',
+    'First child:': 'ילד ראשון:',
+    'Second child:': 'ילד שני:',
+    'Third child:': 'ילד שלישי:',
+    'First': 'ראשון',
+    'Second': 'שני',
+    'Third': 'שלישי',
+    'child': 'ילד',
+    'month': 'חודש',
+    '(10% off)': '(10% הנחה)',
+    '(15% off)': '(15% הנחה)',
+    'Month-to-חודש billing': 'חיוב חודשי',
+    'Choose Your Child\'s Plan': 'בחרו את תוכנית הילד שלכם',
+
+    # Trial Period & Policies Section
+    'Trial Period & Policies': 'תקופת ניסיון ומדיניות',
+    '2-Lesson Trial Period': 'תקופת ניסיון של 2 שיעורים',
+    'Full refund available after the second lesson if you\'re not completely satisfied with the program.': 'החזר כספי מלא זמין לאחר השיעור השני אם אינכם מרוצים לחלוטין מהתוכנית.',
+    'Cancellation Terms': 'תנאי ביטול',
+    '30 days advance notice required for cancellation. No penalties or hidden fees.': 'נדרשת הודעה מוקדמת של 30 יום לביטול. ללא קנסות או עמלות נסתרות.',
+    'Payment Methods': 'אמצעי תשלום',
+    'We accept Bit, PayBox, and all major credit cards for your convenience.': 'אנחנו מקבלים Bit, PayBox וכל כרטיסי האשראי הגדולים לנוחיותכם.',
 
     # Footer
     'Quick Links': 'קישורים מהירים',
