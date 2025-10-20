@@ -247,6 +247,28 @@
         <path class="cursor-trail-path" d=""></path>
     </svg>
 
+    <!-- Enhanced Background glow effects -->
+    <div class="pointer-events-none fixed inset-0 overflow-hidden" style="z-index: 1;">
+        <!-- Primary cyan glow - more visible -->
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[1400px] h-[1400px] rounded-full blur-3xl opacity-60"
+             style="background: radial-gradient(circle at center, rgba(34, 211, 238, 0.7), rgba(34, 211, 238, 0.3) 40%, transparent 70%);"></div>
+
+        <!-- Secondary pink glow - more visible -->
+        <div class="absolute bottom-0 right-0 w-[900px] h-[900px] translate-x-1/4 translate-y-1/4 rounded-full blur-3xl opacity-50"
+             style="background: radial-gradient(circle at center, rgba(236, 72, 153, 0.6), rgba(236, 72, 153, 0.2) 40%, transparent 70%);"></div>
+
+        <!-- Additional purple accent glow -->
+        <div class="absolute top-1/2 left-0 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl opacity-40"
+             style="background: radial-gradient(circle at center, rgba(139, 92, 246, 0.5), transparent 60%);"></div>
+    </div>
+
+    <!-- Animated background particles -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none" style="z-index: 2;">
+        <div class="particle-1 absolute w-2 h-2 bg-cyan-400 rounded-full opacity-30" style="animation: float 20s infinite ease-in-out;"></div>
+        <div class="particle-2 absolute w-1 h-1 bg-teal-400 rounded-full opacity-40" style="animation: float 15s infinite ease-in-out; animation-delay: 2s;"></div>
+        <div class="particle-3 absolute w-3 h-3 bg-amber-400 rounded-full opacity-20" style="animation: float 25s infinite ease-in-out; animation-delay: 4s;"></div>
+    </div>
+
     <!-- Header -->
     <header class="bg-black/40 backdrop-blur-lg border-b border-white/20 sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4">
