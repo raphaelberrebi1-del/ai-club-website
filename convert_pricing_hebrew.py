@@ -166,6 +166,11 @@ translations = {
     'per child/month • 48 Sessions • Save 33%': 'לילד/חודש • 48 מפגשים • חסכו 33%',
     'per child/month • 48 Sessions • Save 36%': 'לילד/חודש • 48 מפגשים • חסכו 36%',
 
+    # Future Leaders Features
+    'College Application Support': 'תמיכה בבקשות למכללה',
+    'Business & Entrepreneurship': 'עסקים ויזמות',
+    'Career Preparation': 'הכנה לקריירה',
+
     # Tech Explorers (Ages 11-13)
     'Advanced AI Programming': 'תכנות AI מתקדם',
     'Register for חוקרי טכנולוגיה': 'הרשמו לחוקרי טכנולוגיה',
@@ -190,9 +195,12 @@ translations = {
     'Privacy Policy': 'מדיניות פרטיות',
     'Terms of Service': 'תנאי שירות',
     'Contact': 'צור קשר',
+    'צור קשר Us': 'צור קשר',
     'Email:': 'דוא"ל:',
     'Phone:': 'טלפון:',
     'Location: Raanana, Israel': 'מיקום: רעננה, ישראל',
+    'Raanana, Israel': 'רעננה, ישראל',
+    'Empowering the next generation with AI education in Raanana.': 'מעצימים את הדור הבא עם חינוך AI ברעננה.',
     'All rights reserved': 'כל הזכויות שמורות',
 }
 
