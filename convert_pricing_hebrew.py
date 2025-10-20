@@ -147,6 +147,21 @@ translations = {
     'Payment Methods': 'אמצעי תשלום',
     'We accept Bit, PayBox, and all major credit cards for your convenience.': 'אנחנו מקבלים Bit, PayBox וכל כרטיסי האשראי הגדולים לנוחיותכם.',
 
+    # Future Leaders (Ages 14-18) Premium Section
+    'PREMIUM PROGRAM': 'תוכנית פרימיום',
+    'Future Leaders Pricing': 'מחירים למנהיגי העתיד',
+    'Ages 14-18 • Professional AI Development & Entrepreneurship': 'גילאי 14-18 • פיתוח AI מקצועי ויזמות',
+    'Premium program preview': 'תצוגה מקדימה של תוכנית פרימיום',
+    'First Session • Premium program preview': 'מפגש ראשון • תצוגה מקדימה של תוכנית פרימיום',
+    'Professional': 'מקצועי',
+    'Premium + Video': 'פרימיום + וידאו',
+    'Register for Future Leaders': 'הרשמו למנהיגי העתיד',
+    'Choose Your Plan': 'בחרו את התוכנית שלכם',
+    'Save 17%': 'חסכו 17%',
+    'Save 33%': 'חסכו 33%',
+    'per child/month • 12 Sessions • Save 17%': 'לילד/חודש • 12 מפגשים • חסכו 17%',
+    'per child/month • 48 Sessions • Save 33%': 'לילד/חודש • 48 מפגשים • חסכו 33%',
+
     # Footer
     'Quick Links': 'קישורים מהירים',
     'Home': 'בית',
@@ -164,18 +179,18 @@ translations = {
 }
 
 # Read the file
-with open('/Users/raphaelberrebi/AI for Kids/public/pricing-he.html', 'r', encoding='utf-8') as f:
+with open('/Users/raphaelberrebi/AI for Kids/public/pricing-mobile.html', 'r', encoding='utf-8') as f:
     content = f.read()
 
 # Apply translations
 for eng, heb in translations.items():
     content = content.replace(eng, heb)
 
-# Write back
-with open('/Users/raphaelberrebi/AI for Kids/public/pricing-he.html', 'w', encoding='utf-8') as f:
+# Write back - create Hebrew mobile version
+with open('/Users/raphaelberrebi/AI for Kids/public/pricing-mobile-he.html', 'w', encoding='utf-8') as f:
     f.write(content)
 
 print("✓ Translation complete")
 print(f"✓ File length: {len(content)} characters")
 print(f"✓ Applied {len(translations)} translations")
-print(f"✓ Output file: /Users/raphaelberrebi/AI for Kids/public/pricing-he.html")
+print(f"✓ Output file: /Users/raphaelberrebi/AI for Kids/public/pricing-mobile-he.html")
