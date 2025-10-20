@@ -151,16 +151,34 @@ translations = {
     'PREMIUM PROGRAM': 'תוכנית פרימיום',
     'Future Leaders Pricing': 'מחירים למנהיגי העתיד',
     'Ages 14-18 • Professional AI Development & Entrepreneurship': 'גילאי 14-18 • פיתוח AI מקצועי ויזמות',
+    'AI Development & Entrepreneurship': 'פיתוח AI ויזמות',
     'Premium program preview': 'תצוגה מקדימה של תוכנית פרימיום',
     'First Session • Premium program preview': 'מפגש ראשון • תצוגה מקדימה של תוכנית פרימיום',
     'Professional': 'מקצועי',
     'Premium + Video': 'פרימיום + וידאו',
     'Register for Future Leaders': 'הרשמו למנהיגי העתיד',
+    'Register for מנהיגי העתיד': 'הרשמו למנהיגי העתיד',
     'Choose Your Plan': 'בחרו את התוכנית שלכם',
     'Save 17%': 'חסכו 17%',
     'Save 33%': 'חסכו 33%',
+    'Save 36%': 'חסכו 36%',
     'per child/month • 12 Sessions • Save 17%': 'לילד/חודש • 12 מפגשים • חסכו 17%',
     'per child/month • 48 Sessions • Save 33%': 'לילד/חודש • 48 מפגשים • חסכו 33%',
+    'per child/month • 48 Sessions • Save 36%': 'לילד/חודש • 48 מפגשים • חסכו 36%',
+
+    # Tech Explorers (Ages 11-13)
+    'Advanced AI Programming': 'תכנות AI מתקדם',
+    'Register for חוקרי טכנולוגיה': 'הרשמו לחוקרי טכנולוגיה',
+
+    # Young Innovators (Ages 8-10)
+    'Register for חדשנים צעירים': 'הרשמו לחדשנים צעירים',
+
+    # Registration & Payment
+    'Secure registration • Multiple payment methods available': 'רישום מאובטח • מגוון אמצעי תשלום זמינים',
+    # Note: Longer strings must come BEFORE shorter ones to avoid partial replacements
+    'Family מחירים - חודשי': 'מחירים משפחתיים - חודשי',
+    'Family מחירים - שנתי': 'מחירים משפחתיים - שנתי',
+    'Family מחירים': 'מחירים משפחתיים',
 
     # Footer
     'Quick Links': 'קישורים מהירים',
