@@ -269,6 +269,40 @@
             <div class="fixed inset-0 z-[2]" style="background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 100%); pointer-events: none;"></div>
 
             <div class="relative z-10 max-w-md mx-auto">
+                <!-- Hero Section -->
+                <section class="relative px-6 py-12">
+                    <div class="max-w-md mx-auto text-center">
+                        <div class="bg-black/50 backdrop-blur-xl rounded-xl p-8 shadow-2xl border border-cyan-200/40">
+                            <h1 class="text-3xl font-extrabold text-white mb-3 leading-tight" style="text-shadow: 0 2px 6px rgba(0,0,0,0.4);">
+                                <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">מחירים ותוכניות</span>
+                            </h1>
+                            <p class="text-white/95 text-lg leading-relaxed mb-6" style="text-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                                <span class="text-amber-400 font-bold">הנחה של 20% - מבצע מייסדים</span>
+                            </p>
+
+                            <!-- Countdown Timer -->
+                            <div class="grid grid-cols-4 gap-3" id="countdown">
+                                <div class="bg-black/60 backdrop-blur-sm rounded-xl p-3 border border-cyan-400/30">
+                                    <div id="days" class="text-2xl font-bold text-white" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">--</div>
+                                    <div class="text-xs text-white/90 mt-1" style="text-shadow: 0 1px 2px rgba(0,0,0,0.5);">ימים</div>
+                                </div>
+                                <div class="bg-black/60 backdrop-blur-sm rounded-xl p-3 border border-cyan-400/30">
+                                    <div id="hours" class="text-2xl font-bold text-white" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">--</div>
+                                    <div class="text-xs text-white/90 mt-1" style="text-shadow: 0 1px 2px rgba(0,0,0,0.5);">שעות</div>
+                                </div>
+                                <div class="bg-black/60 backdrop-blur-sm rounded-xl p-3 border border-cyan-400/30">
+                                    <div id="minutes" class="text-2xl font-bold text-white" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">--</div>
+                                    <div class="text-xs text-white/90 mt-1" style="text-shadow: 0 1px 2px rgba(0,0,0,0.5);">דקות</div>
+                                </div>
+                                <div class="bg-black/60 backdrop-blur-sm rounded-xl p-3 border border-cyan-400/30">
+                                    <div id="seconds" class="text-2xl font-bold text-white" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">--</div>
+                                    <div class="text-xs text-white/90 mt-1" style="text-shadow: 0 1px 2px rgba(0,0,0,0.5);">שניות</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Age Group Selection Section -->
                 <div id="age-selection" class="max-w-6xl mx-auto mb-16">
                     <div class="text-center mb-10">
