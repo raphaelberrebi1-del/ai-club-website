@@ -270,40 +270,39 @@
 
             <div class="relative z-10 max-w-md mx-auto">
                 <!-- Section Header -->
-                <div class="text-center mb-8 fade-in-up" data-scroll>
-                    <div class="bg-black/50 backdrop-blur-xl rounded-xl p-8 shadow-2xl border border-cyan-200/40 mb-6">
-                        <h1 class="text-2xl font-bold text-white tracking-tight mb-2" style="text-shadow: 0 2px 6px rgba(0,0,0,0.4);">AI Club Raanana</h1>
-                        <h2 class="text-4xl font-bold text-white tracking-tight mb-4" style="text-shadow: 0 2px 6px rgba(0,0,0,0.4);">Pricing & Plans</h2>
-                        <div class="bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-400/40 rounded-lg p-4">
-                            <div class="text-center">
-                                <div class="text-red-300 text-lg font-bold mb-2">Limited Founder's Offer!</div>
-                                <div class="text-white/90 text-sm mb-3">20% OFF Early Bird Pricing!</div>
-                                <div class="text-amber-300 text-xs">Lock in founder pricing before regular rates begin</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="text-center mb-8 fade-in-up max-w-sm mx-auto" data-scroll>
+                    <!-- Unified Container -->
+                    <div class="bg-black/40 backdrop-blur-lg rounded-xl p-6 border-2 border-amber-200/30 shadow-2xl">
+                        <h1 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+                            <span class="bg-gradient-to-r from-cyan-400 via-cyan-300 to-teal-400 bg-clip-text text-transparent">Pricing & Plans</span>
+                        </h1>
 
-                    <!-- Countdown Timer -->
-                    <div class="bg-black/40 backdrop-blur-lg rounded-xl p-6 shadow-xl border border-red-400/30 mb-6">
-                        <div class="text-center mb-4">
-                            <div class="text-red-300 text-lg font-semibold mb-2">Offer ends in:</div>
-                        </div>
-                        <div class="grid grid-cols-4 gap-2" id="countdown">
-                            <div class="bg-gradient-to-b from-red-500/20 to-red-600/20 border border-red-400/30 rounded-lg p-3 text-center">
-                                <div class="text-2xl font-bold text-white" id="days">--</div>
-                                <div class="text-xs text-red-300">Days</div>
+                        <!-- Early Bird Banner with Countdown -->
+                        <div class="rounded-xl px-3 py-2">
+                            <div class="flex items-center justify-center gap-2 mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                <p class="text-amber-400 font-bold text-sm">20% OFF - Founder's Offer</p>
                             </div>
-                            <div class="bg-gradient-to-b from-red-500/20 to-red-600/20 border border-red-400/30 rounded-lg p-3 text-center">
-                                <div class="text-2xl font-bold text-white" id="hours">--</div>
-                                <div class="text-xs text-red-300">Hours</div>
-                            </div>
-                            <div class="bg-gradient-to-b from-red-500/20 to-red-600/20 border border-red-400/30 rounded-lg p-3 text-center">
-                                <div class="text-2xl font-bold text-white" id="minutes">--</div>
-                                <div class="text-xs text-red-300">Minutes</div>
-                            </div>
-                            <div class="bg-gradient-to-b from-red-500/20 to-red-600/20 border border-red-400/30 rounded-lg p-3 text-center">
-                                <div class="text-2xl font-bold text-white" id="seconds">--</div>
-                                <div class="text-xs text-red-300">Seconds</div>
+                            <div class="grid grid-cols-4 gap-2" id="countdown">
+                                <div class="bg-black/60 rounded-xl p-2 text-center border border-amber-400/30">
+                                    <div id="seconds" class="text-xl font-bold text-white">--</div>
+                                    <div class="text-xs text-white/80">Seconds</div>
+                                </div>
+                                <div class="bg-black/60 rounded-xl p-2 text-center border border-amber-400/30">
+                                    <div id="minutes" class="text-xl font-bold text-white">--</div>
+                                    <div class="text-xs text-white/80">Minutes</div>
+                                </div>
+                                <div class="bg-black/60 rounded-xl p-2 text-center border border-amber-400/30">
+                                    <div id="hours" class="text-xl font-bold text-white">--</div>
+                                    <div class="text-xs text-white/80">Hours</div>
+                                </div>
+                                <div class="bg-black/60 rounded-xl p-2 text-center border border-amber-400/30">
+                                    <div id="days" class="text-xl font-bold text-white">--</div>
+                                    <div class="text-xs text-white/80">Days</div>
+                                </div>
                             </div>
                         </div>
                     </div>
