@@ -188,13 +188,13 @@
                 </svg>
             </button>
 
-            <!-- AI Club Branding with Robot Logo -->
+            <!-- AI Club Branding with Robot Logo (RTL) -->
             <div class="flex items-center gap-2">
-                <img src="New.logov2.gif" alt="AI Kidz Club Robot" class="h-10 w-auto rounded-lg">
                 <h1 class="text-xl font-bold text-white tracking-tight" style="font-family: 'Fredoka', sans-serif;">
+                    <span class="text-white">מועדון</span>
                     <span class="bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">AI</span>
-                    <span class="text-white"> Club</span>
                 </h1>
+                <img src="New.logov2.gif" alt="רובוט מועדון AI" class="h-10 w-auto rounded-lg">
             </div>
 
             <!-- Register Button -->
@@ -441,19 +441,21 @@
 
                 <!-- חדשנים צעירים מחירים Table (גילאי 8-10) -->
                 <div id="young-innovators-table" class="hidden max-w-6xl mx-auto mb-16 px-4">
-                    <!-- Back Button -->
-                    <button onclick="backToAgeSelection()" class="mb-6 flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors group">
-                        <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                        </svg>
-                        חזרה לבחירת גיל
-                    </button>
+                    <div class="bg-black/50 backdrop-blur-xl rounded-xl p-6 shadow-2xl border border-cyan-200/40 mb-8">
+                        <!-- Back Button -->
+                        <button onclick="backToAgeSelection()" class="mb-6 flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors group">
+                            <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                            חזרה לבחירת גיל
+                        </button>
 
-                    <div class="text-center mb-8">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">
-                            חדשנים צעירים מחירים
-                        </h2>
-                        <p class="text-lg text-white/80">גילאי 8-10 • היכרות יצירתית עם AI</p>
+                        <div class="text-center">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="text-shadow: 0 2px 6px rgba(0,0,0,0.4);">
+                                חדשנים צעירים מחירים
+                            </h2>
+                            <p class="text-lg text-white/95" style="text-shadow: 0 1px 3px rgba(0,0,0,0.3);">גילאי 8-10 • היכרות יצירתית עם AI</p>
+                        </div>
                     </div>
 
                     <!-- Accordion מחירים Cards -->
@@ -627,19 +629,21 @@
 
                 <!-- חוקרי טכנולוגיה מחירים Table (גילאי 11-13) -->
                 <div id="tech-explorers-table" class="hidden max-w-6xl mx-auto mb-16 px-4">
-                    <!-- Back Button -->
-                    <button onclick="backToAgeSelection()" class="mb-6 flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors group">
-                        <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                        </svg>
-                        חזרה לבחירת גיל
-                    </button>
+                    <div class="bg-black/50 backdrop-blur-xl rounded-xl p-6 shadow-2xl border border-cyan-200/40 mb-8">
+                        <!-- Back Button -->
+                        <button onclick="backToAgeSelection()" class="mb-6 flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors group">
+                            <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                            חזרה לבחירת גיל
+                        </button>
 
-                    <div class="text-center mb-8">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">
-                            חוקרי טכנולוגיה מחירים
-                        </h2>
-                        <p class="text-lg text-white/80">גילאי 11-13 • תכנות AI מתקדם</p>
+                        <div class="text-center">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="text-shadow: 0 2px 6px rgba(0,0,0,0.4);">
+                                חוקרי טכנולוגיה מחירים
+                            </h2>
+                            <p class="text-lg text-white/95" style="text-shadow: 0 1px 3px rgba(0,0,0,0.3);">גילאי 11-13 • תכנות AI מתקדם</p>
+                        </div>
                     </div>
 
                     <!-- Accordion מחירים Cards -->
@@ -812,23 +816,25 @@
                 </div>
 
                 <!-- מנהיגי העתיד מחירים Table (גילאי 14-18) - פרימיום -->
-                <div id="future-leaders-table" class="hidden max-w-6xl mx-auto mb-16">
-                    <!-- Back Button -->
-                    <button onclick="backToAgeSelection()" class="mb-6 flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors group">
-                        <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                        </svg>
-                        חזרה לבחירת גיל
-                    </button>
+                <div id="future-leaders-table" class="hidden max-w-6xl mx-auto mb-16 px-4">
+                    <div class="bg-black/50 backdrop-blur-xl rounded-xl p-6 shadow-2xl border border-cyan-200/40 mb-8">
+                        <!-- Back Button -->
+                        <button onclick="backToAgeSelection()" class="mb-6 flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors group">
+                            <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                            חזרה לבחירת גיל
+                        </button>
 
-                    <div class="text-center mb-8">
-                        <div class="inline-block mb-4">
-                            <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold">פרימיום PROGRAM</span>
+                        <div class="text-center">
+                            <div class="inline-block mb-4">
+                                <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold">פרימיום PROGRAM</span>
+                            </div>
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="text-shadow: 0 2px 6px rgba(0,0,0,0.4);">
+                                מנהיגי העתיד מחירים
+                            </h2>
+                            <p class="text-lg text-white/95" style="text-shadow: 0 1px 3px rgba(0,0,0,0.3);">גילאי 14-18 • מקצועי פיתוח AI ויזמות</p>
                         </div>
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">
-                            מנהיגי העתיד מחירים
-                        </h2>
-                        <p class="text-lg text-white/80">גילאי 14-18 • מקצועי פיתוח AI ויזמות</p>
                     </div>
 
                     <!-- Accordion מחירים Cards -->
