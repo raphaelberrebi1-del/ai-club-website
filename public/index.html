@@ -5502,17 +5502,21 @@
         let AllpayInstance = null;
         let selectedPaymentMethod = null;
 
+        // Flag to prevent multiple simultaneous AllPay initializations
+        let isInitializingPayment = false;
+
         /**
          * Select payment method and show appropriate UI
          */
         function selectPaymentMethod(method) {
             selectedPaymentMethod = method;
 
-            // Hide all payment containers
-            document.getElementById('payment-loading').classList.add('hidden');
-            document.getElementById('payment-iframe-container').classList.add('hidden');
-            document.getElementById('payment-bank-transfer').classList.add('hidden');
-            document.getElementById('payment-cash').classList.add('hidden');
+            // Hide all payment containers with null checks
+            const containersToHide = ['payment-loading', 'payment-iframe-container', 'payment-bank-transfer', 'payment-cash'];
+            containersToHide.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.add('hidden');
+            });
 
             // Reset all payment method buttons
             document.querySelectorAll('.payment-method-btn').forEach(btn => {
@@ -5540,10 +5544,12 @@
                     const random = Math.random().toString(36).substring(2, 8).toUpperCase();
                     referenceEl.textContent = `AIKIDZ-${timestamp}-${random}`;
                 }
-                document.getElementById('payment-bank-transfer').classList.remove('hidden');
+                const bankTransferEl = document.getElementById('payment-bank-transfer');
+                if (bankTransferEl) bankTransferEl.classList.remove('hidden');
             } else if (method === 'cash') {
                 // Show cash payment instructions
-                document.getElementById('payment-cash').classList.remove('hidden');
+                const cashEl = document.getElementById('payment-cash');
+                if (cashEl) cashEl.classList.remove('hidden');
             }
         }
 
@@ -5569,38 +5575,68 @@
          * Initialize AllPay payment when user reaches Step 4
          */
         async function initializeAllPayPayment(paymentMethod = 'credit-card') {
-            console.log('🔄 Initializing AllPay payment...');
-
-            // Validate form before proceeding
-            if (!validateMobileForm()) {
-                alert('Please fill in all required fields');
+            // Prevent multiple simultaneous initializations
+            if (isInitializingPayment) {
+                console.log('⚠️ Payment initialization already in progress, skipping...');
                 return false;
             }
 
-            // Collect form data
-            const formData = collectMobileFormData();
-            if (!formData) {
-                alert('Error collecting form data');
+            isInitializingPayment = true;
+
+            try {
+                console.log('🔄 Initializing AllPay payment...');
+
+                // Validate form before proceeding
+                if (!validateMobileForm()) {
+                    alert('Please fill in all required fields');
+                    return false;
+                }
+
+                // Collect form data
+                const formData = collectMobileFormData();
+                if (!formData) {
+                    alert('Error collecting form data');
+                    return false;
+                }
+
+                // Calculate total amount
+                const totalAmount = calculateTotalAmount();
+                console.log('💰 Total amount:', totalAmount);
+
+                if (totalAmount <= 0) {
+                    alert('Invalid payment amount');
+                    return false;
+                }
+
+                // Update summary in Step 4
+                updateStep4Summary(formData, totalAmount);
+
+                // Show loading state with null checks
+                const loadingEl = document.getElementById('payment-loading');
+                const iframeContainerEl = document.getElementById('payment-iframe-container');
+                const methodsInfoEl = document.getElementById('payment-methods-info');
+
+                if (loadingEl) loadingEl.classList.remove('hidden');
+                if (iframeContainerEl) iframeContainerEl.classList.add('hidden');
+                if (methodsInfoEl) methodsInfoEl.classList.add('hidden');
+
+                // Continue with payment creation
+                return await createAllPayPayment(formData, totalAmount, paymentMethod);
+
+            } catch (error) {
+                console.error('❌ Payment initialization error:', error);
+                alert('Payment initialization error: ' + error.message);
                 return false;
+            } finally {
+                // Always reset the flag when done
+                isInitializingPayment = false;
             }
+        }
 
-            // Calculate total amount
-            const totalAmount = calculateTotalAmount();
-            console.log('💰 Total amount:', totalAmount);
-
-            if (totalAmount <= 0) {
-                alert('Invalid payment amount');
-                return false;
-            }
-
-            // Update summary in Step 4
-            updateStep4Summary(formData, totalAmount);
-
-            // Show loading state
-            document.getElementById('payment-loading').classList.remove('hidden');
-            document.getElementById('payment-iframe-container').classList.add('hidden');
-            document.getElementById('payment-methods-info').classList.add('hidden');
-
+        /**
+         * Create AllPay payment (separated for better error handling)
+         */
+        async function createAllPayPayment(formData, totalAmount, paymentMethod) {
             try {
                 // Call backend to create payment
                 const response = await fetch('/api/create-payment', {
@@ -5628,6 +5664,9 @@
 
                     // Load payment URL into iframe
                     const iframe = document.getElementById('allpay-payment-iframe');
+                    if (!iframe) {
+                        throw new Error('Payment iframe not found');
+                    }
                     iframe.src = data.paymentUrl;
 
                     // Initialize AllPay Hosted Fields
@@ -5641,10 +5680,14 @@
                         }
                     });
 
-                    // Hide loading, show iframe and payment button
-                    document.getElementById('payment-loading').classList.add('hidden');
-                    document.getElementById('payment-iframe-container').classList.remove('hidden');
-                    document.getElementById('payment-methods-info').classList.remove('hidden');
+                    // Hide loading, show iframe and payment button with null checks
+                    const loadingEl = document.getElementById('payment-loading');
+                    const iframeContainerEl = document.getElementById('payment-iframe-container');
+                    const methodsInfoEl = document.getElementById('payment-methods-info');
+
+                    if (loadingEl) loadingEl.classList.add('hidden');
+                    if (iframeContainerEl) iframeContainerEl.classList.remove('hidden');
+                    if (methodsInfoEl) methodsInfoEl.classList.remove('hidden');
 
                     return true;
 
@@ -5656,8 +5699,9 @@
                 console.error('❌ Payment creation error:', error);
                 alert('Payment creation error: ' + error.message + '\nPlease try again.');
 
-                // Hide loading
-                document.getElementById('payment-loading').classList.add('hidden');
+                // Hide loading with null check
+                const loadingEl = document.getElementById('payment-loading');
+                if (loadingEl) loadingEl.classList.add('hidden');
 
                 return false;
             }
