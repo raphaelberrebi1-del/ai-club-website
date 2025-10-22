@@ -135,7 +135,7 @@
         #mobile-menu-btn.active .particle-7 { animation: formX 0.8s ease-out forwards; --explode-x: -8px; --explode-y: 12px; --final-x: -6px; --final-y: 6px; }
         #mobile-menu-btn.active .particle-9 { animation: formX 0.8s ease-out forwards; --explode-x: 8px; --explode-y: 12px; --final-x: 6px; --final-y: 6px; }
 
-        /* Arrow roll animation for Register Now button */
+        /* Arrow roll animation for Join Now button */
         @keyframes rollArrowDown {
             0% {
                 transform: translateY(0);
@@ -220,7 +220,7 @@
 
             <!-- Register Button -->
             <button onclick="window.location.href='mobile.html#choose-program'" class="bg-gradient-to-r from-cyan-500 to-teal-500 text-white text-sm font-bold px-4 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300" style="font-family: 'Nunito', sans-serif;">
-                Register Now <span class="arrow-roll">→</span>
+                Join Now <span class="arrow-roll">→</span>
             </button>
         </div>
     </header>
@@ -323,7 +323,7 @@
 
                     <!-- CTA Button -->
                     <div class="pt-4">
-                        <button onclick="window.location.href='mobile.html#choose-program'" class="w-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-cyan-500/25 text-lg">
+                        <button onclick="window.location.href='mobile.html#choose-program'" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-cyan-500/25 text-lg">
                             View Pricing & Register
                         </button>
                     </div>
@@ -634,7 +634,7 @@
             <!-- View Full Curriculum Button -->
             <div class="text-center mt-8 px-6">
                 <button onclick="window.location.href='curriculum-mobile.html'"
-                        class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-cyan-500/25 hover:scale-105 transition-all duration-300 text-lg w-full max-w-sm mx-auto">
+                        class="bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-2xl hover:shadow-cyan-500/25 hover:scale-105 transition-all duration-300 text-lg w-full max-w-sm mx-auto">
                     View Full Curriculum <span class="arrow-roll">→</span>
                 </button>
             </div>
@@ -726,7 +726,7 @@
 
                         <div class="mt-8 pt-6 border-t border-amber-200/30">
                             <button onclick="nextStep()" id="step-1-next"
-                                    class="w-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                                    class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
                                 Continue
                             </button>
                         </div>
@@ -816,7 +816,7 @@
                             <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
                                 Back
                             </button>
-                            <button onclick="nextStep()" id="step-2-next" class="flex-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                            <button onclick="nextStep()" id="step-2-next" class="flex-1 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
                                 Continue
                             </button>
                         </div>
@@ -870,7 +870,7 @@
                             <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
                                 Back
                             </button>
-                            <button onclick="nextStep()" id="step-3-next" class="flex-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                            <button onclick="nextStep()" id="step-3-next" class="flex-1 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
                                 Continue
                             </button>
                         </div>
@@ -3523,7 +3523,7 @@
 
                             <!-- CTA Button -->
                             <button onclick="closeSuccessMessage()" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 px-6 rounded-xl hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105">
-                                Get Started!
+                                Join Now
                             </button>
                         </div>
                     </div>
@@ -4122,7 +4122,7 @@
 
             if (period === 'quarterly') {
                 // Style quarterly tab as active
-                quarterlyTab.className = "flex-1 py-3 px-4 rounded-lg text-center font-semibold transition-all duration-300 billing-tab bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white shadow-lg";
+                quarterlyTab.className = "flex-1 py-3 px-4 rounded-lg text-center font-semibold transition-all duration-300 billing-tab bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-lg";
                 yearlyTab.className = "flex-1 py-3 px-4 rounded-lg text-center font-medium transition-all duration-300 billing-tab text-white/80 hover:text-white hover:bg-white/10";
 
                 // Show quarterly prices with fade animation
@@ -4142,7 +4142,7 @@
 
             } else if (period === 'yearly') {
                 // Style yearly tab as active
-                yearlyTab.className = "flex-1 py-3 px-4 rounded-lg text-center font-semibold transition-all duration-300 billing-tab bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white shadow-lg";
+                yearlyTab.className = "flex-1 py-3 px-4 rounded-lg text-center font-semibold transition-all duration-300 billing-tab bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-lg";
                 quarterlyTab.className = "flex-1 py-3 px-4 rounded-lg text-center font-medium transition-all duration-300 billing-tab text-white/80 hover:text-white hover:bg-white/10";
 
                 // Show yearly prices with fade animation
