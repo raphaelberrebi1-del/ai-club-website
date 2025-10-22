@@ -640,6 +640,37 @@
             from { width: 0; }
             to { width: 100%; }
         }
+
+        /* AllPay iframe blending and styling */
+        #allpay-payment-iframe {
+            /* Ensure iframe blends with dark background */
+            mix-blend-mode: normal;
+            isolation: isolate;
+        }
+
+        /* Help iframe content blend smoothly */
+        #payment-iframe-container {
+            /* Enhance glassmorphism effect */
+            position: relative;
+            overflow: hidden;
+        }
+
+        #payment-iframe-container::before {
+            /* Subtle overlay to help blending */
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(6, 182, 212, 0.03), transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+            border-radius: 1rem;
+        }
+
+        #payment-iframe-container iframe {
+            /* Ensure iframe is above overlay */
+            position: relative;
+            z-index: 2;
+        }
     </style>
 </head>
 <body class="antialiased text-zinc-100">
@@ -2365,8 +2396,8 @@
                                     id="allpay-payment-iframe"
                                     allow="payment *"
                                     src=""
-                                    class="w-full rounded-lg border border-cyan-400/20 bg-white"
-                                    style="height: 480px; min-height: 480px;">
+                                    class="w-full rounded-lg border border-cyan-400/30 shadow-lg"
+                                    style="height: 500px; min-height: 500px; background: transparent;">
                                 </iframe>
 
                                 <button
