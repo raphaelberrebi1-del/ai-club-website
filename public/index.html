@@ -5566,32 +5566,58 @@
          * Validate form data
          */
         function validateMobileForm() {
-            // Basic validation
-            const parentName = document.querySelector('input[placeholder*="parent"]')?.value;
-            const parentEmail = document.querySelector('input[type="email"]')?.value;
-            const parentPhone = document.querySelector('input[type="tel"]')?.value;
+            // Use existing wizardData validation
+            const parentValid = wizardData.parentName && wizardData.parentEmail && wizardData.parentPhone &&
+                               wizardData.parentEmail.includes('@') && wizardData.parentPhone.length >= 9;
 
-            return parentName && parentEmail && parentPhone;
+            const childrenValid = wizardData.children && wizardData.children.length > 0 &&
+                                 wizardData.children.every(child => child.name && child.ageGroup);
+
+            return parentValid && childrenValid && wizardData.bulkDuration;
         }
 
         /**
-         * Collect form data
+         * Collect form data from existing wizardData object
          */
         function collectMobileFormData() {
+            // Return the existing wizardData object directly
             return {
-                parentName: document.querySelector('input[placeholder*="parent"]')?.value || '',
-                parentEmail: document.querySelector('input[type="email"]')?.value || '',
-                parentPhone: document.querySelector('input[type="tel"]')?.value || '',
-                children: [],
-                duration: 'monthly'
+                parentName: wizardData.parentName,
+                parentEmail: wizardData.parentEmail,
+                parentPhone: wizardData.parentPhone,
+                children: wizardData.children.map(child => ({
+                    name: child.name,
+                    ageGroup: child.ageGroup,
+                    age: child.ageGroup === 'young' ? '8-10' : child.ageGroup === 'tech' ? '11-13' : '14-18'
+                })),
+                duration: wizardData.bulkDuration
             };
         }
 
         /**
-         * Calculate total amount
+         * Calculate total amount using AGE_PRICING and wizardData
          */
         function calculateTotalAmount() {
-            return 599;
+            if (!wizardData.bulkDuration || !wizardData.children.length) return 0;
+
+            let total = 0;
+
+            // Calculate base total from age-specific pricing
+            wizardData.children.forEach((child) => {
+                if (child.ageGroup && wizardData.bulkDuration) {
+                    total += AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
+                }
+            });
+
+            // Apply family discounts: 10% for 2nd child, 15% for 3rd+ child
+            if (wizardData.childCount >= 2 && wizardData.children[1]?.ageGroup) {
+                const discountRate = wizardData.childCount === 2 ? 0.10 : 0.15;
+                const secondChildPrice = AGE_PRICING[wizardData.children[1].ageGroup][wizardData.bulkDuration];
+                const discount = Math.round(secondChildPrice * discountRate);
+                total -= discount;
+            }
+
+            return Math.round(total);
         }
 
         /**

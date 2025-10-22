@@ -4036,6 +4036,32 @@
             return formData;
         }
 
+        /**
+         * Calculate total amount using AGE_PRICING and familyData
+         * Used by AllPay payment integration
+         */
+        function calculateTotalAmount() {
+            if (!familyData.bulkDuration || !familyData.children.length) return 0;
+
+            let total = 0;
+
+            // Calculate base total from age-specific pricing
+            familyData.children.forEach((child) => {
+                if (child.ageGroup && familyData.bulkDuration) {
+                    total += AGE_PRICING[child.ageGroup][familyData.bulkDuration];
+                }
+            });
+
+            // Apply family discounts: 10% for 2nd child, 15% for 3rd+ child
+            if (familyData.childCount >= 2 && familyData.children[1]?.ageGroup) {
+                const discountRate = familyData.childCount === 2 ? 0.10 : 0.15;
+                const discount = Math.round((AGE_PRICING[familyData.children[1].ageGroup][familyData.bulkDuration] * discountRate));
+                total -= discount;
+            }
+
+            return Math.round(total);
+        }
+
         // Helper function to get price for age group
         function getPriceForAgeGroup(ageGroup) {
             const priceMap = {

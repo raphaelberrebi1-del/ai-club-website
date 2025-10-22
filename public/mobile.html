@@ -4633,38 +4633,11 @@
         }
 
         /**
-         * Validate mobile form data
-         */
-        function validateMobileForm() {
-            // Basic validation - you can expand this
-            const parentName = document.querySelector('input[placeholder*="parent"]')?.value;
-            const parentEmail = document.querySelector('input[type="email"]')?.value;
-            const parentPhone = document.querySelector('input[type="tel"]')?.value;
-
-            return parentName && parentEmail && parentPhone;
-        }
-
-        /**
-         * Collect mobile form data
-         */
-        function collectMobileFormData() {
-            // This function should collect all form data
-            // Adapt based on your actual form structure
-            return {
-                parentName: document.querySelector('input[placeholder*="parent"]')?.value || '',
-                parentEmail: document.querySelector('input[type="email"]')?.value || '',
-                parentPhone: document.querySelector('input[type="tel"]')?.value || '',
-                children: [], // Collect children data from form
-                duration: 'monthly' // Get selected duration
-            };
-        }
-
-        /**
-         * Calculate total amount based on children and duration
+         * Calculate total amount for AllPay payment
+         * Uses existing calculateFamilyTotal() function
          */
         function calculateTotalAmount() {
-            // Calculate based on your pricing logic
-            return 599; // Default amount - adapt based on actual logic
+            return calculateFamilyTotal();
         }
 
         /**
