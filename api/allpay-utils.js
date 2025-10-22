@@ -31,12 +31,30 @@ const AGE_GROUPS = {
     en: 'Young Innovators (8-10)',
     ages: '8-10'
   },
+  // Alias for frontend compatibility
+  'young': {
+    he: 'חדשנים צעירים (8-10)',
+    en: 'Young Innovators (8-10)',
+    ages: '8-10'
+  },
   'tech-explorers': {
     he: 'חוקרי טכנולוגיה (11-13)',
     en: 'Tech Explorers (11-13)',
     ages: '11-13'
   },
+  // Alias for frontend compatibility
+  'tech': {
+    he: 'חוקרי טכנולוגיה (11-13)',
+    en: 'Tech Explorers (11-13)',
+    ages: '11-13'
+  },
   'future-leaders': {
+    he: 'מנהיגי העתיד (14-18)',
+    en: 'Future Leaders (14-18)',
+    ages: '14-18'
+  },
+  // Alias for frontend compatibility
+  'future': {
     he: 'מנהיגי העתיד (14-18)',
     en: 'Future Leaders (14-18)',
     ages: '14-18'
@@ -218,8 +236,13 @@ function validatePaymentData(data) {
         errors.push(`Child ${index + 1}: Name is required (minimum 2 characters)`);
       }
 
-      if (!child.age || child.age < 8 || child.age > 18) {
-        errors.push(`Child ${index + 1}: Age must be between 8 and 18`);
+      // Accept both numeric age (10) and string range ('8-10', '11-13', '14-18')
+      const validAgeRanges = ['8-10', '11-13', '14-18'];
+      const isNumericAge = typeof child.age === 'number' && child.age >= 8 && child.age <= 18;
+      const isStringAge = typeof child.age === 'string' && validAgeRanges.includes(child.age);
+
+      if (!child.age || (!isNumericAge && !isStringAge)) {
+        errors.push(`Child ${index + 1}: Age must be between 8 and 18 or a valid age range (8-10, 11-13, 14-18)`);
       }
 
       if (!child.ageGroup || !AGE_GROUPS[child.ageGroup]) {
