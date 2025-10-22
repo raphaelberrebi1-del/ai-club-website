@@ -143,6 +143,11 @@
             animation: rollArrowDown 0.4s ease-in-out;
         }
 
+        .sub-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, opacity 0.3s ease-out; opacity: 0; }
+        .sub-content.active { max-height: 1000px; opacity: 1; }
+        .sub-icon { transition: transform 0.3s ease; }
+        .sub-icon.active { transform: rotate(180deg); }
+
         /* Robot Logo */
         .robot-logo {
             border-radius: 0.5rem;
@@ -400,88 +405,102 @@
                 </ul>
             </section>
 
-            <!-- 4. Pricing, Cancellation & Refunds -->
+            <!-- 4. מדיניות ביטול והחזרים -->
             <section class="bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 p-8 mb-8">
-                <h2 class="text-2xl font-bold text-cyan-400 mb-4">4. מחירים, ביטול והחזרים</h2>
+                <h2 class="text-2xl font-bold text-cyan-400 mb-4">4. מדיניות ביטול והחזרים</h2>
 
-                <h3 class="text-xl font-semibold text-white mb-3">תוכניות מנוי</h3>
+                <p class="text-white/80 mb-4 text-right"><strong>סקירה כללית:</strong> מדיניות הביטול שלנו שקופה ומתגמלת מחויבות. תעריפים נמוכים יותר דורשים התחייבויות ארוכות יותר. בטל מוקדם ותשלם את התעריף לרמת ההתחייבות שהשלמת.</p>
 
-                <div class="space-y-4 mb-6">
-                    <div class="bg-white/5 rounded-lg p-4">
-                        <p class="text-white font-semibold mb-2">תוכנית חודשית: ₪599/חודש (מחיר מייסדים) | ₪749/חודש (רגיל)</p>
-                        <ul class="list-disc list-inside text-white/80 space-y-1 mr-4">
-                            <li>חיוב חודשי</li>
-                            <li>ביטול בכל עת עם הודעה של 30 יום</li>
-                            <li>ללא התחייבות לטווח ארוך</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-white/5 rounded-lg p-4">
-                        <p class="text-white font-semibold mb-2">תוכנית רבעונית: ₪519/חודש (מחיר מייסדים) | ₪649/חודש (רגיל)</p>
-                        <ul class="list-disc list-inside text-white/80 space-y-1 mr-4">
-                            <li>חיוב כל 3 חודשים (₪1,557/רבעון)</li>
-                            <li>התחייבות ל-3 חודשים</li>
-                            <li>ביטול עם הודעה של 30 יום לפני חידוש אוטומטי</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-white/5 rounded-lg p-4">
-                        <p class="text-white font-semibold mb-2">תוכנית שנתית: ₪479/חודש (מחיר מייסדים) | ₪599/חודש (רגיל)</p>
-                        <ul class="list-disc list-inside text-white/80 space-y-1 mr-4">
-                            <li>חיוב שנתי (₪5,748/שנה)</li>
-                            <li>התחייבות ל-12 חודשים</li>
-                            <li>ביטול עם הודעה של 60 יום לפני חידוש אוטומטי</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 rounded-lg p-4 mb-6">
-                    <p class="text-white font-semibold mb-2">הנחות משפחתיות:</p>
-                    <ul class="list-disc list-inside text-white/80 space-y-1 mr-4">
-                        <li>ילד שני: 10% הנחה</li>
-                        <li>ילד שלישי ומעבר לו: 15% הנחה</li>
-                    </ul>
-                </div>
-
-                <p class="text-white/80 mb-6"><strong class="text-white">כל המחירים בשקלים (₪) וכוללים מיסים ישימים.</strong></p>
-
-                <h3 class="text-xl font-semibold text-white mb-3">תנאי תשלום</h3>
-                <ul class="list-disc list-inside text-white/80 space-y-2 mb-6">
-                    <li>תשלום מראש עבור תקופת המנוי</li>
-                    <li>אמצעי תשלום מקובלים: כרטיס אשראי, העברה בנקאית, Bit, PayBox</li>
-                    <li>תשלום מאוחר? תקופת חסד של 7 ימים, אחר כך השירות מושעה</li>
-                    <li>חידוש אוטומטי: תוכניות מתחדשות אוטומטית אלא אם תבטלו</li>
+                <p class="text-white/80 mb-2 text-right"><strong>מבנה תעריפים:</strong></p>
+                <ul class="list-disc mr-6 space-y-1 mb-6 text-white/80 text-sm text-right">
+                    <li>שיעור בודד: ₪350 לשיעור</li>
+                    <li>חודשי: ₪599 לחודש = ₪149.75 לשיעור</li>
+                    <li>רבעוני: ₪519 לחודש = ₪129.75 לשיעור</li>
+                    <li>שנתי: ₪479 לחודש = ₪119.75 לשיעור</li>
                 </ul>
 
-                <h3 class="text-xl font-semibold text-white mb-3">ביטול והחזרים</h3>
-
-                <div class="space-y-4">
-                    <div>
-                        <p class="text-white font-semibold mb-2">לפני תחילת התוכנית:</p>
-                        <ul class="list-disc list-inside text-white/80 space-y-1 mr-4">
-                            <li>ביטול 7+ ימים לפני המפגש הראשון: <strong class="text-white">החזר כספי מלא</strong></li>
-                            <li>ביטול בתוך 7 ימים מהמפגש הראשון: <strong class="text-white">החזר של 80%</strong></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <p class="text-white font-semibold mb-2">לאחר תחילת התוכנית:</p>
-                        <ul class="list-disc list-inside text-white/80 space-y-1 mr-4">
-                            <li>בתוך שבועיים הראשונים: <strong class="text-white">החזר של 50%</strong> מהיתרה הנותרת</li>
-                            <li>אחרי חודש: <strong class="text-white">ללא החזר</strong> (אפשר להעביר למחזור/קבוצת גיל שונה)</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <p class="text-white font-semibold mb-2">הודעת ביטול:</p>
-                        <ul class="list-disc list-inside text-white/80 space-y-1 mr-4">
-                            <li>תוכניות חודשיות: נדרשת הודעה של 30 יום</li>
-                            <li>תוכניות רבעוניות: הודעה של 30 יום לפני חידוש</li>
-                            <li>תוכניות שנתיות: הודעה של 60 יום לפני חידוש</li>
-                            <li>שלחו ביטול ל: <a href="mailto:raphael@aikidz.club" class="text-cyan-400 hover:underline">raphael@aikidz.club</a></li>
-                        </ul>
+                <!-- Free Trial Dropdown -->
+                <div class="mb-4 bg-black/20 rounded-lg border border-white/10">
+                    <button onclick="toggleSubSection(this)" class="w-full text-right px-4 py-3 flex justify-between items-center hover:bg-white/5 flex-row-reverse">
+                        <svg class="sub-icon w-5 h-5 text-cyan-400 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="font-semibold text-cyan-300 text-lg">ניסיון חינם</span>
+                    </button>
+                    <div class="sub-content">
+                        <div class="px-4 pb-3 text-sm text-white/80 text-right">
+                            <p class="mb-2">• שיעור חינמי אחד של 90 דקות</p>
+                            <p class="mb-2">• ללא צורך בכרטיס אשראי או תשלום</p>
+                            <p class="mb-2">• ללא התחייבות להמשך</p>
+                            <p>• הניסיון לא נספר כחלק מהמנוי</p>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Monthly Plan Dropdown -->
+                <div class="mb-4 bg-black/20 rounded-lg border border-white/10">
+                    <button onclick="toggleSubSection(this)" class="w-full text-right px-4 py-3 flex justify-between items-center hover:bg-white/5 flex-row-reverse">
+                        <svg class="sub-icon w-5 h-5 text-cyan-400 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="font-semibold text-cyan-300 text-lg">תוכנית חודשית</span>
+                    </button>
+                    <div class="sub-content">
+                        <div class="px-4 pb-3 text-sm text-white/80 space-y-2 text-right">
+                            <p><strong class="text-white">לפני שיעור 2:</strong> החזר מלא (₪599)</p>
+                            <p><strong class="text-white">לפני החיוב הבא (הודעה של 7 ימים):</strong> ללא החזר לחודש הנוכחי, מונע חיוב הבא</p>
+                            <p><strong class="text-white">ביטול באמצע החודש (אחרי 2+ שיעורים):</strong> חיוב בתעריף שיעור בודד (₪350 לשיעור)</p>
+                            <p><strong class="text-white">מצבי חירום:</strong> אפשרויות השהיה או העברה זמינות</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quarterly Plan Dropdown -->
+                <div class="mb-4 bg-black/20 rounded-lg border border-white/10">
+                    <button onclick="toggleSubSection(this)" class="w-full text-right px-4 py-3 flex justify-between items-center hover:bg-white/5 flex-row-reverse">
+                        <svg class="sub-icon w-5 h-5 text-cyan-400 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="font-semibold text-cyan-300 text-lg">תוכנית רבעונית</span>
+                    </button>
+                    <div class="sub-content">
+                        <div class="px-4 pb-3 text-sm text-white/80 space-y-2 text-right">
+                            <p><strong class="text-white">ביטול בכל עת:</strong> תשלום בתעריף חודשי (₪599 לחודש) עבור התקופה שהשתמשת</p>
+                            <p><strong class="text-white">נוסחה:</strong> [חודשי שימוש] × ₪599 = סכום לחיוב</p>
+                            <p class="text-white/60 italic">דוגמה: ביטול אחרי חודש וחצי → תשלום 1.5×₪599=₪898.50 → החזר ₪658.50</p>
+                            <p><strong class="text-white">השלמת 3 חודשים:</strong> שמור על ההנחה הרבעונית! בחר לא לחדש</p>
+                            <p><strong class="text-white">זמן החזר:</strong> 14 ימי עסקים</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Annual Plan Dropdown -->
+                <div class="mb-4 bg-black/20 rounded-lg border border-white/10">
+                    <button onclick="toggleSubSection(this)" class="w-full text-right px-4 py-3 flex justify-between items-center hover:bg-white/5 flex-row-reverse">
+                        <svg class="sub-icon w-5 h-5 text-cyan-400 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="font-semibold text-cyan-300 text-lg">תוכנית שנתית</span>
+                    </button>
+                    <div class="sub-content">
+                        <div class="px-4 pb-3 text-sm text-white/80 space-y-2 text-right">
+                            <p><strong class="text-white">ביטול לפני 3 חודשים:</strong> תשלום בתעריף חודשי (₪599 לחודש)</p>
+                            <p class="text-white/60 italic">דוגמה: ביטול אחרי חודשיים → 2×₪599=₪1,198 → החזר ₪4,550</p>
+                            <p><strong class="text-white">ביטול אחרי 3 חודשים:</strong> תשלום בתעריף רבעוני (₪519 לחודש)</p>
+                            <p class="text-white/60 italic">דוגמה: ביטול אחרי 5 חודשים → 5×₪519=₪2,595 → החזר ₪3,153</p>
+                            <p><strong class="text-white">זמן החזר:</strong> 30 ימי עסקים</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Circumstances Dropdown -->
+                <div class="mb-4 bg-black/20 rounded-lg border border-white/10">
+                    <button onclick="toggleSubSection(this)" class="w-full text-right px-4 py-3 flex justify-between items-center hover:bg-white/5 flex-row-reverse">
+                        <svg class="sub-icon w-5 h-5 text-cyan-400 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="font-semibold text-cyan-300 text-lg">נסיבות מיוחדות</span>
+                    </button>
+                    <div class="sub-content">
+                        <div class="px-4 pb-3 text-sm text-white/80 space-y-2 text-right">
+                            <p><strong class="text-white">חירום רפואי/משפחתי:</strong> השהיה עד חודשיים (שנתי), העברת שיעורים, או שיקול חמלה</p>
+                            <p><strong class="text-white">הילד לא נהנה:</strong> לפני שיעור 2 = החזר מלא. צור קשר למציאת התאמה טובה יותר!</p>
+                            <p><strong class="text-white">נדרש תיעוד</strong> לתביעות חירום</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="mt-4 text-sm text-white/80 text-right"><strong class="text-white">לביטול:</strong> שלח אימייל ל-<a href="mailto:raphael@aikidz.club" class="text-cyan-400 hover:underline">raphael@aikidz.club</a> עם שם התלמיד, תוכנית, תאריך הרשמה ותאריך ביטול מבוקש. אנו עונים תוך 24 שעות.</p>
             </section>
 
             <!-- 5-17. Additional Sections Summary -->
@@ -704,6 +723,20 @@
         document.addEventListener('mouseenter', () => {
             cursorRing.style.opacity = '1';
         });
+
+        // Toggle sub-section dropdowns
+        function toggleSubSection(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.sub-icon');
+            const wasActive = content.classList.contains('active');
+            if (wasActive) {
+                content.classList.remove('active');
+                icon.classList.remove('active');
+            } else {
+                content.classList.add('active');
+                icon.classList.add('active');
+            }
+        }
     </script>
 </body>
 </html>

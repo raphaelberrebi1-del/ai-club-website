@@ -143,6 +143,11 @@
             animation: rollArrowDown 0.4s ease-in-out;
         }
 
+        .sub-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, opacity 0.3s ease-out; opacity: 0; }
+        .sub-content.active { max-height: 1000px; opacity: 1; }
+        .sub-icon { transition: transform 0.3s ease; }
+        .sub-icon.active { transform: rotate(180deg); }
+
         /* Robot Logo */
         .robot-logo {
             border-radius: 0.5rem;
@@ -400,88 +405,102 @@
                 </ul>
             </section>
 
-            <!-- 4. Pricing, Cancellation & Refunds -->
+            <!-- 4. Cancellation & Refund Policy -->
             <section class="bg-black/40 backdrop-blur-lg rounded-xl border border-white/20 p-8 mb-8">
-                <h2 class="text-2xl font-bold text-cyan-400 mb-4">4. Pricing, Cancellation & Refunds</h2>
+                <h2 class="text-2xl font-bold text-cyan-400 mb-4">4. Cancellation & Refund Policy</h2>
 
-                <h3 class="text-xl font-semibold text-white mb-3">Subscription Plans</h3>
+                <p class="text-white/80 mb-4"><strong>Overview:</strong> Our cancellation policy is transparent and rewards commitment. Lower rates require longer commitments. Cancel early and you pay the rate for the commitment level you completed.</p>
 
-                <div class="space-y-4 mb-6">
-                    <div class="bg-white/5 rounded-lg p-4">
-                        <p class="text-white font-semibold mb-2">Monthly Plan: ₪599/month (Early Bird) | ₪749/month (Regular)</p>
-                        <ul class="list-disc list-inside text-white/80 space-y-1 ml-4">
-                            <li>Billed monthly</li>
-                            <li>Cancel anytime with 30 days notice</li>
-                            <li>No long-term commitment</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-white/5 rounded-lg p-4">
-                        <p class="text-white font-semibold mb-2">Quarterly Plan: ₪519/month (Early Bird) | ₪649/month (Regular)</p>
-                        <ul class="list-disc list-inside text-white/80 space-y-1 ml-4">
-                            <li>Billed every 3 months (₪1,557/quarter)</li>
-                            <li>3-month commitment</li>
-                            <li>Cancel with 30 days notice before auto-renewal</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-white/5 rounded-lg p-4">
-                        <p class="text-white font-semibold mb-2">Annual Plan: ₪479/month (Early Bird) | ₪599/month (Regular)</p>
-                        <ul class="list-disc list-inside text-white/80 space-y-1 ml-4">
-                            <li>Billed annually (₪5,748/year)</li>
-                            <li>12-month commitment</li>
-                            <li>Cancel with 60 days notice before auto-renewal</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="bg-gradient-to-r from-teal-500/10 to-cyan-500/10 rounded-lg p-4 mb-6">
-                    <p class="text-white font-semibold mb-2">Family Discounts:</p>
-                    <ul class="list-disc list-inside text-white/80 space-y-1 ml-4">
-                        <li>2nd child: 10% off</li>
-                        <li>3rd child and beyond: 15% off</li>
-                    </ul>
-                </div>
-
-                <p class="text-white/80 mb-6"><strong class="text-white">All prices in ILS (₪) and include any applicable taxes.</strong></p>
-
-                <h3 class="text-xl font-semibold text-white mb-3">Payment Terms</h3>
-                <ul class="list-disc list-inside text-white/80 space-y-2 mb-6">
-                    <li>Payment due in advance for subscription period</li>
-                    <li>Accepted methods: Credit card, bank transfer, Bit, PayBox</li>
-                    <li>Late payment? 7-day grace period, then service suspended</li>
-                    <li>Auto-renewal: Plans renew automatically unless you cancel</li>
+                <p class="text-white/80 mb-2"><strong>Rate Structure:</strong></p>
+                <ul class="list-disc ml-6 space-y-1 mb-6 text-white/80 text-sm">
+                    <li>Individual: ₪350/lesson (pay-as-you-go)</li>
+                    <li>Monthly: ₪599/month = ₪149.75/lesson</li>
+                    <li>Quarterly: ₪519/month = ₪129.75/lesson</li>
+                    <li>Annual: ₪479/month = ₪119.75/lesson</li>
                 </ul>
 
-                <h3 class="text-xl font-semibold text-white mb-3">Cancellation & Refunds</h3>
-
-                <div class="space-y-4">
-                    <div>
-                        <p class="text-white font-semibold mb-2">Before Program Starts:</p>
-                        <ul class="list-disc list-inside text-white/80 space-y-1 ml-4">
-                            <li>Cancel 7+ days before first session: <strong class="text-white">Full refund</strong></li>
-                            <li>Cancel within 7 days of first session: <strong class="text-white">80% refund</strong></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <p class="text-white font-semibold mb-2">After Program Starts:</p>
-                        <ul class="list-disc list-inside text-white/80 space-y-1 ml-4">
-                            <li>Within first 2 weeks: <strong class="text-white">50% refund</strong> of remaining balance</li>
-                            <li>After 1 month: <strong class="text-white">No refund</strong> (can transfer to different cycle/age group)</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <p class="text-white font-semibold mb-2">Cancellation Notice:</p>
-                        <ul class="list-disc list-inside text-white/80 space-y-1 ml-4">
-                            <li>Monthly plans: 30 days notice required</li>
-                            <li>Quarterly plans: 30 days notice before renewal</li>
-                            <li>Annual plans: 60 days notice before renewal</li>
-                            <li>Send cancellation to: <a href="mailto:raphael@aikidz.club" class="text-cyan-400 hover:underline">raphael@aikidz.club</a></li>
-                        </ul>
+                <!-- Free Trial Dropdown -->
+                <div class="mb-4 bg-black/20 rounded-lg border border-white/10">
+                    <button onclick="toggleSubSection(this)" class="w-full text-left px-4 py-3 flex justify-between items-center hover:bg-white/5">
+                        <span class="font-semibold text-cyan-300 text-lg">Free Trial</span>
+                        <svg class="sub-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="sub-content">
+                        <div class="px-4 pb-3 text-sm text-white/80">
+                            <p class="mb-2">• One free 90-minute session</p>
+                            <p class="mb-2">• No credit card or payment required</p>
+                            <p class="mb-2">• No obligation to continue</p>
+                            <p>• Trial doesn't count toward subscription</p>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Monthly Plan Dropdown -->
+                <div class="mb-4 bg-black/20 rounded-lg border border-white/10">
+                    <button onclick="toggleSubSection(this)" class="w-full text-left px-4 py-3 flex justify-between items-center hover:bg-white/5">
+                        <span class="font-semibold text-cyan-300 text-lg">Monthly Plan</span>
+                        <svg class="sub-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="sub-content">
+                        <div class="px-4 pb-3 text-sm text-white/80 space-y-2">
+                            <p><strong class="text-white">Before 2nd Lesson:</strong> Full refund (₪599)</p>
+                            <p><strong class="text-white">Before Next Billing (7 days notice):</strong> No refund for current month, prevents next charge</p>
+                            <p><strong class="text-white">Mid-Month Cancel (after 2+ lessons):</strong> Charged individual rate (₪350/lesson)</p>
+                            <p><strong class="text-white">Emergency situations:</strong> Pause or transfer options available</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quarterly Plan Dropdown -->
+                <div class="mb-4 bg-black/20 rounded-lg border border-white/10">
+                    <button onclick="toggleSubSection(this)" class="w-full text-left px-4 py-3 flex justify-between items-center hover:bg-white/5">
+                        <span class="font-semibold text-cyan-300 text-lg">Quarterly Plan</span>
+                        <svg class="sub-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="sub-content">
+                        <div class="px-4 pb-3 text-sm text-white/80 space-y-2">
+                            <p><strong class="text-white">Cancel Anytime:</strong> Pay monthly rate (₪599/month) for time used</p>
+                            <p><strong class="text-white">Formula:</strong> [Months Used] × ₪599 = Amount Charged</p>
+                            <p class="text-white/60 italic">Example: Cancel after 1.5 months → Pay 1.5×₪599=₪898.50 → Refund ₪658.50</p>
+                            <p><strong class="text-white">Complete 3 months:</strong> Keep quarterly discount! Choose not to renew</p>
+                            <p><strong class="text-white">Refund timeline:</strong> 14 business days</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Annual Plan Dropdown -->
+                <div class="mb-4 bg-black/20 rounded-lg border border-white/10">
+                    <button onclick="toggleSubSection(this)" class="w-full text-left px-4 py-3 flex justify-between items-center hover:bg-white/5">
+                        <span class="font-semibold text-cyan-300 text-lg">Annual Plan</span>
+                        <svg class="sub-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="sub-content">
+                        <div class="px-4 pb-3 text-sm text-white/80 space-y-2">
+                            <p><strong class="text-white">Cancel Before 3 Months:</strong> Pay monthly rate (₪599/month)</p>
+                            <p class="text-white/60 italic">Example: Cancel after 2 months → 2×₪599=₪1,198 → Refund ₪4,550</p>
+                            <p><strong class="text-white">Cancel After 3 Months:</strong> Pay quarterly rate (₪519/month)</p>
+                            <p class="text-white/60 italic">Example: Cancel after 5 months → 5×₪519=₪2,595 → Refund ₪3,153</p>
+                            <p><strong class="text-white">Refund timeline:</strong> 30 business days</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Circumstances Dropdown -->
+                <div class="mb-4 bg-black/20 rounded-lg border border-white/10">
+                    <button onclick="toggleSubSection(this)" class="w-full text-left px-4 py-3 flex justify-between items-center hover:bg-white/5">
+                        <span class="font-semibold text-cyan-300 text-lg">Special Circumstances</span>
+                        <svg class="sub-icon w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="sub-content">
+                        <div class="px-4 pb-3 text-sm text-white/80 space-y-2">
+                            <p><strong class="text-white">Medical/Family Emergency:</strong> Pause up to 2 months (annual), transfer lessons, or compassionate consideration</p>
+                            <p><strong class="text-white">Child Not Enjoying:</strong> Before 2nd lesson = full refund. Contact us to find better fit!</p>
+                            <p><strong class="text-white">Documentation required</strong> for emergency claims</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="mt-4 text-sm text-white/80"><strong class="text-white">To Cancel:</strong> Email <a href="mailto:raphael@aikidz.club" class="text-cyan-400 hover:underline">raphael@aikidz.club</a> with student name, plan, enrollment date, and cancellation date. We respond within 24 hours.</p>
             </section>
 
             <!-- 5. Attendance & Makeup Sessions -->
@@ -777,6 +796,20 @@
         document.addEventListener('mouseenter', () => {
             cursorRing.style.opacity = '1';
         });
+
+        // Toggle sub-section dropdowns
+        function toggleSubSection(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.sub-icon');
+            const wasActive = content.classList.contains('active');
+            if (wasActive) {
+                content.classList.remove('active');
+                icon.classList.remove('active');
+            } else {
+                content.classList.add('active');
+                icon.classList.add('active');
+            }
+        }
     </script>
 </body>
 </html>
