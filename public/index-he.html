@@ -35,23 +35,8 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script src="./calendar-widget-standalone.js"></script>
 
-    <!-- Mobile Device Detection and Redirect -->
-    <script>
-        (function() {
-            // Check if user is on a mobile device (phone, not tablet)
-            const isMobile = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            const isTablet = /iPad|Android(?!.*Mobile)/i.test(navigator.userAgent);
-            const maxMobileWidth = 768;
-
-            // Redirect only if on mobile phone (not tablet) and screen width is mobile-sized
-            if (isMobile && !isTablet && window.innerWidth < maxMobileWidth) {
-                // Prevent redirect loop by checking if we're already on mobile-he.html
-                if (!window.location.pathname.includes('mobile-he.html')) {
-                    window.location.href = '/mobile-he.html';
-                }
-            }
-        })();
-    </script>
+    <!-- Automatic Mobile/Desktop Detection and Redirect -->
+    <script src="./detect-device.js"></script>
 
     <style>
         /* New Ribbon Trail Cursor */
