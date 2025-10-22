@@ -5444,42 +5444,75 @@
         // AllPay instance (will be initialized after payment creation)
         let AllpayInstance = null;
 
+        // Flag to prevent multiple simultaneous AllPay initializations
+        let isInitializingPayment = false;
+
         /**
          * Initialize AllPay payment when user reaches Step 4
          */
         async function initializeAllPayPayment() {
-            console.log('🔄 Initializing AllPay payment...');
-
-            // Validate form before proceeding
-            if (!validateMobileForm()) {
-                alert('אנא מלא את כל השדות הנדרשים');
+            // Prevent multiple simultaneous initializations
+            if (isInitializingPayment) {
+                console.log('⚠️ Payment initialization already in progress, skipping...');
                 return false;
             }
 
-            // Collect form data
-            const formData = collectMobileFormData();
-            if (!formData) {
-                alert('שגיאה באיסוף נתוני הטופס');
+            isInitializingPayment = true;
+
+            try {
+                console.log('🔄 Initializing AllPay payment...');
+
+                // Validate form before proceeding
+                if (!validateMobileForm()) {
+                    alert('אנא מלא את כל השדות הנדרשים');
+                    return false;
+                }
+
+                // Collect form data
+                const formData = collectMobileFormData();
+                if (!formData) {
+                    alert('שגיאה באיסוף נתוני הטופס');
+                    return false;
+                }
+
+                // Calculate total amount
+                const totalAmount = calculateTotalAmount();
+                console.log('💰 Total amount:', totalAmount);
+
+                if (totalAmount <= 0) {
+                    alert('סכום תשלום לא חוקי');
+                    return false;
+                }
+
+                // Update summary in Step 4
+                updateStep4Summary(formData, totalAmount);
+
+                // Show loading state with null checks
+                const loadingEl = document.getElementById('payment-loading');
+                const iframeContainerEl = document.getElementById('payment-iframe-container');
+                const methodsInfoEl = document.getElementById('payment-methods-info');
+
+                if (loadingEl) loadingEl.classList.remove('hidden');
+                if (iframeContainerEl) iframeContainerEl.classList.add('hidden');
+                if (methodsInfoEl) methodsInfoEl.classList.add('hidden');
+
+                // Continue with payment creation
+                return await createAllPayPayment(formData, totalAmount);
+
+            } catch (error) {
+                console.error('❌ Payment initialization error:', error);
+                alert('שגיאה באתחול תשלום: ' + error.message);
                 return false;
+            } finally {
+                // Always reset the flag when done
+                isInitializingPayment = false;
             }
+        }
 
-            // Calculate total amount
-            const totalAmount = calculateTotalAmount();
-            console.log('💰 Total amount:', totalAmount);
-
-            if (totalAmount <= 0) {
-                alert('סכום תשלום לא חוקי');
-                return false;
-            }
-
-            // Update summary in Step 4
-            updateStep4Summary(formData, totalAmount);
-
-            // Show loading state
-            document.getElementById('payment-loading').classList.remove('hidden');
-            document.getElementById('payment-iframe-container').classList.add('hidden');
-            document.getElementById('payment-methods-info').classList.add('hidden');
-
+        /**
+         * Create AllPay payment (separated for better error handling)
+         */
+        async function createAllPayPayment(formData, totalAmount) {
             try {
                 // Call backend to create payment
                 const response = await fetch('/api/create-payment', {
@@ -5507,6 +5540,9 @@
 
                     // Load payment URL into iframe
                     const iframe = document.getElementById('allpay-payment-iframe');
+                    if (!iframe) {
+                        throw new Error('Payment iframe not found');
+                    }
                     iframe.src = data.paymentUrl;
 
                     // Initialize AllPay Hosted Fields
@@ -5520,10 +5556,14 @@
                         }
                     });
 
-                    // Hide loading, show iframe and payment button
-                    document.getElementById('payment-loading').classList.add('hidden');
-                    document.getElementById('payment-iframe-container').classList.remove('hidden');
-                    document.getElementById('payment-methods-info').classList.remove('hidden');
+                    // Hide loading, show iframe and payment button with null checks
+                    const loadingEl = document.getElementById('payment-loading');
+                    const iframeContainerEl = document.getElementById('payment-iframe-container');
+                    const methodsInfoEl = document.getElementById('payment-methods-info');
+
+                    if (loadingEl) loadingEl.classList.add('hidden');
+                    if (iframeContainerEl) iframeContainerEl.classList.remove('hidden');
+                    if (methodsInfoEl) methodsInfoEl.classList.remove('hidden');
 
                     return true;
 
@@ -5535,8 +5575,9 @@
                 console.error('❌ Payment creation error:', error);
                 alert('שגיאה ביצירת תשלום: ' + error.message + '\nאנא נסה שנית.');
 
-                // Hide loading
-                document.getElementById('payment-loading').classList.add('hidden');
+                // Hide loading with null check
+                const loadingEl = document.getElementById('payment-loading');
+                if (loadingEl) loadingEl.classList.add('hidden');
 
                 return false;
             }
