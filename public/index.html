@@ -2275,7 +2275,7 @@
                 <div id="step-4" class="step-content p-6 flex-1 flex-col hidden">
                     <div class="mb-6">
                         <h2 class="text-xl font-bold text-white tracking-tight mb-2">Complete Secure Payment</h2>
-                        <p class="text-white/60 text-sm">Secure payment via AllPay - accepts credit cards, Bit, Apple Pay</p>
+                        <p class="text-white/60 text-sm">Choose your preferred payment method</p>
                     </div>
 
                     <div class="flex-1 space-y-6">
@@ -2293,6 +2293,57 @@
                             </div>
                         </div>
 
+                        <!-- Payment Method Selector -->
+                        <div class="bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-xl border border-cyan-200/40 rounded-xl p-4">
+                            <h3 class="text-base font-semibold text-white mb-4">Select Payment Method</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                                <!-- Credit Card -->
+                                <button onclick="selectPaymentMethod('credit-card')" id="payment-btn-credit-card"
+                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
+                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                                    </svg>
+                                    <span class="text-xs font-medium text-white">Credit Card</span>
+                                </button>
+
+                                <!-- Bit -->
+                                <button onclick="selectPaymentMethod('bit')" id="payment-btn-bit"
+                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
+                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                                    </svg>
+                                    <span class="text-xs font-medium text-white">Bit</span>
+                                </button>
+
+                                <!-- Apple Pay -->
+                                <button onclick="selectPaymentMethod('apple-pay')" id="payment-btn-apple-pay"
+                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
+                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+                                    </svg>
+                                    <span class="text-xs font-medium text-white">Apple Pay</span>
+                                </button>
+
+                                <!-- Bank Transfer -->
+                                <button onclick="selectPaymentMethod('bank-transfer')" id="payment-btn-bank-transfer"
+                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
+                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/>
+                                    </svg>
+                                    <span class="text-xs font-medium text-white text-center">Bank Transfer</span>
+                                </button>
+
+                                <!-- Cash -->
+                                <button onclick="selectPaymentMethod('cash')" id="payment-btn-cash"
+                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
+                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                    </svg>
+                                    <span class="text-xs font-medium text-white">Cash</span>
+                                </button>
+                            </div>
+                        </div>
+
                         <!-- Loading State (shown while creating payment) -->
                         <div id="payment-loading" class="hidden text-center py-8">
                             <div class="relative inline-flex">
@@ -2307,49 +2358,135 @@
                             <p class="text-white/60 text-sm mt-2">Please wait, do not close this window</p>
                         </div>
 
-                        <!-- AllPay Hosted Fields iframe (shown after payment created) -->
+                        <!-- AllPay Hosted Fields iframe (for online payments: credit card, bit, apple pay) -->
                         <div id="payment-iframe-container" class="hidden">
-                            <iframe
-                                id="allpay-payment-iframe"
-                                allow="payment *"
-                                src=""
-                                class="w-full rounded-xl border-2 border-cyan-400/30 bg-gradient-to-br from-black/40 to-black/20 shadow-xl"
-                                style="height: 480px; min-height: 480px;">
-                            </iframe>
+                            <div class="bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-xl border border-cyan-200/40 rounded-xl p-6">
+                                <iframe
+                                    id="allpay-payment-iframe"
+                                    allow="payment *"
+                                    src=""
+                                    class="w-full rounded-lg border border-cyan-400/20 bg-white"
+                                    style="height: 480px; min-height: 480px;">
+                                </iframe>
 
-                            <button
-                                onclick="submitAllPayPayment()"
-                                id="allpay-submit-button"
-                                class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-4 rounded-xl mt-6 hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
-                                <span class="flex items-center justify-center gap-2">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                    <span>Complete Payment</span>
-                                </span>
-                            </button>
+                                <button
+                                    onclick="submitAllPayPayment()"
+                                    id="allpay-submit-button"
+                                    class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-4 rounded-xl mt-6 hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                                    <span class="flex items-center justify-center gap-2">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span>Complete Payment</span>
+                                    </span>
+                                </button>
 
-                            <p class="text-xs text-white/60 text-center mt-3">
-                                🔒 Secure payment via AllPay
-                            </p>
+                                <p class="text-xs text-white/60 text-center mt-3">
+                                    🔒 Secure payment via AllPay
+                                </p>
+                            </div>
                         </div>
 
-                        <!-- Payment Method Options Info -->
-                        <div id="payment-methods-info" class="hidden bg-black/20 border border-white/10 rounded-lg p-4">
-                            <p class="text-white/80 text-sm text-center mb-3">Available payment options:</p>
-                            <div class="flex items-center justify-center gap-4 flex-wrap">
-                                <div class="text-white/60 text-xs flex items-center gap-1">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 8H4V6h16v2zm0 2H4v8c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8z"/></svg>
-                                    <span>Credit Cards</span>
+                        <!-- Bank Transfer Instructions -->
+                        <div id="payment-bank-transfer" class="hidden">
+                            <div class="bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-xl border border-cyan-200/40 rounded-xl p-6">
+                                <div class="flex items-start gap-3 mb-4">
+                                    <svg class="w-6 h-6 text-cyan-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-2">Bank Transfer Instructions</h4>
+                                        <p class="text-white/80 text-sm">Transfer the amount to our bank account and email us the confirmation.</p>
+                                    </div>
                                 </div>
-                                <div class="text-white/60 text-xs flex items-center gap-1">
-                                    <img src="Bit.logo.png" alt="Bit" class="h-4 w-auto">
-                                    <span>Bit</span>
+
+                                <div class="bg-black/40 rounded-lg p-4 space-y-3 mb-6">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-white/60 text-sm">Bank:</span>
+                                        <span class="text-white font-medium">Leumi</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-white/60 text-sm">Account Number:</span>
+                                        <span class="text-white font-mono">1234567890</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-white/60 text-sm">Account Name:</span>
+                                        <span class="text-white">AI Kidz Club</span>
+                                    </div>
+                                    <div class="flex justify-between items-center border-t border-white/10 pt-3">
+                                        <span class="text-white/60 text-sm">Reference:</span>
+                                        <span class="text-cyan-300 font-mono" id="bank-transfer-reference">-</span>
+                                    </div>
                                 </div>
-                                <div class="text-white/60 text-xs flex items-center gap-1">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.38,7.62L19,9l-1.38-1.38a9.024,9.024,0,0,0-11.24,0L5,9,3.62,7.62a11.019,11.019,0,0,1,16.76,0ZM12,18a3,3,0,1,1,3-3A3,3,0,0,1,12,18Z"/></svg>
-                                    <span>Apple Pay</span>
+
+                                <div class="bg-amber-500/10 border border-amber-400/30 rounded-lg p-4">
+                                    <p class="text-amber-200 text-sm">
+                                        ⚠️ <strong>Important:</strong> Please include the reference number in your transfer notes and email the confirmation to <a href="mailto:raphael@aikidz.club" class="text-cyan-300 hover:underline">raphael@aikidz.club</a>
+                                    </p>
                                 </div>
+
+                                <button onclick="confirmBankTransfer()" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl mt-6 hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105">
+                                    I've Completed the Transfer
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Cash Payment Instructions -->
+                        <div id="payment-cash" class="hidden">
+                            <div class="bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-xl border border-cyan-200/40 rounded-xl p-6">
+                                <div class="flex items-start gap-3 mb-4">
+                                    <svg class="w-6 h-6 text-cyan-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-2">Pay in Person</h4>
+                                        <p class="text-white/80 text-sm">Visit our office to complete payment in cash or by check.</p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-black/40 rounded-lg p-4 space-y-4 mb-6">
+                                    <div>
+                                        <h5 class="text-white font-semibold mb-2 flex items-center gap-2">
+                                            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                            </svg>
+                                            Office Location
+                                        </h5>
+                                        <p class="text-white/80 text-sm ml-6">Swartzim 2/7, Raanana 43001, Israel</p>
+                                    </div>
+
+                                    <div class="border-t border-white/10 pt-4">
+                                        <h5 class="text-white font-semibold mb-2 flex items-center gap-2">
+                                            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                            Office Hours
+                                        </h5>
+                                        <p class="text-white/80 text-sm ml-6">Sunday - Thursday: 9:00 AM - 5:00 PM</p>
+                                    </div>
+
+                                    <div class="border-t border-white/10 pt-4">
+                                        <h5 class="text-white font-semibold mb-2 flex items-center gap-2">
+                                            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                            </svg>
+                                            Contact
+                                        </h5>
+                                        <p class="text-white/80 text-sm ml-6">+972-54-315-9025</p>
+                                        <p class="text-white/80 text-sm ml-6">raphael@aikidz.club</p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-amber-500/10 border border-amber-400/30 rounded-lg p-4 mb-6">
+                                    <p class="text-amber-200 text-sm">
+                                        💡 <strong>Tip:</strong> Please call ahead to confirm availability: <a href="tel:+972543159025" class="text-cyan-300 hover:underline">+972-54-315-9025</a>
+                                    </p>
+                                </div>
+
+                                <button onclick="confirmCashPayment()" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105">
+                                    Reserve My Spot (Pay Later)
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -5363,11 +5500,75 @@
     <script>
         // AllPay instance (will be initialized after payment creation)
         let AllpayInstance = null;
+        let selectedPaymentMethod = null;
+
+        /**
+         * Select payment method and show appropriate UI
+         */
+        function selectPaymentMethod(method) {
+            selectedPaymentMethod = method;
+
+            // Hide all payment containers
+            document.getElementById('payment-loading').classList.add('hidden');
+            document.getElementById('payment-iframe-container').classList.add('hidden');
+            document.getElementById('payment-bank-transfer').classList.add('hidden');
+            document.getElementById('payment-cash').classList.add('hidden');
+
+            // Reset all payment method buttons
+            document.querySelectorAll('.payment-method-btn').forEach(btn => {
+                btn.classList.remove('border-cyan-400', 'bg-cyan-500/20');
+                btn.classList.add('border-white/20', 'bg-black/40');
+            });
+
+            // Highlight selected payment method
+            const selectedBtn = document.getElementById(`payment-btn-${method}`);
+            if (selectedBtn) {
+                selectedBtn.classList.remove('border-white/20', 'bg-black/40');
+                selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/20');
+            }
+
+            // Show appropriate payment UI based on method
+            if (method === 'credit-card' || method === 'bit' || method === 'apple-pay') {
+                // Online payment methods - initialize AllPay
+                initializeAllPayPayment(method);
+            } else if (method === 'bank-transfer') {
+                // Show bank transfer instructions
+                const referenceEl = document.getElementById('bank-transfer-reference');
+                if (referenceEl) {
+                    // Generate unique reference number
+                    const timestamp = Date.now();
+                    const random = Math.random().toString(36).substring(2, 8).toUpperCase();
+                    referenceEl.textContent = `AIKIDZ-${timestamp}-${random}`;
+                }
+                document.getElementById('payment-bank-transfer').classList.remove('hidden');
+            } else if (method === 'cash') {
+                // Show cash payment instructions
+                document.getElementById('payment-cash').classList.remove('hidden');
+            }
+        }
+
+        /**
+         * Confirm bank transfer (reserve spot)
+         */
+        function confirmBankTransfer() {
+            alert('Thank you! Your spot has been reserved. We will confirm your enrollment once we receive your bank transfer.');
+            // TODO: Send confirmation email and add to pending registrations
+            showPaymentSuccessModal('PENDING-BANK-TRANSFER', collectMobileFormData());
+        }
+
+        /**
+         * Confirm cash payment (reserve spot)
+         */
+        function confirmCashPayment() {
+            alert('Thank you! Your spot has been reserved. Please visit our office to complete payment.');
+            // TODO: Send confirmation email and add to pending registrations
+            showPaymentSuccessModal('PENDING-CASH-PAYMENT', collectMobileFormData());
+        }
 
         /**
          * Initialize AllPay payment when user reaches Step 4
          */
-        async function initializeAllPayPayment() {
+        async function initializeAllPayPayment(paymentMethod = 'credit-card') {
             console.log('🔄 Initializing AllPay payment...');
 
             // Validate form before proceeding
@@ -5696,18 +5897,22 @@
             }
         }
 
-        // Override the nextStep function to initialize payment when reaching Step 4
+        // Auto-select credit card as default payment method when reaching Step 4
         const originalNextStep = nextStep;
         nextStep = async function() {
             const currentStep = document.querySelector('.step-content:not(.hidden)');
             const currentStepId = currentStep ? currentStep.id : '';
 
-            // If moving from Step 3 to Step 4, initialize AllPay payment
+            // If moving from Step 3 to Step 4, show payment methods
             if (currentStepId === 'step-3') {
-                const success = await initializeAllPayPayment();
-                if (!success) {
-                    return;
-                }
+                // Just proceed to Step 4 - user will select payment method
+                originalNextStep();
+
+                // Auto-select credit card as default after a short delay
+                setTimeout(() => {
+                    selectPaymentMethod('credit-card');
+                }, 300);
+                return;
             }
 
             // Call original nextStep function
