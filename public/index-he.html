@@ -3425,6 +3425,11 @@
             const parentEmail = document.getElementById('parent-email')?.value || '';
             const parentPhone = document.getElementById('parent-phone')?.value || '';
 
+            // Save to wizardData as user types - needed for AllPay validation
+            wizardData.parentName = parentName.trim();
+            wizardData.parentEmail = parentEmail.trim();
+            wizardData.parentPhone = parentPhone.trim();
+
             const allValid = parentName.trim() !== '' &&
                            parentEmail.trim() !== '' &&
                            parentPhone.trim() !== '';
