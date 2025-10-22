@@ -2,8 +2,34 @@
   "buildCommand": "cp -r public/* .",
   "outputDirectory": ".",
   "cleanUrls": true,
+  "functions": {
+    "api/**/*.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
   "rewrites": [
     { "source": "/curriculum-he-desktop", "destination": "/curriculum-he-desktop.html" },
-    { "source": "/pricing-he-desktop", "destination": "/pricing-he-desktop.html" }
+    { "source": "/pricing-he-desktop", "destination": "/pricing-he-desktop.html" },
+    { "source": "/api/:path*", "destination": "/api/:path*" }
+  ],
+  "headers": [
+    {
+      "source": "/api/:path*",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
   ]
 }
