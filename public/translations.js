@@ -101,7 +101,7 @@ const translations = {
         // Contact
         haveQuestions: "Have Questions?",
         questionsDesc: "Feel free to reach out if you have any questions!",
-        whatsappRegister: "WhatsApp Now to Register",
+        whatsappRegister: "WhatsApp Us",
         callNow: "Call Now",
         availableAnytime: "Available for questions anytime",
 
@@ -214,7 +214,7 @@ const translations = {
         // Contact
         haveQuestions: "יש שאלות?",
         questionsDesc: "אל תהססו לפנות אם יש לכם שאלות!",
-        whatsappRegister: "WhatsApp להרשמה",
+        whatsappRegister: "WhatsApp Us",
         callNow: "התקשר עכשיו",
         availableAnytime: "זמינים לשאלות בכל עת",
 
