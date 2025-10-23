@@ -2220,6 +2220,19 @@
                                         </div>
                                     </div>
                                 </button>
+
+                                <button type="button" onclick="selectBulkDuration('trial')"
+                                        class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="trial">
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex-1">
+                                            <div class="text-lg font-semibold text-white">Free Trial</div>
+                                            <div class="text-sm text-white/60">1 Trial lesson</div>
+                                        </div>
+                                        <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
+                                            <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
+                                        </div>
+                                    </div>
+                                </button>
                             </div>
                         </div>
 
@@ -3063,9 +3076,9 @@
 
         // Age-specific pricing configuration
         const AGE_PRICING = {
-            young: { monthly: 599, quarterly: 519, yearly: 479 },
-            tech: { monthly: 649, quarterly: 569, yearly: 519 },
-            future: { monthly: 749, quarterly: 649, yearly: 599 }
+            young: { monthly: 599, quarterly: 519, yearly: 479, trial: 0 },
+            tech: { monthly: 649, quarterly: 569, yearly: 519, trial: 0 },
+            future: { monthly: 749, quarterly: 649, yearly: 599, trial: 0 }
         };
 
         let wizardData = {
@@ -3080,6 +3093,13 @@
 
         // Step Navigation
         function nextStep() {
+            // Check if user selected Free Trial at end of Step 3 (after entering parent info)
+            if (currentWizardStep === 3 && wizardData.bulkDuration === 'trial') {
+                console.log('🎁 Free Trial selected - skipping payment and submitting');
+                submitTrialRegistration();
+                return;
+            }
+
             const currentStepEl = document.getElementById(`step-${currentWizardStep}`);
             const nextStepEl = document.getElementById(`step-${currentWizardStep + 1}`);
 
@@ -3412,6 +3432,9 @@
         function calculateWizardTotal() {
             if (!wizardData.bulkDuration) return 0;
 
+            // Free trial is always ₪0
+            if (wizardData.bulkDuration === 'trial') return 0;
+
             let total = 0;
             const childPrices = [];
 
@@ -3441,6 +3464,37 @@
 
             const content = document.getElementById('pricing-breakdown-content');
             if (!content || content.classList.contains('hidden')) return;
+
+            // Special handling for Free Trial
+            if (wizardData.bulkDuration === 'trial') {
+                let breakdownHTML = '';
+
+                wizardData.children.forEach((child, i) => {
+                    const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators' :
+                                        child.ageGroup === 'tech' ? 'Tech Champions' :
+                                        'Future Leaders';
+
+                    breakdownHTML += `
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-white/80">${child.name} (${ageGroupName})</span>
+                            <span class="text-white font-medium">₪0 (Free Trial)</span>
+                        </div>
+                    `;
+                });
+
+                breakdownHTML += `
+                    <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-base font-bold text-white">Total</span>
+                            <span class="text-xl font-bold text-cyan-300">₪0 (Free Trial)</span>
+                        </div>
+                        <div class="text-xs text-amber-300 mt-2">1 Trial lesson per child</div>
+                    </div>
+                `;
+
+                content.innerHTML = breakdownHTML;
+                return;
+            }
 
             let breakdownHTML = '';
             let subtotal = 0;
@@ -3504,12 +3558,14 @@
 
             // Use centralized calculation function for consistency
             const totalMonthlyPrice = calculateWizardTotal();
+            const isTrial = wizardData.bulkDuration === 'trial';
 
             // Build summary HTML
-            const planName = wizardData.bulkDuration.charAt(0).toUpperCase() + wizardData.bulkDuration.slice(1);
+            const planName = isTrial ? 'Free Trial - 1 Trial lesson per child' :
+                           (wizardData.bulkDuration.charAt(0).toUpperCase() + wizardData.bulkDuration.slice(1));
             let summaryHTML = `
                 <div class="text-base font-medium text-white mb-2">
-                    <strong>${wizardData.childCount}</strong> child${wizardData.childCount > 1 ? 'ren' : ''} enrolled • <strong>${planName}</strong> payment plan
+                    <strong>${wizardData.childCount}</strong> child${wizardData.childCount > 1 ? 'ren' : ''} enrolled • <strong>${planName}</strong>
                 </div>
             `;
 
@@ -3523,7 +3579,7 @@
             });
 
             summaryContainer.innerHTML = summaryHTML;
-            totalElement.textContent = `₪${totalMonthlyPrice}/month`;
+            totalElement.textContent = isTrial ? `₪0 (Free Trial)` : `₪${totalMonthlyPrice}/month`;
 
             validateStep3();
         }
@@ -3545,6 +3601,41 @@
 
             if (submitBtn) {
                 submitBtn.disabled = !allValid;
+            }
+        }
+
+        // Free Trial Registration
+        async function submitTrialRegistration() {
+            console.log('🎁 Submitting Free Trial registration');
+
+            const registrationData = {
+                parent: {
+                    name: wizardData.parentName,
+                    email: wizardData.parentEmail,
+                    phone: wizardData.parentPhone
+                },
+                children: wizardData.children.map(child => ({
+                    name: child.name,
+                    program: child.ageGroup === 'young' ? 'Young Innovators (8-10)' :
+                             child.ageGroup === 'tech' ? 'Tech Champions (11-13)' :
+                             'Future Leaders (14-18)',
+                    ageGroup: child.ageGroup,
+                    price: 0  // Free trial
+                })),
+                totalPrice: 0,  // Free trial
+                paymentPlan: 'trial',
+                paymentMethod: 'trial',
+                timestamp: new Date().toISOString(),
+                language: 'en'
+            };
+
+            try {
+                const result = await submitToGoogleSheets(registrationData);
+                showRegistrationSuccess(registrationData);
+                closeRegistrationModal();
+            } catch (error) {
+                console.error('❌ Trial registration failed:', error);
+                alert('⚠️ Registration failed. Please try again or contact support.');
             }
         }
 
@@ -5887,6 +5978,9 @@
          */
         function calculateTotalAmount() {
             if (!wizardData.bulkDuration || !wizardData.children.length) return 0;
+
+            // Free trial is always ₪0
+            if (wizardData.bulkDuration === 'trial') return 0;
 
             let total = 0;
 
