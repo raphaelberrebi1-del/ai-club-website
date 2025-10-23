@@ -891,89 +891,57 @@
 
                     <!-- Step 4: Secure Payment -->
                     <div id="step-4" class="step-content p-6 flex-1 flex-col hidden">
+                        <!-- Header -->
                         <div class="mb-6">
                             <h2 class="text-xl font-bold text-white tracking-tight mb-2">Complete Secure Payment</h2>
-                            <p class="text-white/60 text-sm">Secure payment via AllPay - accepts credit cards, Bit, Apple Pay</p>
+                            <p class="text-white/80 text-sm">Secure payment via AllPay</p>
                         </div>
 
-                        <div class="flex-1 space-y-6">
-                            <!-- Order Summary -->
-                            <div id="payment-summary" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
-                                <h3 class="text-lg font-semibold text-white mb-3">Order Summary</h3>
-                                <div id="step-4-summary" class="space-y-2 text-sm text-white/80">
-                                    <!-- Summary will be populated by JavaScript -->
-                                </div>
-                                <div class="border-t border-cyan-400/30 pt-3 mt-3">
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-base font-semibold text-white">Total:</span>
-                                        <span id="step-4-total" class="text-2xl font-bold text-cyan-300">₪0</span>
-                                    </div>
-                                </div>
+                        <!-- Order Summary Box -->
+                        <div id="payment-summary" class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-4 mb-6">
+                            <h3 class="text-lg font-semibold text-white mb-3">Order Summary</h3>
+                            <div id="step-4-summary" class="space-y-2 text-sm text-white/90">
+                                <!-- Populated by JavaScript -->
                             </div>
-
-                            <!-- Loading State (shown while creating payment) -->
-                            <div id="payment-loading" class="hidden text-center py-8">
-                                <div class="relative inline-flex">
-                                    <div class="w-16 h-16 border-4 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin"></div>
-                                    <div class="absolute inset-0 flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <p class="text-white text-lg font-medium mt-4">Preparing secure payment...</p>
-                                <p class="text-white/60 text-sm mt-2">Please wait, do not close this window</p>
-                            </div>
-
-                            <!-- AllPay Hosted Fields iframe (shown after payment created) -->
-                            <div id="payment-iframe-container" class="hidden">
-                                <iframe
-                                    id="allpay-payment-iframe"
-                                    allow="payment *"
-                                    src=""
-                                    class="w-full rounded-xl border-2 border-cyan-400/30 bg-amber-50/90 shadow-xl"
-                                    style="height: 480px; min-height: 480px;">
-                                </iframe>
-
-                                <button
-                                    onclick="submitAllPayPayment()"
-                                    id="allpay-submit-button"
-                                    class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-4 rounded-xl mt-6 hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
-                                    <span class="flex items-center justify-center gap-2">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                        </svg>
-                                        <span>Complete Payment</span>
-                                    </span>
-                                </button>
-
-                                <p class="text-xs text-white/60 text-center mt-3">
-                                    🔒 Secure payment via AllPay
-                                </p>
-                            </div>
-
-                            <!-- Payment Method Options Info -->
-                            <div id="payment-methods-info" class="hidden bg-black/20 border border-white/10 rounded-lg p-4">
-                                <p class="text-white/80 text-sm text-center mb-3">Available payment options:</p>
-                                <div class="flex items-center justify-center gap-4 flex-wrap">
-                                    <div class="text-white/60 text-xs flex items-center gap-1">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 8H4V6h16v2zm0 2H4v8c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8z"/></svg>
-                                        <span>Credit Cards</span>
-                                    </div>
-                                    <div class="text-white/60 text-xs flex items-center gap-1">
-                                        <img src="Bit.logo.png" alt="Bit" class="h-4 w-auto">
-                                        <span>Bit</span>
-                                    </div>
-                                    <div class="text-white/60 text-xs flex items-center gap-1">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.38,7.62L19,9l-1.38-1.38a9.024,9.024,0,0,0-11.24,0L5,9,3.62,7.62a11.019,11.019,0,0,1,16.76,0ZM12,18a3,3,0,1,1,3-3A3,3,0,0,1,12,18Z"/></svg>
-                                        <span>Apple Pay</span>
-                                    </div>
+                            <div class="border-t border-white/20 pt-3 mt-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-base font-semibold text-white">Total:</span>
+                                    <span id="step-4-total" class="text-2xl font-bold text-white">₪0</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
-                            <button onclick="previousStep()" id="step-4-back" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
+                        <!-- Loading State -->
+                        <div id="payment-loading" class="hidden text-center py-12">
+                            <div class="inline-block w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin"></div>
+                            <p class="text-white text-lg font-medium mt-4">Creating secure payment...</p>
+                        </div>
+
+                        <!-- AllPay Hosted Fields iframe - CLEAN VERSION -->
+                        <div id="payment-iframe-container" class="hidden">
+                            <iframe
+                                id="allpay-payment-iframe"
+                                allow="payment *"
+                                src=""
+                                style="width: 100%; height: 500px; border: none; background: white; border-radius: 12px;">
+                            </iframe>
+
+                            <button
+                                onclick="submitAllPayPayment()"
+                                id="allpay-submit-button"
+                                class="w-full mt-6 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                                <span class="flex items-center justify-center gap-2">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    Complete Payment
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- Back Button -->
+                        <div class="mt-8 pt-6 border-t border-white/20">
+                            <button onclick="previousStep()" class="w-full bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
                                 Back
                             </button>
                         </div>
