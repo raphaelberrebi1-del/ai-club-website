@@ -1054,6 +1054,19 @@
                                             </div>
                                         </div>
                                     </button>
+
+                                    <button type="button" onclick="selectBulkDuration('trial')"
+                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="trial">
+                                        <div class="flex justify-between items-center">
+                                            <div class="flex-1">
+                                                <div class="text-lg font-semibold text-white">ניסיון חינם</div>
+                                                <div class="text-sm text-white/60">שיעור ניסיון אחד</div>
+                                            </div>
+                                            <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
+                                                <div class="w-3 h-3 bg-cyan-400 rounded-full opacity-0 transition-opacity"></div>
+                                            </div>
+                                        </div>
+                                    </button>
                                 </div>
                             </div>
 
@@ -2750,7 +2763,8 @@
             const monthlyPrices = {
                 monthly: 599,
                 quarterly: 479, // 20% off monthly
-                yearly: 399     // 33% off monthly
+                yearly: 399,     // 33% off monthly
+                trial: 0        // Free trial
             };
 
             const basePrice = monthlyPrices[familyData.bulkDuration];
