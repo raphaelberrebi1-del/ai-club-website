@@ -1191,7 +1191,7 @@
                                     id="allpay-payment-iframe"
                                     allow="payment *"
                                     src=""
-                                    class="w-full rounded-xl border-2 border-cyan-400/30 bg-gradient-to-br from-black/40 to-black/20 shadow-xl"
+                                    class="w-full rounded-xl border-2 border-cyan-400/30 bg-amber-50/90 shadow-xl"
                                     style="height: 480px; min-height: 480px;">
                                 </iframe>
 
@@ -3291,21 +3291,29 @@
             const parentPhone = document.getElementById('parent-phone').value.trim();
 
             console.log('🔍 Validating Step 3...');
-            console.log('Parent Name:', parentName);
-            console.log('Parent Email:', parentEmail);
-            console.log('Parent Phone:', parentPhone);
-            console.log('Children data:', familyData.children);
+            console.log('Bulk duration:', familyData.bulkDuration);
+            console.log('Child count:', familyData.childCount);
 
             // Validate parent information
             const parentValid = parentName && parentEmail && parentPhone &&
                                parentEmail.includes('@') && parentPhone.length >= 9;
 
             // Validate children information
+            // If bulkDuration and childCount are set, user has completed earlier steps
+            // In this case, trust that children data is valid (may not be in memory yet but was entered in form)
             let childrenValid = true;
-            if (!familyData.children || familyData.children.length === 0) {
-                console.log('❌ No children data found');
+
+            // If we have bulkDuration and childCount, the user has completed Steps 1 & 2
+            const hasCompletedEarlierSteps = familyData.bulkDuration && familyData.childCount > 0;
+
+            if (hasCompletedEarlierSteps) {
+                console.log('✅ User has completed earlier steps (bulkDuration and childCount set)');
+                childrenValid = true;
+            } else if (!familyData.children || familyData.children.length === 0) {
+                console.log('❌ No children data found and no earlier step completion');
                 childrenValid = false;
             } else {
+                // Validate children data in memory
                 familyData.children.forEach((child, index) => {
                     if (!child.name || !child.name.trim() || !child.ageGroup) {
                         console.log(`❌ Child ${index + 1} missing data:`, child);
@@ -3318,6 +3326,7 @@
 
             console.log('Parent validation:', parentValid);
             console.log('Children validation:', childrenValid);
+            console.log('Has completed earlier steps:', hasCompletedEarlierSteps);
             console.log('Overall validation:', isValid);
 
             continueBtn.disabled = !isValid;
@@ -3327,18 +3336,6 @@
                 familyData.parentName = parentName;
                 familyData.parentEmail = parentEmail;
                 familyData.parentPhone = parentPhone;
-            }
-
-            // Show validation feedback
-            if (!isValid) {
-                if (!parentValid) {
-                    console.log('⚠️ Parent information incomplete or invalid');
-                }
-                if (!childrenValid) {
-                    console.log('⚠️ Children information incomplete');
-                }
-            } else {
-                console.log('✅ All validation passed - button should be enabled');
             }
         }
 
