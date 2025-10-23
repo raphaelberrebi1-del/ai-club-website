@@ -1,0 +1,231 @@
+/* ========================================
+   AllPay Hosted Fields Custom Styling
+   LIGHT BACKGROUND VERSION
+   For use with bg-amber-50/90 iframe background
+
+   HOW TO USE:
+   1. Copy this ENTIRE file contents
+   2. Login to AllPay Dashboard: https://allpay.to/login
+   3. Go to: Settings → Hosted Fields → Hosted Fields Settings
+   4. Paste into "Custom CSS" field
+   5. Click Save
+   6. Wait 1-2 minutes and test
+   ======================================== */
+
+/* Remove ALL default backgrounds globally */
+* {
+    background-color: transparent !important;
+}
+
+/* Body and main containers - transparent */
+body {
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Specifically target common container classes */
+.wrapper, .form-group, .field-group, .input-group,
+.field-wrapper, .input-wrapper, .row, .col,
+.container, .payment-form, .checkout-form,
+div[class*="container"], .form, form {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Input fields - clean white with cyan accents */
+input, .card-field, input[type="text"], input[type="tel"], input[type="number"],
+select, textarea, .input-field, .form-input {
+    /* Clean white background with slight transparency */
+    background: rgba(255, 255, 255, 0.95) !important;
+
+    /* Cyan border to match your theme */
+    border: 2px solid rgba(6, 182, 212, 0.3) !important;
+
+    /* Large rounded corners */
+    border-radius: 12px !important;  /* rounded-xl */
+
+    /* Dark text for readability on white */
+    color: rgba(0, 0, 0, 0.9) !important;
+
+    /* Generous padding */
+    padding: 16px 20px !important;
+
+    /* Large text */
+    font-size: 16px !important;
+
+    /* Subtle shadow for depth */
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08) !important;
+
+    transition: all 0.2s ease !important;
+    width: 100% !important;
+
+    /* Smooth appearance */
+    font-weight: 500 !important;
+}
+
+/* Placeholder text - cyan/teal */
+input::placeholder, textarea::placeholder, select::placeholder,
+::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+    color: rgba(6, 182, 212, 0.6) !important;  /* Cyan with transparency */
+    opacity: 1 !important;
+}
+
+/* Focus state - bright cyan ring */
+input:focus, .card-field:focus, select:focus, textarea:focus {
+    outline: none !important;
+    /* Bright cyan focus ring - very visible */
+    border-color: rgba(6, 182, 212, 0.6) !important;
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2), 0 2px 8px 0 rgba(6, 182, 212, 0.15) !important;
+}
+
+/* Hover state for inputs */
+input:hover, select:hover, textarea:hover {
+    border-color: rgba(6, 182, 212, 0.4) !important;
+}
+
+/* Labels - dark text for readability */
+label, .label, .field-label {
+    color: rgba(0, 0, 0, 0.8) !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    margin-bottom: 8px !important;
+    background: transparent !important;
+}
+
+/* Error messages - clear red on light background */
+.error-message, .validation-error, .field-error, .error {
+    color: rgba(185, 28, 28, 1) !important;  /* Dark red text */
+    background: rgba(254, 226, 226, 0.8) !important;  /* Light red background */
+    border: 1px solid rgba(239, 68, 68, 0.5) !important;
+    border-radius: 8px !important;
+    padding: 10px 14px !important;
+    font-size: 14px !important;
+    margin-top: 6px !important;
+    font-weight: 500 !important;
+}
+
+/* Success messages */
+.success-message, .success {
+    color: rgba(22, 101, 52, 1) !important;  /* Dark green text */
+    background: rgba(220, 252, 231, 0.8) !important;  /* Light green background */
+    border: 1px solid rgba(74, 222, 128, 0.5) !important;
+    border-radius: 8px !important;
+    padding: 10px 14px !important;
+    font-weight: 500 !important;
+}
+
+/* Powered by Allpay - subtle */
+.powered-by, .footer-text, .branding, .footer, small {
+    color: rgba(0, 0, 0, 0.4) !important;
+    font-size: 11px !important;
+    background: transparent !important;
+}
+
+/* Select dropdown options */
+select option {
+    background: white !important;
+    color: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Helper text */
+.help-text, .hint-text {
+    color: rgba(0, 0, 0, 0.6) !important;
+    font-size: 13px !important;
+    background: transparent !important;
+}
+
+/* Card icons - more visible on light background */
+.card-icon, .payment-icon, img, svg {
+    opacity: 0.7 !important;
+}
+
+/* Ensure spacing between fields */
+.field-group, .form-group {
+    margin-bottom: 16px !important;
+}
+
+/* Target month/year separator */
+.separator, .divider, span {
+    color: rgba(0, 0, 0, 0.6) !important;
+    background: transparent !important;
+}
+
+/* Remove box-shadow from nested containers */
+.payment-form, .checkout-form {
+    box-shadow: none !important;
+}
+
+/* Buttons styling (if AllPay includes buttons) */
+button, .button, input[type="submit"], .submit-button {
+    background: linear-gradient(to right, rgb(6, 182, 212), rgb(20, 184, 166)) !important;
+    color: white !important;
+    font-weight: bold !important;
+    padding: 14px 28px !important;
+    border-radius: 12px !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    font-size: 16px !important;
+}
+
+button:hover, .button:hover, input[type="submit"]:hover {
+    opacity: 0.9 !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 4px 12px 0 rgba(6, 182, 212, 0.3) !important;
+}
+
+/* Disabled state */
+button:disabled, input:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+}
+
+/* Headings - if any */
+h1, h2, h3, h4, h5, h6 {
+    color: rgba(0, 0, 0, 0.9) !important;
+    background: transparent !important;
+}
+
+/* Paragraphs */
+p {
+    color: rgba(0, 0, 0, 0.8) !important;
+    background: transparent !important;
+}
+
+/* Links - cyan color */
+a {
+    color: rgb(6, 182, 212) !important;
+    text-decoration: none !important;
+    background: transparent !important;
+}
+
+a:hover {
+    color: rgb(20, 184, 166) !important;
+    text-decoration: underline !important;
+}
+
+/* Card brand logos */
+.card-brand, .payment-method-logo {
+    opacity: 0.8 !important;
+    background: transparent !important;
+}
+
+/* Loading states */
+.loading, .spinner {
+    color: rgb(6, 182, 212) !important;
+    border-color: rgb(6, 182, 212) !important;
+}
+
+/* CVV info icon */
+.cvv-icon, .info-icon {
+    color: rgba(6, 182, 212, 0.8) !important;
+}
+
+/* Security badge */
+.security-badge, .secure-icon {
+    opacity: 0.6 !important;
+}
