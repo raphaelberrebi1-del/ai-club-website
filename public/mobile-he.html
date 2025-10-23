@@ -4753,6 +4753,19 @@
             const totalAmount = calculateTotalAmount();
             console.log('💰 Total amount:', totalAmount);
 
+            // Check if this is a Free Trial registration
+            if (formData.duration === 'trial' || totalAmount === 0) {
+                console.log('✨ Free Trial detected - bypassing payment creation');
+
+                // Hide Step 4
+                document.getElementById('step-4').classList.add('hidden');
+
+                // Show success message directly for Free Trial
+                showPaymentSuccessModal('FREE-TRIAL-' + Date.now(), formData);
+
+                return true;
+            }
+
             if (totalAmount <= 0) {
                 alert('סכום תשלום לא חוקי');
                 return false;
