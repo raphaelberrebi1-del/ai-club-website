@@ -3036,8 +3036,11 @@
             const summaryContainer = document.getElementById('step-3-summary');
             const totalEl = document.getElementById('step-3-total');
 
+            // Check if trial selected
+            const isTrial = familyData.bulkDuration === 'trial';
+
             // Use centralized calculation function for consistency
-            const totalMonthlyPrice = calculateFamilyTotal();
+            const totalMonthlyPrice = isTrial ? 0 : calculateFamilyTotal();
 
             // Generate summary content
             let summaryHTML = '';
@@ -3048,23 +3051,31 @@
                     future: 'Future Leaders (14-18)'
                 };
 
+                const planDisplay = isTrial ? 'Free Trial' : familyData.bulkDuration;
+
                 summaryHTML += `
                     <div class="flex justify-between">
                         <span>${child.name} - ${ageGroupNames[child.ageGroup]}</span>
-                        <span>${familyData.bulkDuration}</span>
+                        <span>${planDisplay}</span>
                     </div>
                 `;
             });
 
-            if (familyData.childCount > 1) {
+            if (isTrial) {
+                summaryHTML += `<div class="text-cyan-300 text-xs">1 Trial lesson per child</div>`;
+            } else if (familyData.childCount > 1) {
                 const discountPercent = familyData.childCount === 2 ? '10%' : '15%';
                 summaryHTML += `<div class="text-amber-300 text-xs">Multi-child discount: ${discountPercent} off</div>`;
             }
 
             summaryContainer.innerHTML = summaryHTML;
 
-            // Update total display - always show monthly price for consistency
-            totalEl.textContent = `₪${totalMonthlyPrice}/month`;
+            // Update total display
+            if (isTrial) {
+                totalEl.textContent = `₪0 (Free Trial)`;
+            } else {
+                totalEl.textContent = `₪${totalMonthlyPrice}/month`;
+            }
 
             // Update familyData.totalPrice for submission
             familyData.totalPrice = totalMonthlyPrice;
@@ -3133,6 +3144,13 @@
 
 
         function nextStep() {
+            // Check if user selected Free Trial at end of Step 3
+            if (currentStep === 3 && familyData.bulkDuration === 'trial') {
+                console.log('🎁 Free Trial selected - skipping payment step');
+                submitTrialRegistration();
+                return;
+            }
+
             if (currentStep < 4) {
                 const currentStepEl = document.getElementById(`step-${currentStep}`);
                 const nextStepEl = document.getElementById(`step-${currentStep + 1}`);
@@ -3389,6 +3407,42 @@
             // Pricing is now subscription-based (monthly/quarterly/annual)
             // No per-program pricing anymore
             return 0;
+        }
+
+        async function submitTrialRegistration() {
+            console.log('🎁 Submitting Free Trial registration');
+
+            // Prepare trial registration data
+            const registrationData = {
+                parent: {
+                    name: familyData.parentName,
+                    email: familyData.parentEmail,
+                    phone: familyData.parentPhone
+                },
+                children: familyData.children.map(child => ({
+                    name: child.name,
+                    program: child.ageGroup,
+                    price: 0  // Free trial
+                })),
+                totalPrice: 0,  // Free trial
+                paymentPlan: 'trial',
+                timestamp: new Date().toISOString(),
+                language: 'en'
+            };
+
+            console.log('Submitting trial registration:', registrationData);
+
+            try {
+                // Submit to backend
+                const result = await submitRegistrationData(registrationData);
+                console.log('✅ Trial registration successful:', result);
+
+                // Show success modal with trial-specific messaging
+                showRegistrationSuccess(registrationData);
+            } catch (error) {
+                console.error('❌ Trial registration failed:', error);
+                alert('⚠️ Registration failed. Please try again or contact support.');
+            }
         }
 
         async function submitRegistration() {

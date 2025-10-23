@@ -3197,6 +3197,9 @@
             const summaryContainer = document.getElementById('step-3-summary');
             const totalEl = document.getElementById('step-3-total');
 
+            // Check if trial selected
+            const isTrial = familyData.bulkDuration === 'trial';
+
             // Generate summary content
             let summaryHTML = '';
             familyData.children.forEach((child, index) => {
@@ -3209,17 +3212,23 @@
                 const durationNames = {
                     monthly: 'חודשי',
                     quarterly: 'רבעוני',
-                    yearly: 'שנתי'
+                    yearly: 'שנתי',
+                    trial: 'ניסיון חינם'
                 };
+
+                const planDisplay = isTrial ? 'ניסיון חינם' : durationNames[familyData.bulkDuration] || familyData.bulkDuration;
+
                 summaryHTML += `
                     <div class="flex justify-between">
                         <span>${child.name} - ${ageGroupNames[child.ageGroup]}</span>
-                        <span>${durationNames[familyData.bulkDuration] || familyData.bulkDuration}</span>
+                        <span>${planDisplay}</span>
                     </div>
                 `;
             });
 
-            if (familyData.childCount > 1) {
+            if (isTrial) {
+                summaryHTML += `<div class="text-cyan-300 text-xs">שיעור ניסיון אחד לכל ילד</div>`;
+            } else if (familyData.childCount > 1) {
                 const discountPercent = familyData.childCount === 2 ? '10%' : '15%';
                 summaryHTML += `<div class="text-amber-300 text-xs">הנחה רב-ילדים: ${discountPercent} הנחה</div>`;
             }
@@ -3228,7 +3237,9 @@
 
             // Update total display based on duration
             let displayPrice;
-            if (familyData.bulkDuration === 'monthly') {
+            if (isTrial) {
+                displayPrice = `₪0 (ניסיון חינם)`;
+            } else if (familyData.bulkDuration === 'monthly') {
                 displayPrice = `₪${Math.round(familyData.totalPrice)}/חודש`;
             } else if (familyData.bulkDuration === 'quarterly') {
                 displayPrice = `₪${Math.round(familyData.totalPrice * 3)}/רבעון`;
@@ -3237,6 +3248,11 @@
             }
 
             totalEl.textContent = displayPrice;
+
+            // Update familyData.totalPrice for submission
+            if (isTrial) {
+                familyData.totalPrice = 0;
+            }
 
             // Validate parent inputs
             validateStep3();
@@ -3302,6 +3318,13 @@
 
 
         function nextStep() {
+            // Check if user selected Free Trial at end of Step 3
+            if (currentStep === 3 && familyData.bulkDuration === 'trial') {
+                console.log('🎁 Free Trial selected - skipping payment step');
+                submitTrialRegistration();
+                return;
+            }
+
             if (currentStep < 4) {
                 const currentStepEl = document.getElementById(`step-${currentStep}`);
                 const nextStepEl = document.getElementById(`step-${currentStep + 1}`);
@@ -3558,6 +3581,42 @@
             // Pricing is now subscription-based (monthly/quarterly/annual)
             // No per-program pricing anymore
             return 0;
+        }
+
+        async function submitTrialRegistration() {
+            console.log('🎁 Submitting Free Trial registration');
+
+            // Prepare trial registration data
+            const registrationData = {
+                parent: {
+                    name: familyData.parentName,
+                    email: familyData.parentEmail,
+                    phone: familyData.parentPhone
+                },
+                children: familyData.children.map(child => ({
+                    name: child.name,
+                    program: child.ageGroup,
+                    price: 0  // Free trial
+                })),
+                totalPrice: 0,  // Free trial
+                paymentPlan: 'trial',
+                timestamp: new Date().toISOString(),
+                language: 'he'
+            };
+
+            console.log('Submitting trial registration:', registrationData);
+
+            try {
+                // Submit to backend
+                const result = await submitRegistrationData(registrationData);
+                console.log('✅ Trial registration successful:', result);
+
+                // Show success modal with trial-specific messaging
+                showRegistrationSuccess(registrationData);
+            } catch (error) {
+                console.error('❌ Trial registration failed:', error);
+                alert('⚠️ Registration failed. Please try again or contact support.');
+            }
         }
 
         async function submitRegistration() {
