@@ -1495,9 +1495,9 @@
         // Add Child Form Functionality
         // Age-specific pricing configuration
         const AGE_PRICING = {
-            young: { monthly: 599, quarterly: 519, yearly: 479 },
-            tech: { monthly: 699, quarterly: 599, yearly: 549 },
-            future: { monthly: 849, quarterly: 729, yearly: 649 }
+            young: { monthly: 599, quarterly: 519, yearly: 479, trial: 0 },
+            tech: { monthly: 699, quarterly: 599, yearly: 549, trial: 0 },
+            future: { monthly: 849, quarterly: 729, yearly: 649, trial: 0 }
         };
 
         let childCount = 0;
@@ -2581,7 +2581,10 @@
 
             // Display total based on duration
             let displayPrice, displayText;
-            if (familyData.bulkDuration === 'monthly') {
+            if (familyData.bulkDuration === 'trial') {
+                displayPrice = `₪0 (Free Trial)`;
+                displayText = `${familyData.childCount} child${familyData.childCount === 1 ? '' : 'ren'} - 1 Trial lesson each`;
+            } else if (familyData.bulkDuration === 'monthly') {
                 displayPrice = `₪${Math.round(totalMonthlyPrice)}/month`;
                 displayText = `${familyData.childCount} child${familyData.childCount === 1 ? '' : 'ren'} × ₪${basePrice}/month`;
             } else if (familyData.bulkDuration === 'quarterly') {
@@ -2978,6 +2981,7 @@
             const content = document.getElementById('pricing-breakdown-content');
             if (!content || content.classList.contains('hidden')) return;
 
+            const isTrial = familyData.bulkDuration === 'trial';
             let breakdownHTML = '';
             let subtotal = 0;
 
@@ -2989,17 +2993,26 @@
                                     child.ageGroup === 'tech' ? 'Tech Champions' :
                                     'Future Leaders';
 
-                breakdownHTML += `
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-white/80">${child.name} (${ageGroupName})</span>
-                        <span class="text-white font-medium">₪${price}/month</span>
-                    </div>
-                `;
+                if (isTrial) {
+                    breakdownHTML += `
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-white/80">${child.name} (${ageGroupName})</span>
+                            <span class="text-white font-medium">Free Trial</span>
+                        </div>
+                    `;
+                } else {
+                    breakdownHTML += `
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-white/80">${child.name} (${ageGroupName})</span>
+                            <span class="text-white font-medium">₪${price}/month</span>
+                        </div>
+                    `;
+                }
             });
 
-            // Apply family discounts
+            // Apply family discounts (not applicable for trial)
             let total = subtotal;
-            if (familyData.childCount >= 2) {
+            if (familyData.childCount >= 2 && !isTrial) {
                 const discountRate = familyData.childCount === 2 ? 0.10 : 0.15;
                 const discount = Math.round(subtotal * discountRate);
                 total = subtotal - discount;
@@ -3014,14 +3027,26 @@
                 `;
             }
 
-            breakdownHTML += `
-                <div class="border-t border-cyan-400/30 pt-3 mt-3">
-                    <div class="flex justify-between items-center">
-                        <span class="text-base font-bold text-white">Total</span>
-                        <span class="text-xl font-bold text-cyan-300">₪${Math.round(total)}/month</span>
+            if (isTrial) {
+                breakdownHTML += `
+                    <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-base font-bold text-white">Total</span>
+                            <span class="text-xl font-bold text-cyan-300">₪0 (Free Trial)</span>
+                        </div>
+                        <div class="text-xs text-cyan-300 mt-2">1 Trial lesson per child</div>
                     </div>
-                </div>
-            `;
+                `;
+            } else {
+                breakdownHTML += `
+                    <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-base font-bold text-white">Total</span>
+                            <span class="text-xl font-bold text-cyan-300">₪${Math.round(total)}/month</span>
+                        </div>
+                    </div>
+                `;
+            }
 
             content.innerHTML = breakdownHTML;
         }
@@ -3426,6 +3451,7 @@
                 })),
                 totalPrice: 0,  // Free trial
                 paymentPlan: 'trial',
+                paymentMethod: 'trial',
                 timestamp: new Date().toISOString(),
                 language: 'en'
             };

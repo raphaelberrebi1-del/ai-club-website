@@ -1707,9 +1707,9 @@
         // Add Child Form Functionality
         // Age-specific pricing configuration
         const AGE_PRICING = {
-            young: { monthly: 599, quarterly: 519, yearly: 479 },
-            tech: { monthly: 649, quarterly: 569, yearly: 519 },
-            future: { monthly: 749, quarterly: 649, yearly: 599 }
+            young: { monthly: 599, quarterly: 519, yearly: 479, trial: 0 },
+            tech: { monthly: 649, quarterly: 569, yearly: 519, trial: 0 },
+            future: { monthly: 749, quarterly: 649, yearly: 599, trial: 0 }
         };
 
         let childCount = 0;
@@ -2793,7 +2793,10 @@
 
             // Display total based on duration
             let displayPrice, displayText;
-            if (familyData.bulkDuration === 'monthly') {
+            if (familyData.bulkDuration === 'trial') {
+                displayPrice = `₪0 (ניסיון חינם)`;
+                displayText = `${familyData.childCount} ${familyData.childCount === 1 ? 'ילד' : 'ילדים'} - שיעור ניסיון אחד לכל ילד`;
+            } else if (familyData.bulkDuration === 'monthly') {
                 displayPrice = `₪${Math.round(totalMonthlyPrice)}/חודש`;
                 displayText = `${familyData.childCount} ${familyData.childCount === 1 ? 'ילד' : 'ילדים'} × ₪${basePrice}/חודש`;
             } else if (familyData.bulkDuration === 'quarterly') {
@@ -3140,30 +3143,41 @@
             const content = document.getElementById('pricing-breakdown-content');
             if (!content || content.classList.contains('hidden')) return;
 
+            const isTrial = familyData.bulkDuration === 'trial';
             let breakdownHTML = '';
-            let total = 0;
+            let subtotal = 0;
 
             familyData.children.forEach((child, i) => {
                 const price = AGE_PRICING[child.ageGroup][familyData.bulkDuration];
-                total += price;
+                subtotal += price;
 
                 const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים' :
                                     child.ageGroup === 'tech' ? 'אלופי טכנולוגיה' :
                                     'מנהיגי העתיד';
 
-                breakdownHTML += `
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-white/80">${child.name} (${ageGroupName})</span>
-                        <span class="text-white font-medium">₪${price}/חודש</span>
-                    </div>
-                `;
+                if (isTrial) {
+                    breakdownHTML += `
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-white/80">${child.name} (${ageGroupName})</span>
+                            <span class="text-white font-medium">ניסיון חינם</span>
+                        </div>
+                    `;
+                } else {
+                    breakdownHTML += `
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-white/80">${child.name} (${ageGroupName})</span>
+                            <span class="text-white font-medium">₪${price}/חודש</span>
+                        </div>
+                    `;
+                }
             });
 
-            // Apply family discounts
-            if (familyData.childCount >= 2) {
+            // Apply family discounts (not applicable for trial)
+            let total = subtotal;
+            if (familyData.childCount >= 2 && !isTrial) {
                 const discountRate = familyData.childCount === 2 ? 0.10 : 0.15;
-                const discount = Math.round((AGE_PRICING[familyData.children[1].ageGroup][familyData.bulkDuration] * discountRate));
-                total -= discount;
+                const discount = Math.round(subtotal * discountRate);
+                total = subtotal - discount;
 
                 breakdownHTML += `
                     <div class="border-t border-amber-200/20 pt-2 mt-2">
@@ -3175,14 +3189,26 @@
                 `;
             }
 
-            breakdownHTML += `
-                <div class="border-t border-cyan-400/30 pt-3 mt-3">
-                    <div class="flex justify-between items-center">
-                        <span class="text-base font-bold text-white">סה״כ</span>
-                        <span class="text-xl font-bold text-cyan-300">₪${Math.round(total)}/חודש</span>
+            if (isTrial) {
+                breakdownHTML += `
+                    <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-base font-bold text-white">סה״כ</span>
+                            <span class="text-xl font-bold text-cyan-300">₪0 (ניסיון חינם)</span>
+                        </div>
+                        <div class="text-xs text-cyan-300 mt-2">שיעור ניסיון אחד לכל ילד</div>
                     </div>
-                </div>
-            `;
+                `;
+            } else {
+                breakdownHTML += `
+                    <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-base font-bold text-white">סה״כ</span>
+                            <span class="text-xl font-bold text-cyan-300">₪${Math.round(total)}/חודש</span>
+                        </div>
+                    </div>
+                `;
+            }
 
             content.innerHTML = breakdownHTML;
         }
@@ -3600,6 +3626,7 @@
                 })),
                 totalPrice: 0,  // Free trial
                 paymentPlan: 'trial',
+                paymentMethod: 'trial',
                 timestamp: new Date().toISOString(),
                 language: 'he'
             };
@@ -3747,8 +3774,11 @@
                             <!-- Registration summary -->
                             <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4 mb-6 mt-6">
                                 <p class="text-sm text-white/70 mb-2">נרשמתם:</p>
-                                <p class="text-lg font-semibold text-white">${childrenCount} ${childrenCount > 1 ? 'ילדים' : 'ילד'} • תוכנית ${formData.paymentPlan === 'monthly' ? 'חודשית' : formData.paymentPlan === 'quarterly' ? 'רבעונית' : 'שנתית'}</p>
-                                <p class="text-2xl font-bold text-cyan-300 mt-2">₪${Math.round(formData.totalPrice)}<span class="text-sm text-white/60">/חודש</span></p>
+                                <p class="text-lg font-semibold text-white">${childrenCount} ${childrenCount > 1 ? 'ילדים' : 'ילד'} • תוכנית ${formData.paymentPlan === 'trial' ? 'ניסיון חינם' : formData.paymentPlan === 'monthly' ? 'חודשית' : formData.paymentPlan === 'quarterly' ? 'רבעונית' : 'שנתית'}</p>
+                                ${formData.paymentPlan === 'trial' ?
+                                    '<p class="text-2xl font-bold text-cyan-300 mt-2">₪0<span class="text-sm text-white/60"> (ניסיון חינם)</span></p><p class="text-xs text-cyan-300 mt-1">שיעור ניסיון אחד לכל ילד</p>' :
+                                    '<p class="text-2xl font-bold text-cyan-300 mt-2">₪' + Math.round(formData.totalPrice) + '<span class="text-sm text-white/60">/חודש</span></p>'
+                                }
                             </div>
 
                             <!-- Next steps -->
