@@ -430,9 +430,9 @@
 </head>
 <body class="antialiased text-zinc-100">
     <div class="site-background" aria-hidden="true"></div>
-    
-    <!-- WebGL Fluid Splash Cursor Canvas -->
-    <canvas id="fluid-cursor" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
+
+    <!-- WebGL Fluid Splash Cursor (Vue Template Implementation) -->
+    <canvas id="fluid" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
 
     <!-- Triangle Cursor Pointer (sits above fluid) -->
     <div class="cursor-ring"></div>
@@ -1373,8 +1373,8 @@
         });
     </script>
 
-    <!-- WebGL Fluid Splash Cursor -->
-    <script src="./splash-cursor.js"></script>
+    <!-- WebGL Fluid Splash Cursor (Vue Template Implementation) -->
+    <script src="./pricing-fluid-cursor.js"></script>
 
 </body>
 </html>
