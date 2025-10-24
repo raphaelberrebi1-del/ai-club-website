@@ -641,14 +641,7 @@
             to { width: 100%; }
         }
 
-        /* AllPay iframe blending and styling */
-        #allpay-payment-iframe {
-            /* Ensure iframe blends with dark background */
-            mix-blend-mode: normal;
-            isolation: isolate;
-        }
-
-        /* Help iframe content blend smoothly */
+        /* Payment container styling */
         #payment-iframe-container {
             /* Enhance glassmorphism effect */
             position: relative;
@@ -2118,7 +2111,25 @@
                 </div>
 
                 <!-- Step 1: Child Details -->
-                <div id="step-1" class="step-content p-6 flex-1 flex flex-col">
+                
+                <!-- Program Start Date Notice -->
+                <div class="bg-amber-500/20 border-2 border-amber-400/50 rounded-xl p-5 mb-6">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-2">תאריך תחילת התוכנית</h3>
+                            <p class="text-white/90">
+                                שיעור ראשון: <strong>2 בנובמבר 2025</strong>
+                            </p>
+                            <p class="text-white/80 text-sm mt-1">
+                                המיקום המדויק יאושר בקרוב
+                            </p>
+                        </div>
+                    </div>
+                </div>
+<div id="step-1" class="step-content p-6 flex-1 flex flex-col">
                     <div class="mb-6">
                         <h2 class="text-xl font-bold text-white tracking-tight mb-2">Child Details</h2>
                         <p class="text-white/60 text-sm">Tell us about each child joining AI Club</p>
@@ -2270,7 +2281,26 @@
 
                     <div class="flex-1 space-y-6">
                         <!-- Registration Summary -->
-                        <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
+                        <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30
+                <!-- Required Items Notice -->
+                <div class="bg-cyan-500/10 border-2 border-cyan-400/40 rounded-xl p-5 mb-6">
+                    <h3 class="text-lg font-bold text-white mb-3">התלמידים חייבים להביא:</h3>
+                    <ul class="space-y-2 text-white/90">
+                        <li class="flex items-start gap-2">
+                            <span class="text-cyan-400 mt-1">-</span>
+                            <span>מחשב נייד או טאבלט (מחשב נייד מומלץ יותר)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-cyan-400 mt-1">-</span>
+                            <span>מכשיר טעון (סוללה של 2 שעות לפחות)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-cyan-400 mt-1">-</span>
+                            <span>בקבוק מים וחטיף (אופציונלי)</span>
+                        </li>
+                    </ul>
+                </div>
+ rounded-xl p-4">
                             <h3 class="text-lg font-semibold text-white mb-3">Registration Summary</h3>
                             <div id="step-3-summary" class="space-y-2 text-sm text-white/80">
                                 <!-- Summary will be populated here -->
@@ -2322,7 +2352,44 @@
                         <p class="text-white/60 text-sm">Choose your preferred payment method</p>
                     </div>
 
-                    <div class="flex-1 space-y-6">
+                    
+                        <!-- Payment Methods Notice - Replaces AllPay -->
+                        <div id="payment-methods-notice" class="bg-cyan-500/10 border-2 border-cyan-400/40 rounded-xl p-6">
+                            <div class="mb-4">
+                                <h3 class="text-xl font-bold text-white mb-3">מידע על תשלום</h3>
+                                <div class="bg-green-500/20 border border-green-400/40 rounded-lg p-4 mb-4">
+                                    <p class="text-white font-semibold text-lg">
+                                        השיעור הראשון חינם לכל התלמידים!
+                                    </p>
+                                </div>
+                                <p class="text-white/90 mb-4">
+                                    אנו מקבלים כרגע את אמצעי התשלום הבאים:
+                                </p>
+                                <ul class="space-y-2 text-white/90 mb-4">
+                            <li class="flex items-center gap-2">
+                                <span class="text-cyan-400">-</span> העברות Bit
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-cyan-400">-</span> PayBox
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-cyan-400">-</span> העברות בנקאיות
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-cyan-400">-</span> תשלום במזומן
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-cyan-400">-</span> המחאות
+                            </li>
+                                </ul>
+                                <div class="bg-amber-500/20 border border-amber-400/40 rounded-lg p-4">
+                                    <p class="text-white/95 font-semibold">
+                                        תשלומי כרטיס אשראי יהיו זמינים בקרוב!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+<div class="flex-1 space-y-6">
                         <!-- Order Summary -->
                         <div id="payment-summary" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
                             <h3 class="text-lg font-semibold text-white mb-3">Order Summary</h3>
@@ -2402,26 +2469,11 @@
                             <p class="text-white/60 text-sm mt-2">Please wait, do not close this window</p>
                         </div>
 
-                        <!-- AllPay Hosted Fields iframe (for online payments: credit card, bit, apple pay) -->
+                        
                         <div id="payment-iframe-container" class="hidden">
-                            <iframe
-                                id="allpay-payment-iframe"
-                                allow="payment *"
-                                src=""
-                                style="width: 100%; height: 500px; border: none; background: white; border-radius: 12px;">
-                            </iframe>
+                            
 
-                            <button
-                                onclick="submitAllPayPayment()"
-                                id="allpay-submit-button"
-                                class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-4 rounded-xl mt-6 hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
-                                <span class="flex items-center justify-center gap-2">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                    <span>Complete Payment</span>
-                                </span>
-                            </button>
+                            
 
                             <p class="text-xs text-white/60 text-center mt-3">
                                 🔒 Secure payment via AllPay
@@ -5609,87 +5661,18 @@
         </div>
     </div>
 
-    <!-- AllPay Hosted Fields SDK -->
-    <script src="https://allpay.to/js/allpay-hf.js"></script>
+    
+    
 
-    <!-- AllPay Integration Scripts -->
+    
     <script>
         // AllPay instance (will be initialized after payment creation)
-        let AllpayInstance = null;
-        let selectedPaymentMethod = null;
+                let selectedPaymentMethod = null;
 
         // Flag to prevent multiple simultaneous AllPay initializations
         let isInitializingPayment = false;
 
-        /**
-         * Select payment method and show appropriate UI
-         */
-        function selectPaymentMethod(method) {
-            selectedPaymentMethod = method;
-
-            // Hide all payment containers with null checks
-            const containersToHide = ['payment-loading', 'payment-iframe-container', 'payment-bank-transfer', 'payment-cash'];
-            containersToHide.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.classList.add('hidden');
-            });
-
-            // Reset all payment method buttons
-            document.querySelectorAll('.payment-method-btn').forEach(btn => {
-                btn.classList.remove('border-cyan-400', 'bg-cyan-500/20');
-                btn.classList.add('border-white/20', 'bg-black/40');
-            });
-
-            // Highlight selected payment method
-            const selectedBtn = document.getElementById(`payment-btn-${method}`);
-            if (selectedBtn) {
-                selectedBtn.classList.remove('border-white/20', 'bg-black/40');
-                selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/20');
-            }
-
-            // Show appropriate payment UI based on method
-            if (method === 'credit-card' || method === 'bit' || method === 'apple-pay') {
-                // Online payment methods - initialize AllPay
-                initializeAllPayPayment(method);
-            } else if (method === 'bank-transfer') {
-                // Show bank transfer instructions
-                const referenceEl = document.getElementById('bank-transfer-reference');
-                if (referenceEl) {
-                    // Generate unique reference number
-                    const timestamp = Date.now();
-                    const random = Math.random().toString(36).substring(2, 8).toUpperCase();
-                    referenceEl.textContent = `AIKIDZ-${timestamp}-${random}`;
-                }
-                const bankTransferEl = document.getElementById('payment-bank-transfer');
-                if (bankTransferEl) bankTransferEl.classList.remove('hidden');
-            } else if (method === 'cash') {
-                // Show cash payment instructions
-                const cashEl = document.getElementById('payment-cash');
-                if (cashEl) cashEl.classList.remove('hidden');
-            }
-        }
-
-        /**
-         * Confirm bank transfer (reserve spot)
-         */
-        function confirmBankTransfer() {
-            alert('Thank you! Your spot has been reserved. We will confirm your enrollment once we receive your bank transfer.');
-            // TODO: Send confirmation email and add to pending registrations
-            showPaymentSuccessModal('PENDING-BANK-TRANSFER', collectMobileFormData());
-        }
-
-        /**
-         * Confirm cash payment (reserve spot)
-         */
-        function confirmCashPayment() {
-            alert('Thank you! Your spot has been reserved. Please visit our office to complete payment.');
-            // TODO: Send confirmation email and add to pending registrations
-            showPaymentSuccessModal('PENDING-CASH-PAYMENT', collectMobileFormData());
-        }
-
-        /**
-         * Initialize AllPay payment when user reaches Step 4
-         */
+        
         async function initializeAllPayPayment(paymentMethod = 'credit-card') {
             // Prevent multiple simultaneous initializations
             if (isInitializingPayment) {
@@ -5749,128 +5732,6 @@
             }
         }
 
-        /**
-         * Create AllPay payment (separated for better error handling)
-         */
-        async function createAllPayPayment(formData, totalAmount, paymentMethod) {
-            try {
-                // Call backend to create payment
-                const response = await fetch('/api/create-payment', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        parentName: formData.parentName,
-                        parentEmail: formData.parentEmail,
-                        parentPhone: formData.parentPhone,
-                        children: formData.children,
-                        duration: formData.duration,
-                        amount: totalAmount,
-                        language: 'en'
-                    })
-                });
-
-                const data = await response.json();
-                console.log('📨 Response from backend:', data);
-
-                if (data.success && data.paymentUrl) {
-                    console.log('✅ Payment created successfully');
-                    console.log('🔗 Payment URL:', data.paymentUrl);
-
-                    // Load payment URL into iframe
-                    const iframe = document.getElementById('allpay-payment-iframe');
-                    if (!iframe) {
-                        throw new Error('Payment iframe not found');
-                    }
-                    iframe.src = data.paymentUrl;
-
-                    // Initialize AllPay Hosted Fields
-                    AllpayInstance = new AllpayPayment({
-                        iframeId: 'allpay-payment-iframe',
-                        onSuccess: function() {
-                            handleAllPaySuccess(data.orderId, formData);
-                        },
-                        onError: function(error_n, error_msg) {
-                            handleAllPayError(error_n, error_msg);
-                        }
-                    });
-
-                    // Hide loading, show iframe and payment button with null checks
-                    const loadingEl = document.getElementById('payment-loading');
-                    const iframeContainerEl = document.getElementById('payment-iframe-container');
-                    const methodsInfoEl = document.getElementById('payment-methods-info');
-
-                    if (loadingEl) loadingEl.classList.add('hidden');
-                    if (iframeContainerEl) iframeContainerEl.classList.remove('hidden');
-                    if (methodsInfoEl) methodsInfoEl.classList.remove('hidden');
-
-                    return true;
-
-                } else {
-                    throw new Error(data.error || 'Failed to create payment');
-                }
-
-            } catch (error) {
-                console.error('❌ Payment creation error:', error);
-                alert('Payment creation error: ' + error.message + '\nPlease try again.');
-
-                // Hide loading with null check
-                const loadingEl = document.getElementById('payment-loading');
-                if (loadingEl) loadingEl.classList.add('hidden');
-
-                return false;
-            }
-        }
-
-        /**
-         * Submit payment when user clicks "Complete Payment" button
-         */
-        function submitAllPayPayment() {
-            if (!AllpayInstance) {
-                alert('Payment system not initialized. Please try again.');
-                return;
-            }
-
-            console.log('💳 Submitting payment...');
-
-            // Disable button and show processing state
-            const button = document.getElementById('allpay-submit-button');
-            button.disabled = true;
-            button.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="animate-spin w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>Processing payment...</span></span>';
-
-            // Trigger AllPay payment
-            AllpayInstance.pay();
-        }
-
-        /**
-         * Handle successful payment
-         */
-        function handleAllPaySuccess(orderId, formData) {
-            console.log('✅ Payment successful!');
-            console.log('Order ID:', orderId);
-
-            // Hide Step 4
-            document.getElementById('step-4').classList.add('hidden');
-
-            // Show success message
-            showPaymentSuccessModal(orderId, formData);
-        }
-
-        /**
-         * Handle payment error
-         */
-        function handleAllPayError(error_n, error_msg) {
-            console.error('❌ Payment failed:', error_n, error_msg);
-
-            // Re-enable button
-            const button = document.getElementById('allpay-submit-button');
-            button.disabled = false;
-            button.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Complete Payment</span></span>';
-
-            // Show error message
-            alert('Payment failed: ' + error_msg + '\n\nError code: ' + error_n + '\n\nPlease check the details and try again.');
-        }
 
         /**
          * Update Step 4 summary with order details

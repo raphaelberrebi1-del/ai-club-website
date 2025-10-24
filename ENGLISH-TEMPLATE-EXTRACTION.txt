@@ -1,0 +1,349 @@
+================================================================================
+ENGLISH TEMPLATE EXTRACTION - YOUNG EXPLORERS PROGRAM
+Complete HTML Template Structure Documentation
+File: google-apps-script-curriculum-RESPONSIVE.js
+Function: getYoungExplorersHTML() (Lines 329-1070)
+================================================================================
+
+This document extracts all English text content from the Young Explorers HTML
+template to facilitate translation to Hebrew. Sections marked with [MISSING IN
+HEBREW] need to be translated and added to the Hebrew version.
+
+================================================================================
+SECTION 1: HEADER
+================================================================================
+Status: EXISTS IN HEBREW
+
+AI Kidz Club
+Young Explorers Program
+Complete 48-Week Curriculum Guide • Ages 8-10
+
+================================================================================
+SECTION 2: HERO SECTION
+================================================================================
+Status: EXISTS IN HEBREW
+
+Welcome to the Young Explorers Journey
+
+Your child is about to embark on a year-long adventure with AI. This
+comprehensive program builds essential productivity skills through creative,
+hands-on activities designed specifically for young learners.
+
+================================================================================
+SECTION 3: PROGRAM PHILOSOPHY
+================================================================================
+Status: EXISTS IN HEBREW
+
+Program Philosophy
+
+Learning through play | Every concept taught through games and visual activities
+Immediate results | See exciting outcomes in every session
+Foundation building | Skills that grow with your child
+Confidence first | Building comfort with technology at their own pace
+
+================================================================================
+SECTION 4: WHAT MAKES US SPECIAL [MISSING IN HEBREW]
+================================================================================
+Status: [MISSING IN HEBREW] *** TRANSLATION NEEDED ***
+
+What Makes Our Program Special
+
+✓ Standalone sessions - never fall behind
+✓ Quarterly showcase projects
+✓ Real-world applications
+✓ Age-appropriate AI tools
+✓ Small class sizes (max 12 students)
+
+================================================================================
+SECTION 5: YEAR AT A GLANCE TABLE [MISSING IN HEBREW]
+================================================================================
+Status: [MISSING IN HEBREW] *** TRANSLATION NEEDED ***
+
+Year-at-a-Glance
+
+Table Headers:
+- Quarter
+- Theme
+- Weeks
+
+Table Rows:
+Q1 | Organization & Time Management | 1-12
+Q2 | Communication & Creativity | 13-24
+Q3 | Learning & Study Skills | 25-36
+Q4 | Personal Growth & Life Skills | 37-48
+
+================================================================================
+SECTION 6: QUARTER 1 - DETAILED BREAKDOWN [MISSING IN HEBREW]
+================================================================================
+Status: [MISSING IN HEBREW] *** TRANSLATION NEEDED ***
+
+----- QUARTER 1 HEADER -----
+Quarter 1: Organization & Time Management
+Weeks 1-12 • Building Foundation Skills
+
+----- LEARNING OBJECTIVES -----
+Learning Objectives
+• Understand what AI assistants can do
+• Break big tasks into manageable steps
+• Create and follow schedules
+• Organize schoolwork and personal spaces
+• Set and track achievable goals
+
+----- WEEK-BY-WEEK HIGHLIGHTS -----
+Week-by-Week Highlights
+
+Week 1: My Digital Helper
+Introduction to AI Assistants - Learn what AI can do in daily life
+Activity: Create your first AI conversation about favorite topics
+
+Week 2: Task Master
+Breaking big jobs into small steps with AI assistance
+Activity: Plan a weekend project step-by-step
+
+Week 3: Calendar Kids
+Understanding time and schedules with digital calendars
+Activity: Create a colorful weekly schedule
+
+Week 5: Morning Routine Builder
+Design the perfect morning with AI assistance
+Activity: Build a visual morning checklist
+
+Week 7: Reading Buddy
+Keep track of books you want to read
+Activity: Create a personal reading list with AI summaries
+
+Week 9: Study Space Designer
+Plan the perfect homework area
+Activity: Create a study space blueprint with AI
+
+...and 6 more exciting sessions building to the capstone project!
+
+----- WEEK 12 CAPSTONE -----
+★ Week 12 Capstone: Personal Assistant App Design
+
+Design your dream AI helper combining all organizational skills learned! Create
+visual mockups, features list, and present to class.
+
+Deliverables: App design sketches, feature list, class presentation
+
+================================================================================
+SECTION 7: QUARTER 2 - DETAILED BREAKDOWN [MISSING IN HEBREW]
+================================================================================
+Status: [MISSING IN HEBREW] *** TRANSLATION NEEDED ***
+
+----- QUARTER 2 HEADER -----
+Quarter 2: Communication & Creativity
+Weeks 13-24 • Expressing Ideas Effectively
+
+----- LEARNING OBJECTIVES -----
+Learning Objectives
+• Write clear, effective messages
+• Create visual content and designs
+• Organize events and activities
+• Express creativity through AI tools
+• Practice kindness and gratitude
+
+----- SUMMARY (No detailed week-by-week) -----
+Students explore email basics, thank you notes, party planning, story writing,
+presentations, voice recording, digital art, and more!
+
+----- WEEK 24 CAPSTONE -----
+★ Week 24 Capstone: Class Newsletter
+
+Create a digital newsletter with news, stories, artwork, calendar, and peer
+interviews. Share with classmates and families!
+
+================================================================================
+SECTION 8: QUARTER 3 - DETAILED BREAKDOWN [MISSING IN HEBREW]
+================================================================================
+Status: [MISSING IN HEBREW] *** TRANSLATION NEEDED ***
+
+----- QUARTER 3 HEADER -----
+Quarter 3: Learning & Study Skills
+Weeks 25-36 • Academic Success Tools
+
+----- LEARNING OBJECTIVES -----
+Learning Objectives
+• Develop effective study strategies
+• Create tools for different subjects
+• Improve memory and recall
+• Build confidence in learning
+• Organize research and information
+
+----- SUMMARY (No detailed week-by-week) -----
+Master math problem-solving, vocabulary building, science experiments,
+flashcards, test prep, note-taking, and become a confident learner!
+
+----- WEEK 36 CAPSTONE -----
+★ Week 36 Capstone: Learning Toolkit
+
+Combine all study tools into one comprehensive system! Create flashcards, study
+guides, and demonstrate your complete learning toolkit.
+
+================================================================================
+SECTION 9: QUARTER 4 - DETAILED BREAKDOWN [MISSING IN HEBREW]
+================================================================================
+Status: [MISSING IN HEBREW] *** TRANSLATION NEEDED ***
+
+----- QUARTER 4 HEADER -----
+Quarter 4: Personal Growth & Life Skills
+Weeks 37-48 • Building Character & Independence
+
+----- LEARNING OBJECTIVES -----
+Learning Objectives
+• Develop personal responsibility
+• Build healthy habits and routines
+• Practice gratitude and self-reflection
+• Manage personal resources
+• Plan for future goals
+
+----- SUMMARY (No detailed week-by-week) -----
+Learn money management, chore organization, emotional awareness, habit building,
+gratitude practice, and goal planning!
+
+----- WEEK 48 CAPSTONE -----
+★ Week 48 Capstone: Year in Review Portfolio
+
+Create a comprehensive showcase of the entire year! Include best projects,
+growth timeline, achievements, and present your learning journey to families.
+
+================================================================================
+SECTION 10: SESSION STRUCTURE [MISSING IN HEBREW]
+================================================================================
+Status: [MISSING IN HEBREW] *** TRANSLATION NEEDED ***
+
+Every 90-Minute Session Includes
+
+1. Welcome & Quick Wins (5-10 min)
+Share successes from previous week, build confidence and excitement
+
+2. Main Concept Teaching (15-20 min)
+Interactive demonstrations, visual learning, age-appropriate explanations
+
+3. Hands-On Practice (20-25 min)
+Individual work time, immediate skill application, instructor support
+
+4. Creation & Building (20-25 min)
+Making something tangible, seeing immediate results, personal creativity
+
+5. Reflection & Next Steps (5-10 min)
+What did we learn? What's exciting about next week?
+
+================================================================================
+SECTION 11: WHAT YOUR CHILD WILL ACHIEVE
+================================================================================
+Status: EXISTS IN HEBREW
+
+What Your Child Will Achieve
+
+✓ Organization Skills - Independent homework and task management
+✓ Creative Confidence - Comfortable creating digital content
+✓ Study Skills - Effective learning strategies for all subjects
+✓ Self-Awareness - Understanding emotions and building habits
+✓ Technology Literacy - Confident using AI tools appropriately
+✓ Communication - Clear expression of ideas in writing and presentations
+✓ Goal Setting - Ability to set and achieve personal goals
+✓ Portfolio - Collection of impressive projects to showcase
+
+================================================================================
+SECTION 12: CTA SECTION
+================================================================================
+Status: EXISTS IN HEBREW
+
+Ready to Enroll Your Child?
+
+Limited spots available for the upcoming session. Secure your child's place
+today!
+
+[Button: View Pricing & Register]
+
+Sundays 16:00-17:30 • Max 12 students • All materials included
+
+================================================================================
+SECTION 13: QUESTIONS SECTION [MISSING IN HEBREW]
+================================================================================
+Status: [MISSING IN HEBREW] *** TRANSLATION NEEDED ***
+
+? Have Questions?
+
+We'd love to chat! Contact us anytime:
+
+WhatsApp: +972-54-315-9025
+raphael@aikidz.club
+
+================================================================================
+SECTION 14: FOOTER
+================================================================================
+Status: EXISTS IN HEBREW
+
+AI Kidz Club • www.aikidz.club • raphael@aikidz.club • +972-54-315-9025
+
+================================================================================
+SUMMARY OF SECTIONS MISSING IN HEBREW
+================================================================================
+
+The following sections need to be translated and added to the Hebrew version:
+
+1. SECTION 4: What Makes Our Program Special (5 bullet points)
+2. SECTION 5: Year-at-a-Glance Table (complete table with 4 quarters)
+3. SECTION 6: Quarter 1 Complete Details
+   - Header
+   - Learning Objectives (5 points)
+   - Week-by-Week Highlights (6 weeks shown + note about 6 more)
+   - Week 12 Capstone Project
+4. SECTION 7: Quarter 2 Complete Details
+   - Header
+   - Learning Objectives (5 points)
+   - Summary paragraph
+   - Week 24 Capstone Project
+5. SECTION 8: Quarter 3 Complete Details
+   - Header
+   - Learning Objectives (5 points)
+   - Summary paragraph
+   - Week 36 Capstone Project
+6. SECTION 9: Quarter 4 Complete Details
+   - Header
+   - Learning Objectives (5 points)
+   - Summary paragraph
+   - Week 48 Capstone Project
+7. SECTION 10: Session Structure (5 components with timing and descriptions)
+8. SECTION 13: Questions Section (contact information heading)
+
+================================================================================
+NOTES FOR HEBREW TRANSLATION
+================================================================================
+
+1. Quarter names should be translated while maintaining the professional tone
+2. Week numbers (1-48) remain the same in Hebrew
+3. Activity names can be creatively translated to appeal to Hebrew-speaking
+   children
+4. Maintain the playful, encouraging tone throughout
+5. Capstone projects should sound exciting and achievable
+6. Time notations (e.g., "5-10 min") can use Hebrew abbreviations
+7. The structure should mirror the English version exactly for consistency
+
+================================================================================
+RECOMMENDED TRANSLATION ORDER
+================================================================================
+
+Priority 1 (Most Important - User-Facing Content):
+1. Year-at-a-Glance Table (SECTION 5)
+2. What Makes Our Program Special (SECTION 4)
+3. Questions Section (SECTION 13)
+
+Priority 2 (Quarter Details - High Value):
+4. Quarter 1 Complete Details (SECTION 6)
+5. Quarter 2 Complete Details (SECTION 7)
+6. Quarter 3 Complete Details (SECTION 8)
+7. Quarter 4 Complete Details (SECTION 9)
+
+Priority 3 (Structural Information):
+8. Session Structure (SECTION 10)
+
+================================================================================
+END OF DOCUMENT
+================================================================================
+Generated: 2025-10-18
+Source: /Users/raphaelberrebi/AI for Kids/google-apps-script-curriculum-RESPONSIVE.js
+Function: getYoungExplorersHTML() (Lines 329-1070, approximately 741 lines)
+================================================================================

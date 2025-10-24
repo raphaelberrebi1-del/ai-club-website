@@ -1,0 +1,176 @@
+/* ========================================
+   AllPay Hosted Fields Custom Styling
+   Matches AI Club Registration Form Design
+
+   HOW TO USE:
+   1. Copy this ENTIRE file contents
+   2. Login to AllPay Dashboard: https://allpay.to/login
+   3. Go to: Settings → Hosted Fields → Hosted Fields Settings
+   4. Paste into "Custom CSS" field
+   5. Click Save
+   6. Wait 1-2 minutes and test
+   ======================================== */
+
+/* Remove ALL default backgrounds globally */
+* {
+    background-color: transparent !important;
+}
+
+/* Body and main containers - transparent */
+body {
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Specifically target common container classes */
+.wrapper, .form-group, .field-group, .input-group,
+.field-wrapper, .input-wrapper, .row, .col,
+.container, .payment-form, .checkout-form,
+div[class*="container"] {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Input fields - EXACTLY matching your registration form */
+input, .card-field, input[type="text"], input[type="tel"],
+select, textarea, .input-field, .form-input {
+    /* Light amber semi-transparent background - same as registration */
+    background: rgba(69, 26, 3, 0.4) !important;  /* bg-amber-950/40 */
+
+    /* Light amber border */
+    border: 1px solid rgba(254, 243, 199, 0.3) !important;  /* border-amber-200/30 */
+
+    /* Large rounded corners */
+    border-radius: 12px !important;  /* rounded-xl */
+
+    /* White text */
+    color: rgba(255, 255, 255, 1) !important;  /* text-white */
+
+    /* Generous padding */
+    padding: 20px 24px !important;  /* px-6 py-5 */
+
+    /* Large text */
+    font-size: 18px !important;  /* text-lg */
+
+    /* Subtle shadow */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+
+    transition: all 0.2s ease !important;
+    width: 100% !important;
+
+    /* Backdrop blur for glassmorphism */
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* Placeholder text - light amber */
+input::placeholder, textarea::placeholder, select::placeholder,
+::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+    color: rgba(252, 211, 77, 1) !important;  /* placeholder-amber-300 */
+    opacity: 1 !important;
+}
+
+/* Focus state - cyan ring matching registration form */
+input:focus, .card-field:focus, select:focus, textarea:focus {
+    outline: none !important;
+    border-color: transparent !important;
+    /* Cyan focus ring - same as registration */
+    box-shadow: 0 0 0 2px rgba(6, 182, 212, 1) !important;  /* focus:ring-2 focus:ring-cyan-400 */
+}
+
+/* Labels - white text */
+label, .label, .field-label {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    margin-bottom: 8px !important;
+    background: transparent !important;
+}
+
+/* Error messages - subtle red */
+.error-message, .validation-error, .field-error, .error {
+    color: rgba(254, 202, 202, 1) !important;
+    background: rgba(153, 27, 27, 0.15) !important;
+    border: 1px solid rgba(252, 165, 165, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    margin-top: 6px !important;
+}
+
+/* Success messages */
+.success-message, .success {
+    color: rgba(187, 247, 208, 1) !important;
+    background: rgba(20, 83, 45, 0.15) !important;
+    border: 1px solid rgba(134, 239, 172, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+}
+
+/* Powered by Allpay - subtle */
+.powered-by, .footer-text, .branding, .footer, small {
+    color: rgba(254, 243, 199, 0.5) !important;
+    font-size: 11px !important;
+    background: transparent !important;
+}
+
+/* Select dropdown options */
+select option {
+    background: rgba(69, 26, 3, 0.95) !important;
+    color: white !important;
+}
+
+/* Helper text */
+.help-text, .hint-text {
+    color: rgba(254, 243, 199, 0.7) !important;
+    font-size: 13px !important;
+    background: transparent !important;
+}
+
+/* Card icons */
+.card-icon, .payment-icon, img, svg {
+    opacity: 0.8 !important;
+}
+
+/* Ensure spacing between fields */
+.field-group, .form-group {
+    margin-bottom: 16px !important;
+}
+
+/* Target month/year separator */
+.separator, .divider, span {
+    color: rgba(254, 243, 199, 0.8) !important;
+    background: transparent !important;
+}
+
+/* Remove box-shadow from nested containers */
+.payment-form, .checkout-form {
+    box-shadow: none !important;
+}
+
+/* Buttons styling (if AllPay includes buttons) */
+button, .button, input[type="submit"] {
+    background: linear-gradient(to right, rgb(6, 182, 212), rgb(20, 184, 166)) !important;
+    color: white !important;
+    font-weight: bold !important;
+    padding: 12px 24px !important;
+    border-radius: 12px !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+button:hover, .button:hover, input[type="submit"]:hover {
+    opacity: 0.9 !important;
+    transform: scale(1.02) !important;
+}
+
+/* Disabled state */
+button:disabled, input:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}

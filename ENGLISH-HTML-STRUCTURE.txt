@@ -1,0 +1,510 @@
+========================================
+ENGLISH HTML TEMPLATE STRUCTURE EXTRACTION
+From: google-apps-script-curriculum-RESPONSIVE.js
+Function: getYoungExplorersHTML()
+========================================
+
+========== SECTION 1: WHAT MAKES OUR PROGRAM SPECIAL ==========
+Location: Lines 498-532
+
+<tr>
+    <td style="padding: 0 30px 30px 30px;">
+        <h3 class="mobile-heading-medium" style="margin: 0 0 16px 0; font-size: 20px; font-weight: 600; color: #0f172a;">
+            What Makes Our Program Special
+        </h3>
+        <table role="presentation" cellpadding="6" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td style="padding: 6px 0; font-size: 15px; color: #475569;">
+                    ✓ Standalone sessions - never fall behind
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 6px 0; font-size: 15px; color: #475569;">
+                    ✓ Quarterly showcase projects
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 6px 0; font-size: 15px; color: #475569;">
+                    ✓ Real-world applications
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 6px 0; font-size: 15px; color: #475569;">
+                    ✓ Age-appropriate AI tools
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 6px 0; font-size: 15px; color: #475569;">
+                    ✓ Small class sizes (max 12 students)
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+
+========== SECTION 2: YEAR-AT-A-GLANCE TABLE ==========
+Location: Lines 534-568
+
+<tr>
+    <td style="padding: 0 30px 30px 30px;">
+        <h3 class="mobile-heading-medium" style="margin: 0 0 20px 0; font-size: 24px; font-weight: bold; color: #0f172a; text-align: center;">
+            <span style="display: inline-block; width: 32px; height: 32px; background: linear-gradient(135deg, #06b6d4, #14b8a6); border-radius: 50%; text-align: center; line-height: 32px; color: white; font-weight: bold; margin-right: 8px; vertical-align: middle;">◆</span>Year-at-a-Glance
+        </h3>
+        <table role="presentation" cellpadding="12" cellspacing="0" border="0" width="100%" style="border: 2px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
+            <tr style="background: linear-gradient(135deg, #06b6d4 0%, #14b8a6 100%);">
+                <th style="padding: 12px; font-size: 14px; font-weight: 600; color: white; text-align: left; border-bottom: 2px solid white;">Quarter</th>
+                <th style="padding: 12px; font-size: 14px; font-weight: 600; color: white; text-align: left; border-bottom: 2px solid white;">Theme</th>
+                <th style="padding: 12px; font-size: 14px; font-weight: 600; color: white; text-align: left; border-bottom: 2px solid white;">Weeks</th>
+            </tr>
+            <tr style="background-color: #f0fdfa;">
+                <td style="padding: 12px; font-size: 14px; font-weight: 600; color: #0891b2; border-bottom: 1px solid #e2e8f0;">Q1</td>
+                <td style="padding: 12px; font-size: 14px; color: #0f172a; border-bottom: 1px solid #e2e8f0;">Organization & Time Management</td>
+                <td style="padding: 12px; font-size: 14px; color: #64748b; border-bottom: 1px solid #e2e8f0;">1-12</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="padding: 12px; font-size: 14px; font-weight: 600; color: #0891b2; border-bottom: 1px solid #e2e8f0;">Q2</td>
+                <td style="padding: 12px; font-size: 14px; color: #0f172a; border-bottom: 1px solid #e2e8f0;">Communication & Creativity</td>
+                <td style="padding: 12px; font-size: 14px; color: #64748b; border-bottom: 1px solid #e2e8f0;">13-24</td>
+            </tr>
+            <tr style="background-color: #f0fdfa;">
+                <td style="padding: 12px; font-size: 14px; font-weight: 600; color: #0891b2; border-bottom: 1px solid #e2e8f0;">Q3</td>
+                <td style="padding: 12px; font-size: 14px; color: #0f172a; border-bottom: 1px solid #e2e8f0;">Learning & Study Skills</td>
+                <td style="padding: 12px; font-size: 14px; color: #64748b; border-bottom: 1px solid #e2e8f0;">25-36</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td style="padding: 12px; font-size: 14px; font-weight: 600; color: #0891b2;">Q4</td>
+                <td style="padding: 12px; font-size: 14px; color: #0f172a;">Personal Growth & Life Skills</td>
+                <td style="padding: 12px; font-size: 14px; color: #64748b;">37-48</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+
+========== SECTION 3: QUARTER 1 DETAILED SECTION ==========
+Location: Lines 577-670
+
+<!-- Quarter 1 Header -->
+<tr>
+    <td class="mobile-padding" style="padding: 30px 30px 20px 30px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background: linear-gradient(135deg, #06b6d4 0%, #14b8a6 100%); border-radius: 12px; padding: 24px;">
+            <tr>
+                <td>
+                    <h2 class="mobile-heading-large" style="margin: 0 0 8px 0; font-size: 26px; font-weight: bold; color: white;">
+                        Quarter 1: Organization & Time Management
+                    </h2>
+                    <p style="margin: 0; font-size: 16px; color: rgba(255,255,255,0.95);">
+                        Weeks 1-12 • Building Foundation Skills
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+<!-- Learning Objectives -->
+<tr>
+    <td style="padding: 0 30px 20px 30px;">
+        <div style="background-color: #f0fdfa; border-left: 4px solid #06b6d4; padding: 16px 20px; border-radius: 8px;">
+            <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight: 600; color: #0f172a;">Learning Objectives</h4>
+            <ul style="margin: 0; padding: 0 0 0 20px; color: #475569; font-size: 14px; line-height: 1.8;">
+                <li>Understand what AI assistants can do</li>
+                <li>Break big tasks into manageable steps</li>
+                <li>Create and follow schedules</li>
+                <li>Organize schoolwork and personal spaces</li>
+                <li>Set and track achievable goals</li>
+            </ul>
+        </div>
+    </td>
+</tr>
+
+<!-- Week-by-Week Highlights -->
+<tr>
+    <td style="padding: 0 30px 20px 30px;">
+        <h4 class="mobile-heading-small" style="margin: 0 0 16px 0; font-size: 18px; font-weight: 600; color: #0f172a;">Week-by-Week Highlights</h4>
+
+        <div style="background-color: white; border: 2px solid #e0f2fe; border-radius: 8px; padding: 16px; margin-bottom: 12px;">
+            <h5 style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600; color: #06b6d4;">Week 1: My Digital Helper</h5>
+            <p style="margin: 0 0 8px 0; font-size: 14px; color: #475569; line-height: 1.6;">Introduction to AI Assistants - Learn what AI can do in daily life</p>
+            <p style="margin: 0; font-size: 13px; color: #64748b;"><strong>Activity:</strong> Create your first AI conversation about favorite topics</p>
+        </div>
+
+        <div style="background-color: white; border: 2px solid #e0f2fe; border-radius: 8px; padding: 16px; margin-bottom: 12px;">
+            <h5 style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600; color: #06b6d4;">Week 2: Task Master</h5>
+            <p style="margin: 0 0 8px 0; font-size: 14px; color: #475569; line-height: 1.6;">Breaking big jobs into small steps with AI assistance</p>
+            <p style="margin: 0; font-size: 13px; color: #64748b;"><strong>Activity:</strong> Plan a weekend project step-by-step</p>
+        </div>
+
+        <div style="background-color: white; border: 2px solid #e0f2fe; border-radius: 8px; padding: 16px; margin-bottom: 12px;">
+            <h5 style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600; color: #06b6d4;">Week 3: Calendar Kids</h5>
+            <p style="margin: 0 0 8px 0; font-size: 14px; color: #475569; line-height: 1.6;">Understanding time and schedules with digital calendars</p>
+            <p style="margin: 0; font-size: 13px; color: #64748b;"><strong>Activity:</strong> Create a colorful weekly schedule</p>
+        </div>
+
+        <div style="background-color: white; border: 2px solid #e0f2fe; border-radius: 8px; padding: 16px; margin-bottom: 12px;">
+            <h5 style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600; color: #06b6d4;">Week 5: Morning Routine Builder</h5>
+            <p style="margin: 0 0 8px 0; font-size: 14px; color: #475569; line-height: 1.6;">Design the perfect morning with AI assistance</p>
+            <p style="margin: 0; font-size: 13px; color: #64748b;"><strong>Activity:</strong> Build a visual morning checklist</p>
+        </div>
+
+        <div style="background-color: white; border: 2px solid #e0f2fe; border-radius: 8px; padding: 16px; margin-bottom: 12px;">
+            <h5 style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600; color: #06b6d4;">Week 7: Reading Buddy</h5>
+            <p style="margin: 0 0 8px 0; font-size: 14px; color: #475569; line-height: 1.6;">Keep track of books you want to read</p>
+            <p style="margin: 0; font-size: 13px; color: #64748b;"><strong>Activity:</strong> Create a personal reading list with AI summaries</p>
+        </div>
+
+        <div style="background-color: white; border: 2px solid #e0f2fe; border-radius: 8px; padding: 16px; margin-bottom: 12px;">
+            <h5 style="margin: 0 0 8px 0; font-size: 15px; font-weight: 600; color: #06b6d4;">Week 9: Study Space Designer</h5>
+            <p style="margin: 0 0 8px 0; font-size: 14px; color: #475569; line-height: 1.6;">Plan the perfect homework area</p>
+            <p style="margin: 0; font-size: 13px; color: #64748b;"><strong>Activity:</strong> Create a study space blueprint with AI</p>
+        </div>
+
+        <p style="margin: 16px 0 0 0; font-size: 14px; color: #64748b; text-align: center; font-style: italic;">
+            ...and 6 more exciting sessions building to the capstone project!
+        </p>
+    </td>
+</tr>
+
+<!-- Week 12 Capstone Project -->
+<tr>
+    <td style="padding: 0 30px 30px 30px;">
+        <div style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); border-radius: 12px; padding: 24px;">
+            <h4 class="mobile-heading-small" style="margin: 0 0 12px 0; font-size: 18px; font-weight: bold; color: white;">
+                <span style="display: inline-block; width: 28px; height: 28px; background: rgba(255,255,255,0.3); border-radius: 50%; text-align: center; line-height: 28px; color: white; font-weight: bold; margin-right: 8px; vertical-align: middle;">★</span>Week 12 Capstone: Personal Assistant App Design
+            </h4>
+            <p style="margin: 0 0 12px 0; font-size: 14px; color: rgba(255,255,255,0.95); line-height: 1.6;">
+                Design your dream AI helper combining all organizational skills learned! Create visual mockups, features list, and present to class.
+            </p>
+            <p style="margin: 0; font-size: 13px; color: rgba(255,255,255,0.9);">
+                <strong>Deliverables:</strong> App design sketches, feature list, class presentation
+            </p>
+        </div>
+    </td>
+</tr>
+
+
+========== SECTION 4: QUARTER 2 SECTION ==========
+Location: Lines 682-734
+
+<!-- Quarter 2 Header -->
+<tr>
+    <td class="mobile-padding" style="padding: 30px 30px 20px 30px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background: linear-gradient(135deg, #14b8a6 0%, #0891b2 100%); border-radius: 12px; padding: 24px;">
+            <tr>
+                <td>
+                    <h2 class="mobile-heading-large" style="margin: 0 0 8px 0; font-size: 26px; font-weight: bold; color: white;">
+                        Quarter 2: Communication & Creativity
+                    </h2>
+                    <p style="margin: 0; font-size: 16px; color: rgba(255,255,255,0.95);">
+                        Weeks 13-24 • Expressing Ideas Effectively
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+<!-- Learning Objectives -->
+<tr>
+    <td style="padding: 0 30px 20px 30px;">
+        <div style="background-color: #f0fdfa; border-left: 4px solid #14b8a6; padding: 16px 20px; border-radius: 8px;">
+            <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight: 600; color: #0f172a;">Learning Objectives</h4>
+            <ul style="margin: 0; padding: 0 0 0 20px; color: #475569; font-size: 14px; line-height: 1.8;">
+                <li>Write clear, effective messages</li>
+                <li>Create visual content and designs</li>
+                <li>Organize events and activities</li>
+                <li>Express creativity through AI tools</li>
+                <li>Practice kindness and gratitude</li>
+            </ul>
+        </div>
+    </td>
+</tr>
+
+<!-- Summary Paragraph -->
+<tr>
+    <td style="padding: 0 30px 20px 30px;">
+        <p style="margin: 0 0 12px 0; font-size: 14px; color: #475569; line-height: 1.6;">
+            Students explore <strong>email basics</strong>, <strong>thank you notes</strong>, <strong>party planning</strong>, <strong>story writing</strong>, <strong>presentations</strong>, <strong>voice recording</strong>, <strong>digital art</strong>, and more!
+        </p>
+    </td>
+</tr>
+
+<!-- Week 24 Capstone -->
+<tr>
+    <td style="padding: 0 30px 30px 30px;">
+        <div style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); border-radius: 12px; padding: 24px;">
+            <h4 class="mobile-heading-small" style="margin: 0 0 12px 0; font-size: 18px; font-weight: bold; color: white;">
+                <span style="display: inline-block; width: 28px; height: 28px; background: rgba(255,255,255,0.3); border-radius: 50%; text-align: center; line-height: 28px; color: white; font-weight: bold; margin-right: 8px; vertical-align: middle;">★</span>Week 24 Capstone: Class Newsletter
+            </h4>
+            <p style="margin: 0; font-size: 14px; color: rgba(255,255,255,0.95); line-height: 1.6;">
+                Create a digital newsletter with news, stories, artwork, calendar, and peer interviews. Share with classmates and families!
+            </p>
+        </div>
+    </td>
+</tr>
+
+
+========== SECTION 5: QUARTER 3 SECTION ==========
+Location: Lines 743-795
+
+<!-- Quarter 3 Header -->
+<tr>
+    <td class="mobile-padding" style="padding: 30px 30px 20px 30px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%); border-radius: 12px; padding: 24px;">
+            <tr>
+                <td>
+                    <h2 class="mobile-heading-large" style="margin: 0 0 8px 0; font-size: 26px; font-weight: bold; color: white;">
+                        Quarter 3: Learning & Study Skills
+                    </h2>
+                    <p style="margin: 0; font-size: 16px; color: rgba(255,255,255,0.95);">
+                        Weeks 25-36 • Academic Success Tools
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+<!-- Learning Objectives -->
+<tr>
+    <td style="padding: 0 30px 20px 30px;">
+        <div style="background-color: #f0fdfa; border-left: 4px solid #0891b2; padding: 16px 20px; border-radius: 8px;">
+            <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight: 600; color: #0f172a;">Learning Objectives</h4>
+            <ul style="margin: 0; padding: 0 0 0 20px; color: #475569; font-size: 14px; line-height: 1.8;">
+                <li>Develop effective study strategies</li>
+                <li>Create tools for different subjects</li>
+                <li>Improve memory and recall</li>
+                <li>Build confidence in learning</li>
+                <li>Organize research and information</li>
+            </ul>
+        </div>
+    </td>
+</tr>
+
+<!-- Summary Paragraph -->
+<tr>
+    <td style="padding: 0 30px 20px 30px;">
+        <p style="margin: 0 0 12px 0; font-size: 14px; color: #475569; line-height: 1.6;">
+            Master <strong>math problem-solving</strong>, <strong>vocabulary building</strong>, <strong>science experiments</strong>, <strong>flashcards</strong>, <strong>test prep</strong>, <strong>note-taking</strong>, and become a confident learner!
+        </p>
+    </td>
+</tr>
+
+<!-- Week 36 Capstone -->
+<tr>
+    <td style="padding: 0 30px 30px 30px;">
+        <div style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); border-radius: 12px; padding: 24px;">
+            <h4 class="mobile-heading-small" style="margin: 0 0 12px 0; font-size: 18px; font-weight: bold; color: white;">
+                <span style="display: inline-block; width: 28px; height: 28px; background: rgba(255,255,255,0.3); border-radius: 50%; text-align: center; line-height: 28px; color: white; font-weight: bold; margin-right: 8px; vertical-align: middle;">★</span>Week 36 Capstone: Learning Toolkit
+            </h4>
+            <p style="margin: 0; font-size: 14px; color: rgba(255,255,255,0.95); line-height: 1.6;">
+                Combine all study tools into one comprehensive system! Create flashcards, study guides, and demonstrate your complete learning toolkit.
+            </p>
+        </div>
+    </td>
+</tr>
+
+
+========== SECTION 6: QUARTER 4 SECTION ==========
+Location: Lines 805-856
+
+<!-- Quarter 4 Header -->
+<tr>
+    <td class="mobile-padding" style="padding: 30px 30px 20px 30px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 12px; padding: 24px;">
+            <tr>
+                <td>
+                    <h2 class="mobile-heading-large" style="margin: 0 0 8px 0; font-size: 26px; font-weight: bold; color: white;">
+                        Quarter 4: Personal Growth & Life Skills
+                    </h2>
+                    <p style="margin: 0; font-size: 16px; color: rgba(255,255,255,0.95);">
+                        Weeks 37-48 • Building Character & Independence
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+<!-- Learning Objectives -->
+<tr>
+    <td style="padding: 0 30px 20px 30px;">
+        <div style="background-color: #f0fdf4; border-left: 4px solid #10b981; padding: 16px 20px; border-radius: 8px;">
+            <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight: 600; color: #0f172a;">Learning Objectives</h4>
+            <ul style="margin: 0; padding: 0 0 0 20px; color: #475569; font-size: 14px; line-height: 1.8;">
+                <li>Develop personal responsibility</li>
+                <li>Build healthy habits and routines</li>
+                <li>Practice gratitude and self-reflection</li>
+                <li>Manage personal resources</li>
+                <li>Plan for future goals</li>
+            </ul>
+        </div>
+    </td>
+</tr>
+
+<!-- Summary Paragraph -->
+<tr>
+    <td style="padding: 0 30px 20px 30px;">
+        <p style="margin: 0 0 12px 0; font-size: 14px; color: #475569; line-height: 1.6;">
+            Learn <strong>money management</strong>, <strong>chore organization</strong>, <strong>emotional awareness</strong>, <strong>habit building</strong>, <strong>gratitude practice</strong>, and <strong>goal planning</strong>!
+        </p>
+    </td>
+</tr>
+
+<!-- Week 48 Capstone -->
+<tr>
+    <td style="padding: 0 30px 30px 30px;">
+        <div style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); border-radius: 12px; padding: 24px;">
+            <h4 class="mobile-heading-small" style="margin: 0 0 12px 0; font-size: 18px; font-weight: bold; color: white;">
+                <span style="display: inline-block; width: 28px; height: 28px; background: rgba(255,255,255,0.3); border-radius: 50%; text-align: center; line-height: 28px; color: white; font-weight: bold; margin-right: 8px; vertical-align: middle;">★</span>Week 48 Capstone: Year in Review Portfolio
+            </h4>
+            <p style="margin: 0; font-size: 14px; color: rgba(255,255,255,0.95); line-height: 1.6;">
+                Create a comprehensive showcase of the entire year! Include best projects, growth timeline, achievements, and present your learning journey to families.
+            </p>
+        </div>
+    </td>
+</tr>
+
+
+========== SECTION 7: SESSION STRUCTURE ==========
+Location: Lines 865-929
+
+<tr>
+    <td style="padding: 0 30px 30px 30px;">
+        <h3 class="mobile-heading-medium" style="margin: 0 0 20px 0; font-size: 22px; font-weight: bold; color: #0f172a; text-align: center;">
+            <span style="display: inline-block; width: 32px; height: 32px; background: linear-gradient(135deg, #06b6d4, #14b8a6); border-radius: 50%; text-align: center; line-height: 32px; color: white; font-weight: bold; margin-right: 8px; vertical-align: middle; font-size: 18px;">◷</span>Every 90-Minute Session Includes
+        </h3>
+
+        <table role="presentation" cellpadding="12" cellspacing="0" border="0" width="100%">
+            <tr>
+                <td style="background: linear-gradient(135deg, #e0f2fe 0%, #f0fdfa 100%); border-radius: 8px; padding: 16px; margin-bottom: 10px;">
+                    <p style="margin: 0 0 4px 0; font-size: 15px; font-weight: 600; color: #0891b2;">1. Welcome & Quick Wins (5-10 min)</p>
+                    <p style="margin: 0; font-size: 14px; color: #475569;">Share successes from previous week, build confidence and excitement</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 10px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                        <tr>
+                            <td style="background-color: #f8fafc; border-left: 4px solid #06b6d4; padding: 12px; border-radius: 4px;">
+                                <p style="margin: 0 0 4px 0; font-size: 15px; font-weight: 600; color: #0891b2;">2. Main Concept Teaching (15-20 min)</p>
+                                <p style="margin: 0; font-size: 14px; color: #475569;">Interactive demonstrations, visual learning, age-appropriate explanations</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 10px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                        <tr>
+                            <td style="background-color: #f8fafc; border-left: 4px solid #14b8a6; padding: 12px; border-radius: 4px;">
+                                <p style="margin: 0 0 4px 0; font-size: 15px; font-weight: 600; color: #0891b2;">3. Hands-On Practice (20-25 min)</p>
+                                <p style="margin: 0; font-size: 14px; color: #475569;">Individual work time, immediate skill application, instructor support</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 10px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                        <tr>
+                            <td style="background-color: #f8fafc; border-left: 4px solid #06b6d4; padding: 12px; border-radius: 4px;">
+                                <p style="margin: 0 0 4px 0; font-size: 15px; font-weight: 600; color: #0891b2;">4. Creation & Building (20-25 min)</p>
+                                <p style="margin: 0; font-size: 14px; color: #475569;">Making something tangible, seeing immediate results, personal creativity</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 10px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                        <tr>
+                            <td style="background-color: #f8fafc; border-left: 4px solid #14b8a6; padding: 12px; border-radius: 4px;">
+                                <p style="margin: 0 0 4px 0; font-size: 15px; font-weight: 600; color: #0891b2;">5. Reflection & Next Steps (5-10 min)</p>
+                                <p style="margin: 0; font-size: 14px; color: #475569;">What did we learn? What's exciting about next week?</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+
+========== SECTION 8: QUESTIONS SECTION ==========
+Location: Lines 1037-1058 (from tail output)
+
+<!-- Questions Section -->
+<tr>
+    <td style="padding: 0 30px 40px 30px; text-align: center;">
+        <div style="background-color: #fef3c7; border: 2px solid #fbbf24; border-radius: 12px; padding: 24px;">
+            <h4 style="margin: 0 0 12px 0; font-size: 20px; font-weight: 600; color: #0f172a;">
+                <span style="display: inline-block; width: 28px; height: 28px; background: linear-gradient(135deg, #fbbf24, #f59e0b); border-radius: 50%; text-align: center; line-height: 28px; color: white; font-weight: bold; margin-right: 8px; vertical-align: middle; font-size: 18px;">?</span>Have Questions?
+            </h4>
+            <p style="margin: 0 0 16px 0; font-size: 15px; color: #475569;">
+                We'd love to chat! Contact us anytime:
+            </p>
+            <p style="margin: 0 0 8px 0;">
+                <a href="https://wa.me/972543159025?text=Hi!%20I'm%20interested%20in%20the%20Young%20Explorers%20program" style="color: #10b981; text-decoration: none; font-weight: 600; font-size: 16px;">
+                    WhatsApp: +972-54-315-9025
+                </a>
+            </p>
+            <p style="margin: 0;">
+                <a href="mailto:raphael@aikidz.club" style="color: #0891b2; text-decoration: none; font-weight: 600; font-size: 16px;">
+                    raphael@aikidz.club
+                </a>
+            </p>
+        </div>
+    </td>
+</tr>
+
+
+========================================
+ADDITIONAL NOTES
+========================================
+
+1. DIVIDER ELEMENTS:
+   Used between major sections:
+   <tr>
+       <td style="padding: 0 30px;">
+           <div style="height: 2px; background: linear-gradient(to right, #06b6d4, #14b8a6); margin: 20px 0;"></div>
+       </td>
+   </tr>
+
+2. COLOR SCHEMES BY QUARTER:
+   - Q1: #06b6d4 to #14b8a6 (cyan to teal)
+   - Q2: #14b8a6 to #0891b2 (teal to darker cyan)
+   - Q3: #0891b2 to #06b6d4 (darker cyan to cyan)
+   - Q4: #10b981 to #059669 (green gradient)
+
+3. RESPONSIVE CLASSES USED:
+   - mobile-heading-xl
+   - mobile-heading-large
+   - mobile-heading-medium
+   - mobile-heading-small
+   - mobile-padding
+   - mobile-full-width-container
+
+4. STRUCTURE PATTERN:
+   Each quarter follows this pattern:
+   a) Quarter Header (colored gradient box with title and weeks)
+   b) Learning Objectives (light colored box with bullet list)
+   c) Summary or Week-by-Week details
+   d) Capstone project (gold/amber gradient box)
+   e) Divider
+
+5. FONT HIERARCHY:
+   - Main headers: 26px, bold, white on gradient
+   - Section headers: 20-22px, bold
+   - Subsection headers: 16-18px, semi-bold
+   - Body text: 14-15px
+   - Small text: 13px
+
+========================================
+END OF EXTRACTION
+========================================

@@ -952,25 +952,7 @@
                         </div>
                     </div>
                     <!-- Step 1: Child Details -->
-                    
-                <!-- Program Start Date Notice -->
-                <div class="bg-amber-500/20 border-2 border-amber-400/50 rounded-xl p-5 mb-6">
-                    <div class="flex items-start gap-3">
-                        <svg class="w-6 h-6 text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <div>
-                            <h3 class="text-lg font-bold text-white mb-2">תאריך תחילת התוכנית</h3>
-                            <p class="text-white/90">
-                                שיעור ראשון: <strong>2 בנובמבר 2025</strong>
-                            </p>
-                            <p class="text-white/80 text-sm mt-1">
-                                המיקום המדויק יאושר בקרוב
-                            </p>
-                        </div>
-                    </div>
-                </div>
-<div id="step-1" class="step-content p-6 flex-1 flex flex-col">
+                    <div id="step-1" class="step-content p-6 flex-1 flex flex-col">
                         <div class="mb-6">
                             <h2 class="text-xl font-bold text-white tracking-tight mb-2">פרטי הילד</h2>
                             <p class="text-white/60 text-sm">ספרו לנו על כל ילד שמצטרף למועדון AI</p>
@@ -1122,26 +1104,7 @@
 
                         <div class="flex-1 space-y-6">
                             <!-- Registration Summary -->
-                            <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cya
-                <!-- Required Items Notice -->
-                <div class="bg-cyan-500/10 border-2 border-cyan-400/40 rounded-xl p-5 mb-6">
-                    <h3 class="text-lg font-bold text-white mb-3">התלמידים חייבים להביא:</h3>
-                    <ul class="space-y-2 text-white/90">
-                        <li class="flex items-start gap-2">
-                            <span class="text-cyan-400 mt-1">-</span>
-                            <span>מחשב נייד או טאבלט (מחשב נייד מומלץ יותר)</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-cyan-400 mt-1">-</span>
-                            <span>מכשיר טעון (סוללה של 2 שעות לפחות)</span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-cyan-400 mt-1">-</span>
-                            <span>בקבוק מים וחטיף (אופציונלי)</span>
-                        </li>
-                    </ul>
-                </div>
-n-400/30 rounded-xl p-4">
+                            <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
                                 <h3 class="text-lg font-semibold text-white mb-3">סיכום רישום</h3>
                                 <div id="step-3-summary" class="space-y-2 text-sm text-white/80">
                                     <!-- Summary will be populated here -->
@@ -1192,44 +1155,7 @@ n-400/30 rounded-xl p-4">
                         <div class="mb-6">
                             <h2 class="text-xl font-bold text-white tracking-tight mb-2">השלם תשלום מאובטח</h2>
                             <p class="text-white/80 text-sm">תשלום מאובטח באמצעות AllPay</p>
-           
-                        <!-- Payment Methods Notice - Replaces AllPay -->
-                        <div id="payment-methods-notice" class="bg-cyan-500/10 border-2 border-cyan-400/40 rounded-xl p-6">
-                            <div class="mb-4">
-                                <h3 class="text-xl font-bold text-white mb-3">מידע על תשלום</h3>
-                                <div class="bg-green-500/20 border border-green-400/40 rounded-lg p-4 mb-4">
-                                    <p class="text-white font-semibold text-lg">
-                                        השיעור הראשון חינם לכל התלמידים!
-                                    </p>
-                                </div>
-                                <p class="text-white/90 mb-4">
-                                    אנו מקבלים כרגע את אמצעי התשלום הבאים:
-                                </p>
-                                <ul class="space-y-2 text-white/90 mb-4">
-                            <li class="flex items-center gap-2">
-                                <span class="text-cyan-400">-</span> העברות Bit
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="text-cyan-400">-</span> PayBox
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="text-cyan-400">-</span> העברות בנקאיות
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="text-cyan-400">-</span> תשלום במזומן
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="text-cyan-400">-</span> המחאות
-                            </li>
-                                </ul>
-                                <div class="bg-amber-500/20 border border-amber-400/40 rounded-lg p-4">
-                                    <p class="text-white/95 font-semibold">
-                                        תשלומי כרטיס אשראי יהיו זמינים בקרוב!
-                                    </p>
-                                </div>
-                            </div>
                         </div>
-             </div>
 
                         <!-- Order Summary Box -->
                         <div id="payment-summary" class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-4 mb-6">
@@ -1251,11 +1177,26 @@ n-400/30 rounded-xl p-4">
                             <p class="text-white text-lg font-medium mt-4">מכין תשלום מאובטח...</p>
                         </div>
 
-                        
+                        <!-- AllPay Hosted Fields iframe - CLEAN VERSION -->
                         <div id="payment-iframe-container" class="hidden">
-                            
+                            <iframe
+                                id="allpay-payment-iframe"
+                                allow="payment *"
+                                src=""
+                                style="width: 100%; height: 500px; border: none; background: white; border-radius: 12px;">
+                            </iframe>
 
-                            
+                            <button
+                                onclick="submitAllPayPayment()"
+                                id="allpay-submit-button"
+                                class="w-full mt-6 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                                <span class="flex items-center justify-center gap-2">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    אשר תשלום
+                                </span>
+                            </button>
                         </div>
 
                         <!-- Back Button -->
@@ -4160,8 +4101,646 @@ n-400/30 rounded-xl p-4">
             return formData;
         }
 
-        
-        
+        /**
+         * Calculate total amount using AGE_PRICING and familyData
+         * Used by AllPay payment integration
+         */
+        function calculateTotalAmount() {
+            if (!familyData.bulkDuration || !familyData.children.length) return 0;
+
+            let total = 0;
+
+            // Calculate base total from age-specific pricing
+            familyData.children.forEach((child) => {
+                if (child.ageGroup && familyData.bulkDuration) {
+                    total += AGE_PRICING[child.ageGroup][familyData.bulkDuration];
+                }
+            });
+
+            // Apply family discounts: 10% for 2nd child, 15% for 3rd+ child
+            if (familyData.childCount >= 2 && familyData.children[1]?.ageGroup) {
+                const discountRate = familyData.childCount === 2 ? 0.10 : 0.15;
+                const discount = Math.round((AGE_PRICING[familyData.children[1].ageGroup][familyData.bulkDuration] * discountRate));
+                total -= discount;
+            }
+
+            return Math.round(total);
+        }
+
+        // Helper function to get price for age group
+        function getPriceForAgeGroup(ageGroup) {
+            const priceMap = {
+                '6-9': 399,
+                '10-13': 499,
+                '14-18': 599
+            };
+            return priceMap[ageGroup] || 399;
+        }
+
+        // Payment processing function
+        async function proceedToPayment() {
+            console.log('🚀 Starting payment process...');
+
+            // Validate form before proceeding
+            if (!validateMobileForm()) {
+                console.log('❌ Form validation failed');
+                alert('Please fill in all required fields before proceeding to payment.');
+                return;
+            }
+            console.log('✅ Form validation passed');
+
+            // Get selected payment method
+            const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked')?.value || 'bit';
+            console.log('💳 Selected payment method:', selectedPaymentMethod);
+
+            // Collect form data
+            const formData = collectMobileFormData();
+            if (!formData) {
+                console.log('❌ Failed to collect form data');
+                alert('Failed to collect form data. Please try again.');
+                return;
+            }
+            console.log('📋 Form data collected:', formData);
+
+            // Calculate total amount
+            const totalElement = document.getElementById('total-price');
+            const totalAmount = totalElement ? parseInt(totalElement.textContent.replace('₪', '')) : 0;
+            console.log('💰 Total amount:', totalAmount);
+
+            if (totalAmount <= 0) {
+                console.log('❌ Invalid amount:', totalAmount);
+                alert('Invalid payment amount. Please refresh and try again.');
+                return;
+            }
+
+            // Show loading state
+            const paymentButton = document.querySelector('button[onclick="proceedToPayment()"]');
+            const originalButtonText = paymentButton.innerHTML;
+            paymentButton.innerHTML = 'Processing...';
+            paymentButton.disabled = true;
+
+            try {
+                if (selectedPaymentMethod === 'bit') {
+                    console.log('🟢 Processing Bit payment...');
+                    await processBitPayment(formData, totalAmount);
+                } else if (selectedPaymentMethod === 'paybox') {
+                    console.log('🟣 Processing PayBox payment...');
+                    await processPayBoxPayment(formData, totalAmount);
+                } else if (selectedPaymentMethod === 'cash') {
+                    console.log('💵 Processing cash/bank transfer payment...');
+                    await processCashPayment(formData, totalAmount);
+                } else {
+                    console.log('🔵 Processing credit card payment...');
+                    await processCreditCardPayment(formData, totalAmount);
+                }
+            } catch (error) {
+                console.error('❌ Payment processing error:', error);
+                alert('Payment processing failed: ' + error.message + '. Please try again.');
+
+                // Restore button state
+                paymentButton.innerHTML = originalButtonText;
+                paymentButton.disabled = false;
+            }
+        }
+
+        // Bit payment processing
+        async function processBitPayment(formData, amount) {
+            // Submit registration data first with pending payment status
+            await submitRegistrationData({
+                ...formData,
+                paymentMethod: 'bit',
+                paymentStatus: 'pending',
+                amount: amount
+            });
+
+            // Show branded success modal
+            showRegistrationSuccess(formData);
+
+            // Generate Bit payment link with your phone number
+            const description = `AI Kids Registration - ${formData.children.map(c => c.name).join(', ')}`;
+            const phone = '0543159025';
+
+            // Try Bit app deep link first, fallback to web link
+            const bitAppLink = `bit://pay?phone=${phone}&amount=${amount}&note=${encodeURIComponent(description)}`;
+            const bitWebLink = `https://bitpay.poalimlinks.co.il/app/?phone=${phone}&amount=${amount}&description=${encodeURIComponent(description)}`;
+
+            // Check if mobile device and try app link first
+            const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // Try app link first, fallback to web
+                window.location.href = bitAppLink;
+                setTimeout(() => {
+                    window.open(bitWebLink, '_blank');
+                }, 1000);
+            } else {
+                // Desktop: open web link
+                window.open(bitWebLink, '_blank');
+            }
+        }
+
+        // PayBox payment processing
+        async function processPayBoxPayment(formData, amount) {
+            // Submit registration data first with pending payment status
+            await submitRegistrationData({
+                ...formData,
+                paymentMethod: 'paybox',
+                paymentStatus: 'pending',
+                amount: amount
+            });
+
+            // Show branded success modal
+            showRegistrationSuccess(formData);
+
+            // Generate PayBox payment link with your phone number
+            const description = `AI Kids Registration - ${formData.children.map(c => c.name).join(', ')}`;
+            const phone = '0543159025';
+
+            // Try PayBox app deep link first, fallback to web link
+            const payboxAppLink = `paybox://pay?phone=${phone}&amount=${amount}&description=${encodeURIComponent(description)}`;
+            const payboxWebLink = `https://payboxapp.com/pay?phone=${phone}&amount=${amount}&currency=ILS&description=${encodeURIComponent(description)}`;
+
+            // Check if mobile device and try app link first
+            const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // Try app link first, fallback to web
+                window.location.href = payboxAppLink;
+                setTimeout(() => {
+                    window.open(payboxWebLink, '_blank');
+                }, 1000);
+            } else {
+                // Desktop: open web link
+                window.open(payboxWebLink, '_blank');
+            }
+        }
+
+        // Cash/Bank Transfer payment processing
+        async function processCashPayment(formData, amount) {
+            // Submit registration data first with pending payment status
+            await submitRegistrationData({
+                ...formData,
+                paymentMethod: 'cash',
+                paymentStatus: 'pending',
+                amount: amount
+            });
+
+            // Show branded success modal
+            showRegistrationSuccess(formData);
+        }
+
+        // Credit card payment processing
+        async function processCreditCardPayment(formData, amount) {
+            // Redirect to credit card payment form or integrate with payment gateway
+            alert('Credit card payment will be available soon. Please use Bit payment for now.');
+
+            // Restore button state
+            const paymentButton = document.querySelector('button[onclick="proceedToPayment()"]');
+            paymentButton.innerHTML = 'Proceed to Payment';
+            paymentButton.disabled = false;
+        }
+
+
+        // Submit registration data to Google Apps Script
+        async function submitRegistrationData(data) {
+            console.log('🔄 Submitting registration data with payment info...', data);
+
+            try {
+                // Use the existing robust Google Sheets submission function
+                const result = await submitToGoogleSheets(data);
+                console.log('✅ Registration data submitted successfully:', result);
+                return result;
+            } catch (error) {
+                console.error('❌ Failed to submit registration data:', error);
+                throw new Error('Failed to submit registration data: ' + error.message);
+            }
+        }
+
+        // Show Bit payment instructions
+        // Add event listeners to recalculate price when form changes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Main form inputs
+            const mainChildName = document.querySelector('input[type="text"]:not([placeholder*="parent"])');
+            const mainAgeGroup = document.querySelector('select');
+
+            if (mainChildName) {
+                mainChildName.addEventListener('input', calculateMobilePrice);
+            }
+            if (mainAgeGroup) {
+                mainAgeGroup.addEventListener('change', calculateMobilePrice);
+            }
+
+            // Payment method selection functionality
+            const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
+            paymentMethods.forEach(method => {
+                method.addEventListener('change', function() {
+                    // Update visual state for all payment options
+                    paymentMethods.forEach(m => {
+                        const label = m.closest('label');
+                        const radioButton = label.querySelector('.w-5.h-5 > div');
+                        const border = label.querySelector('.w-5.h-5');
+
+                        if (m.checked) {
+                            // Selected state
+                            radioButton.classList.remove('bg-transparent');
+                            if (m.value === 'bit') {
+                                radioButton.classList.add('bg-green-400');
+                                border.classList.remove('border-amber-400');
+                                border.classList.add('border-green-400');
+                            } else if (m.value === 'paybox') {
+                                radioButton.classList.add('bg-teal-400');
+                                border.classList.remove('border-amber-400');
+                                border.classList.add('border-teal-400');
+                            } else {
+                                radioButton.classList.add('bg-cyan-400');
+                                border.classList.remove('border-amber-400');
+                                border.classList.add('border-cyan-400');
+                            }
+                        } else {
+                            // Unselected state
+                            radioButton.classList.add('bg-transparent');
+                            radioButton.classList.remove('bg-green-400', 'bg-teal-400', 'bg-cyan-400');
+                            border.classList.add('border-amber-400');
+                            border.classList.remove('border-green-400', 'border-teal-400', 'border-cyan-400');
+                        }
+                    });
+                });
+            });
+        });
+
+        // Update addChildForm to recalculate price
+        const originalAddChildForm = window.addChildForm;
+        window.addChildForm = function() {
+            originalAddChildForm();
+
+            // Add event listeners to new child inputs
+            setTimeout(() => {
+                const newInputs = document.querySelectorAll('#additionalChildrenContainer input, #additionalChildrenContainer select');
+                newInputs.forEach(input => {
+                    input.addEventListener('input', calculateMobilePrice);
+                    input.addEventListener('change', calculateMobilePrice);
+                });
+                calculateMobilePrice();
+            }, 100);
+        };
+
+        // Update removeChildForm to recalculate price
+        const originalRemoveChildForm = window.removeChildForm;
+        window.removeChildForm = function(id) {
+            originalRemoveChildForm(id);
+            calculateMobilePrice();
+        };
+
+        // Pricing section functionality
+        function switchBillingPeriod(period) {
+            // Update tab styles
+            const quarterlyTab = document.getElementById('quarterly-tab');
+            const yearlyTab = document.getElementById('yearly-tab');
+            const quarterlyPrices = document.querySelectorAll('.quarterly-price');
+            const yearlyPrices = document.querySelectorAll('.yearly-price');
+
+            if (period === 'quarterly') {
+                // Style quarterly tab as active
+                quarterlyTab.className = "flex-1 py-3 px-4 rounded-lg text-center font-semibold transition-all duration-300 billing-tab bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-lg";
+                yearlyTab.className = "flex-1 py-3 px-4 rounded-lg text-center font-medium transition-all duration-300 billing-tab text-white/80 hover:text-white hover:bg-white/10";
+
+                // Show quarterly prices with fade animation
+                quarterlyPrices.forEach(price => {
+                    price.style.display = 'block';
+                    price.style.opacity = '0';
+                    setTimeout(() => {
+                        price.style.opacity = '1';
+                    }, 50);
+                });
+                yearlyPrices.forEach(price => {
+                    price.style.opacity = '0';
+                    setTimeout(() => {
+                        price.style.display = 'none';
+                    }, 200);
+                });
+
+            } else if (period === 'yearly') {
+                // Style yearly tab as active
+                yearlyTab.className = "flex-1 py-3 px-4 rounded-lg text-center font-semibold transition-all duration-300 billing-tab bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-lg";
+                quarterlyTab.className = "flex-1 py-3 px-4 rounded-lg text-center font-medium transition-all duration-300 billing-tab text-white/80 hover:text-white hover:bg-white/10";
+
+                // Show yearly prices with fade animation
+                yearlyPrices.forEach(price => {
+                    price.style.display = 'block';
+                    price.style.opacity = '0';
+                    setTimeout(() => {
+                        price.style.opacity = '1';
+                    }, 50);
+                });
+                quarterlyPrices.forEach(price => {
+                    price.style.opacity = '0';
+                    setTimeout(() => {
+                        price.style.display = 'none';
+                    }, 200);
+                });
+            }
+        }
+
+        // Add smooth transitions for price displays
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add transition styles to price displays
+            const priceDisplays = document.querySelectorAll('.price-display');
+            priceDisplays.forEach(display => {
+                display.style.transition = 'opacity 0.3s ease-in-out';
+            });
+        });
+
+        // Make switchBillingPeriod globally accessible
+        window.switchBillingPeriod = switchBillingPeriod;
+    </script>
+    <script>
+        // New Ribbon Trail Cursor (desktop only)
+        const cursorRing = document.querySelector('.cursor-ring');
+        const trailPath = document.querySelector('.cursor-trail-path');
+
+        // Only run cursor code if elements exist (desktop only)
+        if (cursorRing && trailPath) {
+            let mouseX = 0, mouseY = 0;
+            const trailPoints = [];
+            const maxTrailPoints = 20;
+
+            // Track mouse position
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+
+                // Update ring position
+                cursorRing.style.left = mouseX + 'px';
+                cursorRing.style.top = mouseY + 'px';
+
+                // Add point to trail
+                trailPoints.push({ x: mouseX, y: mouseY, time: Date.now() });
+
+                // Keep only recent points
+                if (trailPoints.length > maxTrailPoints) {
+                    trailPoints.shift();
+                }
+            });
+
+            // Animate trail
+            function updateTrail() {
+                // Remove old points
+                const now = Date.now();
+                while (trailPoints.length > 0 && now - trailPoints[0].time > 500) {
+                    trailPoints.shift();
+                }
+
+                // Create smooth SVG path
+                if (trailPoints.length > 1) {
+                    let pathD = `M ${trailPoints[0].x} ${trailPoints[0].y}`;
+
+                    for (let i = 1; i < trailPoints.length; i++) {
+                        const point = trailPoints[i];
+                        const prevPoint = trailPoints[i - 1];
+
+                        // Create smooth curve
+                        const midX = (prevPoint.x + point.x) / 2;
+                        const midY = (prevPoint.y + point.y) / 2;
+
+                        pathD += ` Q ${prevPoint.x} ${prevPoint.y}, ${midX} ${midY}`;
+                    }
+
+                    // Add final point
+                    if (trailPoints.length > 0) {
+                        const lastPoint = trailPoints[trailPoints.length - 1];
+                        pathD += ` L ${lastPoint.x} ${lastPoint.y}`;
+                    }
+
+                    trailPath.setAttribute('d', pathD);
+                } else {
+                    trailPath.setAttribute('d', '');
+                }
+
+                requestAnimationFrame(updateTrail);
+            }
+            updateTrail();
+
+            // Hover detection for interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, [onclick]');
+
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorRing.classList.add('hover');
+                });
+
+                el.addEventListener('mouseleave', () => {
+                    cursorRing.classList.remove('hover');
+                });
+            });
+
+            // Handle cursor visibility
+            document.addEventListener('mouseleave', () => {
+                cursorRing.style.opacity = '0';
+            });
+
+            document.addEventListener('mouseenter', () => {
+                cursorRing.style.opacity = '1';
+            });
+        }
+    </script>
+
+    <script>
+        // Mobile Menu Functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        // Open mobile menu
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+            mobileMenuBtn.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close mobile menu
+        closeMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close menu when clicking anywhere on the overlay
+        mobileMenu.addEventListener('click', function(e) {
+            mobileMenu.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Prevent menu content from closing menu when clicked
+        const menuContent = mobileMenu.querySelector('.flex.flex-col.h-full');
+        menuContent.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Handle menu item clicks
+        menuItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+
+                // If it's an external link (contains .html), allow normal navigation
+                if (href.includes('.html')) {
+                    // Close menu and allow normal navigation
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                    return; // Don't prevent default, let the link navigate normally
+                }
+
+                // For internal links (starting with #), prevent default and scroll
+                e.preventDefault();
+                const targetElement = document.querySelector(href);
+
+                if (targetElement) {
+                    // Close menu first
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+
+                    // Then scroll to target
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({behavior: 'smooth'});
+                    }, 100);
+                }
+            });
+        });
+
+        // Typewriter Effect
+        const typewriterElement = document.getElementById('typewriter-text');
+        const phrases = [
+            '-AI',
+            'למידה',
+            'חדשנות',
+            'יצירתיות',
+            'טכנולוגיה'
+        ];
+
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isPaused = false;
+
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isPaused) {
+                return;
+            }
+
+            if (isDeleting) {
+                // Delete character
+                typewriterElement.innerHTML = currentPhrase.substring(0, charIndex - 1) + '<span class="typewriter-cursor"></span>';
+                charIndex--;
+
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    isPaused = true;
+                    setTimeout(() => {
+                        isPaused = false;
+                        typeWriter();
+                    }, 800); // Pause before typing next phrase
+                    return;
+                }
+            } else {
+                // Type character
+                typewriterElement.innerHTML = currentPhrase.substring(0, charIndex + 1) + '<span class="typewriter-cursor"></span>';
+                charIndex++;
+
+                if (charIndex === currentPhrase.length) {
+                    isPaused = true;
+                    setTimeout(() => {
+                        isPaused = false;
+                        isDeleting = true;
+                        typeWriter();
+                    }, 2500); // Pause after typing complete phrase
+                    return;
+                }
+            }
+
+            // Call next iteration with appropriate speed
+            const typingSpeed = isDeleting ? 40 : 80;
+            setTimeout(typeWriter, typingSpeed);
+        }
+
+        // Start typewriter effect after a brief delay
+        setTimeout(() => {
+            typeWriter();
+        }, 1500);
+    </script>
+
+    <!-- Mobile Footer -->
+    <footer class="bg-black/40 backdrop-blur-lg border-t border-white/20 mt-12" dir="rtl">
+        <div class="px-6 py-8">
+
+            <!-- Brand Section -->
+            <div class="text-center mb-6">
+                <h3 class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent mb-2">
+                    AI Kidz Club
+                </h3>
+                <p class="text-white/60 text-sm">מעצימים את הדור הבא עם חינוך AI.</p>
+            </div>
+
+            <!-- Links Grid (Mobile: 2 columns) -->
+            <div class="grid grid-cols-2 gap-6 mb-6 text-sm">
+                <div>
+                    <h4 class="font-semibold text-white mb-3">קישורים מהירים</h4>
+                    <ul class="space-y-2 text-white/60">
+                        <li><a href="mobile-he.html" class="hover:text-cyan-400 transition-colors min-h-[44px] inline-block">בית</a></li>
+                        <li><a href="curriculum-mobile-he.html" class="hover:text-cyan-400 transition-colors min-h-[44px] inline-block">תוכנית לימודים</a></li>
+                        <li><a href="pricing-mobile-he.html" class="hover:text-cyan-400 transition-colors min-h-[44px] inline-block">מחירים</a></li>
+                        <li><a href="faq-mobile-he.html" class="hover:text-cyan-400 transition-colors min-h-[44px] inline-block">שאלות נפוצות</a></li>
+                        <li>
+                            מיקום: רעננה
+                            <span class="block text-white/50 text-[10px] mt-0.5">בקרוב: רמת אביב, הרצליה, רמת השרון ועוד</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="text-right">
+                    <h4 class="font-semibold text-white mb-3">משפטי</h4>
+                    <ul class="space-y-2 text-white/60">
+                        <li><a href="privacy-mobile-he.html" class="hover:text-cyan-400 transition-colors min-h-[44px] inline-block">מדיניות פרטיות</a></li>
+                        <li><a href="terms-mobile-he.html" class="hover:text-cyan-400 transition-colors min-h-[44px] inline-block">תנאי שימוש</a></li>
+                    </ul>
+                    <h4 class="font-semibold text-white mt-4 mb-3">צור קשר</h4>
+                    <ul class="space-y-2 text-white/60">
+                        <li><a href="tel:+972543159025" class="hover:text-cyan-400 transition-colors min-h-[44px] inline-block" dir="ltr">+972-54-315-9025</a></li>
+                        <li><a href="mailto:raphael@aikidz.club" class="hover:text-cyan-400 transition-colors min-h-[44px] inline-block">raphael@aikidz.club</a></li>
+                        <li><a href="mobile.html" class="hover:text-cyan-400 transition-colors min-h-[44px] inline-block font-bold" dir="ltr">English</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="border-t border-white/20 pt-6 text-center text-xs">
+                <p class="text-white/60">&copy; 2025 AI Kidz Club. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AllPay Hosted Fields SDK -->
+    <script src="https://allpay.to/js/allpay-hf.js"></script>
+
+    <!-- AllPay Integration Scripts -->
+    <script>
+        // AllPay instance (will be initialized after payment creation)
+        let AllpayInstance = null;
+
+        /**
+         * Initialize AllPay payment when user reaches Step 4
+         * This function is called when Step 4 is shown (nextStep() logic)
+         */
+        async function initializeAllPayPayment() {
+            console.log('🔄 Initializing AllPay payment...');
+
+            // Validate form before proceeding
+            if (!validateMobileForm()) {
+                alert('אנא מלא את כל השדות הנדרשים');
+                return false;
+            }
 
             // Collect form data
             const formData = collectMobileFormData();
@@ -4192,9 +4771,127 @@ n-400/30 rounded-xl p-4">
                 return false;
             }
 
-            // No AllPay integration - payment handled via Bit, PayBox, Bank Transfer, Cash, or Checks
-            // Users will see payment methods notice in Step 4
-            return true;
+            // Show loading state
+            document.getElementById('payment-loading').classList.remove('hidden');
+            document.getElementById('payment-iframe-container').classList.add('hidden');
+            document.getElementById('payment-methods-info').classList.add('hidden');
+
+            try {
+                // Call backend to create payment
+                const response = await fetch('/api/create-payment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        parentName: formData.parentName,
+                        parentEmail: formData.parentEmail,
+                        parentPhone: formData.parentPhone,
+                        children: formData.children,
+                        duration: formData.duration,
+                        amount: totalAmount,
+                        language: 'he'
+                    })
+                });
+
+                const data = await response.json();
+                console.log('📨 Response from backend:', data);
+
+                if (data.success && data.paymentUrl) {
+                    console.log('✅ Payment created successfully');
+                    console.log('🔗 Payment URL:', data.paymentUrl);
+
+                    // Load payment URL into iframe
+                    const iframe = document.getElementById('allpay-payment-iframe');
+                    iframe.src = data.paymentUrl;
+
+                    // Initialize AllPay Hosted Fields
+                    AllpayInstance = new AllpayPayment({
+                        iframeId: 'allpay-payment-iframe',
+                        onSuccess: function() {
+                            handleAllPaySuccess(data.orderId, formData);
+                        },
+                        onError: function(error_n, error_msg) {
+                            handleAllPayError(error_n, error_msg);
+                        }
+                    });
+
+                    // Hide loading, show iframe and payment button
+                    document.getElementById('payment-loading').classList.add('hidden');
+                    document.getElementById('payment-iframe-container').classList.remove('hidden');
+                    document.getElementById('payment-methods-info').classList.remove('hidden');
+
+                    return true;
+
+                } else {
+                    throw new Error(data.error || 'Failed to create payment');
+                }
+
+            } catch (error) {
+                console.error('❌ Payment creation error:', error);
+                alert('שגיאה ביצירת תשלום: ' + error.message + '\nאנא נסה שנית.');
+
+                // Hide loading
+                document.getElementById('payment-loading').classList.add('hidden');
+
+                return false;
+            }
+        }
+
+        /**
+         * Submit payment when user clicks "אשר תשלום" button
+         */
+        function submitAllPayPayment() {
+            if (!AllpayInstance) {
+                alert('מערכת התשלום טרם אותחלה. אנא נסה שנית.');
+                return;
+            }
+
+            console.log('💳 Submitting payment...');
+
+            // Disable button and show processing state
+            const button = document.getElementById('allpay-submit-button');
+            button.disabled = true;
+            button.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="animate-spin w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>מעבד תשלום...</span></span>';
+
+            // Trigger AllPay payment
+            AllpayInstance.pay();
+        }
+
+        /**
+         * Handle successful payment
+         */
+        function handleAllPaySuccess(orderId, formData) {
+            console.log('✅ Payment successful!');
+            console.log('Order ID:', orderId);
+
+            // Hide Step 4
+            document.getElementById('step-4').classList.add('hidden');
+
+            // Show success message on YOUR site (no redirect needed!)
+            showPaymentSuccessModal(orderId, formData);
+
+            // Optional: Submit to Google Sheets (webhook will also do this)
+            // submitRegistrationData({
+            //     ...formData,
+            //     paymentStatus: 'paid',
+            //     orderId: orderId
+            // });
+        }
+
+        /**
+         * Handle payment error
+         */
+        function handleAllPayError(error_n, error_msg) {
+            console.error('❌ Payment failed:', error_n, error_msg);
+
+            // Re-enable button
+            const button = document.getElementById('allpay-submit-button');
+            button.disabled = false;
+            button.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>אשר תשלום</span></span>';
+
+            // Show error message
+            alert('תשלום נכשל: ' + error_msg + '\n\nקוד שגיאה: ' + error_n + '\n\nאנא בדוק את הפרטים ונסה שנית.');
         }
 
         /**
@@ -4383,7 +5080,8 @@ n-400/30 rounded-xl p-4">
                 await new Promise(resolve => setTimeout(resolve, 350));
 
                 // THEN initialize payment (elements now exist)
-                                return;
+                await initializeAllPayPayment();
+                return;
             }
 
             // For all other step transitions
