@@ -4343,6 +4343,69 @@
             }
         }
 
+        // Mobile Menu Functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        // Open mobile menu
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+            mobileMenuBtn.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close mobile menu
+        closeMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close menu when clicking anywhere on the overlay
+        mobileMenu.addEventListener('click', function(e) {
+            mobileMenu.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Prevent menu content from closing menu when clicked
+        const menuContent = mobileMenu.querySelector('.flex.flex-col.h-full');
+        menuContent.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Handle menu item clicks
+        menuItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+
+                // If it's an external link (contains .html), allow normal navigation
+                if (href.includes('.html')) {
+                    // Close menu and allow normal navigation
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                    return; // Don't prevent default, let the link navigate normally
+                }
+
+                // For internal links (starting with #), prevent default and scroll
+                e.preventDefault();
+                const targetElement = document.querySelector(href);
+
+                if (targetElement) {
+                    // Close menu first
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+
+                    // Then scroll to target
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({behavior: 'smooth'});
+                    }, 100);
+                }
+            });
+        });
+
         // Override the nextStep function to initialize payment when reaching Step 4
         const originalNextStep = nextStep;
         nextStep = async function() {
