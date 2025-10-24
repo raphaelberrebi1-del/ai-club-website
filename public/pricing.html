@@ -72,24 +72,6 @@
             border-bottom-width: 8px;
         }
 
-        .cursor-trail-svg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 10001;
-        }
-
-        .cursor-trail-path {
-            fill: none;
-            stroke: url(#trail-gradient);
-            stroke-width: 3;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
         /* Fixed magical background for entire page */
         body {
             font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;
@@ -449,18 +431,11 @@
 <body class="antialiased text-zinc-100">
     <div class="site-background" aria-hidden="true"></div>
     
-    <!-- Custom cursor elements -->
+    <!-- WebGL Fluid Splash Cursor Canvas -->
+    <canvas id="fluid-cursor" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
+
+    <!-- Triangle Cursor Pointer (sits above fluid) -->
     <div class="cursor-ring"></div>
-    <svg class="cursor-trail-svg">
-        <defs>
-            <linearGradient id="trail-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:rgba(6, 182, 212, 0);stop-opacity:0" />
-                <stop offset="50%" style="stop-color:rgba(6, 182, 212, 0.6);stop-opacity:1" />
-                <stop offset="100%" style="stop-color:rgba(6, 182, 212, 1);stop-opacity:1" />
-            </linearGradient>
-        </defs>
-        <path class="cursor-trail-path" d=""></path>
-    </svg>
 
     <!-- Enhanced Background glow effects -->
     <div class="pointer-events-none fixed inset-0 overflow-hidden" style="z-index: 1;">
@@ -1311,83 +1286,19 @@
             });
         });
 
-        // Chevron Cursor with Ribbon Trail
+        // Triangle Cursor Pointer (without trail - replaced by fluid simulation)
         const cursorRing = document.querySelector('.cursor-ring');
-        const trailPath = document.querySelector('.cursor-trail-path');
 
-        if (cursorRing && trailPath) {
+        if (cursorRing) {
             let mouseX = 0, mouseY = 0;
-            let prevMouseX = 0, prevMouseY = 0;
-            let currentAngle = 0;
-            const trailPoints = [];
-            const maxTrailPoints = 12;
+            let cursorX = 0, cursorY = 0;
+            const smoothing = 0.15;
 
             // Track mouse position
             document.addEventListener('mousemove', (e) => {
-                prevMouseX = mouseX;
-                prevMouseY = mouseY;
                 mouseX = e.clientX;
                 mouseY = e.clientY;
-
-                // Calculate angle of movement
-                const deltaX = mouseX - prevMouseX;
-                const deltaY = mouseY - prevMouseY;
-
-                if (deltaX !== 0 || deltaY !== 0) {
-                    currentAngle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
-                }
-
-                // Update ring position and rotation
-                cursorRing.style.left = mouseX + 'px';
-                cursorRing.style.top = mouseY + 'px';
-                cursorRing.style.transform = `translate(-50%, -50%) rotate(${currentAngle}deg)`;
-
-                // Add point to trail
-                trailPoints.push({ x: mouseX, y: mouseY, time: Date.now() });
-
-                // Keep only recent points
-                if (trailPoints.length > maxTrailPoints) {
-                    trailPoints.shift();
-                }
             });
-
-            // Animate trail
-            function updateTrail() {
-                // Remove old points
-                const now = Date.now();
-                while (trailPoints.length > 0 && now - trailPoints[0].time > 200) {
-                    trailPoints.shift();
-                }
-
-                // Create smooth SVG path
-                if (trailPoints.length > 1) {
-                    let pathD = `M ${trailPoints[0].x} ${trailPoints[0].y}`;
-
-                    for (let i = 1; i < trailPoints.length; i++) {
-                        const point = trailPoints[i];
-                        const prevPoint = trailPoints[i - 1];
-
-                        // Create smooth curve
-                        const midX = (prevPoint.x + point.x) / 2;
-                        const midY = (prevPoint.y + point.y) / 2;
-
-                        pathD += ` Q ${prevPoint.x} ${prevPoint.y}, ${midX} ${midY}`;
-                    }
-
-                    // Add final point
-                    if (trailPoints.length > 0) {
-                        const lastPoint = trailPoints[trailPoints.length - 1];
-                        pathD += ` L ${lastPoint.x} ${lastPoint.y}`;
-                    }
-
-                    trailPath.setAttribute('d', pathD);
-                } else {
-                    trailPath.setAttribute('d', '');
-                }
-
-                requestAnimationFrame(updateTrail);
-            }
-            updateTrail();
 
             // Hover detection for interactive elements
             const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, [onclick]');
@@ -1401,6 +1312,22 @@
                     cursorRing.classList.remove('hover');
                 });
             });
+
+            // Animate cursor position
+            function animateCursor() {
+                // Smooth cursor movement
+                cursorX += (mouseX - cursorX) * smoothing;
+                cursorY += (mouseY - cursorY) * smoothing;
+
+                // Update cursor position
+                cursorRing.style.left = cursorX + 'px';
+                cursorRing.style.top = cursorY + 'px';
+
+                requestAnimationFrame(animateCursor);
+            }
+
+            // Start animation
+            animateCursor();
 
             // Handle cursor visibility
             document.addEventListener('mouseleave', () => {
@@ -1445,6 +1372,9 @@
             }
         });
     </script>
+
+    <!-- WebGL Fluid Splash Cursor -->
+    <script src="./splash-cursor.js"></script>
 
 </body>
 </html>
