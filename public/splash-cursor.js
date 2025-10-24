@@ -880,20 +880,26 @@
         return delta;
     }
 
-    // AI Club Color Palette - Cyan/Teal theme
+    // AI Club Color Palette - Full website colors
     function generateColor() {
-        const hueRanges = [
-            { min: 0.48, max: 0.52 }, // Cyan range (180°)
-            { min: 0.45, max: 0.55 }  // Cyan-Teal range
+        // Website color palette from background gradients
+        const colors = [
+            { r: 34/255, g: 211/255, b: 238/255 },   // Cyan (primary)
+            { r: 236/255, g: 72/255, b: 153/255 },   // Pink (secondary)
+            { r: 139/255, g: 92/255, b: 246/255 },   // Purple (accent)
+            { r: 20/255, g: 184/255, b: 166/255 },   // Teal
+            { r: 251/255, g: 191/255, b: 36/255 }    // Amber/Gold
         ];
-        const range = hueRanges[Math.floor(Math.random() * hueRanges.length)];
-        const hue = range.min + Math.random() * (range.max - range.min);
 
-        let c = HSVtoRGB(hue, 0.8 + Math.random() * 0.2, 0.9 + Math.random() * 0.1);
-        c.r *= 0.3; // Increased intensity for visibility
-        c.g *= 0.3;
-        c.b *= 0.3;
-        return c;
+        // Randomly select a color from the palette
+        const selectedColor = colors[Math.floor(Math.random() * colors.length)];
+
+        // Apply intensity multiplier for visibility
+        return {
+            r: selectedColor.r * 0.4,
+            g: selectedColor.g * 0.4,
+            b: selectedColor.b * 0.4
+        };
     }
 
     function HSVtoRGB(h, s, v) {
