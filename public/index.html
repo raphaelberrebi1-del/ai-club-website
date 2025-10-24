@@ -5944,5 +5944,85 @@
         };
     </script>
 
+    <!-- Custom Cursor with Ribbon Trail Animation -->
+    <script>
+        // Cursor animation initialization
+        (function() {
+            const cursorRing = document.querySelector('.cursor-ring');
+            const cursorTrailPath = document.querySelector('.cursor-trail-path');
+
+            if (!cursorRing || !cursorTrailPath) return;
+
+            let mouseX = 0;
+            let mouseY = 0;
+            let cursorX = 0;
+            let cursorY = 0;
+            const trailPoints = [];
+            const maxTrailPoints = 20;
+            const smoothing = 0.15;
+
+            // Track mouse position
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            // Detect hover on interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, input, select, textarea, [role="button"]');
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    cursorRing.classList.add('hover');
+                });
+                element.addEventListener('mouseleave', () => {
+                    cursorRing.classList.remove('hover');
+                });
+            });
+
+            // Animate cursor and trail
+            function animateCursor() {
+                // Smooth cursor movement
+                cursorX += (mouseX - cursorX) * smoothing;
+                cursorY += (mouseY - cursorY) * smoothing;
+
+                // Update cursor ring position
+                cursorRing.style.left = cursorX + 'px';
+                cursorRing.style.top = cursorY + 'px';
+
+                // Add current position to trail
+                trailPoints.push({ x: cursorX, y: cursorY });
+
+                // Remove old trail points
+                if (trailPoints.length > maxTrailPoints) {
+                    trailPoints.shift();
+                }
+
+                // Create smooth curved path for trail
+                if (trailPoints.length > 1) {
+                    let pathData = `M ${trailPoints[0].x} ${trailPoints[0].y}`;
+
+                    for (let i = 1; i < trailPoints.length - 1; i++) {
+                        const current = trailPoints[i];
+                        const next = trailPoints[i + 1];
+                        const controlX = (current.x + next.x) / 2;
+                        const controlY = (current.y + next.y) / 2;
+
+                        pathData += ` Q ${current.x} ${current.y} ${controlX} ${controlY}`;
+                    }
+
+                    // Add the last point
+                    const last = trailPoints[trailPoints.length - 1];
+                    pathData += ` L ${last.x} ${last.y}`;
+
+                    cursorTrailPath.setAttribute('d', pathData);
+                }
+
+                requestAnimationFrame(animateCursor);
+            }
+
+            // Start animation
+            animateCursor();
+        })();
+    </script>
+
 </body>
 </html>
