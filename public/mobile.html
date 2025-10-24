@@ -4806,6 +4806,9 @@
                 // Show Step 4 FIRST (so DOM elements exist)
                 originalNextStep();
 
+                // Wait for animation and DOM updates to complete (300ms + buffer)
+                await new Promise(resolve => setTimeout(resolve, 350));
+
                 // THEN initialize payment (elements now exist)
                 await initializeAllPayPayment();
                 return;
