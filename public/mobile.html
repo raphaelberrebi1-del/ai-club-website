@@ -4801,15 +4801,17 @@
             const currentStep = document.querySelector('.step-content:not(.hidden)');
             const currentStepId = currentStep ? currentStep.id : '';
 
-            // If moving from Step 3 to Step 4, initialize AllPay payment
+            // If moving from Step 3 to Step 4, show Step 4 first, then initialize payment
             if (currentStepId === 'step-3') {
-                const success = await initializeAllPayPayment();
-                if (!success) {
-                    return; // Don't proceed if payment initialization failed
-                }
+                // Show Step 4 FIRST (so DOM elements exist)
+                originalNextStep();
+
+                // THEN initialize payment (elements now exist)
+                await initializeAllPayPayment();
+                return;
             }
 
-            // Call original nextStep function
+            // For all other step transitions
             originalNextStep();
         };
     </script>
