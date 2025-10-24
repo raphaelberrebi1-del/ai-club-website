@@ -651,11 +651,11 @@
 <body class="antialiased text-zinc-100">
     <div class="site-background" aria-hidden="true"></div>
     <!-- Triangle Cursor Pointer -->
+    <!-- WebGL Fluid Splash Cursor (Vue Template Implementation) -->
+    <canvas id="fluid" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
+
+    <!-- Triangle Cursor Pointer (sits above fluid) -->
     <div class="cursor-ring"></div>
-    <!-- WebGL Fluid Splash Cursor -->
-    <div style="position: fixed; top: 0; left: 0; z-index: 1; pointer-events: none; width: 100%; height: 100%;">
-        <canvas id="fluid-cursor" style="width: 100vw; height: 100vh; display: block;"></canvas>
-    </div>
     <!-- Enhanced Background glow effects -->
     <div class="pointer-events-none fixed inset-0 overflow-hidden" style="z-index: 1;">
         <!-- Primary cyan glow - more visible -->
@@ -5893,8 +5893,8 @@
         };
     </script>
 
-    <!-- Splash Cursor Effect -->
-    <script src="./splash-cursor.js"></script>
+    <!-- WebGL Fluid Splash Cursor (Vue Template Implementation) -->
+    <script src="./pricing-fluid-cursor.js"></script>
 
     <!-- Triangle Cursor Mouse Tracking -->
     <script>

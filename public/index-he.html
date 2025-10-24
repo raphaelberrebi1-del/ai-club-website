@@ -74,24 +74,6 @@
             border-bottom-width: 8px;
         }
 
-        .cursor-trail-svg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 100002;
-        }
-
-        .cursor-trail-path {
-            fill: none;
-            stroke: url(#trail-gradient);
-            stroke-width: 3;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
         /* Typewriter effect */
         .typewriter-text {
             display: inline-block;
@@ -116,7 +98,7 @@
             50% { opacity: 0; }
         }
 
-        /* AI Art Gallery Interactive Styles */
+        /* גלריית אמנות AI Interactive Styles */
         .ai-art-clickable {
             cursor: pointer !important;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -668,19 +650,12 @@
 </head>
 <body class="antialiased text-zinc-100">
     <div class="site-background" aria-hidden="true"></div>
-    <!-- Custom cursor elements -->
+    <!-- WebGL Fluid Splash Cursor (Vue Template Implementation) -->
+    <canvas id="fluid" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
+
+    <!-- Triangle Cursor Pointer (sits above fluid) -->
     <div class="cursor-ring"></div>
-    <svg class="cursor-trail-svg">
-        <defs>
-            <linearGradient id="trail-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:rgba(6, 182, 212, 0);stop-opacity:0" />
-                <stop offset="50%" style="stop-color:rgba(6, 182, 212, 0.6);stop-opacity:1" />
-                <stop offset="100%" style="stop-color:rgba(6, 182, 212, 1);stop-opacity:1" />
-            </linearGradient>
-        </defs>
-        <path class="cursor-trail-path" d=""></path>
-    </svg>
-    <!-- Enhanced Background glow effects -->
+    <!-- Enhanced חזורground glow effects -->
     <div class="pointer-events-none fixed inset-0 overflow-hidden" style="z-index: 1;">
         <!-- Primary cyan glow - more visible -->
         <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[1400px] h-[1400px] rounded-full blur-3xl opacity-60"
@@ -1558,7 +1533,7 @@
         </div>
 
         <div class="max-w-6xl sm:px-6 lg:px-8 sm:pt-16 bg-center relative mt-0 mr-auto mb-0 ml-auto pt-0 pr-0 pl-0" style="z-index: 5;">
-            <!-- Background Animation -->
+            <!-- חזורground Animation -->
             <div class="absolute inset-0 pointer-events-none overflow-hidden">
                 <!-- Animated background text effect -->
                 <div class="absolute w-full h-full top-0 left-0 flex items-center justify-center">
@@ -1680,9 +1655,9 @@
                 <div class="text-center mb-16 max-w-4xl mx-auto fade-in-up">
                     <div class="bg-black/40 backdrop-blur-lg rounded-xl p-6 md:p-8 shadow-xl border border-amber-200/30">
                         <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-6" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
-                            Skills Your Child Will <span class="font-serif italic font-bold bg-gradient-to-r from-[#4AB4C8] via-[#60C4D4] to-[#80D4E0] bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8); text-shadow: 0 0 3px rgba(255,255,255,0.9), 0 0 5px rgba(58,156,170,0.8), 0 0 15px rgba(58,156,170,0.6), 0 0 25px rgba(58,156,170,0.4), 0 0 35px rgba(58,156,170,0.2), 2px 2px 4px rgba(0,0,0,0.3); font-weight: 700; letter-spacing: 0.5px;">Build</span>
+                            כישורים שילדכם <span class="font-serif italic font-bold bg-gradient-to-r from-[#4AB4C8] via-[#60C4D4] to-[#80D4E0] bg-clip-text text-transparent pr-2" style="-webkit-text-stroke: 1px rgba(255,255,255,0.8); text-shadow: 0 0 3px rgba(255,255,255,0.9), 0 0 5px rgba(58,156,170,0.8), 0 0 15px rgba(58,156,170,0.6), 0 0 25px rgba(58,156,170,0.4), 0 0 35px rgba(58,156,170,0.2), 2px 2px 4px rgba(0,0,0,0.3); font-weight: 700; letter-spacing: 0.5px;">ירכוש</span>
                         </h2>
-                        <p class="mt-4 text-base md:text-lg text-white/90 leading-relaxed">From AI fundamentals to real-world applications, every session builds essential skills for tomorrow's digital world.</p>
+                        <p class="mt-4 text-base md:text-lg text-white/90 leading-relaxed">מיסודות AI ועד ליישומים בעולם האמיתי, כל מפגש בונה כישורים חיוניים לעולם הדיגיטלי של מחר.</p>
                     </div>
                 </div>
 
@@ -1696,26 +1671,26 @@
                                     <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-circle" class="lucide lucide-message-circle w-4 h-4 text-teal-600" style="stroke-width: 1.5;"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
                                     </div>
-                                    <span class="text-sm font-medium text-amber-200">Master ChatGPT</span>
+                                    <span class="text-sm font-medium text-amber-200">שליטה ב-ChatGPT</span>
                                 </div>
-                                <h3 class="text-lg font-bold text-white mb-4">Learn to Use ChatGPT for School & Creativity</h3>
+                                <h3 class="text-lg font-bold text-white mb-4">למדו להשתמש ב-ChatGPT לבית הספר ויצירתיות</h3>
                                 <p class="text-amber-100 mb-4 leading-relaxed">
-                                    Use AI as their personal learning assistant - from homework help to creative writing and problem-solving.
+                                    השתמשו ב-AI כעוזר הלמידה האישי שלכם - מעזרה בשיעורי בית ועד לכתיבה יצירתית ופתרון בעיות.
                                 </p>
 
                                 <!-- ChatGPT Features -->
                                 <div class="space-y-2 mt-auto">
                                     <div class="flex items-center gap-2 text-sm text-amber-100">
                                         <div class="w-2 h-2 bg-teal-400 rounded-full"></div>
-                                        <span><strong>Homework Helper:</strong> Learn to ask the right questions for math, science, and language arts</span>
+                                        <span><strong>עוזר שיעורי בית:</strong> למדו לשאול את השאלות הנכונות למתמטיקה, מדעים ושפה</span>
                                     </div>
                                     <div class="flex items-center gap-2 text-sm text-amber-100">
                                         <div class="w-2 h-2 bg-teal-400 rounded-full"></div>
-                                        <span><strong>Creative Writing:</strong> Generate stories, poems, and creative content with AI collaboration</span>
+                                        <span><strong>כתיבה יצירתית:</strong> צרו סיפורים, שירים ותוכן יצירתי בשיתוף עם AI</span>
                                     </div>
                                     <div class="flex items-center gap-2 text-sm text-amber-100">
                                         <div class="w-2 h-2 bg-teal-400 rounded-full"></div>
-                                        <span><strong>Research Skills:</strong> Learn to fact-check and use AI for educational research safely</span>
+                                        <span><strong>כישורי מחקר:</strong> למדו לבדוק עובדות ולהשתמש ב-AI למחקר חינוכי בצורה בטוחה</span>
                                     </div>
                                 </div>
                         </div>
@@ -1726,11 +1701,11 @@
                                     <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="palette" class="lucide lucide-palette w-4 h-4 text-teal-600" style="stroke-width: 1.5;"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"></path><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle></svg>
                                     </div>
-                                    <span class="text-sm font-medium text-amber-200">Create with AI Art</span>
+                                    <span class="text-sm font-medium text-amber-200">יצירה עם אמנות AI</span>
                                 </div>
-                                <h3 class="text-lg font-bold text-white mb-4">Generate Art & Visual Content with AI</h3>
+                                <h3 class="text-lg font-bold text-white mb-4">צרו אמנות ותוכן ויזואלי עם AI</h3>
                                 <p class="text-amber-100 mb-4 leading-relaxed">
-                                    Unlock creativity by generating stunning images, designing characters, and bringing imagination to life with AI image generation.
+                                    שחררו יצירתיות על ידי יצירת תמונות מדהימות, עיצוב דמויות והבאת הדמיון לחיים עם יצירת תמונות AI.
                                 </p>
 
                                 <!-- AI Art Examples -->
@@ -1786,15 +1761,15 @@
                                     <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="code" class="lucide lucide-code w-4 h-4 text-cyan-600" style="stroke-width: 1.5;"><polyline points="16,18 22,12 16,6"></polyline><polyline points="8,6 2,12 8,18"></polyline></svg>
                                     </div>
-                                    <span class="text-sm font-medium text-amber-200">Code with AI Assistance</span>
+                                    <span class="text-sm font-medium text-amber-200">תכנות עם סיוע AI</span>
                                 </div>
 
                                 <h3 class="text-lg font-bold text-white mb-4">
-                                    Learn Programming with AI Help
+                                    למדו תכנות עם עזרת AI
                                 </h3>
 
                                 <p class="text-amber-100 mb-4 leading-relaxed">
-                                    Learn programming fundamentals while using AI to write, debug, and understand code - making coding accessible and fun.
+                                    למדו יסודות תכנות תוך שימוש ב-AI לכתיבה, ניפוי שגיאות והבנת קוד - הופכים את התכנות לנגיש ומהנה.
                                 </p>
 
                                 <div class="grid grid-cols-3 gap-2 mt-auto">
@@ -1838,7 +1813,7 @@
             <!-- Split-screen layout: Younger kids left, Teens right -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
 
-                <!-- YOUNG INNOVATORS (Ages 8–13) -->
+                <!-- חדשנים צעירים (גילאי 8–13) -->
                 <div class="relative fade-in-up delay-1">
                     <div class="bg-black/50 backdrop-blur-lg rounded-xl p-6 shadow-xl border-2 border-amber-200/30">
                     <div class="relative z-10">
@@ -1847,12 +1822,12 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
                             </div>
                             <div>
-                                <h3 class="text-xl md:text-2xl font-bold text-white">Young Innovators</h3>
-                                <p class="text-cyan-200 text-sm md:text-base">Ages 8–13</p>
+                                <h3 class="text-xl md:text-2xl font-bold text-white">חדשנים צעירים</h3>
+                                <p class="text-cyan-200 text-sm md:text-base">גילאי 8–13</p>
                             </div>
                         </div>
 
-                        <p class="text-sm md:text-base text-white/90 mb-6">Fun, guided projects that spark creativity and make learning exciting:</p>
+                        <p class="text-sm md:text-base text-white/90 mb-6">פרויקטים מהנים ומודרכים שמעוררים יצירתיות והופכים את הלמידה למרגשת:</p>
 
                         <!-- Desktop Project List -->
                         <div class="hidden md:block space-y-4">
@@ -1861,9 +1836,9 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-white">AI Homework Helper</h4>
-                                    <p class="text-sm text-white/70">Kids train a chatbot to explain math or science homework in simple steps.</p>
-                                    <span class="inline-block mt-2 text-xs bg-cyan-500/20 text-cyan-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                                    <h4 class="font-semibold text-white">עוזר שיעורי בית AI</h4>
+                                    <p class="text-sm text-white/70">ילדים מאמנים צ'אטבוט להסביר שיעורי מתמטיקה או מדעים בצעדים פשוטים.</p>
+                                    <span class="inline-block mt-2 text-xs bg-cyan-500/20 text-cyan-200 px-2 py-1 rounded-full">תבנו את זה ב-12 שבועות</span>
                                 </div>
                             </div>
 
@@ -1874,7 +1849,7 @@
                                 <div>
                                     <h4 class="font-semibold text-white">Story & Comic Maker</h4>
                                     <p class="text-sm text-white/70">Create personalized stories or comic books with AI-generated illustrations.</p>
-                                    <span class="inline-block mt-2 text-xs bg-teal-500/20 text-teal-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                                    <span class="inline-block mt-2 text-xs bg-teal-500/20 text-teal-200 px-2 py-1 rounded-full">תבנו את זה ב-12 שבועות</span>
                                 </div>
                             </div>
 
@@ -1883,9 +1858,9 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-white">AI Art Gallery</h4>
+                                    <h4 class="font-semibold text-white">גלריית אמנות AI</h4>
                                     <p class="text-sm text-white/70">Generate and curate their own digital artwork collection.</p>
-                                    <span class="inline-block mt-2 text-xs bg-cyan-500/20 text-cyan-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                                    <span class="inline-block mt-2 text-xs bg-cyan-500/20 text-cyan-200 px-2 py-1 rounded-full">תבנו את זה ב-12 שבועות</span>
                                 </div>
                             </div>
 
@@ -1894,9 +1869,9 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-white">Language Buddy</h4>
-                                    <p class="text-sm text-white/70">Build an AI friend that helps practice English, Hebrew, or another language.</p>
-                                    <span class="inline-block mt-2 text-xs bg-teal-500/20 text-teal-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                                    <h4 class="font-semibold text-white">חבר לשפות</h4>
+                                    <p class="text-sm text-white/70">בניית חבר AI שעוזר לתרגל אנגלית, עברית או שפה אחרת.</p>
+                                    <span class="inline-block mt-2 text-xs bg-teal-500/20 text-teal-200 px-2 py-1 rounded-full">תבנו את זה ב-12 שבועות</span>
                                 </div>
                             </div>
 
@@ -1907,7 +1882,7 @@
                                 <div>
                                     <h4 class="font-semibold text-white">Adventure Quiz Game</h4>
                                     <p class="text-sm text-white/70">Design fun quizzes where the AI adapts questions based on answers.</p>
-                                    <span class="inline-block mt-2 text-xs bg-amber-500/20 text-amber-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                                    <span class="inline-block mt-2 text-xs bg-amber-500/20 text-amber-200 px-2 py-1 rounded-full">תבנו את זה ב-12 שבועות</span>
                                 </div>
                             </div>
                         </div>
@@ -1918,9 +1893,9 @@
                                 <div class="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center mb-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
                                 </div>
-                                <h4 class="font-semibold text-white mb-2">AI Homework Helper</h4>
-                                <p class="text-sm text-white/70 mb-3">Kids train a chatbot to explain math or science homework in simple steps.</p>
-                                <span class="text-xs bg-blue-500/20 text-blue-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                                <h4 class="font-semibold text-white mb-2">עוזר שיעורי בית AI</h4>
+                                <p class="text-sm text-white/70 mb-3">ילדים מאמנים צ'אטבוט להסביר שיעורי מתמטיקה או מדעים בצעדים פשוטים.</p>
+                                <span class="text-xs bg-blue-500/20 text-blue-200 px-2 py-1 rounded-full">תבנו את זה ב-12 שבועות</span>
                             </div>
                             <div>
                                 <div class="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center mb-3">
@@ -1928,22 +1903,22 @@
                                 </div>
                                 <h4 class="font-semibold text-white mb-2">Story Generator</h4>
                                 <p class="text-sm text-white/70 mb-3">Create personalized adventure stories with AI that adapt to their choices.</p>
-                                <span class="text-xs bg-teal-500/20 text-teal-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                                <span class="text-xs bg-teal-500/20 text-teal-200 px-2 py-1 rounded-full">תבנו את זה ב-12 שבועות</span>
                             </div>
                             <div>
                                 <div class="w-8 h-8 bg-teal-400 rounded-lg flex items-center justify-center mb-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
                                 </div>
-                                <h4 class="font-semibold text-white mb-2">Language Buddy</h4>
-                                <p class="text-sm text-white/70 mb-3">Build an AI friend that helps practice English, Hebrew, or another language.</p>
-                                <span class="text-xs bg-teal-500/20 text-teal-200 px-2 py-1 rounded-full">Build this in 12 weeks</span>
+                                <h4 class="font-semibold text-white mb-2">חבר לשפות</h4>
+                                <p class="text-sm text-white/70 mb-3">בניית חבר AI שעוזר לתרגל אנגלית, עברית או שפה אחרת.</p>
+                                <span class="text-xs bg-teal-500/20 text-teal-200 px-2 py-1 rounded-full">תבנו את זה ב-12 שבועות</span>
                             </div>
                         </div>
                     </div>
                     </div>
                 </div>
 
-                <!-- TEEN ENTREPRENEURS (Ages 14–18) -->
+                <!-- יזמים צעירים (גילאי 14–18) -->
                 <div class="relative fade-in-up delay-2">
                     <div class="bg-black/50 backdrop-blur-lg rounded-2xl p-6 shadow-xl border-2 border-amber-200/30">
                     <div class="relative z-10">
@@ -1966,8 +1941,8 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/></svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-white">AI Business Assistant</h4>
-                                    <p class="text-sm text-white/70">Automate scheduling, reminders, or customer chat for a real small business.</p>
+                                    <h4 class="font-semibold text-white">עוזר עסקי AI</h4>
+                                    <p class="text-sm text-white/70">אוטומציה של תזמון, תזכורות או צ'אט לקוחות עבור עסק קטן אמיתי.</p>
                                     <div class="flex gap-2 mt-2">
                                         <span class="text-xs bg-blue-600/20 text-blue-200 px-2 py-1 rounded-full">Portfolio Ready</span>
                                         <span class="text-xs bg-green-600/20 text-green-200 px-2 py-1 rounded-full">Partner with local businesses</span>
@@ -1981,7 +1956,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-semibold text-white">E-commerce Helper</h4>
-                                    <p class="text-sm text-white/70">Build a chatbot that recommends products or answers FAQs for online shops.</p>
+                                    <p class="text-sm text-white/70">בניית צ'אטבוט שממליץ על מוצרים או עונה על שאלות נפוצות עבור חנויות אונליין.</p>
                                     <div class="flex gap-2 mt-2">
                                         <span class="text-xs bg-cyan-600/20 text-cyan-200 px-2 py-1 rounded-full">Real Impact</span>
                                         <span class="text-xs bg-teal-600/20 text-teal-200 px-2 py-1 rounded-full">Commercial Ready</span>
@@ -1994,7 +1969,7 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-white">Social Impact Project</h4>
+                                    <h4 class="font-semibold text-white">פרויקט השפעה חברתית</h4>
                                     <p class="text-sm text-white/70">Use AI to analyze local issues (traffic, recycling, mental health) and propose solutions.</p>
                                     <div class="flex gap-2 mt-2">
                                         <span class="text-xs bg-green-600/20 text-green-200 px-2 py-1 rounded-full">Community Impact</span>
@@ -2008,7 +1983,7 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-white">AI Coding Partner</h4>
+                                    <h4 class="font-semibold text-white">שותף תכנות AI</h4>
                                     <p class="text-sm text-white/70">Develop small apps (games, tools, websites) with AI as a coding collaborator.</p>
                                     <div class="flex gap-2 mt-2">
                                         <span class="text-xs bg-cyan-600/20 text-cyan-200 px-2 py-1 rounded-full">Technical Skills</span>
@@ -2025,7 +2000,7 @@
                                     <h4 class="font-semibold text-white">Start-up Concept Prototype</h4>
                                     <p class="text-sm text-white/70">Turn an idea (AI tutor, AI translator, AI designer) into a working demo they can pitch.</p>
                                     <div class="flex gap-2 mt-2">
-                                        <span class="text-xs bg-red-600/20 text-red-200 px-2 py-1 rounded-full">Entrepreneurship</span>
+                                        <span class="text-xs bg-red-600/20 text-red-200 px-2 py-1 rounded-full">יזמות</span>
                                         <span class="text-xs bg-yellow-600/20 text-yellow-200 px-2 py-1 rounded-full">Demo Day</span>
                                     </div>
                                 </div>
@@ -2036,11 +2011,11 @@
                 </div>
             </div>
 
-            <!-- View Full Curriculum Button -->
+            <!-- צפו בתוכנית המלאה Button -->
             <div class="text-center mt-12 pb-12">
                 <button onclick="window.location.href='curriculum.html'"
                         class="bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 px-12 rounded-xl hover:shadow-2xl hover:shadow-cyan-500/25 hover:scale-105 text-lg transition-all duration-300">
-                    View Full Curriculum <span class="arrow-roll">→</span>
+                    צפו בתוכנית המלאה <span class="arrow-roll">→</span>
                 </button>
             </div>
         </div>
@@ -2048,7 +2023,7 @@
 
     <!-- Don't Miss Out Section -->
     <section class="min-h-screen flex flex-col justify-center relative z-10">
-        <!-- Background overlays -->
+        <!-- חזורground overlays -->
         <div class="fixed inset-0 z-[1]" style="background: radial-gradient(ellipse at center, transparent 70%, rgba(0,0,0,0.02) 85%, rgba(0,0,0,0.05) 100%); pointer-events: none;"></div>
         <div class="fixed inset-0 z-[2]" style="background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 100%); pointer-events: none;"></div>
 
@@ -2076,7 +2051,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400">
                             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
                         </svg>
-                        <span class="text-xl md:text-2xl font-bold text-cyan-300">Early Bird Special Pricing</span>
+                        <span class="text-xl md:text-2xl font-bold text-cyan-300">מבצע מיוחד של מייסדים</span>
                     </div>
                     <div class="text-4xl md:text-5xl font-extrabold text-white mb-3">20% OFF</div>
                     <p class="text-base md:text-lg text-white/80">Limited time offer for early registrants<br><span class="text-sm text-white/60">ending October 17th</span></p>
@@ -2087,7 +2062,7 @@
 
     <!-- Multi-Step Registration Form Section -->
     <section id="registration-form" class="min-h-screen flex items-center relative z-10">
-        <!-- Background overlays -->
+        <!-- חזורground overlays -->
         <div class="fixed inset-0 z-[1]" style="background: radial-gradient(ellipse at center, transparent 70%, rgba(0,0,0,0.02) 85%, rgba(0,0,0,0.05) 100%); pointer-events: none;"></div>
         <div class="fixed inset-0 z-[2]" style="background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 100%); pointer-events: none;"></div>
 
@@ -2110,12 +2085,12 @@
                     </div>
                 </div>
 
-                <!-- Step 1: Child Details -->
+                <!-- Step 1: פרטי הילדים -->
 
 <div id="step-1" class="step-content p-6 flex-1 flex flex-col">
                     <div class="mb-6">
-                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">Child Details</h2>
-                        <p class="text-white/60 text-sm">Tell us about each child joining AI Club</p>
+                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">פרטי הילדים</h2>
+                        <p class="text-white/60 text-sm">ספרו לנו על כל ילד שמצטרף למועדון AI</p>
                     </div>
 
                     <!-- Program Start Date Notice -->
@@ -2130,7 +2105,7 @@
                     <div class="flex-1 space-y-6">
                         <!-- Number of Children -->
                         <div class="space-y-4">
-                            <label class="text-base font-semibold text-amber-100">How many children will be joining AI Club?</label>
+                            <label class="text-base font-semibold text-amber-100">כמה ילדים יצטרפו למועדון AI?</label>
                             <div class="flex items-center justify-center bg-amber-950/40 border border-amber-200/30 rounded-xl p-4">
                                 <button type="button" onclick="updateChildCount(-1)"
                                         class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold text-xl rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center">
@@ -2169,9 +2144,9 @@
                     </div>
 
                     <div class="flex-1 space-y-6">
-                        <!-- Registration Summary Box -->
+                        <!-- סיכום רישום Box -->
                         <div id="registration-summary" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
-                            <h3 class="text-lg font-semibold text-white mb-3">Registration Summary</h3>
+                            <h3 class="text-lg font-semibold text-white mb-3">סיכום רישום</h3>
                             <div id="step-2-summary" class="space-y-2 text-sm text-white/80">
                                 <!-- Summary will be populated here -->
                             </div>
@@ -2179,13 +2154,13 @@
 
                         <!-- Payment Plan Selection -->
                         <div class="space-y-4">
-                            <label class="text-base font-semibold text-amber-100">Payment Plan (applies to all children)</label>
+                            <label class="text-base font-semibold text-amber-100">תוכנית תשלום (חלה על כל הילדים)</label>
                             <div class="grid grid-cols-1 gap-3">
                                 <button type="button" onclick="selectBulkDuration('monthly')"
                                         class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="monthly">
                                     <div class="flex justify-between items-center">
                                         <div class="flex-1">
-                                            <div class="text-lg font-semibold text-white">Monthly</div>
+                                            <div class="text-lg font-semibold text-white">חודשי</div>
                                             <div id="monthly-price-display" class="text-sm text-white/60">Starting at ₪599/month</div>
                                         </div>
                                         <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
@@ -2199,7 +2174,7 @@
                                     <span class="absolute top-2 right-2 bg-gradient-to-r from-amber-400 to-amber-500 text-amber-950 text-xs font-bold px-2 py-1 rounded-full">MOST POPULAR</span>
                                     <div class="flex justify-between items-center">
                                         <div class="flex-1">
-                                            <div class="text-lg font-semibold text-white">Quarterly</div>
+                                            <div class="text-lg font-semibold text-white">רבעוני</div>
                                             <div id="quarterly-price-display" class="text-sm text-white/60">Starting at ₪519/month</div>
                                         </div>
                                         <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
@@ -2213,7 +2188,7 @@
                                     <div class="flex justify-between items-center">
                                         <div class="flex-1">
                                             <div class="text-lg font-semibold text-white flex items-center gap-2">
-                                                <span>Annual</span>
+                                                <span>שנתי</span>
                                                 <span>💎</span>
                                             </div>
                                             <div id="yearly-price-display" class="text-sm text-white/60">Starting at ₪479/month</div>
@@ -2228,7 +2203,7 @@
                                         class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="trial">
                                     <div class="flex justify-between items-center">
                                         <div class="flex-1">
-                                            <div class="text-lg font-semibold text-white">Free Trial</div>
+                                            <div class="text-lg font-semibold text-white">ניסיון חינם</div>
                                             <div class="text-sm text-white/60">1 Trial lesson</div>
                                         </div>
                                         <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
@@ -2256,7 +2231,7 @@
 
                     <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
                         <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
-                            Back
+                            חזור
                         </button>
                         <button onclick="nextStep()" id="step-2-next" class="flex-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
                             Continue
@@ -2264,23 +2239,23 @@
                     </div>
                 </div>
 
-                <!-- Step 3: Parent Contact Details -->
+                <!-- Step 3: פרטי קשר של ההורה -->
                 <div id="step-3" class="step-content p-6 flex-1 flex-col hidden">
                     <div class="mb-6">
-                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">Parent Contact Details</h2>
+                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">פרטי קשר של ההורה</h2>
                         <p class="text-white/60 text-sm">Your contact information for registration</p>
                     </div>
 
                     <div class="flex-1 space-y-6">
-                        <!-- Registration Summary -->
+                        <!-- סיכום רישום -->
                         <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
-                            <h3 class="text-lg font-semibold text-white mb-3">Registration Summary</h3>
+                            <h3 class="text-lg font-semibold text-white mb-3">סיכום רישום</h3>
                             <div id="step-3-summary" class="space-y-2 text-sm text-white/80">
                                 <!-- Summary will be populated here -->
                             </div>
                             <div class="border-t border-cyan-400/30 pt-3 mt-3">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-base font-semibold text-white">Total:</span>
+                                    <span class="text-base font-semibold text-white">סה״כ:</span>
                                     <span id="step-3-total" class="text-xl font-bold text-cyan-300">₪0</span>
                                 </div>
                             </div>
@@ -2310,7 +2285,7 @@
 
                     <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
                         <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
-                            Back
+                            חזור
                         </button>
                         <button onclick="nextStep()" id="step-3-next" class="flex-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
                             Continue
@@ -2371,7 +2346,7 @@
                             </div>
                             <div class="border-t border-cyan-400/30 pt-3 mt-3">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-base font-semibold text-white">Total:</span>
+                                    <span class="text-base font-semibold text-white">סה״כ:</span>
                                     <span id="step-4-total" class="text-2xl font-bold text-cyan-300">₪0</span>
                                 </div>
                             </div>
@@ -2537,7 +2512,7 @@
                                             <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                                             </svg>
-                                            Contact
+                                            צור קשר
                                         </h5>
                                         <p class="text-white/80 text-sm ml-6">+972-54-315-9025</p>
                                         <p class="text-white/80 text-sm ml-6">raphael@aikidz.club</p>
@@ -2559,7 +2534,7 @@
 
                     <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
                         <button onclick="previousStep()" id="step-4-back" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
-                            Back
+                            חזור
                         </button>
                     </div>
                 </div>
@@ -2573,36 +2548,36 @@
         <div class="container mx-auto px-6 py-12">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent mb-4">AI Kidz Club</h3>
-                    <p class="text-white/60">Empowering the next generation with AI education.</p>
+                    <h3 class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent mb-4">מועדון AI</h3>
+                    <p class="text-white/60">מעצימים את הדור הבא עם חינוך AI.</p>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <h4 class="font-semibold mb-4">קישורים מהירים</h4>
                     <ul class="space-y-2 text-white/60">
-                        <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a></li>
-                        <li><a href="curriculum.html" class="hover:text-cyan-400 transition-colors">Curriculum</a></li>
-                        <li><a href="pricing.html" class="hover:text-cyan-400 transition-colors">Pricing</a></li>
-                        <li><a href="faq.html" class="hover:text-cyan-400 transition-colors">FAQ</a></li>
+                        <li><a href="index-he.html" class="hover:text-cyan-400 transition-colors">בית</a></li>
+                        <li><a href="curriculum-he-desktop.html" class="hover:text-cyan-400 transition-colors">תוכנית לימודים</a></li>
+                        <li><a href="pricing-he-desktop.html" class="hover:text-cyan-400 transition-colors">מחירים</a></li>
+                        <li><a href="faq-he.html" class="hover:text-cyan-400 transition-colors">שאלות נפוצות</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Legal</h4>
+                    <h4 class="font-semibold mb-4">משפטי</h4>
                     <ul class="space-y-2 text-white/60">
-                        <li><a href="privacy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
-                        <li><a href="terms.html" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
+                        <li><a href="privacy.html" class="hover:text-cyan-400 transition-colors">מדיניות פרטיות</a></li>
+                        <li><a href="terms.html" class="hover:text-cyan-400 transition-colors">תנאי שירות</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <h4 class="font-semibold mb-4">צור קשר</h4>
                     <ul class="space-y-2 text-white/60">
-                        <li>Email: <a href="mailto:raphael@aikidz.club" class="hover:text-cyan-400 transition-colors">raphael@aikidz.club</a></li>
-                        <li>Phone: <a href="tel:+972543159025" class="hover:text-cyan-400 transition-colors">+972-54-315-9025</a></li>
-                        <li>Location: <strong>Raanana</strong> <span class="block text-white/60 text-xs mt-0.5">Coming soon: Ramat Aviv, Herzliya, Ramat Hasharon & more</span></li>
+                        <li>אימייל: <a href="mailto:raphael@aikidz.club" class="hover:text-cyan-400 transition-colors">raphael@aikidz.club</a></li>
+                        <li>טלפון: <a href="tel:+972543159025" class="hover:text-cyan-400 transition-colors">+972-54-315-9025</a></li>
+                        <li>מיקום: <strong>רעננה</strong> <span class="block text-white/60 text-xs mt-0.5">בקרוב: רמת אביב, הרצליה, רמת השרון ועוד</span></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-white/20 mt-8 pt-8 text-center text-white/60">
-                <p>&copy; 2025 AI Kidz Club. All rights reserved.</p>
+                <p>&copy; 2025 מועדון AI. כל הזכויות שמורות.</p>
             </div>
         </div>
     </footer>
@@ -2614,11 +2589,11 @@
             // Typewriter effect
             const typewriterElement = document.getElementById('typewriter-text');
             const phrases = [
-                'AI Era',
-                'AI Revolution',
-                'Digital World',
-                'Future of Learning',
-                'Age of Innovation'
+                'ה-AI',
+                'מהפכת ה-AI',
+                'העולם הדיגיטלי',
+                'עתיד הלמידה',
+                'עידן החדשנות'
             ];
 
             let phraseIndex = 0;
@@ -2674,7 +2649,7 @@
                 typeWriter();
             }, 1500);
 
-            // AI Art Gallery Modal Functionality
+            // גלריית אמנות AI Modal Functionality
             const artModal = document.getElementById('artModal');
             const modalImage = document.getElementById('modalImage');
             const modalPrompt = document.getElementById('modalPrompt');
@@ -2753,7 +2728,7 @@
                 if (mainAddButton) {
                     console.log('Found main Add Another Child button, adding backup event listener');
                     mainAddButton.addEventListener('click', function(e) {
-                        console.log('Backup event listener triggered');
+                        console.log('חזורup event listener triggered');
                         if (typeof addAnotherChild === 'function') {
                             addAnotherChild();
                         } else {
@@ -2765,104 +2740,48 @@
                 }
             }, 1000);
 
-            // New Ribbon Trail Cursor
+            // Triangle Cursor Pointer (without trail - replaced by fluid simulation)
             const cursorRing = document.querySelector('.cursor-ring');
-            const trailPath = document.querySelector('.cursor-trail-path');
+            if (cursorRing) {
+                let mouseX = 0, mouseY = 0;
+                let cursorX = 0, cursorY = 0;
+                const smoothing = 0.15;
 
-            let mouseX = 0, mouseY = 0;
-            let prevMouseX = 0, prevMouseY = 0;
-            let currentAngle = 0;
-            const trailPoints = [];
-            const maxTrailPoints = 12;
+                // Track mouse position
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                });
 
-            // Track mouse position
-            document.addEventListener('mousemove', (e) => {
-                prevMouseX = mouseX;
-                prevMouseY = mouseY;
-                mouseX = e.clientX;
-                mouseY = e.clientY;
+                // Hover detection for interactive elements
+                const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, [onclick]');
+                interactiveElements.forEach(el => {
+                    el.addEventListener('mouseenter', () => {
+                        cursorRing.classList.add('hover');
+                    });
+                    el.addEventListener('mouseleave', () => {
+                        cursorRing.classList.remove('hover');
+                    });
+                });
 
-                // Calculate angle of movement
-                const deltaX = mouseX - prevMouseX;
-                const deltaY = mouseY - prevMouseY;
-
-                if (deltaX !== 0 || deltaY !== 0) {
-                    currentAngle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+                // Animate cursor position
+                function animateCursor() {
+                    cursorX += (mouseX - cursorX) * smoothing;
+                    cursorY += (mouseY - cursorY) * smoothing;
+                    cursorRing.style.left = cursorX + 'px';
+                    cursorRing.style.top = cursorY + 'px';
+                    requestAnimationFrame(animateCursor);
                 }
+                animateCursor();
 
-                // Update ring position and rotation
-                cursorRing.style.left = mouseX + 'px';
-                cursorRing.style.top = mouseY + 'px';
-                cursorRing.style.transform = `translate(-50%, -50%) rotate(${currentAngle}deg)`;
-
-                // Add point to trail
-                trailPoints.push({ x: mouseX, y: mouseY, time: Date.now() });
-
-                // Keep only recent points
-                if (trailPoints.length > maxTrailPoints) {
-                    trailPoints.shift();
-                }
-            });
-
-            // Animate trail
-            function updateTrail() {
-                // Remove old points
-                const now = Date.now();
-                while (trailPoints.length > 0 && now - trailPoints[0].time > 200) {
-                    trailPoints.shift();
-                }
-
-                // Create smooth SVG path
-                if (trailPoints.length > 1) {
-                    let pathD = `M ${trailPoints[0].x} ${trailPoints[0].y}`;
-
-                    for (let i = 1; i < trailPoints.length; i++) {
-                        const point = trailPoints[i];
-                        const prevPoint = trailPoints[i - 1];
-
-                        // Create smooth curve
-                        const midX = (prevPoint.x + point.x) / 2;
-                        const midY = (prevPoint.y + point.y) / 2;
-
-                        pathD += ` Q ${prevPoint.x} ${prevPoint.y}, ${midX} ${midY}`;
-                    }
-
-                    // Add final point
-                    if (trailPoints.length > 0) {
-                        const lastPoint = trailPoints[trailPoints.length - 1];
-                        pathD += ` L ${lastPoint.x} ${lastPoint.y}`;
-                    }
-
-                    trailPath.setAttribute('d', pathD);
-                } else {
-                    trailPath.setAttribute('d', '');
-                }
-
-                requestAnimationFrame(updateTrail);
+                // Handle cursor visibility
+                document.addEventListener('mouseleave', () => {
+                    cursorRing.style.opacity = '0';
+                });
+                document.addEventListener('mouseenter', () => {
+                    cursorRing.style.opacity = '1';
+                });
             }
-            updateTrail();
-
-            // Hover detection for interactive elements
-            const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, [onclick]');
-
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursorRing.classList.add('hover');
-                });
-
-                el.addEventListener('mouseleave', () => {
-                    cursorRing.classList.remove('hover');
-                });
-            });
-
-            // Handle cursor visibility
-            document.addEventListener('mouseleave', () => {
-                cursorRing.style.opacity = '0';
-            });
-
-            document.addEventListener('mouseenter', () => {
-                cursorRing.style.opacity = '1';
-            });
 
             // Enhanced particle animations
             const particles = document.querySelectorAll('[class^="particle-"]');
@@ -3098,16 +3017,16 @@
             bulkDuration: null,
             children: [{ name: '', ageGroup: '' }],
             parentName: '',
-            parentEmail: '',
-            parentPhone: '',
+            parentאימייל: '',
+            parentטלפון: '',
             paymentMethod: 'bit'
         };
 
         // Step Navigation
         function nextStep() {
-            // Check if user selected Free Trial at end of Step 3 (after entering parent info)
+            // Check if user selected ניסיון חינם at end of Step 3 (after entering parent info)
             if (currentWizardStep === 3 && wizardData.bulkDuration === 'trial') {
-                console.log('🎁 Free Trial selected - skipping payment and submitting');
+                console.log('🎁 ניסיון חינם selected - skipping payment and submitting');
                 submitTrialRegistration();
                 return;
             }
@@ -3180,7 +3099,7 @@
             }
         }
 
-        // Step 1 Functions (Child Details)
+        // Step 1 Functions (פרטי הילדים)
         function updateChildCount(change) {
             const newCount = wizardData.childCount + change;
             if (newCount < 1 || newCount > 5) return;
@@ -3234,7 +3153,7 @@
                                 <div class="flex justify-between items-center">
                                     <div>
                                         <div class="text-lg font-semibold text-white">Young Innovators</div>
-                                        <div class="text-sm text-white/60">Ages 8-10 • Sundays 16:00-17:00</div>
+                                        <div class="text-sm text-white/60">Ages 8-10 • ימי ראשון 16:00-17:00</div>
                                     </div>
                                     <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
                                         <div class="w-3 h-3 bg-cyan-400 rounded-full ${wizardData.children[i]?.ageGroup === 'young' ? '' : 'opacity-0'} transition-opacity"></div>
@@ -3247,7 +3166,7 @@
                                 <div class="flex justify-between items-center">
                                     <div>
                                         <div class="text-lg font-semibold text-white">Tech Champions</div>
-                                        <div class="text-sm text-white/60">Ages 11-13 • Sundays 17:30-18:45</div>
+                                        <div class="text-sm text-white/60">Ages 11-13 • ימי ראשון 17:30-18:45</div>
                                     </div>
                                     <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
                                         <div class="w-3 h-3 bg-cyan-400 rounded-full ${wizardData.children[i]?.ageGroup === 'tech' ? '' : 'opacity-0'} transition-opacity"></div>
@@ -3260,7 +3179,7 @@
                                 <div class="flex justify-between items-center">
                                     <div>
                                         <div class="text-lg font-semibold text-white">Future Leaders</div>
-                                        <div class="text-sm text-white/60">Ages 14-18 • Sundays 19:00-20:30</div>
+                                        <div class="text-sm text-white/60">Ages 14-18 • ימי ראשון 19:00-20:30</div>
                                     </div>
                                     <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
                                         <div class="w-3 h-3 bg-cyan-400 rounded-full ${wizardData.children[i]?.ageGroup === 'future' ? '' : 'opacity-0'} transition-opacity"></div>
@@ -3369,9 +3288,9 @@
             let summaryHTML = `<div class="text-base font-medium text-white mb-2">${wizardData.childCount} child${wizardData.childCount > 1 ? 'ren' : ''} enrolled:</div>`;
 
             wizardData.children.forEach((child, i) => {
-                const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators' :
+                const ageGroupName = child.ageGroup === 'young' ? 'חדשנים צעירים' :
                                     child.ageGroup === 'tech' ? 'Tech Champions' :
-                                    'Future Leaders';
+                                    'מנהיגי העתיד';
                 const ageRange = child.ageGroup === 'young' ? '8-10' :
                                 child.ageGroup === 'tech' ? '11-13' : '14-18';
                 summaryHTML += `<div class="text-sm text-white/80">• ${child.name} - ${ageGroupName} (${ageRange})</div>`;
@@ -3477,19 +3396,19 @@
             const content = document.getElementById('pricing-breakdown-content');
             if (!content || content.classList.contains('hidden')) return;
 
-            // Special handling for Free Trial
+            // Special handling for ניסיון חינם
             if (wizardData.bulkDuration === 'trial') {
                 let breakdownHTML = '';
 
                 wizardData.children.forEach((child, i) => {
-                    const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators' :
+                    const ageGroupName = child.ageGroup === 'young' ? 'חדשנים צעירים' :
                                         child.ageGroup === 'tech' ? 'Tech Champions' :
-                                        'Future Leaders';
+                                        'מנהיגי העתיד';
 
                     breakdownHTML += `
                         <div class="flex justify-between items-center text-sm">
                             <span class="text-white/80">${child.name} (${ageGroupName})</span>
-                            <span class="text-white font-medium">₪0 (Free Trial)</span>
+                            <span class="text-white font-medium">₪0 (ניסיון חינם)</span>
                         </div>
                     `;
                 });
@@ -3498,7 +3417,7 @@
                     <div class="border-t border-cyan-400/30 pt-3 mt-3">
                         <div class="flex justify-between items-center">
                             <span class="text-base font-bold text-white">Total</span>
-                            <span class="text-xl font-bold text-cyan-300">₪0 (Free Trial)</span>
+                            <span class="text-xl font-bold text-cyan-300">₪0 (ניסיון חינם)</span>
                         </div>
                         <div class="text-xs text-amber-300 mt-2">1 Trial lesson per child</div>
                     </div>
@@ -3515,9 +3434,9 @@
                 const price = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
                 subtotal += price;
 
-                const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators' :
+                const ageGroupName = child.ageGroup === 'young' ? 'חדשנים צעירים' :
                                     child.ageGroup === 'tech' ? 'Tech Champions' :
-                                    'Future Leaders';
+                                    'מנהיגי העתיד';
 
                 breakdownHTML += `
                     <div class="flex justify-between items-center text-sm">
@@ -3569,11 +3488,11 @@
             if (!summaryContainer || !totalElement) return;
 
             // Use centralized calculation function for consistency
-            const totalMonthlyPrice = calculateWizardTotal();
+            const totalחודשיPrice = calculateWizardTotal();
             const isTrial = wizardData.bulkDuration === 'trial';
 
             // Build summary HTML
-            const planName = isTrial ? 'Free Trial - 1 Trial lesson per child' :
+            const planName = isTrial ? 'ניסיון חינם - 1 Trial lesson per child' :
                            (wizardData.bulkDuration.charAt(0).toUpperCase() + wizardData.bulkDuration.slice(1));
             let summaryHTML = `
                 <div class="text-base font-medium text-white mb-2">
@@ -3582,16 +3501,16 @@
             `;
 
             wizardData.children.forEach((child, i) => {
-                const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators' :
+                const ageGroupName = child.ageGroup === 'young' ? 'חדשנים צעירים' :
                                     child.ageGroup === 'tech' ? 'Tech Champions' :
-                                    'Future Leaders';
+                                    'מנהיגי העתיד';
                 const ageRange = child.ageGroup === 'young' ? '8-10' :
                                 child.ageGroup === 'tech' ? '11-13' : '14-18';
                 summaryHTML += `<div class="text-sm text-white/80 mt-1">• ${child.name} - ${ageGroupName} (${ageRange})</div>`;
             });
 
             summaryContainer.innerHTML = summaryHTML;
-            totalElement.textContent = isTrial ? `₪0 (Free Trial)` : `₪${totalMonthlyPrice}/month`;
+            totalElement.textContent = isTrial ? `₪0 (ניסיון חינם)` : `₪${totalחודשיPrice}/month`;
 
             validateStep3();
         }
@@ -3616,9 +3535,9 @@
             }
         }
 
-        // Free Trial Registration
+        // ניסיון חינם Registration
         async function submitTrialRegistration() {
-            console.log('🎁 Submitting Free Trial registration');
+            console.log('🎁 Submitting ניסיון חינם registration');
 
             const registrationData = {
                 parent: {
@@ -3628,9 +3547,9 @@
                 },
                 children: wizardData.children.map(child => ({
                     name: child.name,
-                    program: child.ageGroup === 'young' ? 'Young Innovators (8-10)' :
+                    program: child.ageGroup === 'young' ? 'חדשנים צעירים (8-10)' :
                              child.ageGroup === 'tech' ? 'Tech Champions (11-13)' :
-                             'Future Leaders (14-18)',
+                             'מנהיגי העתיד (14-18)',
                     ageGroup: child.ageGroup,
                     price: 0  // Free trial
                 })),
@@ -3700,8 +3619,8 @@
                 bulkDuration: null,
                 children: [{ name: '', ageGroup: '' }],
                 parentName: '',
-                parentEmail: '',
-                parentPhone: '',
+                parentאימייל: '',
+                parentטלפון: '',
                 paymentMethod: 'bit'
             };
 
@@ -3765,16 +3684,16 @@
                                 <label class="text-sm font-medium text-white/90">Select Age Group</label>
                                 <div class="grid grid-cols-1 gap-2 mt-2">
                                     <button type="button" onclick="selectMainFormAgeGroup(this, 'young', 599, ${mainFormChildCount}, event)" class="main-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Young Innovators (8-10)</div>
-                                        <div class="text-xs text-white/60">₪599/month • Sundays 16:00-17:00</div>
+                                        <div class="font-medium text-white">חדשנים צעירים (8-10)</div>
+                                        <div class="text-xs text-white/60">₪599/month • ימי ראשון 16:00-17:00</div>
                                     </button>
                                     <button type="button" onclick="selectMainFormAgeGroup(this, 'tech', 599, ${mainFormChildCount}, event)" class="main-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
                                         <div class="font-medium text-white">Tech Champions (11-13)</div>
-                                        <div class="text-xs text-white/60">₪599/month • Sundays 17:30-18:45</div>
+                                        <div class="text-xs text-white/60">₪599/month • ימי ראשון 17:30-18:45</div>
                                     </button>
                                     <button type="button" onclick="selectMainFormAgeGroup(this, 'future', 599, ${mainFormChildCount}, event)" class="main-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Future Leaders (14-18)</div>
-                                        <div class="text-xs text-white/60">₪599/month • Sundays 19:00-20:30</div>
+                                        <div class="font-medium text-white">מנהיגי העתיד (14-18)</div>
+                                        <div class="text-xs text-white/60">₪599/month • ימי ראשון 19:00-20:30</div>
                                     </button>
                                 </div>
                             </div>
@@ -4031,16 +3950,16 @@
                                 <label class="text-sm font-medium text-white/90">Select Age Group</label>
                                 <div class="grid grid-cols-1 gap-2 mt-2">
                                     <button type="button" onclick="selectModalAgeGroup1(this, 'young', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Young Innovators (8-10)</div>
-                                        <div class="text-xs text-white/60">₪599/month • Sundays 16:00-17:00</div>
+                                        <div class="font-medium text-white">חדשנים צעירים (8-10)</div>
+                                        <div class="text-xs text-white/60">₪599/month • ימי ראשון 16:00-17:00</div>
                                     </button>
                                     <button type="button" onclick="selectModalAgeGroup1(this, 'tech', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
                                         <div class="font-medium text-white">Tech Champions (11-13)</div>
-                                        <div class="text-xs text-white/60">₪599/month • Sundays 17:30-18:45</div>
+                                        <div class="text-xs text-white/60">₪599/month • ימי ראשון 17:30-18:45</div>
                                     </button>
                                     <button type="button" onclick="selectModalAgeGroup1(this, 'future', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Future Leaders (14-18)</div>
-                                        <div class="text-xs text-white/60">₪599/month • Sundays 19:00-20:30</div>
+                                        <div class="font-medium text-white">מנהיגי העתיד (14-18)</div>
+                                        <div class="text-xs text-white/60">₪599/month • ימי ראשון 19:00-20:30</div>
                                     </button>
                                 </div>
                             </div>
@@ -4101,16 +4020,16 @@
                                 <label class="text-sm font-medium text-white/90">Select Age Group</label>
                                 <div class="grid grid-cols-1 gap-2 mt-2">
                                     <button type="button" onclick="selectModalAgeGroup2(this, 'young', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Young Innovators (8-10)</div>
-                                        <div class="text-xs text-white/60">₪599/month • Sundays 16:00-17:00</div>
+                                        <div class="font-medium text-white">חדשנים צעירים (8-10)</div>
+                                        <div class="text-xs text-white/60">₪599/month • ימי ראשון 16:00-17:00</div>
                                     </button>
                                     <button type="button" onclick="selectModalAgeGroup2(this, 'tech', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
                                         <div class="font-medium text-white">Tech Champions (11-13)</div>
-                                        <div class="text-xs text-white/60">₪599/month • Sundays 17:30-18:45</div>
+                                        <div class="text-xs text-white/60">₪599/month • ימי ראשון 17:30-18:45</div>
                                     </button>
                                     <button type="button" onclick="selectModalAgeGroup2(this, 'future', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                        <div class="font-medium text-white">Future Leaders (14-18)</div>
-                                        <div class="text-xs text-white/60">₪599/month • Sundays 19:00-20:30</div>
+                                        <div class="font-medium text-white">מנהיגי העתיד (14-18)</div>
+                                        <div class="text-xs text-white/60">₪599/month • ימי ראשון 19:00-20:30</div>
                                     </button>
                                 </div>
                             </div>
@@ -4171,16 +4090,16 @@
                             <label class="text-sm font-medium text-white/90">Select Age Group</label>
                             <div class="grid grid-cols-1 gap-2 mt-2">
                                 <button type="button" onclick="selectModalAgeGroup(this, 'young', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                    <div class="font-medium text-white">Young Innovators (8-10)</div>
-                                    <div class="text-xs text-white/60">₪599/month • Sundays 16:00-17:00</div>
+                                    <div class="font-medium text-white">חדשנים צעירים (8-10)</div>
+                                    <div class="text-xs text-white/60">₪599/month • ימי ראשון 16:00-17:00</div>
                                 </button>
                                 <button type="button" onclick="selectModalAgeGroup(this, 'tech', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
                                     <div class="font-medium text-white">Tech Champions (11-13)</div>
-                                    <div class="text-xs text-white/60">₪599/month • Sundays 17:30-18:45</div>
+                                    <div class="text-xs text-white/60">₪599/month • ימי ראשון 17:30-18:45</div>
                                 </button>
                                 <button type="button" onclick="selectModalAgeGroup(this, 'future', 599, ${childCount}, event)" class="modal-age-btn text-left p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-                                    <div class="font-medium text-white">Future Leaders (14-18)</div>
-                                    <div class="text-xs text-white/60">₪599/month • Sundays 19:00-20:30</div>
+                                    <div class="font-medium text-white">מנהיגי העתיד (14-18)</div>
+                                    <div class="text-xs text-white/60">₪599/month • ימי ראשון 19:00-20:30</div>
                                 </button>
                             </div>
                         </div>
@@ -4417,9 +4336,9 @@
             wizardData.children.forEach((child, index) => {
                 if (child.name && child.ageGroup) {
                     // Map age group to program name
-                    const programName = child.ageGroup === 'young' ? 'Young Innovators (8-10)' :
+                    const programName = child.ageGroup === 'young' ? 'חדשנים צעירים (8-10)' :
                                        child.ageGroup === 'tech' ? 'Tech Champions (11-13)' :
-                                       'Future Leaders (14-18)';
+                                       'מנהיגי העתיד (14-18)';
 
                     // Get age-specific pricing
                     const childPrice = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
@@ -4522,11 +4441,11 @@
         function submitToWhatsApp(formData) {
             const message = `Hi! I'd like to register for AI Club:\n\n` +
                 `Parent: ${formData.parent.name}\n` +
-                `Email: ${formData.parent.email}\n` +
-                `Phone: ${formData.parent.phone}\n\n` +
+                `אימייל: ${formData.parent.email}\n` +
+                `טלפון: ${formData.parent.phone}\n\n` +
                 `Children:\n` +
                 formData.children.map(child => `- ${child.name} (${child.program})`).join('\n') +
-                `\n\nTotal: ₪${formData.totalPrice}`;
+                `\n\nסה״כ: ₪${formData.totalPrice}`;
 
             window.open(`https://wa.me/972543159025?text=${encodeURIComponent(message)}`, '_blank');
         }
@@ -4536,7 +4455,7 @@
             const childrenCount = formData.children.length;
             const successMessage = `
                 <style>
-                    @keyframes fadeInBackdrop {
+                    @keyframes fadeInחזורdrop {
                         from { opacity: 0; }
                         to { opacity: 1; }
                     }
@@ -4566,7 +4485,7 @@
                     @keyframes fadeInStagger2 { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
                     @keyframes fadeInStagger3 { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
 
-                    .success-backdrop { animation: fadeInBackdrop 0.3s ease-out; }
+                    .success-backdrop { animation: fadeInחזורdrop 0.3s ease-out; }
                     .success-card { animation: scaleInUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both; }
                     .success-icon { animation: float 3s ease-in-out infinite 2s; }
                     .success-circle {
@@ -4630,7 +4549,7 @@
                                 <p class="text-2xl font-bold text-cyan-300 mt-2">₪${formData.totalPrice}<span class="text-sm text-white/60">/month</span></p>
                             </div>
 
-                            <!-- Next steps -->
+                            <!-- המשך steps -->
                             <div class="text-left space-y-3 mb-6">
                                 <div class="stagger-1 flex items-start gap-3 text-white/80">
                                     <div class="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -4831,7 +4750,7 @@
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileMenuPanel = document.getElementById('mobile-menu-panel');
             const mobileMenuClose = document.getElementById('mobile-menu-close');
-            const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+            const mobileMenuחזורdrop = document.getElementById('mobile-menu-backdrop');
             const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
             // Show mobile menu
@@ -4862,8 +4781,8 @@
                 mobileMenuClose.addEventListener('click', hideMobileMenu);
             }
 
-            if (mobileMenuBackdrop) {
-                mobileMenuBackdrop.addEventListener('click', hideMobileMenu);
+            if (mobileMenuחזורdrop) {
+                mobileMenuחזורdrop.addEventListener('click', hideMobileMenu);
             }
 
             // Close menu when navigation link is clicked
@@ -5005,29 +4924,29 @@
                 // Fix mobile background with enhanced approach and diagnostics
                 console.log('🔧 Applying mobile background fix...');
 
-                const siteBackground = document.querySelector('.site-background');
-                if (siteBackground) {
-                    siteBackground.style.backgroundImage = 'url("/magical-ai-kids.jpg")';
-                    siteBackground.style.backgroundPosition = 'center top';
-                    siteBackground.style.position = 'absolute';
+                const siteחזורground = document.querySelector('.site-background');
+                if (siteחזורground) {
+                    siteחזורground.style.backgroundImage = 'url("/magical-ai-kids.jpg")';
+                    siteחזורground.style.backgroundPosition = 'center top';
+                    siteחזורground.style.position = 'absolute';
                 }
 
                 document.body.style.backgroundColor = '#0a0a12';
                 document.body.style.minHeight = '100vh';
 
                 // Verify background is applied
-                if (siteBackground) {
+                if (siteחזורground) {
                     console.log('📱 Mobile background applied:', {
-                        backgroundImage: siteBackground.style.backgroundImage,
-                        backgroundPosition: siteBackground.style.backgroundPosition,
-                        positioning: siteBackground.style.position
+                        backgroundImage: siteחזורground.style.backgroundImage,
+                        backgroundPosition: siteחזורground.style.backgroundPosition,
+                        positioning: siteחזורground.style.position
                     });
                 }
 
                 // Test image loading
                 const img = new Image();
-                img.onload = () => console.log('✅ Background image loaded successfully on mobile');
-                img.onerror = () => console.log('❌ Background image failed to load on mobile');
+                img.onload = () => console.log('✅ חזורground image loaded successfully on mobile');
+                img.onerror = () => console.log('❌ חזורground image failed to load on mobile');
                 img.src = '/magical-ai-kids.jpg';
 
                 // Add mobile-optimized class to body
@@ -5485,7 +5404,7 @@
             eventTitle,
             new Date('2025-01-05 16:00:00'), // Adjust based on group time
             new Date('2025-01-05 17:00:00'),
-            {description: `Student: ${child.name}\nParent: ${data.parent.name}\nEmail: ${data.parent.email}`}
+            {description: `Student: ${child.name}\nParent: ${data.parent.name}\nאימייל: ${data.parent.email}`}
           );
         });
 
@@ -5504,9 +5423,9 @@
         Children registered:
         ${data.children.map(child => `- ${child.name} (${child.program})`).join('\n')}
 
-        Total: ₪${data.totalPrice}
+        סה״כ: ₪${data.totalPrice}
 
-        Next steps:
+        המשך steps:
         1. You'll receive a calendar invite with class schedules
         2. Payment instructions will follow shortly
         3. We'll add you to the WhatsApp group before classes start
@@ -5755,9 +5674,9 @@
          */
         function getDurationLabel(duration) {
             const labels = {
-                monthly: 'Monthly',
-                quarterly: 'Quarterly (3 months)',
-                yearly: 'Annual (12 months)'
+                monthly: 'חודשי',
+                quarterly: 'רבעוני (3 months)',
+                yearly: 'שנתי (12 months)'
             };
             return labels[duration] || duration;
         }
@@ -5783,8 +5702,8 @@
             // Return the existing wizardData object directly
             return {
                 parentName: wizardData.parentName,
-                parentEmail: wizardData.parentEmail,
-                parentPhone: wizardData.parentPhone,
+                parentאימייל: wizardData.parentEmail,
+                parentטלפון: wizardData.parentPhone,
                 children: wizardData.children.map(child => ({
                     name: child.name,
                     ageGroup: child.ageGroup,
@@ -5895,7 +5814,7 @@
         }
 
         // Auto-select credit card as default payment method when reaching Step 4
-        const originalNextStep = nextStep;
+        const originalהמשךStep = nextStep;
         nextStep = async function() {
             const currentStep = document.querySelector('.step-content:not(.hidden)');
             const currentStepId = currentStep ? currentStep.id : '';
@@ -5903,7 +5822,7 @@
             // If moving from Step 3 to Step 4, show payment methods
             if (currentStepId === 'step-3') {
                 // Just proceed to Step 4 - user will select payment method
-                originalNextStep();
+                originalהמשךStep();
 
                 // Auto-select credit card as default after a short delay
                 setTimeout(() => {
@@ -5913,9 +5832,12 @@
             }
 
             // Call original nextStep function
-            originalNextStep();
+            originalהמשךStep();
         };
     </script>
+
+    <!-- WebGL Fluid Splash Cursor (Vue Template Implementation) -->
+    <script src="./pricing-fluid-cursor.js"></script>
 
 </body>
 </html>
