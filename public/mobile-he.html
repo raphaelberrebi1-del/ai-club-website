@@ -4429,5 +4429,66 @@
         };
     </script>
 
+    <script>
+        // Typewriter Effect
+        const typewriterElement = document.getElementById('typewriter-text');
+        const phrases = [
+            '-AI',
+            'למידה',
+            'חדשנות',
+            'יצירתיות',
+            'טכנולוגיה'
+        ];
+
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isPaused = false;
+
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isPaused) {
+                return;
+            }
+
+            if (isDeleting) {
+                typewriterElement.innerHTML = currentPhrase.substring(0, charIndex - 1) + '<span class="typewriter-cursor"></span>';
+                charIndex--;
+
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    isPaused = true;
+                    setTimeout(() => {
+                        isPaused = false;
+                        typeWriter();
+                    }, 800);
+                    return;
+                }
+            } else {
+                typewriterElement.innerHTML = currentPhrase.substring(0, charIndex + 1) + '<span class="typewriter-cursor"></span>';
+                charIndex++;
+
+                if (charIndex === currentPhrase.length) {
+                    isPaused = true;
+                    setTimeout(() => {
+                        isPaused = false;
+                        isDeleting = true;
+                        typeWriter();
+                    }, 2500);
+                    return;
+                }
+            }
+
+            const typingSpeed = isDeleting ? 40 : 80;
+            setTimeout(typeWriter, typingSpeed);
+        }
+
+        setTimeout(() => {
+            typeWriter();
+        }, 1500);
+    </script>
+
 </body>
 </html>
