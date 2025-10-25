@@ -1,74 +1,235 @@
 /**
- * Updated English Registration Script
+ * Updated English Registration Script - Complete System v2.0
  *
- * Updates include:
- * 1. Program start date (November 2nd, 2025)
- * 2. Location TBD notice
- * 3. Required items list
- * 4. First Lesson FREE highlight (paid plans only)
- * 5. Check payment option added
- * 6. Free trial handling (₪0 registrations)
- * 7. Updated subject lines based on registration type
+ * Features:
+ * 1. Duplicate free trial detection and prevention
+ * 2. Smart "First Lesson FREE" banner (new users only)
+ * 3. Registration confirmation numbers
+ * 4. Email validation
+ * 5. BCC to admin on all confirmations
+ * 6. Multiple children support
+ * 7. Payment status tracking
+ * 8. Lead tracking integration
  *
  * Contact: raphael@aikidz.club | +972-54-315-9025
  */
 
+// ==================== HELPER FUNCTIONS ====================
+
+/**
+ * Validates email format
+ */
+function isValidEmail(email) {
+  if (!email) return false;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+/**
+ * Generates unique registration ID
+ */
+function generateRegistrationId() {
+  const timestamp = Date.now();
+  const random = Math.random().toString(36).substr(2, 9).toUpperCase();
+  return `REG-${timestamp}-${random}`;
+}
+
+/**
+ * Checks if user exists and their registration history
+ * Returns: { exists: boolean, hadFreeTrial: boolean }
+ */
+function checkExistingUser(email, parentName, childNames) {
+  const ss = SpreadsheetApp.openById('1Am1YhWuQLFq7u0jIVG-JGD3r00NB2n8Mqnm7-lQ2X_M');
+  const sheet = ss.getSheetByName('Registrations');
+  const data = sheet.getDataRange().getValues();
+
+  // Skip header row
+  for (let i = 1; i < data.length; i++) {
+    const rowEmail = data[i][3]; // Email is column D (index 3)
+    const rowParentName = data[i][2]; // Parent Name is column C (index 2)
+    const rowChildrenJSON = data[i][5]; // Children is column F (index 5)
+    const rowPrice = data[i][8]; // Total Price is column I (index 8)
+
+    // Check for matches
+    const emailMatch = rowEmail && email &&
+      rowEmail.toString().toLowerCase().trim() === email.toString().toLowerCase().trim();
+
+    const nameMatch = rowParentName && parentName &&
+      rowParentName.toString().toLowerCase().trim() === parentName.toString().toLowerCase().trim();
+
+    let childMatch = false;
+    if (rowChildrenJSON && childNames && childNames.length > 0) {
+      try {
+        const rowChildren = JSON.parse(rowChildrenJSON);
+        for (const inputChildName of childNames) {
+          childMatch = rowChildren.some(child =>
+            child.name && child.name.toString().toLowerCase().trim() === inputChildName.toString().toLowerCase().trim()
+          );
+          if (childMatch) break;
+        }
+      } catch (e) {
+        // JSON parse error, skip this row
+      }
+    }
+
+    // If any match found, check if they had a free trial
+    if (emailMatch || nameMatch || childMatch) {
+      const hadFreeTrial = !rowPrice || parseFloat(rowPrice) === 0;
+      return { exists: true, hadFreeTrial: hadFreeTrial };
+    }
+  }
+
+  return { exists: false, hadFreeTrial: false };
+}
+
+/**
+ * Updates lead tracking sheet with registration completion
+ */
+function updateLeadTracking(sessionId, status) {
+  if (!sessionId) return;
+
+  try {
+    const ss = SpreadsheetApp.openById('1Am1YhWuQLFq7u0jIVG-JGD3r00NB2n8Mqnm7-lQ2X_M');
+    let trackingSheet = ss.getSheetByName('Lead Tracking');
+
+    // Find the session and update status
+    if (trackingSheet) {
+      const data = trackingSheet.getDataRange().getValues();
+      for (let i = 1; i < data.length; i++) {
+        if (data[i][0] === sessionId) { // Session ID in column A
+          trackingSheet.getRange(i + 1, 8).setValue(status); // Status in column H
+          trackingSheet.getRange(i + 1, 9).setValue(new Date()); // Completion time in column I
+          break;
+        }
+      }
+    }
+  } catch (error) {
+    Logger.log('Lead tracking update error: ' + error.toString());
+  }
+}
+
+// ==================== MAIN REGISTRATION HANDLER ====================
+
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
+
+    // Validate email
+    if (!isValidEmail(data.email)) {
+      return ContentService.createTextOutput(JSON.stringify({
+        success: false,
+        error: 'invalid_email',
+        message: 'Please provide a valid email address'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // Check for existing user
+    const childNames = data.children ? data.children.map(child => child.name) : [];
+    const existingUser = checkExistingUser(data.email, data.parentName, childNames);
+
+    // Determine if this is a free trial registration
+    const isFreeTrialRegistration = !data.totalPrice || parseFloat(data.totalPrice) === 0;
+
+    // Block duplicate free trial attempts
+    if (isFreeTrialRegistration && existingUser.exists && existingUser.hadFreeTrial) {
+      return ContentService.createTextOutput(JSON.stringify({
+        success: false,
+        error: 'duplicate_free_trial',
+        message: 'You have already used your free trial. Please select a paid plan to continue.'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // Generate registration ID
+    const registrationId = generateRegistrationId();
+
+    // Determine if "First Lesson FREE" banner should be shown
+    const showFirstLessonFree = !existingUser.exists;
+
+    // Determine payment status
+    const paymentStatus = isFreeTrialRegistration ? 'Free Trial' : 'Pending';
+
+    // Access Google Sheet
     const ss = SpreadsheetApp.openById('1Am1YhWuQLFq7u0jIVG-JGD3r00NB2n8Mqnm7-lQ2X_M');
     const sheet = ss.getSheetByName('Registrations');
 
     if (!sheet) {
       return ContentService.createTextOutput(JSON.stringify({
         success: false,
-        error: 'Sheet not found'
+        error: 'sheet_not_found',
+        message: 'Registration sheet not found. Please contact support.'
       })).setMimeType(ContentService.MimeType.JSON);
     }
 
-    // Process registration data
+    // Process registration data (updated with new columns)
     const timestamp = new Date();
     const rowData = [
-      timestamp,
-      data.parentName || '',
-      data.email || '',
-      data.phone || '',
-      data.children ? JSON.stringify(data.children) : '',
-      data.paymentPlan || '',
-      data.paymentMethod || '',
-      data.totalPrice || 0,
-      data.language || 'english',
-      data.referralSource || '',
-      data.preferredContactMethod || '',
-      data.additionalInfo || ''
+      timestamp,                                      // A: Timestamp
+      registrationId,                                 // B: Registration ID (NEW)
+      data.parentName || '',                          // C: Parent Name
+      data.email || '',                               // D: Email
+      data.phone || '',                               // E: Phone
+      data.children ? JSON.stringify(data.children) : '', // F: Children (JSON)
+      data.paymentPlan || '',                         // G: Payment Plan
+      data.paymentMethod || '',                       // H: Payment Method
+      data.totalPrice || 0,                           // I: Total Price
+      data.language || 'english',                     // J: Language
+      data.referralSource || '',                      // K: Referral Source
+      data.preferredContactMethod || '',              // L: Preferred Contact
+      data.additionalInfo || '',                      // M: Additional Info
+      paymentStatus                                   // N: Payment Status (NEW)
     ];
 
     sheet.appendRow(rowData);
 
-    // Send confirmation email
+    // Update lead tracking if session ID provided
+    if (data.sessionId) {
+      updateLeadTracking(data.sessionId, 'Completed');
+    }
+
+    // Send confirmation email with flags
     const groupAssignments = {}; // Process group assignments if needed
-    sendConfirmation(data.email, data, groupAssignments);
+    sendConfirmation(data.email, data, groupAssignments, showFirstLessonFree, registrationId);
 
     return ContentService.createTextOutput(JSON.stringify({
       success: true,
-      message: 'Registration successful'
+      message: 'Registration successful',
+      registrationId: registrationId
     })).setMimeType(ContentService.MimeType.JSON);
 
   } catch (error) {
+    Logger.log('Registration error: ' + error.toString());
     return ContentService.createTextOutput(JSON.stringify({
       success: false,
-      error: error.toString()
+      error: 'server_error',
+      message: 'An error occurred during registration. Please try again or contact support.'
     })).setMimeType(ContentService.MimeType.JSON);
   }
 }
 
-function sendConfirmation(email, data, groupAssignments) {
+// ==================== EMAIL CONFIRMATION ====================
+
+function sendConfirmation(email, data, groupAssignments, showFirstLessonFree, registrationId) {
   const isFreeTrialRegistration = !data.totalPrice || parseFloat(data.totalPrice) === 0;
 
   // Subject line based on registration type
   const subject = isFreeTrialRegistration
     ? 'Welcome to AI Kids Club - Free Trial Confirmed!'
     : 'Welcome to AI Kids Club - Registration Confirmed!';
+
+  // Registration ID display
+  const registrationIdSection = registrationId ? `
+    <div style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(8, 145, 178, 0.1) 100%); padding: 16px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #06b6d4;">
+      <div style="color: #0f172a; font-size: 14px; font-weight: 600; margin-bottom: 4px;">
+        Registration ID
+      </div>
+      <div style="color: #0891b2; font-size: 16px; font-weight: bold; font-family: monospace;">
+        ${registrationId}
+      </div>
+      <div style="color: #64748b; font-size: 12px; margin-top: 4px;">
+        Save this ID for your records
+      </div>
+    </div>
+  ` : '';
 
   // Program start and location notice
   const programStartNotice = `
@@ -99,8 +260,8 @@ function sendConfirmation(email, data, groupAssignments) {
     </div>
   `;
 
-  // First lesson FREE highlight (only for paid plans)
-  const firstLessonFreeNotice = isFreeTrialRegistration ? '' : `
+  // First lesson FREE highlight (conditional - only for new users)
+  const firstLessonFreeNotice = showFirstLessonFree ? `
     <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 20px; border-radius: 12px; margin: 24px 0; text-align: center; border: 2px solid rgba(16, 185, 129, 0.3);">
       <div style="color: white; font-size: 24px; font-weight: bold; margin-bottom: 8px;">
         First Lesson FREE
@@ -109,12 +270,25 @@ function sendConfirmation(email, data, groupAssignments) {
         Try your first lesson at no cost before starting your plan
       </div>
     </div>
-  `;
+  ` : '';
 
-  // Payment instructions section (only for paid plans)
+  // Payment instructions section (shown for ALL registrations)
   let paymentInstructions = '';
-  if (!isFreeTrialRegistration) {
-    if (data.paymentMethod === 'bit') {
+  if (isFreeTrialRegistration) {
+    // Free trial - show ₪0 payment info
+    paymentInstructions = `
+      <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
+        <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px;">
+          Free Trial - No Payment Required
+        </div>
+        <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6;">
+          Amount: <strong>₪0</strong><br>
+          This is a <strong>free trial lesson</strong>. No payment is required at this time.<br>
+          After your trial, we'll discuss program options that fit your needs.
+        </div>
+      </div>
+    `;
+  } else if (data.paymentMethod === 'bit') {
       paymentInstructions = `
         <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
           <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px;">
@@ -244,13 +418,16 @@ function sendConfirmation(email, data, groupAssignments) {
             Thank you for registering with AI Kids Club! We're excited to welcome your child to our innovative AI education program.
           </div>
 
+          <!-- Registration ID -->
+          ${registrationIdSection}
+
           <!-- Program Start Notice -->
           ${programStartNotice}
 
           <!-- Required Items -->
           ${requiredItemsSection}
 
-          <!-- First Lesson FREE (paid plans only) -->
+          <!-- First Lesson FREE (new users only) -->
           ${firstLessonFreeNotice}
 
           <!-- Child Information -->
@@ -334,15 +511,98 @@ AI Kids Club
 Empowering the next generation with AI education
   `;
 
-  // Send email
+  // Send email with BCC to admin
   GmailApp.sendEmail(email, subject, plainTextBody, {
     htmlBody: htmlBody,
     name: 'AI Kids Club',
-    replyTo: 'raphael@aikidz.club'
+    replyTo: 'raphael@aikidz.club',
+    bcc: 'raphael@aikidz.club'
   });
 }
 
-// Test function
+// ==================== LEAD TRACKING HANDLER ====================
+
+/**
+ * Separate endpoint for tracking user progression through registration steps
+ * Deploy this as a separate web app with URL parameter 'tracking'
+ */
+function doPostTracking(e) {
+  try {
+    const data = JSON.parse(e.postData.contents);
+
+    const ss = SpreadsheetApp.openById('1Am1YhWuQLFq7u0jIVG-JGD3r00NB2n8Mqnm7-lQ2X_M');
+    let trackingSheet = ss.getSheetByName('Lead Tracking');
+
+    // Create Lead Tracking sheet if it doesn't exist
+    if (!trackingSheet) {
+      trackingSheet = ss.insertSheet('Lead Tracking');
+      trackingSheet.appendRow([
+        'Session ID',
+        'Timestamp',
+        'Step Completed',
+        'Child Names',
+        'Age Groups',
+        'Payment Plan',
+        'Parent Email',
+        'Status',
+        'Completion Time'
+      ]);
+    }
+
+    // Check if session already exists
+    const trackingData = trackingSheet.getDataRange().getValues();
+    let existingRowIndex = -1;
+
+    for (let i = 1; i < trackingData.length; i++) {
+      if (trackingData[i][0] === data.sessionId) {
+        existingRowIndex = i + 1; // +1 for 1-indexed Google Sheets
+        break;
+      }
+    }
+
+    if (existingRowIndex > 0) {
+      // Update existing row
+      trackingSheet.getRange(existingRowIndex, 2).setValue(new Date()); // Timestamp
+      trackingSheet.getRange(existingRowIndex, 3).setValue(data.stepCompleted || ''); // Step
+      trackingSheet.getRange(existingRowIndex, 4).setValue(data.childNames || ''); // Child Names
+      trackingSheet.getRange(existingRowIndex, 5).setValue(data.ageGroups || ''); // Age Groups
+      trackingSheet.getRange(existingRowIndex, 6).setValue(data.paymentPlan || ''); // Payment Plan
+      trackingSheet.getRange(existingRowIndex, 7).setValue(data.parentEmail || ''); // Email
+      trackingSheet.getRange(existingRowIndex, 8).setValue('In Progress'); // Status
+    } else {
+      // Create new row
+      trackingSheet.appendRow([
+        data.sessionId || '',
+        new Date(),
+        data.stepCompleted || '',
+        data.childNames || '',
+        data.ageGroups || '',
+        data.paymentPlan || '',
+        data.parentEmail || '',
+        'In Progress',
+        '' // Completion time (empty until registration completes)
+      ]);
+    }
+
+    return ContentService.createTextOutput(JSON.stringify({
+      success: true,
+      message: 'Tracking updated'
+    })).setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+    Logger.log('Tracking error: ' + error.toString());
+    return ContentService.createTextOutput(JSON.stringify({
+      success: false,
+      error: error.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+// ==================== TEST FUNCTIONS ====================
+
+/**
+ * Test paid registration email (new user - shows First Lesson FREE)
+ */
 function testConfirmationEmail() {
   const testData = {
     parentName: 'Test Parent',
@@ -363,11 +623,16 @@ function testConfirmationEmail() {
     'Test Child 2': 'Group B - Wednesdays 3:30 PM'
   };
 
-  sendConfirmation(testData.email, testData, groupAssignments);
-  Logger.log('Test email sent to: ' + testData.email);
+  const showFirstLessonFree = true; // New user
+  const registrationId = 'REG-TEST-12345ABC';
+
+  sendConfirmation(testData.email, testData, groupAssignments, showFirstLessonFree, registrationId);
+  Logger.log('Test paid email sent to: ' + testData.email);
 }
 
-// Test free trial email
+/**
+ * Test free trial email (new user)
+ */
 function testFreeTrialEmail() {
   const testData = {
     parentName: 'Free Trial Parent',
@@ -386,6 +651,37 @@ function testFreeTrialEmail() {
     'Trial Child': 'Group C - Thursdays 4:00 PM'
   };
 
-  sendConfirmation(testData.email, testData, groupAssignments);
+  const showFirstLessonFree = true; // New user
+  const registrationId = 'REG-TEST-67890XYZ';
+
+  sendConfirmation(testData.email, testData, groupAssignments, showFirstLessonFree, registrationId);
   Logger.log('Test free trial email sent to: ' + testData.email);
+}
+
+/**
+ * Test existing user registration (no First Lesson FREE banner)
+ */
+function testExistingUserEmail() {
+  const testData = {
+    parentName: 'Existing Parent',
+    email: 'raphael@aikidz.club',
+    phone: '054-315-9025',
+    children: [
+      { name: 'Existing Child', age: 11, program: 'Tech Explorers' }
+    ],
+    paymentPlan: 'Quarterly',
+    paymentMethod: 'bit',
+    totalPrice: 1200,
+    language: 'english'
+  };
+
+  const groupAssignments = {
+    'Existing Child': 'Group D - Fridays 4:30 PM'
+  };
+
+  const showFirstLessonFree = false; // Existing user - no banner
+  const registrationId = 'REG-TEST-11111EXT';
+
+  sendConfirmation(testData.email, testData, groupAssignments, showFirstLessonFree, registrationId);
+  Logger.log('Test existing user email sent to: ' + testData.email);
 }

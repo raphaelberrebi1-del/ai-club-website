@@ -2428,6 +2428,153 @@
     </footer>
 
     <script>
+        // ===== SESSION TRACKING & CONFIGURATION =====
+
+        // Generate or retrieve session ID for lead tracking
+        function getOrCreateSessionId() {
+            let sessionId = localStorage.getItem('aiclub_session_id');
+            if (!sessionId) {
+                sessionId = 'SESSION-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('aiclub_session_id', sessionId);
+            }
+            return sessionId;
+        }
+
+        const SESSION_ID = getOrCreateSessionId();
+        const TRACKING_URL = 'https://script.google.com/macros/s/YOUR_TRACKING_SCRIPT_ID/exec'; // UPDATE THIS with tracking script URL
+
+        // Email validation
+        function isValidEmail(email) {
+            if (!email) return false;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Track step progression
+        async function trackStepProgression(stepNumber) {
+            const trackingData = {
+                sessionId: SESSION_ID,
+                stepCompleted: `Step ${stepNumber}`,
+                childNames: wizardData.children.map(c => c.name).filter(n => n).join(', '),
+                ageGroups: wizardData.children.map(c => c.ageGroup).filter(a => a).join(', '),
+                paymentPlan: wizardData.bulkDuration || '',
+                parentEmail: document.getElementById('parent-email')?.value || '',
+                language: 'english'
+            };
+
+            try {
+                await fetch(TRACKING_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(trackingData)
+                });
+                console.log(`Step ${stepNumber} tracked`);
+            } catch (error) {
+                console.error('Tracking error:', error);
+                // Don't block user progression if tracking fails
+            }
+        }
+
+        // Show error banner
+        function showError(message) {
+            // Remove any existing error banners
+            const existingError = document.querySelector('.error-banner');
+            if (existingError) {
+                existingError.remove();
+            }
+
+            // Create error banner
+            const errorBanner = document.createElement('div');
+            errorBanner.className = 'error-banner';
+            errorBanner.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+                color: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+                z-index: 10000;
+                max-width: 500px;
+                text-align: center;
+                font-weight: 600;
+                animation: slideDown 0.3s ease-out;
+            `;
+            errorBanner.textContent = message;
+
+            document.body.appendChild(errorBanner);
+
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                errorBanner.style.animation = 'slideUp 0.3s ease-out';
+                setTimeout(() => errorBanner.remove(), 300);
+            }, 5000);
+        }
+
+        // Show success page with registration ID
+        function showSuccessPage(registrationId) {
+            // Hide registration form
+            const registrationSection = document.querySelector('.registration-wizard');
+            if (registrationSection) {
+                registrationSection.style.display = 'none';
+            }
+
+            // Create success message
+            const successHTML = `
+                <div style="text-align: center; padding: 60px 20px; max-width: 600px; margin: 0 auto;">
+                    <div style="font-size: 64px; margin-bottom: 24px;">✓</div>
+                    <h2 style="color: #10b981; font-size: 32px; margin-bottom: 16px;">Registration Successful!</h2>
+                    <p style="color: #475569; font-size: 18px; margin-bottom: 32px;">
+                        Thank you for registering with AI Kids Club! We've sent a confirmation email with all the details.
+                    </p>
+                    <div style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(8, 145, 178, 0.1) 100%); padding: 24px; border-radius: 12px; border-left: 4px solid #06b6d4; margin-bottom: 32px;">
+                        <div style="color: #0f172a; font-size: 14px; font-weight: 600; margin-bottom: 8px;">
+                            Your Registration ID
+                        </div>
+                        <div style="color: #0891b2; font-size: 24px; font-weight: bold; font-family: monospace;">
+                            ${registrationId}
+                        </div>
+                        <div style="color: #64748b; font-size: 12px; margin-top: 8px;">
+                            Save this ID for your records
+                        </div>
+                    </div>
+                    <button onclick="location.reload()" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: white; padding: 16px 32px; border-radius: 12px; border: none; font-weight: 600; cursor: pointer; font-size: 16px;">
+                        Return to Home
+                    </button>
+                </div>
+            `;
+
+            // Insert success message
+            const container = registrationSection?.parentElement || document.querySelector('main');
+            if (container) {
+                const successDiv = document.createElement('div');
+                successDiv.innerHTML = successHTML;
+                container.appendChild(successDiv);
+            }
+
+            // Clear session
+            localStorage.removeItem('aiclub_session_id');
+        }
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from { transform: translateX(-50%) translateY(-100px); opacity: 0; }
+                to { transform: translateX(-50%) translateY(0); opacity: 1; }
+            }
+            @keyframes slideUp {
+                from { transform: translateX(-50%) translateY(0); opacity: 1; }
+                to { transform: translateX(-50%) translateY(-100px); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // ===== END SESSION TRACKING =====
+
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
 
@@ -2925,6 +3072,9 @@
 
         // Step Navigation
         function nextStep() {
+            // Track step progression before moving forward
+            trackStepProgression(currentWizardStep);
+
             // Check if user selected Free Trial at end of Step 3 (payment plan selection)
             if (currentWizardStep === 3 && wizardData.bulkDuration === 'trial') {
                 console.log('🎁 Free Trial selected - skipping payment and submitting');
@@ -4306,12 +4456,18 @@
 
             // Validate form
             if (formData.children.length === 0) {
-                alert('Please complete all child details including name and age group for each child.');
+                showError('Please complete all child details including name and age group for each child.');
                 return;
             }
 
             if (!formData.parent.name || !formData.parent.email || !formData.parent.phone) {
-                alert('Please fill in all parent contact information.');
+                showError('Please fill in all parent contact information.');
+                return;
+            }
+
+            // Validate email format
+            if (!isValidEmail(formData.parent.email)) {
+                showError('Please provide a valid email address.');
                 return;
             }
 
@@ -4324,27 +4480,43 @@
             }
 
             try {
+                // Add session ID to form data
+                formData.sessionId = SESSION_ID;
+
                 // Primary: Submit to Google Sheets
                 const response = await submitToGoogleSheets(formData);
 
                 if (response.success) {
-                    // Success! Show confirmation and close modal
-                    showRegistrationSuccess(formData);
-                    closeRegistrationModal();
+                    // Success! Show success page with registration ID
+                    if (response.registrationId) {
+                        showSuccessPage(response.registrationId);
+                    } else {
+                        showRegistrationSuccess(formData);
+                        closeRegistrationModal();
+                    }
+                } else if (response.error === 'duplicate_free_trial') {
+                    // Handle duplicate free trial error
+                    showError('You have already used your free trial. Please select a paid plan to continue.');
+                    if (submitButton) {
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                    }
+                } else if (response.error === 'invalid_email') {
+                    showError('Please provide a valid email address.');
+                    if (submitButton) {
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                    }
                 } else {
-                    throw new Error('Google Sheets submission failed');
+                    throw new Error(response.message || 'Registration failed');
                 }
 
             } catch (error) {
                 console.error('Google Sheets submission error:', error);
 
-                // Fallback: Send to WhatsApp (original method)
-                submitToWhatsApp(formData);
+                // Show error message
+                showError('An error occurred during registration. Please try again or contact support at raphael@aikidz.club');
 
-                // Show fallback message
-                alert('Registration sent via WhatsApp! We\'ll confirm your booking shortly.');
-                closeRegistrationModal();
-            } finally {
                 // Reset button
                 if (submitButton) {
                     submitButton.textContent = originalText;
