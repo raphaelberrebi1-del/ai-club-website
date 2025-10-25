@@ -951,8 +951,46 @@
                             <span id="progress-text" class="text-sm text-white/70">שלב 1 מתוך 4</span>
                         </div>
                     </div>
-                    <!-- Step 1: Child Details -->
+                    <!-- Step 1: Parent Contact Details -->
                     <div id="step-1" class="step-content p-6 flex-1 flex flex-col">
+                        <div class="mb-6">
+                            <h2 class="text-xl font-bold text-white tracking-tight mb-2">טופס הרשמה</h2>
+                            <p class="text-white/60 text-sm">בואו נתחיל עם פרטי יצירת הקשר שלכם</p>
+                        </div>
+
+                        <div class="flex-1 space-y-6">
+                            <div class="space-y-3">
+                                <label class="text-base font-semibold text-amber-100">שם ההורה</label>
+                                <input type="text" id="parent-name" placeholder="הכנס את שמך המלא"
+                                       oninput="validateStep1()"
+                                       class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
+                            </div>
+
+                            <div class="space-y-3">
+                                <label class="text-base font-semibold text-amber-100">כתובת אימייל</label>
+                                <input type="email" id="parent-email" placeholder="your@email.com"
+                                       oninput="validateStep1()"
+                                       class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
+                            </div>
+
+                            <div class="space-y-3">
+                                <label class="text-base font-semibold text-amber-100">מספר טלפון</label>
+                                <input type="tel" id="parent-phone" placeholder="050-123-4567"
+                                       oninput="validateStep1()"
+                                       class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-amber-200/30">
+                            <button onclick="nextStep()" id="step-1-next"
+                                    class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                                המשך
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Child Details -->
+                    <div id="step-2" class="step-content p-6 flex-1 flex-col hidden">
                         <div class="mb-6">
                             <h2 class="text-xl font-bold text-white tracking-tight mb-2">פרטי הילד</h2>
                             <p class="text-white/60 text-sm">ספרו לנו על כל ילד שמצטרף למועדון AI</p>
@@ -984,16 +1022,18 @@
                             </div>
                         </div>
 
-                        <div class="mt-8 pt-6 border-t border-amber-200/30">
-                            <button onclick="nextStep()" id="step-1-next"
-                                    class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                        <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
+                            <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
+                                חזור
+                            </button>
+                            <button onclick="nextStep()" id="step-2-next" class="flex-1 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
                                 המשך
                             </button>
                         </div>
                     </div>
 
-                    <!-- Step 2: Payment Plan Selection -->
-                    <div id="step-2" class="step-content p-6 flex-1 flex-col hidden">
+                    <!-- Step 3: Payment Plan Selection -->
+                    <div id="step-3" class="step-content p-6 flex-1 flex-col hidden">
                         <div class="mb-6">
                             <h2 class="text-xl font-bold text-white tracking-tight mb-2">בחר תוכנית תשלום</h2>
                             <p class="text-white/60 text-sm">בחר את התוכנית הטובה ביותר למשפחה שלך</p>
@@ -1003,8 +1043,14 @@
                             <!-- Registration Summary Box -->
                             <div id="registration-summary" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
                                 <h3 class="text-lg font-semibold text-white mb-3">סיכום הרשמה</h3>
-                                <div id="step-2-summary" class="space-y-2 text-sm text-white/80">
+                                <div id="step-3-summary" class="space-y-2 text-sm text-white/80">
                                     <!-- Summary will be populated here -->
+                                </div>
+                                <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-base font-semibold text-white">סה״כ:</span>
+                                        <span id="step-3-total" class="text-xl font-bold text-cyan-300">₪0</span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -1013,7 +1059,7 @@
                                 <label class="text-base font-semibold text-amber-100">תוכנית תשלום (חלה על כל הילדים)</label>
                                 <div class="grid grid-cols-1 gap-3">
                                     <button type="button" onclick="selectBulkDuration('monthly')"
-                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="monthly">
+                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-right hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="monthly">
                                         <div class="flex justify-between items-center">
                                             <div class="flex-1">
                                                 <div class="text-lg font-semibold text-white">חודשי</div>
@@ -1026,11 +1072,13 @@
                                     </button>
 
                                     <button type="button" onclick="selectBulkDuration('quarterly')"
-                                            class="bulk-duration-btn relative p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="quarterly">
-                                        <span class="absolute top-2 left-2 bg-gradient-to-r from-amber-400 to-amber-500 text-amber-950 text-xs font-bold px-2 py-1 rounded-full">הכי פופולרי</span>
+                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-right hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="quarterly">
                                         <div class="flex justify-between items-center">
                                             <div class="flex-1">
-                                                <div class="text-lg font-semibold text-white">רבעוני</div>
+                                                <div class="text-lg font-semibold text-white flex items-center gap-2">
+                                                    <span>רבעוני</span>
+                                                    <span class="bg-gradient-to-r from-amber-400 to-amber-500 text-amber-950 text-xs font-bold px-2 py-1 rounded-full">הכי פופולרי</span>
+                                                </div>
                                                 <div id="quarterly-price-display" class="text-sm text-white/60">החל מ-₪519 לחודש</div>
                                             </div>
                                             <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
@@ -1040,7 +1088,7 @@
                                     </button>
 
                                     <button type="button" onclick="selectBulkDuration('yearly')"
-                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="yearly">
+                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-right hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="yearly">
                                         <div class="flex justify-between items-center">
                                             <div class="flex-1">
                                                 <div class="text-lg font-semibold text-white flex items-center gap-2">
@@ -1056,7 +1104,7 @@
                                     </button>
 
                                     <button type="button" onclick="selectBulkDuration('trial')"
-                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="trial">
+                                            class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-right hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="trial">
                                         <div class="flex justify-between items-center">
                                             <div class="flex-1">
                                                 <div class="text-lg font-semibold text-white">ניסיון חינם</div>
@@ -1082,60 +1130,6 @@
                                 <div id="pricing-breakdown-content" class="hidden mt-4 space-y-3 bg-amber-950/20 border border-amber-200/20 rounded-lg p-4">
                                     <!-- Breakdown will be populated here -->
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
-                            <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
-                                חזור
-                            </button>
-                            <button onclick="nextStep()" id="step-2-next" class="flex-1 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
-                                המשך
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Step 3: Parent Contact Details -->
-                    <div id="step-3" class="step-content p-6 flex-1 flex-col hidden">
-                        <div class="mb-6">
-                            <h2 class="text-xl font-bold text-white tracking-tight mb-2">פרטי יצירת קשר של ההורה</h2>
-                            <p class="text-white/60 text-sm">פרטי הקשר שלך להרשמה</p>
-                        </div>
-
-                        <div class="flex-1 space-y-6">
-                            <!-- Registration Summary -->
-                            <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
-                                <h3 class="text-lg font-semibold text-white mb-3">סיכום רישום</h3>
-                                <div id="step-3-summary" class="space-y-2 text-sm text-white/80">
-                                    <!-- Summary will be populated here -->
-                                </div>
-                                <div class="border-t border-cyan-400/30 pt-3 mt-3">
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-base font-semibold text-white">סה״כ:</span>
-                                        <span id="step-3-total" class="text-xl font-bold text-cyan-300">₪0</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="space-y-3">
-                                <label class="text-base font-semibold text-amber-100">שם ההורה</label>
-                                <input type="text" id="parent-name" placeholder="הכנס את שמך המלא"
-                                       oninput="validateStep3()"
-                                       class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
-                            </div>
-
-                            <div class="space-y-3">
-                                <label class="text-base font-semibold text-amber-100">כתובת אימייל</label>
-                                <input type="email" id="parent-email" placeholder="your@email.com"
-                                       oninput="validateStep3()"
-                                       class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
-                            </div>
-
-                            <div class="space-y-3">
-                                <label class="text-base font-semibold text-amber-100">מספר טלפון</label>
-                                <input type="tel" id="parent-phone" placeholder="050-123-4567"
-                                       oninput="validateStep3()"
-                                       class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
                             </div>
                         </div>
 
@@ -2761,7 +2755,7 @@
 
             // Update pricing display
             updatePricingBreakdown();
-            validateStep2New();
+            validateStep3();
         }
 
         function updateFamilyPricing() {
@@ -2932,11 +2926,7 @@
             familyData.children[index][field] = value;
             console.log(`📝 Updated child ${index + 1} ${field}:`, value);
             console.log('Updated children data:', familyData.children);
-            validateStep1();
-            // If we're on step 3, also validate step 3
-            if (currentStep === 3) {
-                validateStep3();
-            }
+            validateStep2();
         }
 
         function selectChildAgeGroup(childIndex, ageGroup) {
@@ -2959,13 +2949,10 @@
                 if (indicator) indicator.classList.remove('opacity-0');
             }
 
-            validateStep1();
-            // If we're on step 3, also validate step 3
-            if (currentStep === 3) {
-                validateStep3();
-            }
+            validateStep2();
         }
 
+        // Step 2: Validate Child Details
         function validateStep2() {
             const continueBtn = document.getElementById('step-2-next');
             let allValid = true;
@@ -2980,17 +2967,16 @@
             continueBtn.disabled = !allValid;
         }
 
-        // Rename old validateStep2 to validateStep1 (validates child details)
+        // Step 1: Validate Parent Contact Details
         function validateStep1() {
             const continueBtn = document.getElementById('step-1-next');
-            let allValid = true;
+            const parentName = document.getElementById('parent-name').value.trim();
+            const parentEmail = document.getElementById('parent-email').value.trim();
+            const parentPhone = document.getElementById('parent-phone').value.trim();
 
-            // Check if all children have names and age groups
-            familyData.children.forEach(child => {
-                if (!child.name.trim() || !child.ageGroup) {
-                    allValid = false;
-                }
-            });
+            // Validate parent information
+            const allValid = parentName && parentEmail && parentPhone &&
+                           parentEmail.includes('@') && parentPhone.length >= 9;
 
             continueBtn.disabled = !allValid;
         }
@@ -3071,7 +3057,7 @@
                 container.appendChild(childForm);
             }
 
-            validateStep1();
+            validateStep2();
         }
 
         function removeChild(index) {
@@ -3082,7 +3068,7 @@
             const pluralEl = document.getElementById('child-plural');
             if (pluralEl) pluralEl.textContent = familyData.childCount > 1 ? 'ים' : '';
             generateChildFormsStep1();
-            validateStep1();
+            validateStep2();
         }
 
         // Initialize Step 1 on load
@@ -3360,59 +3346,19 @@
             totalElement.textContent = familyData.bulkDuration === 'trial' ? '₪0 (ניסיון חינם)' : `₪${Math.round(totalMonthlyPrice)}/חודש`;
         }
 
+        // Step 3: Validate Payment Plan Selection
         function validateStep3() {
             const continueBtn = document.getElementById('step-3-next');
-            const parentName = document.getElementById('parent-name').value.trim();
-            const parentEmail = document.getElementById('parent-email').value.trim();
-            const parentPhone = document.getElementById('parent-phone').value.trim();
 
-            console.log('🔍 Validating Step 3...');
+            console.log('🔍 Validating Step 3 (Payment Plan)...');
             console.log('Bulk duration:', familyData.bulkDuration);
-            console.log('Child count:', familyData.childCount);
 
-            // Validate parent information
-            const parentValid = parentName && parentEmail && parentPhone &&
-                               parentEmail.includes('@') && parentPhone.length >= 9;
+            // Validate that a payment plan has been selected
+            const isValid = familyData.bulkDuration !== null && familyData.bulkDuration !== undefined;
 
-            // Validate children information
-            // If bulkDuration and childCount are set, user has completed earlier steps
-            // In this case, trust that children data is valid (may not be in memory yet but was entered in form)
-            let childrenValid = true;
-
-            // If we have bulkDuration and childCount, the user has completed Steps 1 & 2
-            const hasCompletedEarlierSteps = familyData.bulkDuration && familyData.childCount > 0;
-
-            if (hasCompletedEarlierSteps) {
-                console.log('✅ User has completed earlier steps (bulkDuration and childCount set)');
-                childrenValid = true;
-            } else if (!familyData.children || familyData.children.length === 0) {
-                console.log('❌ No children data found and no earlier step completion');
-                childrenValid = false;
-            } else {
-                // Validate children data in memory
-                familyData.children.forEach((child, index) => {
-                    if (!child.name || !child.name.trim() || !child.ageGroup) {
-                        console.log(`❌ Child ${index + 1} missing data:`, child);
-                        childrenValid = false;
-                    }
-                });
-            }
-
-            const isValid = parentValid && childrenValid;
-
-            console.log('Parent validation:', parentValid);
-            console.log('Children validation:', childrenValid);
-            console.log('Has completed earlier steps:', hasCompletedEarlierSteps);
-            console.log('Overall validation:', isValid);
+            console.log('Payment plan validation:', isValid);
 
             continueBtn.disabled = !isValid;
-
-            // Update family data
-            if (parentValid) {
-                familyData.parentName = parentName;
-                familyData.parentEmail = parentEmail;
-                familyData.parentPhone = parentPhone;
-            }
         }
 
 
@@ -3450,14 +3396,15 @@
                     // Initialize step-specific content
                     console.log(`📋 Initializing step ${currentStep} content`);
                     if (currentStep === 2) {
-                        console.log('🔄 Moving to Step 2 - generating payment plan summary');
+                        console.log('🔄 Moving to Step 2 - child details form');
+                        // Save parent data from Step 1
+                        familyData.parentName = document.getElementById('parent-name').value.trim();
+                        familyData.parentEmail = document.getElementById('parent-email').value.trim();
+                        familyData.parentPhone = document.getElementById('parent-phone').value.trim();
+                    } else if (currentStep === 3) {
+                        console.log('🔄 Moving to Step 3 - generating payment plan summary');
                         generateStep2Summary();
                         updatePricingDisplays();
-                    } else if (currentStep === 3) {
-                        console.log('🔄 Moving to Step 3 - generating final summary');
-                        generateFinalSummary();
-                        // Trigger validation when entering step 3
-                        setTimeout(() => validateStep3(), 100);
                     } else if (currentStep === 4) {
                         console.log('🔄 Moving to Step 4 - generating confirmation summary');
                         generateStep4Summary();
