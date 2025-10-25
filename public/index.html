@@ -3421,22 +3421,46 @@
             const isTrial = wizardData.bulkDuration === 'trial';
 
             // Build summary HTML
-            const planName = isTrial ? 'Free Trial - 1 Trial lesson per child' :
-                           (wizardData.bulkDuration.charAt(0).toUpperCase() + wizardData.bulkDuration.slice(1));
-            let summaryHTML = `
-                <div class="text-base font-medium text-white mb-2">
-                    <strong>${wizardData.childCount}</strong> child${wizardData.childCount > 1 ? 'ren' : ''} enrolled • <strong>${planName}</strong>
+            const planName = isTrial ? 'Free Trial' :
+                           wizardData.bulkDuration === 'monthly' ? 'Monthly' :
+                           wizardData.bulkDuration === 'quarterly' ? 'Quarterly (3 months)' :
+                           'Annual (12 months)';
+
+            let summaryHTML = '<div class="space-y-2">';
+
+            // Children list with prices
+            wizardData.children.forEach((child, i) => {
+                const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators (8-10)' :
+                                    child.ageGroup === 'tech' ? 'Tech Champions (11-13)' :
+                                    'Future Leaders (14-18)';
+                const childPrice = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
+                summaryHTML += `
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-white/90">• ${child.name} - ${ageGroupName}</span>
+                        <span class="text-cyan-300 font-semibold">₪${childPrice.toLocaleString()}</span>
+                    </div>
+                `;
+            });
+
+            // Payment plan
+            summaryHTML += `
+                <div class="text-xs text-white/60 mt-3">
+                    Payment Plan: ${planName}
                 </div>
             `;
 
-            wizardData.children.forEach((child, i) => {
-                const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators' :
-                                    child.ageGroup === 'tech' ? 'Tech Champions' :
-                                    'Future Leaders';
-                const ageRange = child.ageGroup === 'young' ? '8-10' :
-                                child.ageGroup === 'tech' ? '11-13' : '14-18';
-                summaryHTML += `<div class="text-sm text-white/80 mt-1">• ${child.name} - ${ageGroupName} (${ageRange})</div>`;
-            });
+            // Family discount badge
+            if (wizardData.childCount >= 2) {
+                summaryHTML += `
+                    <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-2 mt-2">
+                        <p class="text-xs text-cyan-200 font-semibold">
+                            Family discount ${wizardData.childCount === 2 ? '10%' : '15%'} applied!
+                        </p>
+                    </div>
+                `;
+            }
+
+            summaryHTML += '</div>';
 
             summaryContainer.innerHTML = summaryHTML;
             totalElement.textContent = isTrial ? `₪0 (Free Trial)` : `₪${totalMonthlyPrice}/month`;
@@ -5543,15 +5567,29 @@
         function updateStep4Summary(formData, totalAmount) {
             const summaryHtml = `
                 <div class="space-y-2">
-                    ${formData.children.map((child, index) => `
-                        <div class="flex justify-between items-center">
-                            <span>${child.name} (${child.age} years old)</span>
-                            <span class="text-cyan-300 font-semibold">₪${getChildPrice(index, formData.duration)}</span>
-                        </div>
-                    `).join('')}
-                    <div class="text-xs text-white/60 mt-2">
-                        Plan: ${getDurationLabel(formData.duration)}
+                    ${formData.children.map((child, index) => {
+                        const ageGroupName = child.program || (child.age >= 8 && child.age <= 10 ? 'Young Innovators (8-10)' :
+                                           child.age >= 11 && child.age <= 13 ? 'Tech Champions (11-13)' :
+                                           'Future Leaders (14-18)');
+                        return `
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-white/90">• ${child.name} - ${ageGroupName}</span>
+                                <span class="text-cyan-300 font-semibold">₪${getChildPrice(index, formData.duration)}</span>
+                            </div>
+                        `;
+                    }).join('')}
+
+                    <div class="text-xs text-white/60 mt-3">
+                        Payment Plan: ${getDurationLabel(formData.duration)}
                     </div>
+
+                    ${formData.children.length >= 2 ? `
+                        <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-2 mt-2">
+                            <p class="text-xs text-cyan-200 font-semibold">
+                                Family discount ${formData.children.length === 2 ? '10%' : '15%'} applied!
+                            </p>
+                        </div>
+                    ` : ''}
                 </div>
             `;
 

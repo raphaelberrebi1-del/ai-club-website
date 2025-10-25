@@ -3478,24 +3478,47 @@
 
             // Build summary HTML
             const planName = wizardData.bulkDuration === 'monthly' ? 'חודשי' :
-                           wizardData.bulkDuration === 'quarterly' ? 'רבעוני' : 'שנתי';
-            let summaryHTML = `
-                <div class="text-base font-medium text-white mb-2">
-                    <strong>${wizardData.childCount}</strong> ילד${wizardData.childCount > 1 ? 'ים' : ''} רשום${wizardData.childCount > 1 ? 'ים' : ''} • תוכנית <strong>${planName}</strong>
+                           wizardData.bulkDuration === 'quarterly' ? 'רבעוני (3 חודשים)' :
+                           wizardData.bulkDuration === 'trial' ? 'ניסיון חינם' : 'שנתי (12 חודשים)';
+
+            let summaryHTML = '<div class="space-y-2">';
+
+            // Children list with prices
+            wizardData.children.forEach((child, i) => {
+                const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים (8-10)' :
+                                    child.ageGroup === 'tech' ? 'אלופי טכנולוגיה (11-13)' :
+                                    'מנהיגים מקצועיים (14-18)';
+                const childPrice = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
+                summaryHTML += `
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-white/90">• ${child.name} - ${ageGroupName}</span>
+                        <span class="text-cyan-300 font-semibold">₪${childPrice.toLocaleString()}</span>
+                    </div>
+                `;
+            });
+
+            // Payment plan
+            summaryHTML += `
+                <div class="text-xs text-white/60 mt-3">
+                    תוכנית תשלום: ${planName}
                 </div>
             `;
 
-            wizardData.children.forEach((child, i) => {
-                const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים' :
-                                    child.ageGroup === 'tech' ? 'אלופי טכנולוגיה' :
-                                    'מנהיגי העתיד';
-                const ageRange = child.ageGroup === 'young' ? '8-10' :
-                                child.ageGroup === 'tech' ? '11-13' : '14-18';
-                summaryHTML += `<div class="text-sm text-white/80 mt-1">• ${child.name} - ${ageGroupName} (${ageRange})</div>`;
-            });
+            // Family discount badge
+            if (wizardData.childCount >= 2) {
+                summaryHTML += `
+                    <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-2 mt-2">
+                        <p class="text-xs text-cyan-200 font-semibold">
+                            הנחת משפחה ${wizardData.childCount === 2 ? '10%' : '15%'} הופעלה!
+                        </p>
+                    </div>
+                `;
+            }
+
+            summaryHTML += '</div>';
 
             summaryContainer.innerHTML = summaryHTML;
-            totalElement.textContent = `₪${Math.round(totalMonthlyPrice)}/חודש`;
+            totalElement.textContent = wizardData.bulkDuration === 'trial' ? '₪0 (ניסיון חינם)' : `₪${Math.round(totalMonthlyPrice)}/חודש`;
         }
 
         function validateStep3() {
@@ -5518,46 +5541,30 @@
 
             // Build summary HTML
             const summaryHtml = `
-                <div class="space-y-3">
-                    <div class="border-b border-cyan-400/20 pb-3">
-                        <p class="text-xs text-white/50 mb-1">הורה</p>
-                        <p class="text-base font-semibold text-white">${wizardData.parentName}</p>
-                        <p class="text-sm text-white/70">${wizardData.parentEmail}</p>
-                        <p class="text-sm text-white/70" dir="ltr">${wizardData.parentPhone}</p>
-                    </div>
+                <div class="space-y-2">
+                    ${wizardData.children.map((child, index) => {
+                        const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים (8-10)' :
+                                           child.ageGroup === 'tech' ? 'אלופי טכנולוגיה (11-13)' :
+                                           'מנהיגים מקצועיים (14-18)';
+                        const childPrice = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
+                        return `
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-white/90">• ${child.name} - ${ageGroupName}</span>
+                                <span class="text-cyan-300 font-semibold">₪${childPrice.toLocaleString()}</span>
+                            </div>
+                        `;
+                    }).join('')}
 
-                    <div class="border-b border-cyan-400/20 pb-3">
-                        <p class="text-xs text-white/50 mb-2">ילדים</p>
-                        ${wizardData.children.map((child, index) => {
-                            const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים (8-10)' :
-                                               child.ageGroup === 'tech' ? 'אלופי טכנולוגיה (11-13)' :
-                                               'מנהיגים מקצועיים (14-18)';
-                            const childPrice = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
-                            return `
-                                <div class="flex justify-between items-center mb-2">
-                                    <div>
-                                        <p class="text-sm font-medium text-white">${child.name}</p>
-                                        <p class="text-xs text-white/60">${ageGroupName}</p>
-                                    </div>
-                                    <p class="text-sm text-cyan-300 font-semibold">₪${childPrice.toLocaleString()}</p>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
-
-                    <div>
-                        <p class="text-xs text-white/50 mb-1">תוכנית תשלום</p>
-                        <p class="text-base font-semibold text-white">
-                            ${wizardData.bulkDuration === 'monthly' ? 'חודשי' :
+                    <div class="text-xs text-white/60 mt-3">
+                        תוכנית תשלום: ${wizardData.bulkDuration === 'monthly' ? 'חודשי' :
                               wizardData.bulkDuration === 'quarterly' ? 'רבעוני (3 חודשים)' :
                               'שנתי (12 חודשים)'}
-                        </p>
                     </div>
 
                     ${wizardData.children.length >= 2 ? `
-                        <div class="bg-amber-500/10 border border-amber-400/30 rounded-lg p-3">
-                            <p class="text-xs text-amber-200 font-semibold">
-                                🎉 הנחת משפחה ${wizardData.children.length === 2 ? '10%' : '15%'} הופעלה!
+                        <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-2 mt-2">
+                            <p class="text-xs text-cyan-200 font-semibold">
+                                הנחת משפחה ${wizardData.children.length === 2 ? '10%' : '15%'} הופעלה!
                             </p>
                         </div>
                     ` : ''}
