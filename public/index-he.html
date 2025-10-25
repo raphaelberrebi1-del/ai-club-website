@@ -2117,8 +2117,55 @@
                     </div>
                 </div>
 
-                <!-- Step 1: Child Details -->
-                <div id="step-1" class="step-content p-6 flex-1 flex flex-col">
+                <!-- Step 1: Parent Contact Details -->
+                <div id="step-1" class="step-content p-6 flex-1 flex-col">
+                    <div class="mb-6">
+                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">טופס הרשמה</h2>
+                        <p class="text-white/60 text-sm">בואו נתחיל עם פרטי יצירת הקשר שלכם</p>
+                    </div>
+
+                    <!-- Program Start Date Notice -->
+                    <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4 mb-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">תאריך תחילת התוכנית</h3>
+                        <div class="space-y-2 text-sm text-white/90">
+                            <p>השיעור הראשון: <strong>2 בנובמבר, 2025</strong></p>
+                            <p class="text-white/80">המיקום המדויק יאושר בקרוב</p>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 space-y-6">
+                        <div class="space-y-3">
+                            <label class="text-base font-semibold text-amber-100">שם ההורה</label>
+                            <input type="text" id="parent-name" placeholder="הזן את שמך המלא"
+                                   oninput="validateStep1()"
+                                   class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
+                        </div>
+
+                        <div class="space-y-3">
+                            <label class="text-base font-semibold text-amber-100">כתובת אימייל</label>
+                            <input type="email" id="parent-email" placeholder="your@email.com"
+                                   oninput="validateStep1()"
+                                   class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
+                        </div>
+
+                        <div class="space-y-3">
+                            <label class="text-base font-semibold text-amber-100">מספר טלפון</label>
+                            <input type="tel" id="parent-phone" placeholder="+972 50-123-4567"
+                                   oninput="validateStep1()"
+                                   class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-amber-200/30">
+                        <button onclick="nextStep()" id="step-1-next"
+                                class="w-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                            המשך
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Child Details -->
+                <div id="step-2" class="step-content p-6 flex-1 flex-col hidden">
                     <div class="mb-6">
                         <h2 class="text-xl font-bold text-white tracking-tight mb-2">פרטי הילד</h2>
                         <p class="text-white/60 text-sm">ספרו לנו על כל ילד שמצטרף למועדון AI</p>
@@ -2150,16 +2197,19 @@
                         </div>
                     </div>
 
-                    <div class="mt-8 pt-6 border-t border-amber-200/30">
-                        <button onclick="nextStep()" id="step-1-next"
-                                class="w-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                    <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
+                        <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
+                            חזור
+                        </button>
+                        <button onclick="nextStep()" id="step-2-next"
+                                class="flex-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
                             המשך
                         </button>
                     </div>
                 </div>
 
-                <!-- Step 2: Payment Plan Selection -->
-                <div id="step-2" class="step-content p-6 flex-1 flex-col hidden">
+                <!-- Step 3: Payment Plan Selection -->
+                <div id="step-3" class="step-content p-6 flex-1 flex-col hidden">
                     <div class="mb-6">
                         <h2 class="text-xl font-bold text-white tracking-tight mb-2">בחר תוכנית תשלום</h2>
                         <p class="text-white/60 text-sm">בחר את התוכנית הטובה ביותר למשפחה שלך</p>
@@ -2169,8 +2219,14 @@
                         <!-- Registration Summary Box -->
                         <div id="registration-summary" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
                             <h3 class="text-lg font-semibold text-white mb-3">סיכום הרשמה</h3>
-                            <div id="step-2-summary" class="space-y-2 text-sm text-white/80">
+                            <div id="step-3-summary" class="space-y-2 text-sm text-white/80">
                                 <!-- Summary will be populated here -->
+                            </div>
+                            <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-base font-semibold text-white">סה״כ:</span>
+                                    <span id="step-3-total" class="text-xl font-bold text-cyan-300">₪0</span>
+                                </div>
                             </div>
                         </div>
 
@@ -2235,60 +2291,6 @@
                             <div id="pricing-breakdown-content" class="hidden mt-4 space-y-3 bg-amber-950/20 border border-amber-200/20 rounded-lg p-4">
                                 <!-- Breakdown will be populated here -->
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
-                        <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
-                            חזור
-                        </button>
-                        <button onclick="nextStep()" id="step-2-next" class="flex-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
-                            המשך
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Step 3: Parent Contact Details -->
-                <div id="step-3" class="step-content p-6 flex-1 flex-col hidden">
-                    <div class="mb-6">
-                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">פרטי יצירת קשר של ההורה</h2>
-                        <p class="text-white/60 text-sm">פרטי יצירת הקשר שלך לרישום</p>
-                    </div>
-
-                    <div class="flex-1 space-y-6">
-                        <!-- Registration Summary -->
-                        <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
-                            <h3 class="text-lg font-semibold text-white mb-3">סיכום הרשמה</h3>
-                            <div id="step-3-summary" class="space-y-2 text-sm text-white/80">
-                                <!-- Summary will be populated here -->
-                            </div>
-                            <div class="border-t border-cyan-400/30 pt-3 mt-3">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-base font-semibold text-white">סה״כ:</span>
-                                    <span id="step-3-total" class="text-xl font-bold text-cyan-300">₪0</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="space-y-3">
-                            <label class="text-base font-semibold text-amber-100">שם ההורה</label>
-                            <input type="text" id="parent-name" placeholder="הזן את שמך המלא"
-                                   oninput="validateStep3()"
-                                   class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
-                        </div>
-
-                        <div class="space-y-3">
-                            <label class="text-base font-semibold text-amber-100">כתובת אימייל</label>
-                            <input type="email" id="parent-email" placeholder="your@email.com"
-                                   oninput="validateStep3()"
-                                   class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
-                        </div>
-
-                        <div class="space-y-3">
-                            <label class="text-base font-semibold text-amber-100">מספר טלפון</label>
-                            <input type="tel" id="parent-phone" placeholder="+972 50-123-4567"
-                                   oninput="validateStep3()"
-                                   class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
                         </div>
                     </div>
 
@@ -2962,10 +2964,14 @@
 
             // Initialize step-specific content
             if (currentWizardStep === 2) {
-                generateStep2Summary();
-                updatePricingDisplays();
+                // Step 2: Child Details - no summary needed
             } else if (currentWizardStep === 3) {
-                generateFinalSummary();
+                // Step 3: Payment Plan - show children summary
+                generateStep3Summary();
+                updatePricingDisplays();
+            } else if (currentWizardStep === 4) {
+                // Step 4: Payment - show final summary
+                generateStep4Summary();
             }
         }
 
@@ -3029,29 +3035,7 @@
             }));
 
             generateChildFormsStep1();
-            validateStep1();
-        }
-
-        function selectBulkDuration(duration) {
-            wizardData.bulkDuration = duration;
-
-            // Update UI - remove selection from all buttons
-            document.querySelectorAll('.bulk-duration-btn').forEach(btn => {
-                btn.classList.remove('border-cyan-400', 'bg-cyan-500/10');
-                btn.classList.add('border-amber-200/30');
-                btn.querySelector('.w-3').classList.add('opacity-0');
-            });
-
-            // Add selection to clicked button
-            const selectedBtn = document.querySelector(`[data-duration="${duration}"]`);
-            if (selectedBtn) {
-                selectedBtn.classList.remove('border-amber-200/30');
-                selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/10');
-                selectedBtn.querySelector('.w-3').classList.remove('opacity-0');
-            }
-
-            updatePricingPreview();
-            validateStep1();
+            validateStep2();
         }
 
         function updatePricingPreview() {
@@ -3119,14 +3103,6 @@
             document.getElementById('pricing-preview').classList.remove('hidden');
         }
 
-        function validateStep1() {
-            const continueBtn = document.getElementById('step-1-next');
-            if (wizardData.bulkDuration && wizardData.childCount > 0) {
-                continueBtn.disabled = false;
-            } else {
-                continueBtn.disabled = true;
-            }
-        }
 
         // Step 1 Functions (Child Details)
         function generateChildFormsStep1() {
@@ -3228,7 +3204,7 @@
                 wizardData.children[index] = { name: '', ageGroup: '' };
             }
             wizardData.children[index][field] = value;
-            validateStep1();
+            validateStep2();
         }
 
         function selectChildAgeGroup(index, ageGroup) {
@@ -3259,15 +3235,27 @@
                 }
             }
 
-            validateStep1();
+            validateStep2();
         }
 
         function validateStep1() {
-            const continueBtn = document.getElementById('step-1-next');
-            const allValid = wizardData.children.every(child =>
-                child && child.name.trim() !== '' && child.ageGroup !== ''
-            );
-            continueBtn.disabled = !allValid;
+            const submitBtn = document.getElementById('step-1-next');
+            const parentName = document.getElementById('parent-name')?.value || '';
+            const parentEmail = document.getElementById('parent-email')?.value || '';
+            const parentPhone = document.getElementById('parent-phone')?.value || '';
+
+            // Save to wizardData as user types
+            wizardData.parentName = parentName.trim();
+            wizardData.parentEmail = parentEmail.trim();
+            wizardData.parentPhone = parentPhone.trim();
+
+            const allValid = parentName.trim() !== '' &&
+                           parentEmail.trim() !== '' &&
+                           parentPhone.trim() !== '';
+
+            if (submitBtn) {
+                submitBtn.disabled = !allValid;
+            }
         }
 
         // Initialize Step 1 on load
@@ -3275,9 +3263,10 @@
             generateChildFormsStep1();
         });
 
-        // Step 2 Functions (Payment Plan Selection)
-        function generateStep2Summary() {
-            const summaryContainer = document.getElementById('step-2-summary');
+        // Step 3 Functions (Payment Plan Selection)
+        function generateStep3Summary() {
+            const summaryContainer = document.getElementById('step-3-summary');
+            const totalElement = document.getElementById('step-3-total');
             if (!summaryContainer) return;
 
             let summaryHTML = `<div class="text-base font-medium text-white mb-2">${wizardData.childCount} ילד${wizardData.childCount > 1 ? 'ים' : ''} רשום${wizardData.childCount > 1 ? 'ים' : ''}:</div>`;
@@ -3292,6 +3281,13 @@
             });
 
             summaryContainer.innerHTML = summaryHTML;
+
+            // Update total if payment plan is selected
+            if (wizardData.bulkDuration && totalElement) {
+                const totalMonthlyPrice = calculateWizardTotal();
+                const isTrial = wizardData.bulkDuration === 'trial';
+                totalElement.textContent = isTrial ? `₪0 (ניסיון חינם)` : `₪${totalMonthlyPrice}/חודש`;
+            }
         }
 
         function updatePricingDisplays() {
@@ -3337,7 +3333,8 @@
             }
 
             updatePricingBreakdown();
-            validateStep2();
+            generateStep3Summary();
+            validateStep3();
         }
 
         function togglePricingBreakdown() {
@@ -3409,13 +3406,16 @@
 
         function validateStep2() {
             const continueBtn = document.getElementById('step-2-next');
-            continueBtn.disabled = !wizardData.bulkDuration;
+            const allValid = wizardData.children.every(child =>
+                child && child.name.trim() !== '' && child.ageGroup !== ''
+            );
+            continueBtn.disabled = !allValid;
         }
 
-        // Step 3 Functions
-        function generateFinalSummary() {
-            const summaryContainer = document.getElementById('step-3-summary');
-            const totalElement = document.getElementById('step-3-total');
+        // Step 4 Functions
+        function generateStep4Summary() {
+            const summaryContainer = document.getElementById('step-4-summary');
+            const totalElement = document.getElementById('step-4-total');
 
             if (!summaryContainer || !totalElement) return;
 
@@ -3455,28 +3455,11 @@
 
             summaryContainer.innerHTML = summaryHTML;
             totalElement.textContent = `₪${Math.round(totalMonthlyPrice)}/חודש`;
-
-            validateStep3();
         }
 
         function validateStep3() {
-            const submitBtn = document.getElementById('step-3-next');
-            const parentName = document.getElementById('parent-name')?.value || '';
-            const parentEmail = document.getElementById('parent-email')?.value || '';
-            const parentPhone = document.getElementById('parent-phone')?.value || '';
-
-            // Save to wizardData as user types - needed for AllPay validation
-            wizardData.parentName = parentName.trim();
-            wizardData.parentEmail = parentEmail.trim();
-            wizardData.parentPhone = parentPhone.trim();
-
-            const allValid = parentName.trim() !== '' &&
-                           parentEmail.trim() !== '' &&
-                           parentPhone.trim() !== '';
-
-            if (submitBtn) {
-                submitBtn.disabled = !allValid;
-            }
+            const continueBtn = document.getElementById('step-3-next');
+            continueBtn.disabled = !wizardData.bulkDuration;
         }
 
         // Payment method selection
