@@ -3351,6 +3351,7 @@
         // Step 3 Functions (Payment Plan Selection)
         function generateStep3Summary() {
             const summaryContainer = document.getElementById('step-3-summary');
+            const totalElement = document.getElementById('step-3-total');
             if (!summaryContainer) return;
 
             let summaryHTML = `<div class="text-base font-medium text-white mb-2">${wizardData.childCount} child${wizardData.childCount > 1 ? 'ren' : ''} enrolled:</div>`;
@@ -3365,6 +3366,13 @@
             });
 
             summaryContainer.innerHTML = summaryHTML;
+
+            // Update total if payment plan is selected
+            if (wizardData.bulkDuration && totalElement) {
+                const totalMonthlyPrice = calculateWizardTotal();
+                const isTrial = wizardData.bulkDuration === 'trial';
+                totalElement.textContent = isTrial ? `₪0 (Free Trial)` : `₪${totalMonthlyPrice}/month`;
+            }
         }
 
         function updatePricingDisplays() {
@@ -3410,7 +3418,8 @@
             }
 
             updatePricingBreakdown();
-            validateStep2();
+            generateStep3Summary(); // Update summary with new total
+            validateStep3();
         }
 
         function togglePricingBreakdown() {
