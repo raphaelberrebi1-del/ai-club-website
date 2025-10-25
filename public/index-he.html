@@ -3292,6 +3292,36 @@
             }
         }
 
+        function calculateWizardTotal() {
+            if (!wizardData.bulkDuration) return 0;
+
+            // Free trial is always ₪0
+            if (wizardData.bulkDuration === 'trial') return 0;
+
+            let total = 0;
+            const childPrices = [];
+
+            // Calculate price for each child based on their age group
+            wizardData.children.forEach((child) => {
+                if (child.ageGroup && wizardData.bulkDuration) {
+                    const price = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
+                    childPrices.push(price);
+                    total += price;
+                }
+            });
+
+            // Apply family discounts correctly:
+            // - 2 children: 10% off the total
+            // - 3+ children: 15% off the total
+            if (childPrices.length >= 2) {
+                const discountRate = childPrices.length === 2 ? 0.10 : 0.15;
+                const discount = Math.round(total * discountRate);
+                total -= discount;
+            }
+
+            return Math.round(total);
+        }
+
         function updatePricingDisplays() {
             // Calculate totals for each plan based on selected age groups
             const totals = { monthly: 0, quarterly: 0, yearly: 0 };
