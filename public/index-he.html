@@ -2176,17 +2176,17 @@
                         <div class="space-y-4">
                             <label class="text-base font-semibold text-amber-100">כמה ילדים יצטרפו למועדון AI?</label>
                             <div class="flex items-center justify-center bg-amber-950/40 border border-amber-200/30 rounded-xl p-4">
-                                <button type="button" onclick="updateChildCount(-1)"
+                                <button type="button" onclick="updateChildCount(1)"
                                         class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold text-xl rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center">
-                                    −
+                                    +
                                 </button>
                                 <div class="mx-8 text-center">
                                     <div id="child-count" class="text-3xl font-bold text-white">1</div>
                                     <div class="text-sm text-white/60 mt-1">ילד<span id="child-plural">ים</span></div>
                                 </div>
-                                <button type="button" onclick="updateChildCount(1)"
+                                <button type="button" onclick="updateChildCount(-1)"
                                         class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold text-xl rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center">
-                                    +
+                                    −
                                 </button>
                             </div>
                         </div>
@@ -2235,7 +2235,7 @@
                             <label class="text-base font-semibold text-amber-100">תוכנית תשלום (חלה על כל הילדים)</label>
                             <div class="grid grid-cols-1 gap-3">
                                 <button type="button" onclick="selectBulkDuration('monthly')"
-                                        class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="monthly">
+                                        class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-right hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="monthly">
                                     <div class="flex justify-between items-center">
                                         <div class="flex-1">
                                             <div class="text-lg font-semibold text-white">חודשי</div>
@@ -2248,7 +2248,7 @@
                                 </button>
 
                                 <button type="button" onclick="selectBulkDuration('quarterly')"
-                                        class="bulk-duration-btn relative p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="quarterly">
+                                        class="bulk-duration-btn relative p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-right hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="quarterly">
                                     <span class="absolute top-2 right-2 bg-gradient-to-r from-amber-400 to-amber-500 text-amber-950 text-xs font-bold px-2 py-1 rounded-full">הכי פופולרי</span>
                                     <div class="flex justify-between items-center">
                                         <div class="flex-1">
@@ -2262,7 +2262,7 @@
                                 </button>
 
                                 <button type="button" onclick="selectBulkDuration('yearly')"
-                                        class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="yearly">
+                                        class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-right hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="yearly">
                                     <div class="flex justify-between items-center">
                                         <div class="flex-1">
                                             <div class="text-lg font-semibold text-white flex items-center gap-2">
@@ -3459,7 +3459,9 @@
 
         function validateStep3() {
             const continueBtn = document.getElementById('step-3-next');
-            continueBtn.disabled = !wizardData.bulkDuration;
+            if (continueBtn) {
+                continueBtn.disabled = !wizardData.bulkDuration;
+            }
         }
 
         // Payment method selection
