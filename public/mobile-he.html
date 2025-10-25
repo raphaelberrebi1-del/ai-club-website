@@ -1548,6 +1548,154 @@
     </style>
 
     <script>
+        // ===== SESSION TRACKING & CONFIGURATION =====
+
+        // Generate or retrieve session ID for lead tracking
+        function getOrCreateSessionId() {
+            let sessionId = localStorage.getItem('aiclub_session_id');
+            if (!sessionId) {
+                sessionId = 'SESSION-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('aiclub_session_id', sessionId);
+            }
+            return sessionId;
+        }
+
+        const SESSION_ID = getOrCreateSessionId();
+        const TRACKING_URL = 'https://script.google.com/macros/s/YOUR_TRACKING_SCRIPT_ID/exec'; // UPDATE THIS with tracking script URL
+
+        // Email validation
+        function isValidEmail(email) {
+            if (!email) return false;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Track step progression
+        async function trackStepProgression(stepNumber) {
+            const trackingData = {
+                sessionId: SESSION_ID,
+                stepCompleted: `שלב ${stepNumber}`,
+                childNames: familyData.children.map(c => c.name).filter(n => n).join(', '),
+                ageGroups: familyData.children.map(c => c.ageGroup).filter(a => a).join(', '),
+                paymentPlan: familyData.bulkDuration || '',
+                parentEmail: familyData.parentEmail || '',
+                language: 'hebrew'
+            };
+
+            try {
+                await fetch(TRACKING_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(trackingData)
+                });
+                console.log(`שלב ${stepNumber} נרשם`);
+            } catch (error) {
+                console.error('שגיאת מעקב:', error);
+                // Don't block user progression if tracking fails
+            }
+        }
+
+        // Show error banner
+        function showError(message) {
+            // Remove any existing error banners
+            const existingError = document.querySelector('.error-banner');
+            if (existingError) {
+                existingError.remove();
+            }
+
+            // Create error banner
+            const errorBanner = document.createElement('div');
+            errorBanner.className = 'error-banner';
+            errorBanner.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+                color: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+                z-index: 10000;
+                max-width: 90%;
+                text-align: center;
+                font-weight: 600;
+                animation: slideDown 0.3s ease-out;
+                direction: rtl;
+            `;
+            errorBanner.textContent = message;
+
+            document.body.appendChild(errorBanner);
+
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                errorBanner.style.animation = 'slideUp 0.3s ease-out';
+                setTimeout(() => errorBanner.remove(), 300);
+            }, 5000);
+        }
+
+        // Show success page with registration ID
+        function showSuccessPage(registrationId) {
+            // Hide registration form
+            const registrationSection = document.querySelector('.registration-wizard');
+            if (registrationSection) {
+                registrationSection.style.display = 'none';
+            }
+
+            // Create success message
+            const successHTML = `
+                <div style="text-align: center; padding: 40px 20px; max-width: 90%; margin: 0 auto; direction: rtl;">
+                    <div style="font-size: 48px; margin-bottom: 16px;">✓</div>
+                    <h2 style="color: #10b981; font-size: 24px; margin-bottom: 12px;">ההרשמה הושלמה בהצלחה!</h2>
+                    <p style="color: #475569; font-size: 16px; margin-bottom: 24px;">
+                        תודה שנרשמתם למועדון AI לילדים! שלחנו אימייל אישור עם כל הפרטים.
+                    </p>
+                    <div style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(8, 145, 178, 0.1) 100%); padding: 20px; border-radius: 12px; border-right: 4px solid #06b6d4; margin-bottom: 24px;">
+                        <div style="color: #0f172a; font-size: 12px; font-weight: 600; margin-bottom: 6px; text-align: right;">
+                            מספר ההרשמה שלך
+                        </div>
+                        <div style="color: #0891b2; font-size: 18px; font-weight: bold; font-family: monospace; text-align: right;">
+                            ${registrationId}
+                        </div>
+                        <div style="color: #64748b; font-size: 11px; margin-top: 6px; text-align: right;">
+                            שמור מספר זה לרישומים שלך
+                        </div>
+                    </div>
+                    <button onclick="location.reload()" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: white; padding: 12px 24px; border-radius: 12px; border: none; font-weight: 600; cursor: pointer; font-size: 14px;">
+                        חזרה לעמוד הבית
+                    </button>
+                </div>
+            `;
+
+            // Insert success message
+            const container = registrationSection?.parentElement || document.querySelector('main');
+            if (container) {
+                const successDiv = document.createElement('div');
+                successDiv.innerHTML = successHTML;
+                container.appendChild(successDiv);
+            }
+
+            // Clear session
+            localStorage.removeItem('aiclub_session_id');
+        }
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from { transform: translateX(-50%) translateY(-100px); opacity: 0; }
+                to { transform: translateX(-50%) translateY(0); opacity: 1; }
+            }
+            @keyframes slideUp {
+                from { transform: translateX(-50%) translateY(0); opacity: 1; }
+                to { transform: translateX(-50%) translateY(-100px); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // ===== END SESSION TRACKING =====
+
         document.addEventListener('DOMContentLoaded', function() {
             // Scroll-triggered animations
             const scrollElements = document.querySelectorAll('[data-scroll]');
@@ -3363,6 +3511,9 @@
 
 
         function nextStep() {
+            // Track step progression before moving forward
+            trackStepProgression(currentStep);
+
             // Check if user selected Free Trial at end of Step 3
             if (currentStep === 3 && familyData.bulkDuration === 'trial') {
                 console.log('🎁 Free Trial selected - skipping payment step');
@@ -3670,8 +3821,34 @@
         }
 
         async function submitRegistration() {
+            // Validate email format
+            if (!isValidEmail(familyData.parentEmail)) {
+                showError('נא לספק כתובת אימייל תקינה.');
+                return;
+            }
+
+            // Validate all required fields
+            if (!familyData.parentName || !familyData.parentEmail || !familyData.parentPhone) {
+                showError('נא למלא את כל פרטי יצירת הקשר של ההורה.');
+                return;
+            }
+
+            if (familyData.children.length === 0) {
+                showError('נא להוסיף לפחות ילד אחד להרשמה.');
+                return;
+            }
+
+            // Show loading state
+            const submitButton = document.getElementById('step-4-next');
+            const originalText = submitButton ? submitButton.textContent : '';
+            if (submitButton) {
+                submitButton.textContent = 'מעבד...';
+                submitButton.disabled = true;
+            }
+
             // Prepare family registration data in the format expected by Apps Script
             const registrationData = {
+                sessionId: SESSION_ID,
                 parent: {
                     name: familyData.parentName,
                     email: familyData.parentEmail,
@@ -3695,11 +3872,36 @@
                 const result = await submitRegistrationData(registrationData);
                 console.log('✅ Backend submission successful:', result);
 
-                // Show branded success modal
-                showRegistrationSuccess(registrationData);
+                // Handle response
+                if (result.success) {
+                    // Show success page with registration ID
+                    if (result.registrationId) {
+                        showSuccessPage(result.registrationId);
+                    } else {
+                        showRegistrationSuccess(registrationData);
+                    }
+                } else if (result.error === 'duplicate_free_trial') {
+                    showError('כבר השתמשת בניסיון החינמי שלך. אנא בחר תוכנית בתשלום כדי להמשיך.');
+                    if (submitButton) {
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                    }
+                } else if (result.error === 'invalid_email') {
+                    showError('נא לספק כתובת אימייל תקינה.');
+                    if (submitButton) {
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                    }
+                } else {
+                    throw new Error(result.message || 'ההרשמה נכשלה');
+                }
             } catch (error) {
                 console.error('❌ Backend submission failed:', error);
-                alert('⚠️ רישום נכשל. אנא נסו שוב או צרו קשר.');
+                showError('אירעה שגיאה בעת ההרשמה. אנא נסה שוב או צור קשר עם התמיכה בכתובת raphael@aikidz.club');
+                if (submitButton) {
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }
             }
         }
 

@@ -2461,6 +2461,154 @@
     </footer>
 
     <script>
+        // ===== SESSION TRACKING & CONFIGURATION =====
+
+        // Generate or retrieve session ID for lead tracking
+        function getOrCreateSessionId() {
+            let sessionId = localStorage.getItem('aiclub_session_id');
+            if (!sessionId) {
+                sessionId = 'SESSION-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('aiclub_session_id', sessionId);
+            }
+            return sessionId;
+        }
+
+        const SESSION_ID = getOrCreateSessionId();
+        const TRACKING_URL = 'https://script.google.com/macros/s/YOUR_TRACKING_SCRIPT_ID/exec'; // UPDATE THIS with tracking script URL
+
+        // Email validation
+        function isValidEmail(email) {
+            if (!email) return false;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Track step progression
+        async function trackStepProgression(stepNumber) {
+            const trackingData = {
+                sessionId: SESSION_ID,
+                stepCompleted: `שלב ${stepNumber}`,
+                childNames: wizardData.children.map(c => c.name).filter(n => n).join(', '),
+                ageGroups: wizardData.children.map(c => c.ageGroup).filter(a => a).join(', '),
+                paymentPlan: wizardData.bulkDuration || '',
+                parentEmail: document.getElementById('parent-email')?.value || '',
+                language: 'hebrew'
+            };
+
+            try {
+                await fetch(TRACKING_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(trackingData)
+                });
+                console.log(`שלב ${stepNumber} נרשם`);
+            } catch (error) {
+                console.error('שגיאת מעקב:', error);
+                // Don't block user progression if tracking fails
+            }
+        }
+
+        // Show error banner
+        function showError(message) {
+            // Remove any existing error banners
+            const existingError = document.querySelector('.error-banner');
+            if (existingError) {
+                existingError.remove();
+            }
+
+            // Create error banner
+            const errorBanner = document.createElement('div');
+            errorBanner.className = 'error-banner';
+            errorBanner.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+                color: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+                z-index: 10000;
+                max-width: 500px;
+                text-align: center;
+                font-weight: 600;
+                animation: slideDown 0.3s ease-out;
+                direction: rtl;
+            `;
+            errorBanner.textContent = message;
+
+            document.body.appendChild(errorBanner);
+
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                errorBanner.style.animation = 'slideUp 0.3s ease-out';
+                setTimeout(() => errorBanner.remove(), 300);
+            }, 5000);
+        }
+
+        // Show success page with registration ID
+        function showSuccessPage(registrationId) {
+            // Hide registration form
+            const registrationSection = document.querySelector('.registration-wizard');
+            if (registrationSection) {
+                registrationSection.style.display = 'none';
+            }
+
+            // Create success message
+            const successHTML = `
+                <div style="text-align: center; padding: 60px 20px; max-width: 600px; margin: 0 auto; direction: rtl;">
+                    <div style="font-size: 64px; margin-bottom: 24px;">✓</div>
+                    <h2 style="color: #10b981; font-size: 32px; margin-bottom: 16px;">ההרשמה הושלמה בהצלחה!</h2>
+                    <p style="color: #475569; font-size: 18px; margin-bottom: 32px;">
+                        תודה שנרשמתם למועדון AI לילדים! שלחנו אימייל אישור עם כל הפרטים.
+                    </p>
+                    <div style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(8, 145, 178, 0.1) 100%); padding: 24px; border-radius: 12px; border-right: 4px solid #06b6d4; margin-bottom: 32px;">
+                        <div style="color: #0f172a; font-size: 14px; font-weight: 600; margin-bottom: 8px; text-align: right;">
+                            מספר ההרשמה שלך
+                        </div>
+                        <div style="color: #0891b2; font-size: 24px; font-weight: bold; font-family: monospace; text-align: right;">
+                            ${registrationId}
+                        </div>
+                        <div style="color: #64748b; font-size: 12px; margin-top: 8px; text-align: right;">
+                            שמור מספר זה לרישומים שלך
+                        </div>
+                    </div>
+                    <button onclick="location.reload()" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: white; padding: 16px 32px; border-radius: 12px; border: none; font-weight: 600; cursor: pointer; font-size: 16px;">
+                        חזרה לעמוד הבית
+                    </button>
+                </div>
+            `;
+
+            // Insert success message
+            const container = registrationSection?.parentElement || document.querySelector('main');
+            if (container) {
+                const successDiv = document.createElement('div');
+                successDiv.innerHTML = successHTML;
+                container.appendChild(successDiv);
+            }
+
+            // Clear session
+            localStorage.removeItem('aiclub_session_id');
+        }
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from { transform: translateX(-50%) translateY(-100px); opacity: 0; }
+                to { transform: translateX(-50%) translateY(0); opacity: 1; }
+            }
+            @keyframes slideUp {
+                from { transform: translateX(-50%) translateY(0); opacity: 1; }
+                to { transform: translateX(-50%) translateY(-100px); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // ===== END SESSION TRACKING =====
+
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
 
@@ -2958,6 +3106,9 @@
 
         // Step Navigation
         function nextStep() {
+            // Track step progression before moving forward
+            trackStepProgression(currentWizardStep);
+
             const currentStepEl = document.getElementById(`step-${currentWizardStep}`);
             const nextStepEl = document.getElementById(`step-${currentWizardStep + 1}`);
 
@@ -4342,12 +4493,18 @@
 
             // Validate form
             if (formData.children.length === 0) {
-                alert('נא להשלים את כל פרטי הילדים כולל שם וקבוצת גיל לכל ילד.');
+                showError('נא להשלים את כל פרטי הילדים כולל שם וקבוצת גיל לכל ילד.');
                 return;
             }
 
             if (!formData.parent.name || !formData.parent.email || !formData.parent.phone) {
-                alert('נא למלא את כל פרטי יצירת הקשר של ההורה.');
+                showError('נא למלא את כל פרטי יצירת הקשר של ההורה.');
+                return;
+            }
+
+            // Validate email format
+            if (!isValidEmail(formData.parent.email)) {
+                showError('נא לספק כתובת אימייל תקינה.');
                 return;
             }
 
@@ -4355,32 +4512,48 @@
             const submitButton = document.getElementById('step-4-next');
             const originalText = submitButton ? submitButton.textContent : '';
             if (submitButton) {
-                submitButton.textContent = 'Processing...';
+                submitButton.textContent = 'מעבד...';
                 submitButton.disabled = true;
             }
 
             try {
+                // Add session ID to form data
+                formData.sessionId = SESSION_ID;
+
                 // Primary: Submit to Google Sheets
                 const response = await submitToGoogleSheets(formData);
 
                 if (response.success) {
-                    // Success! Show confirmation and close modal
-                    showRegistrationSuccess(formData);
-                    closeRegistrationModal();
+                    // Success! Show success page with registration ID
+                    if (response.registrationId) {
+                        showSuccessPage(response.registrationId);
+                    } else {
+                        showRegistrationSuccess(formData);
+                        closeRegistrationModal();
+                    }
+                } else if (response.error === 'duplicate_free_trial') {
+                    // Handle duplicate free trial error
+                    showError('כבר השתמשת בניסיון החינמי שלך. אנא בחר תוכנית בתשלום כדי להמשיך.');
+                    if (submitButton) {
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                    }
+                } else if (response.error === 'invalid_email') {
+                    showError('נא לספק כתובת אימייל תקינה.');
+                    if (submitButton) {
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                    }
                 } else {
-                    throw new Error('Google Sheets submission failed');
+                    throw new Error(response.message || 'ההרשמה נכשלה');
                 }
 
             } catch (error) {
                 console.error('Google Sheets submission error:', error);
 
-                // Fallback: Send to WhatsApp (original method)
-                submitToWhatsApp(formData);
+                // Show error message
+                showError('אירעה שגיאה בעת ההרשמה. אנא נסה שוב או צור קשר עם התמיכה בכתובת raphael@aikidz.club');
 
-                // Show fallback message
-                alert('Registration sent via WhatsApp! We\'ll confirm your booking shortly.');
-                closeRegistrationModal();
-            } finally {
                 // Reset button
                 if (submitButton) {
                     submitButton.textContent = originalText;
