@@ -2306,104 +2306,72 @@
                     </div>
                 </div>
 
-                <!-- Step 4: Secure Payment -->
+                <!-- Step 4: Registration Complete -->
                 <div id="step-4" class="step-content p-6 flex-1 flex-col hidden">
-                    <div class="mb-6">
-                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">השלם תשלום מאובטח</h2>
-                        <p class="text-white/60 text-sm">תשלום מאובטח באמצעות AllPay - מקבלים כרטיסי אשראי, Bit, Apple Pay</p>
+                    <div class="mb-6 text-center">
+                        <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-green-400 to-green-500 rounded-full mb-4">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white tracking-tight mb-2">תודה על ההרשמה!</h2>
+                        <p class="text-white/80 text-base">קיבלנו את פרטיכם ונחזור אליכם בקרוב</p>
                     </div>
 
                     <div class="flex-1 space-y-6">
-                        <!-- Order Summary -->
-                        <div id="payment-summary" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
-                            <h3 class="text-lg font-semibold text-white mb-3">סיכום הזמנה</h3>
-                            <div id="step-4-summary" class="space-y-2 text-sm text-white/80">
+                        <!-- Registration Summary -->
+                        <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-6">
+                            <h3 class="text-lg font-semibold text-white mb-4">סיכום ההרשמה</h3>
+                            <div id="step-4-summary" class="space-y-3 text-sm text-white/80">
                                 <!-- Summary will be populated by JavaScript -->
                             </div>
-                            <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                            <div class="border-t border-cyan-400/30 pt-4 mt-4">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-base font-semibold text-white">סה״כ:</span>
+                                    <span class="text-base font-semibold text-white">סה״כ חודשי:</span>
                                     <span id="step-4-total" class="text-2xl font-bold text-cyan-300">₪0</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Loading State (shown while creating payment) -->
-                        <div id="payment-loading" class="hidden text-center py-8">
-                            <div class="relative inline-flex">
-                                <div class="w-16 h-16 border-4 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin"></div>
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                                    </svg>
+                        <!-- Next Steps -->
+                        <div class="bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-400/30 rounded-xl p-6">
+                            <h3 class="text-lg font-semibold text-white mb-4">מה הלאה?</h3>
+                            <div class="space-y-3 text-sm text-white/90">
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-amber-400 text-amber-950 rounded-full flex items-center justify-center font-bold text-xs">1</div>
+                                    <p>נצור איתכם קשר תוך 24 שעות לאישור הפרטים</p>
                                 </div>
-                            </div>
-                            <p class="text-white text-lg font-medium mt-4">מכין תשלום מאובטח...</p>
-                            <p class="text-white/60 text-sm mt-2">אנא המתן, אל תסגור את החלון</p>
-                        </div>
-
-                        <!-- AllPay Hosted Fields iframe (shown after payment created) -->
-                        <div id="payment-iframe-container" class="hidden">
-                            <div class="bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-xl border border-cyan-200/40 rounded-xl p-6">
-                                <!-- Security Message -->
-                                <div class="flex items-center gap-3 mb-4 px-4 py-3 bg-cyan-500/10 border border-cyan-400/30 rounded-lg">
-                                    <svg class="w-5 h-5 text-cyan-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                                    </svg>
-                                    <p class="text-sm text-white/90">
-                                        <span class="font-semibold">טופס תשלום מאובטח</span> • פרטי הכרטיס שלך מוצפנים ומוגנים על ידי AllPay
-                                    </p>
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-amber-400 text-amber-950 rounded-full flex items-center justify-center font-bold text-xs">2</div>
+                                    <p>נשלח לכם קישור לתשלום ופרטי הבנק להעברה</p>
                                 </div>
-
-                                <iframe
-                                    id="allpay-payment-iframe"
-                                    allow="payment *"
-                                    src=""
-                                    class="w-full rounded-lg border border-cyan-400/30 shadow-lg"
-                                    style="height: 500px; min-height: 500px; background: transparent;">
-                                </iframe>
-
-                                <button
-                                    onclick="submitAllPayPayment()"
-                                    id="allpay-submit-button"
-                                    class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-4 rounded-xl mt-6 hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
-                                    <span class="flex items-center justify-center gap-2">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                        </svg>
-                                        <span>אשר תשלום</span>
-                                    </span>
-                                </button>
-
-                                <p class="text-xs text-white/60 text-center mt-3">
-                                    🔒 תשלום מאובטח באמצעות AllPay
-                                </p>
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-amber-400 text-amber-950 rounded-full flex items-center justify-center font-bold text-xs">3</div>
+                                    <p>נעדכן אתכם על המיקום המדויק ומועדי השיעורים</p>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Payment Method Options Info -->
-                        <div id="payment-methods-info" class="hidden bg-black/20 border border-white/10 rounded-lg p-4">
-                            <p class="text-white/80 text-sm text-center mb-3">אפשרויות תשלום זמינות:</p>
-                            <div class="flex items-center justify-center gap-4 flex-wrap">
-                                <div class="text-white/60 text-xs flex items-center gap-1">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 8H4V6h16v2zm0 2H4v8c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8z"/></svg>
-                                    <span>כרטיסי אשראי</span>
-                                </div>
-                                <div class="text-white/60 text-xs flex items-center gap-1">
-                                    <img src="Bit.logo.png" alt="Bit" class="h-4 w-auto">
-                                    <span>Bit</span>
-                                </div>
-                                <div class="text-white/60 text-xs flex items-center gap-1">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.38,7.62L19,9l-1.38-1.38a9.024,9.024,0,0,0-11.24,0L5,9,3.62,7.62a11.019,11.019,0,0,1,16.76,0ZM12,18a3,3,0,1,1,3-3A3,3,0,0,1,12,18Z"/></svg>
-                                    <span>Apple Pay</span>
-                                </div>
+                        <!-- Contact Information -->
+                        <div class="bg-black/20 border border-white/10 rounded-lg p-6 text-center">
+                            <p class="text-white/80 text-sm mb-3">שאלות? צרו איתנו קשר:</p>
+                            <div class="space-y-2">
+                                <a href="mailto:raphael@aikidz.club" class="block text-cyan-400 hover:text-cyan-300 transition-colors">
+                                    📧 raphael@aikidz.club
+                                </a>
+                                <a href="tel:+972543159025" class="block text-cyan-400 hover:text-cyan-300 transition-colors" dir="ltr">
+                                    📞 054-315-9025
+                                </a>
+                                <a href="https://wa.me/972543159025" target="_blank" class="block text-green-400 hover:text-green-300 transition-colors">
+                                    💬 WhatsApp
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
-                        <button onclick="previousStep()" id="step-4-back" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
-                            חזור
+                    <div class="mt-8 pt-6 border-t border-amber-200/30">
+                        <button onclick="window.location.href='index-he.html'" class="w-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105">
+                            חזרה לדף הבית
                         </button>
                     </div>
                 </div>
@@ -5493,217 +5461,65 @@
         </div>
     </div>
 
-    <!-- AllPay Hosted Fields SDK -->
-    <script src="https://allpay.to/js/allpay-hf.js"></script>
-
-    <!-- AllPay Integration Scripts -->
+    <!-- Step 4 Summary Script -->
     <script>
-        // AllPay instance (will be initialized after payment creation)
-        let AllpayInstance = null;
-
-        // Flag to prevent multiple simultaneous AllPay initializations
-        let isInitializingPayment = false;
-
         /**
-         * Initialize AllPay payment when user reaches Step 4
+         * Update Step 4 summary when user reaches confirmation page
          */
-        async function initializeAllPayPayment() {
-            // Prevent multiple simultaneous initializations
-            if (isInitializingPayment) {
-                console.log('⚠️ Payment initialization already in progress, skipping...');
-                return false;
-            }
-
-            isInitializingPayment = true;
-
-            try {
-                console.log('🔄 Initializing AllPay payment...');
-
-                // Validate form before proceeding
-                if (!validateMobileForm()) {
-                    alert('אנא מלא את כל השדות הנדרשים');
-                    return false;
-                }
-
-                // Collect form data
-                const formData = collectMobileFormData();
-                if (!formData) {
-                    alert('שגיאה באיסוף נתוני הטופס');
-                    return false;
-                }
-
-                // Calculate total amount
-                const totalAmount = calculateTotalAmount();
-                console.log('💰 Total amount:', totalAmount);
-
-                if (totalAmount <= 0) {
-                    alert('סכום תשלום לא חוקי');
-                    return false;
-                }
-
-                // Update summary in Step 4
-                updateStep4Summary(formData, totalAmount);
-
-                // Show loading state with null checks
-                const loadingEl = document.getElementById('payment-loading');
-                const iframeContainerEl = document.getElementById('payment-iframe-container');
-                const methodsInfoEl = document.getElementById('payment-methods-info');
-
-                if (loadingEl) loadingEl.classList.remove('hidden');
-                if (iframeContainerEl) iframeContainerEl.classList.add('hidden');
-                if (methodsInfoEl) methodsInfoEl.classList.add('hidden');
-
-                // Continue with payment creation
-                return await createAllPayPayment(formData, totalAmount);
-
-            } catch (error) {
-                console.error('❌ Payment initialization error:', error);
-                alert('שגיאה באתחול תשלום: ' + error.message);
-                return false;
-            } finally {
-                // Always reset the flag when done
-                isInitializingPayment = false;
-            }
-        }
-
-        /**
-         * Create AllPay payment (separated for better error handling)
-         */
-        async function createAllPayPayment(formData, totalAmount) {
-            try {
-                // Call backend to create payment
-                const response = await fetch('/api/create-payment', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        parentName: formData.parentName,
-                        parentEmail: formData.parentEmail,
-                        parentPhone: formData.parentPhone,
-                        children: formData.children,
-                        duration: formData.duration,
-                        amount: totalAmount,
-                        language: 'he'
-                    })
-                });
-
-                const data = await response.json();
-                console.log('📨 Response from backend:', data);
-
-                if (data.success && data.paymentUrl) {
-                    console.log('✅ Payment created successfully');
-                    console.log('🔗 Payment URL:', data.paymentUrl);
-
-                    // Load payment URL into iframe
-                    const iframe = document.getElementById('allpay-payment-iframe');
-                    if (!iframe) {
-                        throw new Error('Payment iframe not found');
-                    }
-                    iframe.src = data.paymentUrl;
-
-                    // Initialize AllPay Hosted Fields
-                    AllpayInstance = new AllpayPayment({
-                        iframeId: 'allpay-payment-iframe',
-                        onSuccess: function() {
-                            handleAllPaySuccess(data.orderId, formData);
-                        },
-                        onError: function(error_n, error_msg) {
-                            handleAllPayError(error_n, error_msg);
-                        }
-                    });
-
-                    // Hide loading, show iframe and payment button with null checks
-                    const loadingEl = document.getElementById('payment-loading');
-                    const iframeContainerEl = document.getElementById('payment-iframe-container');
-                    const methodsInfoEl = document.getElementById('payment-methods-info');
-
-                    if (loadingEl) loadingEl.classList.add('hidden');
-                    if (iframeContainerEl) iframeContainerEl.classList.remove('hidden');
-                    if (methodsInfoEl) methodsInfoEl.classList.remove('hidden');
-
-                    return true;
-
-                } else {
-                    throw new Error(data.error || 'Failed to create payment');
-                }
-
-            } catch (error) {
-                console.error('❌ Payment creation error:', error);
-                alert('שגיאה ביצירת תשלום: ' + error.message + '\nאנא נסה שנית.');
-
-                // Hide loading with null check
-                const loadingEl = document.getElementById('payment-loading');
-                if (loadingEl) loadingEl.classList.add('hidden');
-
-                return false;
-            }
-        }
-
-        /**
-         * Submit payment when user clicks "אשר תשלום" button
-         */
-        function submitAllPayPayment() {
-            if (!AllpayInstance) {
-                alert('מערכת התשלום טרם אותחלה. אנא נסה שנית.');
+        function updateStep4Summary() {
+            if (!wizardData.children || !wizardData.bulkDuration) {
+                console.error('Missing wizard data');
                 return;
             }
 
-            console.log('💳 Submitting payment...');
+            // Calculate total
+            const totalAmount = calculateWizardTotal();
 
-            // Disable button and show processing state
-            const button = document.getElementById('allpay-submit-button');
-            button.disabled = true;
-            button.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="animate-spin w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>מעבד תשלום...</span></span>';
-
-            // Trigger AllPay payment
-            AllpayInstance.pay();
-        }
-
-        /**
-         * Handle successful payment
-         */
-        function handleAllPaySuccess(orderId, formData) {
-            console.log('✅ Payment successful!');
-            console.log('Order ID:', orderId);
-
-            // Hide Step 4
-            document.getElementById('step-4').classList.add('hidden');
-
-            // Show success message
-            showPaymentSuccessModal(orderId, formData);
-        }
-
-        /**
-         * Handle payment error
-         */
-        function handleAllPayError(error_n, error_msg) {
-            console.error('❌ Payment failed:', error_n, error_msg);
-
-            // Re-enable button
-            const button = document.getElementById('allpay-submit-button');
-            button.disabled = false;
-            button.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>אשר תשלום</span></span>';
-
-            // Show error message
-            alert('תשלום נכשל: ' + error_msg + '\n\nקוד שגיאה: ' + error_n + '\n\nאנא בדוק את הפרטים ונסה שנית.');
-        }
-
-        /**
-         * Update Step 4 summary with order details
-         */
-        function updateStep4Summary(formData, totalAmount) {
+            // Build summary HTML
             const summaryHtml = `
-                <div class="space-y-2">
-                    ${formData.children.map((child, index) => `
-                        <div class="flex justify-between items-center">
-                            <span>${child.name} (${child.age} שנים)</span>
-                            <span class="text-cyan-300 font-semibold">${getChildPrice(index, formData.duration)}₪</span>
-                        </div>
-                    `).join('')}
-                    <div class="text-xs text-white/60 mt-2">
-                        תוכנית: ${getDurationLabel(formData.duration)}
+                <div class="space-y-3">
+                    <div class="border-b border-cyan-400/20 pb-3">
+                        <p class="text-xs text-white/50 mb-1">הורה</p>
+                        <p class="text-base font-semibold text-white">${wizardData.parentName}</p>
+                        <p class="text-sm text-white/70">${wizardData.parentEmail}</p>
+                        <p class="text-sm text-white/70" dir="ltr">${wizardData.parentPhone}</p>
                     </div>
+
+                    <div class="border-b border-cyan-400/20 pb-3">
+                        <p class="text-xs text-white/50 mb-2">ילדים</p>
+                        ${wizardData.children.map((child, index) => {
+                            const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים (8-10)' :
+                                               child.ageGroup === 'tech' ? 'אלופי טכנולוגיה (11-13)' :
+                                               'מנהיגים מקצועיים (14-18)';
+                            const childPrice = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
+                            return `
+                                <div class="flex justify-between items-center mb-2">
+                                    <div>
+                                        <p class="text-sm font-medium text-white">${child.name}</p>
+                                        <p class="text-xs text-white/60">${ageGroupName}</p>
+                                    </div>
+                                    <p class="text-sm text-cyan-300 font-semibold">₪${childPrice.toLocaleString()}</p>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+
+                    <div>
+                        <p class="text-xs text-white/50 mb-1">תוכנית תשלום</p>
+                        <p class="text-base font-semibold text-white">
+                            ${wizardData.bulkDuration === 'monthly' ? 'חודשי' :
+                              wizardData.bulkDuration === 'quarterly' ? 'רבעוני (3 חודשים)' :
+                              'שנתי (12 חודשים)'}
+                        </p>
+                    </div>
+
+                    ${wizardData.children.length >= 2 ? `
+                        <div class="bg-amber-500/10 border border-amber-400/30 rounded-lg p-3">
+                            <p class="text-xs text-amber-200 font-semibold">
+                                🎉 הנחת משפחה ${wizardData.children.length === 2 ? '10%' : '15%'} הופעלה!
+                            </p>
+                        </div>
+                    ` : ''}
                 </div>
             `;
 
@@ -5711,185 +5527,23 @@
             document.getElementById('step-4-total').textContent = `₪${totalAmount.toLocaleString()}`;
         }
 
-        /**
-         * Get child price with family discount
-         */
-        function getChildPrice(index, duration) {
-            const basePrices = {
-                monthly: 599,
-                quarterly: 519,
-                yearly: 479
-            };
-
-            let price = basePrices[duration] || 599;
-
-            // Apply family discounts
-            if (index === 1) {
-                price = Math.round(price * 0.9); // 10% discount
-            } else if (index >= 2) {
-                price = Math.round(price * 0.85); // 15% discount
-            }
-
-            return price.toLocaleString();
-        }
-
-        /**
-         * Get duration label in Hebrew
-         */
-        function getDurationLabel(duration) {
-            const labels = {
-                monthly: 'חודשי',
-                quarterly: 'רבעוני (3 חודשים)',
-                yearly: 'שנתי (12 חודשים)'
-            };
-            return labels[duration] || duration;
-        }
-
-        /**
-         * Validate form data
-         */
-        function validateMobileForm() {
-            // Use existing wizardData validation
-            const parentValid = wizardData.parentName && wizardData.parentEmail && wizardData.parentPhone &&
-                               wizardData.parentEmail.includes('@') && wizardData.parentPhone.length >= 9;
-
-            const childrenValid = wizardData.children && wizardData.children.length > 0 &&
-                                 wizardData.children.every(child => child.name && child.ageGroup);
-
-            return parentValid && childrenValid && wizardData.bulkDuration;
-        }
-
-        /**
-         * Collect form data
-         */
-        function collectMobileFormData() {
-            // Return the existing wizardData object directly
-            return {
-                parentName: wizardData.parentName,
-                parentEmail: wizardData.parentEmail,
-                parentPhone: wizardData.parentPhone,
-                children: wizardData.children.map(child => ({
-                    name: child.name,
-                    ageGroup: child.ageGroup,
-                    age: child.ageGroup === 'young' ? '8-10' : child.ageGroup === 'tech' ? '11-13' : '14-18'
-                })),
-                duration: wizardData.bulkDuration
-            };
-        }
-
-        /**
-         * Calculate total amount
-         */
-        function calculateTotalAmount() {
-            if (!wizardData.bulkDuration || !wizardData.children.length) return 0;
-
-            let total = 0;
-
-            // Calculate base total from age-specific pricing
-            wizardData.children.forEach((child) => {
-                if (child.ageGroup && wizardData.bulkDuration) {
-                    total += AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
-                }
-            });
-
-            // Apply family discounts
-            if (wizardData.childCount >= 2 && wizardData.children[1]?.ageGroup) {
-                const discountRate = wizardData.childCount === 2 ? 0.10 : 0.15;
-                const secondChildPrice = AGE_PRICING[wizardData.children[1].ageGroup][wizardData.bulkDuration];
-                const discount = Math.round(secondChildPrice * discountRate);
-                total -= discount;
-            }
-
-            return Math.round(total);
-        }
-
-        /**
-         * Show payment success modal with confetti
-         */
-        function showPaymentSuccessModal(orderId, formData) {
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 z-[100] flex items-center justify-center p-4';
-            modal.style.backgroundColor = 'rgba(0,0,0,0.9)';
-
-            modal.innerHTML = `
-                <div class="bg-gradient-to-br from-[#0a0a12] to-[#1a1a2e] border-2 border-green-400/50 rounded-xl shadow-2xl max-w-md w-full p-8 text-center relative overflow-hidden">
-                    <div class="confetti-container absolute inset-0 pointer-events-none"></div>
-
-                    <div class="relative z-10">
-                        <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                        </div>
-
-                        <h2 class="text-2xl font-bold text-white mb-2">התשלום בוצע בהצלחה!</h2>
-                        <p class="text-white/80 mb-4">הרישום שלך אושר</p>
-
-                        <div class="bg-black/40 rounded-lg p-4 mb-6">
-                            <p class="text-xs text-white/60 mb-1">מספר הזמנה</p>
-                            <p class="text-sm text-cyan-300 font-mono">${orderId}</p>
-                        </div>
-
-                        <p class="text-sm text-white/70 mb-6">
-                            תקבל אימייל אישור בקרוב עם כל הפרטים.
-                        </p>
-
-                        <button onclick="location.reload()" class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-3 rounded-xl hover:shadow-lg transition-all">
-                            סיום
-                        </button>
-                    </div>
-                </div>
-            `;
-
-            document.body.appendChild(modal);
-
-            // Trigger confetti
-            createConfetti(modal.querySelector('.confetti-container'));
-        }
-
-        /**
-         * Create confetti animation
-         */
-        function createConfetti(container) {
-            const colors = ['#00D9FF', '#00FFB3', '#FFD700', '#FF69B4', '#00FF00'];
-
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'absolute w-2 h-2 rounded-full';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.top = '-10px';
-
-                container.appendChild(confetti);
-
-                const animation = confetti.animate([
-                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-                    { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
-                ], {
-                    duration: 2000 + Math.random() * 2000,
-                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-                });
-
-                animation.onfinish = () => confetti.remove();
-            }
-        }
-
-        // Override the nextStep function to initialize payment when reaching Step 4
-        const originalNextStep = nextStep;
-        nextStep = async function() {
+        // Override nextStep function to update summary when reaching Step 4
+        const _originalNextStep = nextStep;
+        nextStep = function() {
             const currentStep = document.querySelector('.step-content:not(.hidden)');
             const currentStepId = currentStep ? currentStep.id : '';
 
-            // If moving from Step 3 to Step 4, initialize AllPay payment
+            // If moving from Step 3 to Step 4, update the summary
             if (currentStepId === 'step-3') {
-                const success = await initializeAllPayPayment();
-                if (!success) {
-                    return;
-                }
+                // Call original to actually move to Step 4
+                _originalNextStep();
+                // Then update the summary
+                updateStep4Summary();
+                return;
             }
 
-            // Call original nextStep function
-            originalNextStep();
+            // For all other steps, just call original
+            _originalNextStep();
         };
     </script>
 
