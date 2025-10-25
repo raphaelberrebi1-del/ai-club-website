@@ -2248,11 +2248,13 @@
                                 </button>
 
                                 <button type="button" onclick="selectBulkDuration('quarterly')"
-                                        class="bulk-duration-btn relative p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-right hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="quarterly">
-                                    <span class="absolute top-2 right-2 bg-gradient-to-r from-amber-400 to-amber-500 text-amber-950 text-xs font-bold px-2 py-1 rounded-full">הכי פופולרי</span>
+                                        class="bulk-duration-btn p-4 bg-amber-950/40 border border-amber-200/30 rounded-xl text-right hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-duration="quarterly">
                                     <div class="flex justify-between items-center">
                                         <div class="flex-1">
-                                            <div class="text-lg font-semibold text-white">רבעוני</div>
+                                            <div class="text-lg font-semibold text-white flex items-center gap-2">
+                                                <span>רבעוני</span>
+                                                <span class="bg-gradient-to-r from-amber-400 to-amber-500 text-amber-950 text-xs font-bold px-2 py-1 rounded-full">הכי פופולרי</span>
+                                            </div>
                                             <div id="quarterly-price-display" class="text-sm text-white/60">החל מ-₪519 לחודש</div>
                                         </div>
                                         <div class="w-6 h-6 border-2 border-amber-300 rounded-full flex items-center justify-center">
@@ -3319,7 +3321,7 @@
             document.querySelectorAll('.bulk-duration-btn').forEach(btn => {
                 btn.classList.remove('border-cyan-400', 'bg-cyan-500/10');
                 btn.classList.add('border-amber-200/30');
-                const indicator = btn.querySelector('.w-3');
+                const indicator = btn.querySelector('.w-3.h-3.bg-cyan-400');
                 if (indicator) indicator.classList.add('opacity-0');
             });
 
@@ -3328,7 +3330,7 @@
             if (selectedBtn) {
                 selectedBtn.classList.remove('border-amber-200/30');
                 selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/10');
-                const indicator = selectedBtn.querySelector('.w-3');
+                const indicator = selectedBtn.querySelector('.w-3.h-3.bg-cyan-400');
                 if (indicator) indicator.classList.remove('opacity-0');
             }
 
