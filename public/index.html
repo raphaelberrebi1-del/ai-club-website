@@ -3171,7 +3171,7 @@
             }));
 
             generateChildFormsStep1();
-            validateStep1();
+            validateStep2();
         }
 
         function generateChildFormsStep1() {
@@ -3276,7 +3276,7 @@
             generateChildFormsStep1();
 
             // Revalidate step
-            validateStep1();
+            validateStep2();
 
             // Update pricing if on step 2
             if (wizardData.bulkDuration) {
@@ -3289,7 +3289,7 @@
                 wizardData.children[index] = { name: '', ageGroup: '' };
             }
             wizardData.children[index][field] = value;
-            validateStep1();
+            validateStep2();
         }
 
         function selectChildAgeGroup(index, ageGroup) {
@@ -3320,7 +3320,7 @@
                 }
             }
 
-            validateStep1();
+            validateStep2();
         }
 
         function validateStep1() {
