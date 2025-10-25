@@ -357,7 +357,6 @@ function sendConfirmation(email, data, groupAssignments, showFirstLessonFree, re
         </div>
       `;
     }
-  }
 
   // Child information section
   let childrenInfo = '';

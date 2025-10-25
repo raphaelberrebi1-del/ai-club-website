@@ -357,7 +357,6 @@ function sendConfirmationHebrew(email, data, groupAssignments, showFirstLessonFr
         </div>
       `;
     }
-  }
 
   // Child information section
   let childrenInfo = '';
