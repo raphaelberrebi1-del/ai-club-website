@@ -2140,15 +2140,6 @@
                         <p class="text-white/60 text-sm">Tell us about each child joining AI Club</p>
                     </div>
 
-                    <!-- Program Start Date Notice -->
-                    <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4 mb-6">
-                        <h3 class="text-lg font-semibold text-white mb-3">Program Start Date</h3>
-                        <div class="space-y-2 text-sm text-white/90">
-                            <p>First lesson: <strong>November 2nd, 2025</strong></p>
-                            <p class="text-white/80">Exact location will be confirmed shortly</p>
-                        </div>
-                    </div>
-
                     <div class="flex-1 space-y-6">
                         <!-- Number of Children -->
                         <div class="space-y-4">
@@ -3355,6 +3346,7 @@
         // Initialize Step 1 on load
         document.addEventListener('DOMContentLoaded', function() {
             generateChildFormsStep1();
+            validateStep1(); // Initialize parent form validation
         });
 
         // Step 3 Functions (Payment Plan Selection)
