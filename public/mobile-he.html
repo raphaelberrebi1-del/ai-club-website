@@ -972,17 +972,17 @@
                             <div class="space-y-4">
                                 <label class="text-base font-semibold text-amber-100">כמה ילדים יצטרפו למועדון AI?</label>
                                 <div class="flex items-center justify-center bg-amber-950/40 border border-amber-200/30 rounded-xl p-4">
-                                    <button type="button" onclick="updateChildCount(-1)"
+                                    <button type="button" onclick="updateChildCount(1)"
                                             class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold text-xl rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center">
-                                        −
+                                        +
                                     </button>
                                     <div class="mx-8 text-center">
                                         <div id="child-count" class="text-3xl font-bold text-white">1</div>
                                         <div class="text-sm text-white/60 mt-1">ילד<span id="child-plural"></span></div>
                                     </div>
-                                    <button type="button" onclick="updateChildCount(1)"
+                                    <button type="button" onclick="updateChildCount(-1)"
                                             class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold text-xl rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200 flex items-center justify-center">
-                                        +
+                                        −
                                     </button>
                                 </div>
                             </div>
@@ -4342,71 +4342,6 @@
                 animation.onfinish = () => confetti.remove();
             }
         }
-    </script>
-
-    <script>
-        // Mobile Menu Functionality
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMenuBtn = document.getElementById('close-menu-btn');
-        const menuItems = document.querySelectorAll('.menu-item');
-
-        // Open mobile menu
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.add('active');
-            mobileMenuBtn.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-
-        // Close mobile menu
-        closeMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.remove('active');
-            mobileMenuBtn.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        // Close menu when clicking anywhere on the overlay
-        mobileMenu.addEventListener('click', function(e) {
-            mobileMenu.classList.remove('active');
-            mobileMenuBtn.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        // Prevent menu content from closing menu when clicked
-        const menuContent = mobileMenu.querySelector('.flex.flex-col.h-full');
-        menuContent.addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
-
-        // Handle menu item clicks
-        menuItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-
-                // If it's an external link (contains .html), allow normal navigation
-                if (href.includes('.html')) {
-                    // Close menu and allow normal navigation
-                    mobileMenu.classList.remove('active');
-                    document.body.style.overflow = '';
-                    return; // Don't prevent default, let the link navigate normally
-                }
-
-                // For internal links (starting with #), prevent default and scroll
-                e.preventDefault();
-                const targetElement = document.querySelector(href);
-
-                if (targetElement) {
-                    // Close menu first
-                    mobileMenu.classList.remove('active');
-                    document.body.style.overflow = '';
-
-                    // Then scroll to target
-                    setTimeout(() => {
-                        targetElement.scrollIntoView({behavior: 'smooth'});
-                    }, 100);
-                }
-            });
-        });
 
         // Override the nextStep function to initialize payment when reaching Step 4
         const originalNextStep = nextStep;
@@ -4429,67 +4364,6 @@
             // For all other step transitions
             originalNextStep();
         };
-    </script>
-
-    <script>
-        // Typewriter Effect
-        const typewriterElement = document.getElementById('typewriter-text');
-        const phrases = [
-            '-AI',
-            'למידה',
-            'חדשנות',
-            'יצירתיות',
-            'טכנולוגיה'
-        ];
-
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let isPaused = false;
-
-        function typeWriter() {
-            const currentPhrase = phrases[phraseIndex];
-
-            if (isPaused) {
-                return;
-            }
-
-            if (isDeleting) {
-                typewriterElement.innerHTML = currentPhrase.substring(0, charIndex - 1) + '<span class="typewriter-cursor"></span>';
-                charIndex--;
-
-                if (charIndex === 0) {
-                    isDeleting = false;
-                    phraseIndex = (phraseIndex + 1) % phrases.length;
-                    isPaused = true;
-                    setTimeout(() => {
-                        isPaused = false;
-                        typeWriter();
-                    }, 800);
-                    return;
-                }
-            } else {
-                typewriterElement.innerHTML = currentPhrase.substring(0, charIndex + 1) + '<span class="typewriter-cursor"></span>';
-                charIndex++;
-
-                if (charIndex === currentPhrase.length) {
-                    isPaused = true;
-                    setTimeout(() => {
-                        isPaused = false;
-                        isDeleting = true;
-                        typeWriter();
-                    }, 2500);
-                    return;
-                }
-            }
-
-            const typingSpeed = isDeleting ? 40 : 80;
-            setTimeout(typeWriter, typingSpeed);
-        }
-
-        setTimeout(() => {
-            typeWriter();
-        }, 1500);
     </script>
 
 </body>
