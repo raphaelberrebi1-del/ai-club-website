@@ -1149,60 +1149,100 @@
                         </div>
                     </div>
 
-                    <!-- Step 4: Secure Payment (AllPay Hosted Fields) -->
-                    <div id="step-4" class="step-content p-6 flex-1 flex-col hidden">
-                        <!-- Header -->
-                        <div class="mb-6">
-                            <h2 class="text-xl font-bold text-white tracking-tight mb-2">השלם תשלום מאובטח</h2>
-                            <p class="text-white/80 text-sm">תשלום מאובטח באמצעות AllPay</p>
-                        </div>
-
-                        <!-- Order Summary Box -->
-                        <div id="payment-summary" class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-4 mb-6">
-                            <h3 class="text-lg font-semibold text-white mb-3">סיכום הזמנה</h3>
-                            <div id="step-4-summary" class="space-y-2 text-sm text-white/90">
-                                <!-- Populated by JavaScript -->
+                    <!-- Step 4: Registration Complete -->
+                    <div id="step-4" class="step-content p-4 flex-1 flex-col hidden">
+                        <div class="flex-1 space-y-4">
+                            <!-- Registration Summary -->
+                            <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
+                                <h3 class="text-lg font-semibold text-white mb-3">סיכום ההרשמה</h3>
+                                <div id="step-4-summary" class="space-y-2 text-sm text-white/80">
+                                    <!-- Summary will be populated by JavaScript -->
+                                </div>
+                                <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-base font-semibold text-white">סה״כ חודשי:</span>
+                                        <span id="step-4-total" class="text-xl font-bold text-cyan-300">₪0</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="border-t border-white/20 pt-3 mt-3">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-base font-semibold text-white">סה״כ:</span>
-                                    <span id="step-4-total" class="text-2xl font-bold text-white">₪0</span>
+
+                            <!-- Payment Information -->
+                            <div class="bg-cyan-500/10 border-2 border-cyan-400/40 rounded-xl p-4">
+                                <h3 class="text-lg font-bold text-white mb-3">מידע על תשלום</h3>
+
+                                <!-- Free Lesson Banner -->
+                                <div class="bg-cyan-500/20 border border-cyan-400/40 rounded-lg p-3 mb-3">
+                                    <p class="text-white font-semibold text-base">
+                                        השיעור הראשון חינם לכל התלמידים!
+                                    </p>
+                                </div>
+
+                                <p class="text-white/90 mb-2 text-sm">
+                                    אנחנו מקבלים את אמצעי התשלום הבאים:
+                                </p>
+                                <ul class="space-y-2 text-white/90 mb-3 text-sm">
+                                    <li class="flex items-center gap-2">
+                                        <span class="text-cyan-400">•</span> העברות Bit
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span class="text-cyan-400">•</span> PayBox
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span class="text-cyan-400">•</span> העברה בנקאית
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span class="text-cyan-400">•</span> תשלום במזומן
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span class="text-cyan-400">•</span> המחאות
+                                    </li>
+                                </ul>
+                                <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-3">
+                                    <p class="text-white/95 font-semibold text-xs">
+                                        תשלומי כרטיס אשראי יהיו זמינים בקרוב!
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Next Steps -->
+                            <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-xl p-4">
+                                <h3 class="text-base font-semibold text-white mb-3">מה הלאה?</h3>
+                                <div class="space-y-2 text-sm text-white/90">
+                                    <div class="flex items-start gap-2">
+                                        <div class="flex-shrink-0 w-5 h-5 bg-cyan-400 text-cyan-950 rounded-full flex items-center justify-center font-bold text-xs">1</div>
+                                        <p class="text-xs">נצור איתכם קשר תוך 24 שעות לאישור הפרטים</p>
+                                    </div>
+                                    <div class="flex items-start gap-2">
+                                        <div class="flex-shrink-0 w-5 h-5 bg-cyan-400 text-cyan-950 rounded-full flex items-center justify-center font-bold text-xs">2</div>
+                                        <p class="text-xs">נשלח לכם את פרטי התשלום והאפשרויות הזמינות</p>
+                                    </div>
+                                    <div class="flex items-start gap-2">
+                                        <div class="flex-shrink-0 w-5 h-5 bg-cyan-400 text-cyan-950 rounded-full flex items-center justify-center font-bold text-xs">3</div>
+                                        <p class="text-xs">נעדכן אתכם על המיקום המדויק ומועדי השיעורים</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contact Information -->
+                            <div class="bg-black/20 border border-white/10 rounded-lg p-3 text-center">
+                                <p class="text-white/70 text-xs mb-2">שאלות? צרו איתנו קשר:</p>
+                                <div class="flex items-center justify-center gap-3 text-xs">
+                                    <a href="mailto:raphael@aikidz.club" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+                                        raphael@aikidz.club
+                                    </a>
+                                    <a href="tel:+972543159025" class="text-cyan-400 hover:text-cyan-300 transition-colors" dir="ltr">
+                                        054-315-9025
+                                    </a>
+                                    <a href="https://wa.me/972543159025" target="_blank" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+                                        WhatsApp
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Loading State -->
-                        <div id="payment-loading" class="hidden text-center py-12">
-                            <div class="inline-block w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin"></div>
-                            <p class="text-white text-lg font-medium mt-4">מכין תשלום מאובטח...</p>
-                        </div>
-
-                        <!-- AllPay Hosted Fields iframe - CLEAN VERSION -->
-                        <div id="payment-iframe-container" class="hidden">
-                            <iframe
-                                id="allpay-payment-iframe"
-                                allow="payment *"
-                                src=""
-                                style="width: 100%; height: 500px; border: none; background: white; border-radius: 12px;">
-                            </iframe>
-
-                            <button
-                                onclick="submitAllPayPayment()"
-                                id="allpay-submit-button"
-                                class="w-full mt-6 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed">
-                                <span class="flex items-center justify-center gap-2">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                    אשר תשלום
-                                </span>
-                            </button>
-                        </div>
-
-                        <!-- Back Button -->
-                        <div class="mt-8 pt-6 border-t border-white/20">
-                            <button onclick="previousStep()" class="w-full bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
-                                חזור
+                        <div class="mt-6 pt-4 border-t border-cyan-400/30">
+                            <button onclick="window.location.href='mobile-he.html'" class="w-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200">
+                                חזרה לדף הבית
                             </button>
                         </div>
                     </div>
@@ -3252,6 +3292,74 @@
             validateStep3();
         }
 
+        // Step 4 Functions
+        function generateStep4Summary() {
+            const summaryContainer = document.getElementById('step-4-summary');
+            const totalElement = document.getElementById('step-4-total');
+
+            if (!summaryContainer || !totalElement) return;
+
+            // Calculate pricing based on age-specific rates
+            let totalMonthlyPrice = 0;
+            familyData.children.forEach(child => {
+                if (child.ageGroup && familyData.bulkDuration) {
+                    totalMonthlyPrice += AGE_PRICING[child.ageGroup][familyData.bulkDuration];
+                }
+            });
+
+            // Apply family discounts
+            if (familyData.childCount >= 2 && familyData.children[1]?.ageGroup) {
+                const discountRate = familyData.childCount === 2 ? 0.10 : 0.15;
+                const secondChildPrice = AGE_PRICING[familyData.children[1].ageGroup][familyData.bulkDuration];
+                const discount = Math.round(secondChildPrice * discountRate);
+                totalMonthlyPrice -= discount;
+            }
+
+            // Build summary HTML
+            const planName = familyData.bulkDuration === 'monthly' ? 'חודשי' :
+                           familyData.bulkDuration === 'quarterly' ? 'רבעוני (3 חודשים)' :
+                           familyData.bulkDuration === 'trial' ? 'ניסיון חינם' : 'שנתי (12 חודשים)';
+
+            let summaryHTML = '<div class="space-y-2">';
+
+            // Children list with prices
+            familyData.children.forEach((child, i) => {
+                const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים (8-10)' :
+                                    child.ageGroup === 'tech' ? 'אלופי טכנולוגיה (11-13)' :
+                                    'מנהיגים מקצועיים (14-18)';
+                const childPrice = AGE_PRICING[child.ageGroup][familyData.bulkDuration];
+                summaryHTML += `
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-white/90">• ${child.name} - ${ageGroupName}</span>
+                        <span class="text-cyan-300 font-semibold">₪${childPrice.toLocaleString()}</span>
+                    </div>
+                `;
+            });
+
+            // Payment plan
+            summaryHTML += `
+                <div class="text-xs text-white/60 mt-3">
+                    תוכנית תשלום: ${planName}
+                </div>
+            `;
+
+            // Family discount badge
+            if (familyData.childCount >= 2) {
+                summaryHTML += `
+                    <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-2 mt-2">
+                        <p class="text-xs text-cyan-200 font-semibold">
+                            הנחת משפחה ${familyData.childCount === 2 ? '10%' : '15%'} הופעלה!
+                        </p>
+                    </div>
+                `;
+            }
+
+            summaryHTML += '</div>';
+
+            summaryContainer.innerHTML = summaryHTML;
+            totalElement.textContent = familyData.bulkDuration === 'trial' ? '₪0 (ניסיון חינם)' : `₪${Math.round(totalMonthlyPrice)}/חודש`;
+        }
+
         function validateStep3() {
             const continueBtn = document.getElementById('step-3-next');
             const parentName = document.getElementById('parent-name').value.trim();
@@ -3350,6 +3458,9 @@
                         generateFinalSummary();
                         // Trigger validation when entering step 3
                         setTimeout(() => validateStep3(), 100);
+                    } else if (currentStep === 4) {
+                        console.log('🔄 Moving to Step 4 - generating confirmation summary');
+                        generateStep4Summary();
                     }
                 }, 300); // Match CSS transition duration
             }
