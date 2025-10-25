@@ -2345,57 +2345,6 @@
                             </div>
                         </div>
 
-                        <!-- Payment Method Selector -->
-                        <div class="bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-xl border border-cyan-200/40 rounded-xl p-4">
-                            <h3 class="text-base font-semibold text-white mb-4">Select Payment Method</h3>
-                            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
-                                <!-- Credit Card -->
-                                <button onclick="selectPaymentMethod('credit-card')" id="payment-btn-credit-card"
-                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
-                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
-                                    </svg>
-                                    <span class="text-xs font-medium text-white">Credit Card</span>
-                                </button>
-
-                                <!-- Bit -->
-                                <button onclick="selectPaymentMethod('bit')" id="payment-btn-bit"
-                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
-                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                                    </svg>
-                                    <span class="text-xs font-medium text-white">Bit</span>
-                                </button>
-
-                                <!-- Apple Pay -->
-                                <button onclick="selectPaymentMethod('apple-pay')" id="payment-btn-apple-pay"
-                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
-                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
-                                    </svg>
-                                    <span class="text-xs font-medium text-white">Apple Pay</span>
-                                </button>
-
-                                <!-- Bank Transfer -->
-                                <button onclick="selectPaymentMethod('bank-transfer')" id="payment-btn-bank-transfer"
-                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
-                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/>
-                                    </svg>
-                                    <span class="text-xs font-medium text-white text-center">Bank Transfer</span>
-                                </button>
-
-                                <!-- Cash -->
-                                <button onclick="selectPaymentMethod('cash')" id="payment-btn-cash"
-                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
-                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
-                                    </svg>
-                                    <span class="text-xs font-medium text-white">Cash</span>
-                                </button>
-                            </div>
-                        </div>
-
                         <!-- Loading State (shown while creating payment) -->
                         <div id="payment-loading" class="hidden text-center py-8">
                             <div class="relative inline-flex">
