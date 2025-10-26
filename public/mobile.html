@@ -1373,10 +1373,10 @@
             const trackingData = {
                 sessionId: SESSION_ID,
                 stepCompleted: `Step ${stepNumber}`,
-                childNames: wizardData.children.map(c => c.name).filter(n => n).join(', '),
-                ageGroups: wizardData.children.map(c => c.ageGroup).filter(a => a).join(', '),
-                paymentPlan: wizardData.bulkDuration || '',
-                parentEmail: document.getElementById('parent-email')?.value || '',
+                childNames: familyData.children.map(c => c.name).filter(n => n).join(', '),
+                ageGroups: familyData.children.map(c => c.ageGroup).filter(a => a).join(', '),
+                paymentPlan: familyData.bulkDuration || '',
+                parentEmail: familyData.parentEmail || '',
                 language: 'english'
             };
 
