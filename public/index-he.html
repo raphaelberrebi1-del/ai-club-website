@@ -5791,11 +5791,11 @@
                 });
 
                 // Note: no-cors mode doesn't allow reading response
-                // We'll assume success and show success modal
+                // We'll assume success and show success page
                 // The Google Script will send confirmation email
 
-                // Show success modal
-                showSuccessModal('REG-' + Date.now().toString(36).toUpperCase());
+                // Show success page with registration ID
+                showRegistrationSuccess(registrationData, 'REG-' + Date.now().toString(36).toUpperCase());
 
             } catch (error) {
                 console.error('Registration error:', error);
