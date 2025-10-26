@@ -288,100 +288,35 @@ function sendConfirmation(email, data, groupAssignments, showFirstLessonFree, re
         </div>
       </div>
     `;
-  } else if (data.paymentMethod === 'bit') {
-      paymentInstructions = `
-        <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
-          <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px;">
-            Pay with Bit
+  } else {
+    // Paid plan - show general payment information with total amount
+    paymentInstructions = `
+      <div style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
+        <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 12px;">
+          Payment Information
+        </div>
+        <div style="color: rgba(255,255,255,0.95); font-size: 16px; font-weight: bold; margin-bottom: 12px;">
+          Total Amount: <strong>₪${data.totalPrice}</strong>
+        </div>
+        <div style="color: rgba(255,255,255,0.95); font-size: 15px; line-height: 1.8; margin-bottom: 12px;">
+          First Lesson is <strong>FREE</strong> for all students!
+        </div>
+        <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.8;">
+          We currently accept the following payment methods:
+          <div style="margin-top: 8px;">
+            • Bit transfers<br>
+            • PayBox<br>
+            • Bank transfers<br>
+            • Cash payment<br>
+            • Checks
           </div>
-          <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6;">
-            Complete your payment via Bit to: <strong>054-315-9025</strong><br>
-            Amount: <strong>₪${data.totalPrice}</strong><br>
-            Include child name(s) in payment note
+          <div style="margin-top: 12px; font-style: italic;">
+            Credit card payments will be available soon!
           </div>
         </div>
-      `;
-    } else if (data.paymentMethod === 'paybox') {
-      paymentInstructions = `
-        <div style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
-          <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px;">
-            Pay with PayBox
-          </div>
-          <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6;">
-            Complete your payment via PayBox to: <strong>054-315-9025</strong><br>
-            Amount: <strong>₪${data.totalPrice}</strong><br>
-            Include child name(s) in payment note
-          </div>
-        </div>
-      `;
-    } else if (data.paymentMethod === 'bank_transfer') {
-      paymentInstructions = `
-        <div style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
-          <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px;">
-            Pay via Bank Transfer
-          </div>
-          <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6;">
-            Bank: <strong>Hapoalim</strong><br>
-            Branch: <strong>689</strong><br>
-            Account: <strong>518748</strong><br>
-            Amount: <strong>₪${data.totalPrice}</strong><br>
-            Include child name(s) in transfer note
-          </div>
-        </div>
-      `;
-    } else if (data.paymentMethod === 'cash') {
-      paymentInstructions = `
-        <div style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
-          <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px;">
-            Pay with Cash
-          </div>
-          <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6;">
-            Amount: <strong>₪${data.totalPrice}</strong><br>
-            Cash payment can be made at the first lesson or arranged in advance.<br>
-            Contact us at <strong>054-315-9025</strong> to coordinate payment.
-          </div>
-        </div>
-      `;
-    } else if (data.paymentMethod === 'check') {
-      paymentInstructions = `
-        <div style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
-          <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px;">
-            Pay with Check
-          </div>
-          <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6;">
-            Amount: <strong>₪${data.totalPrice}</strong><br>
-            Make check payable to: <strong>AI Kids Club</strong><br>
-            Check can be provided at the first lesson or mailed in advance.<br>
-            Contact us at <strong>054-315-9025</strong> to coordinate delivery.
-          </div>
-        </div>
-      `;
-    } else {
-      // Default fallback - general payment information
-      paymentInstructions = `
-        <div style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
-          <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 12px;">
-            Payment Information
-          </div>
-          <div style="color: rgba(255,255,255,0.95); font-size: 15px; line-height: 1.8; margin-bottom: 12px;">
-            First Lesson is <strong>FREE</strong> for all students!
-          </div>
-          <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.8;">
-            We currently accept the following payment methods:
-            <div style="margin-top: 8px;">
-              • Bit transfers<br>
-              • PayBox<br>
-              • Bank transfers<br>
-              • Cash payment<br>
-              • Checks
-            </div>
-            <div style="margin-top: 12px; font-style: italic;">
-              Credit card payments will be available soon!
-            </div>
-          </div>
-        </div>
-      `;
-    }
+      </div>
+    `;
+  }
 
   // Child information section
   let childrenInfo = '';

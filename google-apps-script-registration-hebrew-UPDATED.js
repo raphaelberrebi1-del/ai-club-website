@@ -288,100 +288,35 @@ function sendConfirmationHebrew(email, data, groupAssignments, showFirstLessonFr
         </div>
       </div>
     `;
-  } else if (data.paymentMethod === 'bit') {
-      paymentInstructions = `
-        <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 20px; border-radius: 12px; margin: 20px 0; direction: rtl;">
-          <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px; text-align: right;">
-            תשלום באמצעות Bit
+  } else {
+    // Paid plan - show general payment information with total amount (Hebrew, RTL)
+    paymentInstructions = `
+      <div style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); padding: 20px; border-radius: 12px; margin: 20px 0; direction: rtl;">
+        <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 12px; text-align: right;">
+          מידע על תשלום
+        </div>
+        <div style="color: rgba(255,255,255,0.95); font-size: 16px; font-weight: bold; margin-bottom: 12px; text-align: right;">
+          סכום כולל: <strong>₪${data.totalPrice}</strong>
+        </div>
+        <div style="color: rgba(255,255,255,0.95); font-size: 15px; line-height: 1.8; margin-bottom: 12px; text-align: right;">
+          השיעור הראשון <strong>חינם</strong> לכל התלמידים!
+        </div>
+        <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.8; text-align: right;">
+          אנחנו מקבלים את אמצעי התשלום הבאים:
+          <div style="margin-top: 8px;">
+            • העברות Bit<br>
+            • PayBox<br>
+            • העברה בנקאית<br>
+            • תשלום במזומן<br>
+            • המחאות
           </div>
-          <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6; text-align: right;">
-            השלימו את התשלום דרך Bit למספר: <strong>054-315-9025</strong><br>
-            סכום: <strong>₪${data.totalPrice}</strong><br>
-            כללו את שם הילד/ים בהערת התשלום
+          <div style="margin-top: 12px; font-style: italic;">
+            תשלומי כרטיס אשראי יהיו זמינים בקרוב!
           </div>
         </div>
-      `;
-    } else if (data.paymentMethod === 'paybox') {
-      paymentInstructions = `
-        <div style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); padding: 20px; border-radius: 12px; margin: 20px 0; direction: rtl;">
-          <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px; text-align: right;">
-            תשלום באמצעות PayBox
-          </div>
-          <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6; text-align: right;">
-            השלימו את התשלום דרך PayBox למספר: <strong>054-315-9025</strong><br>
-            סכום: <strong>₪${data.totalPrice}</strong><br>
-            כללו את שם הילד/ים בהערת התשלום
-          </div>
-        </div>
-      `;
-    } else if (data.paymentMethod === 'bank_transfer') {
-      paymentInstructions = `
-        <div style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); padding: 20px; border-radius: 12px; margin: 20px 0; direction: rtl;">
-          <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px; text-align: right;">
-            תשלום באמצעות העברה בנקאית
-          </div>
-          <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6; text-align: right;">
-            בנק: <strong>הפועלים</strong><br>
-            סניף: <strong>689</strong><br>
-            חשבון: <strong>518748</strong><br>
-            סכום: <strong>₪${data.totalPrice}</strong><br>
-            כללו את שם הילד/ים בהערת ההעברה
-          </div>
-        </div>
-      `;
-    } else if (data.paymentMethod === 'cash') {
-      paymentInstructions = `
-        <div style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); padding: 20px; border-radius: 12px; margin: 20px 0; direction: rtl;">
-          <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px; text-align: right;">
-            תשלום במזומן
-          </div>
-          <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6; text-align: right;">
-            סכום: <strong>₪${data.totalPrice}</strong><br>
-            תשלום במזומן יכול להתבצע בשיעור הראשון או להיות מתואם מראש.<br>
-            צרו איתנו קשר במספר <strong>054-315-9025</strong> לתיאום התשלום.
-          </div>
-        </div>
-      `;
-    } else if (data.paymentMethod === 'check') {
-      paymentInstructions = `
-        <div style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); padding: 20px; border-radius: 12px; margin: 20px 0; direction: rtl;">
-          <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 8px; text-align: right;">
-            תשלום בצ'ק
-          </div>
-          <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6; text-align: right;">
-            סכום: <strong>₪${data.totalPrice}</strong><br>
-            צ'ק לפקודת: <strong>AI Kids Club</strong><br>
-            ניתן למסור את הצ'ק בשיעור הראשון או לשלוח אותו מראש.<br>
-            צרו איתנו קשר במספר <strong>054-315-9025</strong> לתיאום המסירה.
-          </div>
-        </div>
-      `;
-    } else {
-      // Default fallback - general payment information (Hebrew, RTL)
-      paymentInstructions = `
-        <div style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); padding: 20px; border-radius: 12px; margin: 20px 0; direction: rtl;">
-          <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 12px; text-align: right;">
-            מידע על תשלום
-          </div>
-          <div style="color: rgba(255,255,255,0.95); font-size: 15px; line-height: 1.8; margin-bottom: 12px; text-align: right;">
-            השיעור הראשון <strong>חינם</strong> לכל התלמידים!
-          </div>
-          <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.8; text-align: right;">
-            אנחנו מקבלים את אמצעי התשלום הבאים:
-            <div style="margin-top: 8px;">
-              • העברות Bit<br>
-              • PayBox<br>
-              • העברה בנקאית<br>
-              • תשלום במזומן<br>
-              • המחאות
-            </div>
-            <div style="margin-top: 12px; font-style: italic;">
-              תשלומי כרטיס אשראי יהיו זמינים בקרוב!
-            </div>
-          </div>
-        </div>
-      `;
-    }
+      </div>
+    `;
+  }
 
   // Child information section
   let childrenInfo = '';
