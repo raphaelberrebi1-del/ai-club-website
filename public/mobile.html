@@ -1368,6 +1368,8 @@
 
         // Track step progression
         async function trackStepProgression(stepNumber) {
+            console.log('🔍 trackStepProgression called with step:', stepNumber);
+
             const trackingData = {
                 sessionId: SESSION_ID,
                 stepCompleted: `Step ${stepNumber}`,
@@ -1378,6 +1380,9 @@
                 language: 'english'
             };
 
+            console.log('📦 Tracking data prepared:', trackingData);
+            console.log('🌐 Sending to URL:', TRACKING_URL);
+
             try {
                 await fetch(TRACKING_URL, {
                     method: 'POST',
@@ -1385,9 +1390,9 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(trackingData)
                 });
-                console.log(`Step ${stepNumber} tracked`);
+                console.log(`✅ Step ${stepNumber} tracked`);
             } catch (error) {
-                console.error('Tracking error:', error);
+                console.error('❌ Tracking error:', error);
                 // Don't block user progression if tracking fails
             }
         }
@@ -3344,6 +3349,8 @@
 
 
         function nextStep() {
+            console.log('🚀 nextStep() called, currentStep:', currentStep);
+
             // Track step progression before moving forward
             trackStepProgression(currentStep);
 
