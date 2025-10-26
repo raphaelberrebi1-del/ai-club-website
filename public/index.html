@@ -5930,11 +5930,6 @@
                     if (currentStepId === 'step-3') {
                         // Just proceed to Step 4 - user will select payment method
                         originalNextStep();
-
-                        // Auto-select credit card as default after a short delay
-                        setTimeout(() => {
-                            selectPaymentMethod('credit-card');
-                        }, 300);
                         return;
                     }
 
