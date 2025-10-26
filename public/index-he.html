@@ -2410,7 +2410,11 @@
                         </div>
                     </div>
 
-                    <div class="mt-8 pt-6 border-t border-cyan-400/30">
+                    <div class="mt-8 pt-6 border-t border-cyan-400/30 space-y-3">
+                        <button onclick="submitRegistration()" id="complete-registration-btn" class="w-full bg-gradient-to-r from-green-500 via-green-400 to-green-300 text-white font-bold py-5 rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                            <span id="btn-text">השלם רישום</span>
+                            <span id="btn-loading" class="hidden">שולח...</span>
+                        </button>
                         <button onclick="window.location.href='index-he.html'" class="w-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105">
                             חזרה לדף הבית
                         </button>
@@ -5333,14 +5337,14 @@
         }
 
         // Add CSS animation for scroll hint
-        const style = document.createElement('style');
-        style.textContent = `
+        const scrollAnimationStyle = document.createElement('style');
+        scrollAnimationStyle.textContent = `
             @keyframes fade-bounce {
                 0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
                 50% { opacity: 0.8; transform: translateX(-50%) translateY(-5px); }
             }
         `;
-        document.head.appendChild(style);
+        document.head.appendChild(scrollAnimationStyle);
 
         // Handle screen resize
         window.addEventListener('resize', function() {
@@ -5774,6 +5778,103 @@
             _originalNextStep();
         };
     </script>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-gradient-to-br from-slate-900 to-slate-800 border-2 border-green-500/50 rounded-2xl max-w-md w-full p-8 shadow-2xl transform scale-95 transition-all duration-300">
+            <!-- Success Icon -->
+            <div class="flex justify-center mb-6">
+                <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center">
+                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Title -->
+            <h2 class="text-2xl font-bold text-white text-center mb-3">רישום הושלם בהצלחה!</h2>
+
+            <!-- Message -->
+            <p class="text-white/80 text-center mb-6">
+                תודה שנרשמת ל-AI Kidz Club! אימייל אישור נשלח אליך עם כל הפרטים.
+            </p>
+
+            <!-- Registration ID -->
+            <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-4 mb-6">
+                <p class="text-cyan-300 text-sm text-center mb-2">מספר רישום שלך:</p>
+                <p id="registration-id" class="text-cyan-100 font-mono text-lg text-center font-bold"></p>
+            </div>
+
+            <!-- Contact Options -->
+            <div class="bg-white/5 border border-white/10 rounded-lg p-4 mb-6">
+                <p class="text-white/70 text-sm text-center mb-3">שאלות? צרו איתנו קשר:</p>
+                <div class="flex flex-col gap-2">
+                    <a href="mailto:raphael@aikidz.club" class="text-cyan-400 hover:text-cyan-300 text-center text-sm transition-colors">
+                        raphael@aikidz.club
+                    </a>
+                    <a href="tel:+972543159025" class="text-cyan-400 hover:text-cyan-300 text-center text-sm transition-colors">
+                        054-315-9025
+                    </a>
+                    <a href="https://wa.me/972543159025" target="_blank" class="text-green-400 hover:text-green-300 text-center text-sm font-semibold transition-colors">
+                        WhatsApp צור קשר ב
+                    </a>
+                </div>
+            </div>
+
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200">
+                סגור
+            </button>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="error-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-gradient-to-br from-slate-900 to-slate-800 border-2 border-red-500/50 rounded-2xl max-w-md w-full p-8 shadow-2xl transform scale-95 transition-all duration-300">
+            <!-- Error Icon -->
+            <div class="flex justify-center mb-6">
+                <div class="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center">
+                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Title -->
+            <h2 class="text-2xl font-bold text-white text-center mb-3">משהו השתבש</h2>
+
+            <!-- Message -->
+            <p id="error-message" class="text-white/80 text-center mb-6">
+                אירעה שגיאה בעת שליחת הרישום. אנא נסה שוב או צור איתנו קשר ישירות.
+            </p>
+
+            <!-- Contact Options -->
+            <div class="bg-white/5 border border-white/10 rounded-lg p-4 mb-6">
+                <p class="text-white/70 text-sm text-center mb-3">צור קשר לעזרה:</p>
+                <div class="flex flex-col gap-2">
+                    <a href="mailto:raphael@aikidz.club" class="text-cyan-400 hover:text-cyan-300 text-center text-sm transition-colors">
+                        raphael@aikidz.club
+                    </a>
+                    <a href="tel:+972543159025" class="text-cyan-400 hover:text-cyan-300 text-center text-sm transition-colors">
+                        054-315-9025
+                    </a>
+                    <a href="https://wa.me/972543159025" target="_blank" class="text-green-400 hover:text-green-300 text-center text-sm font-semibold transition-colors">
+                        WhatsApp צור קשר ב
+                    </a>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex gap-3">
+                <button onclick="closeModal()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
+                    סגור
+                </button>
+                <button onclick="submitRegistration()" class="flex-1 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200">
+                    נסה שוב
+                </button>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
