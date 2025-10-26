@@ -2707,6 +2707,18 @@
 
             // Update pricing display
             updatePricingBreakdown();
+
+            // Update top total display in Step 3
+            const totalElement = document.getElementById('step-3-total');
+            if (totalElement) {
+                const total = calculateTotalAmount();
+                if (duration === 'trial') {
+                    totalElement.textContent = '₪0 (Free Trial)';
+                } else {
+                    totalElement.textContent = `₪${total.toLocaleString()}`;
+                }
+            }
+
             validateStep3();
         }
 
@@ -5003,9 +5015,57 @@
         function showSuccessModal(registrationId) {
             const modal = document.getElementById('success-modal');
             const regIdElement = document.getElementById('registration-id');
+            const summaryElement = document.getElementById('modal-summary');
 
             if (regIdElement) {
                 regIdElement.textContent = registrationId;
+            }
+
+            // Build order summary
+            if (summaryElement && familyData) {
+                const total = calculateTotalAmount();
+                const planNames = {
+                    monthly: 'Monthly',
+                    quarterly: 'Quarterly (3 months)',
+                    yearly: 'Annual (12 months)',
+                    trial: 'Free Trial'
+                };
+
+                let summaryHTML = '<div class="space-y-2">';
+
+                // Children list
+                familyData.children.forEach((child, index) => {
+                    const ageGroupName = child.ageGroup === 'young' ? 'Young Explorers (8-10)' :
+                                       child.ageGroup === 'tech' ? 'Tech Champions (11-13)' :
+                                       'Professional Leaders (14-18)';
+                    summaryHTML += `
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-white/90">• ${child.name || 'Child ' + (index + 1)}</span>
+                            <span class="text-white/70">${ageGroupName}</span>
+                        </div>
+                    `;
+                });
+
+                // Payment plan
+                summaryHTML += `
+                    <div class="border-t border-white/10 pt-2 mt-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-white/90 font-semibold">Plan:</span>
+                            <span class="text-cyan-300">${planNames[familyData.bulkDuration] || familyData.bulkDuration}</span>
+                        </div>
+                    </div>
+                `;
+
+                // Total
+                summaryHTML += `
+                    <div class="flex justify-between items-center">
+                        <span class="text-white font-bold">Total:</span>
+                        <span class="text-cyan-300 font-bold text-lg">₪${total.toLocaleString()}</span>
+                    </div>
+                `;
+
+                summaryHTML += '</div>';
+                summaryElement.innerHTML = summaryHTML;
             }
 
             if (modal) {
@@ -5059,6 +5119,14 @@
             <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-4 mb-6">
                 <p class="text-cyan-300 text-sm text-center mb-2">Your Registration ID:</p>
                 <p id="registration-id" class="text-cyan-100 font-mono text-lg text-center font-bold"></p>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="bg-slate-800/50 rounded-lg p-4 mb-6">
+                <p class="text-white/90 text-sm text-center font-semibold mb-3">Registration Summary</p>
+                <div id="modal-summary" class="text-sm">
+                    <!-- Summary will be populated by JavaScript -->
+                </div>
             </div>
 
             <div class="bg-slate-800/50 rounded-lg p-4 mb-6 space-y-2">
