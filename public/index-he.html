@@ -2558,50 +2558,6 @@
         }
 
         // Show success page with registration ID
-        function showSuccessPage(registrationId) {
-            // Hide registration form
-            const registrationSection = document.querySelector('.registration-wizard');
-            if (registrationSection) {
-                registrationSection.style.display = 'none';
-            }
-
-            // Create success message
-            const successHTML = `
-                <div style="text-align: center; padding: 60px 20px; max-width: 600px; margin: 0 auto; direction: rtl;">
-                    <div style="font-size: 64px; margin-bottom: 24px;">✓</div>
-                    <h2 style="color: #10b981; font-size: 32px; margin-bottom: 16px;">ההרשמה הושלמה בהצלחה!</h2>
-                    <p style="color: #475569; font-size: 18px; margin-bottom: 32px;">
-                        תודה שנרשמתם למועדון AI לילדים! שלחנו אימייל אישור עם כל הפרטים.
-                    </p>
-                    <div style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(8, 145, 178, 0.1) 100%); padding: 24px; border-radius: 12px; border-right: 4px solid #06b6d4; margin-bottom: 32px;">
-                        <div style="color: #0f172a; font-size: 14px; font-weight: 600; margin-bottom: 8px; text-align: right;">
-                            מספר ההרשמה שלך
-                        </div>
-                        <div style="color: #0891b2; font-size: 24px; font-weight: bold; font-family: monospace; text-align: right;">
-                            ${registrationId}
-                        </div>
-                        <div style="color: #64748b; font-size: 12px; margin-top: 8px; text-align: right;">
-                            שמור מספר זה לרישומים שלך
-                        </div>
-                    </div>
-                    <button onclick="location.reload()" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: white; padding: 16px 32px; border-radius: 12px; border: none; font-weight: 600; cursor: pointer; font-size: 16px;">
-                        חזרה לעמוד הבית
-                    </button>
-                </div>
-            `;
-
-            // Insert success message
-            const container = registrationSection?.parentElement || document.querySelector('main');
-            if (container) {
-                const successDiv = document.createElement('div');
-                successDiv.innerHTML = successHTML;
-                container.appendChild(successDiv);
-            }
-
-            // Clear session
-            localStorage.removeItem('aiclub_session_id');
-        }
-
         // Add CSS animations
         const style = document.createElement('style');
         style.textContent = `
@@ -4603,7 +4559,7 @@
         }
 
         // Show success message
-        function showRegistrationSuccess(formData) {
+        function showRegistrationSuccess(formData, registrationId = null) {
             const childrenCount = formData.children.length;
             const successMessage = `
                 <style>
@@ -4700,6 +4656,14 @@
                                 <p class="text-lg font-semibold text-white">${childrenCount} ${childrenCount > 1 ? 'ילדים' : 'ילד'} • תוכנית ${formData.paymentPlan === 'monthly' ? 'חודשית' : formData.paymentPlan === 'quarterly' ? 'רבעונית' : 'שנתית'}</p>
                                 <p class="text-2xl font-bold text-cyan-300 mt-2">₪${formData.totalPrice}<span class="text-sm text-white/60">/חודש</span></p>
                             </div>
+
+                            ${registrationId ? `
+                            <!-- Registration ID -->
+                            <div class="bg-black/40 border border-cyan-400/40 rounded-xl p-4 mb-6">
+                                <p class="text-sm text-cyan-300 mb-2">מספר רישום שלך:</p>
+                                <p class="text-lg font-mono font-bold text-white">${registrationId}</p>
+                            </div>
+                            ` : ''}
 
                             <!-- Next steps -->
                             <div class="text-right space-y-3 mb-6">
@@ -5845,22 +5809,6 @@
         }
 
         /**
-         * Show success modal with registration ID
-         */
-        function showSuccessModal(registrationId) {
-            const modal = document.getElementById('success-modal');
-            const regIdElement = document.getElementById('registration-id');
-
-            if (regIdElement) {
-                regIdElement.textContent = registrationId;
-            }
-
-            if (modal) {
-                modal.classList.remove('hidden');
-            }
-        }
-
-        /**
          * Show error modal with custom message
          */
         function showErrorModal(message) {
@@ -5886,55 +5834,6 @@
             }
         }
     </script>
-
-    <!-- Success Modal -->
-    <div id="success-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div class="bg-gradient-to-br from-slate-900 to-slate-800 border-2 border-green-500/50 rounded-2xl max-w-md w-full p-8 shadow-2xl transform scale-95 transition-all duration-300">
-            <!-- Success Icon -->
-            <div class="flex justify-center mb-6">
-                <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center">
-                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Title -->
-            <h2 class="text-2xl font-bold text-white text-center mb-3">רישום הושלם בהצלחה!</h2>
-
-            <!-- Message -->
-            <p class="text-white/80 text-center mb-6">
-                תודה שנרשמת ל-AI Kidz Club! אימייל אישור נשלח אליך עם כל הפרטים.
-            </p>
-
-            <!-- Registration ID -->
-            <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-4 mb-6">
-                <p class="text-cyan-300 text-sm text-center mb-2">מספר רישום שלך:</p>
-                <p id="registration-id" class="text-cyan-100 font-mono text-lg text-center font-bold"></p>
-            </div>
-
-            <!-- Contact Options -->
-            <div class="bg-white/5 border border-white/10 rounded-lg p-4 mb-6">
-                <p class="text-white/70 text-sm text-center mb-3">שאלות? צרו איתנו קשר:</p>
-                <div class="flex flex-col gap-2">
-                    <a href="mailto:raphael@aikidz.club" class="text-cyan-400 hover:text-cyan-300 text-center text-sm transition-colors">
-                        raphael@aikidz.club
-                    </a>
-                    <a href="tel:+972543159025" class="text-cyan-400 hover:text-cyan-300 text-center text-sm transition-colors">
-                        054-315-9025
-                    </a>
-                    <a href="https://wa.me/972543159025" target="_blank" class="text-green-400 hover:text-green-300 text-center text-sm font-semibold transition-colors">
-                        WhatsApp צור קשר ב
-                    </a>
-                </div>
-            </div>
-
-            <!-- Close Button -->
-            <button onclick="closeModal()" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200">
-                סגור
-            </button>
-        </div>
-    </div>
 
     <!-- Error Modal -->
     <div id="error-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
