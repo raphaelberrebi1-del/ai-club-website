@@ -4360,16 +4360,8 @@
 
         // Submit registration
         async function submitRegistration() {
-            console.log('🔴 ENGLISH submitRegistration() called');
-
-            // Collect all form data
-            const formData = {
-                children: [],
-                parent: {},
-                totalPrice: 0
-            };
-
-            // Collect children data from wizardData
+            // Prepare children data from wizardData
+            const children = [];
             wizardData.children.forEach((child, index) => {
                 if (child.name && child.ageGroup) {
                     // Map age group to program name
@@ -4380,7 +4372,7 @@
                     // Get age-specific pricing
                     const childPrice = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
 
-                    formData.children.push({
+                    children.push({
                         name: child.name,
                         program: programName,
                         ageGroup: child.ageGroup,
@@ -4389,35 +4381,36 @@
                 }
             });
 
-            // Collect parent data from form fields
-            formData.parent = {
-                name: document.getElementById('parent-name')?.value || '',
-                email: document.getElementById('parent-email')?.value || '',
-                phone: document.getElementById('parent-phone')?.value || ''
-            };
-
             // Get payment method
             const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
-            formData.paymentMethod = selectedPaymentMethod ? selectedPaymentMethod.value : 'bit';
-            formData.paymentPlan = wizardData.bulkDuration;
+            const paymentMethod = selectedPaymentMethod ? selectedPaymentMethod.value : 'bit';
 
-            // Use centralized calculation function for consistency
-            formData.totalPrice = calculateWizardTotal();
-            formData.language = 'en';  // English registration form
+            // Prepare registration data in FLAT structure (matches Google Apps Script expectations)
+            const registrationData = {
+                parentName: document.getElementById('parent-name')?.value || '',
+                email: document.getElementById('parent-email')?.value || '',
+                phone: document.getElementById('parent-phone')?.value || '',
+                children: children,
+                paymentMethod: paymentMethod,
+                paymentPlan: wizardData.bulkDuration,
+                totalPrice: calculateWizardTotal(),
+                language: 'en',  // English registration form
+                sessionId: SESSION_ID
+            };
 
             // Validate form
-            if (formData.children.length === 0) {
+            if (registrationData.children.length === 0) {
                 showError('Please complete all child details including name and age group for each child.');
                 return;
             }
 
-            if (!formData.parent.name || !formData.parent.email || !formData.parent.phone) {
+            if (!registrationData.parentName || !registrationData.email || !registrationData.phone) {
                 showError('Please fill in all parent contact information.');
                 return;
             }
 
             // Validate email format
-            if (!isValidEmail(formData.parent.email)) {
+            if (!isValidEmail(registrationData.email)) {
                 showError('Please provide a valid email address.');
                 return;
             }
@@ -4434,15 +4427,23 @@
             }
 
             try {
-                // Add session ID to form data
-                formData.sessionId = SESSION_ID;
-
-                console.log('🟢 About to submit to Google Sheets:', formData);
-
-                // Primary: Submit to Google Sheets
-                const response = await submitToGoogleSheets(formData);
+                // Primary: Submit to Google Sheets with FLAT structure
+                const response = await submitToGoogleSheets(registrationData);
 
                 if (response.success) {
+                    // Transform flat structure to nested structure expected by showRegistrationSuccess()
+                    const formData = {
+                        parent: {
+                            name: registrationData.parentName,
+                            email: registrationData.email,
+                            phone: registrationData.phone
+                        },
+                        children: registrationData.children,
+                        paymentMethod: registrationData.paymentMethod,
+                        paymentPlan: registrationData.paymentPlan,
+                        totalPrice: registrationData.totalPrice
+                    };
+
                     // Success! Show success page with registration ID
                     showRegistrationSuccess(formData, response.registrationId || SESSION_ID);
                     closeRegistrationModal();
@@ -4482,13 +4483,9 @@
 
         // Submit to Google Sheets
         async function submitToGoogleSheets(formData) {
-            console.log('📤 submitToGoogleSheets() called with:', formData);
-
             if (GOOGLE_SHEETS_WEB_APP_URL === 'YOUR_WEB_APP_URL_HERE') {
                 throw new Error('Google Sheets not configured');
             }
-
-            console.log('📮 Sending POST request to:', GOOGLE_SHEETS_WEB_APP_URL);
 
             const response = await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
                 method: 'POST',
