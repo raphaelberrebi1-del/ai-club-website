@@ -4929,22 +4929,65 @@
             }
         }
 
-        // Override the nextStep function to initialize payment when reaching Step 4
+        // Override the nextStep function to update Step 4 summary
         const originalNextStep = nextStep;
         nextStep = async function() {
             const currentStep = document.querySelector('.step-content:not(.hidden)');
             const currentStepId = currentStep ? currentStep.id : '';
 
-            // If moving from Step 3 to Step 4, show Step 4 first, then initialize payment
+            // If moving from Step 3 to Step 4, update the summary
             if (currentStepId === 'step-3') {
-                // Show Step 4 FIRST (so DOM elements exist)
+                // Call original to actually move to Step 4
                 originalNextStep();
 
-                // Wait for animation and DOM updates to complete (300ms + buffer)
-                await new Promise(resolve => setTimeout(resolve, 350));
+                // Then calculate and update Step 4 summary
+                const totalAmount = calculateTotalAmount();
 
-                // THEN initialize payment (elements now exist)
-                                return;
+                // Build summary HTML
+                const summaryHtml = `
+                    <div class="space-y-2">
+                        ${familyData.children.map((child, index) => {
+                            const ageGroupName = child.ageGroup === 'young' ? 'Young Explorers (8-10)' :
+                                               child.ageGroup === 'tech' ? 'Tech Champions (11-13)' :
+                                               'Professional Leaders (14-18)';
+                            const childPrice = AGE_PRICING[child.ageGroup][familyData.bulkDuration];
+
+                            // Apply family discount
+                            let displayPrice = childPrice;
+                            if (index === 1) {
+                                displayPrice = Math.round(childPrice * 0.9); // 10% off for 2nd child
+                            } else if (index >= 2) {
+                                displayPrice = Math.round(childPrice * 0.85); // 15% off for 3rd+ child
+                            }
+
+                            return `
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-white/90">• ${child.name || 'Child ' + (index + 1)} - ${ageGroupName}</span>
+                                    <span class="text-cyan-300 font-semibold">₪${displayPrice.toLocaleString()}</span>
+                                </div>
+                            `;
+                        }).join('')}
+
+                        <div class="text-xs text-white/60 mt-3">
+                            Payment Plan: ${familyData.bulkDuration === 'monthly' ? 'Monthly' :
+                                  familyData.bulkDuration === 'quarterly' ? 'Quarterly (3 months)' :
+                                  'Annual (12 months)'}
+                        </div>
+
+                        ${familyData.children.length >= 2 ? `
+                            <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-2 mt-2">
+                                <p class="text-xs text-cyan-200 font-semibold">
+                                    Family Discount ${familyData.children.length === 2 ? '10%' : '15%'} Applied!
+                                </p>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+
+                document.getElementById('step-4-summary').innerHTML = summaryHtml;
+                document.getElementById('step-4-total').textContent = `₪${totalAmount.toLocaleString()}`;
+
+                return;
             }
 
             // For all other step transitions
@@ -4973,12 +5016,12 @@
             try {
                 // Prepare registration data
                 const registrationData = {
-                    parentName: wizardData.parentName || '',
-                    email: wizardData.parentEmail || '',
-                    phone: wizardData.parentPhone || '',
-                    children: wizardData.children || [],
-                    paymentPlan: wizardData.bulkDuration || 'monthly',
-                    totalPrice: calculateWizardTotal(),
+                    parentName: familyData.parentName || '',
+                    email: familyData.parentEmail || '',
+                    phone: familyData.parentPhone || '',
+                    children: familyData.children || [],
+                    paymentPlan: familyData.bulkDuration || 'monthly',
+                    totalPrice: calculateTotalAmount(),
                     language: 'en'
                 };
 

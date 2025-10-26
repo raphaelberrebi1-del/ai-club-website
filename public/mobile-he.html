@@ -5336,94 +5336,74 @@
             }
         }
 
-        // Override the nextStep function to initialize payment when reaching Step 4
+        // Override the nextStep function to update Step 4 summary
         const originalNextStep = nextStep;
         nextStep = async function() {
             const currentStep = document.querySelector('.step-content:not(.hidden)');
             const currentStepId = currentStep ? currentStep.id : '';
 
-            // If moving from Step 3 to Step 4, initialize AllPay payment
+            // If moving from Step 3 to Step 4, update the summary
             if (currentStepId === 'step-3') {
-                const success = await initializeAllPayPayment();
-                if (!success) {
-                    return; // Don't proceed if payment initialization failed
-                }
+                // Call original to actually move to Step 4
+                originalNextStep();
+
+                // Then calculate and update Step 4 summary
+                const totalAmount = calculateTotalAmount();
+
+                // Build summary HTML
+                const summaryHtml = `
+                    <div class="space-y-2">
+                        ${familyData.children.map((child, index) => {
+                            const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים (8-10)' :
+                                               child.ageGroup === 'tech' ? 'אלופי טכנולוגיה (11-13)' :
+                                               'מנהיגים מקצועיים (14-18)';
+                            const childPrice = AGE_PRICING[child.ageGroup][familyData.bulkDuration];
+
+                            // Apply family discount
+                            let displayPrice = childPrice;
+                            if (index === 1) {
+                                displayPrice = Math.round(childPrice * 0.9); // 10% off for 2nd child
+                            } else if (index >= 2) {
+                                displayPrice = Math.round(childPrice * 0.85); // 15% off for 3rd+ child
+                            }
+
+                            return `
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-white/90">• ${child.name || 'ילד ' + (index + 1)} - ${ageGroupName}</span>
+                                    <span class="text-cyan-300 font-semibold">₪${displayPrice.toLocaleString()}</span>
+                                </div>
+                            `;
+                        }).join('')}
+
+                        <div class="text-xs text-white/60 mt-3">
+                            תוכנית תשלום: ${familyData.bulkDuration === 'monthly' ? 'חודשי' :
+                                  familyData.bulkDuration === 'quarterly' ? 'רבעוני (3 חודשים)' :
+                                  'שנתי (12 חודשים)'}
+                        </div>
+
+                        ${familyData.children.length >= 2 ? `
+                            <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-2 mt-2">
+                                <p class="text-xs text-cyan-200 font-semibold">
+                                    הנחת משפחה ${familyData.children.length === 2 ? '10%' : '15%'} הופעלה!
+                                </p>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+
+                document.getElementById('step-4-summary').innerHTML = summaryHtml;
+                document.getElementById('step-4-total').textContent = `₪${totalAmount.toLocaleString()}`;
+
+                return;
             }
 
-            // Call original nextStep function
+            // For all other step transitions
             originalNextStep();
         };
     </script>
 
     <!-- Registration Submission Script -->
     <script>
-        // Google Apps Script Web App URL for Hebrew registrations
-        const REGISTRATION_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbznYwGs_kh5ewuCOpnPJJ0715_widuW9tB09Zly8hg_jiFIYhtfO9ohJUsw6Wz0MYw51g/exec';
-
-        /**
-         * Submit registration to Google Apps Script
-         */
-        async function submitRegistration() {
-            const btn = document.getElementById('complete-registration-btn');
-            const btnText = document.getElementById('btn-text');
-            const btnLoading = document.getElementById('btn-loading');
-
-            // Disable button and show loading state
-            btn.disabled = true;
-            btnText.classList.add('hidden');
-            btnLoading.classList.remove('hidden');
-
-            try {
-                // Prepare registration data
-                const registrationData = {
-                    parentName: wizardData.parentName || '',
-                    email: wizardData.parentEmail || '',
-                    phone: wizardData.parentPhone || '',
-                    children: wizardData.children || [],
-                    paymentPlan: wizardData.bulkDuration || 'monthly',
-                    totalPrice: calculateWizardTotal(),
-                    language: 'he'
-                };
-
-                // Validate required fields
-                if (!registrationData.parentName || !registrationData.email || !registrationData.phone) {
-                    throw new Error('אנא מלא את כל השדות הנדרשים');
-                }
-
-                if (!registrationData.children || registrationData.children.length === 0) {
-                    throw new Error('אנא הוסף לפחות ילד אחד');
-                }
-
-                console.log('Submitting registration:', registrationData);
-
-                // Submit to Google Apps Script
-                const response = await fetch(REGISTRATION_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(registrationData)
-                });
-
-                // Note: no-cors mode doesn't allow reading response
-                // We'll assume success and show success modal
-                // The Google Script will send confirmation email
-
-                // Show success modal
-                showSuccessModal('REG-' + Date.now().toString(36).toUpperCase());
-
-            } catch (error) {
-                console.error('Registration error:', error);
-                showErrorModal(error.message || 'אירעה שגיאה בעת שליחת הרישום. אנא נסה שוב.');
-            } finally {
-                // Re-enable button
-                btn.disabled = false;
-                btnText.classList.remove('hidden');
-                btnLoading.classList.add('hidden');
-            }
-        }
-
         /**
          * Show success modal with registration ID
          */
