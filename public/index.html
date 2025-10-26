@@ -622,30 +622,6 @@
             from { width: 0; }
             to { width: 100%; }
         }
-
-        /* Payment container styling */
-        #payment-iframe-container {
-            /* Enhance glassmorphism effect */
-            position: relative;
-            overflow: hidden;
-        }
-
-        #payment-iframe-container::before {
-            /* Subtle overlay to help blending */
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top right, rgba(6, 182, 212, 0.03), transparent 70%);
-            pointer-events: none;
-            z-index: 1;
-            border-radius: 1rem;
-        }
-
-        #payment-iframe-container iframe {
-            /* Ensure iframe is above overlay */
-            position: relative;
-            z-index: 2;
-        }
     </style>
 </head>
 <body class="antialiased text-zinc-100">
