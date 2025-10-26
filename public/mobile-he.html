@@ -1237,7 +1237,13 @@
                         <div class="mt-6 pt-4 border-t border-cyan-400/30 space-y-3">
                             <button onclick="submitRegistration()" id="complete-registration-btn" class="w-full bg-gradient-to-r from-green-500 via-green-400 to-green-300 text-white font-bold py-5 rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
                                 <span id="btn-text">השלם רישום</span>
-                                <span id="btn-loading" class="hidden">שולח...</span>
+                                <span id="btn-loading" class="hidden inline-flex items-center justify-center gap-2">
+                                    <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    שולח...
+                                </span>
                             </button>
                             <button onclick="window.location.href='mobile-he.html'" class="w-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200">
                                 חזרה לדף הבית
