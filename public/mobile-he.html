@@ -2915,13 +2915,19 @@
 
             // Update top total display in Step 3
             const totalElement = document.getElementById('step-3-total');
+            console.log('📊 Updating Step 3 total display...');
             if (totalElement) {
                 const total = calculateTotalAmount();
+                console.log(`  step-3-total element found. Total: ₪${total}`);
                 if (duration === 'trial') {
                     totalElement.textContent = '₪0 (ניסיון חינם)';
+                    console.log('  Set to: ₪0 (ניסיון חינם)');
                 } else {
                     totalElement.textContent = `₪${total.toLocaleString()}`;
+                    console.log(`  Set to: ₪${total.toLocaleString()}`);
                 }
+            } else {
+                console.warn('  ⚠️ step-3-total element NOT FOUND!');
             }
 
             validateStep3();
@@ -3897,12 +3903,10 @@
 
                 // Handle response
                 if (result.success) {
-                    // Show success page with registration ID
-                    if (result.registrationId) {
-                        showSuccessPage(result.registrationId);
-                    } else {
-                        showRegistrationSuccess(registrationData, result.registrationId || SESSION_ID);
-                    }
+                    // Show success modal with registration ID
+                    const regId = result.registrationId || SESSION_ID;
+                    console.log('✅ Showing success modal with ID:', regId);
+                    showSuccessModal(regId);
                 } else if (result.error === 'duplicate_free_trial') {
                     showError('כבר השתמשת בניסיון החינמי שלך. אנא בחר תוכנית בתשלום כדי להמשיך.');
                     if (submitButton) {
@@ -4397,14 +4401,30 @@
          * Used by AllPay payment integration
          */
         function calculateTotalAmount() {
-            if (!familyData.bulkDuration || !familyData.children.length) return 0;
+            console.log('💰 calculateTotalAmount called:', {
+                bulkDuration: familyData.bulkDuration,
+                childrenCount: familyData.children.length,
+                children: familyData.children.map(c => ({
+                    name: c.name,
+                    ageGroup: c.ageGroup
+                }))
+            });
+
+            if (!familyData.bulkDuration || !familyData.children.length) {
+                console.log('❌ Returning 0: bulkDuration=' + familyData.bulkDuration + ', children.length=' + familyData.children.length);
+                return 0;
+            }
 
             let total = 0;
 
             // Calculate base total from age-specific pricing
-            familyData.children.forEach((child) => {
+            familyData.children.forEach((child, index) => {
                 if (child.ageGroup && familyData.bulkDuration) {
-                    total += AGE_PRICING[child.ageGroup][familyData.bulkDuration];
+                    const price = AGE_PRICING[child.ageGroup][familyData.bulkDuration];
+                    console.log(`  Child ${index} (${child.name}): ageGroup=${child.ageGroup}, price=₪${price}`);
+                    total += price;
+                } else {
+                    console.warn(`  Child ${index} (${child.name}): MISSING ageGroup=${child.ageGroup}`);
                 }
             });
 
@@ -4412,9 +4432,11 @@
             if (familyData.childCount >= 2 && familyData.children[1]?.ageGroup) {
                 const discountRate = familyData.childCount === 2 ? 0.10 : 0.15;
                 const discount = Math.round((AGE_PRICING[familyData.children[1].ageGroup][familyData.bulkDuration] * discountRate));
+                console.log(`  Family discount: -₪${discount} (${discountRate * 100}%)`);
                 total -= discount;
             }
 
+            console.log(`✅ Total calculated: ₪${Math.round(total)}`);
             return Math.round(total);
         }
 

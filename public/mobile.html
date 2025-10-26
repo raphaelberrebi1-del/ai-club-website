@@ -2710,13 +2710,19 @@
 
             // Update top total display in Step 3
             const totalElement = document.getElementById('step-3-total');
+            console.log('📊 Updating Step 3 total display...');
             if (totalElement) {
                 const total = calculateTotalAmount();
+                console.log(`  step-3-total element found. Total: ₪${total}`);
                 if (duration === 'trial') {
                     totalElement.textContent = '₪0 (Free Trial)';
+                    console.log('  Set to: ₪0 (Free Trial)');
                 } else {
                     totalElement.textContent = `₪${total.toLocaleString()}`;
+                    console.log(`  Set to: ₪${total.toLocaleString()}`);
                 }
+            } else {
+                console.warn('  ⚠️ step-3-total element NOT FOUND!');
             }
 
             validateStep3();
@@ -3120,17 +3126,32 @@
 
         // Centralized function to calculate family total with age-specific pricing and family discounts
         function calculateFamilyTotal() {
-            if (!familyData.bulkDuration) return 0;
+            console.log('💰 calculateFamilyTotal called:', {
+                bulkDuration: familyData.bulkDuration,
+                childrenCount: familyData.children.length,
+                children: familyData.children.map(c => ({
+                    name: c.name,
+                    ageGroup: c.ageGroup
+                }))
+            });
+
+            if (!familyData.bulkDuration) {
+                console.log('❌ Returning 0: bulkDuration=' + familyData.bulkDuration);
+                return 0;
+            }
 
             let total = 0;
             const childPrices = [];
 
             // Calculate price for each child based on their age group
-            familyData.children.forEach((child) => {
+            familyData.children.forEach((child, index) => {
                 if (child.ageGroup && familyData.bulkDuration) {
                     const price = AGE_PRICING[child.ageGroup][familyData.bulkDuration];
+                    console.log(`  Child ${index} (${child.name}): ageGroup=${child.ageGroup}, price=₪${price}`);
                     childPrices.push(price);
                     total += price;
+                } else {
+                    console.warn(`  Child ${index} (${child.name}): MISSING ageGroup=${child.ageGroup}`);
                 }
             });
 
@@ -3140,9 +3161,11 @@
             if (childPrices.length >= 2) {
                 const discountRate = childPrices.length === 2 ? 0.10 : 0.15;
                 const discount = Math.round(total * discountRate);
+                console.log(`  Family discount: -₪${discount} (${discountRate * 100}%)`);
                 total -= discount;
             }
 
+            console.log(`✅ Total calculated: ₪${Math.round(total)}`);
             return Math.round(total);
         }
 
@@ -3730,12 +3753,10 @@
 
                 // Handle response
                 if (result.success) {
-                    // Show success page with registration ID
-                    if (result.registrationId) {
-                        showSuccessPage(result.registrationId);
-                    } else {
-                        showRegistrationSuccess(registrationData, result.registrationId || SESSION_ID);
-                    }
+                    // Show success modal with registration ID
+                    const regId = result.registrationId || SESSION_ID;
+                    console.log('✅ Showing success modal with ID:', regId);
+                    showSuccessModal(regId);
                 } else if (result.error === 'duplicate_free_trial') {
                     showError('You have already used your free trial. Please select a paid plan to continue.');
                     if (submitButton) {
