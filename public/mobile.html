@@ -3669,7 +3669,7 @@
                 console.log('✅ Trial registration successful:', result);
 
                 // Show success modal with trial-specific messaging
-                showRegistrationSuccess(registrationData);
+                showRegistrationSuccess(registrationData, result.registrationId || 'TRIAL-' + Date.now().toString(36).toUpperCase());
             } catch (error) {
                 console.error('❌ Trial registration failed:', error);
                 alert('⚠️ Registration failed. Please try again or contact support.');
@@ -3734,7 +3734,7 @@
                     if (result.registrationId) {
                         showSuccessPage(result.registrationId);
                     } else {
-                        showRegistrationSuccess(registrationData);
+                        showRegistrationSuccess(registrationData, result.registrationId || SESSION_ID);
                     }
                 } else if (result.error === 'duplicate_free_trial') {
                     showError('You have already used your free trial. Please select a paid plan to continue.');
@@ -3761,8 +3761,9 @@
             }
         }
 
-        function showRegistrationSuccess(formData) {
+        function showRegistrationSuccess(formData, registrationId = null) {
             const childrenCount = formData.children.length;
+            const displayId = registrationId || 'REG-' + Date.now().toString(36).toUpperCase();
             const successMessage = `
                 <style>
                     @keyframes fadeInBackdrop {
@@ -3851,6 +3852,13 @@
                             <p class="text-lg text-white/90 mb-2">
                                 Welcome to AI Club, <span class="font-semibold text-cyan-300">${formData.parent.name}</span>!
                             </p>
+
+                            <!-- Registration ID -->
+                            <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4 mb-4 mt-4">
+                                <p class="text-xs text-white/60 mb-1">Your Registration ID</p>
+                                <p class="text-lg font-mono font-bold text-cyan-300">${displayId}</p>
+                                <p class="text-xs text-white/50 mt-1">Save this ID for your records</p>
+                            </div>
 
                             <!-- Registration summary -->
                             <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4 mb-6 mt-6">
@@ -4293,7 +4301,7 @@
         // Bit payment processing
         async function processBitPayment(formData, amount) {
             // Submit registration data first with pending payment status
-            await submitRegistrationData({
+            const result = await submitRegistrationData({
                 ...formData,
                 paymentMethod: 'bit',
                 paymentStatus: 'pending',
@@ -4301,7 +4309,7 @@
             });
 
             // Show branded success modal
-            showRegistrationSuccess(formData);
+            showRegistrationSuccess(formData, result.registrationId || 'BIT-' + Date.now().toString(36).toUpperCase());
 
             // Generate Bit payment link with your phone number
             const description = `AI Kids Registration - ${formData.children.map(c => c.name).join(', ')}`;
@@ -4329,7 +4337,7 @@
         // PayBox payment processing
         async function processPayBoxPayment(formData, amount) {
             // Submit registration data first with pending payment status
-            await submitRegistrationData({
+            const result = await submitRegistrationData({
                 ...formData,
                 paymentMethod: 'paybox',
                 paymentStatus: 'pending',
@@ -4337,7 +4345,7 @@
             });
 
             // Show branded success modal
-            showRegistrationSuccess(formData);
+            showRegistrationSuccess(formData, result.registrationId || 'PAYBOX-' + Date.now().toString(36).toUpperCase());
 
             // Generate PayBox payment link with your phone number
             const description = `AI Kids Registration - ${formData.children.map(c => c.name).join(', ')}`;
@@ -4365,7 +4373,7 @@
         // Cash/Bank Transfer payment processing
         async function processCashPayment(formData, amount) {
             // Submit registration data first with pending payment status
-            await submitRegistrationData({
+            const result = await submitRegistrationData({
                 ...formData,
                 paymentMethod: 'cash',
                 paymentStatus: 'pending',
@@ -4373,7 +4381,7 @@
             });
 
             // Show branded success modal
-            showRegistrationSuccess(formData);
+            showRegistrationSuccess(formData, result.registrationId || 'CASH-' + Date.now().toString(36).toUpperCase());
         }
 
         // Credit card payment processing
