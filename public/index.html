@@ -4360,6 +4360,8 @@
 
         // Submit registration
         async function submitRegistration() {
+            console.log('🔴 ENGLISH submitRegistration() called');
+
             // Collect all form data
             const formData = {
                 children: [],
@@ -4435,6 +4437,8 @@
                 // Add session ID to form data
                 formData.sessionId = SESSION_ID;
 
+                console.log('🟢 About to submit to Google Sheets:', formData);
+
                 // Primary: Submit to Google Sheets
                 const response = await submitToGoogleSheets(formData);
 
@@ -4478,9 +4482,13 @@
 
         // Submit to Google Sheets
         async function submitToGoogleSheets(formData) {
+            console.log('📤 submitToGoogleSheets() called with:', formData);
+
             if (GOOGLE_SHEETS_WEB_APP_URL === 'YOUR_WEB_APP_URL_HERE') {
                 throw new Error('Google Sheets not configured');
             }
+
+            console.log('📮 Sending POST request to:', GOOGLE_SHEETS_WEB_APP_URL);
 
             const response = await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
                 method: 'POST',
