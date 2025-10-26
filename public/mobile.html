@@ -4522,6 +4522,50 @@
             });
         });
 
+        /**
+         * Calculate total amount using AGE_PRICING and familyData
+         * Used by AllPay payment integration
+         */
+        function calculateTotalAmount() {
+            console.log('💰 calculateTotalAmount called:', {
+                bulkDuration: familyData.bulkDuration,
+                childrenCount: familyData.children.length,
+                children: familyData.children.map(c => ({
+                    name: c.name,
+                    ageGroup: c.ageGroup
+                }))
+            });
+
+            if (!familyData.bulkDuration || !familyData.children.length) {
+                console.log('❌ Returning 0: bulkDuration=' + familyData.bulkDuration + ', children.length=' + familyData.children.length);
+                return 0;
+            }
+
+            let total = 0;
+
+            // Calculate base total from age-specific pricing
+            familyData.children.forEach((child, index) => {
+                if (child.ageGroup && familyData.bulkDuration) {
+                    const price = AGE_PRICING[child.ageGroup][familyData.bulkDuration];
+                    console.log(`  Child ${index} (${child.name}): ageGroup=${child.ageGroup}, price=₪${price}`);
+                    total += price;
+                } else {
+                    console.warn(`  Child ${index} (${child.name}): MISSING ageGroup=${child.ageGroup}`);
+                }
+            });
+
+            // Apply family discounts: 10% for 2nd child, 15% for 3rd+ child
+            if (familyData.childCount >= 2 && familyData.children[1]?.ageGroup) {
+                const discountRate = familyData.childCount === 2 ? 0.10 : 0.15;
+                const discount = Math.round((AGE_PRICING[familyData.children[1].ageGroup][familyData.bulkDuration] * discountRate));
+                console.log(`  Family discount: -₪${discount} (${discountRate * 100}%)`);
+                total -= discount;
+            }
+
+            console.log(`✅ Total calculated: ₪${Math.round(total)}`);
+            return Math.round(total);
+        }
+
         // Make switchBillingPeriod globally accessible
         window.switchBillingPeriod = switchBillingPeriod;
     </script>
@@ -4849,50 +4893,6 @@
          * Calculate total amount for AllPay payment
          * Uses existing calculateFamilyTotal() function
          */
-        /**
-         * Calculate total amount using AGE_PRICING and familyData
-         * Used by AllPay payment integration
-         */
-        function calculateTotalAmount() {
-            console.log('💰 calculateTotalAmount called:', {
-                bulkDuration: familyData.bulkDuration,
-                childrenCount: familyData.children.length,
-                children: familyData.children.map(c => ({
-                    name: c.name,
-                    ageGroup: c.ageGroup
-                }))
-            });
-
-            if (!familyData.bulkDuration || !familyData.children.length) {
-                console.log('❌ Returning 0: bulkDuration=' + familyData.bulkDuration + ', children.length=' + familyData.children.length);
-                return 0;
-            }
-
-            let total = 0;
-
-            // Calculate base total from age-specific pricing
-            familyData.children.forEach((child, index) => {
-                if (child.ageGroup && familyData.bulkDuration) {
-                    const price = AGE_PRICING[child.ageGroup][familyData.bulkDuration];
-                    console.log(`  Child ${index} (${child.name}): ageGroup=${child.ageGroup}, price=₪${price}`);
-                    total += price;
-                } else {
-                    console.warn(`  Child ${index} (${child.name}): MISSING ageGroup=${child.ageGroup}`);
-                }
-            });
-
-            // Apply family discounts: 10% for 2nd child, 15% for 3rd+ child
-            if (familyData.childCount >= 2 && familyData.children[1]?.ageGroup) {
-                const discountRate = familyData.childCount === 2 ? 0.10 : 0.15;
-                const discount = Math.round((AGE_PRICING[familyData.children[1].ageGroup][familyData.bulkDuration] * discountRate));
-                console.log(`  Family discount: -₪${discount} (${discountRate * 100}%)`);
-                total -= discount;
-            }
-
-            console.log(`✅ Total calculated: ₪${Math.round(total)}`);
-            return Math.round(total);
-        }
-
         /**
          * Show payment success modal with confetti
          */
