@@ -2377,7 +2377,11 @@
                         </div>
                     </div>
 
-                    <div class="mt-8 pt-6 border-t border-cyan-400/30">
+                    <div class="mt-8 pt-6 border-t border-cyan-400/30 space-y-3">
+                        <button onclick="submitRegistration()" id="complete-registration-btn" class="w-full bg-gradient-to-r from-green-500 via-green-400 to-green-300 text-white font-bold py-5 rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                            <span id="btn-text">Complete Registration</span>
+                            <span id="btn-loading" class="hidden">Submitting...</span>
+                        </button>
                         <button onclick="window.location.href='index.html'" class="w-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105">
                             Return to Home
                         </button>
@@ -6084,6 +6088,177 @@
             typeWriter();
         }, 1500);
     </script>
+
+    <!-- Registration Submission Script -->
+    <script>
+        // Google Apps Script Web App URL for English registrations
+        const REGISTRATION_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbznYwGs_kh5ewuCOpnPJJ0715_widuW9tB09Zly8hg_jiFIYhtfO9ohJUsw6Wz0MYw51g/exec';
+
+        /**
+         * Submit registration to Google Apps Script
+         */
+        async function submitRegistration() {
+            const btn = document.getElementById('complete-registration-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnLoading = document.getElementById('btn-loading');
+
+            // Disable button and show loading state
+            btn.disabled = true;
+            btnText.classList.add('hidden');
+            btnLoading.classList.remove('hidden');
+
+            try {
+                // Prepare registration data
+                const registrationData = {
+                    parentName: wizardData.parentName || '',
+                    email: wizardData.parentEmail || '',
+                    phone: wizardData.parentPhone || '',
+                    children: wizardData.children || [],
+                    paymentPlan: wizardData.bulkDuration || 'monthly',
+                    totalPrice: calculateWizardTotal(),
+                    language: 'en'
+                };
+
+                // Validate required fields
+                if (!registrationData.parentName || !registrationData.email || !registrationData.phone) {
+                    throw new Error('Please fill in all required fields');
+                }
+
+                if (!registrationData.children || registrationData.children.length === 0) {
+                    throw new Error('Please add at least one child');
+                }
+
+                console.log('Submitting registration:', registrationData);
+
+                // Submit to Google Apps Script
+                const response = await fetch(REGISTRATION_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(registrationData)
+                });
+
+                // Note: no-cors mode doesn't allow reading response
+                // We'll assume success and show success modal
+                // The Google Script will send confirmation email
+
+                // Show success modal
+                showSuccessModal('REG-' + Date.now().toString(36).toUpperCase());
+
+            } catch (error) {
+                console.error('Registration error:', error);
+                showErrorModal(error.message || 'An error occurred while submitting your registration. Please try again.');
+            } finally {
+                // Re-enable button
+                btn.disabled = false;
+                btnText.classList.remove('hidden');
+                btnLoading.classList.add('hidden');
+            }
+        }
+
+        /**
+         * Show success modal with registration ID
+         */
+        function showSuccessModal(registrationId) {
+            const modal = document.getElementById('success-modal');
+            const regIdElement = document.getElementById('registration-id');
+
+            if (regIdElement) {
+                regIdElement.textContent = registrationId;
+            }
+
+            if (modal) {
+                modal.classList.remove('hidden');
+            }
+        }
+
+        /**
+         * Show error modal with custom message
+         */
+        function showErrorModal(message) {
+            const modal = document.getElementById('error-modal');
+            const errorMsgElement = document.getElementById('error-message');
+
+            if (errorMsgElement && message) {
+                errorMsgElement.textContent = message;
+            }
+
+            if (modal) {
+                modal.classList.remove('hidden');
+            }
+        }
+
+        /**
+         * Close modal by ID
+         */
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-gradient-to-br from-slate-900 to-slate-800 border-2 border-green-500/50 rounded-2xl max-w-md w-full p-8 shadow-2xl transform scale-95 transition-all duration-300">
+            <div class="flex justify-center mb-6">
+                <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center">
+                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+            </div>
+            <h2 class="text-2xl font-bold text-white text-center mb-3">Registration Complete!</h2>
+            <p class="text-white/80 text-center mb-6">
+                Thank you for registering with AI Kidz Club! A confirmation email has been sent to you with all the details.
+            </p>
+            <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-4 mb-6">
+                <p class="text-cyan-300 text-sm text-center mb-2">Your Registration ID:</p>
+                <p id="registration-id" class="text-cyan-100 font-mono text-lg text-center font-bold"></p>
+            </div>
+            <div class="bg-white/5 border border-white/10 rounded-lg p-4 mb-6">
+                <p class="text-white/70 text-sm text-center mb-3">Questions? Contact us:</p>
+                <div class="flex flex-col gap-2">
+                    <a href="mailto:raphael@aikidz.club" class="text-cyan-400 hover:text-cyan-300 text-center text-sm transition-colors">raphael@aikidz.club</a>
+                    <a href="tel:+972543159025" class="text-cyan-400 hover:text-cyan-300 text-center text-sm transition-colors">+972-54-315-9025</a>
+                    <a href="https://wa.me/972543159025" target="_blank" class="text-green-400 hover:text-green-300 text-center text-sm font-semibold transition-colors">Contact on WhatsApp</a>
+                </div>
+            </div>
+            <button onclick="closeModal()" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200">Close</button>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="error-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-gradient-to-br from-slate-900 to-slate-800 border-2 border-red-500/50 rounded-2xl max-w-md w-full p-8 shadow-2xl transform scale-95 transition-all duration-300">
+            <div class="flex justify-center mb-6">
+                <div class="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center">
+                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </div>
+            </div>
+            <h2 class="text-2xl font-bold text-white text-center mb-3">Something Went Wrong</h2>
+            <p id="error-message" class="text-white/80 text-center mb-6">
+                An error occurred while submitting your registration. Please try again or contact us directly.
+            </p>
+            <div class="bg-white/5 border border-white/10 rounded-lg p-4 mb-6">
+                <p class="text-white/70 text-sm text-center mb-3">Contact for help:</p>
+                <div class="flex flex-col gap-2">
+                    <a href="mailto:raphael@aikidz.club" class="text-cyan-400 hover:text-cyan-300 text-center text-sm transition-colors">raphael@aikidz.club</a>
+                    <a href="tel:+972543159025" class="text-cyan-400 hover:text-cyan-300 text-center text-sm transition-colors">+972-54-315-9025</a>
+                    <a href="https://wa.me/972543159025" target="_blank" class="text-green-400 hover:text-green-300 text-center text-sm font-semibold transition-colors">Contact on WhatsApp</a>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="closeModal()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">Close</button>
+                <button onclick="submitRegistration()" class="flex-1 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200">Try Again</button>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

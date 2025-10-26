@@ -5779,6 +5779,118 @@
         };
     </script>
 
+    <!-- Registration Submission Script -->
+    <script>
+        // Google Apps Script Web App URL for Hebrew registrations
+        const REGISTRATION_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbznYwGs_kh5ewuCOpnPJJ0715_widuW9tB09Zly8hg_jiFIYhtfO9ohJUsw6Wz0MYw51g/exec';
+
+        /**
+         * Submit registration to Google Apps Script
+         */
+        async function submitRegistration() {
+            const btn = document.getElementById('complete-registration-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnLoading = document.getElementById('btn-loading');
+
+            // Disable button and show loading state
+            btn.disabled = true;
+            btnText.classList.add('hidden');
+            btnLoading.classList.remove('hidden');
+
+            try {
+                // Prepare registration data
+                const registrationData = {
+                    parentName: wizardData.parentName || '',
+                    email: wizardData.parentEmail || '',
+                    phone: wizardData.parentPhone || '',
+                    children: wizardData.children || [],
+                    paymentPlan: wizardData.bulkDuration || 'monthly',
+                    totalPrice: calculateWizardTotal(),
+                    language: 'he'
+                };
+
+                // Validate required fields
+                if (!registrationData.parentName || !registrationData.email || !registrationData.phone) {
+                    throw new Error('אנא מלא את כל השדות הנדרשים');
+                }
+
+                if (!registrationData.children || registrationData.children.length === 0) {
+                    throw new Error('אנא הוסף לפחות ילד אחד');
+                }
+
+                console.log('Submitting registration:', registrationData);
+
+                // Submit to Google Apps Script
+                const response = await fetch(REGISTRATION_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(registrationData)
+                });
+
+                // Note: no-cors mode doesn't allow reading response
+                // We'll assume success and show success modal
+                // The Google Script will send confirmation email
+
+                // Show success modal
+                showSuccessModal('REG-' + Date.now().toString(36).toUpperCase());
+
+            } catch (error) {
+                console.error('Registration error:', error);
+                showErrorModal(error.message || 'אירעה שגיאה בעת שליחת הרישום. אנא נסה שוב.');
+            } finally {
+                // Re-enable button
+                btn.disabled = false;
+                btnText.classList.remove('hidden');
+                btnLoading.classList.add('hidden');
+            }
+        }
+
+        /**
+         * Show success modal with registration ID
+         */
+        function showSuccessModal(registrationId) {
+            const modal = document.getElementById('success-modal');
+            const regIdElement = document.getElementById('registration-id');
+
+            if (regIdElement) {
+                regIdElement.textContent = registrationId;
+            }
+
+            if (modal) {
+                modal.classList.remove('hidden');
+            }
+        }
+
+        /**
+         * Show error modal with custom message
+         */
+        function showErrorModal(message) {
+            const modal = document.getElementById('error-modal');
+            const errorMsgElement = document.getElementById('error-message');
+
+            if (errorMsgElement && message) {
+                errorMsgElement.textContent = message;
+            }
+
+            if (modal) {
+                modal.classList.remove('hidden');
+            }
+        }
+
+        /**
+         * Close modal by ID
+         */
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
+
     <!-- Success Modal -->
     <div id="success-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-gradient-to-br from-slate-900 to-slate-800 border-2 border-green-500/50 rounded-2xl max-w-md w-full p-8 shadow-2xl transform scale-95 transition-all duration-300">
