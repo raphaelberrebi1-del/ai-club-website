@@ -356,6 +356,31 @@ function sendConfirmationHebrew(email, data, groupAssignments, showFirstLessonFr
           </div>
         </div>
       `;
+    } else {
+      // Default fallback - general payment information (Hebrew, RTL)
+      paymentInstructions = `
+        <div style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); padding: 20px; border-radius: 12px; margin: 20px 0; direction: rtl;">
+          <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 12px; text-align: right;">
+            מידע על תשלום
+          </div>
+          <div style="color: rgba(255,255,255,0.95); font-size: 15px; line-height: 1.8; margin-bottom: 12px; text-align: right;">
+            השיעור הראשון <strong>חינם</strong> לכל התלמידים!
+          </div>
+          <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.8; text-align: right;">
+            אנחנו מקבלים את אמצעי התשלום הבאים:
+            <div style="margin-top: 8px;">
+              • העברות Bit<br>
+              • PayBox<br>
+              • העברה בנקאית<br>
+              • תשלום במזומן<br>
+              • המחאות
+            </div>
+            <div style="margin-top: 12px; font-style: italic;">
+              תשלומי כרטיס אשראי יהיו זמינים בקרוב!
+            </div>
+          </div>
+        </div>
+      `;
     }
 
   // Child information section

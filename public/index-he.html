@@ -3060,9 +3060,9 @@
 
         // Age-specific pricing configuration
         const AGE_PRICING = {
-            young: { monthly: 599, quarterly: 519, yearly: 479 },
-            tech: { monthly: 649, quarterly: 569, yearly: 519 },
-            future: { monthly: 749, quarterly: 649, yearly: 599 }
+            young: { monthly: 599, quarterly: 519, yearly: 479, trial: 0 },
+            tech: { monthly: 649, quarterly: 569, yearly: 519, trial: 0 },
+            future: { monthly: 749, quarterly: 649, yearly: 599, trial: 0 }
         };
 
         let wizardData = {
@@ -3081,6 +3081,13 @@
 
             // Track step progression before moving forward
             trackStepProgression(currentWizardStep);
+
+            // Check if user selected Free Trial at end of Step 3 (payment plan selection)
+            if (currentWizardStep === 3 && wizardData.bulkDuration === 'trial') {
+                console.log('🎁 Free Trial selected - skipping payment and submitting');
+                submitTrialRegistration();
+                return;
+            }
 
             const currentStepEl = document.getElementById(`step-${currentWizardStep}`);
             const nextStepEl = document.getElementById(`step-${currentWizardStep + 1}`);
@@ -3649,6 +3656,53 @@
             const continueBtn = document.getElementById('step-3-next');
             if (continueBtn) {
                 continueBtn.disabled = !wizardData.bulkDuration;
+            }
+        }
+
+        // Free Trial Registration
+        async function submitTrialRegistration() {
+            console.log('🎁 Submitting Free Trial registration');
+
+            // FLAT structure (matches Google Apps Script expectations)
+            const registrationData = {
+                parentName: wizardData.parentName,
+                email: wizardData.parentEmail,
+                phone: wizardData.parentPhone,
+                children: wizardData.children.map(child => ({
+                    name: child.name,
+                    program: child.ageGroup === 'young' ? 'חדשנים צעירים (8-10)' :
+                             child.ageGroup === 'tech' ? 'חוקרי טכנולוגיה (11-13)' :
+                             'מנהיגי העתיד (14-18)',
+                    ageGroup: child.ageGroup,
+                    price: 0
+                })),
+                totalPrice: 0,
+                paymentPlan: 'trial',
+                paymentMethod: 'trial',
+                sessionId: SESSION_ID,
+                language: 'he'
+            };
+
+            try {
+                const result = await submitToGoogleSheets(registrationData);
+
+                // Transform to nested structure for success modal display
+                const displayData = {
+                    parent: {
+                        name: registrationData.parentName,
+                        email: registrationData.email,
+                        phone: registrationData.phone
+                    },
+                    children: registrationData.children,
+                    totalPrice: registrationData.totalPrice,
+                    paymentPlan: registrationData.paymentPlan
+                };
+
+                showRegistrationSuccess(displayData, result.registrationId || SESSION_ID);
+                closeRegistrationModal();
+            } catch (error) {
+                console.error('❌ Trial registration failed:', error);
+                alert('⚠️ ההרשמה נכשלה. אנא נסה שוב או צור קשר עם התמיכה.');
             }
         }
 

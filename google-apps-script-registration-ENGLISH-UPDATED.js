@@ -356,6 +356,31 @@ function sendConfirmation(email, data, groupAssignments, showFirstLessonFree, re
           </div>
         </div>
       `;
+    } else {
+      // Default fallback - general payment information
+      paymentInstructions = `
+        <div style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); padding: 20px; border-radius: 12px; margin: 20px 0;">
+          <div style="color: white; font-size: 18px; font-weight: bold; margin-bottom: 12px;">
+            Payment Information
+          </div>
+          <div style="color: rgba(255,255,255,0.95); font-size: 15px; line-height: 1.8; margin-bottom: 12px;">
+            First Lesson is <strong>FREE</strong> for all students!
+          </div>
+          <div style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.8;">
+            We currently accept the following payment methods:
+            <div style="margin-top: 8px;">
+              • Bit transfers<br>
+              • PayBox<br>
+              • Bank transfers<br>
+              • Cash payment<br>
+              • Checks
+            </div>
+            <div style="margin-top: 12px; font-style: italic;">
+              Credit card payments will be available soon!
+            </div>
+          </div>
+        </div>
+      `;
     }
 
   // Child information section
