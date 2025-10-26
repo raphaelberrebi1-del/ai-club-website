@@ -39,7 +39,7 @@
     <script src="./detect-device.js"></script>
 
     <style>
-        /* New Ribbon Trail Cursor */
+        /* Triangle Cursor Pointer */
         * {
             cursor: none !important;
         }
@@ -49,7 +49,7 @@
             height: 20px;
             position: fixed;
             pointer-events: none;
-            z-index: 100002;
+            z-index: 10001;
             transform: translate(-50%, -50%);
             transition: transform 0.08s ease-out;
         }
@@ -72,24 +72,6 @@
             border-left-width: 12px;
             border-top-width: 8px;
             border-bottom-width: 8px;
-        }
-
-        .cursor-trail-svg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 100002;
-        }
-
-        .cursor-trail-path {
-            fill: none;
-            stroke: url(#trail-gradient);
-            stroke-width: 3;
-            stroke-linecap: round;
-            stroke-linejoin: round;
         }
 
         /* Typewriter effect */
@@ -641,14 +623,7 @@
             to { width: 100%; }
         }
 
-        /* AllPay iframe blending and styling */
-        #allpay-payment-iframe {
-            /* Ensure iframe blends with dark background */
-            mix-blend-mode: normal;
-            isolation: isolate;
-        }
-
-        /* Help iframe content blend smoothly */
+        /* Payment container styling */
         #payment-iframe-container {
             /* Enhance glassmorphism effect */
             position: relative;
@@ -675,18 +650,12 @@
 </head>
 <body class="antialiased text-zinc-100">
     <div class="site-background" aria-hidden="true"></div>
-    <!-- Custom cursor elements -->
+    <!-- Triangle Cursor Pointer -->
+    <!-- WebGL Fluid Splash Cursor (Vue Template Implementation) -->
+    <canvas id="fluid" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
+
+    <!-- Triangle Cursor Pointer (sits above fluid) -->
     <div class="cursor-ring"></div>
-    <svg class="cursor-trail-svg">
-        <defs>
-            <linearGradient id="trail-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:rgba(6, 182, 212, 0);stop-opacity:0" />
-                <stop offset="50%" style="stop-color:rgba(6, 182, 212, 0.6);stop-opacity:1" />
-                <stop offset="100%" style="stop-color:rgba(6, 182, 212, 1);stop-opacity:1" />
-            </linearGradient>
-        </defs>
-        <path class="cursor-trail-path" d=""></path>
-    </svg>
     <!-- Enhanced Background glow effects -->
     <div class="pointer-events-none fixed inset-0 overflow-hidden" style="z-index: 1;">
         <!-- Primary cyan glow - more visible -->
@@ -2117,8 +2086,55 @@
                     </div>
                 </div>
 
-                <!-- Step 1: Child Details -->
-                <div id="step-1" class="step-content p-6 flex-1 flex flex-col">
+                <!-- Step 1: Parent Contact Details -->
+                <div id="step-1" class="step-content p-6 flex-1 flex-col">
+                    <div class="mb-6">
+                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">Registration Form</h2>
+                        <p class="text-white/60 text-sm">Let's start with your contact information</p>
+                    </div>
+
+                    <!-- Program Start Date Notice -->
+                    <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4 mb-6">
+                        <h3 class="text-lg font-semibold text-white mb-3">Program Start Date</h3>
+                        <div class="space-y-2 text-sm text-white/90">
+                            <p>First lesson: <strong>November 2nd, 2025</strong></p>
+                            <p class="text-white/80">Exact location will be confirmed shortly</p>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 space-y-6">
+                        <div class="space-y-3">
+                            <label class="text-base font-semibold text-amber-100">Parent Name</label>
+                            <input type="text" id="parent-name" placeholder="Enter your full name"
+                                   oninput="validateStep1()"
+                                   class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
+                        </div>
+
+                        <div class="space-y-3">
+                            <label class="text-base font-semibold text-amber-100">Email Address</label>
+                            <input type="email" id="parent-email" placeholder="your@email.com"
+                                   oninput="validateStep1()"
+                                   class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
+                        </div>
+
+                        <div class="space-y-3">
+                            <label class="text-base font-semibold text-amber-100">Phone Number</label>
+                            <input type="tel" id="parent-phone" placeholder="+972 50-123-4567"
+                                   oninput="validateStep1()"
+                                   class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-amber-200/30">
+                        <button onclick="nextStep()" id="step-1-next"
+                                class="w-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                            Continue
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Child Details -->
+                <div id="step-2" class="step-content p-6 flex-1 flex-col hidden">
                     <div class="mb-6">
                         <h2 class="text-xl font-bold text-white tracking-tight mb-2">Child Details</h2>
                         <p class="text-white/60 text-sm">Tell us about each child joining AI Club</p>
@@ -2150,16 +2166,19 @@
                         </div>
                     </div>
 
-                    <div class="mt-8 pt-6 border-t border-amber-200/30">
-                        <button onclick="nextStep()" id="step-1-next"
-                                class="w-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                    <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
+                        <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
+                            Back
+                        </button>
+                        <button onclick="nextStep()" id="step-2-next"
+                                class="flex-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
                             Continue
                         </button>
                     </div>
                 </div>
 
-                <!-- Step 2: Payment Plan Selection -->
-                <div id="step-2" class="step-content p-6 flex-1 flex-col hidden">
+                <!-- Step 3: Payment Plan Selection -->
+                <div id="step-3" class="step-content p-6 flex-1 flex-col hidden">
                     <div class="mb-6">
                         <h2 class="text-xl font-bold text-white tracking-tight mb-2">Choose Your Payment Plan</h2>
                         <p class="text-white/60 text-sm">Select the best plan for your family</p>
@@ -2169,8 +2188,14 @@
                         <!-- Registration Summary Box -->
                         <div id="registration-summary" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
                             <h3 class="text-lg font-semibold text-white mb-3">Registration Summary</h3>
-                            <div id="step-2-summary" class="space-y-2 text-sm text-white/80">
+                            <div id="step-3-summary" class="space-y-2 text-sm text-white/80">
                                 <!-- Summary will be populated here -->
+                            </div>
+                            <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-base font-semibold text-white">Total:</span>
+                                    <span id="step-3-total" class="text-xl font-bold text-cyan-300">₪0</span>
+                                </div>
                             </div>
                         </div>
 
@@ -2255,286 +2280,116 @@
                         <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
                             Back
                         </button>
-                        <button onclick="nextStep()" id="step-2-next" class="flex-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
-                            Continue
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Step 3: Parent Contact Details -->
-                <div id="step-3" class="step-content p-6 flex-1 flex-col hidden">
-                    <div class="mb-6">
-                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">Parent Contact Details</h2>
-                        <p class="text-white/60 text-sm">Your contact information for registration</p>
-                    </div>
-
-                    <div class="flex-1 space-y-6">
-                        <!-- Registration Summary -->
-                        <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
-                            <h3 class="text-lg font-semibold text-white mb-3">Registration Summary</h3>
-                            <div id="step-3-summary" class="space-y-2 text-sm text-white/80">
-                                <!-- Summary will be populated here -->
-                            </div>
-                            <div class="border-t border-cyan-400/30 pt-3 mt-3">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-base font-semibold text-white">Total:</span>
-                                    <span id="step-3-total" class="text-xl font-bold text-cyan-300">₪0</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="space-y-3">
-                            <label class="text-base font-semibold text-amber-100">Parent Name</label>
-                            <input type="text" id="parent-name" placeholder="Enter your full name"
-                                   oninput="validateStep3()"
-                                   class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
-                        </div>
-
-                        <div class="space-y-3">
-                            <label class="text-base font-semibold text-amber-100">Email Address</label>
-                            <input type="email" id="parent-email" placeholder="your@email.com"
-                                   oninput="validateStep3()"
-                                   class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
-                        </div>
-
-                        <div class="space-y-3">
-                            <label class="text-base font-semibold text-amber-100">Phone Number</label>
-                            <input type="tel" id="parent-phone" placeholder="+972 50-123-4567"
-                                   oninput="validateStep3()"
-                                   class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-6 py-5 text-white placeholder-amber-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm text-lg">
-                        </div>
-                    </div>
-
-                    <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
-                        <button onclick="previousStep()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
-                            Back
-                        </button>
                         <button onclick="nextStep()" id="step-3-next" class="flex-1 bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
                             Continue
                         </button>
                     </div>
                 </div>
 
-                <!-- Step 4: Secure Payment -->
+                <!-- Step 4: Registration Complete -->
                 <div id="step-4" class="step-content p-6 flex-1 flex-col hidden">
-                    <div class="mb-6">
-                        <h2 class="text-xl font-bold text-white tracking-tight mb-2">Complete Secure Payment</h2>
-                        <p class="text-white/60 text-sm">Choose your preferred payment method</p>
-                    </div>
-
                     <div class="flex-1 space-y-6">
-                        <!-- Order Summary -->
-                        <div id="payment-summary" class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-4">
-                            <h3 class="text-lg font-semibold text-white mb-3">Order Summary</h3>
-                            <div id="step-4-summary" class="space-y-2 text-sm text-white/80">
+                        <!-- Registration Summary -->
+                        <div class="bg-gradient-to-br from-cyan-500/10 to-teal-500/10 border border-cyan-400/30 rounded-xl p-6">
+                            <h3 class="text-lg font-semibold text-white mb-4">Registration Summary</h3>
+                            <div id="step-4-summary" class="space-y-3 text-sm text-white/80">
                                 <!-- Summary will be populated by JavaScript -->
                             </div>
-                            <div class="border-t border-cyan-400/30 pt-3 mt-3">
+                            <div class="border-t border-cyan-400/30 pt-4 mt-4">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-base font-semibold text-white">Total:</span>
+                                    <span class="text-base font-semibold text-white">Monthly Total:</span>
                                     <span id="step-4-total" class="text-2xl font-bold text-cyan-300">₪0</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Payment Method Selector -->
-                        <div class="bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-xl border border-cyan-200/40 rounded-xl p-4">
-                            <h3 class="text-base font-semibold text-white mb-4">Select Payment Method</h3>
-                            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
-                                <!-- Credit Card -->
-                                <button onclick="selectPaymentMethod('credit-card')" id="payment-btn-credit-card"
-                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
-                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
-                                    </svg>
-                                    <span class="text-xs font-medium text-white">Credit Card</span>
-                                </button>
+                        <!-- Payment Information -->
+                        <div class="bg-cyan-500/10 border-2 border-cyan-400/40 rounded-xl p-6">
+                            <h3 class="text-xl font-bold text-white mb-3">Payment Information</h3>
 
-                                <!-- Bit -->
-                                <button onclick="selectPaymentMethod('bit')" id="payment-btn-bit"
-                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
-                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                                    </svg>
-                                    <span class="text-xs font-medium text-white">Bit</span>
-                                </button>
-
-                                <!-- Apple Pay -->
-                                <button onclick="selectPaymentMethod('apple-pay')" id="payment-btn-apple-pay"
-                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
-                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
-                                    </svg>
-                                    <span class="text-xs font-medium text-white">Apple Pay</span>
-                                </button>
-
-                                <!-- Bank Transfer -->
-                                <button onclick="selectPaymentMethod('bank-transfer')" id="payment-btn-bank-transfer"
-                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
-                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/>
-                                    </svg>
-                                    <span class="text-xs font-medium text-white text-center">Bank Transfer</span>
-                                </button>
-
-                                <!-- Cash -->
-                                <button onclick="selectPaymentMethod('cash')" id="payment-btn-cash"
-                                        class="payment-method-btn flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-300 bg-black/40 border-white/20 hover:border-cyan-400/50 hover:bg-cyan-500/10">
-                                    <svg class="w-8 h-8 text-cyan-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
-                                    </svg>
-                                    <span class="text-xs font-medium text-white">Cash</span>
-                                </button>
+                            <!-- Free Lesson Banner -->
+                            <div class="bg-cyan-500/20 border border-cyan-400/40 rounded-lg p-4 mb-4">
+                                <p class="text-white font-semibold text-lg">
+                                    First Lesson is FREE for all students!
+                                </p>
                             </div>
-                        </div>
 
-                        <!-- Loading State (shown while creating payment) -->
-                        <div id="payment-loading" class="hidden text-center py-8">
-                            <div class="relative inline-flex">
-                                <div class="w-16 h-16 border-4 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin"></div>
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <p class="text-white text-lg font-medium mt-4">Preparing secure payment...</p>
-                            <p class="text-white/60 text-sm mt-2">Please wait, do not close this window</p>
-                        </div>
-
-                        <!-- AllPay Hosted Fields iframe (for online payments: credit card, bit, apple pay) -->
-                        <div id="payment-iframe-container" class="hidden">
-                            <iframe
-                                id="allpay-payment-iframe"
-                                allow="payment *"
-                                src=""
-                                style="width: 100%; height: 500px; border: none; background: white; border-radius: 12px;">
-                            </iframe>
-
-                            <button
-                                onclick="submitAllPayPayment()"
-                                id="allpay-submit-button"
-                                class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-4 rounded-xl mt-6 hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
-                                <span class="flex items-center justify-center gap-2">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                    <span>Complete Payment</span>
-                                </span>
-                            </button>
-
-                            <p class="text-xs text-white/60 text-center mt-3">
-                                🔒 Secure payment via AllPay
+                            <p class="text-white/90 mb-3">
+                                We currently accept the following payment methods:
                             </p>
-                        </div>
-
-                        <!-- Bank Transfer Instructions -->
-                        <div id="payment-bank-transfer" class="hidden">
-                            <div class="bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-xl border border-cyan-200/40 rounded-xl p-6">
-                                <div class="flex items-start gap-3 mb-4">
-                                    <svg class="w-6 h-6 text-cyan-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                    <div>
-                                        <h4 class="text-lg font-semibold text-white mb-2">Bank Transfer Instructions</h4>
-                                        <p class="text-white/80 text-sm">Transfer the amount to our bank account and email us the confirmation.</p>
-                                    </div>
-                                </div>
-
-                                <div class="bg-black/40 rounded-lg p-4 space-y-3 mb-6">
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-white/60 text-sm">Bank:</span>
-                                        <span class="text-white font-medium">Leumi</span>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-white/60 text-sm">Account Number:</span>
-                                        <span class="text-white font-mono">1234567890</span>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <span class="text-white/60 text-sm">Account Name:</span>
-                                        <span class="text-white">AI Kidz Club</span>
-                                    </div>
-                                    <div class="flex justify-between items-center border-t border-white/10 pt-3">
-                                        <span class="text-white/60 text-sm">Reference:</span>
-                                        <span class="text-cyan-300 font-mono" id="bank-transfer-reference">-</span>
-                                    </div>
-                                </div>
-
-                                <div class="bg-amber-500/10 border border-amber-400/30 rounded-lg p-4">
-                                    <p class="text-amber-200 text-sm">
-                                        ⚠️ <strong>Important:</strong> Please include the reference number in your transfer notes and email the confirmation to <a href="mailto:raphael@aikidz.club" class="text-cyan-300 hover:underline">raphael@aikidz.club</a>
-                                    </p>
-                                </div>
-
-                                <button onclick="confirmBankTransfer()" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl mt-6 hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105">
-                                    I've Completed the Transfer
-                                </button>
+                            <ul class="space-y-2 text-white/90 mb-4">
+                                <li class="flex items-center gap-2">
+                                    <span class="text-cyan-400">•</span> Bit transfers
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="text-cyan-400">•</span> PayBox
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="text-cyan-400">•</span> Bank transfers
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="text-cyan-400">•</span> Cash payment
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span class="text-cyan-400">•</span> Checks
+                                </li>
+                            </ul>
+                            <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-4">
+                                <p class="text-white/95 font-semibold text-sm">
+                                    Credit card payments will be available soon!
+                                </p>
                             </div>
                         </div>
 
-                        <!-- Cash Payment Instructions -->
-                        <div id="payment-cash" class="hidden">
-                            <div class="bg-gradient-to-br from-black/50 to-black/30 backdrop-blur-xl border border-cyan-200/40 rounded-xl p-6">
-                                <div class="flex items-start gap-3 mb-4">
-                                    <svg class="w-6 h-6 text-cyan-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                    </svg>
-                                    <div>
-                                        <h4 class="text-lg font-semibold text-white mb-2">Pay in Person</h4>
-                                        <p class="text-white/80 text-sm">Visit our office to complete payment in cash or by check.</p>
-                                    </div>
+                        <!-- Next Steps -->
+                        <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-xl p-6">
+                            <h3 class="text-lg font-semibold text-white mb-4">What's Next?</h3>
+                            <div class="space-y-3 text-sm text-white/90">
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-cyan-400 text-cyan-950 rounded-full flex items-center justify-center font-bold text-xs">1</div>
+                                    <p>We'll contact you within 24 hours to confirm your details</p>
                                 </div>
-
-                                <div class="bg-black/40 rounded-lg p-4 space-y-4 mb-6">
-                                    <div>
-                                        <h5 class="text-white font-semibold mb-2 flex items-center gap-2">
-                                            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                            </svg>
-                                            Office Location
-                                        </h5>
-                                        <p class="text-white/80 text-sm ml-6">Swartzim 2/7, Raanana 43001, Israel</p>
-                                    </div>
-
-                                    <div class="border-t border-white/10 pt-4">
-                                        <h5 class="text-white font-semibold mb-2 flex items-center gap-2">
-                                            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                            </svg>
-                                            Office Hours
-                                        </h5>
-                                        <p class="text-white/80 text-sm ml-6">Sunday - Thursday: 9:00 AM - 5:00 PM</p>
-                                    </div>
-
-                                    <div class="border-t border-white/10 pt-4">
-                                        <h5 class="text-white font-semibold mb-2 flex items-center gap-2">
-                                            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                            </svg>
-                                            Contact
-                                        </h5>
-                                        <p class="text-white/80 text-sm ml-6">+972-54-315-9025</p>
-                                        <p class="text-white/80 text-sm ml-6">raphael@aikidz.club</p>
-                                    </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-cyan-400 text-cyan-950 rounded-full flex items-center justify-center font-bold text-xs">2</div>
+                                    <p>We'll send you payment details and available options</p>
                                 </div>
-
-                                <div class="bg-amber-500/10 border border-amber-400/30 rounded-lg p-4 mb-6">
-                                    <p class="text-amber-200 text-sm">
-                                        💡 <strong>Tip:</strong> Please call ahead to confirm availability: <a href="tel:+972543159025" class="text-cyan-300 hover:underline">+972-54-315-9025</a>
-                                    </p>
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-cyan-400 text-cyan-950 rounded-full flex items-center justify-center font-bold text-xs">3</div>
+                                    <p>We'll update you on the exact location and class schedule</p>
                                 </div>
+                            </div>
+                        </div>
 
-                                <button onclick="confirmCashPayment()" class="w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 transform hover:scale-105">
-                                    Reserve My Spot (Pay Later)
-                                </button>
+                        <!-- Contact Information -->
+                        <div class="bg-black/20 border border-white/10 rounded-lg p-4 text-center">
+                            <p class="text-white/70 text-xs mb-2">Questions? Contact us:</p>
+                            <div class="flex items-center justify-center gap-4 text-xs">
+                                <a href="mailto:raphael@aikidz.club" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+                                    raphael@aikidz.club
+                                </a>
+                                <a href="tel:+972543159025" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+                                    +972-54-315-9025
+                                </a>
+                                <a href="https://wa.me/972543159025" target="_blank" class="text-cyan-400 hover:text-cyan-300 transition-colors">
+                                    WhatsApp
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-8 pt-6 border-t border-amber-200/30 flex gap-3">
-                        <button onclick="previousStep()" id="step-4-back" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">
-                            Back
+                    <div class="mt-8 pt-6 border-t border-cyan-400/30 space-y-3">
+                        <button onclick="submitRegistration()" id="complete-registration-btn" class="w-full bg-gradient-to-r from-green-500 via-green-400 to-green-300 text-white font-bold py-5 rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+                            <span id="btn-text">Complete Registration</span>
+                            <span id="btn-loading" class="hidden inline-flex items-center justify-center gap-2">
+                                <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                Submitting...
+                            </span>
+                        </button>
+                        <button onclick="window.location.href='index.html'" class="w-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-cyan-200 text-white font-semibold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200 transform hover:scale-105">
+                            Return to Home
                         </button>
                     </div>
                 </div>
@@ -2583,6 +2438,114 @@
     </footer>
 
     <script>
+        // ===== SESSION TRACKING & CONFIGURATION =====
+
+        // Generate or retrieve session ID for lead tracking
+        function getOrCreateSessionId() {
+            let sessionId = localStorage.getItem('aiclub_session_id');
+            if (!sessionId) {
+                sessionId = 'SESSION-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('aiclub_session_id', sessionId);
+            }
+            return sessionId;
+        }
+
+        const SESSION_ID = getOrCreateSessionId();
+        const TRACKING_URL = 'https://script.google.com/macros/s/AKfycbzrnqLuhdJCox1yTGQVAwhEDyB21pg2dgbqWxhr9gC6QM_6idTtYtVcgrTp1TFbNp_1/exec'; // Lead Tracking URL
+
+        // Email validation
+        function isValidEmail(email) {
+            if (!email) return false;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Track step progression
+        async function trackStepProgression(stepNumber) {
+            console.log('🔍 trackStepProgression called with step:', stepNumber);
+
+            const trackingData = {
+                sessionId: SESSION_ID,
+                stepCompleted: `Step ${stepNumber}`,
+                childNames: wizardData.children.map(c => c.name).filter(n => n).join(', '),
+                ageGroups: wizardData.children.map(c => c.ageGroup).filter(a => a).join(', '),
+                paymentPlan: wizardData.bulkDuration || '',
+                parentEmail: document.getElementById('parent-email')?.value || '',
+                language: 'english'
+            };
+
+            console.log('📦 Tracking data prepared:', trackingData);
+            console.log('🌐 Sending to URL:', TRACKING_URL);
+
+            try {
+                await fetch(TRACKING_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(trackingData)
+                });
+                console.log(`✅ Step ${stepNumber} tracked`);
+            } catch (error) {
+                console.error('❌ Tracking error:', error);
+                // Don't block user progression if tracking fails
+            }
+        }
+
+        // Show error banner
+        function showError(message) {
+            // Remove any existing error banners
+            const existingError = document.querySelector('.error-banner');
+            if (existingError) {
+                existingError.remove();
+            }
+
+            // Create error banner
+            const errorBanner = document.createElement('div');
+            errorBanner.className = 'error-banner';
+            errorBanner.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+                color: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+                z-index: 10000;
+                max-width: 500px;
+                text-align: center;
+                font-weight: 600;
+                animation: slideDown 0.3s ease-out;
+            `;
+            errorBanner.textContent = message;
+
+            document.body.appendChild(errorBanner);
+
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                errorBanner.style.animation = 'slideUp 0.3s ease-out';
+                setTimeout(() => errorBanner.remove(), 300);
+            }, 5000);
+        }
+
+        // Show success page with registration ID
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from { transform: translateX(-50%) translateY(-100px); opacity: 0; }
+                to { transform: translateX(-50%) translateY(0); opacity: 1; }
+            }
+            @keyframes slideUp {
+                from { transform: translateX(-50%) translateY(0); opacity: 1; }
+                to { transform: translateX(-50%) translateY(-100px); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // ===== END SESSION TRACKING =====
+
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
 
@@ -3071,7 +3034,7 @@
         let wizardData = {
             childCount: 1,
             bulkDuration: null,
-            children: [],
+            children: [{ name: '', ageGroup: '' }],
             parentName: '',
             parentEmail: '',
             parentPhone: '',
@@ -3080,7 +3043,12 @@
 
         // Step Navigation
         function nextStep() {
-            // Check if user selected Free Trial at end of Step 3 (after entering parent info)
+            console.log('🚀 nextStep() called, currentWizardStep:', currentWizardStep);
+
+            // Track step progression before moving forward
+            trackStepProgression(currentWizardStep);
+
+            // Check if user selected Free Trial at end of Step 3 (payment plan selection)
             if (currentWizardStep === 3 && wizardData.bulkDuration === 'trial') {
                 console.log('🎁 Free Trial selected - skipping payment and submitting');
                 submitTrialRegistration();
@@ -3104,10 +3072,14 @@
 
             // Initialize step-specific content
             if (currentWizardStep === 2) {
-                generateStep2Summary();
-                updatePricingDisplays();
+                // Step 2: Child Details - no summary needed
             } else if (currentWizardStep === 3) {
-                generateFinalSummary();
+                // Step 3: Payment Plan - show children summary
+                generateStep3Summary();
+                updatePricingDisplays();
+            } else if (currentWizardStep === 4) {
+                // Step 4: Payment - show final summary
+                generateStep4Summary();
             }
         }
 
@@ -3171,7 +3143,7 @@
             }));
 
             generateChildFormsStep1();
-            validateStep1();
+            validateStep2();
         }
 
         function generateChildFormsStep1() {
@@ -3276,7 +3248,7 @@
             generateChildFormsStep1();
 
             // Revalidate step
-            validateStep1();
+            validateStep2();
 
             // Update pricing if on step 2
             if (wizardData.bulkDuration) {
@@ -3289,7 +3261,7 @@
                 wizardData.children[index] = { name: '', ageGroup: '' };
             }
             wizardData.children[index][field] = value;
-            validateStep1();
+            validateStep2();
         }
 
         function selectChildAgeGroup(index, ageGroup) {
@@ -3320,25 +3292,38 @@
                 }
             }
 
-            validateStep1();
+            validateStep2();
         }
 
         function validateStep1() {
-            const continueBtn = document.getElementById('step-1-next');
-            const allValid = wizardData.children.every(child =>
-                child && child.name.trim() !== '' && child.ageGroup !== ''
-            );
-            continueBtn.disabled = !allValid;
+            const submitBtn = document.getElementById('step-1-next');
+            const parentName = document.getElementById('parent-name')?.value || '';
+            const parentEmail = document.getElementById('parent-email')?.value || '';
+            const parentPhone = document.getElementById('parent-phone')?.value || '';
+
+            // Save to wizardData as user types
+            wizardData.parentName = parentName.trim();
+            wizardData.parentEmail = parentEmail.trim();
+            wizardData.parentPhone = parentPhone.trim();
+
+            const allValid = parentName.trim() !== '' &&
+                           parentEmail.trim() !== '' &&
+                           parentPhone.trim() !== '';
+
+            if (submitBtn) {
+                submitBtn.disabled = !allValid;
+            }
         }
 
-        // Initialize Step 1 on load
+        // Initialize child forms for Step 2 on load
         document.addEventListener('DOMContentLoaded', function() {
             generateChildFormsStep1();
         });
 
-        // Step 2 Functions (Payment Plan Selection)
-        function generateStep2Summary() {
-            const summaryContainer = document.getElementById('step-2-summary');
+        // Step 3 Functions (Payment Plan Selection)
+        function generateStep3Summary() {
+            const summaryContainer = document.getElementById('step-3-summary');
+            const totalElement = document.getElementById('step-3-total');
             if (!summaryContainer) return;
 
             let summaryHTML = `<div class="text-base font-medium text-white mb-2">${wizardData.childCount} child${wizardData.childCount > 1 ? 'ren' : ''} enrolled:</div>`;
@@ -3353,6 +3338,13 @@
             });
 
             summaryContainer.innerHTML = summaryHTML;
+
+            // Update total if payment plan is selected
+            if (wizardData.bulkDuration && totalElement) {
+                const totalMonthlyPrice = calculateWizardTotal();
+                const isTrial = wizardData.bulkDuration === 'trial';
+                totalElement.textContent = isTrial ? `₪0 (Free Trial)` : `₪${totalMonthlyPrice}/month`;
+            }
         }
 
         function updatePricingDisplays() {
@@ -3398,7 +3390,8 @@
             }
 
             updatePricingBreakdown();
-            validateStep2();
+            generateStep3Summary(); // Update summary with new total
+            validateStep3();
         }
 
         function togglePricingBreakdown() {
@@ -3533,13 +3526,16 @@
 
         function validateStep2() {
             const continueBtn = document.getElementById('step-2-next');
-            continueBtn.disabled = !wizardData.bulkDuration;
+            const allValid = wizardData.children.every(child =>
+                child && child.name.trim() !== '' && child.ageGroup !== ''
+            );
+            continueBtn.disabled = !allValid;
         }
 
-        // Step 3 Functions
-        function generateFinalSummary() {
-            const summaryContainer = document.getElementById('step-3-summary');
-            const totalElement = document.getElementById('step-3-total');
+        // Step 4 Functions (Payment)
+        function generateStep4Summary() {
+            const summaryContainer = document.getElementById('step-4-summary');
+            const totalElement = document.getElementById('step-4-total');
 
             if (!summaryContainer || !totalElement) return;
 
@@ -3548,47 +3544,54 @@
             const isTrial = wizardData.bulkDuration === 'trial';
 
             // Build summary HTML
-            const planName = isTrial ? 'Free Trial - 1 Trial lesson per child' :
-                           (wizardData.bulkDuration.charAt(0).toUpperCase() + wizardData.bulkDuration.slice(1));
-            let summaryHTML = `
-                <div class="text-base font-medium text-white mb-2">
-                    <strong>${wizardData.childCount}</strong> child${wizardData.childCount > 1 ? 'ren' : ''} enrolled • <strong>${planName}</strong>
+            const planName = isTrial ? 'Free Trial' :
+                           wizardData.bulkDuration === 'monthly' ? 'Monthly' :
+                           wizardData.bulkDuration === 'quarterly' ? 'Quarterly (3 months)' :
+                           'Annual (12 months)';
+
+            let summaryHTML = '<div class="space-y-2">';
+
+            // Children list with prices
+            wizardData.children.forEach((child, i) => {
+                const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators (8-10)' :
+                                    child.ageGroup === 'tech' ? 'Tech Champions (11-13)' :
+                                    'Future Leaders (14-18)';
+                const childPrice = AGE_PRICING[child.ageGroup][wizardData.bulkDuration];
+                summaryHTML += `
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-white/90">• ${child.name} - ${ageGroupName}</span>
+                        <span class="text-cyan-300 font-semibold">₪${childPrice.toLocaleString()}</span>
+                    </div>
+                `;
+            });
+
+            // Payment plan
+            summaryHTML += `
+                <div class="text-xs text-white/60 mt-3">
+                    Payment Plan: ${planName}
                 </div>
             `;
 
-            wizardData.children.forEach((child, i) => {
-                const ageGroupName = child.ageGroup === 'young' ? 'Young Innovators' :
-                                    child.ageGroup === 'tech' ? 'Tech Champions' :
-                                    'Future Leaders';
-                const ageRange = child.ageGroup === 'young' ? '8-10' :
-                                child.ageGroup === 'tech' ? '11-13' : '14-18';
-                summaryHTML += `<div class="text-sm text-white/80 mt-1">• ${child.name} - ${ageGroupName} (${ageRange})</div>`;
-            });
+            // Family discount badge
+            if (wizardData.childCount >= 2) {
+                summaryHTML += `
+                    <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-2 mt-2">
+                        <p class="text-xs text-cyan-200 font-semibold">
+                            Family discount ${wizardData.childCount === 2 ? '10%' : '15%'} applied!
+                        </p>
+                    </div>
+                `;
+            }
+
+            summaryHTML += '</div>';
 
             summaryContainer.innerHTML = summaryHTML;
             totalElement.textContent = isTrial ? `₪0 (Free Trial)` : `₪${totalMonthlyPrice}/month`;
-
-            validateStep3();
         }
 
         function validateStep3() {
-            const submitBtn = document.getElementById('step-3-next');
-            const parentName = document.getElementById('parent-name')?.value || '';
-            const parentEmail = document.getElementById('parent-email')?.value || '';
-            const parentPhone = document.getElementById('parent-phone')?.value || '';
-
-            // Save to wizardData as user types - needed for AllPay validation
-            wizardData.parentName = parentName.trim();
-            wizardData.parentEmail = parentEmail.trim();
-            wizardData.parentPhone = parentPhone.trim();
-
-            const allValid = parentName.trim() !== '' &&
-                           parentEmail.trim() !== '' &&
-                           parentPhone.trim() !== '';
-
-            if (submitBtn) {
-                submitBtn.disabled = !allValid;
-            }
+            const continueBtn = document.getElementById('step-3-next');
+            continueBtn.disabled = !wizardData.bulkDuration;
         }
 
         // Free Trial Registration
@@ -3673,7 +3676,7 @@
             wizardData = {
                 childCount: 1,
                 bulkDuration: null,
-                children: [],
+                children: [{ name: '', ageGroup: '' }],
                 parentName: '',
                 parentEmail: '',
                 parentPhone: '',
@@ -4374,7 +4377,7 @@
         }
 
         // Configuration for Google Sheets integration
-        const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwu_g9QHQJvlszBcYWs64HOVE1sVoL77QdcDoUAT2Xx5euwDNy6yBEl3FmLc_zthLhp/exec'; // English Registration
+        const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzZtrLVGDlPNOEh_WvnGL30f0JMXzUvVyCIut_bJHKbEDZm9t7Nx1qnaOmpmGSyr9HU/exec'; // English Registration
 
         // Make it available globally for calendar widget
         window.GOOGLE_SHEETS_WEB_APP_URL = GOOGLE_SHEETS_WEB_APP_URL;
@@ -4426,49 +4429,73 @@
 
             // Validate form
             if (formData.children.length === 0) {
-                alert('Please complete all child details including name and age group for each child.');
+                showError('Please complete all child details including name and age group for each child.');
                 return;
             }
 
             if (!formData.parent.name || !formData.parent.email || !formData.parent.phone) {
-                alert('Please fill in all parent contact information.');
+                showError('Please fill in all parent contact information.');
+                return;
+            }
+
+            // Validate email format
+            if (!isValidEmail(formData.parent.email)) {
+                showError('Please provide a valid email address.');
                 return;
             }
 
             // Show loading state
-            const submitButton = document.getElementById('step-4-next');
-            const originalText = submitButton ? submitButton.textContent : '';
+            const submitButton = document.getElementById('complete-registration-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnLoading = document.getElementById('btn-loading');
+
             if (submitButton) {
-                submitButton.textContent = 'Processing...';
                 submitButton.disabled = true;
+                if (btnText) btnText.classList.add('hidden');
+                if (btnLoading) btnLoading.classList.remove('hidden');
             }
 
             try {
+                // Add session ID to form data
+                formData.sessionId = SESSION_ID;
+
                 // Primary: Submit to Google Sheets
                 const response = await submitToGoogleSheets(formData);
 
                 if (response.success) {
-                    // Success! Show confirmation and close modal
-                    showRegistrationSuccess(formData);
+                    // Success! Show success page with registration ID
+                    showRegistrationSuccess(formData, response.registrationId || SESSION_ID);
                     closeRegistrationModal();
+                } else if (response.error === 'duplicate_free_trial') {
+                    // Handle duplicate free trial error
+                    showError('You have already used your free trial. Please select a paid plan to continue.');
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        if (btnText) btnText.classList.remove('hidden');
+                        if (btnLoading) btnLoading.classList.add('hidden');
+                    }
+                } else if (response.error === 'invalid_email') {
+                    showError('Please provide a valid email address.');
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        if (btnText) btnText.classList.remove('hidden');
+                        if (btnLoading) btnLoading.classList.add('hidden');
+                    }
                 } else {
-                    throw new Error('Google Sheets submission failed');
+                    throw new Error(response.message || 'Registration failed');
                 }
 
             } catch (error) {
                 console.error('Google Sheets submission error:', error);
 
-                // Fallback: Send to WhatsApp (original method)
-                submitToWhatsApp(formData);
+                // Show error message
+                showError('An error occurred during registration. Please try again or contact support at raphael@aikidz.club');
 
-                // Show fallback message
-                alert('Registration sent via WhatsApp! We\'ll confirm your booking shortly.');
-                closeRegistrationModal();
-            } finally {
                 // Reset button
                 if (submitButton) {
-                    submitButton.textContent = originalText;
                     submitButton.disabled = false;
+                    if (btnText) btnText.classList.remove('hidden');
+                    if (btnLoading) btnLoading.classList.add('hidden');
                 }
             }
         }
@@ -4507,7 +4534,7 @@
         }
 
         // Show success message
-        function showRegistrationSuccess(formData) {
+        function showRegistrationSuccess(formData, registrationId = null) {
             const childrenCount = formData.children.length;
             const successMessage = `
                 <style>
@@ -4559,7 +4586,7 @@
                     .stagger-3 { animation: fadeInStagger3 0.5s ease-out 1.9s both; }
                 </style>
 
-                <div class="fixed inset-0 z-[100000] flex items-center justify-center p-4 success-backdrop" style="background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);">
+                <div class="fixed inset-0 z-[100000] flex items-center justify-center p-4 success-backdrop" style="background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); cursor: default;">
                     <div class="success-card bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-cyan-400/20 rounded-2xl shadow-2xl max-w-lg w-full p-8 text-center relative overflow-hidden">
                         <!-- Glow effects -->
                         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-br from-cyan-400/20 via-teal-400/10 to-transparent rounded-full blur-3xl"></div>
@@ -4604,6 +4631,14 @@
                                 <p class="text-lg font-semibold text-white">${childrenCount} child${childrenCount > 1 ? 'ren' : ''} • ${formData.paymentPlan.charAt(0).toUpperCase() + formData.paymentPlan.slice(1)} Plan</p>
                                 <p class="text-2xl font-bold text-cyan-300 mt-2">₪${formData.totalPrice}<span class="text-sm text-white/60">/month</span></p>
                             </div>
+
+                            ${registrationId ? `
+                            <!-- Registration ID -->
+                            <div class="bg-black/40 border border-cyan-400/40 rounded-xl p-4 mb-6">
+                                <p class="text-sm text-cyan-300 mb-2">Your Registration ID:</p>
+                                <p class="text-lg font-mono font-bold text-white">${registrationId}</p>
+                            </div>
+                            ` : ''}
 
                             <!-- Next steps -->
                             <div class="text-left space-y-3 mb-6">
@@ -5237,14 +5272,14 @@
         }
 
         // Add CSS animation for scroll hint
-        const style = document.createElement('style');
-        style.textContent = `
+        const scrollAnimationStyle = document.createElement('style');
+        scrollAnimationStyle.textContent = `
             @keyframes fade-bounce {
                 0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
                 50% { opacity: 0.8; transform: translateX(-50%) translateY(-5px); }
             }
         `;
-        document.head.appendChild(style);
+        document.head.appendChild(scrollAnimationStyle);
 
         // Handle screen resize
         window.addEventListener('resize', function() {
@@ -5609,87 +5644,17 @@
         </div>
     </div>
 
-    <!-- AllPay Hosted Fields SDK -->
-    <script src="https://allpay.to/js/allpay-hf.js"></script>
 
-    <!-- AllPay Integration Scripts -->
-    <script>
-        // AllPay instance (will be initialized after payment creation)
-        let AllpayInstance = null;
-        let selectedPaymentMethod = null;
+
+
+
+    <!-- AllPay payment integration removed - using simple Google Sheets submission instead -->
+                let selectedPaymentMethod = null;
 
         // Flag to prevent multiple simultaneous AllPay initializations
         let isInitializingPayment = false;
 
-        /**
-         * Select payment method and show appropriate UI
-         */
-        function selectPaymentMethod(method) {
-            selectedPaymentMethod = method;
-
-            // Hide all payment containers with null checks
-            const containersToHide = ['payment-loading', 'payment-iframe-container', 'payment-bank-transfer', 'payment-cash'];
-            containersToHide.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.classList.add('hidden');
-            });
-
-            // Reset all payment method buttons
-            document.querySelectorAll('.payment-method-btn').forEach(btn => {
-                btn.classList.remove('border-cyan-400', 'bg-cyan-500/20');
-                btn.classList.add('border-white/20', 'bg-black/40');
-            });
-
-            // Highlight selected payment method
-            const selectedBtn = document.getElementById(`payment-btn-${method}`);
-            if (selectedBtn) {
-                selectedBtn.classList.remove('border-white/20', 'bg-black/40');
-                selectedBtn.classList.add('border-cyan-400', 'bg-cyan-500/20');
-            }
-
-            // Show appropriate payment UI based on method
-            if (method === 'credit-card' || method === 'bit' || method === 'apple-pay') {
-                // Online payment methods - initialize AllPay
-                initializeAllPayPayment(method);
-            } else if (method === 'bank-transfer') {
-                // Show bank transfer instructions
-                const referenceEl = document.getElementById('bank-transfer-reference');
-                if (referenceEl) {
-                    // Generate unique reference number
-                    const timestamp = Date.now();
-                    const random = Math.random().toString(36).substring(2, 8).toUpperCase();
-                    referenceEl.textContent = `AIKIDZ-${timestamp}-${random}`;
-                }
-                const bankTransferEl = document.getElementById('payment-bank-transfer');
-                if (bankTransferEl) bankTransferEl.classList.remove('hidden');
-            } else if (method === 'cash') {
-                // Show cash payment instructions
-                const cashEl = document.getElementById('payment-cash');
-                if (cashEl) cashEl.classList.remove('hidden');
-            }
-        }
-
-        /**
-         * Confirm bank transfer (reserve spot)
-         */
-        function confirmBankTransfer() {
-            alert('Thank you! Your spot has been reserved. We will confirm your enrollment once we receive your bank transfer.');
-            // TODO: Send confirmation email and add to pending registrations
-            showPaymentSuccessModal('PENDING-BANK-TRANSFER', collectMobileFormData());
-        }
-
-        /**
-         * Confirm cash payment (reserve spot)
-         */
-        function confirmCashPayment() {
-            alert('Thank you! Your spot has been reserved. Please visit our office to complete payment.');
-            // TODO: Send confirmation email and add to pending registrations
-            showPaymentSuccessModal('PENDING-CASH-PAYMENT', collectMobileFormData());
-        }
-
-        /**
-         * Initialize AllPay payment when user reaches Step 4
-         */
+        
         async function initializeAllPayPayment(paymentMethod = 'credit-card') {
             // Prevent multiple simultaneous initializations
             if (isInitializingPayment) {
@@ -5749,128 +5714,6 @@
             }
         }
 
-        /**
-         * Create AllPay payment (separated for better error handling)
-         */
-        async function createAllPayPayment(formData, totalAmount, paymentMethod) {
-            try {
-                // Call backend to create payment
-                const response = await fetch('/api/create-payment', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        parentName: formData.parentName,
-                        parentEmail: formData.parentEmail,
-                        parentPhone: formData.parentPhone,
-                        children: formData.children,
-                        duration: formData.duration,
-                        amount: totalAmount,
-                        language: 'en'
-                    })
-                });
-
-                const data = await response.json();
-                console.log('📨 Response from backend:', data);
-
-                if (data.success && data.paymentUrl) {
-                    console.log('✅ Payment created successfully');
-                    console.log('🔗 Payment URL:', data.paymentUrl);
-
-                    // Load payment URL into iframe
-                    const iframe = document.getElementById('allpay-payment-iframe');
-                    if (!iframe) {
-                        throw new Error('Payment iframe not found');
-                    }
-                    iframe.src = data.paymentUrl;
-
-                    // Initialize AllPay Hosted Fields
-                    AllpayInstance = new AllpayPayment({
-                        iframeId: 'allpay-payment-iframe',
-                        onSuccess: function() {
-                            handleAllPaySuccess(data.orderId, formData);
-                        },
-                        onError: function(error_n, error_msg) {
-                            handleAllPayError(error_n, error_msg);
-                        }
-                    });
-
-                    // Hide loading, show iframe and payment button with null checks
-                    const loadingEl = document.getElementById('payment-loading');
-                    const iframeContainerEl = document.getElementById('payment-iframe-container');
-                    const methodsInfoEl = document.getElementById('payment-methods-info');
-
-                    if (loadingEl) loadingEl.classList.add('hidden');
-                    if (iframeContainerEl) iframeContainerEl.classList.remove('hidden');
-                    if (methodsInfoEl) methodsInfoEl.classList.remove('hidden');
-
-                    return true;
-
-                } else {
-                    throw new Error(data.error || 'Failed to create payment');
-                }
-
-            } catch (error) {
-                console.error('❌ Payment creation error:', error);
-                alert('Payment creation error: ' + error.message + '\nPlease try again.');
-
-                // Hide loading with null check
-                const loadingEl = document.getElementById('payment-loading');
-                if (loadingEl) loadingEl.classList.add('hidden');
-
-                return false;
-            }
-        }
-
-        /**
-         * Submit payment when user clicks "Complete Payment" button
-         */
-        function submitAllPayPayment() {
-            if (!AllpayInstance) {
-                alert('Payment system not initialized. Please try again.');
-                return;
-            }
-
-            console.log('💳 Submitting payment...');
-
-            // Disable button and show processing state
-            const button = document.getElementById('allpay-submit-button');
-            button.disabled = true;
-            button.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="animate-spin w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>Processing payment...</span></span>';
-
-            // Trigger AllPay payment
-            AllpayInstance.pay();
-        }
-
-        /**
-         * Handle successful payment
-         */
-        function handleAllPaySuccess(orderId, formData) {
-            console.log('✅ Payment successful!');
-            console.log('Order ID:', orderId);
-
-            // Hide Step 4
-            document.getElementById('step-4').classList.add('hidden');
-
-            // Show success message
-            showPaymentSuccessModal(orderId, formData);
-        }
-
-        /**
-         * Handle payment error
-         */
-        function handleAllPayError(error_n, error_msg) {
-            console.error('❌ Payment failed:', error_n, error_msg);
-
-            // Re-enable button
-            const button = document.getElementById('allpay-submit-button');
-            button.disabled = false;
-            button.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Complete Payment</span></span>';
-
-            // Show error message
-            alert('Payment failed: ' + error_msg + '\n\nError code: ' + error_n + '\n\nPlease check the details and try again.');
-        }
 
         /**
          * Update Step 4 summary with order details
@@ -5878,15 +5721,29 @@
         function updateStep4Summary(formData, totalAmount) {
             const summaryHtml = `
                 <div class="space-y-2">
-                    ${formData.children.map((child, index) => `
-                        <div class="flex justify-between items-center">
-                            <span>${child.name} (${child.age} years old)</span>
-                            <span class="text-cyan-300 font-semibold">₪${getChildPrice(index, formData.duration)}</span>
-                        </div>
-                    `).join('')}
-                    <div class="text-xs text-white/60 mt-2">
-                        Plan: ${getDurationLabel(formData.duration)}
+                    ${formData.children.map((child, index) => {
+                        const ageGroupName = child.program || (child.age >= 8 && child.age <= 10 ? 'Young Innovators (8-10)' :
+                                           child.age >= 11 && child.age <= 13 ? 'Tech Champions (11-13)' :
+                                           'Future Leaders (14-18)');
+                        return `
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-white/90">• ${child.name} - ${ageGroupName}</span>
+                                <span class="text-cyan-300 font-semibold">₪${getChildPrice(index, formData.duration)}</span>
+                            </div>
+                        `;
+                    }).join('')}
+
+                    <div class="text-xs text-white/60 mt-3">
+                        Payment Plan: ${getDurationLabel(formData.duration)}
                     </div>
+
+                    ${formData.children.length >= 2 ? `
+                        <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-2 mt-2">
+                            <p class="text-xs text-cyan-200 font-semibold">
+                                Family discount ${formData.children.length === 2 ? '10%' : '15%'} applied!
+                            </p>
+                        </div>
+                    ` : ''}
                 </div>
             `;
 
@@ -6061,27 +5918,200 @@
         }
 
         // Auto-select credit card as default payment method when reaching Step 4
-        const originalNextStep = nextStep;
-        nextStep = async function() {
-            const currentStep = document.querySelector('.step-content:not(.hidden)');
-            const currentStepId = currentStep ? currentStep.id : '';
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof nextStep !== 'undefined') {
+                const originalNextStep = nextStep;
+                nextStep = async function() {
+                    const currentStep = document.querySelector('.step-content:not(.hidden)');
+                    const currentStepId = currentStep ? currentStep.id : '';
 
-            // If moving from Step 3 to Step 4, show payment methods
-            if (currentStepId === 'step-3') {
-                // Just proceed to Step 4 - user will select payment method
-                originalNextStep();
+                    // If moving from Step 3 to Step 4, show payment methods
+                    if (currentStepId === 'step-3') {
+                        // Just proceed to Step 4 - user will select payment method
+                        originalNextStep();
+                        return;
+                    }
 
-                // Auto-select credit card as default after a short delay
-                setTimeout(() => {
-                    selectPaymentMethod('credit-card');
-                }, 300);
+                    // Call original nextStep function
+                    originalNextStep();
+                };
+            }
+        });
+    </script>
+
+    <!-- WebGL Fluid Splash Cursor (Vue Template Implementation) -->
+    <script src="./pricing-fluid-cursor.js"></script>
+
+    <!-- Triangle Cursor Mouse Tracking -->
+    <script>
+        (function() {
+            const cursorRing = document.querySelector('.cursor-ring');
+            if (!cursorRing) return;
+
+            let mouseX = 0;
+            let mouseY = 0;
+            let cursorX = 0;
+            let cursorY = 0;
+            const smoothing = 0.15;
+
+            // Track mouse position
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            // Detect hover on interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, input, select, textarea, [role="button"]');
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    cursorRing.classList.add('hover');
+                });
+                element.addEventListener('mouseleave', () => {
+                    cursorRing.classList.remove('hover');
+                });
+            });
+
+            // Animate cursor position
+            function animateCursor() {
+                // Smooth cursor movement
+                cursorX += (mouseX - cursorX) * smoothing;
+                cursorY += (mouseY - cursorY) * smoothing;
+
+                // Update cursor position
+                cursorRing.style.left = cursorX + 'px';
+                cursorRing.style.top = cursorY + 'px';
+
+                requestAnimationFrame(animateCursor);
+            }
+
+            // Start animation
+            animateCursor();
+        })();
+    </script>
+
+    <!-- Typewriter Effect -->
+    <script>
+        // Typewriter Effect
+        const typewriterElement = document.getElementById('typewriter-text');
+        const phrases = [
+            'AI Era',
+            'AI Revolution',
+            'Digital World',
+            'Future of Learning',
+            'Age of Innovation'
+        ];
+
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isPaused = false;
+
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isPaused) {
                 return;
             }
 
-            // Call original nextStep function
-            originalNextStep();
-        };
+            if (isDeleting) {
+                // Delete character
+                typewriterElement.innerHTML = currentPhrase.substring(0, charIndex - 1) + '<span class="typewriter-cursor"></span>';
+                charIndex--;
+
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    isPaused = true;
+                    setTimeout(() => {
+                        isPaused = false;
+                        typeWriter();
+                    }, 800); // Pause before typing next phrase
+                    return;
+                }
+            } else {
+                // Type character
+                typewriterElement.innerHTML = currentPhrase.substring(0, charIndex + 1) + '<span class="typewriter-cursor"></span>';
+                charIndex++;
+
+                if (charIndex === currentPhrase.length) {
+                    isPaused = true;
+                    setTimeout(() => {
+                        isPaused = false;
+                        isDeleting = true;
+                        typeWriter();
+                    }, 2500); // Pause after typing complete phrase
+                    return;
+                }
+            }
+
+            // Call next iteration with appropriate speed
+            const typingSpeed = isDeleting ? 40 : 80;
+            setTimeout(typeWriter, typingSpeed);
+        }
+
+        // Start typewriter effect after a brief delay
+        setTimeout(() => {
+            typeWriter();
+        }, 1500);
     </script>
+
+    <!-- Registration Submission Script -->
+    <script>
+        /**
+         * Show error modal with custom message
+         */
+        function showErrorModal(message) {
+            const modal = document.getElementById('error-modal');
+            const errorMsgElement = document.getElementById('error-message');
+
+            if (errorMsgElement && message) {
+                errorMsgElement.textContent = message;
+            }
+
+            if (modal) {
+                modal.classList.remove('hidden');
+            }
+        }
+
+        /**
+         * Close modal by ID
+         */
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
+
+    <!-- Error Modal -->
+    <div id="error-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-gradient-to-br from-slate-900 to-slate-800 border-2 border-red-500/50 rounded-2xl max-w-md w-full p-8 shadow-2xl transform scale-95 transition-all duration-300">
+            <div class="flex justify-center mb-6">
+                <div class="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center">
+                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </div>
+            </div>
+            <h2 class="text-2xl font-bold text-white text-center mb-3">Something Went Wrong</h2>
+            <p id="error-message" class="text-white/80 text-center mb-6">
+                An error occurred while submitting your registration. Please try again or contact us directly.
+            </p>
+            <div class="bg-white/5 border border-white/10 rounded-lg p-4 mb-6">
+                <p class="text-white/70 text-sm text-center mb-3">Contact for help:</p>
+                <div class="flex flex-col gap-2">
+                    <a href="mailto:raphael@aikidz.club" class="text-cyan-400 hover:text-cyan-300 text-center text-sm transition-colors">raphael@aikidz.club</a>
+                    <a href="tel:+972543159025" class="text-cyan-400 hover:text-cyan-300 text-center text-sm transition-colors">+972-54-315-9025</a>
+                    <a href="https://wa.me/972543159025" target="_blank" class="text-green-400 hover:text-green-300 text-center text-sm font-semibold transition-colors">Contact on WhatsApp</a>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="closeModal()" class="flex-1 bg-white/10 border border-white/20 text-white font-semibold py-4 rounded-xl hover:bg-white/20 transition-colors">Close</button>
+                <button onclick="submitRegistration()" class="flex-1 bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200">Try Again</button>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

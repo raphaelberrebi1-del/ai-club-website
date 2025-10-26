@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.aikidz.club/</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.aikidz.club/index-he.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aikidz.club/"/>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/index-he.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aikidz.club/"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.aikidz.club/index-he.html"/>
+  </url>
+
+  <!-- Curriculum Pages -->
+  <url>
+    <loc>https://www.aikidz.club/curriculum.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.aikidz.club/curriculum-he-desktop.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aikidz.club/curriculum.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/curriculum-he-desktop.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aikidz.club/curriculum.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.aikidz.club/curriculum-he-desktop.html"/>
+  </url>
+
+  <!-- Pricing Pages -->
+  <url>
+    <loc>https://www.aikidz.club/pricing.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.aikidz.club/pricing-he-desktop.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aikidz.club/pricing.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/pricing-he-desktop.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aikidz.club/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.aikidz.club/pricing-he-desktop.html"/>
+  </url>
+
+  <!-- FAQ Pages -->
+  <url>
+    <loc>https://www.aikidz.club/faq.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.aikidz.club/faq-he.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aikidz.club/faq.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/faq-he.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aikidz.club/faq.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.aikidz.club/faq-he.html"/>
+  </url>
+
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://www.aikidz.club/privacy.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/privacy-he.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/terms.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/terms-he.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Location Pages (to be created) -->
+  <url>
+    <loc>https://www.aikidz.club/locations/raanana.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.aikidz.club/locations/raanana-he.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aikidz.club/locations/raanana.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/locations/raanana-he.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aikidz.club/locations/raanana.html"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.aikidz.club/locations/raanana-he.html"/>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/locations/tel-aviv.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/locations/herzliya.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/locations/ramat-hasharon.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/locations/kfar-saba.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/locations/hod-hasharon.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/locations/ramat-aviv.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.aikidz.club/locations/netanya.html</loc>
+    <lastmod>2025-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

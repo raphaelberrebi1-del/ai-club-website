@@ -1,0 +1,30 @@
+# AI Kids Club - Robots.txt
+# https://www.aikidz.club/robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.aikidz.club/sitemap.xml
+
+# Block development/test pages
+Disallow: /test/
+Disallow: /dev/
+Disallow: /*?*sessionId=
+Disallow: /*?*debug=
+
+# Block duplicate content (mobile redirects handled by JS)
+# Allow both mobile and desktop versions to be indexed
+
+# Allow social media bots
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Crawl delay for polite crawlers
+Crawl-delay: 1
