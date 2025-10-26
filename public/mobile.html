@@ -3637,6 +3637,11 @@
                 submitButton.disabled = true;
             }
 
+            // Calculate total price using age-specific pricing
+            const calculatedTotal = calculateTotalAmount();
+            familyData.totalPrice = calculatedTotal;
+            console.log('💰 Setting familyData.totalPrice to:', calculatedTotal);
+
             // Prepare family registration data in the format expected by Apps Script
             const registrationData = {
                 sessionId: SESSION_ID,
@@ -3650,7 +3655,7 @@
                     program: child.ageGroup, // Maps ageGroup to program
                     price: getPriceForAgeGroup(child.ageGroup)
                 })),
-                totalPrice: familyData.totalPrice,
+                totalPrice: calculatedTotal,
                 paymentPlan: familyData.bulkDuration || 'monthly',
                 timestamp: new Date().toISOString(),
                 language: 'en'  // English mobile registration form
