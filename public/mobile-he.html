@@ -3906,7 +3906,7 @@
                     // Show success modal with registration ID
                     const regId = result.registrationId || SESSION_ID;
                     console.log('✅ Showing success modal with ID:', regId);
-                    showSuccessModal(regId);
+                    showRegistrationSuccess(registrationData, regId);
                 } else if (result.error === 'duplicate_free_trial') {
                     showError('כבר השתמשת בניסיון החינמי שלך. אנא בחר תוכנית בתשלום כדי להמשיך.');
                     if (submitButton) {

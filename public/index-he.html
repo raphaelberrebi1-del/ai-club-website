@@ -4536,12 +4536,8 @@
 
                 if (response.success) {
                     // Success! Show success page with registration ID
-                    if (response.registrationId) {
-                        showSuccessPage(response.registrationId);
-                    } else {
-                        showRegistrationSuccess(formData);
-                        closeRegistrationModal();
-                    }
+                    showRegistrationSuccess(formData, response.registrationId || SESSION_ID);
+                    closeRegistrationModal();
                 } else if (response.error === 'duplicate_free_trial') {
                     // Handle duplicate free trial error
                     showError('כבר השתמשת בניסיון החינמי שלך. אנא בחר תוכנית בתשלום כדי להמשיך.');

@@ -4499,12 +4499,8 @@
 
                 if (response.success) {
                     // Success! Show success page with registration ID
-                    if (response.registrationId) {
-                        showSuccessPage(response.registrationId);
-                    } else {
-                        showRegistrationSuccess(formData);
-                        closeRegistrationModal();
-                    }
+                    showRegistrationSuccess(formData, response.registrationId || SESSION_ID);
+                    closeRegistrationModal();
                 } else if (response.error === 'duplicate_free_trial') {
                     // Handle duplicate free trial error
                     showError('You have already used your free trial. Please select a paid plan to continue.');
@@ -6091,73 +6087,6 @@
 
     <!-- Registration Submission Script -->
     <script>
-        // Google Apps Script Web App URL for English registrations
-        const REGISTRATION_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbznYwGs_kh5ewuCOpnPJJ0715_widuW9tB09Zly8hg_jiFIYhtfO9ohJUsw6Wz0MYw51g/exec';
-
-        /**
-         * Submit registration to Google Apps Script
-         */
-        async function submitRegistration() {
-            const btn = document.getElementById('complete-registration-btn');
-            const btnText = document.getElementById('btn-text');
-            const btnLoading = document.getElementById('btn-loading');
-
-            // Disable button and show loading state
-            btn.disabled = true;
-            btnText.classList.add('hidden');
-            btnLoading.classList.remove('hidden');
-
-            try {
-                // Prepare registration data
-                const registrationData = {
-                    parentName: wizardData.parentName || '',
-                    email: wizardData.parentEmail || '',
-                    phone: wizardData.parentPhone || '',
-                    children: wizardData.children || [],
-                    paymentPlan: wizardData.bulkDuration || 'monthly',
-                    totalPrice: calculateWizardTotal(),
-                    language: 'en'
-                };
-
-                // Validate required fields
-                if (!registrationData.parentName || !registrationData.email || !registrationData.phone) {
-                    throw new Error('Please fill in all required fields');
-                }
-
-                if (!registrationData.children || registrationData.children.length === 0) {
-                    throw new Error('Please add at least one child');
-                }
-
-                console.log('Submitting registration:', registrationData);
-
-                // Submit to Google Apps Script
-                const response = await fetch(REGISTRATION_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(registrationData)
-                });
-
-                // Note: no-cors mode doesn't allow reading response
-                // We'll assume success and show success modal
-                // The Google Script will send confirmation email
-
-                // Show success modal
-                showSuccessModal('REG-' + Date.now().toString(36).toUpperCase());
-
-            } catch (error) {
-                console.error('Registration error:', error);
-                showErrorModal(error.message || 'An error occurred while submitting your registration. Please try again.');
-            } finally {
-                // Re-enable button
-                btn.disabled = false;
-                btnText.classList.remove('hidden');
-                btnLoading.classList.add('hidden');
-            }
-        }
-
         /**
          * Show success modal with registration ID
          */
