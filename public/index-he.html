@@ -5794,8 +5794,20 @@
                 // We'll assume success and show success page
                 // The Google Script will send confirmation email
 
+                // Transform flat structure to nested structure expected by showRegistrationSuccess()
+                const formData = {
+                    parent: {
+                        name: registrationData.parentName,
+                        email: registrationData.email,
+                        phone: registrationData.phone
+                    },
+                    children: registrationData.children,
+                    paymentPlan: registrationData.paymentPlan,
+                    totalPrice: registrationData.totalPrice
+                };
+
                 // Show success page with registration ID
-                showRegistrationSuccess(registrationData, 'REG-' + Date.now().toString(36).toUpperCase());
+                showRegistrationSuccess(formData, 'REG-' + Date.now().toString(36).toUpperCase());
 
             } catch (error) {
                 console.error('Registration error:', error);
