@@ -1645,50 +1645,6 @@
         }
 
         // Show success page with registration ID
-        function showSuccessPage(registrationId) {
-            // Hide registration form
-            const registrationSection = document.querySelector('.registration-wizard');
-            if (registrationSection) {
-                registrationSection.style.display = 'none';
-            }
-
-            // Create success message
-            const successHTML = `
-                <div style="text-align: center; padding: 40px 20px; max-width: 90%; margin: 0 auto; direction: rtl;">
-                    <div style="font-size: 48px; margin-bottom: 16px;">✓</div>
-                    <h2 style="color: #10b981; font-size: 24px; margin-bottom: 12px;">ההרשמה הושלמה בהצלחה!</h2>
-                    <p style="color: #475569; font-size: 16px; margin-bottom: 24px;">
-                        תודה שנרשמתם למועדון AI לילדים! שלחנו אימייל אישור עם כל הפרטים.
-                    </p>
-                    <div style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(8, 145, 178, 0.1) 100%); padding: 20px; border-radius: 12px; border-right: 4px solid #06b6d4; margin-bottom: 24px;">
-                        <div style="color: #0f172a; font-size: 12px; font-weight: 600; margin-bottom: 6px; text-align: right;">
-                            מספר ההרשמה שלך
-                        </div>
-                        <div style="color: #0891b2; font-size: 18px; font-weight: bold; font-family: monospace; text-align: right;">
-                            ${registrationId}
-                        </div>
-                        <div style="color: #64748b; font-size: 11px; margin-top: 6px; text-align: right;">
-                            שמור מספר זה לרישומים שלך
-                        </div>
-                    </div>
-                    <button onclick="location.reload()" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: white; padding: 12px 24px; border-radius: 12px; border: none; font-weight: 600; cursor: pointer; font-size: 14px;">
-                        חזרה לעמוד הבית
-                    </button>
-                </div>
-            `;
-
-            // Insert success message
-            const container = registrationSection?.parentElement || document.querySelector('main');
-            if (container) {
-                const successDiv = document.createElement('div');
-                successDiv.innerHTML = successHTML;
-                container.appendChild(successDiv);
-            }
-
-            // Clear session
-            localStorage.removeItem('aiclub_session_id');
-        }
-
         // Add CSS animations
         const style = document.createElement('style');
         style.textContent = `
@@ -5449,67 +5405,6 @@
         /**
          * Show success modal with registration ID
          */
-        function showSuccessModal(registrationId) {
-            const modal = document.getElementById('success-modal');
-            const regIdElement = document.getElementById('registration-id');
-            const summaryElement = document.getElementById('modal-summary');
-
-            if (regIdElement) {
-                regIdElement.textContent = registrationId;
-            }
-
-            // Build order summary
-            if (summaryElement && familyData) {
-                const total = calculateTotalAmount();
-                const planNames = {
-                    monthly: 'חודשי',
-                    quarterly: 'רבעוני (3 חודשים)',
-                    yearly: 'שנתי (12 חודשים)',
-                    trial: 'ניסיון חינם'
-                };
-
-                let summaryHTML = '<div class="space-y-2">';
-
-                // Children list
-                familyData.children.forEach((child, index) => {
-                    const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים (8-10)' :
-                                       child.ageGroup === 'tech' ? 'אלופי טכנולוגיה (11-13)' :
-                                       'מנהיגים מקצועיים (14-18)';
-                    summaryHTML += `
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-white/90">• ${child.name || 'ילד ' + (index + 1)}</span>
-                            <span class="text-white/70">${ageGroupName}</span>
-                        </div>
-                    `;
-                });
-
-                // Payment plan
-                summaryHTML += `
-                    <div class="border-t border-white/10 pt-2 mt-2">
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-white/90 font-semibold">תוכנית:</span>
-                            <span class="text-cyan-300">${planNames[familyData.bulkDuration] || familyData.bulkDuration}</span>
-                        </div>
-                    </div>
-                `;
-
-                // Total
-                summaryHTML += `
-                    <div class="flex justify-between items-center">
-                        <span class="text-white font-bold">סה״כ:</span>
-                        <span class="text-cyan-300 font-bold text-lg">₪${total.toLocaleString()}</span>
-                    </div>
-                `;
-
-                summaryHTML += '</div>';
-                summaryElement.innerHTML = summaryHTML;
-            }
-
-            if (modal) {
-                modal.classList.remove('hidden');
-            }
-        }
-
         /**
          * Show error modal with custom message
          */
@@ -5536,66 +5431,6 @@
             }
         }
     </script>
-
-    <!-- Success Modal -->
-    <div id="success-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div class="bg-gradient-to-br from-slate-900 to-slate-800 border-2 border-green-500/50 rounded-2xl max-w-md w-full p-8 shadow-2xl">
-            <div class="flex justify-center mb-6">
-                <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center">
-                    <svg class="w-12 h-12 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                </div>
-            </div>
-
-            <h2 class="text-2xl font-bold text-white text-center mb-3">רישום הושלם בהצלחה!</h2>
-            <p class="text-white/80 text-center mb-6">
-                תודה שנרשמת ל-AI Kidz Club! אימייל אישור נשלח אליך עם כל הפרטים.
-            </p>
-
-            <div class="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-4 mb-6">
-                <p class="text-cyan-300 text-sm text-center mb-2">מספר רישום שלך:</p>
-                <p id="registration-id" class="text-cyan-100 font-mono text-lg text-center font-bold"></p>
-            </div>
-
-            <!-- Order Summary -->
-            <div class="bg-slate-800/50 rounded-lg p-4 mb-6">
-                <p class="text-white/90 text-sm text-center font-semibold mb-3">סיכום הרשמה</p>
-                <div id="modal-summary" class="text-sm">
-                    <!-- Summary will be populated by JavaScript -->
-                </div>
-            </div>
-
-            <div class="bg-slate-800/50 rounded-lg p-4 mb-6 space-y-2">
-                <p class="text-white/90 text-sm text-center font-semibold mb-3">צור קשר</p>
-                <div class="space-y-2">
-                    <a href="mailto:info@aikidz.club" class="text-cyan-400 hover:text-cyan-300 text-sm flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                        </svg>
-                        info@aikidz.club
-                    </a>
-                    <a href="tel:+972543159025" class="text-cyan-400 hover:text-cyan-300 text-sm flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
-                        </svg>
-                        054-315-9025
-                    </a>
-                    <a href="https://wa.me/972543159025" target="_blank" class="text-green-400 hover:text-green-300 text-sm flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-                        </svg>
-                        WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <button onclick="closeModal('success-modal')" class="w-full bg-gradient-to-r from-green-500 to-green-400 text-white font-bold py-3 rounded-xl hover:shadow-lg hover:shadow-green-500/25 transition-all duration-200">
-                סגור
-            </button>
-        </div>
-    </div>
 
     <!-- Error Modal -->
     <div id="error-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
