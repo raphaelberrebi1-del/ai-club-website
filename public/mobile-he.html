@@ -3825,10 +3825,13 @@
 
             // Show loading state
             const submitButton = document.getElementById('step-4-next');
-            const originalText = submitButton ? submitButton.textContent : '';
+            const btnText = document.getElementById('btn-text');
+            const btnLoading = document.getElementById('btn-loading');
+
             if (submitButton) {
-                submitButton.textContent = 'מעבד...';
                 submitButton.disabled = true;
+                if (btnText) btnText.classList.add('hidden');
+                if (btnLoading) btnLoading.classList.remove('hidden');
             }
 
             // Calculate total price using age-specific pricing
@@ -3871,14 +3874,16 @@
                 } else if (result.error === 'duplicate_free_trial') {
                     showError('כבר השתמשת בניסיון החינמי שלך. אנא בחר תוכנית בתשלום כדי להמשיך.');
                     if (submitButton) {
-                        submitButton.textContent = originalText;
                         submitButton.disabled = false;
+                        if (btnText) btnText.classList.remove('hidden');
+                        if (btnLoading) btnLoading.classList.add('hidden');
                     }
                 } else if (result.error === 'invalid_email') {
                     showError('נא לספק כתובת אימייל תקינה.');
                     if (submitButton) {
-                        submitButton.textContent = originalText;
                         submitButton.disabled = false;
+                        if (btnText) btnText.classList.remove('hidden');
+                        if (btnLoading) btnLoading.classList.add('hidden');
                     }
                 } else {
                     throw new Error(result.message || 'ההרשמה נכשלה');
@@ -3887,8 +3892,9 @@
                 console.error('❌ Backend submission failed:', error);
                 showError('אירעה שגיאה בעת ההרשמה. אנא נסה שוב או צור קשר עם התמיכה בכתובת raphael@aikidz.club');
                 if (submitButton) {
-                    submitButton.textContent = originalText;
                     submitButton.disabled = false;
+                    if (btnText) btnText.classList.remove('hidden');
+                    if (btnLoading) btnLoading.classList.add('hidden');
                 }
             }
         }
