@@ -5943,26 +5943,30 @@
         }
 
         // Auto-select credit card as default payment method when reaching Step 4
-        const originalNextStep = nextStep;
-        nextStep = async function() {
-            const currentStep = document.querySelector('.step-content:not(.hidden)');
-            const currentStepId = currentStep ? currentStep.id : '';
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof nextStep !== 'undefined') {
+                const originalNextStep = nextStep;
+                nextStep = async function() {
+                    const currentStep = document.querySelector('.step-content:not(.hidden)');
+                    const currentStepId = currentStep ? currentStep.id : '';
 
-            // If moving from Step 3 to Step 4, show payment methods
-            if (currentStepId === 'step-3') {
-                // Just proceed to Step 4 - user will select payment method
-                originalNextStep();
+                    // If moving from Step 3 to Step 4, show payment methods
+                    if (currentStepId === 'step-3') {
+                        // Just proceed to Step 4 - user will select payment method
+                        originalNextStep();
 
-                // Auto-select credit card as default after a short delay
-                setTimeout(() => {
-                    selectPaymentMethod('credit-card');
-                }, 300);
-                return;
+                        // Auto-select credit card as default after a short delay
+                        setTimeout(() => {
+                            selectPaymentMethod('credit-card');
+                        }, 300);
+                        return;
+                    }
+
+                    // Call original nextStep function
+                    originalNextStep();
+                };
             }
-
-            // Call original nextStep function
-            originalNextStep();
-        };
+        });
     </script>
 
     <!-- WebGL Fluid Splash Cursor (Vue Template Implementation) -->
