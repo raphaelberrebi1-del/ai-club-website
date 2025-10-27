@@ -2197,8 +2197,189 @@
         <div class="fixed inset-0 z-[1]" style="background: radial-gradient(ellipse at center, transparent 70%, rgba(0,0,0,0.02) 85%, rgba(0,0,0,0.05) 100%); pointer-events: none;"></div>
         <div class="fixed inset-0 z-[2]" style="background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 100%); pointer-events: none;"></div>
 
-        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 fade-in-up">
-            <div class="bg-black/50 backdrop-blur-lg rounded-xl shadow-xl border-2 border-amber-200/30 overflow-hidden" style="min-height: 500px; display: flex; flex-direction: column;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-8 items-start fade-in-up" dir="rtl">
+
+                <!-- Right Column: Calendar & Schedule (appears on left in RTL) -->
+                <div class="bg-black/50 backdrop-blur-lg rounded-2xl shadow-xl border-2 border-cyan-200/30 p-8 space-y-6">
+
+                    <!-- Calendar Section -->
+                    <div class="space-y-4">
+                        <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            לוח שיעורים
+                        </h3>
+
+                        <!-- November 2025 Calendar -->
+                        <div class="bg-black/40 backdrop-blur-md rounded-xl border border-cyan-400/30 p-6">
+                            <div class="text-center mb-4">
+                                <h4 class="text-xl font-bold text-white">נובמבר 2025</h4>
+                                <p class="text-sm text-white/60">כל יום ראשון</p>
+                            </div>
+
+                            <!-- Calendar Grid -->
+                            <div class="grid grid-cols-7 gap-2 text-center">
+                                <!-- Day Headers (RTL order) -->
+                                <div class="text-xs font-semibold text-white/60 py-2">שבת</div>
+                                <div class="text-xs font-semibold text-white/60 py-2">שישי</div>
+                                <div class="text-xs font-semibold text-white/60 py-2">חמישי</div>
+                                <div class="text-xs font-semibold text-white/60 py-2">רביעי</div>
+                                <div class="text-xs font-semibold text-white/60 py-2">שלישי</div>
+                                <div class="text-xs font-semibold text-white/60 py-2">שני</div>
+                                <div class="text-xs font-semibold text-cyan-400 py-2">ראשון</div>
+
+                                <!-- November 1 (Saturday) -->
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10">
+                                    <div class="text-sm text-white/80">1</div>
+                                </div>
+
+                                <!-- Empty cells before November 2 -->
+                                <div class="py-2"></div>
+                                <div class="py-2"></div>
+                                <div class="py-2"></div>
+                                <div class="py-2"></div>
+                                <div class="py-2"></div>
+
+                                <!-- November 2 (Sunday) - START DATE -->
+                                <div class="py-2 px-3 rounded-lg bg-gradient-to-br from-cyan-500/40 to-teal-500/40 backdrop-blur-sm border-2 border-cyan-400/70 relative">
+                                    <div class="text-sm font-bold text-white">2</div>
+                                    <div class="absolute -top-2 -left-2 bg-cyan-400 text-black text-[10px] font-bold px-1.5 py-0.5 rounded-full">התחלה</div>
+                                </div>
+
+                                <!-- November 3-8 -->
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">8</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">7</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">6</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">5</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">4</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">3</div></div>
+
+                                <!-- November 9 (Sunday) - Class Day -->
+                                <div class="py-2 px-3 rounded-lg bg-cyan-500/20 backdrop-blur-sm border-2 border-cyan-400/50 relative">
+                                    <div class="text-sm font-bold text-cyan-300">9</div>
+                                    <div class="absolute top-1 left-1 w-1.5 h-1.5 bg-cyan-400 rounded-full"></div>
+                                </div>
+
+                                <!-- November 10-15 -->
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">15</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">14</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">13</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">12</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">11</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">10</div></div>
+
+                                <!-- November 16 (Sunday) - Class Day -->
+                                <div class="py-2 px-3 rounded-lg bg-cyan-500/20 backdrop-blur-sm border-2 border-cyan-400/50 relative">
+                                    <div class="text-sm font-bold text-cyan-300">16</div>
+                                    <div class="absolute top-1 left-1 w-1.5 h-1.5 bg-cyan-400 rounded-full"></div>
+                                </div>
+
+                                <!-- November 17-22 -->
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">22</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">21</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">20</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">19</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">18</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">17</div></div>
+
+                                <!-- November 23 (Sunday) - Class Day -->
+                                <div class="py-2 px-3 rounded-lg bg-cyan-500/20 backdrop-blur-sm border-2 border-cyan-400/50 relative">
+                                    <div class="text-sm font-bold text-cyan-300">23</div>
+                                    <div class="absolute top-1 left-1 w-1.5 h-1.5 bg-cyan-400 rounded-full"></div>
+                                </div>
+
+                                <!-- November 24-29 -->
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">29</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">28</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">27</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">26</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">25</div></div>
+                                <div class="py-2 px-3 rounded-lg bg-white/5 border border-white/10"><div class="text-sm text-white/80">24</div></div>
+
+                                <!-- November 30 (Sunday) - Class Day -->
+                                <div class="py-2 px-3 rounded-lg bg-cyan-500/20 backdrop-blur-sm border-2 border-cyan-400/50 relative">
+                                    <div class="text-sm font-bold text-cyan-300">30</div>
+                                    <div class="absolute top-1 left-1 w-1.5 h-1.5 bg-cyan-400 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Time Slot Cards -->
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-semibold text-white">זמני השיעורים</h4>
+
+                        <!-- Ages 8-10 -->
+                        <div class="bg-black/50 backdrop-blur-lg rounded-xl border-2 border-amber-200/30 p-5 hover:-translate-y-1 hover:border-cyan-400/50 transition-all duration-300">
+                            <div class="flex items-center gap-4">
+                                <div class="text-3xl">🎨</div>
+                                <div class="flex-1">
+                                    <div class="text-lg font-bold text-white">גילאי 8-10</div>
+                                    <div class="text-xl font-semibold text-cyan-300">16:00 - 17:15</div>
+                                    <div class="text-sm text-white/70">משך: שעה ורבע</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ages 11-13 -->
+                        <div class="bg-black/50 backdrop-blur-lg rounded-xl border-2 border-amber-200/30 p-5 hover:-translate-y-1 hover:border-cyan-400/50 transition-all duration-300">
+                            <div class="flex items-center gap-4">
+                                <div class="text-3xl">💻</div>
+                                <div class="flex-1">
+                                    <div class="text-lg font-bold text-white">גילאי 11-13</div>
+                                    <div class="text-xl font-semibold text-cyan-300">17:15 - 18:30</div>
+                                    <div class="text-sm text-white/70">משך: שעה ורבע</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ages 14-18 -->
+                        <div class="bg-black/50 backdrop-blur-lg rounded-xl border-2 border-amber-200/30 p-5 hover:-translate-y-1 hover:border-cyan-400/50 transition-all duration-300">
+                            <div class="flex items-center gap-4">
+                                <div class="text-3xl">🚀</div>
+                                <div class="flex-1">
+                                    <div class="text-lg font-bold text-white">גילאי 14-18</div>
+                                    <div class="text-xl font-semibold text-cyan-300">18:45 - 20:00</div>
+                                    <div class="text-sm text-white/70">משך: שעה ורבע</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location Banner -->
+                    <div class="bg-gradient-to-r from-cyan-500/10 to-teal-500/10 backdrop-blur-sm rounded-xl border border-cyan-400/30 p-5">
+                        <div class="flex items-center gap-3 mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <div class="text-xl font-bold text-white">בית ספר תלי רעננה</div>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Tali+School+Raanana" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-semibold">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            צפייה במפות גוגל
+                        </a>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <a href="#registration-form" class="block w-full bg-gradient-to-r from-cyan-500 to-teal-500 text-white font-bold py-4 rounded-full text-center hover:shadow-[0_12px_30px_rgba(34,211,238,0.4)] hover:scale-105 transition-all duration-300">
+                        שמרו את מקומכם ←
+                    </a>
+
+                </div>
+                <!-- End Right Column: Calendar & Schedule -->
+
+                <!-- Left Column: Registration Form (appears on right in RTL) -->
+                <div class="bg-black/50 backdrop-blur-lg rounded-xl shadow-xl border-2 border-amber-200/30 overflow-hidden" style="min-height: 500px; display: flex; flex-direction: column;">
 
                 <!-- Progress Indicator -->
                 <div class="p-6 pb-0">
@@ -2532,6 +2713,8 @@
                         </button>
                     </div>
                 </div>
+                </div>
+                <!-- End Left Column: Registration Form -->
 
             </div>
         </div>
