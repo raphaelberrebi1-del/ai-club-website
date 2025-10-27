@@ -216,7 +216,7 @@ function doPost(e) {
 
               <h3 style="color: #0891b2;">Payment Details</h3>
               <p><strong>Plan:</strong> ${data.paymentPlan}</p>
-              <p><strong>Total:</strong> ${isTrial ? '₪0 (Free Trial)' : `₪${totalRevenue}/month`}</p>
+              <p><strong>Total:</strong> ${isTrial ? '₪0 (Free Trial)' : '₪' + totalRevenue + '/month'}</p>
               <p><strong>Payment Method:</strong> ${data.paymentMethod}</p>
 
               <p><strong>Registration ID:</strong> ${registrationId}</p>

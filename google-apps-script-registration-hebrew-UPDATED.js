@@ -216,7 +216,7 @@ function doPost(e) {
 
               <h3 style="color: #0891b2;">פרטי תשלום</h3>
               <p><strong>תוכנית:</strong> ${data.paymentPlan}</p>
-              <p><strong>סה"כ:</strong> ${isTrial ? '₪0 (ניסיון חינם)' : `₪${totalRevenue}/חודש`}</p>
+              <p><strong>סה"כ:</strong> ${isTrial ? '₪0 (ניסיון חינם)' : '₪' + totalRevenue + '/חודש'}</p>
               <p><strong>אמצעי תשלום:</strong> ${data.paymentMethod}</p>
 
               <p><strong>מזהה רישום:</strong> ${registrationId}</p>
