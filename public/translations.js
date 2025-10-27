@@ -61,7 +61,7 @@ const translations = {
         ages1113: "Ages 11-13",
         ages1418: "Ages 14-18",
         sundayTime1: "Sundays 15:00-16:15",
-        sundayTime2: "Sundays 16:30-17:45",
+        sundayTime2: "Sundays 17:15-17:45",
         sundayTime3: "Sundays 18:00-19:15",
 
         // Parent Info
@@ -174,7 +174,7 @@ const translations = {
         ages1113: "גילאי 11-13",
         ages1418: "גילאי 14-18",
         sundayTime1: "ימי ראשון 15:00-16:15",
-        sundayTime2: "ימי ראשון 16:30-17:45",
+        sundayTime2: "ימי ראשון 17:15-17:45",
         sundayTime3: "ימי ראשון 18:00-19:15",
 
         // Parent Info

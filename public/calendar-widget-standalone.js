@@ -118,7 +118,7 @@
         },
         {
           id: 'sun-tech-1',
-          time: '5:30 PM - 6:45 PM',
+          time: '5:15 PM - 6:45 PM',
           ageGroup: '11-13 Years',
           capacity: 10,
           enrolled: 0,
