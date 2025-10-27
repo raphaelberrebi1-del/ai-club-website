@@ -378,8 +378,7 @@ function sendConfirmationHebrew(email, data, groupAssignments, showFirstLessonFr
           <div style="color: #0f172a; font-size: 16px; font-weight: 600; margin-bottom: 4px; text-align: right;">
             ${index + 1}. ${child.name}
           </div>
-          <div style="color: #475569; font-size: 14px; text-align: right;">גיל: ${child.age}</div>
-          <div style="color: #475569; font-size: 14px; text-align: right;">תוכנית: ${child.program}</div>
+          <div style="color: #475569; font-size: 14px; text-align: right;">תוכנית: ${child.program || (child.ageGroup === 'young' ? 'חוקרים צעירים (8-10)' : child.ageGroup === 'tech' ? 'אלופי טכנולוגיה (11-13)' : child.ageGroup === 'future' ? 'מנהיגי העתיד (14-18)' : child.ageGroup || 'לא צוין')}</div>
           ${groupInfo}
         </div>
       `;

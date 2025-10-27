@@ -362,7 +362,6 @@ function getYoungExplorersHTMLHebrew() {
     <title>תוכנית ממציאים צעירים - תוכנית לימודים מלאה של 48 שבועות | מועדון AI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
 
     <style>
         /* Responsive styles for mobile devices */
@@ -392,7 +391,7 @@ function getYoungExplorersHTMLHebrew() {
     </style>
 
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f3f4f6; direction: rtl;">
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f3f4f6; direction: rtl;">
 
     <!-- Email Container -->
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #f3f4f6;">
@@ -411,7 +410,7 @@ function getYoungExplorersHTMLHebrew() {
                                         <img src="https://www.aikidz.club/New.logov2.gif" alt="רובוט מועדון AI" width="120" height="120" style="display: block; border-radius: 12px; width: 120px !important; height: auto !important;" />
                                     </td>
                                     <td valign="middle" class="header-text" style="text-align: right;">
-                                        <h1 class="mobile-heading-xl" style="margin: 0 0 8px 0; font-size: 32px; font-weight: bold; color: white; font-family: 'Chewy', cursive, -apple-system, sans-serif;">
+                                        <h1 class="mobile-heading-xl" style="margin: 0 0 8px 0; font-size: 32px; font-weight: 800; color: white; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
                                             מועדון AI לילדים
                                         </h1>
                                         <p style="margin: 0 0 4px 0; font-size: 18px; color: rgba(255,255,255,0.95); font-weight: 600;">

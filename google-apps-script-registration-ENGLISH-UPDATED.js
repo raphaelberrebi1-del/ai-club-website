@@ -378,7 +378,6 @@ function sendConfirmation(email, data, groupAssignments, showFirstLessonFree, re
           <div style="color: #0f172a; font-size: 16px; font-weight: 600; margin-bottom: 4px;">
             ${index + 1}. ${child.name}
           </div>
-          <div style="color: #475569; font-size: 14px;">Age: ${child.age}</div>
           <div style="color: #475569; font-size: 14px;">Program: ${child.program}</div>
           ${groupInfo}
         </div>
