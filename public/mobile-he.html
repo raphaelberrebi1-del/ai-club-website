@@ -1882,7 +1882,7 @@
                         <select id="child-age-group" class="w-full bg-amber-950/40 border border-amber-200/30 rounded-xl px-4 py-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent shadow-sm h-12">
                             <option value="">בחר את קבוצת הגיל של הילד</option>
                             <option value="young">חוקרים צעירים (גילאי 8-10)</option>
-                            <option value="tech">אלופי טכנולוגיה (גילאי 11-13)</option>
+                            <option value="tech">חוקרי טכנולוגיה (גילאי 11-13)</option>
                             <option value="future">מנהיגי העתיד (גילאי 14-18)</option>
                         </select>
                     </div>
@@ -1983,7 +1983,7 @@
                             monthlyPrice = 399; // Early bird monthly price
                             break;
                         case 'tech':
-                            program = 'אלופי טכנולוגיה (גילאי 11-13)';
+                            program = 'חוקרי טכנולוגיה (גילאי 11-13)';
                             monthlyPrice = 469; // Early bird monthly price
                             break;
                         case 'future':
@@ -2039,7 +2039,7 @@
                                 monthlyPrice = 399; // Early bird monthly price
                                 break;
                             case 'tech':
-                                program = 'אלופי טכנולוגיה (גילאי 11-13)';
+                                program = 'חוקרי טכנולוגיה (גילאי 11-13)';
                                 monthlyPrice = 469; // Early bird monthly price
                                 break;
                             case 'future':
@@ -3042,7 +3042,7 @@
                                     data-age="tech">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-sm font-semibold text-white">אלופי טכנולוגיה</div>
+                                        <div class="text-sm font-semibold text-white">חוקרי טכנולוגיה</div>
                                         <div class="text-xs text-white/60">גילאי 11-13 • ימי ראשון 16:30-17:45</div>
                                     </div>
                                     <div class="w-4 h-4 border border-amber-300 rounded-full flex items-center justify-center">
@@ -3182,8 +3182,8 @@
                                     class="age-group-btn-${i} p-3 bg-amber-950/40 border ${familyData.children[i]?.ageGroup === 'tech' ? 'border-cyan-400 bg-cyan-500/10' : 'border-amber-200/30'} rounded-xl text-left hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-200" data-age="tech">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <div class="text-base font-semibold text-white">אלופי טכנולוגיה</div>
-                                        <div class="text-xs text-white/60">גילאי 11-13 • ימי ראשון 17:30-18:45</div>
+                                        <div class="text-base font-semibold text-white">חוקרי טכנולוגיה</div>
+                                        <div class="text-xs text-white/60">גילאי 11-13 • ימי ראשון 17:15-18:45</div>
                                     </div>
                                     <div class="w-5 h-5 border-2 border-amber-300 rounded-full flex items-center justify-center">
                                         <div class="w-2.5 h-2.5 bg-cyan-400 rounded-full ${familyData.children[i]?.ageGroup === 'tech' ? '' : 'opacity-0'} transition-opacity"></div>
@@ -3238,7 +3238,7 @@
 
             familyData.children.forEach((child, i) => {
                 const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים' :
-                                    child.ageGroup === 'tech' ? 'אלופי טכנולוגיה' :
+                                    child.ageGroup === 'tech' ? 'חוקרי טכנולוגיה' :
                                     'מנהיגי העתיד';
                 const ageRange = child.ageGroup === 'young' ? '8-10' :
                                 child.ageGroup === 'tech' ? '11-13' : '14-18';
@@ -3299,7 +3299,7 @@
                 subtotal += price;
 
                 const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים' :
-                                    child.ageGroup === 'tech' ? 'אלופי טכנולוגיה' :
+                                    child.ageGroup === 'tech' ? 'חוקרי טכנולוגיה' :
                                     'מנהיגי העתיד';
 
                 if (isTrial) {
@@ -3378,7 +3378,7 @@
             familyData.children.forEach((child, index) => {
                 const ageGroupNames = {
                     young: 'חוקרים צעירים (8-10)',
-                    tech: 'אלופי טכנולוגיה (11-13)',
+                    tech: 'חוקרי טכנולוגיה (11-13)',
                     future: 'מנהיגי העתיד (14-18)'
                 };
 
@@ -3464,7 +3464,7 @@
             // Children list with prices
             familyData.children.forEach((child, i) => {
                 const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים (8-10)' :
-                                    child.ageGroup === 'tech' ? 'אלופי טכנולוגיה (11-13)' :
+                                    child.ageGroup === 'tech' ? 'חוקרי טכנולוגיה (11-13)' :
                                     'מנהיגים מקצועיים (14-18)';
                 const childPrice = AGE_PRICING[child.ageGroup][familyData.bulkDuration];
                 summaryHTML += `
@@ -3632,7 +3632,7 @@
                     break;
                 case 'tech':
                     monthlyPrice = 469;
-                    programName = 'אלופי טכנולוגיה (גילאי 11-13)';
+                    programName = 'חוקרי טכנולוגיה (גילאי 11-13)';
                     break;
                 case 'future':
                     monthlyPrice = 599;
@@ -3741,7 +3741,7 @@
                     programName = 'חוקרים צעירים (גילאי 8-10)';
                     break;
                 case 'tech':
-                    programName = 'אלופי טכנולוגיה (גילאי 11-13)';
+                    programName = 'חוקרי טכנולוגיה (גילאי 11-13)';
                     break;
                 case 'future':
                     programName = 'מנהיגי העתיד (גילאי 14-18)';
@@ -4127,7 +4127,7 @@
                         monthlyPrice = 399;
                         break;
                     case 'tech':
-                        program = 'אלופי טכנולוגיה (גילאי 11-13)';
+                        program = 'חוקרי טכנולוגיה (גילאי 11-13)';
                         monthlyPrice = 469;
                         break;
                     case 'future':
@@ -4157,7 +4157,7 @@
                             monthlyPrice = 399;
                             break;
                         case 'tech':
-                            program = 'אלופי טכנולוגיה (גילאי 11-13)';
+                            program = 'חוקרי טכנולוגיה (גילאי 11-13)';
                             monthlyPrice = 469;
                             break;
                         case 'future':
@@ -5413,7 +5413,7 @@
                     <div class="space-y-2">
                         ${familyData.children.map((child, index) => {
                             const ageGroupName = child.ageGroup === 'young' ? 'חוקרים צעירים (8-10)' :
-                                               child.ageGroup === 'tech' ? 'אלופי טכנולוגיה (11-13)' :
+                                               child.ageGroup === 'tech' ? 'חוקרי טכנולוגיה (11-13)' :
                                                'מנהיגים מקצועיים (14-18)';
                             const childPrice = AGE_PRICING[child.ageGroup][familyData.bulkDuration];
 
