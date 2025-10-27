@@ -164,19 +164,26 @@ function doPost(e) {
     const timestamp = new Date();
     const rowData = [
       timestamp,                                      // A: Timestamp
-      registrationId,                                 // B: Registration ID (NEW)
+      registrationId,                                 // B: Registration ID
       data.parentName || '',                          // C: Parent Name
       data.email || '',                               // D: Email
       data.phone || '',                               // E: Phone
-      data.children ? JSON.stringify(data.children) : '', // F: Children (JSON)
-      data.paymentPlan || '',                         // G: Payment Plan
-      data.paymentMethod || '',                       // H: Payment Method
-      data.totalPrice || 0,                           // I: Total Price
-      data.language || 'english',                     // J: Language
-      data.referralSource || '',                      // K: Referral Source
-      data.preferredContactMethod || '',              // L: Preferred Contact
-      data.additionalInfo || '',                      // M: Additional Info
-      paymentStatus                                   // N: Payment Status (NEW)
+      data.children ? data.children.map(c => c.name).join(', ') : '', // F: Children (clean names)
+      data.children ? data.children.map(c => c.program || c.ageGroup || '').join(', ') : '', // G: Program (clean programs)
+      data.paymentPlan || '',                         // H: Payment Plan
+      data.paymentMethod || '',                       // I: Payment Method
+      data.totalPrice || 0,                           // J: Total Price
+      data.language || 'english',                     // K: Language
+      data.referralSource || '',                      // L: Referral Source
+      data.preferredContactMethod || '',              // M: Preferred Contact
+      data.additionalInfo || '',                      // N: Additional Info
+      paymentStatus,                                  // O: Payment Status
+      data.children?.[0]?.name || '',                 // P: Child 1 Name
+      data.children?.[0]?.program || data.children?.[0]?.ageGroup || '', // Q: Child 1 Program
+      data.children?.[1]?.name || '',                 // R: Child 2 Name
+      data.children?.[1]?.program || data.children?.[1]?.ageGroup || '', // S: Child 2 Program
+      data.children?.[2]?.name || '',                 // T: Child 3 Name
+      data.children?.[2]?.program || data.children?.[2]?.ageGroup || ''  // U: Child 3 Program
     ];
 
     sheet.appendRow(rowData);
@@ -517,7 +524,6 @@ Empowering the next generation with AI education
   GmailApp.sendEmail(email, subject, plainTextBody, {
     htmlBody: htmlBody,
     name: 'AI Kids Club',
-    replyTo: 'raphael@aikidz.club',
     bcc: 'raphael@aikidz.club'
   });
 }

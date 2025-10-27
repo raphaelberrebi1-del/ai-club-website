@@ -88,7 +88,6 @@ function doPost(e) {
       MailApp.sendEmail({
         to: 'raphaelberrebi@gmail.com, raphael@aikidz.club',
         subject: `📄 הורדת תוכנית לימודים חדשה - ${data.program.toUpperCase()}`,
-        replyTo: 'noreply@aikidz.club',
         noReply: true,
         htmlBody: `
           <div style="font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5;">
@@ -229,8 +228,7 @@ www.aikidz.club
 
     GmailApp.sendEmail(email, subject, plainTextBody, {
       htmlBody: htmlBody,
-      name: 'מועדון AI',
-      replyTo: 'raphael@aikidz.club'
+      name: 'מועדון AI'
     });
 
     console.log('✅ Email sent successfully to:', email);
