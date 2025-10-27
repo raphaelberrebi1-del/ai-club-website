@@ -83,6 +83,33 @@ function doPost(e) {
     sendCurriculumEmailHebrew(data.email, data.name, data.program, curriculumUrl);
     console.log('✅ Email sent successfully');
 
+    // Send admin notification to both emails
+    try {
+      MailApp.sendEmail({
+        to: 'raphaelberrebi@gmail.com, raphael@aikidz.club',
+        subject: `📄 הורדת תוכנית לימודים חדשה - ${data.program.toUpperCase()}`,
+        htmlBody: `
+          <div style="font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5;">
+            <div style="background: white; padding: 20px; border-radius: 8px; max-width: 600px;" dir="rtl">
+              <h2 style="color: #0891b2;">✅ הורדת תוכנית לימודים חדשה</h2>
+              <p><strong>שם ההורה:</strong> ${data.name}</p>
+              <p><strong>אימייל:</strong> ${data.email}</p>
+              <p><strong>תוכנית:</strong> ${data.program}</p>
+              <p><strong>מקור:</strong> ${data.source || 'desktop-he'}</p>
+              <p><strong>שפה:</strong> עברית</p>
+              <p><strong>זמן:</strong> ${new Date().toLocaleString('he-IL', { timeZone: 'Asia/Jerusalem' })}</p>
+              <hr>
+              <p style="color: #666; font-size: 12px;">זוהי הודעה אוטומטית ממועדון AI.</p>
+            </div>
+          </div>
+        `
+      });
+      console.log('✅ Admin notification sent');
+    } catch (error) {
+      console.error('⚠️ Failed to send admin notification:', error);
+      // Don't fail the whole request if notification fails
+    }
+
     console.log('✅ Curriculum download processed successfully');
 
     const output = ContentService

@@ -190,6 +190,48 @@ function doPost(e) {
     const groupAssignments = {}; // Process group assignments if needed
     sendConfirmationHebrew(data.email, data, groupAssignments, showFirstLessonFree, registrationId);
 
+    // Send admin notification to both emails
+    try {
+      const totalRevenue = data.totalPrice || 0;
+      const childrenList = data.children.map(c => `${c.name} (${c.program || c.ageGroup})`).join(', ');
+      const isTrial = data.paymentPlan === 'trial' || totalRevenue === 0;
+
+      MailApp.sendEmail({
+        to: 'raphaelberrebi@gmail.com, raphael@aikidz.club',
+        subject: isTrial ? `🎁 הרשמת ניסיון חינם חדשה - ${data.parentName}` : `💰 הרשמה חדשה - ₪${totalRevenue} - ${data.parentName}`,
+        htmlBody: `
+          <div style="font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5;">
+            <div style="background: white; padding: 20px; border-radius: 8px; max-width: 600px;" dir="rtl">
+              <h2 style="color: ${isTrial ? '#10b981' : '#0891b2'};">${isTrial ? '🎁 הרשמת ניסיון חינם חדשה' : '✅ הרשמה חדשה'}</h2>
+
+              <h3 style="color: #0891b2;">פרטי הורה</h3>
+              <p><strong>שם:</strong> ${data.parentName}</p>
+              <p><strong>אימייל:</strong> ${data.email}</p>
+              <p><strong>טלפון:</strong> ${data.phone}</p>
+
+              <h3 style="color: #0891b2;">ילדים</h3>
+              <p>${childrenList}</p>
+
+              <h3 style="color: #0891b2;">פרטי תשלום</h3>
+              <p><strong>תוכנית:</strong> ${data.paymentPlan}</p>
+              <p><strong>סה"כ:</strong> ${isTrial ? '₪0 (ניסיון חינם)' : `₪${totalRevenue}/חודש`}</p>
+              <p><strong>אמצעי תשלום:</strong> ${data.paymentMethod}</p>
+
+              <p><strong>מזהה רישום:</strong> ${registrationId}</p>
+              <p><strong>שפה:</strong> עברית</p>
+              <p><strong>זמן:</strong> ${new Date().toLocaleString('he-IL', { timeZone: 'Asia/Jerusalem' })}</p>
+              <hr>
+              <p style="color: #666; font-size: 12px;">זוהי הודעה אוטומטית ממועדון AI.</p>
+            </div>
+          </div>
+        `
+      });
+      Logger.log('✅ Admin notification sent');
+    } catch (error) {
+      Logger.log('⚠️ Failed to send admin notification: ' + error.toString());
+      // Don't fail the whole request if notification fails
+    }
+
     return ContentService.createTextOutput(JSON.stringify({
       success: true,
       message: 'ההרשמה הושלמה בהצלחה',

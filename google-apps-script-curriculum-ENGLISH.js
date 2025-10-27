@@ -82,6 +82,33 @@ function doPost(e) {
     sendCurriculumEmail(data.email, data.name, data.program, curriculumUrl);
     console.log('✅ Email sent successfully');
 
+    // Send admin notification to both emails
+    try {
+      MailApp.sendEmail({
+        to: 'raphaelberrebi@gmail.com, raphael@aikidz.club',
+        subject: `📄 New Curriculum Download - ${data.program.toUpperCase()}`,
+        htmlBody: `
+          <div style="font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5;">
+            <div style="background: white; padding: 20px; border-radius: 8px; max-width: 600px;">
+              <h2 style="color: #0891b2;">✅ New Curriculum Download</h2>
+              <p><strong>Parent Name:</strong> ${data.name}</p>
+              <p><strong>Email:</strong> ${data.email}</p>
+              <p><strong>Program:</strong> ${data.program}</p>
+              <p><strong>Source:</strong> ${data.source || 'desktop'}</p>
+              <p><strong>Language:</strong> English</p>
+              <p><strong>Time:</strong> ${new Date().toLocaleString('en-IL', { timeZone: 'Asia/Jerusalem' })}</p>
+              <hr>
+              <p style="color: #666; font-size: 12px;">This is an automated notification from AI Club.</p>
+            </div>
+          </div>
+        `
+      });
+      console.log('✅ Admin notification sent');
+    } catch (error) {
+      console.error('⚠️ Failed to send admin notification:', error);
+      // Don't fail the whole request if notification fails
+    }
+
     console.log('✅ Curriculum download processed successfully');
 
     const output = ContentService

@@ -190,6 +190,48 @@ function doPost(e) {
     const groupAssignments = {}; // Process group assignments if needed
     sendConfirmation(data.email, data, groupAssignments, showFirstLessonFree, registrationId);
 
+    // Send admin notification to both emails
+    try {
+      const totalRevenue = data.totalPrice || 0;
+      const childrenList = data.children.map(c => `${c.name} (${c.program || c.ageGroup})`).join(', ');
+      const isTrial = data.paymentPlan === 'trial' || totalRevenue === 0;
+
+      MailApp.sendEmail({
+        to: 'raphaelberrebi@gmail.com, raphael@aikidz.club',
+        subject: isTrial ? `🎁 New FREE TRIAL Registration - ${data.parentName}` : `💰 New Registration - ₪${totalRevenue} - ${data.parentName}`,
+        htmlBody: `
+          <div style="font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5;">
+            <div style="background: white; padding: 20px; border-radius: 8px; max-width: 600px;">
+              <h2 style="color: ${isTrial ? '#10b981' : '#0891b2'};">${isTrial ? '🎁 New FREE TRIAL Registration' : '✅ New Registration'}</h2>
+
+              <h3 style="color: #0891b2;">Parent Information</h3>
+              <p><strong>Name:</strong> ${data.parentName}</p>
+              <p><strong>Email:</strong> ${data.email}</p>
+              <p><strong>Phone:</strong> ${data.phone}</p>
+
+              <h3 style="color: #0891b2;">Children</h3>
+              <p>${childrenList}</p>
+
+              <h3 style="color: #0891b2;">Payment Details</h3>
+              <p><strong>Plan:</strong> ${data.paymentPlan}</p>
+              <p><strong>Total:</strong> ${isTrial ? '₪0 (Free Trial)' : `₪${totalRevenue}/month`}</p>
+              <p><strong>Payment Method:</strong> ${data.paymentMethod}</p>
+
+              <p><strong>Registration ID:</strong> ${registrationId}</p>
+              <p><strong>Language:</strong> English</p>
+              <p><strong>Time:</strong> ${new Date().toLocaleString('en-IL', { timeZone: 'Asia/Jerusalem' })}</p>
+              <hr>
+              <p style="color: #666; font-size: 12px;">This is an automated notification from AI Club.</p>
+            </div>
+          </div>
+        `
+      });
+      Logger.log('✅ Admin notification sent');
+    } catch (error) {
+      Logger.log('⚠️ Failed to send admin notification: ' + error.toString());
+      // Don't fail the whole request if notification fails
+    }
+
     return ContentService.createTextOutput(JSON.stringify({
       success: true,
       message: 'Registration successful',
