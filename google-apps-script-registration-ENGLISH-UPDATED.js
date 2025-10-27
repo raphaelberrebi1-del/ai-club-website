@@ -199,6 +199,8 @@ function doPost(e) {
       MailApp.sendEmail({
         to: 'raphaelberrebi@gmail.com, raphael@aikidz.club',
         subject: isTrial ? `🎁 New FREE TRIAL Registration - ${data.parentName}` : `💰 New Registration - ₪${totalRevenue} - ${data.parentName}`,
+        replyTo: 'noreply@aikidz.club',
+        noReply: true,
         htmlBody: `
           <div style="font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5;">
             <div style="background: white; padding: 20px; border-radius: 8px; max-width: 600px;">
