@@ -11,71 +11,77 @@ export default function middleware(request) {
   const url = new URL(request.url);
   const pathname = url.pathname;
 
-  // PHASE 2: Device-specific routing for all pages
-  // Server-side rewrites based on device detection
+  // Device-specific routing with clean language-based URLs
+  // English pages: /page | Hebrew pages: /he/page
 
-  // HOME PAGES
+  // ENGLISH HOME PAGE
   if (pathname === '/') {
     const targetPath = isMobile ? '/mobile' : '/index';
     return rewrite(new URL(targetPath, request.url));
   }
 
-  if (pathname === '/index-he') {
+  // HEBREW HOME PAGE
+  if (pathname === '/he') {
     const targetPath = isMobile ? '/mobile-he' : '/index-he';
     return rewrite(new URL(targetPath, request.url));
   }
 
-  // PRICING PAGES
+  // ENGLISH PRICING
   if (pathname === '/pricing') {
     const targetPath = isMobile ? '/pricing-mobile' : '/pricing';
     return rewrite(new URL(targetPath, request.url));
   }
 
-  if (pathname === '/pricing-he-desktop') {
+  // HEBREW PRICING
+  if (pathname === '/he/pricing') {
     const targetPath = isMobile ? '/pricing-mobile-he' : '/pricing-he-desktop';
     return rewrite(new URL(targetPath, request.url));
   }
 
-  // CURRICULUM PAGES
+  // ENGLISH CURRICULUM
   if (pathname === '/curriculum') {
     const targetPath = isMobile ? '/curriculum-mobile' : '/curriculum';
     return rewrite(new URL(targetPath, request.url));
   }
 
-  if (pathname === '/curriculum-he-desktop') {
+  // HEBREW CURRICULUM
+  if (pathname === '/he/curriculum') {
     const targetPath = isMobile ? '/curriculum-mobile-he' : '/curriculum-he-desktop';
     return rewrite(new URL(targetPath, request.url));
   }
 
-  // FAQ PAGES
+  // ENGLISH FAQ
   if (pathname === '/faq') {
     const targetPath = isMobile ? '/faq-mobile' : '/faq';
     return rewrite(new URL(targetPath, request.url));
   }
 
-  if (pathname === '/faq-he') {
+  // HEBREW FAQ
+  if (pathname === '/he/faq') {
     const targetPath = isMobile ? '/faq-mobile-he' : '/faq-he';
     return rewrite(new URL(targetPath, request.url));
   }
 
-  // TERMS PAGES
+  // ENGLISH TERMS
   if (pathname === '/terms') {
     const targetPath = isMobile ? '/terms-mobile' : '/terms';
     return rewrite(new URL(targetPath, request.url));
   }
 
-  if (pathname === '/terms-he') {
+  // HEBREW TERMS
+  if (pathname === '/he/terms') {
     const targetPath = isMobile ? '/terms-mobile-he' : '/terms-he';
     return rewrite(new URL(targetPath, request.url));
   }
 
-  // PRIVACY PAGES
+  // ENGLISH PRIVACY
   if (pathname === '/privacy') {
     const targetPath = isMobile ? '/privacy-mobile' : '/privacy';
     return rewrite(new URL(targetPath, request.url));
   }
 
-  if (pathname === '/privacy-he') {
+  // HEBREW PRIVACY
+  if (pathname === '/he/privacy') {
     const targetPath = isMobile ? '/privacy-mobile-he' : '/privacy-he';
     return rewrite(new URL(targetPath, request.url));
   }
@@ -87,16 +93,16 @@ export default function middleware(request) {
 export const config = {
   matcher: [
     '/',
-    '/index-he',
+    '/he',
     '/pricing',
-    '/pricing-he-desktop',
+    '/he/pricing',
     '/curriculum',
-    '/curriculum-he-desktop',
+    '/he/curriculum',
     '/faq',
-    '/faq-he',
+    '/he/faq',
     '/terms',
-    '/terms-he',
+    '/he/terms',
     '/privacy',
-    '/privacy-he'
+    '/he/privacy'
   ]
 };

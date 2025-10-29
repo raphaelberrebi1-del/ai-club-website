@@ -9,8 +9,6 @@
     }
   },
   "rewrites": [
-    { "source": "/curriculum-he-desktop", "destination": "/curriculum-he-desktop.html" },
-    { "source": "/pricing-he-desktop", "destination": "/pricing-he-desktop.html" },
     { "source": "/api/:path*", "destination": "/api/:path*" }
   ],
   "headers": [
