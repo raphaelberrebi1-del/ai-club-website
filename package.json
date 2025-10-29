@@ -4,6 +4,7 @@
   "private": true,
   "description": "AI Kidz Club - AI Education for Kids",
   "dependencies": {
+    "@vercel/edge": "^1.2.2",
     "axios": "^1.6.0"
   },
   "engines": {
