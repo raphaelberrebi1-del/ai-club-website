@@ -16,7 +16,7 @@ export default function middleware(request) {
 
   if (pathname === '/pricing') {
     // Rewrite to appropriate version based on device
-    const targetPath = isMobile ? '/pricing-mobile.html' : '/pricing.html';
+    const targetPath = isMobile ? '/pricing-mobile' : '/pricing';
 
     // Rewrite (not redirect) - URL stays /pricing but serves different file
     return rewrite(new URL(targetPath, request.url));
