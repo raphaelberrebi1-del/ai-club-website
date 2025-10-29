@@ -11,32 +11,92 @@ export default function middleware(request) {
   const url = new URL(request.url);
   const pathname = url.pathname;
 
-  // PHASE 1B: Handle home page and pricing page
-  // If successful, we'll expand to all other pages
+  // PHASE 2: Device-specific routing for all pages
+  // Server-side rewrites based on device detection
 
-  // English Home Page
+  // HOME PAGES
   if (pathname === '/') {
     const targetPath = isMobile ? '/mobile' : '/index';
     return rewrite(new URL(targetPath, request.url));
   }
 
-  // Hebrew Home Page
   if (pathname === '/index-he') {
     const targetPath = isMobile ? '/mobile-he' : '/index-he';
     return rewrite(new URL(targetPath, request.url));
   }
 
-  // Pricing Page
+  // PRICING PAGES
   if (pathname === '/pricing') {
     const targetPath = isMobile ? '/pricing-mobile' : '/pricing';
     return rewrite(new URL(targetPath, request.url));
   }
 
+  if (pathname === '/pricing-he-desktop') {
+    const targetPath = isMobile ? '/pricing-mobile-he' : '/pricing-he-desktop';
+    return rewrite(new URL(targetPath, request.url));
+  }
+
+  // CURRICULUM PAGES
+  if (pathname === '/curriculum') {
+    const targetPath = isMobile ? '/curriculum-mobile' : '/curriculum';
+    return rewrite(new URL(targetPath, request.url));
+  }
+
+  if (pathname === '/curriculum-he-desktop') {
+    const targetPath = isMobile ? '/curriculum-mobile-he' : '/curriculum-he-desktop';
+    return rewrite(new URL(targetPath, request.url));
+  }
+
+  // FAQ PAGES
+  if (pathname === '/faq') {
+    const targetPath = isMobile ? '/faq-mobile' : '/faq';
+    return rewrite(new URL(targetPath, request.url));
+  }
+
+  if (pathname === '/faq-he') {
+    const targetPath = isMobile ? '/faq-mobile-he' : '/faq-he';
+    return rewrite(new URL(targetPath, request.url));
+  }
+
+  // TERMS PAGES
+  if (pathname === '/terms') {
+    const targetPath = isMobile ? '/terms-mobile' : '/terms';
+    return rewrite(new URL(targetPath, request.url));
+  }
+
+  if (pathname === '/terms-he') {
+    const targetPath = isMobile ? '/terms-mobile-he' : '/terms-he';
+    return rewrite(new URL(targetPath, request.url));
+  }
+
+  // PRIVACY PAGES
+  if (pathname === '/privacy') {
+    const targetPath = isMobile ? '/privacy-mobile' : '/privacy';
+    return rewrite(new URL(targetPath, request.url));
+  }
+
+  if (pathname === '/privacy-he') {
+    const targetPath = isMobile ? '/privacy-mobile-he' : '/privacy-he';
+    return rewrite(new URL(targetPath, request.url));
+  }
+
   // Let all other requests pass through unchanged
-  // Other pages will continue using detect-device.js for now
   return next();
 }
 
 export const config = {
-  matcher: ['/', '/index-he', '/pricing']
+  matcher: [
+    '/',
+    '/index-he',
+    '/pricing',
+    '/pricing-he-desktop',
+    '/curriculum',
+    '/curriculum-he-desktop',
+    '/faq',
+    '/faq-he',
+    '/terms',
+    '/terms-he',
+    '/privacy',
+    '/privacy-he'
+  ]
 };
