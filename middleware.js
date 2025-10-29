@@ -11,14 +11,24 @@ export default function middleware(request) {
   const url = new URL(request.url);
   const pathname = url.pathname;
 
-  // PHASE 1: Only handle /pricing page as proof of concept
+  // PHASE 1B: Handle home page and pricing page
   // If successful, we'll expand to all other pages
 
-  if (pathname === '/pricing') {
-    // Rewrite to appropriate version based on device
-    const targetPath = isMobile ? '/pricing-mobile' : '/pricing';
+  // English Home Page
+  if (pathname === '/') {
+    const targetPath = isMobile ? '/mobile' : '/index';
+    return rewrite(new URL(targetPath, request.url));
+  }
 
-    // Rewrite (not redirect) - URL stays /pricing but serves different file
+  // Hebrew Home Page
+  if (pathname === '/index-he') {
+    const targetPath = isMobile ? '/mobile-he' : '/index-he';
+    return rewrite(new URL(targetPath, request.url));
+  }
+
+  // Pricing Page
+  if (pathname === '/pricing') {
+    const targetPath = isMobile ? '/pricing-mobile' : '/pricing';
     return rewrite(new URL(targetPath, request.url));
   }
 
@@ -28,5 +38,5 @@ export default function middleware(request) {
 }
 
 export const config = {
-  matcher: '/pricing'
+  matcher: ['/', '/index-he', '/pricing']
 };
